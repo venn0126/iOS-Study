@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MLoginController.h
 //  Test0929
 //
 //  Created by 牛威 on 2019/9/30.
@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+NS_ASSUME_NONNULL_BEGIN
 
+@interface MLoginController : UIViewController
 
 @end
 
+NS_ASSUME_NONNULL_END

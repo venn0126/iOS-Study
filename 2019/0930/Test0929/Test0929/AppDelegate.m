@@ -7,8 +7,13 @@
 //
 
 #import "AppDelegate.h"
+#import "MNavController.h"
+#import "MLoginController.h"
+
 
 @interface AppDelegate ()
+
+
 
 @end
 
@@ -17,6 +22,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    
+
+     MLoginController *login = [[MLoginController alloc] init];
+//     MNavController *nav = [[MNavController alloc] initWithRootViewController:login];
+     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+     self.window.rootViewController = login;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

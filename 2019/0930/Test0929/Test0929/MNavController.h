@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  MNavController.h
 //  Test0929
 //
 //  Created by 牛威 on 2019/9/30.
@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+NS_ASSUME_NONNULL_BEGIN
 
-@property (strong, nonatomic) UIWindow *window;
+@interface MNavController : UINavigationController
 
 @end
 
+NS_ASSUME_NONNULL_END
