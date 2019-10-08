@@ -24,6 +24,7 @@
     // Override point for customization after application launch.
     
     
+    // set up window
 
      MLoginController *login = [[MLoginController alloc] init];
 //     MNavController *nav = [[MNavController alloc] initWithRootViewController:login];
