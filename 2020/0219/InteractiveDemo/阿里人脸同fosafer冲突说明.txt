@@ -1,0 +1,3 @@
+本项目是由于阿里的人脸认证库使用的ncnn和fosafer使用的同一个导致链接的时候冲突
+而调试的demo
+冲突的阿里库在ToygerService库中

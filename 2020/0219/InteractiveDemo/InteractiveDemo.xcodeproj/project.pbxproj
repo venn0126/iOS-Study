@@ -1,0 +1,671 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2714944F23FCDB8300958521 /* libc++abi.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2714944E23FCDB8300958521 /* libc++abi.tbd */; };
+		2714945123FCDBC100958521 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2714945023FCDBC100958521 /* libicucore.tbd */; };
+		2714945323FCDBFB00958521 /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2714945223FCDBFB00958521 /* libc++.1.tbd */; };
+		2714945523FCDC2900958521 /* libz.1.1.3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2714945423FCDC2900958521 /* libz.1.1.3.tbd */; };
+		2714945723FCDC5C00958521 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2714945623FCDC5C00958521 /* WebKit.framework */; };
+		2714945923FCDC7900958521 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2714945823FCDC7900958521 /* UserNotifications.framework */; };
+		2714945B23FCDC9500958521 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2714945A23FCDC9500958521 /* Accelerate.framework */; };
+		2714945D23FCDCA900958521 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2714945C23FCDCA900958521 /* AssetsLibrary.framework */; };
+		2714945F23FCDCB400958521 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2714945E23FCDCB400958521 /* ImageIO.framework */; };
+		2714946123FCDCC800958521 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2714946023FCDCC800958521 /* AVFoundation.framework */; };
+		2714946323FCDCD100958521 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2714946223FCDCD100958521 /* CoreMotion.framework */; };
+		2714946523FCDCD900958521 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2714946423FCDCD900958521 /* CoreMedia.framework */; };
+		2714946723FCDCE000958521 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2714946623FCDCE000958521 /* CoreLocation.framework */; };
+		2714946923FCDCE700958521 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2714946823FCDCE700958521 /* CoreFoundation.framework */; };
+		2714946B23FCDCFA00958521 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2714946A23FCDCFA00958521 /* QuartzCore.framework */; };
+		2714946D23FCDD0200958521 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2714946C23FCDD0200958521 /* CoreTelephony.framework */; };
+		2714946F23FCDD0900958521 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2714946E23FCDD0900958521 /* CoreGraphics.framework */; };
+		2714948223FCDD3D00958521 /* AlipayVerifySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2714947523FCDD3D00958521 /* AlipayVerifySDK.framework */; };
+		2714948E23FCDDBB00958521 /* AlipayVerifySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2714948C23FCDDBB00958521 /* AlipayVerifySDK.bundle */; };
+		2714948F23FCDDBB00958521 /* BioAuthEngine.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2714948D23FCDDBB00958521 /* BioAuthEngine.bundle */; };
+		2714949123FCDF7000958521 /* BioAuthAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2714949023FCDF7000958521 /* BioAuthAPI.framework */; };
+		2714949323FCE01B00958521 /* ZolozIdentityManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2714949223FCE01B00958521 /* ZolozIdentityManager.framework */; };
+		2714949523FCE06F00958521 /* APBToygerFacade.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2714949423FCE06F00958521 /* APBToygerFacade.framework */; };
+		2714949723FCE09100958521 /* APPSecuritySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2714949623FCE09100958521 /* APPSecuritySDK.framework */; };
+		2714949C23FCE0AE00958521 /* ZolozUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2714949823FCE0AE00958521 /* ZolozUtility.framework */; };
+		2714949D23FCE0AE00958521 /* ZolozMobileRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2714949923FCE0AE00958521 /* ZolozMobileRPC.framework */; };
+		2714949E23FCE0AE00958521 /* ZolozOpenPlatformBuild.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2714949A23FCE0AE00958521 /* ZolozOpenPlatformBuild.framework */; };
+		2714949F23FCE0AE00958521 /* ZolozSensorServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2714949B23FCE0AE00958521 /* ZolozSensorServices.framework */; };
+		271494A123FCE0DA00958521 /* BioAuthEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 271494A023FCE0DA00958521 /* BioAuthEngine.framework */; };
+		271494A323FCE0E900958521 /* MPRemoteLogging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 271494A223FCE0E900958521 /* MPRemoteLogging.framework */; };
+		271494A823FCE6C200958521 /* ToygerService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 271494A723FCE6C200958521 /* ToygerService.framework */; };
+		27396A3D218C3E2E00885EA3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27396A3C218C3E2E00885EA3 /* AppDelegate.m */; };
+		27396A40218C3E2E00885EA3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27396A3F218C3E2E00885EA3 /* ViewController.m */; };
+		27396A43218C3E2E00885EA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27396A41218C3E2E00885EA3 /* Main.storyboard */; };
+		27396A45218C3E3000885EA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27396A44218C3E3000885EA3 /* Assets.xcassets */; };
+		27396A48218C3E3000885EA3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27396A46218C3E3000885EA3 /* LaunchScreen.storyboard */; };
+		27396A4B218C3E3000885EA3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27396A4A218C3E3000885EA3 /* main.m */; };
+		27439DA9219AB24F00AB0453 /* FOSDetectController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27439DA8219AB24F00AB0453 /* FOSDetectController.m */; };
+		27439DAD219AB9C200AB0453 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 27439DAC219AB9C200AB0453 /* libc++.tbd */; };
+		2760FB9421BA358D007CD93D /* InteractiveDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2760FB9321BA358D007CD93D /* InteractiveDemoTests.m */; };
+		27CA95BF2266D464008FBCF2 /* FosaferAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CA95BE2266D464008FBCF2 /* FosaferAuth.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2760FB9621BA358D007CD93D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27396A30218C3E2E00885EA3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 27396A37218C3E2E00885EA3;
+			remoteInfo = InteractiveDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2714944E23FCDB8300958521 /* libc++abi.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++abi.tbd"; path = "usr/lib/libc++abi.tbd"; sourceTree = SDKROOT; };
+		2714945023FCDBC100958521 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		2714945223FCDBFB00958521 /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
+		2714945423FCDC2900958521 /* libz.1.1.3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.1.3.tbd; path = usr/lib/libz.1.1.3.tbd; sourceTree = SDKROOT; };
+		2714945623FCDC5C00958521 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		2714945823FCDC7900958521 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		2714945A23FCDC9500958521 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		2714945C23FCDCA900958521 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		2714945E23FCDCB400958521 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		2714946023FCDCC800958521 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		2714946223FCDCD100958521 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		2714946423FCDCD900958521 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		2714946623FCDCE000958521 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		2714946823FCDCE700958521 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		2714946A23FCDCFA00958521 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		2714946C23FCDD0200958521 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		2714946E23FCDD0900958521 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2714947523FCDD3D00958521 /* AlipayVerifySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipayVerifySDK.framework; sourceTree = "<group>"; };
+		2714948C23FCDDBB00958521 /* AlipayVerifySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipayVerifySDK.bundle; sourceTree = "<group>"; };
+		2714948D23FCDDBB00958521 /* BioAuthEngine.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BioAuthEngine.bundle; sourceTree = "<group>"; };
+		2714949023FCDF7000958521 /* BioAuthAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BioAuthAPI.framework; sourceTree = "<group>"; };
+		2714949223FCE01B00958521 /* ZolozIdentityManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZolozIdentityManager.framework; sourceTree = "<group>"; };
+		2714949423FCE06F00958521 /* APBToygerFacade.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = APBToygerFacade.framework; sourceTree = "<group>"; };
+		2714949623FCE09100958521 /* APPSecuritySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = APPSecuritySDK.framework; sourceTree = "<group>"; };
+		2714949823FCE0AE00958521 /* ZolozUtility.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZolozUtility.framework; sourceTree = "<group>"; };
+		2714949923FCE0AE00958521 /* ZolozMobileRPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZolozMobileRPC.framework; sourceTree = "<group>"; };
+		2714949A23FCE0AE00958521 /* ZolozOpenPlatformBuild.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZolozOpenPlatformBuild.framework; sourceTree = "<group>"; };
+		2714949B23FCE0AE00958521 /* ZolozSensorServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ZolozSensorServices.framework; sourceTree = "<group>"; };
+		271494A023FCE0DA00958521 /* BioAuthEngine.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BioAuthEngine.framework; sourceTree = "<group>"; };
+		271494A223FCE0E900958521 /* MPRemoteLogging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MPRemoteLogging.framework; sourceTree = "<group>"; };
+		271494A723FCE6C200958521 /* ToygerService.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ToygerService.framework; sourceTree = "<group>"; };
+		27396A38218C3E2E00885EA3 /* ali-InteractiveDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ali-InteractiveDemo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		27396A3B218C3E2E00885EA3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		27396A3C218C3E2E00885EA3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		27396A3E218C3E2E00885EA3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		27396A3F218C3E2E00885EA3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		27396A42218C3E2E00885EA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		27396A44218C3E3000885EA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		27396A47218C3E3000885EA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		27396A49218C3E3000885EA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27396A4A218C3E3000885EA3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		27439DA7219AB24F00AB0453 /* FOSDetectController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FOSDetectController.h; sourceTree = "<group>"; };
+		27439DA8219AB24F00AB0453 /* FOSDetectController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FOSDetectController.m; sourceTree = "<group>"; };
+		27439DAC219AB9C200AB0453 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		2760FB9121BA358D007CD93D /* InteractiveDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InteractiveDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2760FB9321BA358D007CD93D /* InteractiveDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InteractiveDemoTests.m; sourceTree = "<group>"; };
+		2760FB9521BA358D007CD93D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27CA95BE2266D464008FBCF2 /* FosaferAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FosaferAuth.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		27396A35218C3E2E00885EA3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2714946F23FCDD0900958521 /* CoreGraphics.framework in Frameworks */,
+				2714946D23FCDD0200958521 /* CoreTelephony.framework in Frameworks */,
+				2714949123FCDF7000958521 /* BioAuthAPI.framework in Frameworks */,
+				2714946B23FCDCFA00958521 /* QuartzCore.framework in Frameworks */,
+				2714946923FCDCE700958521 /* CoreFoundation.framework in Frameworks */,
+				2714946723FCDCE000958521 /* CoreLocation.framework in Frameworks */,
+				2714946523FCDCD900958521 /* CoreMedia.framework in Frameworks */,
+				2714949723FCE09100958521 /* APPSecuritySDK.framework in Frameworks */,
+				2714946323FCDCD100958521 /* CoreMotion.framework in Frameworks */,
+				2714946123FCDCC800958521 /* AVFoundation.framework in Frameworks */,
+				2714945F23FCDCB400958521 /* ImageIO.framework in Frameworks */,
+				2714949523FCE06F00958521 /* APBToygerFacade.framework in Frameworks */,
+				2714945D23FCDCA900958521 /* AssetsLibrary.framework in Frameworks */,
+				2714949E23FCE0AE00958521 /* ZolozOpenPlatformBuild.framework in Frameworks */,
+				2714949323FCE01B00958521 /* ZolozIdentityManager.framework in Frameworks */,
+				2714948223FCDD3D00958521 /* AlipayVerifySDK.framework in Frameworks */,
+				2714945B23FCDC9500958521 /* Accelerate.framework in Frameworks */,
+				271494A123FCE0DA00958521 /* BioAuthEngine.framework in Frameworks */,
+				2714945923FCDC7900958521 /* UserNotifications.framework in Frameworks */,
+				271494A323FCE0E900958521 /* MPRemoteLogging.framework in Frameworks */,
+				2714945723FCDC5C00958521 /* WebKit.framework in Frameworks */,
+				2714945523FCDC2900958521 /* libz.1.1.3.tbd in Frameworks */,
+				271494A823FCE6C200958521 /* ToygerService.framework in Frameworks */,
+				2714945323FCDBFB00958521 /* libc++.1.tbd in Frameworks */,
+				2714949C23FCE0AE00958521 /* ZolozUtility.framework in Frameworks */,
+				2714949D23FCE0AE00958521 /* ZolozMobileRPC.framework in Frameworks */,
+				2714945123FCDBC100958521 /* libicucore.tbd in Frameworks */,
+				2714944F23FCDB8300958521 /* libc++abi.tbd in Frameworks */,
+				2714949F23FCE0AE00958521 /* ZolozSensorServices.framework in Frameworks */,
+				27439DAD219AB9C200AB0453 /* libc++.tbd in Frameworks */,
+				27CA95BF2266D464008FBCF2 /* FosaferAuth.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2760FB8E21BA358D007CD93D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2714947023FCDD3D00958521 /* frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				271494A723FCE6C200958521 /* ToygerService.framework */,
+				271494A223FCE0E900958521 /* MPRemoteLogging.framework */,
+				271494A023FCE0DA00958521 /* BioAuthEngine.framework */,
+				2714949923FCE0AE00958521 /* ZolozMobileRPC.framework */,
+				2714949A23FCE0AE00958521 /* ZolozOpenPlatformBuild.framework */,
+				2714949B23FCE0AE00958521 /* ZolozSensorServices.framework */,
+				2714949823FCE0AE00958521 /* ZolozUtility.framework */,
+				2714949623FCE09100958521 /* APPSecuritySDK.framework */,
+				2714949423FCE06F00958521 /* APBToygerFacade.framework */,
+				2714949223FCE01B00958521 /* ZolozIdentityManager.framework */,
+				2714949023FCDF7000958521 /* BioAuthAPI.framework */,
+				2714947523FCDD3D00958521 /* AlipayVerifySDK.framework */,
+			);
+			name = frameworks;
+			path = InteractiveDemo/frameworks;
+			sourceTree = "<group>";
+		};
+		2714948B23FCDDBB00958521 /* bundle */ = {
+			isa = PBXGroup;
+			children = (
+				2714948C23FCDDBB00958521 /* AlipayVerifySDK.bundle */,
+				2714948D23FCDDBB00958521 /* BioAuthEngine.bundle */,
+			);
+			name = bundle;
+			path = InteractiveDemo/bundle;
+			sourceTree = "<group>";
+		};
+		27396A2F218C3E2E00885EA3 = {
+			isa = PBXGroup;
+			children = (
+				2714948B23FCDDBB00958521 /* bundle */,
+				2714947023FCDD3D00958521 /* frameworks */,
+				27396A3A218C3E2E00885EA3 /* InteractiveDemo */,
+				2760FB9221BA358D007CD93D /* InteractiveDemoTests */,
+				27396A39218C3E2E00885EA3 /* Products */,
+				27439DAB219AB9C100AB0453 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		27396A39218C3E2E00885EA3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27396A38218C3E2E00885EA3 /* ali-InteractiveDemo.app */,
+				2760FB9121BA358D007CD93D /* InteractiveDemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		27396A3A218C3E2E00885EA3 /* InteractiveDemo */ = {
+			isa = PBXGroup;
+			children = (
+				27CA95BE2266D464008FBCF2 /* FosaferAuth.framework */,
+				27396A3B218C3E2E00885EA3 /* AppDelegate.h */,
+				27396A3C218C3E2E00885EA3 /* AppDelegate.m */,
+				27396A3E218C3E2E00885EA3 /* ViewController.h */,
+				27396A3F218C3E2E00885EA3 /* ViewController.m */,
+				27439DA7219AB24F00AB0453 /* FOSDetectController.h */,
+				27439DA8219AB24F00AB0453 /* FOSDetectController.m */,
+				27396A41218C3E2E00885EA3 /* Main.storyboard */,
+				27396A44218C3E3000885EA3 /* Assets.xcassets */,
+				27396A46218C3E3000885EA3 /* LaunchScreen.storyboard */,
+				27396A49218C3E3000885EA3 /* Info.plist */,
+				27396A4A218C3E3000885EA3 /* main.m */,
+			);
+			path = InteractiveDemo;
+			sourceTree = "<group>";
+		};
+		27439DAB219AB9C100AB0453 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2714946E23FCDD0900958521 /* CoreGraphics.framework */,
+				2714946C23FCDD0200958521 /* CoreTelephony.framework */,
+				2714946A23FCDCFA00958521 /* QuartzCore.framework */,
+				2714946823FCDCE700958521 /* CoreFoundation.framework */,
+				2714946623FCDCE000958521 /* CoreLocation.framework */,
+				2714946423FCDCD900958521 /* CoreMedia.framework */,
+				2714946223FCDCD100958521 /* CoreMotion.framework */,
+				2714946023FCDCC800958521 /* AVFoundation.framework */,
+				2714945E23FCDCB400958521 /* ImageIO.framework */,
+				2714945C23FCDCA900958521 /* AssetsLibrary.framework */,
+				2714945A23FCDC9500958521 /* Accelerate.framework */,
+				2714945823FCDC7900958521 /* UserNotifications.framework */,
+				2714945623FCDC5C00958521 /* WebKit.framework */,
+				2714945423FCDC2900958521 /* libz.1.1.3.tbd */,
+				2714945223FCDBFB00958521 /* libc++.1.tbd */,
+				2714945023FCDBC100958521 /* libicucore.tbd */,
+				2714944E23FCDB8300958521 /* libc++abi.tbd */,
+				27439DAC219AB9C200AB0453 /* libc++.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2760FB9221BA358D007CD93D /* InteractiveDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				2760FB9321BA358D007CD93D /* InteractiveDemoTests.m */,
+				2760FB9521BA358D007CD93D /* Info.plist */,
+			);
+			path = InteractiveDemoTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		27396A37218C3E2E00885EA3 /* InteractiveDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27396A4E218C3E3000885EA3 /* Build configuration list for PBXNativeTarget "InteractiveDemo" */;
+			buildPhases = (
+				27396A34218C3E2E00885EA3 /* Sources */,
+				27396A35218C3E2E00885EA3 /* Frameworks */,
+				27396A36218C3E2E00885EA3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = InteractiveDemo;
+			productName = InteractiveDemo;
+			productReference = 27396A38218C3E2E00885EA3 /* ali-InteractiveDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2760FB9021BA358D007CD93D /* InteractiveDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2760FB9A21BA358D007CD93D /* Build configuration list for PBXNativeTarget "InteractiveDemoTests" */;
+			buildPhases = (
+				2760FB8D21BA358D007CD93D /* Sources */,
+				2760FB8E21BA358D007CD93D /* Frameworks */,
+				2760FB8F21BA358D007CD93D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2760FB9721BA358D007CD93D /* PBXTargetDependency */,
+			);
+			name = InteractiveDemoTests;
+			productName = InteractiveDemoTests;
+			productReference = 2760FB9121BA358D007CD93D /* InteractiveDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		27396A30218C3E2E00885EA3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = Fosafer;
+				TargetAttributes = {
+					27396A37218C3E2E00885EA3 = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					2760FB9021BA358D007CD93D = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 27396A37218C3E2E00885EA3;
+					};
+				};
+			};
+			buildConfigurationList = 27396A33218C3E2E00885EA3 /* Build configuration list for PBXProject "InteractiveDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 27396A2F218C3E2E00885EA3;
+			productRefGroup = 27396A39218C3E2E00885EA3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				27396A37218C3E2E00885EA3 /* InteractiveDemo */,
+				2760FB9021BA358D007CD93D /* InteractiveDemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		27396A36218C3E2E00885EA3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27396A48218C3E3000885EA3 /* LaunchScreen.storyboard in Resources */,
+				2714948E23FCDDBB00958521 /* AlipayVerifySDK.bundle in Resources */,
+				27396A45218C3E3000885EA3 /* Assets.xcassets in Resources */,
+				27396A43218C3E2E00885EA3 /* Main.storyboard in Resources */,
+				2714948F23FCDDBB00958521 /* BioAuthEngine.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2760FB8F21BA358D007CD93D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		27396A34218C3E2E00885EA3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27396A40218C3E2E00885EA3 /* ViewController.m in Sources */,
+				27439DA9219AB24F00AB0453 /* FOSDetectController.m in Sources */,
+				27396A4B218C3E3000885EA3 /* main.m in Sources */,
+				27396A3D218C3E2E00885EA3 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2760FB8D21BA358D007CD93D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2760FB9421BA358D007CD93D /* InteractiveDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2760FB9721BA358D007CD93D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 27396A37218C3E2E00885EA3 /* InteractiveDemo */;
+			targetProxy = 2760FB9621BA358D007CD93D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		27396A41218C3E2E00885EA3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27396A42218C3E2E00885EA3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		27396A46218C3E3000885EA3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27396A47218C3E3000885EA3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		27396A4C218C3E3000885EA3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		27396A4D218C3E3000885EA3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		27396A4F218C3E3000885EA3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L6A5VFP4PR;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/InteractiveDemo",
+					"$(PROJECT_DIR)/InteractiveDemo/frameworks",
+				);
+				INFOPLIST_FILE = InteractiveDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					"\"BioAuthAPI\"",
+					"-lxml2",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Co.-Ltd..InteractiveDemo-ali";
+				PRODUCT_NAME = "ali-InteractiveDemo";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 arm64e";
+			};
+			name = Debug;
+		};
+		27396A50218C3E3000885EA3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L6A5VFP4PR;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/InteractiveDemo",
+					"$(PROJECT_DIR)/InteractiveDemo/frameworks",
+				);
+				INFOPLIST_FILE = InteractiveDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					"\"BioAuthAPI\"",
+					"-lxml2",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Co.-Ltd..InteractiveDemo-ali";
+				PRODUCT_NAME = "ali-InteractiveDemo";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 arm64e";
+			};
+			name = Release;
+		};
+		2760FB9821BA358D007CD93D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L6A5VFP4PR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/InteractiveDemo",
+				);
+				INFOPLIST_FILE = InteractiveDemoTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Co.-Ltd..InteractiveDemoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InteractiveDemo.app/InteractiveDemo";
+			};
+			name = Debug;
+		};
+		2760FB9921BA358D007CD93D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L6A5VFP4PR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/InteractiveDemo",
+				);
+				INFOPLIST_FILE = InteractiveDemoTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Co.-Ltd..InteractiveDemoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InteractiveDemo.app/InteractiveDemo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		27396A33218C3E2E00885EA3 /* Build configuration list for PBXProject "InteractiveDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27396A4C218C3E3000885EA3 /* Debug */,
+				27396A4D218C3E3000885EA3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27396A4E218C3E3000885EA3 /* Build configuration list for PBXNativeTarget "InteractiveDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27396A4F218C3E3000885EA3 /* Debug */,
+				27396A50218C3E3000885EA3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2760FB9A21BA358D007CD93D /* Build configuration list for PBXNativeTarget "InteractiveDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2760FB9821BA358D007CD93D /* Debug */,
+				2760FB9921BA358D007CD93D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 27396A30218C3E2E00885EA3 /* Project object */;
+}
