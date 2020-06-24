@@ -8,6 +8,9 @@
 
 #import "ViewController.h"
 #import "FOSButton.h"
+#import "FOSProxy.h"
+#import "SecondController.h"
+
 
 @interface ViewController ()
 
@@ -17,6 +20,9 @@
 
 @property (nonatomic, copy) NSString *name;
 
+@property (nonatomic, strong) dispatch_source_t gcdTimer;
+
+@property (nonatomic, strong) CADisplayLink *link;
 
 
 
@@ -86,10 +92,58 @@
 //    [self.view addSubview:overlay];
     
     FOSButton *fosButton = [[FOSButton alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-    fosButton.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)-200);
-    [fosButton addTarget:self action:@selector(fosButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    
+    fosButton.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)-200);    
+    [fosButton fos_addTarget:self action:@selector(fosButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+//
     [self.view addSubview:fosButton];
+    
+    
+//    [self test_GCDTimer];
+    
+//    [self test_proxy];
+}
+
+- (void)test_proxy {
+    
+
+    
+    self.link = [CADisplayLink displayLinkWithTarget:[FOSProxy proxyWithTarget:self] selector:@selector(linkTest)];
+    [self.link addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+    
+}
+
+
+- (void)linkTest {
+    
+    NSLog(@"sssss");
+}
+
+- (void)test_GCDTimer {
+    
+    dispatch_queue_t globalQueue = dispatch_get_global_queue(0, 0);
+    self.gcdTimer =  dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, globalQueue);
+    
+    dispatch_source_set_timer(_gcdTimer, DISPATCH_TIME_NOW,  2 * NSEC_PER_SEC, 0);
+    dispatch_source_set_event_handler(_gcdTimer, ^{
+       
+        static int gcdIdx = 0;
+           NSLog(@"GCD Method: %d", gcdIdx++);
+           NSLog(@"%@", [NSThread currentThread]);
+           
+           if(gcdIdx == 5) {
+               // 刮起定时器
+               dispatch_suspend(_gcdTimer);
+               // 取消 防止进一步调用
+               //dispatch_source_cancel(_gcdTimer);
+           }
+        
+        
+    });
+    
+    // 启动任务，GCD计时器创建后需要手动启动
+    dispatch_resume(_gcdTimer);
+    
+    
 }
 
 - (void)fosButtonAction:(FOSButton *)sender {
@@ -97,6 +151,10 @@
 //    UIAlertController *alert =
     
     NSLog(@"fos button press");
+    
+//    SecondController *vc = [[SecondController alloc] init];
+//    [self.navigationController pushViewController:vc animated:YES];
+    
     
 }
 

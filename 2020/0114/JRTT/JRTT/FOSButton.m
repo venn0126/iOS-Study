@@ -25,11 +25,20 @@
     if (self = [super initWithFrame:frame]) {
         
         CGPoint centerPoint = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
+        
+        
+        NSLog(@"centerpoint--%@",NSStringFromCGPoint(centerPoint));
         UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:centerPoint radius:CGRectGetMidX(self.bounds) startAngle:M_PI endAngle:0 clockwise:YES];
         // 确定两条直线，并与半圆弧的两边零界点相连
         
         CGPoint bottomPoint = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMaxY(self.bounds));
+        
+        NSLog(@"bottomPoint--%@",NSStringFromCGPoint(bottomPoint));
+
         CGPoint endPoint = CGPointMake(CGRectGetMinX(self.bounds),CGRectGetMidY(self.bounds));
+        
+        NSLog(@"endPoint--%@",NSStringFromCGPoint(endPoint));
+
         [path addLineToPoint:bottomPoint];
         [path addLineToPoint:endPoint];
         
@@ -50,7 +59,7 @@
     CGPoint point = [[touches anyObject] locationInView:self]; // touch point
     point = [self.layer convertPoint:point toLayer:_shape]; // point to layer
     UIBezierPath *path = [UIBezierPath bezierPathWithCGPath:_shape.path];//  得到画图部分的path
-    // 判断是否为画图中的点，确定是否响应事件
+    // 判断是否为画图中的点，如果是否响应事件
     if ([path containsPoint:point]) {
         if ([_target respondsToSelector:_action]) {
             [_target performSelectorOnMainThread:_action withObject:nil waitUntilDone:NO];

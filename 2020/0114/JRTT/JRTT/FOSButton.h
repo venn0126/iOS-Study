@@ -12,6 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FOSButton : UIControl
 
+/*
+ 
+ // 自定义 固定区域的button响应
+ 
+**/
+
 - (void)fos_addTarget:(id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;
 
 @end
