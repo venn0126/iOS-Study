@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D30ABEF85A6564EB9248D4B /* libPods-JRTT.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05AABA3E8AC09D378AFA3D0F /* libPods-JRTT.a */; };
 		2752C1B924A0A6BF00E01160 /* FOSProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2752C1B824A0A6BF00E01160 /* FOSProxy.m */; };
 		2752C1BC24A0A9FC00E01160 /* SecondController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2752C1BB24A0A9FC00E01160 /* SecondController.m */; };
 		277E312523F66FB500543EBF /* FOSButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 277E312423F66FB500543EBF /* FOSButton.m */; };
@@ -18,9 +19,12 @@
 		2791637923CDC42500524DDC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2791637723CDC42500524DDC /* LaunchScreen.storyboard */; };
 		2791637C23CDC42500524DDC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2791637B23CDC42500524DDC /* main.m */; };
 		2791638B23CDC93F00524DDC /* Part1.m in Sources */ = {isa = PBXBuildFile; fileRef = 2791638A23CDC93F00524DDC /* Part1.m */; };
+		27CC961224B332FA00EA21B9 /* NSMutableArray+RemoveFirstObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CC961124B332FA00EA21B9 /* NSMutableArray+RemoveFirstObject.m */; };
+		27D216A424B410C70099BCD1 /* FosaferCollector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D216A324B410C70099BCD1 /* FosaferCollector.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05AABA3E8AC09D378AFA3D0F /* libPods-JRTT.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JRTT.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2752C1B724A0A6BF00E01160 /* FOSProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FOSProxy.h; sourceTree = "<group>"; };
 		2752C1B824A0A6BF00E01160 /* FOSProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FOSProxy.m; sourceTree = "<group>"; };
 		2752C1BA24A0A9FC00E01160 /* SecondController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondController.h; sourceTree = "<group>"; };
@@ -41,6 +45,11 @@
 		2791637B23CDC42500524DDC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2791638923CDC93F00524DDC /* Part1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Part1.h; sourceTree = "<group>"; };
 		2791638A23CDC93F00524DDC /* Part1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Part1.m; sourceTree = "<group>"; };
+		27CC961024B332FA00EA21B9 /* NSMutableArray+RemoveFirstObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+RemoveFirstObject.h"; sourceTree = "<group>"; };
+		27CC961124B332FA00EA21B9 /* NSMutableArray+RemoveFirstObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+RemoveFirstObject.m"; sourceTree = "<group>"; };
+		27D216A324B410C70099BCD1 /* FosaferCollector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FosaferCollector.framework; sourceTree = "<group>"; };
+		6CD2DFF0238702F939431F91 /* Pods-JRTT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JRTT.release.xcconfig"; path = "Target Support Files/Pods-JRTT/Pods-JRTT.release.xcconfig"; sourceTree = "<group>"; };
+		722E98B8EC49F7D9A657FECE /* Pods-JRTT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JRTT.debug.xcconfig"; path = "Target Support Files/Pods-JRTT/Pods-JRTT.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,17 +57,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D30ABEF85A6564EB9248D4B /* libPods-JRTT.a in Frameworks */,
+				27D216A424B410C70099BCD1 /* FosaferCollector.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F96745CB1C2754CB51D2F1F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				05AABA3E8AC09D378AFA3D0F /* libPods-JRTT.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2791635D23CDC42300524DDC = {
 			isa = PBXGroup;
 			children = (
+				27D216A324B410C70099BCD1 /* FosaferCollector.framework */,
 				2791636823CDC42300524DDC /* JRTT */,
 				2791636723CDC42300524DDC /* Products */,
+				4012F33C595DEC2CD3A6764D /* Pods */,
+				1F96745CB1C2754CB51D2F1F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,6 +105,8 @@
 				2752C1BB24A0A9FC00E01160 /* SecondController.m */,
 				277E312323F66FB500543EBF /* FOSButton.h */,
 				277E312423F66FB500543EBF /* FOSButton.m */,
+				27CC961024B332FA00EA21B9 /* NSMutableArray+RemoveFirstObject.h */,
+				27CC961124B332FA00EA21B9 /* NSMutableArray+RemoveFirstObject.m */,
 				2752C1B724A0A6BF00E01160 /* FOSProxy.h */,
 				2752C1B824A0A6BF00E01160 /* FOSProxy.m */,
 				2791638923CDC93F00524DDC /* Part1.h */,
@@ -96,6 +120,15 @@
 			path = JRTT;
 			sourceTree = "<group>";
 		};
+		4012F33C595DEC2CD3A6764D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				722E98B8EC49F7D9A657FECE /* Pods-JRTT.debug.xcconfig */,
+				6CD2DFF0238702F939431F91 /* Pods-JRTT.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,6 +136,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2791637F23CDC42500524DDC /* Build configuration list for PBXNativeTarget "JRTT" */;
 			buildPhases = (
+				9749C5CA44C7E2C30996CE18 /* [CP] Check Pods Manifest.lock */,
 				2791636223CDC42300524DDC /* Sources */,
 				2791636323CDC42300524DDC /* Frameworks */,
 				2791636423CDC42300524DDC /* Resources */,
@@ -161,6 +195,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		9749C5CA44C7E2C30996CE18 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JRTT-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2791636223CDC42300524DDC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -172,6 +231,7 @@
 				2752C1B924A0A6BF00E01160 /* FOSProxy.m in Sources */,
 				2791637C23CDC42500524DDC /* main.m in Sources */,
 				2752C1BC24A0A9FC00E01160 /* SecondController.m in Sources */,
+				27CC961224B332FA00EA21B9 /* NSMutableArray+RemoveFirstObject.m in Sources */,
 				277E312523F66FB500543EBF /* FOSButton.m in Sources */,
 				2791636E23CDC42300524DDC /* SceneDelegate.m in Sources */,
 			);
@@ -311,13 +371,18 @@
 		};
 		2791638023CDC42500524DDC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 722E98B8EC49F7D9A657FECE /* Pods-JRTT.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CVT5K5W5HB;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = JRTT/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,13 +395,18 @@
 		};
 		2791638123CDC42500524DDC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6CD2DFF0238702F939431F91 /* Pods-JRTT.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CVT5K5W5HB;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = JRTT/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

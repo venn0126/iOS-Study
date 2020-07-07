@@ -1,0 +1,22 @@
+PODS:
+  - LoveTian (0.2.0):
+    - Masonry
+  - Masonry (1.1.0)
+
+DEPENDENCIES:
+  - LoveTian (~> 0.2.0)
+  - Masonry
+
+SPEC REPOS:
+  https://github.com/venn0126/Podspecs.git:
+    - LoveTian
+  trunk:
+    - Masonry
+
+SPEC CHECKSUMS:
+  LoveTian: bacb37064140cb1c65d3953e262024b3f917258f
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+
+PODFILE CHECKSUM: 27983d7dda981c1807d595ce243e37aa2d6607cf
+
+COCOAPODS: 1.9.3

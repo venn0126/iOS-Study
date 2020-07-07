@@ -1,0 +1,6 @@
+framework module FosaferCollector {
+  umbrella header "FosaferCollector.h"
+
+  export *
+  module * { export * }
+}

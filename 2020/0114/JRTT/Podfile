@@ -1,0 +1,16 @@
+# Uncomment the next line to define a global platform for your project
+ platform :ios, '9.0'
+
+# spec somepod from source
+#source 'https://github.com/venn0126/LoveTian.git'
+source 'https://github.com/venn0126/Podspecs.git'
+
+target 'JRTT' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  #  use_frameworks!
+  
+  # Pods for JRTT
+  pod 'Masonry'
+  pod 'LoveTian','~> 0.2.0'
+
+end
