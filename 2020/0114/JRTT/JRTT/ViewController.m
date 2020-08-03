@@ -120,10 +120,10 @@
 //    overlay.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 //    [self.view addSubview:overlay];
     
-//    FOSButton *fosButton = [[FOSButton alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-//    fosButton.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)-200);
-//    [fosButton fos_addTarget:self action:@selector(fosButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:fosButton];
+    FOSButton *fosButton = [[FOSButton alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    fosButton.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)-200);
+    [fosButton fos_addTarget:self action:@selector(fosButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:fosButton];
     
     
     
@@ -323,10 +323,46 @@
     
 //    UIAlertController *alert =
     
-    NSLog(@"fos button press");
+//    NSLog(@"fos button press");
     
 //    SecondController *vc = [[SecondController alloc] init];
 //    [self.navigationController pushViewController:vc animated:YES];
+    
+    BOOL __block isToken = NO;
+    dispatch_queue_t queue = dispatch_queue_create("My concurrent queue", DISPATCH_QUEUE_CONCURRENT);
+    dispatch_suspend(queue);
+    
+    // Enqueue five blocks
+    for (int index = 0; index < 5000; index++) {
+        dispatch_async(queue, ^{
+            
+            NSLog(@"tian--%d",index);
+            if (index == 4999) {
+                isToken = YES;
+            }
+            
+        });
+    }
+    
+    // Enqueue a barrier
+    dispatch_barrier_async(queue, ^{
+        NSLog(@"--- This is a barrier ---");
+
+    });
+    
+    // Enqueue five more blocks
+    for (int index = 5; index < 10; ++index) {
+        dispatch_async(queue, ^{
+            if (isToken) {
+//                NSLog(@"token--%d",index);
+                return;
+            }
+            NSLog(@"gao--%d",index);
+            
+        });
+    }
+    
+    dispatch_resume(queue);
     
     
 }

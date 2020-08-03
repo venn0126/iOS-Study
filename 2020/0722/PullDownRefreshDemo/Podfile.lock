@@ -1,0 +1,16 @@
+PODS:
+  - BBSwiftUIKit (0.1.0)
+
+DEPENDENCIES:
+  - BBSwiftUIKit
+
+SPEC REPOS:
+  trunk:
+    - BBSwiftUIKit
+
+SPEC CHECKSUMS:
+  BBSwiftUIKit: 4cff8ce7d7dabaa2a161b6435323bfae9eb14fed
+
+PODFILE CHECKSUM: e6bf7778648ea400972b5c2b23714ec66dca2d34
+
+COCOAPODS: 1.9.3

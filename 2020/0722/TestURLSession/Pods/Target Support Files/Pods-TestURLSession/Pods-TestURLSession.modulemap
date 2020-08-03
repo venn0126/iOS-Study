@@ -1,0 +1,6 @@
+framework module Pods_TestURLSession {
+  umbrella header "Pods-TestURLSession-umbrella.h"
+
+  export *
+  module * { export * }
+}
