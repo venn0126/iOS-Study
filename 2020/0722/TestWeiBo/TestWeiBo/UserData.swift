@@ -12,8 +12,8 @@ import Combine
 
 class UserData: ObservableObject {
    
-    @Published var remmendPostList: PostList = loadPostDataModel(fileName: "PostListData_recommend_1.json")
-    @Published var hotPostList: PostList = loadPostDataModel(fileName: "PostListData_hot_1.json")
+    @Published var remmendPostList: PostList = PostList(list: [])
+    @Published var hotPostList: PostList = PostList(list: [])
     @Published var isRefreshing: Bool = false
     @Published var isLoadingMore: Bool = false
     @Published var loadingError: Error?
@@ -23,24 +23,34 @@ class UserData: ObservableObject {
     private var hostPostDic: [Int: Int] = [:]
     
     
-    init() {
-        for i in 0..<remmendPostList.list.count {
-            let post = remmendPostList.list[i]
-            remmentPostDic[post.id] = i
-            
-        }
-        
-        for i in 0..<hotPostList.list.count {
-            let post = hotPostList.list[i]
-            hostPostDic[post.id] = i
-            
-        }
-    }
+//    init() {
+//        for i in 0..<remmendPostList.list.count {
+//            let post = remmendPostList.list[i]
+//            remmentPostDic[post.id] = i
+//
+//        }
+//
+//        for i in 0..<hotPostList.list.count {
+//            let post = hotPostList.list[i]
+//            hostPostDic[post.id] = i
+//
+//        }
+//    }
 }
 
 
 extension UserData {
     
+    
+    static let testData: UserData = {
+        
+        let data = UserData()
+        
+        data.handleRefreshList(loadPostDataModel(fileName: "PostListData_recommend_1.json"), for: .recommend)
+        data.handleRefreshList(loadPostDataModel(fileName: "PostListData_hot_1.json"), for: .recommend)
+
+        return data
+    }()
     
     var showLoadingError: Bool {loadingError != nil}
     var loadingErrorText: String {loadingError?.localizedDescription ?? ""}
@@ -50,6 +60,14 @@ extension UserData {
             case .recommend: return remmendPostList
             case .hot: return hotPostList
 
+        }
+    }
+    
+    
+    func loadPostListIfNeed(for cateory: PostListCateory) {
+        
+        if postList(for: cateory).list.isEmpty {
+            refreshPostList(for: cateory)
         }
     }
     
@@ -71,7 +89,7 @@ extension UserData {
         case .hot:NetworkAPI.hotPostList(completion: completion)
         }
         
-        reloadData = true 
+         
     }
     
     private func handleRefreshList(_ list: PostList,for category: PostListCateory) {
@@ -96,7 +114,7 @@ extension UserData {
             hostPostDic = tempDict
         
         }
-        
+        reloadData = true
     }
     
     

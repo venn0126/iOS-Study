@@ -36,8 +36,12 @@ struct PostListView: View {
                 
                 self.userData.loadingMorePostList(for: self.cateory)
             }
-                
+       
             .bb_reloadData($userData.reloadData)
+                
+            .onAppear {
+                self.userData.loadPostListIfNeed(for: self.cateory)
+            }
             .overlay(
                 Text(userData.loadingErrorText)
                     .bold()
@@ -66,6 +70,6 @@ struct PostListView_Previews: PreviewProvider {
                 // 此隐藏只有设置了title才会起作用
                 .navigationBarHidden(true)
         }
-        .environmentObject(UserData())
+        .environmentObject(UserData.testData)
     }
 }

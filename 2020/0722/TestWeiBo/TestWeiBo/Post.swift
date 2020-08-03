@@ -45,8 +45,8 @@ extension Post: Equatable {
 
 extension Post {
     
-    var avatarImage: Image {
-        return loadImageFromName(imageName: avatar)
+    var avatarImage: WebImage {
+        loadImageFromName(imageName: avatar)
     }
     
     // 计算属性 只读的
@@ -91,7 +91,7 @@ func loadPostDataModel( fileName: String) -> PostList {
 
 // from image to image
 
-func loadImageFromName( imageName: String) -> Image {
+func loadImageFromName( imageName: String) -> WebImage {
     
-    return Image(uiImage: UIImage(named: imageName)!)
+    return WebImage(url: URL(string: NetwrokAPIBaseURL + imageName)).placeholder{ Color.gray}
 }

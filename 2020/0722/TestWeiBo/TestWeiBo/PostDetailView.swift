@@ -41,7 +41,7 @@ struct PostDetailView: View {
 
 struct PostDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        let userData = UserData()
+        let userData = UserData.testData
         
         return  PostDetailView(post: userData.remmendPostList.list[0]).environmentObject(userData)
     }

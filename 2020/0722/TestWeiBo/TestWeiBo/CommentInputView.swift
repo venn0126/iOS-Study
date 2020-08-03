@@ -90,6 +90,6 @@ struct CommentInputView: View {
 
 struct CommentInputView_Previews: PreviewProvider {
     static var previews: some View {
-        CommentInputView(post: UserData().remmendPostList.list[0])
+        CommentInputView(post: UserData.testData.remmendPostList.list[0])
     }
 }
