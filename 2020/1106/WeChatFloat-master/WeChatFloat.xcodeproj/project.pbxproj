@@ -1,0 +1,488 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		1223CD5020D259B6009BCB18 /* OCLint */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 1223CD5320D259B7009BCB18 /* Build configuration list for PBXAggregateTarget "OCLint" */;
+			buildPhases = (
+				12EAC90320D8B0B300D23FA9 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = OCLint;
+			productName = OCLint;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		125AC82820C662900042BB64 /* HKTransitionPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 125AC82720C662900042BB64 /* HKTransitionPush.m */; };
+		125AC82B20C66C6A0042BB64 /* HKTransitionPop.m in Sources */ = {isa = PBXBuildFile; fileRef = 125AC82A20C66C6A0042BB64 /* HKTransitionPop.m */; };
+		12BAA31720C4EB24006F5AF9 /* HKFloatAreaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BAA31620C4EB24006F5AF9 /* HKFloatAreaView.m */; };
+		12BAA31D20C53044006F5AF9 /* HKFloatBall.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BAA31C20C53044006F5AF9 /* HKFloatBall.m */; };
+		12CA38CC20C7788E00730145 /* HKFloatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CA38CB20C7788E00730145 /* HKFloatManager.m */; };
+		12CA38D020C7821700730145 /* NSObject+hkvc.m in Sources */ = {isa = PBXBuildFile; fileRef = 12CA38CF20C7821700730145 /* NSObject+hkvc.m */; };
+		12D2622C20BFF63500258C14 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D2622B20BFF63500258C14 /* AppDelegate.m */; };
+		12D2623420BFF63600258C14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12D2623320BFF63600258C14 /* Assets.xcassets */; };
+		12D2623720BFF63600258C14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12D2623520BFF63600258C14 /* LaunchScreen.storyboard */; };
+		12D2623A20BFF63600258C14 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D2623920BFF63600258C14 /* main.m */; };
+		12D2624C20BFFFC200258C14 /* HKFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D2624B20BFFFC200258C14 /* HKFirstViewController.m */; };
+		12D2624F20BFFFD000258C14 /* HKHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D2624E20BFFFD000258C14 /* HKHomeViewController.m */; };
+		12D2625220C0003E00258C14 /* HKSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D2625120C0003E00258C14 /* HKSecondViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		125AC82620C662900042BB64 /* HKTransitionPush.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HKTransitionPush.h; sourceTree = "<group>"; };
+		125AC82720C662900042BB64 /* HKTransitionPush.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HKTransitionPush.m; sourceTree = "<group>"; };
+		125AC82920C66C6A0042BB64 /* HKTransitionPop.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HKTransitionPop.h; sourceTree = "<group>"; };
+		125AC82A20C66C6A0042BB64 /* HKTransitionPop.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HKTransitionPop.m; sourceTree = "<group>"; };
+		12BAA31520C4EB24006F5AF9 /* HKFloatAreaView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HKFloatAreaView.h; sourceTree = "<group>"; };
+		12BAA31620C4EB24006F5AF9 /* HKFloatAreaView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HKFloatAreaView.m; sourceTree = "<group>"; };
+		12BAA31B20C53044006F5AF9 /* HKFloatBall.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HKFloatBall.h; sourceTree = "<group>"; };
+		12BAA31C20C53044006F5AF9 /* HKFloatBall.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HKFloatBall.m; sourceTree = "<group>"; };
+		12CA38CA20C7788E00730145 /* HKFloatManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HKFloatManager.h; sourceTree = "<group>"; };
+		12CA38CB20C7788E00730145 /* HKFloatManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HKFloatManager.m; sourceTree = "<group>"; };
+		12CA38CE20C7821700730145 /* NSObject+hkvc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+hkvc.h"; sourceTree = "<group>"; };
+		12CA38CF20C7821700730145 /* NSObject+hkvc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+hkvc.m"; sourceTree = "<group>"; };
+		12CA38F920C7D6E200730145 /* HKMarco.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HKMarco.h; sourceTree = "<group>"; };
+		12D2622720BFF63500258C14 /* WeChatFloat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeChatFloat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		12D2622A20BFF63500258C14 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		12D2622B20BFF63500258C14 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		12D2623320BFF63600258C14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		12D2623620BFF63600258C14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		12D2623820BFF63600258C14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		12D2623920BFF63600258C14 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		12D2624A20BFFFC200258C14 /* HKFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HKFirstViewController.h; sourceTree = "<group>"; };
+		12D2624B20BFFFC200258C14 /* HKFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HKFirstViewController.m; sourceTree = "<group>"; };
+		12D2624D20BFFFD000258C14 /* HKHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HKHomeViewController.h; sourceTree = "<group>"; };
+		12D2624E20BFFFD000258C14 /* HKHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HKHomeViewController.m; sourceTree = "<group>"; };
+		12D2625020C0003E00258C14 /* HKSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HKSecondViewController.h; sourceTree = "<group>"; };
+		12D2625120C0003E00258C14 /* HKSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HKSecondViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		12D2622420BFF63500258C14 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		125AC82220C660500042BB64 /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				125AC82620C662900042BB64 /* HKTransitionPush.h */,
+				125AC82720C662900042BB64 /* HKTransitionPush.m */,
+				125AC82920C66C6A0042BB64 /* HKTransitionPop.h */,
+				125AC82A20C66C6A0042BB64 /* HKTransitionPop.m */,
+			);
+			path = Transition;
+			sourceTree = "<group>";
+		};
+		12BAA31320C4EAD3006F5AF9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				12BAA31520C4EB24006F5AF9 /* HKFloatAreaView.h */,
+				12BAA31620C4EB24006F5AF9 /* HKFloatAreaView.m */,
+				12BAA31B20C53044006F5AF9 /* HKFloatBall.h */,
+				12BAA31C20C53044006F5AF9 /* HKFloatBall.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		12BAA31820C518DE006F5AF9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				12D2624D20BFFFD000258C14 /* HKHomeViewController.h */,
+				12D2624E20BFFFD000258C14 /* HKHomeViewController.m */,
+				12D2624A20BFFFC200258C14 /* HKFirstViewController.h */,
+				12D2624B20BFFFC200258C14 /* HKFirstViewController.m */,
+				12D2625020C0003E00258C14 /* HKSecondViewController.h */,
+				12D2625120C0003E00258C14 /* HKSecondViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		12BAA31A20C5192A006F5AF9 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				12D2622A20BFF63500258C14 /* AppDelegate.h */,
+				12D2622B20BFF63500258C14 /* AppDelegate.m */,
+				12D2623320BFF63600258C14 /* Assets.xcassets */,
+				12D2623520BFF63600258C14 /* LaunchScreen.storyboard */,
+				12D2623920BFF63600258C14 /* main.m */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		12CA38C920C7712800730145 /* HKFloatBall */ = {
+			isa = PBXGroup;
+			children = (
+				12CA38CA20C7788E00730145 /* HKFloatManager.h */,
+				12CA38CB20C7788E00730145 /* HKFloatManager.m */,
+				12CA38F820C7D68D00730145 /* Ohter */,
+				12BAA31320C4EAD3006F5AF9 /* View */,
+				125AC82220C660500042BB64 /* Transition */,
+			);
+			path = HKFloatBall;
+			sourceTree = "<group>";
+		};
+		12CA38F820C7D68D00730145 /* Ohter */ = {
+			isa = PBXGroup;
+			children = (
+				12CA38CE20C7821700730145 /* NSObject+hkvc.h */,
+				12CA38CF20C7821700730145 /* NSObject+hkvc.m */,
+				12CA38F920C7D6E200730145 /* HKMarco.h */,
+			);
+			path = Ohter;
+			sourceTree = "<group>";
+		};
+		12D2621E20BFF63500258C14 = {
+			isa = PBXGroup;
+			children = (
+				12D2622920BFF63500258C14 /* WeChatFloat */,
+				12D2622820BFF63500258C14 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		12D2622820BFF63500258C14 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				12D2622720BFF63500258C14 /* WeChatFloat.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		12D2622920BFF63500258C14 /* WeChatFloat */ = {
+			isa = PBXGroup;
+			children = (
+				12CA38C920C7712800730145 /* HKFloatBall */,
+				12BAA31A20C5192A006F5AF9 /* Other */,
+				12BAA31820C518DE006F5AF9 /* Controller */,
+				12D2623820BFF63600258C14 /* Info.plist */,
+			);
+			path = WeChatFloat;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		12D2622620BFF63500258C14 /* WeChatFloat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12D2623D20BFF63600258C14 /* Build configuration list for PBXNativeTarget "WeChatFloat" */;
+			buildPhases = (
+				12D2622320BFF63500258C14 /* Sources */,
+				12D2622420BFF63500258C14 /* Frameworks */,
+				12D2622520BFF63500258C14 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WeChatFloat;
+			productName = WeChatFloat;
+			productReference = 12D2622720BFF63500258C14 /* WeChatFloat.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		12D2621F20BFF63500258C14 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = HK;
+				LastUpgradeCheck = 1210;
+				ORGANIZATIONNAME = HeiKki;
+				TargetAttributes = {
+					1223CD5020D259B6009BCB18 = {
+						CreatedOnToolsVersion = 9.3.1;
+						ProvisioningStyle = Automatic;
+					};
+					12D2622620BFF63500258C14 = {
+						CreatedOnToolsVersion = 9.3.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 12D2622220BFF63500258C14 /* Build configuration list for PBXProject "WeChatFloat" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 12D2621E20BFF63500258C14;
+			productRefGroup = 12D2622820BFF63500258C14 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				12D2622620BFF63500258C14 /* WeChatFloat */,
+				1223CD5020D259B6009BCB18 /* OCLint */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		12D2622520BFF63500258C14 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12D2623720BFF63600258C14 /* LaunchScreen.storyboard in Resources */,
+				12D2623420BFF63600258C14 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		12EAC90320D8B0B300D23FA9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "source ~/.bash_profile\ncd ${SRCROOT}\nxcodebuild -scheme WeChatFloat -workspace WeChatFloat.xcworkspace clean\nxcodebuild -scheme WeChatFloat -workspace WeChatFloat.xcworkspace | xcpretty -r json-compilation-database --output compile_commands.json\noclint-json-compilation-database -exclude Pods -exclude build -exclude Internal -exclude ThirdParties -- -report-type xcode";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		12D2622320BFF63500258C14 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				125AC82B20C66C6A0042BB64 /* HKTransitionPop.m in Sources */,
+				12D2623A20BFF63600258C14 /* main.m in Sources */,
+				12BAA31D20C53044006F5AF9 /* HKFloatBall.m in Sources */,
+				12BAA31720C4EB24006F5AF9 /* HKFloatAreaView.m in Sources */,
+				125AC82820C662900042BB64 /* HKTransitionPush.m in Sources */,
+				12D2624F20BFFFD000258C14 /* HKHomeViewController.m in Sources */,
+				12D2624C20BFFFC200258C14 /* HKFirstViewController.m in Sources */,
+				12CA38D020C7821700730145 /* NSObject+hkvc.m in Sources */,
+				12CA38CC20C7788E00730145 /* HKFloatManager.m in Sources */,
+				12D2625220C0003E00258C14 /* HKSecondViewController.m in Sources */,
+				12D2622C20BFF63500258C14 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		12D2623520BFF63600258C14 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				12D2623620BFF63600258C14 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1223CD5120D259B7009BCB18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8TJ9GDFV36;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1223CD5220D259B7009BCB18 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8TJ9GDFV36;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		12D2623B20BFF63600258C14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		12D2623C20BFF63600258C14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		12D2623E20BFF63600258C14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CVT5K5W5HB;
+				INFOPLIST_FILE = WeChatFloat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = HeiKki.WeChatFloat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		12D2623F20BFF63600258C14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CVT5K5W5HB;
+				INFOPLIST_FILE = WeChatFloat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = HeiKki.WeChatFloat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1223CD5320D259B7009BCB18 /* Build configuration list for PBXAggregateTarget "OCLint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1223CD5120D259B7009BCB18 /* Debug */,
+				1223CD5220D259B7009BCB18 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		12D2622220BFF63500258C14 /* Build configuration list for PBXProject "WeChatFloat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12D2623B20BFF63600258C14 /* Debug */,
+				12D2623C20BFF63600258C14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		12D2623D20BFF63600258C14 /* Build configuration list for PBXNativeTarget "WeChatFloat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12D2623E20BFF63600258C14 /* Debug */,
+				12D2623F20BFF63600258C14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 12D2621F20BFF63500258C14 /* Project object */;
+}

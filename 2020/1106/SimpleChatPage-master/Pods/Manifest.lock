@@ -1,0 +1,16 @@
+PODS:
+  - FDFullscreenPopGesture (1.1)
+
+DEPENDENCIES:
+  - FDFullscreenPopGesture (~> 1.1)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - FDFullscreenPopGesture
+
+SPEC CHECKSUMS:
+  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
+
+PODFILE CHECKSUM: 2eea0da64372f49c76eead7545d90f314f4e183d
+
+COCOAPODS: 1.5.0

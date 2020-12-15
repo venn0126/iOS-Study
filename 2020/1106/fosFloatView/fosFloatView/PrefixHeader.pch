@@ -1,0 +1,62 @@
+//
+//  PrefixHeader.pch
+//  fosFloatView
+//
+//  Created by Augus on 2020/11/9.
+//
+
+
+
+
+
+#ifdef __OBJC__
+
+#import "FosTool.h"
+#import "UIView+Extension.h"
+
+
+
+// 全局宏设置
+#define RGB(R,G,B) [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:1]
+
+#define   FOS_SCREEN_WIDTH   [UIScreen mainScreen].bounds.size.width
+#define   FOS_SCREEN_HEIGHT  [UIScreen mainScreen].bounds.size.height
+
+#define FOS_RATIO_WIDTH(width) width * FOS_SCREEN_WIDTH / 375.0
+#define FOS_RATIO_HEIGHT(height) ((FOS_SCREEN_HEIGHT >= 812)? (height * (FOS_SCREEN_HEIGHT - 78) / 667.0):(height * FOS_SCREEN_HEIGHT / 667.0))
+
+
+#define  kWindow  [UIApplication sharedApplication].keyWindow
+
+// X尺寸适配
+#define  IS_iPhoneX (CGSizeEqualToSize(CGSizeMake(375.f, 812.f), [UIScreen mainScreen].bounds.size) || CGSizeEqualToSize(CGSizeMake(812.f, 375.f), [UIScreen mainScreen].bounds.size)  || CGSizeEqualToSize(CGSizeMake(414.f, 896.f), [UIScreen mainScreen].bounds.size) || CGSizeEqualToSize(CGSizeMake(896.f, 414.f), [UIScreen mainScreen].bounds.size))
+
+
+
+//状态栏高度
+#define StatusBarHeight (IS_iPhoneX ? 44.f : 20.f)
+//导航栏高度
+#define NavBarHeight (44.f+StatusBarHeight)
+//底部标签栏高度
+#define TabBarHeight (IS_iPhoneX ? (49.f+34.f) : 49.f)
+//安全区域高度
+#define TabbarSafeBottomMargin     (IS_iPhoneX ? 34.f : 0.f)
+
+
+
+/// 全局编译控制
+#ifdef DEBUG
+
+#define FOSLog(fmt, ...) NSLog((@"[文件名:%s]\n" "[函数名:%s]\n" "[行号:%d] \n" fmt), __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
+#define FOSBugLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+
+#else
+
+#define FOSLog(...)
+#define FOSBugLog(...)
+
+#endif
+
+
+
+#endif

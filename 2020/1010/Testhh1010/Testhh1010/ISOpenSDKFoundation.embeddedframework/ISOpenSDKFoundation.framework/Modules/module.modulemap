@@ -1,0 +1,6 @@
+framework module ISOpenSDKFoundation {
+  umbrella header "ISOpenSDKFoundation.h"
+
+  export *
+  module * { export * }
+}

@@ -102,7 +102,7 @@ extension UserData {
             tempList.append(post)
             tempDict[post.id] = index
             // update local data from server
-//            updatePost(post)
+            updatePost(post)
         }
         
         switch category {
@@ -151,7 +151,7 @@ extension UserData {
         case .recommend:
             
             for post in list.list {
-//                updatePost(post)
+                updatePost(post)
                 if remmentPostDic[post.id] != nil {continue}
                 remmendPostList.list.append(post)
                 remmentPostDic[post.id] = remmendPostList.list.count - 1

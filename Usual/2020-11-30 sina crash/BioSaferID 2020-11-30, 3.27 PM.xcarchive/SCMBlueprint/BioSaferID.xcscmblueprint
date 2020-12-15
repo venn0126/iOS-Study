@@ -1,0 +1,26 @@
+{
+  "DVTSourceControlWorkspaceBlueprintLocationsKey" : {
+    "1CAD521B05F1202C4E171DAEAA303598D4FB278F" : {
+      "DVTSourceControlBranchIdentifierKey" : "master",
+      "DVTSourceControlLocationRevisionKey" : "df71fa2635a8a2d0c7829e0c38d3f777a39fc1fd",
+      "DVTSourceControlBranchOptionsKey" : 4,
+      "DVTSourceControlBranchRemoteNameKey" : "origin",
+      "DVTSourceControlWorkspaceBlueprintLocationTypeKey" : "DVTSourceControlBranch"
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "1CAD521B05F1202C4E171DAEAA303598D4FB278F",
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "867DB760-C182-4136-8AB9-F4AED1E47706",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "1CAD521B05F1202C4E171DAEAA303598D4FB278F" : "BiometricAuth-iOS\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "BioSaferID",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "BioSaferID\/BioSaferID.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/phabricator.fosafer.com:2222\/diffusion\/157\/BiometricAuth-iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1CAD521B05F1202C4E171DAEAA303598D4FB278F"
+    }
+  ]
+}
