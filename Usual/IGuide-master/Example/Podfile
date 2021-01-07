@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'IGuide_Example' do
+  pod 'IGuide', :path => '../'
+
+  target 'IGuide_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

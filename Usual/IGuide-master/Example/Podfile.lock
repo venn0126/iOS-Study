@@ -1,0 +1,16 @@
+PODS:
+  - IGuide (0.1.0)
+
+DEPENDENCIES:
+  - IGuide (from `../`)
+
+EXTERNAL SOURCES:
+  IGuide:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  IGuide: 38b044d3d1a375256a1b2cbf9f5d7012e8fdfc01
+
+PODFILE CHECKSUM: 6441bc75b671f3fe491d064b33adb1b56f38f191
+
+COCOAPODS: 1.8.4

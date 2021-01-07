@@ -455,4 +455,197 @@ TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q) {
      return postSearch(root, p, q);
 }
  
+ 
+ // reverse string
+ 
+ void sawp(char *a,char *b)
+ {
+    char t = *a;
+    *a = *b; *b = t;
+ 
+ }
+ 
+ void reverseString(char *s,int length)
+ {
+    for (int left = 0,right = lenght - 1;left < right;++left;--right){
+        swap(s + left,s + right)
+    }
+ }
+ 
+ 复杂度分析
+
+ 时间复杂度：O(N)，其中 N 为字符数组的长度。一共执行了 N/2 次的交换。
+ 空间复杂度：O(1)只使用了常数空间来存放若干变量。
+
+
+ 
+ 
+ 时间维度：是指执行当前算法所消耗的时间，我们通常用「时间复杂度」来描述。
+ 空间维度：是指执行当前算法需要占用多少内存空间，我们通常用「空间复杂度」来描述。
+
+ 并不是用来计算具体时间的，因为不同的设备跑同样的程序就会得到不同的结果，只是一个大概的粗略描述
+ 
+ 贪心算法：
+ 1.孩子饥饿分饼干，最多有多少个孩子可以喂饱
+ 
+ 思路：
+ 1.孩子饥饿排序
+ 2.饼干大小排序
+ 3.循环
+ int child = 0
+ int cookie = 0
+ while(child < children.size() && cookie < cookies.size())
+ {
+    children[child] <= cookies[cookie];
+    child++;
+    cookie++;
+ }
+ 
+ return child;
+ 
+ 
+ 
+ 
+ 2.孩子按成绩分糖，最少需要多少个糖果
+ 思路：
+ 先每个孩子发一个糖
+ 
+ 1 1 1
+ 
+ 然后从左往右遍历，如果右侧大于左侧的评分，就给右侧+1糖
+ 然后从右往左遍历，如果左侧大于右侧且左侧的目前的糖果不大于右侧，则给左侧+1糖
+ 
+ int candy(int *arr)
+ {
+    int size = candy.size();
+    if size < 2 return size;
+    int num[size];
+    // left->right
+    for(int i = 0;i < size;i++){
+        if(arr[i] > arr[i-1]){
+            num[i] = num[i] + 1;
+        }
+    }
+ 
+ for(int i = size;i > 0;i--){
+     
+         if(arr[i-1] > arr[i]){
+         num[i -1] = max(num[i-1],num[i]+1)
+       }
+    }
+ 
+ return sum(num);
+ }
+ 
+ 
+ 3 区间问题
+   给定多个区间，计算这些互不重叠所需要移除区间的最小个数，起止相连不算重叠
+ 
+    input:[[1,2],[2,4],[1,3]]
+    output:1
+ 
+ 
+ 
+ int eraseOverlapIntervals(vector<vector<int>>& intervals)
+ {
+    if (intervals.empty()) {
+        return 0;
+    }
+    int n = intervals.size();
+    sort(intervals.begin(),intervals.end(),[]vector<int> a,vector<int> b){
+        return a[1] < b[1];
+    }
+
+    int total = 0,prev = intervals[0][1];
+    for(int i = 1;i < n;i++){
+        if(intervals[1][0] < prev){
+            ++total;
+        }else {
+            prev = intervals[i][1];
+        }
+    }
+    return total;
+ }
+ 
+ 
+ 4 双指针
+ 指针与常量
+ int x;
+ int * p = &x
+ const int * p2 = &x
+ int * const p3 = &x
+ const int * const p4 = &x
+ 
+ 在一个增序的整数数组里找到两个数，使它们的和为给定值。已知有且只有一对解。
+ Input: numbers = [2,7,11,15], target = 9
+ Output: [1,2]
+ 
+ vector[int] twoSum(vector<int>& numbers,int target)
+ {
+        int l = 0,r=numbers.size() - 1,sum;
+        while(l < r){
+            sum = numbers[l] + numbers[r];
+            if(sum == target) break;
+            if(sum < target) ++l;
+            else --r;
+        }
+        return vector[int]{l+1,r+1};
+ }
+ 
+ 
+ 
+ 5归并两个有序数组
+ 
+ Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+ Output: nums1 = [1,2,2,3,5,6]
+ 
+ TODO: a++,++a
+ a++ 和 ++a 都是将 a 加 1，
+ 但是 a++ 返回值为 a，
+ 而 ++a 返回值为 a+1。
+ 如果只是希望增加 a 的值，而不需要返回值，
+ 则推荐使用 ++a，其运行速度 会略快一些。
+ 
+ 因为++k运算结束后，k的值和表达式的值相同而k++运算结束后，k的值和表达式的值不相同。
+ 编译器要开辟一个新的变量来保存k++表达式的值。 所以说：++k更快。
+ 
+ void merge(vector<int>& nums1,int m,vector<int>& nums2,int n)
+ {
+    int pos = m-- + n-- - 1;
+    while(m >= 0&& n >= 0){
+        nums1[pos--] = nums1[m] > nums2[n]? nums1[m--]:nums2[n--];
+    }
+    while(n >= 0){
+        nums1[pos--] = num2[n--];
+    }
+ 
+ }
+ 
+ 6 最近的公共父节点
+ 
+ 两个节点 p,q 分为两种情况：
+
+ p 和 q 在相同子树中
+ p 和 q 在不同子树中
+ 从根节点遍历，递归向左右子树查询节点信息
+ 递归终止条件：如果当前节点为空或等于 p 或 q，则返回当前节点
+
+ 递归遍历左右子树，如果左右子树查到节点都不为空，则表明 p 和 q 分别在左右子树中，因此，当前节点即为最近公共祖先；
+ 如果左右子树其中一个不为空，则返回非空节点。
+
+ 
+ TreeNode * lowCommonAncestor(TreeNode *root,TreeNode *p,TreeNode *q)
+ {
+    if(!root || !p || !q) return root;
+    TreeNode *left = lowCommonAncestor(root->left,p,q);
+    TreeNode *right = lowCommonAncestor(root->right,p,q);
+    if(left && right) return root;
+    return left ? left : right;
+
+ }
+ 
+ 
+ 
  **/
+
+

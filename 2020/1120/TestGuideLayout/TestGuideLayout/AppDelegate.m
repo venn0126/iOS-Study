@@ -25,9 +25,9 @@
     
 
     
-    _mapManager = [[BMKMapManager alloc]init];
-        BOOL ret = [_mapManager start:@"gy6wOgAsH1jquojgKgfWd8OcYHRcaLiW" generalDelegate:self];
-    NSLog(@"ret---%@",@(ret));
+//    _mapManager = [[BMKMapManager alloc]init];
+//        BOOL ret = [_mapManager start:@"gy6wOgAsH1jquojgKgfWd8OcYHRcaLiW" generalDelegate:self];
+//    NSLog(@"ret---%@",@(ret));
     
     
     return YES;

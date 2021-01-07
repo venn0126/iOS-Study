@@ -1,0 +1,6 @@
+framework module IGuide {
+  umbrella header "IGuide-umbrella.h"
+
+  export *
+  module * { export * }
+}
