@@ -33,4 +33,20 @@
     }];
 }
 
+- (void)testLiteral {
+    
+    id nilValue = nil;
+    id nilKey = nil;
+    id nonNilKey = @"nonNilKey";
+    id nonNilValue = @"nonNilValue";
+    
+    NSDictionary *dict = @{
+        nonNilKey : nilValue,
+        nilKey : nonNilValue
+    };
+    
+    XCTAssertEqualObjects([dict allKeys], nonNilKey);
+    
+}
+
 @end
