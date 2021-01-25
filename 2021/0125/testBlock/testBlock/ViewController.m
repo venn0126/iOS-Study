@@ -31,6 +31,9 @@
 
      _objc_msgForward是用于消息转发的。这个函数的实现并没有在objc-runtime的开源代码里面，而是在Foundation框架里面实现的。加上断点启动程序后，会发现__CFInitialize这个方法会调用objc_setForwardHandler函数来注册一个实现。
      */
+    
+    // begin study yy cache
+    
 }
 
 
