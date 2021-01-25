@@ -18,9 +18,11 @@
 #import "FSRectScale.h"
 #import "FSProcessView.h"
 #import "FSProcessBarView.h"
+#import "FSInputObject.h"
 
+static NSString * kSM2PubKey = @"045A5683F614CC028E6E56B004229E8E399D0355D493D715797650C1BE8B5B4CFB570ED3D48044162AFF114DCA8938FF1F83C9C25CC4EC34F8874FBC6FEA57FD07";
 
-
+static NSString * kSM2PriKey = @"E82C6B1BA817741A9E093CA5BA70421DC00AF43B659B4C250C0C03052B603F00";
 //弧度转角度
 #define Radians_To_Degrees(radians) ((radians) * (180.0 / M_PI))
 //角度转弧度
@@ -94,6 +96,12 @@
     BOOL _isPresent;
     UISlider *_slider;
     NSString *_base;
+    FSInputObject *_inputObj;
+    UITextField *_textField;
+    CAShapeLayer *_progressLayer;
+    UIButton *_recordButton;
+    
+    
 }
 
 - (void)viewDidLoad {
@@ -106,54 +114,17 @@
 
 //    [self.playLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
     
-    _barView = [[FSProcessBarView alloc] initWithFrame:CGRectMake(50, 150, 300, 300)];
-    [self.view addSubview:_barView];
-    
-    
-    
-//    [self testLayoutGuide];
-    
-    
-//    [self testCopy];
-    
-//    [self testGroupHttp];
-    
-//    NSInteger a = 8;
-//    NSInteger b = 10;
-//    
-//    CGFloat tempB = [t float];
-//    
-//    CGFloat c = (CGFloat)(a / b);
-//    NSLog(@"c--%f",c);
-    
-    
-//    [self batchRequestConfig];
-    
-//    UILabel *labe  = [[UILabel alloc] init];
-//    labe.text = @"";
-    
-    [self showLabel];
-    _count = 0;
-    [self.showLabel.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
-    [self.showLabel.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = YES;
-
-    
-    NSLog(@"---%ld",LONG_MAX);
-    
-    NSString *test = @"left_right_shake";
-    NSLog(@"len ---%ld",test.length);
-    
-    
-    _slider = [[UISlider alloc] initWithFrame:CGRectMake(20, 70, self.view.bounds.size.width - 40, 30)];
-    _slider.minimumValue = 0;
-    _slider.maximumValue = 1;
-    _slider.value = 0;
-    [_slider addTarget:self action:@selector(changeProgress:) forControlEvents:UIControlEventValueChanged];
-    [self.view addSubview:_slider];
+//    _barView = [[FSProcessBarView alloc] initWithFrame:CGRectMake(50, 150, 300, 300)];
+//    [self.view addSubview:_barView];
     
     
 
-    self.gPwd = @"123456";
+    
+    
+
+//    self.gPwd = @"123456";
+//    [self test_sm2];
+//    [self testSM2];
 
     
     
@@ -247,8 +218,154 @@
 //    [self.view addSubview:label];
 //
 //    NSLog(@"%f",label.font.pointSize);
+    
+    
+    [self addGenesture];
+    
+
 }
 
+- (void)addGenesture {
+    
+    
+    // init button
+    
+    _recordButton = [[UIButton alloc] init];
+    _recordButton.frame = CGRectMake(100, 200, 100, 100);
+    [_recordButton setTitle:@"录音" forState:UIControlStateNormal];
+    _recordButton.backgroundColor = UIColor.redColor;
+    [self.view addSubview:_recordButton];
+    
+    
+    UILongPressGestureRecognizer *press = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
+    [self.view addGestureRecognizer:press];
+    
+}
+
+- (void)longPress:(UILongPressGestureRecognizer *)ges {
+    
+    if (ges.state == UIGestureRecognizerStateBegan) {
+        NSLog(@"long begin------");
+    }else if(ges.state == UIGestureRecognizerStateEnded){
+        NSLog(@"long end-------");
+        return;
+    }
+    
+    CGPoint point = [ges locationInView:_recordButton];
+    if (point.y >= 0) {
+        NSLog(@"down down");
+        //
+        
+    }else {
+        NSLog(@"up up");
+    }
+}
+
+- (void)test_ibiremeProgress {
+    
+    _progressLayer = [CAShapeLayer layer];
+    CGFloat w = 150;
+    CGFloat offset = 10;
+    _progressLayer.frame = CGRectMake(100, 200, w, w);
+    _progressLayer.cornerRadius = w *
+    0.5;
+    _progressLayer.backgroundColor = [UIColor colorWithWhite:0.000 alpha:0.500].CGColor;
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(_progressLayer.bounds, offset, offset) cornerRadius:(w / 2 - offset)];
+    _progressLayer.path = path.CGPath;
+    _progressLayer.fillColor = [UIColor clearColor].CGColor;
+    _progressLayer.strokeColor = [UIColor redColor].CGColor;
+    _progressLayer.lineWidth = 15;
+    _progressLayer.lineCap = kCALineCapRound;
+    _progressLayer.strokeStart = 0;
+    _progressLayer.strokeEnd = 0;
+//    _progressLayer.hidden = YES;
+    [self.view.layer addSublayer:_progressLayer];
+}
+
+
+- (void)test_overrideAccessView {
+    
+    //    _inputObj = [[FSInputObject alloc] initWithFrame:CGRectMake(200, 250, 100, 100)];
+    //    _inputObj.backgroundColor = [UIColor redColor];
+        _textField = [[UITextField alloc] init];
+        _textField.backgroundColor = UIColor.greenColor;
+    //    _inputObj.inputAccessoryView = _textField;
+    //    [self.view addSubview:_inputObj];
+        [self.view addSubview:_textField];
+    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inputObjectTextDidChange:) name:kInputObjectTextDidChangeNotification object:nil];
+        
+        
+       // Register keyboard events
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    _textField.frame = CGRectMake(0, CGRectGetMaxY(self.view.bounds), CGRectGetWidth(self.view.bounds), 50);
+
+}
+
+- (void)keyboardWillShowNotification:(NSNotification *)notification
+{
+    NSDictionary *userInfo = notification.userInfo;
+    UIViewAnimationCurve curve = [[userInfo valueForKey:UIKeyboardAnimationCurveUserInfoKey] intValue];
+    CGFloat duration = [[userInfo valueForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    CGRect keyboardFrame = [[userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    keyboardFrame = [self.view convertRect:keyboardFrame toView:self.view];
+
+    [UIView animateWithDuration:duration delay:0.0f options:(UIViewAnimationOptions)curve animations:^{
+        CGRect textFieldFrame = _textField.frame;
+        textFieldFrame.origin.y = keyboardFrame.origin.y - CGRectGetHeight(textFieldFrame);
+        _textField.frame = textFieldFrame;
+    }completion:nil];
+}
+
+- (void)keyboardWillHideNotification:(NSNotification *)notification
+{
+    NSDictionary *userInfo = notification.userInfo;
+    UIViewAnimationCurve curve = [[userInfo valueForKey:UIKeyboardAnimationCurveUserInfoKey] intValue];
+    CGFloat duration = [[userInfo valueForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    [UIView animateWithDuration:duration delay:0.0f options:(UIViewAnimationOptions)curve animations:^{
+        _textField.frame = CGRectMake(0, CGRectGetMaxY(self.view.bounds), CGRectGetWidth(self.view.bounds), 50);
+    }completion:nil];
+}
+
+
+- (void)inputObjectTextDidChange:(NSNotification *)notification {
+    
+    _textField.text = ((FSInputObject *)(notification.object)).text;
+}
+
+
+
+
+- (void)testSM2 {
+    NSString *testStr = @"{\"sessionId\":\"1234\",\"customerNo\":\"zhaohai1234\",\"requestContent\":\"打开他行账户\",\"requestType\":\"text\"}";
+        
+        NSData *testData = [testStr dataUsingEncoding:NSUTF8StringEncoding];
+        NSData *enc0 = [GMSm2Utils encryptData:testData publicKey:kSM2PubKey];
+
+
+       // NSData *asn1dec = [GMSm2Utils asn1EncodeWithC1C3C2Data:enc0];
+        NSString *base64EnciOs = [enc0 base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+        NSLog(@"base64EncIOS:%@", base64EnciOs);
+    //    NSLog(@"enc0---%@",asn1enc);
+        
+       // NSData *asn1enc = [GMSm2Utils asn1DecodeToC1C3C2Data:asn1dec];
+        
+        //NSString  *base64 = [asn1dec base64EncodedStringWithOptions:0];
+       // NSLog(@"enc0---%@",base64);
+        
+//        NSString *javaBase64 = @"MIHHAiAdE8u3mJh2KEtqjToGOUHAybAeVhapNIBQZX88j4+EmQIhAN1ugxnu0x4JahdfIznFYsGzhQQjjrbswOKWTv8ZYkpBBCB8YE012ol6ccFTVhMaMwJ4MLmobdm9Nt6EcBWndtxymAReS7GF6CYaU5q1JN0CYE0pvNlhE5wOjg5xlLzlhGITDnRRuQaeuNkWTKwImkrF1GjbG8x3E28XI2JBcJcvEvqVsI0V6RShVmrLKa8giHjwNRUcLVSvXO/QcnT4KI7cQA==";
+    NSString *javaBase64 = @"MIH7AiA35Rvi+KlPA4LDD1sL8bup1ofpr2PmC+rWD22UOBeRzgIgf096MiLHc43thsh4RNFxCLZUzEgXETcg8kucMcGJTVsEIJOyP6Gq99wkDI4ju4LcWXc/y2jYVTTw7iI/nn7hyFMhBIGSm8ZnAj3yaNqrTPYEKzvv2XT1s54ppLVuGbbareq2QZQ/W0hvHP3mVQPBJFPpOZQRofyTLZmJMt0wwiAg3dyu7AbfxZwDryMqUx1zF/sxCteqLgOkzoHFTNpAFeqgVe70unXqfBAPq+mQxZEyDrQTEguzsOG0b8y0bqPmHp9d5PnvAqRX3ei0JeaURYyWjU+4s6E=";
+        
+        NSData *javaEncData = [[NSData alloc] initWithBase64EncodedString:javaBase64 options:NSDataBase64DecodingIgnoreUnknownCharacters];
+        NSData *javaDecData = [GMSm2Utils decryptToData:javaEncData privateKey:kSM2PriKey];
+        NSString *javaResult = [[NSString alloc] initWithData:javaDecData encoding:NSUTF8StringEncoding];
+        NSLog(@"javaResult----%@", javaResult);
+}
 
 - (void)drawshanRect {
 
@@ -315,6 +432,8 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
+    
+    _progressLayer.strokeEnd += 0.1;
 //    [self.progress startProcessAnimation];
     [self.barView startProcessAnimation];
     
@@ -344,6 +463,11 @@
     
     
 //    self.progress.progress += 1/3.0;
+    
+    [_textField becomeFirstResponder];
+    
+
+
     
 }
 
@@ -625,58 +749,94 @@
 // sm2 加解密及 ASN1 编码解码
 - (void)test_sm2 {
     
+    
+    
+    NSString *testStr = @"{\"sessionId\":\"1234\",\"customerNo\":\"123456\",\"requestContent\":\"打开他行账户\",\"requestType\":\"text\"}";
+    
+    NSData *testData = [testStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *enc0 = [GMSm2Utils encryptData:testData publicKey:kSM2PubKey];
 
-        // 生成一对新的公私钥
-        NSArray *keyPair = [GMSm2Utils createKeyPair];
-        NSString *pubKey = keyPair[0]; // 测试用 04 开头公钥，Hex 编码格式
-        NSString *priKey = keyPair[1]; // 测试用私钥，Hex 编码格式
-        
-        NSString *plaintext = self.gPwd; // 明文原文 123456;
-        NSString *plainHex = [GMUtils stringToHex:plaintext]; // 明文 123456 的 Hex 编码格式 313233343536
-        NSData *plainData = [self.gPwd dataUsingEncoding:NSUTF8StringEncoding]; // 明文 123456 的 NSData 格式
-        
-        // sm2 加密，依次是普通明文，Hex 格式明文，NSData 格式明文
-        NSString *enResult1 = [GMSm2Utils encryptText:plaintext publicKey:pubKey]; // 加密普通字符串
-        NSString *enResult2 = [GMSm2Utils encryptHex:plainHex publicKey:pubKey]; // 加密 Hex 编码格式字符串
-        NSData *enResult3 = [GMSm2Utils encryptData:plainData publicKey:pubKey]; // 加密 NSData 类型数据
+    NSData *asn1dec = [GMSm2Utils asn1DecodeToC1C3C2Data:enc0];
+//    NSLog(@"enc0---%@",asn1enc);
+    
+//    NSData *asn1enc = [GMSm2Utils asn1DecodeToC1C3C2Data:asn1dec];
+    
+    NSString  *base64 = [asn1dec base64EncodedStringWithOptions:0];
+    NSLog(@"enc0---%@",base64);
+    
+    NSString *en1 = @"BMwGpoyPq72AKoUOCcjs/HJ4VGKGbdCpPahgafm7Bf/VDkrRMc8/fQadvv2lv0wznJoIyo2OSRTfyFLwujZyqDng6AZqw6PBLkx4FA2U+F5ZxJmGdca2Gp7oLdN1OHWzaAZvbOuFGbwojNMLPdVjjcgLzKBkEBbJUQkVLZrQ7GCJZddoKFwE8wV25U+BYFDdadOZTbUxcUPYRv/dWLy5pTrcwn+cimcfck/zyGSG0vqCqkP1oX/69P5Y";
+    
+    // asn1 encode or decode
+    
+    NSString *dec1 = [GMSm2Utils asn1EncodeWithC1C3C2:en1];
+    
+    //
+    NSString *asDec1 = [GMSm2Utils decryptToText:dec1 privateKey:kSM2PriKey];
+    NSLog(@"asdec1--%@",dec1);
 
-        // sm2 解密
-        NSString *deResult1 = [GMSm2Utils decryptToText:enResult1 privateKey:priKey]; // 解密为普通字符串明文
-        NSString *deResult2 = [GMSm2Utils decryptToHex:enResult2 privateKey:priKey]; // 解密为 Hex 格式明文
-        NSData *deResult3 = [GMSm2Utils decryptToData:enResult3 privateKey:priKey]; // 解密为 NSData 格式明文
-        
-        // 判断 sm2 加解密结果
-        if ([deResult1 isEqualToString:plaintext] || [deResult2 isEqualToString:plainHex] || [deResult3 isEqualToData:plainData]) {
-            NSLog(@"sm2 加密解密成功");
-        }else{
-            NSLog(@"sm2 加密解密失败");
-        }
-        
-        // ASN1 解码
-        NSString *c1c3c2Result1 = [GMSm2Utils asn1DecodeToC1C3C2:enResult1]; // 解码为 c1c3c2字符串
-        NSArray<NSString *> *c1c3c2Result2 = [GMSm2Utils asn1DecodeToC1C3C2Array:enResult2]; // 解码为 @[c1,c3,c2]
-        NSData *c1c3c2Result3 = [GMSm2Utils asn1DecodeToC1C3C2Data:enResult3]; // 解码为 c1c3c2拼接的Data
-        
-        // ASN1 编码
-        NSString *asn1Result1 = [GMSm2Utils asn1EncodeWithC1C3C2:c1c3c2Result1];
-        NSString *asn1Result2 = [GMSm2Utils asn1EncodeWithC1C3C2Array:c1c3c2Result2];
-        NSData *asn1Result3 = [GMSm2Utils asn1EncodeWithC1C3C2Data:c1c3c2Result3];
-        
-        // 判断 ASN1 解码编码结果，应相等
-        if ([asn1Result1 isEqualToString:enResult1] || [asn1Result2 isEqualToString:enResult2] || [asn1Result3 isEqualToData:enResult3]) {
-            NSLog(@"ASN1 解码编码成功");
-        }else{
-            NSLog(@"ASN1 解码编码失败");
-        }
-        
-        NSMutableString *mStr = [NSMutableString stringWithString:@""];
-        [mStr appendString:@"\n-------SM2加解密及编码-------"];
-        [mStr appendFormat:@"\n生成SM2公钥：\n%@", pubKey];
-        [mStr appendFormat:@"\n生成SM2私钥：\n%@", priKey];
-        [mStr appendFormat:@"\nSM2加密密文：\n%@", enResult1];
-        [mStr appendFormat:@"\nASN1 解码SM2密文：\n%@", c1c3c2Result1];
-        [mStr appendFormat:@"\nASN1编码SM2密文：\n%@", asn1Result1];
-        [mStr appendFormat:@"\nSM2解密结果：\n%@", deResult1];
+    
+    /*
+     BMwGpoyPq72AKoUOCcjs/HJ4VGKGbdCpPahgafm7Bf/VDkrRMc8/fQadvv2lv0wznJoIyo2OSRTfyFLwujZyqDng6AZqw6PBLkx4FA2U+F5ZxJmGdca2Gp7oLdN1OHWzaAZvbOuFGbwojNMLPdVjjcgLzKBkEBbJUQkVLZrQ7GCJZddoKFwE8wV25U+BYFDdadOZTbUxcUPYRv/dWLy5pTrcwn+cimcfck/zyGSG0vqCqkP1oX/69P5Y
+     
+     O0GsOGaIw5V+QirjuCnVGx/09DdPFxENxINcG27sIEquccDMB9g1dO+uYmuq0JdHstvsHL5+5jK1b3c1v4GzY4uiiAE4a4MKstICYSN5QJQqe3ub91HLwOShIuz4D5Z7cVFmUZL84o75r6aJCm9WYHHw0YU1fMGkCV0ugOFvo5Bj7XVtCm36/PDJoYnWYCCkqlZgZOladNiAVIEdFQKZhGxGYweARw5SkBkRTMdQr5GH2MId/aagLtf6TLiKlW0Mn3qtH3w=
+     
+     */
+    // 生成一对新的公私钥
+    NSArray *keyPair = [GMSm2Utils createKeyPair];
+    NSString *pubKey = keyPair[0]; // 测试用 04 开头公钥，Hex 编码格式
+    NSLog(@"pub---%@",pubKey);
+    NSString *priKey = keyPair[1]; // 测试用私钥，Hex 编码格式
+    NSLog(@"pri---%@",priKey);
+
+    
+    NSString *plaintext = self.gPwd; // 明文原文 123456;
+    NSString *plainHex = [GMUtils stringToHex:plaintext]; // 明文 123456 的 Hex 编码格式 313233343536
+    NSData *plainData = [self.gPwd dataUsingEncoding:NSUTF8StringEncoding]; // 明文 123456 的 NSData 格式
+    
+    // sm2 加密，依次是普通明文，Hex 格式明文，NSData 格式明文
+    NSString *enResult1 = [GMSm2Utils encryptText:plaintext publicKey:pubKey]; // 加密普通字符串
+    NSString *enResult2 = [GMSm2Utils encryptHex:plainHex publicKey:pubKey]; // 加密 Hex 编码格式字符串
+    NSData *enResult3 = [GMSm2Utils encryptData:plainData publicKey:pubKey]; // 加密 NSData 类型数据
+    
+    // sm2 解密
+    NSString *deResult1 = [GMSm2Utils decryptToText:enResult1 privateKey:priKey]; // 解密为普通字符串明文
+    NSString *deResult2 = [GMSm2Utils decryptToHex:enResult2 privateKey:priKey]; // 解密为 Hex 格式明文
+    NSData *deResult3 = [GMSm2Utils decryptToData:enResult3 privateKey:priKey]; // 解密为 NSData 格式明文
+    
+    // 判断 sm2 加解密结果
+    if ([deResult1 isEqualToString:plaintext] || [deResult2 isEqualToString:plainHex] || [deResult3 isEqualToData:plainData]) {
+        NSLog(@"sm2 加密解密成功");
+    }else{
+        NSLog(@"sm2 加密解密失败");
+    }
+    
+    // ASN1 解码
+    NSString *c1c3c2Result1 = [GMSm2Utils asn1DecodeToC1C3C2:enResult1]; // 解码为 c1c3c2字符串
+    NSArray<NSString *> *c1c3c2Result2 = [GMSm2Utils asn1DecodeToC1C3C2Array:enResult2]; // 解码为 @[c1,c3,c2]
+    NSData *c1c3c2Result3 = [GMSm2Utils asn1DecodeToC1C3C2Data:enResult3]; // 解码为 c1c3c2拼接的Data
+    
+    // ASN1 编码
+    NSString *asn1Result1 = [GMSm2Utils asn1EncodeWithC1C3C2:c1c3c2Result1];
+    NSString *asn1Result2 = [GMSm2Utils asn1EncodeWithC1C3C2Array:c1c3c2Result2];
+    NSData *asn1Result3 = [GMSm2Utils asn1EncodeWithC1C3C2Data:c1c3c2Result3];
+    
+    // 判断 ASN1 解码编码结果，应相等
+    if ([asn1Result1 isEqualToString:enResult1] || [asn1Result2 isEqualToString:enResult2] || [asn1Result3 isEqualToData:enResult3]) {
+        NSLog(@"ASN1 解码编码成功");
+    }else{
+        NSLog(@"ASN1 解码编码失败");
+    }
+    
+    NSMutableString *mStr = [NSMutableString stringWithString:@""];
+    [mStr appendString:@"\n-------SM2加解密及编码-------"];
+    [mStr appendFormat:@"\n生成SM2公钥：\n%@", pubKey];
+    [mStr appendFormat:@"\n生成SM2私钥：\n%@", priKey];
+    [mStr appendFormat:@"\nSM2加密密文：\n%@", enResult1];
+    [mStr appendFormat:@"\nASN1 解码SM2密文：\n%@", c1c3c2Result1];
+    [mStr appendFormat:@"\nASN1编码SM2密文：\n%@", asn1Result1];
+    [mStr appendFormat:@"\nSM2解密结果：\n%@", deResult1];
+    
+    NSLog(@"%@",mStr);
 //        self.gTextView.text = mStr;
     
 }

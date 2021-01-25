@@ -6,6 +6,7 @@
 //
 
 #import <XCTest/XCTest.h>
+//#import "NSDictionary+NilSafe.h"
 
 @interface TestDictNilTests : XCTestCase
 
@@ -40,12 +41,13 @@
     id nonNilKey = @"nonNilKey";
     id nonNilValue = @"nonNilValue";
     
-    NSDictionary *dict = @{
-        nonNilKey : nilValue,
-        nilKey : nonNilValue
-    };
+//    NSDictionary *dict = @{
+//        nonNilKey : nilValue,
+//        nilKey : nonNilValue
+//    };
+//
+//    XCTAssertEqualObjects([dict allKeys], nonNilKey);
     
-    XCTAssertEqualObjects([dict allKeys], nonNilKey);
     
 }
 

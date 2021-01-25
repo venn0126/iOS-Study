@@ -44,7 +44,7 @@
 }
 
 + (UIFont *)test_systemFontOfSize:(CGFloat)fontSize{
-    NSLog(@"fff---%f",kScale);
+//    NSLog(@"fff---%f",kScale);
     UIFont *font = [UIFont test_systemFontOfSize:fontSize*kScale];
     return font;
 }

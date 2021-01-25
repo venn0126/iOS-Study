@@ -515,7 +515,7 @@ TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q) {
  然后从左往右遍历，如果右侧大于左侧的评分，就给右侧+1糖
  然后从右往左遍历，如果左侧大于右侧且左侧的目前的糖果不大于右侧，则给左侧+1糖
  
- int candy(int *arr)
+ int candy(vector<int>& candy)
  {
     int size = candy.size();
     if size < 2 return size;
@@ -643,6 +643,68 @@ TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q) {
     return left ? left : right;
 
  }
+ 
+ 
+ // create a vector size is n+1,and all values as 0
+ //  vector<int> dp(n + 1, 0);
+ 
+ 假如你是一个劫匪，并且决定抢劫一条街上的房子，每个房子内的钱财数量各不相同。如果 你抢了两栋相邻的房子，则会触发警报机关。求在不触发机关的情况下最多可以抢劫多少钱。
+
+ 
+ int rob(vector<int>& nums){
+ 
+    if(nums.empty()) return 0;
+    int n = nums.size();
+    vector<int> dp(n+1,0);
+    d[1] = nums[0];
+    for (i = 2;i<n;++i){
+        dp[i] = max(dp(i-1),nums[i-1]+dp[i-2]);
+    }
+    return dp[n];
+ }
+ 
+ 
+ 给定一个数组，求这个数组中连续且等差的子数组一共有多少个。
+ Input: nums = [1,2,3,4]
+ Output: 3
+ 
+ int numberOfArithmeticSlices(vector<int>& nums){
+ 
+    int n = nums.size();
+    if(n < 3) return 0;
+    vector<int> dp(n,0);
+    for(i = 2,i < n,++i){
+        if(nums[i] - nums[i-1] == nums[i-1] - nums[i-2]){
+            d[i] = d[i-1] + 1;
+        }
+    }
+    return accumulate(dp.begin(),dp.end(),0);
+ 
+ }
+ 
+ 
+ 给定两个字符串，求它们最长的公共子序列长度。
+ Input: text1 = "abcde", text2 = "ace"
+ Output: 3
+ 
+ int longestCommonSubsequence(string text1,string text2){
+     int m = text1.length(),int n = text2.length();
+     vector<vector<int>> dp(m+1,vector<int> (n+1,0));
+     for(int i = 1,i<m,++i){
+        for(int j = 1,j < n;++j){
+            if(text1[i-1] == text2[j-1]){
+                dp[i][j] = dp[i-1][j-1] + 1;
+                
+            }else {
+                dp[i][j] = max(dp[i-1][j],dp[i][j-1])
+            }
+        }
+     }
+ 
+     return dp[m][n];
+ }
+ 
+ 
  
  
  

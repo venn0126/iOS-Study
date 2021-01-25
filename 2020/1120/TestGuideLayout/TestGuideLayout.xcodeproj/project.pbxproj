@@ -12,6 +12,7 @@
 		273D6C11259AC51C000EE3BB /* FSRectScale.m in Sources */ = {isa = PBXBuildFile; fileRef = 273D6C10259AC51C000EE3BB /* FSRectScale.m */; };
 		273D6C47259B0650000EE3BB /* FSProcessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 273D6C46259B0650000EE3BB /* FSProcessView.m */; };
 		2740DE7325A2B1F500DF1400 /* FSProcessBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2740DE7225A2B1F500DF1400 /* FSProcessBarView.m */; };
+		27442DD725B67A3400887D5F /* FSInputObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 27442DD625B67A3400887D5F /* FSInputObject.m */; };
 		275838A6259758FB00D4F9C3 /* FSCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 275838A5259758FB00D4F9C3 /* FSCircleView.m */; };
 		2777AAC3259C8129001D60C6 /* UIFont+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2777AAC2259C8129001D60C6 /* UIFont+Extension.m */; };
 		2777AAC7259C8457001D60C6 /* UILabel+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2777AAC6259C8457001D60C6 /* UILabel+Extension.m */; };
@@ -46,6 +47,8 @@
 		273D6C46259B0650000EE3BB /* FSProcessView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSProcessView.m; sourceTree = "<group>"; };
 		2740DE7125A2B1F500DF1400 /* FSProcessBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSProcessBarView.h; sourceTree = "<group>"; };
 		2740DE7225A2B1F500DF1400 /* FSProcessBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSProcessBarView.m; sourceTree = "<group>"; };
+		27442DD525B67A3400887D5F /* FSInputObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSInputObject.h; sourceTree = "<group>"; };
+		27442DD625B67A3400887D5F /* FSInputObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSInputObject.m; sourceTree = "<group>"; };
 		275838A4259758FB00D4F9C3 /* FSCircleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSCircleView.h; sourceTree = "<group>"; };
 		275838A5259758FB00D4F9C3 /* FSCircleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSCircleView.m; sourceTree = "<group>"; };
 		2777AAC1259C8129001D60C6 /* UIFont+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIFont+Extension.h"; sourceTree = "<group>"; };
@@ -180,6 +183,8 @@
 				27EABD7A2567AEAC00397AE3 /* SceneDelegate.m */,
 				27EABD7C2567AEAC00397AE3 /* ViewController.h */,
 				27EABD7D2567AEAC00397AE3 /* ViewController.m */,
+				27442DD525B67A3400887D5F /* FSInputObject.h */,
+				27442DD625B67A3400887D5F /* FSInputObject.m */,
 				2740DE7125A2B1F500DF1400 /* FSProcessBarView.h */,
 				2740DE7225A2B1F500DF1400 /* FSProcessBarView.m */,
 				27FD8EF52588B2EA00A0F0B1 /* FSBounceView.h */,
@@ -296,6 +301,7 @@
 				273D6C47259B0650000EE3BB /* FSProcessView.m in Sources */,
 				2777AAC7259C8457001D60C6 /* UILabel+Extension.m in Sources */,
 				27A07C592591BA5C0089F19E /* UIView+FosOperation.m in Sources */,
+				27442DD725B67A3400887D5F /* FSInputObject.m in Sources */,
 				2795B497259992AF00CDF6F9 /* FSRCAnimation.m in Sources */,
 				27E841C3258F61A800C12FFF /* GMSm3Utils.m in Sources */,
 				27EABD892567AEAF00397AE3 /* main.m in Sources */,

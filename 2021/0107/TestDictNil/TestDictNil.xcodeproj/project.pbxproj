@@ -16,6 +16,16 @@
 		27E9528C25A756C6005E8A8B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E9528B25A756C6005E8A8B /* main.m */; };
 		27E9529625A756C7005E8A8B /* TestDictNilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E9529525A756C7005E8A8B /* TestDictNilTests.m */; };
 		27E952A125A756C7005E8A8B /* TestDictNilUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E952A025A756C7005E8A8B /* TestDictNilUITests.m */; };
+		27E952B925A80632005E8A8B /* NSDictionary+NilSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E952B825A80632005E8A8B /* NSDictionary+NilSafe.m */; };
+		27E952C725A844C1005E8A8B /* NWNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E952C625A844C1005E8A8B /* NWNavigationController.m */; };
+		27E952D425A8463E005E8A8B /* TestController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E952D325A8463E005E8A8B /* TestController.m */; };
+		27E952DA25A84C3B005E8A8B /* UINavigationBar+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E952D925A84C3B005E8A8B /* UINavigationBar+Extension.m */; };
+		27E952E225A8514C005E8A8B /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 27E952E125A8514C005E8A8B /* bg.jpg */; };
+		27E952E825A85DA4005E8A8B /* NWObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E952E725A85DA4005E8A8B /* NWObj.m */; };
+		27E952EE25A860F4005E8A8B /* TianObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E952ED25A860F4005E8A8B /* TianObj.m */; };
+		27E9530825A9FB85005E8A8B /* TianO.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E9530725A9FB85005E8A8B /* TianO.m */; };
+		27E9530E25AA113F005E8A8B /* TianButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E9530D25AA113F005E8A8B /* TianButton.m */; };
+		27E9531425AAB057005E8A8B /* UserCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E9531325AAB057005E8A8B /* UserCenter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +64,25 @@
 		27E9529C25A756C7005E8A8B /* TestDictNilUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestDictNilUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27E952A025A756C7005E8A8B /* TestDictNilUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestDictNilUITests.m; sourceTree = "<group>"; };
 		27E952A225A756C7005E8A8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27E952B725A80632005E8A8B /* NSDictionary+NilSafe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+NilSafe.h"; sourceTree = "<group>"; };
+		27E952B825A80632005E8A8B /* NSDictionary+NilSafe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NilSafe.m"; sourceTree = "<group>"; };
+		27E952C525A844C1005E8A8B /* NWNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NWNavigationController.h; sourceTree = "<group>"; };
+		27E952C625A844C1005E8A8B /* NWNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NWNavigationController.m; sourceTree = "<group>"; };
+		27E952D225A8463E005E8A8B /* TestController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestController.h; sourceTree = "<group>"; };
+		27E952D325A8463E005E8A8B /* TestController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestController.m; sourceTree = "<group>"; };
+		27E952D825A84C3B005E8A8B /* UINavigationBar+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+Extension.h"; sourceTree = "<group>"; };
+		27E952D925A84C3B005E8A8B /* UINavigationBar+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Extension.m"; sourceTree = "<group>"; };
+		27E952E125A8514C005E8A8B /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
+		27E952E625A85DA4005E8A8B /* NWObj.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NWObj.h; sourceTree = "<group>"; };
+		27E952E725A85DA4005E8A8B /* NWObj.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NWObj.m; sourceTree = "<group>"; };
+		27E952EC25A860F4005E8A8B /* TianObj.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TianObj.h; sourceTree = "<group>"; };
+		27E952ED25A860F4005E8A8B /* TianObj.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TianObj.m; sourceTree = "<group>"; };
+		27E9530625A9FB85005E8A8B /* TianO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TianO.h; sourceTree = "<group>"; };
+		27E9530725A9FB85005E8A8B /* TianO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TianO.m; sourceTree = "<group>"; };
+		27E9530C25AA113F005E8A8B /* TianButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TianButton.h; sourceTree = "<group>"; };
+		27E9530D25AA113F005E8A8B /* TianButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TianButton.m; sourceTree = "<group>"; };
+		27E9531225AAB057005E8A8B /* UserCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserCenter.h; sourceTree = "<group>"; };
+		27E9531325AAB057005E8A8B /* UserCenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserCenter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +139,25 @@
 				27E9527D25A756C4005E8A8B /* SceneDelegate.m */,
 				27E9527F25A756C4005E8A8B /* ViewController.h */,
 				27E9528025A756C4005E8A8B /* ViewController.m */,
+				27E952D225A8463E005E8A8B /* TestController.h */,
+				27E952D325A8463E005E8A8B /* TestController.m */,
+				27E952E625A85DA4005E8A8B /* NWObj.h */,
+				27E952E725A85DA4005E8A8B /* NWObj.m */,
+				27E9530625A9FB85005E8A8B /* TianO.h */,
+				27E9530725A9FB85005E8A8B /* TianO.m */,
+				27E952EC25A860F4005E8A8B /* TianObj.h */,
+				27E952ED25A860F4005E8A8B /* TianObj.m */,
+				27E9530C25AA113F005E8A8B /* TianButton.h */,
+				27E9530D25AA113F005E8A8B /* TianButton.m */,
+				27E9531225AAB057005E8A8B /* UserCenter.h */,
+				27E9531325AAB057005E8A8B /* UserCenter.m */,
+				27E952C525A844C1005E8A8B /* NWNavigationController.h */,
+				27E952C625A844C1005E8A8B /* NWNavigationController.m */,
+				27E952D825A84C3B005E8A8B /* UINavigationBar+Extension.h */,
+				27E952D925A84C3B005E8A8B /* UINavigationBar+Extension.m */,
+				27E952B725A80632005E8A8B /* NSDictionary+NilSafe.h */,
+				27E952B825A80632005E8A8B /* NSDictionary+NilSafe.m */,
+				27E952E125A8514C005E8A8B /* bg.jpg */,
 				27E9528225A756C4005E8A8B /* Main.storyboard */,
 				27E9528525A756C6005E8A8B /* Assets.xcassets */,
 				27E9528725A756C6005E8A8B /* LaunchScreen.storyboard */,
@@ -241,6 +289,7 @@
 			files = (
 				27E9528925A756C6005E8A8B /* LaunchScreen.storyboard in Resources */,
 				27E9528625A756C6005E8A8B /* Assets.xcassets in Resources */,
+				27E952E225A8514C005E8A8B /* bg.jpg in Resources */,
 				27E9528425A756C4005E8A8B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,10 +315,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27E952E825A85DA4005E8A8B /* NWObj.m in Sources */,
 				27E9528125A756C4005E8A8B /* ViewController.m in Sources */,
+				27E952DA25A84C3B005E8A8B /* UINavigationBar+Extension.m in Sources */,
+				27E9531425AAB057005E8A8B /* UserCenter.m in Sources */,
+				27E9530E25AA113F005E8A8B /* TianButton.m in Sources */,
+				27E952D425A8463E005E8A8B /* TestController.m in Sources */,
 				27E9527B25A756C4005E8A8B /* AppDelegate.m in Sources */,
+				27E952EE25A860F4005E8A8B /* TianObj.m in Sources */,
+				27E952C725A844C1005E8A8B /* NWNavigationController.m in Sources */,
 				27E9528C25A756C6005E8A8B /* main.m in Sources */,
+				27E952B925A80632005E8A8B /* NSDictionary+NilSafe.m in Sources */,
 				27E9527E25A756C4005E8A8B /* SceneDelegate.m in Sources */,
+				27E9530825A9FB85005E8A8B /* TianO.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,16 +499,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CVT5K5W5HB;
 				INFOPLIST_FILE = TestDictNil/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Co.-Ltd...TestDictNil";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -459,16 +519,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CVT5K5W5HB;
 				INFOPLIST_FILE = TestDictNil/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Co.-Ltd...TestDictNil";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -476,10 +538,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CVT5K5W5HB;
 				INFOPLIST_FILE = TestDictNilTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -496,10 +560,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CVT5K5W5HB;
 				INFOPLIST_FILE = TestDictNilTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

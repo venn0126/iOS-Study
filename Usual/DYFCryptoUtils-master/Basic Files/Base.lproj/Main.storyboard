@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xHQ-PK-O9G"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ctb-0W-d6U"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eLj-7H-TRe">
+                                <rect key="frame" x="30" y="188" width="354" height="520"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NjW-Ha-mnw">
+                                        <rect key="frame" x="77" y="10" width="200" height="40"/>
+                                        <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="AsN-Kl-Hc6"/>
+                                            <constraint firstAttribute="width" constant="200" id="EWL-iP-fgQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="TestBase64">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="testBase64:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S4P-hW-FCr"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k4W-sv-uAU">
+                                        <rect key="frame" x="77" y="60" width="200" height="40"/>
+                                        <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="RgR-SO-zIU"/>
+                                            <constraint firstAttribute="width" constant="200" id="tcT-24-VqP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="TestMD5">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="testMD5:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fHR-D8-yGF"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLX-HA-q4y">
+                                        <rect key="frame" x="77" y="110" width="200" height="40"/>
+                                        <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="72h-uG-WTc"/>
+                                            <constraint firstAttribute="height" constant="40" id="eNL-4h-2tj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="TestDES">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="testDES:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Erg-YE-0D7"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iwf-uR-Niq">
+                                        <rect key="frame" x="77" y="160" width="200" height="40"/>
+                                        <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="cjp-xn-Fdx"/>
+                                            <constraint firstAttribute="height" constant="40" id="kJF-A5-r8k"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="TestAES">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="testAES:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NwU-D9-SYj"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="NY0-gv-IT5">
+                                        <rect key="frame" x="10" y="260" width="334" height="250"/>
+                                        <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Z4-vA-MmH">
+                                        <rect key="frame" x="77" y="210" width="200" height="40"/>
+                                        <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Kge-hp-LJy"/>
+                                            <constraint firstAttribute="width" constant="200" id="zFS-OD-MUB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="TestRSA">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="testRSA:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ow7-Qt-lay"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="NY0-gv-IT5" firstAttribute="top" secondItem="3Z4-vA-MmH" secondAttribute="bottom" constant="10" id="2s1-V1-Has"/>
+                                    <constraint firstAttribute="bottom" secondItem="NY0-gv-IT5" secondAttribute="bottom" constant="10" id="5ui-Mk-WNo"/>
+                                    <constraint firstAttribute="trailing" secondItem="NY0-gv-IT5" secondAttribute="trailing" constant="10" id="635-hd-x8c"/>
+                                    <constraint firstItem="NY0-gv-IT5" firstAttribute="leading" secondItem="eLj-7H-TRe" secondAttribute="leading" constant="10" id="JXK-TA-C5L"/>
+                                    <constraint firstItem="3Z4-vA-MmH" firstAttribute="top" secondItem="Iwf-uR-Niq" secondAttribute="bottom" constant="10" id="KrJ-rU-ueo"/>
+                                    <constraint firstItem="NjW-Ha-mnw" firstAttribute="centerX" secondItem="eLj-7H-TRe" secondAttribute="centerX" id="L1g-H1-A5G"/>
+                                    <constraint firstItem="CLX-HA-q4y" firstAttribute="centerX" secondItem="eLj-7H-TRe" secondAttribute="centerX" id="Rja-Ra-BtK"/>
+                                    <constraint firstItem="NjW-Ha-mnw" firstAttribute="top" secondItem="eLj-7H-TRe" secondAttribute="top" constant="10" id="Wih-jk-c8x"/>
+                                    <constraint firstItem="NY0-gv-IT5" firstAttribute="centerX" secondItem="eLj-7H-TRe" secondAttribute="centerX" id="aG8-fP-AkY"/>
+                                    <constraint firstAttribute="height" constant="520" id="aJA-RJ-aaN"/>
+                                    <constraint firstItem="Iwf-uR-Niq" firstAttribute="top" secondItem="CLX-HA-q4y" secondAttribute="bottom" constant="10" id="dMV-Bi-oD9"/>
+                                    <constraint firstItem="Iwf-uR-Niq" firstAttribute="centerX" secondItem="eLj-7H-TRe" secondAttribute="centerX" id="ecn-lw-ynw"/>
+                                    <constraint firstItem="3Z4-vA-MmH" firstAttribute="centerX" secondItem="eLj-7H-TRe" secondAttribute="centerX" id="g45-wQ-yWs"/>
+                                    <constraint firstItem="CLX-HA-q4y" firstAttribute="top" secondItem="k4W-sv-uAU" secondAttribute="bottom" constant="10" id="mR9-dJ-ZkE"/>
+                                    <constraint firstItem="k4W-sv-uAU" firstAttribute="centerX" secondItem="eLj-7H-TRe" secondAttribute="centerX" id="mbe-Jy-yhQ"/>
+                                    <constraint firstItem="k4W-sv-uAU" firstAttribute="top" secondItem="NjW-Ha-mnw" secondAttribute="bottom" constant="10" id="vvN-HX-cl0"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="eLj-7H-TRe" secondAttribute="trailing" constant="10" id="Smi-6P-hLh"/>
+                            <constraint firstItem="eLj-7H-TRe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aQx-iY-J0k"/>
+                            <constraint firstItem="eLj-7H-TRe" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="f6K-a8-Uik"/>
+                            <constraint firstItem="eLj-7H-TRe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="xCJ-ND-mam"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mTextView" destination="NY0-gv-IT5" id="iTE-C4-x14"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="95.758928571428569"/>
+        </scene>
+    </scenes>
+</document>
