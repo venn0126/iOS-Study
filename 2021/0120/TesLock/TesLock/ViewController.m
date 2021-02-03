@@ -12,6 +12,7 @@
 #import <os/lock.h>
 #import <TestBundle/TestBundle.h>
 //#import <FosaferAuth/FOSOut.h>
+#import "responderView.h"
 
 
 #define nw_inline __inline__ __attribute__((always_inline))
@@ -57,7 +58,30 @@ int TimeCount = 0;
     
     
     self.view.backgroundColor = UIColor.whiteColor;
+        
+//    int temparray[5] = {0};
+//    for (int i = 0; i < 5; i++) {
+//        temparray[i] += i;
+//    }
+//
+//    printArray(temparray,0,5);
     
+//    testB();
+    
+//    [self testResponder];
+
+}
+
+
+- (void)testResponder {
+    
+    responderView *responder = [[responderView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:responder];
+    
+}
+
+
+- (void)testSomeLock {
     int buttonCount = 5;
     for (int i = 0; i < buttonCount; i++) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -69,44 +93,6 @@ int TimeCount = 0;
         [button addTarget:self action:@selector(tap:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:button];
     }
-    
-    
-    
-//    int temparray[5] = {0};
-//    for (int i = 0; i < 5; i++) {
-//        temparray[i] += i;
-//    }
-//
-//    printArray(temparray,0,5);
-    
-//    testB();
-    
-//    NSLog(@"---%d---%d---%d---%d",FOSControllerAudio,FOSControllerVideo,FOSControllerAuth,FOSControllerCompound);
-    
-    // 1 | 2
-//    NSInteger n = 1 | FOSControllerVideo;
-//    NSInteger m = 0 | FOSControllerVideo;
-//    
-//    NSInteger i = 2 & FOSControllerVideo;
-//    NSInteger j = 3 & FOSControllerVideo;
-//    
-//    NSLog(@"--%ld--%d--%@--%d",(long)n,m,i,j);
-    
-    //    NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"TestBundle.framework/kzq" ofType:@"bundle"];
-    //    NSBundle *imageBundle = [NSBundle bundleWithPath:bundlePath];
-    //    NSString *imagePath = [imageBundle pathForResource:@"icon1024" ofType:@"png"];
-    
-
-
-//    self.testBlock = ^{
-//        NSLog(@"102");
-//    };
-//
-//    if (self.testBlock) {
-//        NSLog(@"106");
-//        self.testBlock();
-//    }
-
 }
 
 - (void)nwBlock {
@@ -160,10 +146,10 @@ int TimeCount = 0;
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
-    IconController *icon = [[IconController alloc] init];
-    [self presentViewController:icon animated:YES completion:^{
-
-    }];
+//    IconController *icon = [[IconController alloc] init];
+//    [self presentViewController:icon animated:YES completion:^{
+//
+//    }];
 }
 
 nw_inline void testA(){
@@ -222,6 +208,9 @@ void testB(){
         TimeCosts[LockTypepthread_mutex] += end - begin;
         pthread_mutex_destroy(&lock);
         printf("pthread_mutex:            %8.2f ms\n", (end - begin) * 1000);
+        
+//        pthread_mutex_trylock(&lock); ==0 means try lock is success
+        
     }
     
     

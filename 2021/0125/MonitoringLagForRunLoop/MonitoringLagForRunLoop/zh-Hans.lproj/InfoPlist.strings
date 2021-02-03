@@ -1,0 +1,21 @@
+/* 
+  InfoPlist.strings
+  MonitoringLagForRunLoop
+
+  Created by Augus on 2021/2/2.
+  
+*/
+CFBundleDisplayName = "牛气啊";
+
+NSCameraUsageDescription = "使用您相机进行扫描二维码以及更新头像";
+NSPhotoLibraryUsageDescription = "使用您的相册进行二维码识别以及更新头像";
+NSContactsUsageDescription = "使用您的相册通讯录查找可能认识的人";
+NSFaceIDUsageDescription = "使用Face ID解锁应用";
+NSCalendarsUsageDescription = "使用您的日历获取日期";
+NSMicrophoneUsageDescription = "使用您的麦克风进行语音播放";
+NSHealthShareUsageDescription = "使用您的健康数据进行统计";
+NSHealthUpdateUsageDescription = "使用您的健康数据进行统计";
+NSPhotoLibraryAddUsageDescription = "使用您的相册添加图片";
+NSLocationAlwaysUsageDescription = "使用您的位置进行数据统计";
+NSLocationWhenInUseUsageDescription = "使用您的位置进行数据统计";
+NSHumanReadableCopyright = "2016 百度 公司 有限责任公司";

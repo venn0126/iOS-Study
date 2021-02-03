@@ -1,0 +1,21 @@
+/* 
+  InfoPlist.strings
+  MonitoringLagForRunLoop
+
+  Created by Augus on 2021/2/2.
+  
+*/
+CFBundleDisplayName = "Augus-B";
+
+NSCameraUsageDescription = "Use your camera to scan the qr code and update the avatar";
+NSPhotoLibraryUsageDescription = "Use your photo album for qr code recognition and update avatar";
+NSContactsUsageDescription = "Find contacts you might know";
+NSFaceIDUsageDescription = "Use Face ID to login";
+NSCalendarsUsageDescription = "Use your calendar to get dates.";
+NSMicrophoneUsageDescription = "Use your microphone for voice playback";
+NSHealthShareUsageDescription = "Use your health data for data statistics";
+NSHealthUpdateUsageDescription = "Use your health data for data statistics";
+NSPhotoLibraryAddUsageDescription = "Use your photo album to add photo";
+NSLocationAlwaysUsageDescription = "Use your location data for data statistics";
+NSLocationWhenInUseUsageDescription = "Use your location data for data statistics";
+NSHumanReadableCopyright = "2016 Goldrush Computing Inc. All rights reserved.";
