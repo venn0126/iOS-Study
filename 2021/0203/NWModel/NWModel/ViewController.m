@@ -24,8 +24,6 @@
     
     
 
-    
-    
 
 
     
@@ -52,6 +50,9 @@
     // 从all中去除bVoid
     NWEncodeType c1 = bVoid ^ all;
     NSLog(@"c1---%ld",c1);
+    
+    NSLog(@"@\"");
+    NSLog(@"\"<");
 }
 
 - (void)testNSScanner {
