@@ -8,8 +8,12 @@
 #import "ViewController.h"
 #import "NWClass.h"
 #import <pthread.h>
+#import "CALayer+NWLayer.h"
 
 @interface ViewController ()
+
+@property (nonatomic, strong) NWClass *nw;
+
 
 @end
 
@@ -21,15 +25,72 @@
     
     self.view.backgroundColor = UIColor.greenColor;
 
-    
-    
 
+//    [self testBackQueueDeallocObject];
     
+//    [self testCGBitmapCreateImage];
     
-
 
     
 }
+
+
+- (void)testCGBitmapCreateImage {
+    
+    // liveness_layout_head_mask
+    
+//    size_t bytesPerRow = 4352;
+//    // Get the pixel buffer width and height
+//    size_t width = 1088; // w h bytesrow 1280  720 1280
+//    size_t height = 1905; // 1088 1905 4352
+//
+//    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+
+    // create context
+//    CGContextRef ctx = CGBitmapContextCreate(<#void * _Nullable data#>, <#size_t width#>, <#size_t height#>, <#size_t bitsPerComponent#>, <#size_t bytesPerRow#>, <#CGColorSpaceRef  _Nullable space#>, <#uint32_t bitmapInfo#>)
+    
+    // draw in context
+//    CGImageRef img = CGBitmapContextCreateImage(NULL);
+    
+    // release ctx
+//    CFRelease(<#CFTypeRef cf#>)
+    
+    //
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//       
+//        self.view.layer.contents = (__bridge id _Nullable)(img);
+//        CFRelease(img);
+//    });
+    
+    
+    
+}
+
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    NSLog(@"touch log0--%@",_nw);
+    [_nw logName];
+    NSLog(@"touch log1");
+
+}
+
+- (void)testBackQueueDeallocObject {
+    
+    _nw = [[NWClass alloc] initWithName:@"GT"];
+    NWClass *nwTemp = _nw;
+    _nw = nil;
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+       
+        NSLog(@"queue class");
+        [nwTemp class];
+        [nwTemp logName];
+    });
+
+    
+}
+
 
 - (void)testEnumAndLocation {
     
@@ -52,6 +113,9 @@
     // 从all中去除bVoid
     NWEncodeType c1 = bVoid ^ all;
     NSLog(@"c1---%ld",c1);
+    
+    NSLog(@"@\"");
+    NSLog(@"\"<");
 }
 
 - (void)testNSScanner {

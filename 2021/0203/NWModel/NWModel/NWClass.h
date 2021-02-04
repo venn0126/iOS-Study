@@ -21,7 +21,9 @@ typedef NS_OPTIONS(NSUInteger, NWEncodeType){
 
 @interface NWClass : NSObject
 
+- (nullable instancetype)initWithName:(NSString *)name;
 
+- (void)logName;
 
 @end
 

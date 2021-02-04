@@ -7,9 +7,40 @@
 
 #import "NWClass.h"
 
+@interface NWClass ()
+
+@property (nonatomic, copy) NSString *name;
+
+
+@end
+
 @implementation NWClass
 
 
+
+- (instancetype)initWithName:(NSString *)name {
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+    
+    _name = name;
+    return self;
+}
+
+- (void)logName {
+    [self printName];
+}
+
+- (void)printName {
+    
+    NSLog(@"print name %@",self.name);
+}
+
+- (void)dealloc {
+    
+    NSLog(@"nw class dealloc");
+}
  
  /**
   * Returns the offset of an instance variable.
