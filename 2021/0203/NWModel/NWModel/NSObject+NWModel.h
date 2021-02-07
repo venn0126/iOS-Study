@@ -372,5 +372,7 @@ NS_ASSUME_NONNULL_BEGIN
  @return Returns YES if the model is valid,or NO to ignode this model.
  */
 - (BOOL)nw_modelCustomTransformToDictionary:(NSMutableDictionary *)dic;
+
 @end
+
 NS_ASSUME_NONNULL_END

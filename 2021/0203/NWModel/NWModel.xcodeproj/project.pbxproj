@@ -16,7 +16,7 @@
 		2753F21E25CA4A2400C8291B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2753F21D25CA4A2400C8291B /* main.m */; };
 		2753F22825CA4A2400C8291B /* NWModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2753F22725CA4A2400C8291B /* NWModelTests.m */; };
 		2753F23325CA4A2400C8291B /* NWModelUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2753F23225CA4A2400C8291B /* NWModelUITests.m */; };
-		2753F24525CA4A4000C8291B /* NWClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2753F24425CA4A4000C8291B /* NWClass.m */; };
+		277AA99B25CCF011005EF904 /* NWClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 277AA99A25CCF011005EF904 /* NWClassInfo.m */; };
 		2783FFCC25CC56F700E2309A /* CALayer+NWLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2783FFCB25CC56F700E2309A /* CALayer+NWLayer.m */; };
 		27D4B15D25CBD6C4008002DF /* NSObject+NWModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D4B15C25CBD6C4008002DF /* NSObject+NWModel.m */; };
 /* End PBXBuildFile section */
@@ -57,8 +57,8 @@
 		2753F22E25CA4A2400C8291B /* NWModelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NWModelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2753F23225CA4A2400C8291B /* NWModelUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NWModelUITests.m; sourceTree = "<group>"; };
 		2753F23425CA4A2400C8291B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2753F24325CA4A4000C8291B /* NWClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NWClass.h; sourceTree = "<group>"; };
-		2753F24425CA4A4000C8291B /* NWClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NWClass.m; sourceTree = "<group>"; };
+		277AA99925CCF011005EF904 /* NWClassInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NWClassInfo.h; sourceTree = "<group>"; };
+		277AA99A25CCF011005EF904 /* NWClassInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NWClassInfo.m; sourceTree = "<group>"; };
 		2783FFCA25CC56F700E2309A /* CALayer+NWLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CALayer+NWLayer.h"; sourceTree = "<group>"; };
 		2783FFCB25CC56F700E2309A /* CALayer+NWLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CALayer+NWLayer.m"; sourceTree = "<group>"; };
 		27D4B15B25CBD6C4008002DF /* NSObject+NWModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+NWModel.h"; sourceTree = "<group>"; };
@@ -119,8 +119,8 @@
 				2753F20F25CA4A2100C8291B /* SceneDelegate.m */,
 				2753F21125CA4A2100C8291B /* ViewController.h */,
 				2753F21225CA4A2100C8291B /* ViewController.m */,
-				2753F24325CA4A4000C8291B /* NWClass.h */,
-				2753F24425CA4A4000C8291B /* NWClass.m */,
+				277AA99925CCF011005EF904 /* NWClassInfo.h */,
+				277AA99A25CCF011005EF904 /* NWClassInfo.m */,
 				27D4B15B25CBD6C4008002DF /* NSObject+NWModel.h */,
 				27D4B15C25CBD6C4008002DF /* NSObject+NWModel.m */,
 				2783FFCA25CC56F700E2309A /* CALayer+NWLayer.h */,
@@ -283,11 +283,11 @@
 			files = (
 				27D4B15D25CBD6C4008002DF /* NSObject+NWModel.m in Sources */,
 				2783FFCC25CC56F700E2309A /* CALayer+NWLayer.m in Sources */,
-				2753F24525CA4A4000C8291B /* NWClass.m in Sources */,
 				2753F21325CA4A2100C8291B /* ViewController.m in Sources */,
 				2753F20D25CA4A2100C8291B /* AppDelegate.m in Sources */,
 				2753F21E25CA4A2400C8291B /* main.m in Sources */,
 				2753F21025CA4A2100C8291B /* SceneDelegate.m in Sources */,
+				277AA99B25CCF011005EF904 /* NWClassInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
