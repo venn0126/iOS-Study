@@ -19,6 +19,7 @@
 		277AA99B25CCF011005EF904 /* NWClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 277AA99A25CCF011005EF904 /* NWClassInfo.m */; };
 		2783FFCC25CC56F700E2309A /* CALayer+NWLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2783FFCB25CC56F700E2309A /* CALayer+NWLayer.m */; };
 		27D4B15D25CBD6C4008002DF /* NSObject+NWModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D4B15C25CBD6C4008002DF /* NSObject+NWModel.m */; };
+		27F2BB8325D27FCF00F9C9EC /* NWUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F2BB8225D27FCF00F9C9EC /* NWUser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,8 @@
 		2783FFCB25CC56F700E2309A /* CALayer+NWLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CALayer+NWLayer.m"; sourceTree = "<group>"; };
 		27D4B15B25CBD6C4008002DF /* NSObject+NWModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+NWModel.h"; sourceTree = "<group>"; };
 		27D4B15C25CBD6C4008002DF /* NSObject+NWModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+NWModel.m"; sourceTree = "<group>"; };
+		27F2BB8125D27FCF00F9C9EC /* NWUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NWUser.h; sourceTree = "<group>"; };
+		27F2BB8225D27FCF00F9C9EC /* NWUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NWUser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +126,8 @@
 				277AA99A25CCF011005EF904 /* NWClassInfo.m */,
 				27D4B15B25CBD6C4008002DF /* NSObject+NWModel.h */,
 				27D4B15C25CBD6C4008002DF /* NSObject+NWModel.m */,
+				27F2BB8125D27FCF00F9C9EC /* NWUser.h */,
+				27F2BB8225D27FCF00F9C9EC /* NWUser.m */,
 				2783FFCA25CC56F700E2309A /* CALayer+NWLayer.h */,
 				2783FFCB25CC56F700E2309A /* CALayer+NWLayer.m */,
 				2753F21425CA4A2100C8291B /* Main.storyboard */,
@@ -288,6 +293,7 @@
 				2753F21E25CA4A2400C8291B /* main.m in Sources */,
 				2753F21025CA4A2100C8291B /* SceneDelegate.m in Sources */,
 				277AA99B25CCF011005EF904 /* NWClassInfo.m in Sources */,
+				27F2BB8325D27FCF00F9C9EC /* NWUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

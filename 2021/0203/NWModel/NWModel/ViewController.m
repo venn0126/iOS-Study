@@ -7,9 +7,13 @@
 
 #import "ViewController.h"
 #import "NWClassInfo.h"
+#import "NSObject+NWModel.h"
+
 #import <pthread.h>
 #import "CALayer+NWLayer.h"
 #import <objc/message.h>
+
+#import "NWUser.h"
 
 @interface ViewController ()
 
@@ -35,8 +39,49 @@
     
     //
     
-    [self testObjcMsgSend];
+//    [self testObjcMsgSend];
     
+//    [self testNSCharacterSet];
+    
+    
+    NSMutableString *tmp = [NSMutableString stringWithString:@"gao"];
+    [tmp appendString:@"tian"];
+    NSLog(@"tmp0---%@",tmp);
+    
+    NSString *tmp1 = [tmp stringByAppendingString:@"love"];
+    NSLog(@"tmp1---%@",tmp1);
+    
+    NSString *tmp2 = [tmp stringByAppendingFormat:@"%@",@"hao"];
+    NSLog(@"tmp2---%@",tmp2);
+    
+    
+    /*
+     // JSON:
+     {
+         "uid":123456,
+         "name":"Harry",
+         "created":"1965-07-31T00:00:00+0000"
+     }
+     */
+    
+    NSString *jsonString = @"{\"uid\":123456,\"name\":\"Tian\"}";
+    NWUser *user = [NWUser nw_modelWithJSON:jsonString];
+    NSLog(@"%@---%ld---%f",user.name,user.uid);
+    
+    
+    
+    
+    
+}
+
+- (void)testNSCharacterSet {
+    
+    NSString *str = @"    this     is a    test    .   ";
+    // 去除两端空格
+    NSCharacterSet *set = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+    // 进行字符串特殊符号化
+    NSString *tmp = [str stringByTrimmingCharactersInSet:set];
+    NSLog(@"tmp-%@",tmp);
 }
 
 
