@@ -1,0 +1,6 @@
+framework module Pods_NWModel_NWModelUITests {
+  umbrella header "Pods-NWModel-NWModelUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -64,13 +64,64 @@
      }
      */
     
-    NSString *jsonString = @"{\"uid\":123456,\"name\":\"Tian\"}";
-    NWUser *user = [NWUser nw_modelWithJSON:jsonString];
-    NSLog(@"%@---%ld---%f",user.name,user.uid);
+//    NSString *jsonString = @"{\"uid\":123456,\"name\":\"Tian\"}";
+//    NWUser *user = [NWUser nw_modelWithJSON:jsonString];
+//    NSLog(@"%@---%ld---%f",user.name,user.uid);
+    
+        
+//   int res =  [self blockForButtonId:3];
+//    NSLog(@"res %d",res);
+    
+    int (*funcptr)(int,float) = &func;
+    int res = (*funcptr)(10,10.6);
+    printf("res  %d\n",res);
+    
+}
+
+int func(int count,float height)
+{
+    return height + 1;
+}
+
+- (int)blockForButtonId:(int)buttonId {
+    
+//    typedef NSDate* (^NWNSDateParseBlock)(NSString *string);
+    typedef int (^buttonCallBack)(int buttonId);
+    buttonCallBack blocks[3] = {0};
+    {
+        blocks[0] = ^(int buttonId){
+          
+            if (buttonId == 0) {
+                return 100;
+            }else {
+                return -1;
+            }        };
+        
+        
+        blocks[1] = ^(int buttonId){
+          
+            if (buttonId == 1) {
+                return 1;
+            }else {
+                return -2;
+            }
+            
+        };
+        
+        blocks[2] = ^(int buttonId){
+            if (buttonId == 2) {
+                return 2;
+            }else {
+                return -3;
+            }
+        };
+    }
     
     
-    
-    
+
+    buttonCallBack callBack = blocks[buttonId];
+    if (!callBack) return -10;
+    return callBack(buttonId);
     
 }
 
