@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2714640025F0D5780071F1F9 /* NWTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 271463FF25F0D5780071F1F9 /* NWTableCell.m */; };
 		2753F20D25CA4A2100C8291B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2753F20C25CA4A2100C8291B /* AppDelegate.m */; };
 		2753F21025CA4A2100C8291B /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2753F20F25CA4A2100C8291B /* SceneDelegate.m */; };
 		2753F21325CA4A2100C8291B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2753F21225CA4A2100C8291B /* ViewController.m */; };
@@ -18,11 +19,13 @@
 		2753F23325CA4A2400C8291B /* NWModelUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2753F23225CA4A2400C8291B /* NWModelUITests.m */; };
 		277AA99B25CCF011005EF904 /* NWClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 277AA99A25CCF011005EF904 /* NWClassInfo.m */; };
 		2783FFCC25CC56F700E2309A /* CALayer+NWLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2783FFCB25CC56F700E2309A /* CALayer+NWLayer.m */; };
+		279484DA25F071F300B592CE /* NWTestLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 279484D925F071F300B592CE /* NWTestLabel.m */; };
+		279AFD9625E887660032A4B0 /* NWProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 279AFD9525E887660032A4B0 /* NWProxy.m */; };
+		279AFD9C25E88AC70032A4B0 /* NWFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 279AFD9B25E88AC70032A4B0 /* NWFPSLabel.m */; };
+		27BD698025ED2B33008F05D1 /* UILabel+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BD697F25ED2B33008F05D1 /* UILabel+Extension.m */; };
+		27BD698625ED2CEB008F05D1 /* UIFont+FontSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BD698525ED2CEB008F05D1 /* UIFont+FontSize.m */; };
 		27D4B15D25CBD6C4008002DF /* NSObject+NWModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D4B15C25CBD6C4008002DF /* NSObject+NWModel.m */; };
 		27F2BB8325D27FCF00F9C9EC /* NWUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F2BB8225D27FCF00F9C9EC /* NWUser.m */; };
-		8EC7C782B8F45C381391736E /* Pods_NWModelTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73CA4631535052A79240D84C /* Pods_NWModelTests.framework */; };
-		D16BFFC081F9D27348878E4B /* Pods_NWModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBBB6978A034C98CF299BA58 /* Pods_NWModel.framework */; };
-		FF4F620C13065DD48835D022 /* Pods_NWModel_NWModelUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EA2904EB27CB121B1A8849F /* Pods_NWModel_NWModelUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		271463FE25F0D5780071F1F9 /* NWTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NWTableCell.h; sourceTree = "<group>"; };
+		271463FF25F0D5780071F1F9 /* NWTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NWTableCell.m; sourceTree = "<group>"; };
 		2753F20825CA4A2100C8291B /* NWModel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NWModel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2753F20B25CA4A2100C8291B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2753F20C25CA4A2100C8291B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -65,19 +70,23 @@
 		277AA99A25CCF011005EF904 /* NWClassInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NWClassInfo.m; sourceTree = "<group>"; };
 		2783FFCA25CC56F700E2309A /* CALayer+NWLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CALayer+NWLayer.h"; sourceTree = "<group>"; };
 		2783FFCB25CC56F700E2309A /* CALayer+NWLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CALayer+NWLayer.m"; sourceTree = "<group>"; };
+		279484D825F071F300B592CE /* NWTestLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NWTestLabel.h; sourceTree = "<group>"; };
+		279484D925F071F300B592CE /* NWTestLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NWTestLabel.m; sourceTree = "<group>"; };
+		279AFD9425E887660032A4B0 /* NWProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NWProxy.h; sourceTree = "<group>"; };
+		279AFD9525E887660032A4B0 /* NWProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NWProxy.m; sourceTree = "<group>"; };
+		279AFD9A25E88AC70032A4B0 /* NWFPSLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NWFPSLabel.h; sourceTree = "<group>"; };
+		279AFD9B25E88AC70032A4B0 /* NWFPSLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NWFPSLabel.m; sourceTree = "<group>"; };
+		27BD697E25ED2B32008F05D1 /* UILabel+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+Extension.h"; sourceTree = "<group>"; };
+		27BD697F25ED2B33008F05D1 /* UILabel+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Extension.m"; sourceTree = "<group>"; };
+		27BD698425ED2CEB008F05D1 /* UIFont+FontSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIFont+FontSize.h"; sourceTree = "<group>"; };
+		27BD698525ED2CEB008F05D1 /* UIFont+FontSize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+FontSize.m"; sourceTree = "<group>"; };
 		27D4B15B25CBD6C4008002DF /* NSObject+NWModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+NWModel.h"; sourceTree = "<group>"; };
 		27D4B15C25CBD6C4008002DF /* NSObject+NWModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+NWModel.m"; sourceTree = "<group>"; };
 		27F2BB8125D27FCF00F9C9EC /* NWUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NWUser.h; sourceTree = "<group>"; };
 		27F2BB8225D27FCF00F9C9EC /* NWUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NWUser.m; sourceTree = "<group>"; };
-		28FFE3620FBE69525336ABB9 /* Pods-NWModelTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NWModelTests.debug.xcconfig"; path = "Target Support Files/Pods-NWModelTests/Pods-NWModelTests.debug.xcconfig"; sourceTree = "<group>"; };
-		56B3FA3B104B4390FFA58A3C /* Pods-NWModel-NWModelUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NWModel-NWModelUITests.debug.xcconfig"; path = "Target Support Files/Pods-NWModel-NWModelUITests/Pods-NWModel-NWModelUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		6BACBB2E557CCE139E4DC380 /* Pods-NWModel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NWModel.release.xcconfig"; path = "Target Support Files/Pods-NWModel/Pods-NWModel.release.xcconfig"; sourceTree = "<group>"; };
 		73CA4631535052A79240D84C /* Pods_NWModelTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NWModelTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8EF61F42E93F6CD17EEC0B94 /* Pods-NWModelTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NWModelTests.release.xcconfig"; path = "Target Support Files/Pods-NWModelTests/Pods-NWModelTests.release.xcconfig"; sourceTree = "<group>"; };
 		9EA2904EB27CB121B1A8849F /* Pods_NWModel_NWModelUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NWModel_NWModelUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C19C8217ECD5A008E3AB83D9 /* Pods-NWModel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NWModel.debug.xcconfig"; path = "Target Support Files/Pods-NWModel/Pods-NWModel.debug.xcconfig"; sourceTree = "<group>"; };
 		CBBB6978A034C98CF299BA58 /* Pods_NWModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NWModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E284D433A5C82FD8C4858675 /* Pods-NWModel-NWModelUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NWModel-NWModelUITests.release.xcconfig"; path = "Target Support Files/Pods-NWModel-NWModelUITests/Pods-NWModel-NWModelUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +94,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D16BFFC081F9D27348878E4B /* Pods_NWModel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +101,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EC7C782B8F45C381391736E /* Pods_NWModelTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,7 +108,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF4F620C13065DD48835D022 /* Pods_NWModel_NWModelUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,7 +131,6 @@
 				2753F22625CA4A2400C8291B /* NWModelTests */,
 				2753F23125CA4A2400C8291B /* NWModelUITests */,
 				2753F20925CA4A2100C8291B /* Products */,
-				74B14D43A24655A8899D11AE /* Pods */,
 				0FAE3DFD136EA72E59FA4624 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -149,12 +154,24 @@
 				2753F20F25CA4A2100C8291B /* SceneDelegate.m */,
 				2753F21125CA4A2100C8291B /* ViewController.h */,
 				2753F21225CA4A2100C8291B /* ViewController.m */,
+				271463FE25F0D5780071F1F9 /* NWTableCell.h */,
+				271463FF25F0D5780071F1F9 /* NWTableCell.m */,
+				279484D825F071F300B592CE /* NWTestLabel.h */,
+				279484D925F071F300B592CE /* NWTestLabel.m */,
 				277AA99925CCF011005EF904 /* NWClassInfo.h */,
 				277AA99A25CCF011005EF904 /* NWClassInfo.m */,
 				27D4B15B25CBD6C4008002DF /* NSObject+NWModel.h */,
 				27D4B15C25CBD6C4008002DF /* NSObject+NWModel.m */,
 				27F2BB8125D27FCF00F9C9EC /* NWUser.h */,
 				27F2BB8225D27FCF00F9C9EC /* NWUser.m */,
+				279AFD9425E887660032A4B0 /* NWProxy.h */,
+				279AFD9525E887660032A4B0 /* NWProxy.m */,
+				279AFD9A25E88AC70032A4B0 /* NWFPSLabel.h */,
+				279AFD9B25E88AC70032A4B0 /* NWFPSLabel.m */,
+				27BD697E25ED2B32008F05D1 /* UILabel+Extension.h */,
+				27BD697F25ED2B33008F05D1 /* UILabel+Extension.m */,
+				27BD698425ED2CEB008F05D1 /* UIFont+FontSize.h */,
+				27BD698525ED2CEB008F05D1 /* UIFont+FontSize.m */,
 				2783FFCA25CC56F700E2309A /* CALayer+NWLayer.h */,
 				2783FFCB25CC56F700E2309A /* CALayer+NWLayer.m */,
 				2753F21425CA4A2100C8291B /* Main.storyboard */,
@@ -184,20 +201,6 @@
 			path = NWModelUITests;
 			sourceTree = "<group>";
 		};
-		74B14D43A24655A8899D11AE /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C19C8217ECD5A008E3AB83D9 /* Pods-NWModel.debug.xcconfig */,
-				6BACBB2E557CCE139E4DC380 /* Pods-NWModel.release.xcconfig */,
-				56B3FA3B104B4390FFA58A3C /* Pods-NWModel-NWModelUITests.debug.xcconfig */,
-				E284D433A5C82FD8C4858675 /* Pods-NWModel-NWModelUITests.release.xcconfig */,
-				28FFE3620FBE69525336ABB9 /* Pods-NWModelTests.debug.xcconfig */,
-				8EF61F42E93F6CD17EEC0B94 /* Pods-NWModelTests.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -205,11 +208,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2753F23725CA4A2400C8291B /* Build configuration list for PBXNativeTarget "NWModel" */;
 			buildPhases = (
-				E5D65029DF120B1399FD208B /* [CP] Check Pods Manifest.lock */,
 				2753F20425CA4A2100C8291B /* Sources */,
 				2753F20525CA4A2100C8291B /* Frameworks */,
 				2753F20625CA4A2100C8291B /* Resources */,
-				B8B68289AF5BD977253BACBA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -247,7 +248,6 @@
 				2753F22A25CA4A2400C8291B /* Sources */,
 				2753F22B25CA4A2400C8291B /* Frameworks */,
 				2753F22C25CA4A2400C8291B /* Resources */,
-				28FEFDC230496E70EEB441E0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -328,23 +328,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		28FEFDC230496E70EEB441E0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NWModel-NWModelUITests/Pods-NWModel-NWModelUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NWModel-NWModelUITests/Pods-NWModel-NWModelUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NWModel-NWModelUITests/Pods-NWModel-NWModelUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4917C738CEC2CE08BE68DD49 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -361,45 +344,6 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-NWModelTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B8B68289AF5BD977253BACBA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NWModel/Pods-NWModel-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NWModel/Pods-NWModel-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NWModel/Pods-NWModel-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E5D65029DF120B1399FD208B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-NWModel-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -437,12 +381,18 @@
 			files = (
 				27D4B15D25CBD6C4008002DF /* NSObject+NWModel.m in Sources */,
 				2783FFCC25CC56F700E2309A /* CALayer+NWLayer.m in Sources */,
+				27BD698625ED2CEB008F05D1 /* UIFont+FontSize.m in Sources */,
 				2753F21325CA4A2100C8291B /* ViewController.m in Sources */,
+				279484DA25F071F300B592CE /* NWTestLabel.m in Sources */,
+				2714640025F0D5780071F1F9 /* NWTableCell.m in Sources */,
+				279AFD9C25E88AC70032A4B0 /* NWFPSLabel.m in Sources */,
 				2753F20D25CA4A2100C8291B /* AppDelegate.m in Sources */,
 				2753F21E25CA4A2400C8291B /* main.m in Sources */,
+				279AFD9625E887660032A4B0 /* NWProxy.m in Sources */,
 				2753F21025CA4A2100C8291B /* SceneDelegate.m in Sources */,
 				277AA99B25CCF011005EF904 /* NWClassInfo.m in Sources */,
 				27F2BB8325D27FCF00F9C9EC /* NWUser.m in Sources */,
+				27BD698025ED2B33008F05D1 /* UILabel+Extension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,11 +561,11 @@
 		};
 		2753F23825CA4A2400C8291B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C19C8217ECD5A008E3AB83D9 /* Pods-NWModel.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = CVT5K5W5HB;
 				INFOPLIST_FILE = NWModel/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -631,7 +581,6 @@
 		};
 		2753F23925CA4A2400C8291B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6BACBB2E557CCE139E4DC380 /* Pods-NWModel.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -651,7 +600,6 @@
 		};
 		2753F23B25CA4A2400C8291B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 28FFE3620FBE69525336ABB9 /* Pods-NWModelTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -672,7 +620,6 @@
 		};
 		2753F23C25CA4A2400C8291B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8EF61F42E93F6CD17EEC0B94 /* Pods-NWModelTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -693,7 +640,6 @@
 		};
 		2753F23E25CA4A2400C8291B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 56B3FA3B104B4390FFA58A3C /* Pods-NWModel-NWModelUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CVT5K5W5HB;
@@ -712,7 +658,6 @@
 		};
 		2753F23F25CA4A2400C8291B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E284D433A5C82FD8C4858675 /* Pods-NWModel-NWModelUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CVT5K5W5HB;

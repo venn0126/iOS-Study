@@ -125,7 +125,7 @@ static const NSInteger MXRMonitorRunloopStandstillCount = 5;
     
     
 }
-
+/// init monitor and semaphore
 static void runloopObserverCallBack(CFRunLoopObserverRef observer,CFRunLoopActivity activity,void *info){
     
     NWRunLoopMonitor *monitor = [NWRunLoopMonitor monitored];

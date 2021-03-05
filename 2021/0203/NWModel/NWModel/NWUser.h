@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) NSUInteger uid;
 @property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *sex;
+
 
 
 
