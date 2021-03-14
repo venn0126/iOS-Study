@@ -116,8 +116,8 @@
             filePath = "NWModel/ViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "397"
-            endingLineNumber = "397"
+            startingLineNumber = "450"
+            endingLineNumber = "450"
             landmarkName = "-adjustOffset:"
             landmarkType = "7">
          </BreakpointContent>

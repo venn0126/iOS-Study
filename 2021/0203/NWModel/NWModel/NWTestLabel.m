@@ -30,6 +30,7 @@
 - (CGFloat)preferredMaxLayoutWidth {
     NSLog(@"nw lable - %@",NSStringFromSelector(_cmd));
     return [super preferredMaxLayoutWidth];
+    
 }
 
 @end

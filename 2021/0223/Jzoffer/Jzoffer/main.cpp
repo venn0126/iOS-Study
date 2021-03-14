@@ -6,6 +6,8 @@
 //
 
 #include <iostream>
+#include <cmath>
+using namespace std;
 
 struct ListNode {
     int val;
@@ -90,9 +92,8 @@ public:
         }
     }
     
+    // 进行大顶堆排序
     void heapSort(int nums[],int len) {
-//        int len = nums.size() - 1;
-        // 进行大顶堆排序
         // 创建堆
         buildMaxHeap(nums, len);
         // 首先把数组首元素和尾元素对换，长度-1
@@ -104,6 +105,8 @@ public:
             maxHeapify(nums, 0, len);
         }
     }
+    
+    /********************** ************************/
     
     /// 寻找旋转数组的最小值
     int findMin(int nums[],int len) {
@@ -256,13 +259,205 @@ public:
         
     }
     
+    
+    /// LCS =====>DP
+    /// 构建c[i][j]需要O(mn)，输出1个LCS的序列需要O(m+n)
+    int lcs(string s1, string s2) {
+        
+        int n = (int)s1.length();
+        int m = (int)s2.length();
+        
+        // 创建二维数组
+        int **c = new int*[n];
+        for (int i = 0; i < n; i++) {
+            c[i] = new int(m);
+        }
+        
+        
+        // 递归填表
+        for (int i = 0; i <= n; i++) {
+            for (int j = 0; j <= m; j++) {
+                if (i == 0 || j == 0) {
+                    c[i][j] = 0;
+                } else if(s1[i-1] == s2[j-1]) {
+                    c[i][j] = c[i-1][j-1] + 1;
+                } else {
+//                    c[i][j] = max_element(c[i-1][j], c[i][j-1]);
+                }
+            }
+        }
+        
+        
+        // 释放二维数组
+        for (int i = 0; i < n; i++) {
+            delete []c[i];
+        }
+        delete []c;
+        return c[n][m];
+    }
+    
+    // 翻转链表
+//    ListNode*  reverseList1(ListNode *head) {
+//        if (head == NULL) {
+//            return NULL;
+//        }
+//
+//        ListNode *curr = head;
+//        ListNode *pre = NULL,*tmp = NULL;
+//        while (curr) {
+//            tmp = curr->next;
+//            curr->next = pre;
+//            pre = curr;
+//            curr = tmp;
+//        }
+//
+//        return pre;
+//    }
+    
+    // DP寻找最大子序列 或者子串
+    int lcs1 (string s1,string s2) {
+        
+        int len1 = (int)s1.size();
+        int len2 = (int)s2.size();
+        
+        // 初始化二维数组
+        int **c = new int*[len1];
+        for (int i = 0; i < len1; i++) {
+            c[i] = new int[len2];
+        }
+        
+        for (int i = 0; i < len1; i++) {
+            for (int j = 0; j < len2; j++) {
+                if (i == 0 || j == 0) {
+                    c[i][j] = 0;
+                } else if(s1[i-1] == s2[j-1]){
+                    c[i][j] = c[i-1][j-1] + 1;
+                } else {
+//                    c[i][j] = max_element(c[i-1][j], c[i][j-1]);
+                }
+            }
+        }
+        
+        // 返回数组
+        while (len1 > 0 && len2 > 0) {
+            
+        }
+        
+        
+        // 释放二维数组
+        for (int i = 0; i < len1; i++) {
+            delete []c[i];
+        }
+        delete []c;
+        return c[len1][len2];
+    }
+    
+    // 两个子串的最长子序列长度
+    int findSubLen(string s1,string s2) {
+        // get bound len
+        int len1 = (int)s1.size();
+        int len2 = (int)s2.size();
+        // init two array
+        int **c = new int*[len1];
+        for (int i = 0; i < len1; i++) {
+            c[i] = new int[len2];
+        }
+        
+        
+        // main judge
+        
+        for (int i = 0; i < len1; i++) {
+            for (int j = 0; j < len2; j++) {
+                if (s1[i] == 0 || s2[j] == 0) {
+                    c[i][j] = 0;
+                }else if(s1[i-1] == s2[j-1]) {
+                    c[i][j] = c[i-1][j-1] + 1;
+                } else {
+//                    c[i][j] = max_element(c[i-1][j], c[i][j-1]);
+                }
+            }
+        }
+        
+        
+        // del two array
+        for (int i = 0; i < len1; i++) {
+            delete []c[i];
+        }
+        delete []c;
+        
+        return c[len1][len2];
+    }
+    
+    
+    
 };
+
+
+void testPoint() {
+    
+    int a = 5;
+//    int *p1 = &a;
+//    std::cout << p1 << "\n";
+    
+//    int b = 8;
+//    p1 = &b;// 指针修改
+//    std::cout << p1 << "\n";
+//
+//    b = 10;
+//    std::cout << p1 << "\n";
+
+
+    
+    const int *p2 = &a;
+    std::cout << p2 << "\n";
+    
+    a = 10;
+    std::cout << a << "\n";
+    
+    int c = 100;
+    p2 = &c;
+    std::cout << p2 << "\n";
+
+    
+    
+    const int * const p3 = &a;
+    std::cout << p3 << "\n";
+    
+//    p3 = &c;
+    std::cout << p3 << "\n";
+}
+
+/// 指针函数与函数指针
+int* addition(int a,int b) {
+    int *sum = new int(a+b);
+    return sum;
+}
+
+int subtraction(int a,int b) {
+    return a-b;
+}
+
+int operation(int x,int y,int (*func)(int,int)) {
+    return (*func)(x,y);
+}
+
+int (*minus)(int,int) = subtraction;
+
 
 int main(int argc, const char * argv[]) {
     // insert code here...
     std::cout << "Hello, World!\n";
     
+
     Solution sol;
+    
+    int *m = addition(5, 6);
+    std::cout << *m << "\n";
+    
+//    int n = operation(3, *m, minus<>);
+    
+    
+    
 //    cout <<"The fib res is " << sol.Fib(10) << endl;
 //    std::cout << sol.Fib1(3);
 //    int num[] = {4,5,6,7,1,2};
@@ -291,8 +486,8 @@ int main(int argc, const char * argv[]) {
     
 //    int res = sol.oneCount(100);
 //    std::cout << res << "\n";
-
-
+//    testPoint();
+    
 
 
     return 0;

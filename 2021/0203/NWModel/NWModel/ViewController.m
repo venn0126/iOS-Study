@@ -43,6 +43,7 @@ typedef void (^nwBlock) (void);
 
 @property (nonatomic, copy) nwBlock wBlock;
 
+@property (nonatomic, strong) id observer;
 
 
 
@@ -60,14 +61,28 @@ typedef void (^nwBlock) (void);
     
 }
 
+
+- (void)dealloc {
+    
+    NSLog(@"类与方法:%@ (在第(%@)行)，描述%@",@(__PRETTY_FUNCTION__),@(__LINE__),self);
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self nw_removeObserver];
+}
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     self.view.backgroundColor = UIColor.greenColor;
     
-    NWUser *user = [[NWUser alloc] init];
-    NSLog(@"%@",user);
+//    NWUser *user = [[NWUser alloc] init];
+//    NSLog(@"%@",user);
 
 
 //    [self testBackQueueDeallocObject];
@@ -183,7 +198,9 @@ typedef void (^nwBlock) (void);
 //
 //    [self testThatFits];
     
-    [self testTouchAndAnimation];
+//    [self testTouchAndAnimation];
+    
+    [self testThatFits];
     
 }
 
@@ -207,11 +224,11 @@ typedef void (^nwBlock) (void);
 //    }];
     
     
-    self.wBlock = ^{
-        self.view.backgroundColor = UIColor.redColor;
-    };
-    
-    self.wBlock();
+//    self.wBlock = ^{
+//        self.view.backgroundColor = UIColor.redColor;
+//    };
+//
+//    self.wBlock();
     
 //    [UIView animateWithDuration:10 animations:^{
 //        self.nwButton.center = CGPointMake(self.nwButton.center.x, self.nwButton.center.y +100);
@@ -219,21 +236,28 @@ typedef void (^nwBlock) (void);
 //        NSLog (@"动画结束了");
 //    }];
     
-//    CALayer *tmpLayer = [CALayer layer];
-//    tmpLayer.op
-//    CALayer
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"someNotification"
+                                                      object:nil
+                                                       queue:[NSOperationQueue mainQueue]
+                                                  usingBlock:^(NSNotification * notification) {
+        self.nwCell = nil;
+
+    }];
     
     
-    // 显示动画,core animation提供显示动画类型，cabasice，cakey，cagroup，这些类型可以直接提交到calyer上
-//    UIView beginAnimations:<#(nullable NSString *)#> context:<#(nullable void *)#>
-//    [UIView commitAnimations];
+//    self.observer = [[NSNotificationCenter defaultCenter] addObserverForName:@"testKey"
+//                                                                  object:nil
+//                                                                   queue:nil
+//                                                              usingBlock:^(NSNotification *note) {
+//
+//        NSLog(@"类名与方法名: %@(在第%@行)，描述：%@",@(__PRETTY_FUNCTION__),@(__LINE__),self);
+//    }];
     
-    // 隐式动画,
-    //    UIView animateWithDuration:<#(NSTimeInterval)#> animations:<#^(void)animations#>
-    //隐式动画是系统框架自动完成的,CATransaction的+begin和+commit方法在+animateWithDuration:animations:内部自动调用，这样block中所有属性的改变都会被事务所包含。
-    
-    
-    
+}
+
+- (void)nw_removeObserver {
+    [[NSNotificationCenter defaultCenter] removeObserver:self.observer];
 }
 
 
@@ -260,7 +284,7 @@ typedef void (^nwBlock) (void);
     self.nwTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 88, self.view.bounds.size.width, self.view.bounds.size.height - 88) style:UITableViewStylePlain];
     [self.view addSubview:self.nwTableView];
     
-    [self.nwTableView registerClass:[NWTableCell class] forCellReuseIdentifier:@"NWTableCell"];
+    [self.nwTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"NWTableCell"];
     self.nwTableView.delegate = self;
     self.nwTableView.dataSource = self;
     
@@ -274,30 +298,59 @@ typedef void (^nwBlock) (void);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.tableData.count;
+    return 190;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NWTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NWTableCell"];
+//    NWTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NWTableCell"];
+//    if (!cell) {
+//        cell = [[NWTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NWTableCell"];
+//    }
+//    cell.nwText = self.tableData[indexPath.row];
+    
+    NSLog(@"%@---%@---%@",@(__PRETTY_FUNCTION__),@(__LINE__),indexPath);
+
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NWTableCell"];
     if (!cell) {
-        cell = [[NWTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NWTableCell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NWTableCell"];
     }
-    cell.nwText = self.tableData[indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@-%@",@(indexPath.section),@(indexPath.row)];
     return cell;
 }
 #pragma mark - Tabele View Delegate
 
-// 不需要调用调用n次这个方法就可以预估cell的高度，n为cell的个数
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+- (BOOL)isInScreen:(CGRect)cellFrame {
     
-    NWTableCell *cell = self.nwCell;
-    cell.nwText = self.tableData[indexPath.row];
-    CGSize size = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-    NSLog(@"h=%f", size.height + 1);
-    return 1 + size.height;
+    CGFloat offSetY = self.nwTableView.contentOffset.y;
+    // 内容向上滑 && 内容向下滑
+    return  CGRectGetMaxY(cellFrame) > offSetY && cellFrame.origin.y < offSetY + self.view.bounds.size.height - 88;
+    
     
 }
+
+// 不需要调用调用n次这个方法就可以预估cell的高度，n为cell的个数
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//
+//    NSLog(@"");
+//    NWTableCell *cell = self.nwCell;
+//    cell.nwText = self.tableData[indexPath.row];
+//    CGSize size = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+//    NSLog(@"h=%f", size.height + 1);
+//    return 1 + size.height;
+//    NSLog(@"%@---%@---%@",@(__PRETTY_FUNCTION__),@(__LINE__),indexPath);
+    return 100;
+}
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//
+//    /*
+//     tableview heightForRowIndexPath方法会调用最多18次，小于18就去调用小于18的次数
+//     */
+//    NSLog(@"%@---%@---%@",@(__PRETTY_FUNCTION__),@(__LINE__),indexPath);
+//    return 100;
+//}
 
 - (void)nwLabelForTest {
     
@@ -1177,11 +1230,6 @@ typedef struct _struct {
     [aScanner scanUpToString:separatorString intoString:&container];
 
     NSLog(@"container %@ %ld",container,anInteger);
-}
-
-- (void)dealloc {
-    
-    
 }
 
 @end

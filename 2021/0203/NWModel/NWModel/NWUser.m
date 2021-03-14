@@ -222,6 +222,10 @@ void foo_ {
 - (void)didChangeValueForKey:(NSString *)key {
     NSLog(@"111--%@",NSStringFromSelector(_cmd));
     [super didChangeValueForKey:key];
+    
+    
+//    self makeObject
+    
 }
 
 @end
