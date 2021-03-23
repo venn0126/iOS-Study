@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2713A88D260085AE00D1D4E6 /* UIImageView+NWBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 2713A88C260085AE00D1D4E6 /* UIImageView+NWBackground.m */; };
+		2713A8922600883A00D1D4E6 /* ImgBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2713A8912600883A00D1D4E6 /* ImgBundle.bundle */; };
+		273D09DE2601E9490083F73C /* NWPerson+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 273D09DD2601E9490083F73C /* NWPerson+Extension.m */; };
+		273D09E42601EAA30083F73C /* NWPerson+_Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 273D09E32601EAA30083F73C /* NWPerson+_Extension.m */; };
+		273D09ED2602F1400083F73C /* UIImageView+CornerRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 273D09EC2602F1400083F73C /* UIImageView+CornerRadius.m */; };
+		273D09FC2602FF270083F73C /* UIImage+CornerRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 273D09FB2602FF270083F73C /* UIImage+CornerRadius.m */; };
 		27401BCC25F24BA100D2EDEA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27401BCB25F24BA100D2EDEA /* AppDelegate.m */; };
 		27401BCF25F24BA100D2EDEA /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27401BCE25F24BA100D2EDEA /* SceneDelegate.m */; };
 		27401BD225F24BA100D2EDEA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27401BD125F24BA100D2EDEA /* ViewController.m */; };
@@ -18,6 +24,7 @@
 		27401BF225F24BA500D2EDEA /* YPYDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27401BF125F24BA500D2EDEA /* YPYDemoUITests.m */; };
 		27401C0725F24BE200D2EDEA /* NWButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27401C0625F24BE200D2EDEA /* NWButton.m */; };
 		27401C0D25F28EA200D2EDEA /* NWCacheIOP.m in Sources */ = {isa = PBXBuildFile; fileRef = 27401C0C25F28EA200D2EDEA /* NWCacheIOP.m */; };
+		2788476D25FF33050062A158 /* NWCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2788476C25FF33050062A158 /* NWCollectionViewCell.m */; };
 		278C9C1125F3515C004D90F3 /* SomeSDWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 278C9C1025F3515C004D90F3 /* SomeSDWebImage.m */; };
 		27BC763A25FC95D300BC15F5 /* NWPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 27BC763925FC95D300BC15F5 /* NWPerson.m */; };
 /* End PBXBuildFile section */
@@ -40,6 +47,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2713A88B260085AE00D1D4E6 /* UIImageView+NWBackground.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+NWBackground.h"; sourceTree = "<group>"; };
+		2713A88C260085AE00D1D4E6 /* UIImageView+NWBackground.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+NWBackground.m"; sourceTree = "<group>"; };
+		2713A8912600883A00D1D4E6 /* ImgBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ImgBundle.bundle; sourceTree = "<group>"; };
+		273D09DC2601E9490083F73C /* NWPerson+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NWPerson+Extension.h"; sourceTree = "<group>"; };
+		273D09DD2601E9490083F73C /* NWPerson+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NWPerson+Extension.m"; sourceTree = "<group>"; };
+		273D09E22601EAA30083F73C /* NWPerson+_Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NWPerson+_Extension.h"; sourceTree = "<group>"; };
+		273D09E32601EAA30083F73C /* NWPerson+_Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NWPerson+_Extension.m"; sourceTree = "<group>"; };
+		273D09EB2602F1400083F73C /* UIImageView+CornerRadius.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+CornerRadius.h"; sourceTree = "<group>"; };
+		273D09EC2602F1400083F73C /* UIImageView+CornerRadius.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+CornerRadius.m"; sourceTree = "<group>"; };
+		273D09FA2602FF270083F73C /* UIImage+CornerRadius.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+CornerRadius.h"; sourceTree = "<group>"; };
+		273D09FB2602FF270083F73C /* UIImage+CornerRadius.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CornerRadius.m"; sourceTree = "<group>"; };
 		27401BC725F24BA100D2EDEA /* YPYDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YPYDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27401BCA25F24BA100D2EDEA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		27401BCB25F24BA100D2EDEA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -62,6 +80,8 @@
 		27401C0625F24BE200D2EDEA /* NWButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NWButton.m; sourceTree = "<group>"; };
 		27401C0B25F28EA200D2EDEA /* NWCacheIOP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NWCacheIOP.h; sourceTree = "<group>"; };
 		27401C0C25F28EA200D2EDEA /* NWCacheIOP.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NWCacheIOP.m; sourceTree = "<group>"; };
+		2788476B25FF33050062A158 /* NWCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NWCollectionViewCell.h; sourceTree = "<group>"; };
+		2788476C25FF33050062A158 /* NWCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NWCollectionViewCell.m; sourceTree = "<group>"; };
 		278C9C0F25F3515C004D90F3 /* SomeSDWebImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SomeSDWebImage.h; sourceTree = "<group>"; };
 		278C9C1025F3515C004D90F3 /* SomeSDWebImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SomeSDWebImage.m; sourceTree = "<group>"; };
 		27BC763825FC95D300BC15F5 /* NWPerson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NWPerson.h; sourceTree = "<group>"; };
@@ -122,14 +142,27 @@
 				27401BCE25F24BA100D2EDEA /* SceneDelegate.m */,
 				27401BD025F24BA100D2EDEA /* ViewController.h */,
 				27401BD125F24BA100D2EDEA /* ViewController.m */,
+				273D09EB2602F1400083F73C /* UIImageView+CornerRadius.h */,
+				273D09EC2602F1400083F73C /* UIImageView+CornerRadius.m */,
+				273D09FA2602FF270083F73C /* UIImage+CornerRadius.h */,
+				273D09FB2602FF270083F73C /* UIImage+CornerRadius.m */,
+				2713A88B260085AE00D1D4E6 /* UIImageView+NWBackground.h */,
+				2713A88C260085AE00D1D4E6 /* UIImageView+NWBackground.m */,
+				2788476B25FF33050062A158 /* NWCollectionViewCell.h */,
+				2788476C25FF33050062A158 /* NWCollectionViewCell.m */,
 				27401C0B25F28EA200D2EDEA /* NWCacheIOP.h */,
 				27401C0C25F28EA200D2EDEA /* NWCacheIOP.m */,
 				27BC763825FC95D300BC15F5 /* NWPerson.h */,
 				27BC763925FC95D300BC15F5 /* NWPerson.m */,
+				273D09DC2601E9490083F73C /* NWPerson+Extension.h */,
+				273D09DD2601E9490083F73C /* NWPerson+Extension.m */,
+				273D09E22601EAA30083F73C /* NWPerson+_Extension.h */,
+				273D09E32601EAA30083F73C /* NWPerson+_Extension.m */,
 				278C9C0F25F3515C004D90F3 /* SomeSDWebImage.h */,
 				278C9C1025F3515C004D90F3 /* SomeSDWebImage.m */,
 				27401C0525F24BE200D2EDEA /* NWButton.h */,
 				27401C0625F24BE200D2EDEA /* NWButton.m */,
+				2713A8912600883A00D1D4E6 /* ImgBundle.bundle */,
 				27401BD325F24BA100D2EDEA /* Main.storyboard */,
 				27401BD625F24BA500D2EDEA /* Assets.xcassets */,
 				27401BD825F24BA500D2EDEA /* LaunchScreen.storyboard */,
@@ -262,6 +295,7 @@
 				27401BDA25F24BA500D2EDEA /* LaunchScreen.storyboard in Resources */,
 				27401BD725F24BA500D2EDEA /* Assets.xcassets in Resources */,
 				27401BD525F24BA100D2EDEA /* Main.storyboard in Resources */,
+				2713A8922600883A00D1D4E6 /* ImgBundle.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,12 +320,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				273D09E42601EAA30083F73C /* NWPerson+_Extension.m in Sources */,
+				273D09DE2601E9490083F73C /* NWPerson+Extension.m in Sources */,
+				273D09ED2602F1400083F73C /* UIImageView+CornerRadius.m in Sources */,
 				278C9C1125F3515C004D90F3 /* SomeSDWebImage.m in Sources */,
 				27BC763A25FC95D300BC15F5 /* NWPerson.m in Sources */,
 				27401C0725F24BE200D2EDEA /* NWButton.m in Sources */,
 				27401BD225F24BA100D2EDEA /* ViewController.m in Sources */,
 				27401BCC25F24BA100D2EDEA /* AppDelegate.m in Sources */,
+				2713A88D260085AE00D1D4E6 /* UIImageView+NWBackground.m in Sources */,
+				2788476D25FF33050062A158 /* NWCollectionViewCell.m in Sources */,
 				27401BDD25F24BA500D2EDEA /* main.m in Sources */,
+				273D09FC2602FF270083F73C /* UIImage+CornerRadius.m in Sources */,
 				27401C0D25F28EA200D2EDEA /* NWCacheIOP.m in Sources */,
 				27401BCF25F24BA100D2EDEA /* SceneDelegate.m in Sources */,
 			);
@@ -469,7 +509,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CVT5K5W5HB;
 				INFOPLIST_FILE = YPYDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -490,7 +530,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CVT5K5W5HB;
 				INFOPLIST_FILE = YPYDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

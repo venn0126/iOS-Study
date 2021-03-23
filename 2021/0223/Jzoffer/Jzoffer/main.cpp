@@ -7,6 +7,13 @@
 
 #include <iostream>
 #include <cmath>
+#include <deque>
+#include <chrono>
+
+#include <vector>
+
+
+
 using namespace std;
 
 struct ListNode {
@@ -351,45 +358,464 @@ public:
         delete []c;
         return c[len1][len2];
     }
+
     
-    // 两个子串的最长子序列长度
-    int findSubLen(string s1,string s2) {
-        // get bound len
-        int len1 = (int)s1.size();
-        int len2 = (int)s2.size();
-        // init two array
-        int **c = new int*[len1];
-        for (int i = 0; i < len1; i++) {
-            c[i] = new int[len2];
+    
+    /// deque
+    
+    void testDeque() {
+        
+        // 创建一个有10个元素的双端队列，元素类型为int
+        deque<int> a(5);
+        
+        // 给deque赋值
+        for (int i = 0; i < 5; i++) {
+            a[i] = i;
+        }
+        // 输出a的值
+        for (int i = 0; i < 5; i++) {
+            cout << &a[i] << "\n";
+        }
+        cout << endl;
+        
+        // 在头部加入数据5
+        a.push_front(5);
+        for (int i = 0; i < a.size(); i++) {
+            cout << &a[i] << "\n";
+        }
+        cout << endl;
+        
+        // 在尾部加入数据11
+        a.push_back(11);
+        for (int i = 0; i < a.size(); i++) {
+            cout << &a[i] << "\n";
+        }
+        cout << endl;
+        
+        // 在头部删除数据
+        a.pop_front();
+        for (int i = 0; i < a.size(); i++) {
+            cout << &a[i] << "\n";
+        }
+        cout << endl;
+        
+        // 在尾部删除数据
+        a.pop_back();
+        for (int i = 0; i < a.size(); i++) {
+            cout << &a[i] << "\n";
+        }
+        cout << endl;
+        
+        
+        // emplace_back 省去了复制和移动的过程
+        a.emplace_front(6);
+        for (int i = 0; i < a.size(); i++) {
+            cout << &a[i] << "\n";
+        }
+        cout << endl;
+        
+        // emplace_front 省去了复制和移动的过程
+        a.emplace_back(12);
+        for (int i = 0; i < a.size(); i++) {
+            cout << a[i] << "\n";
+        }
+        cout << endl;
+        
+        
+        // insert 需要移动和复制元素
+//        a.insert(a.begin() + 4, 18);
+//        for (int i = 0; i < a.size(); i++) {
+//            cout << &a[i] << "\n";
+//        }
+//        cout << endl;
+        
+        
+        // emplace 不需要移动和复制元素-》在容器指定位置构造元素
+        a.emplace(a.end() + 1, 10);
+        for (int i = 0; i < a.size(); i++) {
+            cout << a[i] << "\n";
+        }
+        cout << endl;
+        
+        
+    }
+    
+    // test insert and emplace
+    void testEmplace() {
+//        {
+//
+//            const auto start = chrono::high_resolution_clock::now();
+//            vector<string> v;
+//            for(size_t i = 0; i < 9999999; ++i)
+//            v.push_back(string("hello")
+//                        );
+//
+//            cout << chrono::duration_cast<chrono::milliseconds>(chrono::high_resolution_clock::now() - start).count() << endl;
+//        }
+//
+//        {
+//            const auto start = chrono::high_resolution_clock::now();
+//            deque<string> v;
+//            for(size_t i = 0; i < 9999999; ++i)
+//                v.push_back(string("hello")
+//            );
+//
+//            cout << chrono::duration_cast<chrono::milliseconds>(chrono::high_resolution_clock::now() - start).count() << endl;
+//        }
+        
+        int count = 999999;
+        
+        {
+            const auto start = chrono::high_resolution_clock::now();
+            
+            deque<int> v(count);
+            for (int i = 0; i < count; i++) {
+                v.insert(v.begin() + i, i);
+            }
+            
+            cout << chrono::duration_cast<chrono::milliseconds>(chrono::high_resolution_clock::now() - start).count() << endl;
+        }
+        
+        {
+            const auto start = chrono::high_resolution_clock::now();
+            deque<int> v(count);
+            for (int i = 0; i < count; i++) {
+                v.emplace(v.begin() + i, i);
+            }
+            
+            cout << chrono::duration_cast<chrono::milliseconds>(chrono::high_resolution_clock::now() - start).count() << endl;
+        }
+
+    }
+    
+    
+    void swap(int a,int b){
+        a = a ^ b;// 11 ^ 10 = 01
+        b = a ^ b;// 01 ^ 10 = 10;
+        a = a ^ b;// 01 ^ 11 = 11
+        
+    }
+    
+    /// 插入排序 平均==最坏=n*n 空间复杂度O1 稳定
+    // 从第二个位置开始进行比较，如果前者大于后者，进行对调，前者下标--
+    void insertion_sort(int arr[],int len) {
+        
+        for (int i = 1; i < len; i++) {
+            int key = arr[i];
+            int j = i - 1;
+            while ((j >= 0 ) && (key < arr[j])) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j+1] = key;
+        }
+    }
+    
+    /// 冒泡排序 平均==最坏 n*n 空间复杂度O(1) 稳定
+    // 从开头位置和其余的元素依次比较，如果前者大于后者进行互换位置
+    void bubble_sort(int arr[],int len) {
+        int count = len - 1;// 总共需要比较len-1次
+        for (int i = 0; i < count; i++) {
+            bool flag = false;//是否需要排序标识符
+            for (int j = 0; j < count - i; j++) {
+                // 如果前者大于后者进行位置互换 并设置标识符为true
+                if (arr[j] > arr[j+1]) {
+                    swap(arr[j], arr[j+1]);
+                    flag = true;
+                }
+                // 如果标识符为NO则没有进行互换证明有序则跳出当前内循环
+                if (!flag) {
+                    break;
+                }
+            }
+        }
+    }
+    
+    /// 选择排序 平均==最坏==n*n 空间O(1) 不稳定
+    // 首先在未排序的序列中找到最小的，存放到排序序列的开头
+    // 然后从剩于未排序元素中继续寻找最小元素，然后放到已经排序的末尾
+    void selection_sort(int arr[],int len) {
+        int count = len - 1;// 总共需要比较len-1次
+        for (int i = 0; i < count; i++) {
+            int min = i;
+            
+            // 每轮需要比较的次数len - i次
+            for (int j = i + 1; j < len; j++) {
+                if (arr[j] < arr[min]) {
+                    // 记录目前能找到的最小值的下标
+                    min = j;
+                }
+            }
+            
+            // 将找到的最小值的下标和i位置的值进行交换
+            if (i != min) {
+                swap(arr[min], arr[i]);
+            }
+        }
+    }
+    
+    /// 迭代斐波那契
+    
+    long long Fibb(unsigned n) {
+        
+        int res[2] = {0,1};
+        if (n < 2) {
+            return res[n];
+        }
+        
+        long long fib0 = 0;
+        long long fib1 = 1,fib2 = 0;
+        for (unsigned int i = 2; i < n;i++) {
+            fib0 = fib1  + fib2;
+            
+            fib2 = fib1;
+            fib1 = fib0;
         }
         
         
-        // main judge
+        return fib0;
+    }
+    
+    // 二分查找
+    int binary_search(int *a,int len,int goal) {
         
-        for (int i = 0; i < len1; i++) {
-            for (int j = 0; j < len2; j++) {
-                if (s1[i] == 0 || s2[j] == 0) {
-                    c[i][j] = 0;
-                }else if(s1[i-1] == s2[j-1]) {
-                    c[i][j] = c[i-1][j-1] + 1;
+        int low = 0;
+        int high = len - 1;
+        
+        while (low <= high) {
+            int mid = (high - low) / 2 + low;
+            if (a[mid] == goal) {
+                return a[mid];
+            }else if(a[mid] > goal){
+                high = mid - 1;
+            }else {
+                low = mid + 1;
+            }
+        }
+        
+        return -1;
+    }
+    
+    // 是否是2的幂
+    bool isPowerOfTwo(int n) {
+        
+        if (n == 1) {
+            return true;
+        }
+        
+        if (n >= 2 && n % 2 == 0) {
+            return (isPowerOfTwo(n/2));
+        }
+        
+        return false;
+    }
+    
+   // 是否是3的幂
+    bool isPowerOfThree(int n) {
+//        if (n == 1) {
+//            return true;
+//        }
+//
+//        if (n >= 2 && n % 3 == 0) {
+//            return isPowerOfThree(n/3);
+//        }
+        
+        if (n > 1) {
+            while (n % 3 == 0) {
+                n = n / 3;
+            }
+        }
+        return n == 1;
+    }
+    
+    /// 是否是质数 除了1和它本身外，不能被其他自然数整除的数
+    // 1 2 3 4 5 ,n=5,5 % (2,3,4)
+    bool isPrime(int n) {
+        if (n < 2) {
+            return true;
+        }
+        for (int i = 2; i < n; i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    /// 质数的个数
+    // input 10 output 4
+    int countOfPrime(int n) {
+        
+        int count = 0;
+        
+        if (n <= 2) {
+            count++;
+        }
+        
+        for (int i = 2; i <= n; i++) {
+            if (isPrime(i)) {
+                count++;
+            }
+        }
+        
+        return count ;
+    }
+    
+    // 是否是丑数 ugly
+    bool isUgly(int n){
+        
+        if (n == 0) {
+            return false;
+        }else if(n == 1){
+            return true;
+        }else {
+            
+            while (n % 2 == 0) {
+                n /= 2;
+            }
+            
+            while (n % 3 == 0) {
+                n /= 3;
+            }
+            
+            while (n % 5 == 0) {
+                n /= 5;
+            }
+            if (n == 1) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
+    // binary search
+    
+    int binarySearch1(int a[],int len,int goal) {
+        
+        int high = len - 1;
+        int low = 0;
+        while (low < high) {
+            // 0 1 2 3 4 5 6
+            // 1 3 8 0 5 2 7
+           int mid = (high - low) / 2 + low;
+            if (a[mid] == goal) {
+                return a[mid];
+            }else if(a[mid] > goal){
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        
+        return -1;
+    }
+    
+    // ******************* Sort ************************
+
+    
+    /// 插入  最坏==平均n*n 空间O(1) 稳定
+    
+    /// 冒泡 最坏==平均n*n 空间O(1) 稳定
+
+    /// 选择 最坏==平均n*n 空间O(1) 不稳定
+
+    /// 快速 最坏n*n,平均O(nlogn) 空间O(logn) 不稳定
+
+
+
+    
+   // ******************* ListNode ************************
+    
+    /// 反转链表
+    
+    /// 链表是否有环
+
+    
+    /// 两个链表的交点
+
+
+    /// 合并两个链表
+
+    /// 找到链表倒数第K个节点 && 删除
+
+
+    /// 倒序打印链表
+        
+    /// 删除某个节点
+    
+    /// 删除重复节点
+ 
+
+    /// 删除链表里某个值的所有节点
+
+
+    /// 左右临界值分离（将小于和大于给定值的节点划分到链表两侧）
+
+
+    /// 左右奇偶index值分离 odd:奇数 even偶数
+    
+    ListNode *oddEvenList(ListNode *head) {
+        
+        if (head == nullptr) {
+            return head;
+        }
+        
+        ListNode *evenHead = head->next;
+        ListNode *odd = head;
+        ListNode *even = evenHead;
+        
+        while (even != nullptr || even->next != nullptr) {
+            odd->next = even->next;
+            odd = odd->next;
+            even->next = odd->next;
+            even = even->next;
+        }
+        
+        odd->next = evenHead;
+        
+        return head;
+    }
+    
+
+    
+    // ******************* Array Questions ************************
+
+    /// 检测数组中是否包含重复的元素
+    bool containsSameElem(int arr[],int len) {
+        
+        // 排序
+        // sort arr
+        // 比较
+        for (int i = 0;i < len ; i++) {
+            if (arr[i] == arr[i+1]) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
+    /// 出现次数 超过数组长度一半的元素
+    int majorityElement(int arr[],int len) {
+        int target = 0;
+        int count = 0;
+        for (int i = 0; i < len; i++) {
+            if (count == 0) {
+                target = arr[i];
+            } else {
+                if (target == arr[i]) {
+                    count++;
                 } else {
-//                    c[i][j] = max_element(c[i-1][j], c[i][j-1]);
+                    count--;
                 }
             }
         }
         
-        
-        // del two array
-        for (int i = 0; i < len1; i++) {
-            delete []c[i];
-        }
-        delete []c;
-        
-        return c[len1][len2];
+        return target;
     }
     
-    
-    
+
 };
 
 
@@ -405,6 +831,8 @@ void testPoint() {
 //
 //    b = 10;
 //    std::cout << p1 << "\n";
+    
+    
 
 
     
@@ -443,6 +871,14 @@ int operation(int x,int y,int (*func)(int,int)) {
 
 int (*minus)(int,int) = subtraction;
 
+void test(void *p) {
+    cout << "p is pointer" << p << endl;
+}
+
+void test(int n) {
+    cout << "n is int num" << n << endl;
+}
+
 
 int main(int argc, const char * argv[]) {
     // insert code here...
@@ -451,9 +887,16 @@ int main(int argc, const char * argv[]) {
 
     Solution sol;
     
-    int *m = addition(5, 6);
-    std::cout << *m << "\n";
     
+    
+//    sol.testDeque();
+//    sol.testEmplace();
+    
+    
+    
+//    int *m = addition(5, 6);
+//    std::cout << *m << "\n";
+//
 //    int n = operation(3, *m, minus<>);
     
     

@@ -22,8 +22,9 @@
         
         // 获取类对象
         Class cls = [self class];
-        // 拿到系统方法
+        // 拿到系统方法的SEL
         SEL orignalSEL = @selector(awakeFromNib);
+        // 拿到系统方法的method
         Method orignalMethod = class_getInstanceMethod(cls, @selector(awakeFromNib));
         // 自定义SEL和method
         SEL nwMethodSEL = @selector(nwAwakeFromNib);

@@ -18,10 +18,12 @@
 #import <WebKit/WebKit.h>
 
 #import "NWFPSLabel.h"
-#import "NWUser.h"
 
 #import "NWTestLabel.h"
 #import "NWTableCell.h"
+
+#import "NSObject+GTModel.h"
+#import "GTMovie.h"
 
 #define onExit\
     __strong void(^block)(void) __attribute__((cleanup(blockCleanUp), unused)) = ^
@@ -200,7 +202,60 @@ typedef void (^nwBlock) (void);
     
 //    [self testTouchAndAnimation];
     
-    [self testThatFits];
+//    [self testThatFits];
+    
+
+    
+    [self testDictToModel];
+    
+}
+
+- (void)testDictToModel {
+    
+    NSDictionary *user = @{@"name": @"gao tian",
+                           @"age": @(18),
+                           @"sex": @"man"
+    };
+    
+    NSDictionary *dict2 = @{@"movieId" : @"28901",
+                            @"movieName" : @"my heart will go on",
+                            @"pic_url" : @"http://www.time.com",
+                            @"user" : user
+    };
+    
+    
+    NSArray *modelArray = @[dict2,dict2,dict2];
+    NSMutableArray *dataArray = [NSMutableArray array];
+    
+    for (NSDictionary *item in modelArray) {
+        GTMovie *moive = [GTMovie gt_modelWithDictionary:item];
+        [dataArray addObject:moive];
+        
+//        NSLog(@"item--%@",item.description);
+        
+    }
+    
+    NSLog(@"dataArray0---%@",dataArray);
+    
+    
+    NSArray *interArray = @[user,user];
+    NSDictionary *dict3 = @{@"movieId" : @"28901",
+                            @"movieName" : @"my heart will go on",
+                            @"pic_url" : @"http://www.time.com",
+                            @"userArray" : interArray
+    };
+    
+    
+    [dataArray removeAllObjects];
+    NSArray *array3 = @[dict3,dict3,dict3];
+    for (NSDictionary *item in array3) {
+        GTMovie *movie = [GTMovie gt_modelWithDictionary:item];
+        [dataArray addObject:movie];
+    }
+    
+    NSLog(@"dataArray3---%@",dataArray);
+    
+
     
 }
 
@@ -378,17 +433,17 @@ typedef void (^nwBlock) (void);
 
 - (void)testEqual {
     
-    NWUser *nw = [NWUser new];
-    
-    [nw addObserver:self forKeyPath:@"name" options:NSKeyValueObservingOptionNew context:NULL];
-    
-    nw.name = @"augus";
-    
-    [nw removeObserver:self forKeyPath:@"name"];
+//    NWUser *nw = [NWUser new];
+//
+//    [nw addObserver:self forKeyPath:@"name" options:NSKeyValueObservingOptionNew context:NULL];
+//
+//    nw.name = @"augus";
+//
+//    [nw removeObserver:self forKeyPath:@"name"];
 //    nw.name = @"gao";
     
     // 忽略未使用的变量或者对象
-#pragma unused (nw)
+//#pragma unused (nw)
     
 //    NSMutableDictionary *dict = [NSMutableDictionary new];
 //    [dict setObject:nw forKey:@"Tian"];
@@ -397,16 +452,16 @@ typedef void (^nwBlock) (void);
 //        NSLog(@"equal");
 //    }
     
-    unsigned int outCount;
-    objc_property_t *properties = class_copyPropertyList(nw.class, &outCount);
-    for (int i = 0; i < outCount; i++) {
-        objc_property_t property = properties[i];
-        NSString *propertyName = [NSString stringWithCString:property_getName(property) encoding:NSUTF8StringEncoding];
-        
-//        objc_property_attribute_t
-        NSString *propertyAttr = [NSString stringWithCString:property_getAttributes(property) encoding:NSUTF8StringEncoding];
-        NSLog(@"pro---%@---%@",propertyName,propertyAttr);
-    }
+//    unsigned int outCount;
+//    objc_property_t *properties = class_copyPropertyList(nw.class, &outCount);
+//    for (int i = 0; i < outCount; i++) {
+//        objc_property_t property = properties[i];
+//        NSString *propertyName = [NSString stringWithCString:property_getName(property) encoding:NSUTF8StringEncoding];
+//
+////        objc_property_attribute_t
+//        NSString *propertyAttr = [NSString stringWithCString:property_getAttributes(property) encoding:NSUTF8StringEncoding];
+//        NSLog(@"pro---%@---%@",propertyName,propertyAttr);
+//    }
     
 //    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     
@@ -418,9 +473,9 @@ typedef void (^nwBlock) (void);
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     
-    if ([object isKindOfClass:[NWUser class]] && [keyPath isEqualToString:@"name"]) {
-        NSLog(@"new value:%@",change[NSKeyValueChangeNewKey]);
-    }
+//    if ([object isKindOfClass:[NWUser class]] && [keyPath isEqualToString:@"name"]) {
+//        NSLog(@"new value:%@",change[NSKeyValueChangeNewKey]);
+//    }
 }
 
 

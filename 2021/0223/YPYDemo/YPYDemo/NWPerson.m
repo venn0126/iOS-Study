@@ -104,5 +104,16 @@
     self.nwEqual = operation(12);
     return self;
 }
+
++ (void)load {
+    
+    NSLog(@"%@ : %@",@(__PRETTY_FUNCTION__),@(__LINE__));
+
+}
+
+- (void)personPrint {
+    
+    NSLog(@"%@ : %@",@(__PRETTY_FUNCTION__),@(__LINE__));
+}
  
 @end
