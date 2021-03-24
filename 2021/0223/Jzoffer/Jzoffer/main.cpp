@@ -11,6 +11,10 @@
 #include <chrono>
 
 #include <vector>
+#include <algorithm>
+#include <set>
+#include <unordered_map>
+#include <queue>
 
 
 
@@ -275,9 +279,9 @@ public:
         int m = (int)s2.length();
         
         // 创建二维数组
-        int **c = new int*[n];
-        for (int i = 0; i < n; i++) {
-            c[i] = new int(m);
+        int **c = new int*[n+1];
+        for (int i = 0; i < n+1; i++) {
+            c[i] = new int[m+1];
         }
         
         
@@ -289,78 +293,22 @@ public:
                 } else if(s1[i-1] == s2[j-1]) {
                     c[i][j] = c[i-1][j-1] + 1;
                 } else {
-//                    c[i][j] = max_element(c[i-1][j], c[i][j-1]);
+                    c[i][j] = max(c[i-1][j], c[i][j-1]);
                 }
             }
         }
         
         
         // 释放二维数组
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n+1; i++) {
             delete []c[i];
         }
         delete []c;
         return c[n][m];
     }
     
-    // 翻转链表
-//    ListNode*  reverseList1(ListNode *head) {
-//        if (head == NULL) {
-//            return NULL;
-//        }
-//
-//        ListNode *curr = head;
-//        ListNode *pre = NULL,*tmp = NULL;
-//        while (curr) {
-//            tmp = curr->next;
-//            curr->next = pre;
-//            pre = curr;
-//            curr = tmp;
-//        }
-//
-//        return pre;
-//    }
-    
-    // DP寻找最大子序列 或者子串
-    int lcs1 (string s1,string s2) {
-        
-        int len1 = (int)s1.size();
-        int len2 = (int)s2.size();
-        
-        // 初始化二维数组
-        int **c = new int*[len1];
-        for (int i = 0; i < len1; i++) {
-            c[i] = new int[len2];
-        }
-        
-        for (int i = 0; i < len1; i++) {
-            for (int j = 0; j < len2; j++) {
-                if (i == 0 || j == 0) {
-                    c[i][j] = 0;
-                } else if(s1[i-1] == s2[j-1]){
-                    c[i][j] = c[i-1][j-1] + 1;
-                } else {
-//                    c[i][j] = max_element(c[i-1][j], c[i][j-1]);
-                }
-            }
-        }
-        
-        // 返回数组
-        while (len1 > 0 && len2 > 0) {
-            
-        }
-        
-        
-        // 释放二维数组
-        for (int i = 0; i < len1; i++) {
-            delete []c[i];
-        }
-        delete []c;
-        return c[len1][len2];
-    }
 
-    
-    
+
     /// deque
     
     void testDeque() {
@@ -715,10 +663,13 @@ public:
 
     
     /// 插入  最坏==平均n*n 空间O(1) 稳定
+
     
     /// 冒泡 最坏==平均n*n 空间O(1) 稳定
 
+
     /// 选择 最坏==平均n*n 空间O(1) 不稳定
+
 
     /// 快速 最坏n*n,平均O(nlogn) 空间O(logn) 不稳定
 
@@ -728,32 +679,60 @@ public:
    // ******************* ListNode ************************
     
     /// 反转链表
+
     
     /// 链表是否有环
+
 
     
     /// 两个链表的交点
 
 
+
     /// 合并两个链表
 
+
     /// 找到链表倒数第K个节点 && 删除
+ 
 
 
     /// 倒序打印链表
+
+    
         
     /// 删除某个节点
+
     
     /// 删除重复节点
- 
 
     /// 删除链表里某个值的所有节点
+
 
 
     /// 左右临界值分离（将小于和大于给定值的节点划分到链表两侧）
 
 
+
     /// 左右奇偶index值分离 odd:奇数 even偶数
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     ListNode *oddEvenList(ListNode *head) {
         
@@ -782,39 +761,165 @@ public:
     // ******************* Array Questions ************************
 
     /// 检测数组中是否包含重复的元素
-    bool containsSameElem(int arr[],int len) {
-        
-        // 排序
-        // sort arr
-        // 比较
-        for (int i = 0;i < len ; i++) {
-            if (arr[i] == arr[i+1]) {
-                return true;
-            }
-        }
-        return false;
-    }
     
     
     /// 出现次数 超过数组长度一半的元素
-    int majorityElement(int arr[],int len) {
-        int target = 0;
-        int count = 0;
-        for (int i = 0; i < len; i++) {
-            if (count == 0) {
-                target = arr[i];
-            } else {
-                if (target == arr[i]) {
-                    count++;
-                } else {
-                    count--;
-                }
-            }
+
+    
+
+    /// 数组中只出现一次的数字，其余的都是成对出现
+
+
+    /// 寻找数组中缺失的数字
+
+
+    /// 将所有的0移动到数组末尾 Move Zeros O(n) O(1)
+
+
+    /// 移除数组中等于某个值的元素 返回移除后数组的长度
+
+    
+
+    /// 三色旗帜问题
+    
+    /// (有序)数组内部的两个值的和为目标值
+
+
+    
+    /// 无序数组和大于或等于某值的最小子数组,返回子数组的元素个数
+
+
+
+    /// 两个数组的交点元素
+
+    
+    /// 前 K 个高频元素
+    
+    
+    /**
+     
+     哈希----堆排序：时间复杂度O(nlogK),O(n)
+     首先将数组进行HashMap遍历一次，将元素值作为key，出现频次作为value
+     维护一个元素为K的最小堆
+     每次都将新的元素和堆顶元素（最小堆元素）进行比较
+     如果新的元素的频率比堆顶的元素大，则弹出堆顶元素，将新的元素添加到堆中
+     最后，堆中的K个元素即为前K个高频元素
+     
+     哈希---桶排序：时间复杂度O(n),空间复杂度O(n)
+     首先将数组进行HashMap遍历一次，将元素值作为key，出现频次作为value
+     新建一个数组，将哈希表中频次值作为数组下标，然后倒序遍历，取出K个值
+     
+     
+     */
+    vector<int> topKFrequent(vector<int> arr,int k) {
+        unordered_map<int, int> m;
+        priority_queue<pair<int, int>> q;
+        vector<int> res;
+        // 把元素作为key进行赋值map
+        for (auto a : arr) {
+            ++m[a];
+//            cout << a << " 出现次数: " << m[a] << "\n" << endl;
         }
         
-        return target;
+        // map的遍历器
+        for (auto it : m) {
+            // second: 出现的频次
+            // first: 元素
+//            printf("it---second(%d)----first(%d)\n",it.second,it.first);
+            q.push({it.second,it.first});
+        }
+        
+        for (int i = 0; i < k; i++) {
+            res.push_back(q.top().second);
+            q.pop();
+        }
+        
+        
+        return res;
+    }
+        
+    /// 数组中第K大元素
+    int findKthLargest(vector<int> arr,int k) {
+        
+//        sort(arr.begin(), arr.end());
+//        return arr[arr.size() - k];
+        
+        // 在容器范围内，就地建堆，保证最大值在所给范围的最前面，其他值的位置不确定
+//        make_heap(arr.begin(), arr.end());
+//        for (int i = 0; i < k; i++) {
+        // 将堆顶(所给范围的最前面)元素移动到所给范围的最后，并且将新的最大值置于所给范围的最前面
+//            pop_heap(arr.begin(), arr.end());
+        // 销毁并移除最后一个元素
+//            arr.pop_back();
+//        }
+//
+//        return arr[0+1];
+        
+        
+//        sort(arr.begin(), arr.end());
+//        return arr[arr.size() - k];
+        
+        return 0;
+        
     }
     
+    
+    /// 无序数组的两个元素和为目标值 时间复杂度O(n),空间O1
+    
+    
+
+    /// 合并两个有序的数组
+    // arr1 {1,2,3,0,0,0} m=3;
+    // arr2 {4,5,6} n = 3;
+    
+    struct TreeNode {
+        int val;
+        TreeNode *left;
+        TreeNode *right;
+        TreeNode(int x) : val(x),left(NULL),right(NULL) {}
+    };
+    
+    // ******************* Tree Questions ************************
+
+
+    /// 二叉树深度
+    
+    /// 反转二叉树
+    
+    /// 是否是平衡树(一棵空树或它的任意节点的左右两个子树的高度差的绝对值均不超过1。)
+    
+    /// 是否是镜像树（这棵树的左右子树对称节点是镜像对称）
+    
+    ///  树是否相等
+
+    
+    
+    // ******************* String Questions ************************
+
+    ///  反转字符串
+    string reverseString(string s) {
+//        int left = 0;
+//        int right = (int)s.size() - 1;
+//        while (left < right) {
+//            char tmp = s[left];
+//            s[left++] = s[right];
+//            s[right--] = tmp;
+//        }
+    
+//        reverse(s.begin(), s.end());
+
+        
+        
+
+        return s;
+        
+    }
+    
+    /// 最长子串或者子序列 子序列，不连续，子串，连续 动态规划思想
+
+    
+    
+
 
 };
 
@@ -879,6 +984,43 @@ void test(int n) {
     cout << "n is int num" << n << endl;
 }
 
+void testArray(vector<int> arrs) {
+    
+     int nu = arrs[0];
+     std::cout << "Hello," << nu << "\n" << endl;
+    
+    
+
+    
+//        int l = 1;
+//        int r = 2;
+//        int arr[] = {l+1,r+2};
+//        for (int i = 0; i < 2; i++) {
+//            std::cout << "Hello," << arr[i] << "\n" << endl;
+//
+//        }
+//
+//        vector<int> nums = vector<int>(arr,arr+2);
+//        for (int i = 0; i < 2; i++) {
+//            std::cout << "word," << nums[i] << "\n" << endl;
+//        }
+    
+    //    set<int> sets1 = {1,2,3};
+    //    int tmp = 1;
+    //    if (sets1.find(tmp) != sets1.end() ) {
+    //        printf("found \n");
+    //    } else {
+    //        printf("not found\n");
+    //    }
+
+}
+
+void printfArray(vector<int>& arr) {
+    for (int i = 0; i < arr.size(); i++) {
+        std::cout << "index:" << i << " value:" << arr[i] << "\n" << endl;
+    }
+}
+
 
 int main(int argc, const char * argv[]) {
     // insert code here...
@@ -886,11 +1028,35 @@ int main(int argc, const char * argv[]) {
     
 
     Solution sol;
-    
-    
+
+//    vector<int> arr = {3,1,1,4,6,4};
+//    vector<int> res = sol.topKFrequent(arr, 3);
+//    printfArray(res);
+//    int res = sol.findKthLargest(arr, 1);
+//    vector<int> res = sol.topKFrequent(arr, 2);
+//    printf("res--%d\n",res);
+//    printfArray(res);
+
     
 //    sol.testDeque();
 //    sol.testEmplace();
+//    string str="12345";
+//    string s = sol.reverseString(str);
+//    cout << s << "\n" << endl;
+    
+//    string str="123459";
+//    int i = 0,j = (int)str.size() - 1;
+//    while(i < j)
+//        swap(str[i++],str[j--]);
+//
+//    cout<< str << "\n" << endl;
+    
+    
+//    string strOne = "abcdefg";
+//    string strTwo = "adefgwgeweg";
+//    int res = sol.lccss(strOne, strTwo);
+//    cout<< res << "\n" << endl;
+
     
     
     
