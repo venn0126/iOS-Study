@@ -115,5 +115,19 @@
     
     NSLog(@"%@ : %@",@(__PRETTY_FUNCTION__),@(__LINE__));
 }
+
+- (Class)class {
+    
+    return nil;
+}
++ (Class)class {
+    
+    
+//   BOOL res = [self isKindOfClass:[NWPerson class]];
+//    [NSObject class] 
+    
+    
+    return self;
+}
  
 @end

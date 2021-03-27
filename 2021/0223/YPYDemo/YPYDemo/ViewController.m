@@ -15,6 +15,10 @@
 #import "NWPerson+Extension.h"
 #import "UIImage+CornerRadius.h"
 
+
+#import "Person.h"
+#import "NiuPersion.h"
+
 static NSString *kCollectionCell = @"NWCollectionViewCell";
 static const CGFloat kImageWidth = 100;
 
@@ -141,7 +145,81 @@ typedef int (^nwBlock) (int param1,int param2);
 //    [self testCornerRadius];
     
     
-    [self testAtomic];
+//    [self testAtomic];
+    
+
+//    [self testWeakForSome];
+    
+//    NWPerson *person = [[NWPerson alloc] init];
+//    id pcls = [person class];
+    
+//   id cls = [ViewController class];
+    
+    
+//    Person *p = [[Person alloc] init];
+//    p.lastName = @"111";
+    
+    NiuPersion *niu = [[NiuPersion alloc] init];
+    NSLog(@"%p",niu);
+//    niu.lastName = @"niu";
+    
+}
+
+- (void)testWeakForSome {
+    
+    NSObject *ob = [NSObject new];
+    
+    // key:weak修饰的变量指向的对象
+    // value:值就是weak修饰的变量
+    
+//    __weak id weakObj;
+    // &weakObj __weak指针的地址
+    // ob:需要进行弱引用的对象的指针
+//    objc_initWeak(&weakObj,ob);
+    
+    __weak id weakObj = ob;
+    
+    NSLog(@"%@",weakObj);
+//    NSLog(@"%@",objc_loadWeakRetained(&weakObj));
+    
+    
+    // weakobj 离开作用域，销毁
+//    objc_destroyWeak(&weakObj);
+    
+//    UIButton *btn = [UIButton new];
+//    UIControl *con = [UIControl new];
+    
+//    NSProxy *pr = [NSProxy alloc];
+    
+    
+    
+    
+    
+
+}
+
+
+- (NSArray *)testViewImageViews:(UIView *)aView {
+    
+    if (!aView) {
+        return nil;
+    }
+        // 存放结果数组
+    NSMutableArray *tempArray = [NSMutableArray array];
+    for (UIView *sub in aView.subviews) {
+        
+        if ([sub isKindOfClass:[UIImageView class]]) {
+            [tempArray addObject:sub];
+        }
+        
+        // Recursion
+        // recursion
+        NSArray *subArray = [self testViewImageViews:sub];
+        [tempArray addObjectsFromArray:subArray];
+        
+    }
+    
+    return tempArray;
 }
 
 - (void)testAtomic {

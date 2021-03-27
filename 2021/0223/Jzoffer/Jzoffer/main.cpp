@@ -27,6 +27,11 @@ struct ListNode {
 };
 
 
+void printfArray(vector<int> arr) {
+    for (int i = 0; i < arr.size(); i++) {
+        std::cout << "index:" << i << " value:" << arr[i] << "\n" << endl;
+    }
+}
 
 class Solution {
 public:
@@ -46,6 +51,9 @@ public:
         }
         return node1;
     }
+    
+
+
     
     /// 斐波那契数列 递归法
     int Fib(int n) {
@@ -73,48 +81,6 @@ public:
             i++;
         }
         return fib;
-    }
-    
-    /// big heap sort
-    void maxHeapify(int nums[], int i,int len) {
-        for (; (i << 1) + 1 < len; ) {
-            int lson = (i << 1) + 1;
-            int rson = (i << 1) + 2;
-            int large;
-            if (lson <= len && nums[lson] > nums[i]) {
-                large = lson;
-            } else {
-                large = i;
-            }
-            if (rson <= len && nums[rson] > nums[large]) {
-                large = rson;
-            }
-            if (large != i) {
-                std::swap(nums[i],nums[large]);
-            } else {
-                break;
-            }
-        }
-    }
-    // creat big heap
-    void buildMaxHeap(int nums[],int len) {
-        for (int i = len / 2; i >= 0; i--) {
-            maxHeapify(nums, i, len);
-        }
-    }
-    
-    // 进行大顶堆排序
-    void heapSort(int nums[],int len) {
-        // 创建堆
-        buildMaxHeap(nums, len);
-        // 首先把数组首元素和尾元素对换，长度-1
-        // 把长度-1剩下的数组进行大顶堆排序
-        // 循环
-        for (int i = len; i>= 1; --i) {
-            std::swap(nums[i],nums[0]);
-            len -= 1;
-            maxHeapify(nums, 0, len);
-        }
     }
     
     /********************** ************************/
@@ -444,6 +410,12 @@ public:
         
     }
     
+    void swap_ptr(int *a,int *b) {
+        int tmp = *a;
+        *a = *b;
+        *b = tmp;
+    }
+    
     /// 插入排序 平均==最坏=n*n 空间复杂度O1 稳定
     // 从第二个位置开始进行比较，如果前者大于后者，进行对调，前者下标--
     void insertion_sort(int arr[],int len) {
@@ -456,6 +428,11 @@ public:
                 j--;
             }
             arr[j+1] = key;
+        }
+        
+        
+        for (int i = 0; i < len; i++) {
+            std::cout << "index:" << i << " value:" << arr[i] << "\n" << endl;
         }
     }
     
@@ -664,27 +641,23 @@ public:
     
     /// 插入  最坏==平均n*n 空间O(1) 稳定
 
-    
-    /// 冒泡 最坏==平均n*n 空间O(1) 稳定
 
+    /// 冒泡 最坏==平均n*n 空间O(1) 稳定
 
     /// 选择 最坏==平均n*n 空间O(1) 不稳定
 
-
     /// 快速 最坏n*n,平均O(nlogn) 空间O(logn) 不稳定
-
-
-
+    
     
    // ******************* ListNode ************************
     
     /// 反转链表
 
+
     
     /// 链表是否有环
 
 
-    
     /// 两个链表的交点
 
 
@@ -692,32 +665,27 @@ public:
     /// 合并两个链表
 
 
+
     /// 找到链表倒数第K个节点 && 删除
- 
+
 
 
     /// 倒序打印链表
-
     
-        
+    
     /// 删除某个节点
 
-    
     /// 删除重复节点
-
+ 
+    
     /// 删除链表里某个值的所有节点
-
 
 
     /// 左右临界值分离（将小于和大于给定值的节点划分到链表两侧）
 
 
-
     /// 左右奇偶index值分离 odd:奇数 even偶数
-    
 
-    
-    
     
     
     
@@ -761,6 +729,11 @@ public:
     // ******************* Array Questions ************************
 
     /// 检测数组中是否包含重复的元素
+    bool arrayOfDuplicates(vector<int> arr) {
+        
+        sort(arr.begin(), arr.end());
+        return unique(begin(arr), end(arr)) != end(arr);
+    }
     
     
     /// 出现次数 超过数组长度一半的元素
@@ -778,23 +751,19 @@ public:
 
     /// 移除数组中等于某个值的元素 返回移除后数组的长度
 
-    
-
     /// 三色旗帜问题
+
     
     /// (有序)数组内部的两个值的和为目标值
 
-
-    
     /// 无序数组和大于或等于某值的最小子数组,返回子数组的元素个数
-
 
 
     /// 两个数组的交点元素
 
-    
+
     /// 前 K 个高频元素
-    
+
     
     /**
      
@@ -838,39 +807,138 @@ public:
         return res;
     }
         
-    /// 数组中第K大元素
-    int findKthLargest(vector<int> arr,int k) {
+    /// 无序数组中第K大元素
+    /**
+     
+        childIndex----->parentIndex
+        parentIndex =( child - 1) / 2;
+        parentIndex =( parentIndex - 1) / 2;
+     
+     
+        parentIndex---->childIndex
+        childIndex = 2 * parentIndex  + 1;//left
+        childIndex = 2 * parentIndex  + 2;//right
+     
+        child------>child
+        child = child * 2 + 1;left
+        child = child * 2  + 2;right
+     
         
-//        sort(arr.begin(), arr.end());
-//        return arr[arr.size() - k];
+        parent----->parent
+        parent =
+     
         
-        // 在容器范围内，就地建堆，保证最大值在所给范围的最前面，其他值的位置不确定
-//        make_heap(arr.begin(), arr.end());
-//        for (int i = 0; i < k; i++) {
-        // 将堆顶(所给范围的最前面)元素移动到所给范围的最后，并且将新的最大值置于所给范围的最前面
-//            pop_heap(arr.begin(), arr.end());
-        // 销毁并移除最后一个元素
-//            arr.pop_back();
-//        }
-//
-//        return arr[0+1];
+     
+     */
+    
+    /// 小顶堆
+    /// 上浮操作(插入节点)
+    /// @param arr 待调整的堆
+    void upJust(vector<int> arr) {
+        int childIndex = (int)arr.size() - 1;
+        int parentIndex = (childIndex-1) / 2;
         
-        
-//        sort(arr.begin(), arr.end());
-//        return arr[arr.size() - k];
-        
-        return 0;
+        // temp保存插入叶子节点的值，用于最后赋值
+        int temp = arr[childIndex];
+        while (childIndex > 0 && temp < arr[parentIndex]) {
+            // 无需真正交换，单向赋值
+            // 把父节点的值赋值给子节点下标arr[9] = 5
+            arr[childIndex] = arr[parentIndex];
+            // 把父节点下标赋值给子节点下标 childindex = 4
+            childIndex = parentIndex;
+            // 计算上一个级父节点下标 parentIndex = （4-1）/2
+            parentIndex = (parentIndex-1) / 2;
+ 
+        }
+        arr[childIndex] = temp;
         
     }
     
+ 
+    /// 待调整堆
+    /// @param arr 待调整堆
+    /// @param parentIndex 要下沉的父节点
+    /// @param length 有效堆的长度
+    void downJust(vector<int> arr,int parentIndex,int length) {
+                
+        // temp 用于保存父节点，用于最后赋值
+        int temp = arr[parentIndex];
+        int childIndex = 2 * parentIndex + 1;
+        while (childIndex < length) {
+            // 如果有右孩子，且右孩子的值小于左孩子，定位到右孩子
+            if (childIndex + 1 < length && arr[childIndex] > arr[childIndex + 1]) {
+                childIndex++;
+            }
+            
+            // 如果父节点小于任何一个值直接退出
+            if (temp < arr[childIndex]) {
+                break;
+            }
+            
+            // 无需真正交换，直接赋值
+            // 值1，index，上级或下级index
+            arr[parentIndex] = arr[childIndex];
+            parentIndex = childIndex;
+            childIndex = childIndex * 2 + 1;
+            
+        }
+        
+        arr[parentIndex] = temp;
+        
+        
+    }
     
-    /// 无序数组的两个元素和为目标值 时间复杂度O(n),空间O1
+    // 构建小顶堆
+    void buildHeap(vector<int> arr, int k) {
+        
+        // 从最后一个非叶子节点开始下沉操作
+        for (int i = (k-2) / 2; i>=0; i--) {
+            downJust(arr, i, k);
+//            cout << i << " down " << arr[i] << endl;
+        }
+        
+    }
     
-    
+    int topKthLargest(vector<int> arr,int k) {
+        
+        // 1用前k个元素构建小顶堆O(k)
+        buildHeap(arr, k);
+        
+        // 2继续遍历剩余数组，和堆顶比较O(n-k)
+        for (int i = k; i < arr.size(); i++) {
+            if (arr[i] > arr[0]) {
+                // 替换堆顶元素
+                arr[0] = arr[i];
+                // 下沉操作 O(logk)
+                downJust(arr, 0, k);
+            }
+        }
+        
+        // 返回堆顶元素
+        return arr[0];
+    }
 
+    
+    // 分治法
+
+    /**
+     将选取第K大数字，转换为第l个最小元素
+     int l = arr.size() + 1 - k;
+     
+     找到最大的元素和下标--随机划分
+     
+     确定主元后进行比较交换数据，将主元与最右边元素互换位置
+     
+     
+     */
+    
+    
     /// 合并两个有序的数组
     // arr1 {1,2,3,0,0,0} m=3;
     // arr2 {4,5,6} n = 3;
+    
+    // ******************* Tree Questions ************************
+
     
     struct TreeNode {
         int val;
@@ -879,21 +947,22 @@ public:
         TreeNode(int x) : val(x),left(NULL),right(NULL) {}
     };
     
-    // ******************* Tree Questions ************************
 
 
     /// 二叉树深度
-    
-    /// 反转二叉树
-    
-    /// 是否是平衡树(一棵空树或它的任意节点的左右两个子树的高度差的绝对值均不超过1。)
-    
-    /// 是否是镜像树（这棵树的左右子树对称节点是镜像对称）
-    
-    ///  树是否相等
 
     
+    /// 反转二叉树
+
     
+    /// 是否是平衡树(一棵空树或它的任意节点的左右两个子树的高度差的绝对值均不超过1。)
+
+    
+    /// 是否是镜像树（这棵树的左右子树对称节点是镜像对称）
+
+    ///  树是否相等
+
+
     // ******************* String Questions ************************
 
     ///  反转字符串
@@ -916,10 +985,6 @@ public:
     }
     
     /// 最长子串或者子序列 子序列，不连续，子串，连续 动态规划思想
-
-    
-    
-
 
 };
 
@@ -1015,19 +1080,91 @@ void testArray(vector<int> arrs) {
 
 }
 
-void printfArray(vector<int>& arr) {
-    for (int i = 0; i < arr.size(); i++) {
-        std::cout << "index:" << i << " value:" << arr[i] << "\n" << endl;
+// 分割函数
+int quick_partiton(vector<int> arr,int low,int high) {
+    
+    int k = arr[low];
+    while (low < high) {
+        while (low < high && arr[high] >= k) {
+            high--;
+        }
+        if (low < high) {
+            arr[low++] = arr[high];
+        }
+        
+        while (low < high && arr[high] < k) {
+            low++;
+        }
+        if (low < high) {
+            arr[high--] = arr[low];
+        }
+        
+       
     }
+    
+    arr[low] = k;
+    return high;
+        
 }
+
+// 母函数
+void quick_sort1(vector<int> arr,int low,int high) {
+    
+    if (low < high) {
+        // 基准数索引
+        int k = quick_partiton(arr, low, high);
+        // 排序左边
+        quick_sort1(arr, low, k-1);
+        // 排序右边
+        quick_sort1(arr, k+1, high);
+    }
+    
+    printfArray(arr);
+}
+
+union
+{
+  int i;
+  float f;
+} u;
+
+// Convert floating-point bits to integer:
+//u.f = 3.14159f;
+//printf("As integer: %08x\n", u.i);
 
 
 int main(int argc, const char * argv[]) {
     // insert code here...
     std::cout << "Hello, World!\n";
     
+//    u.f = 3.14159f;
+//    printf("As integer: %08x\n", u.i);
 
+    
     Solution sol;
+    
+    // 插入排序
+    vector<int> arr0 = {2,6,9,10};
+    vector<int> arr1 = {1,3,4,0,0,0,0};
+    
+    
+    
+    
+//    sol.insert_sort(arr0);
+//    insert_sort(arr0);
+//    bubble_sort(arr0);
+//    selection_sort(arr0);
+//    quick_sort1(arr0, 0, 3);
+    
+    
+    
+    
+//    int c[] = {0,4,5,9};
+//    sol.insertion_sort(c, 4);
+    
+//    vector<int> arr = {7,1,3,10,5,2,8,9,6};
+//    int res = sol.topKthLargest(arr, 3);
+//    cout << res << "\n";
 
 //    vector<int> arr = {3,1,1,4,6,4};
 //    vector<int> res = sol.topKFrequent(arr, 3);

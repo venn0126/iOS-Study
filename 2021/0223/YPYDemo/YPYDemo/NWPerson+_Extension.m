@@ -16,4 +16,15 @@
 }
 
 
+
+
+
+
+
+- (void)personPrint {
+    
+    NSLog(@"%@ : %@",@(__PRETTY_FUNCTION__),@(__LINE__));
+
+}
+
 @end

@@ -54,7 +54,6 @@ struct HomeNavgationBar: View {
                          
                           }
                       
-                      
                       Spacer()
                       
                       Text("热门")
@@ -73,11 +72,15 @@ struct HomeNavgationBar: View {
                        
                    // 几何阅读器
                    GeometryReader { geometry in
-                       
+                       // 0->left 1->right
                        RoundedRectangle(cornerRadius: 2)
                                .foregroundColor(.orange)
                                .frame(width: 30,height: 4)
-                           .offset(x: geometry.size.width * (self.leftPercent - 0.5) + kLabelWidth * CGFloat(0.5 - self.leftPercent))
+                        .offset(x: self.leftPercent == 0 ? 15 : geometry.size.width - 45)
+                    
+                    /*
+                     offset(x: geometry.size.width * (self.leftPercent - 0.5) + kLabelWidth * CGFloat(0.5 - self.leftPercent))
+                     */
                        }
                    
                    .frame(height: 30)
