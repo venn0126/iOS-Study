@@ -7,6 +7,15 @@
 
 #import "NWButton.h"
 
+@interface NWButton ()
+
+// 实时计数的返回接口
+@property (nonatomic, assign)  NSInteger countNumber;
+@property (nonatomic, strong) NSTimer *timer;
+
+
+@end
+
 @implementation NWButton
 
 /*
@@ -25,30 +34,45 @@
         return nil;
     }
     
-    
+    _countNumber = 10;
     return self;
 }
 
-- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
-    // 判断是否是当当前类 隐藏 alpha 是否可以交互
-    if (!self.hidden && self.alpha >= 0.01 && self.userInteractionEnabled == YES) {
-        // 进行点的转化以及处理
-        // dian
-        CGFloat padding = 50.f;
-        CGPoint point0 = [self convertPoint:point toView:self];
-        CGPoint tmpPoint = CGPointMake(point0.x + padding, point0.y + padding);
-       BOOL isPoint = [self pointInside:tmpPoint withEvent:event];
-//        // 扩大响应点的范围
-//        // 进行当前范围的一个计算
-//        if (CGRectContainsPoint(self.bounds, tmpPoint)) {
-//            return self;
-//        }
-        
-        if (isPoint) {
-            return self;
-        }
+- (void)startAnimation {
+    
+    if (self.timer) {
+        [self stopAnimation];
     }
-    return nil;
+    
+    self.timer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(updateText) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+
+
 }
+
+- (void)updateText {
+    
+    if (self.countNumber < 0) {
+        self.countNumber = 10;
+        [self stopAnimation];
+        return;
+    }
+    
+    
+    NSLog(@"fs_updateText %@",@(self.countNumber));
+    
+    [self setTitle:[NSString stringWithFormat:@"%ld",self.countNumber] forState:UIControlStateNormal];
+    self.countNumber--;
+}
+
+- (void)stopAnimation {
+    
+    if (self.timer) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+}
+
+
 
 @end

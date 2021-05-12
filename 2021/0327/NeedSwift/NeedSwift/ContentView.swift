@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+        
         NavigationView {
             List(0..<50){item in
                 NavigationLink(
@@ -26,17 +27,19 @@ struct ContentView: View {
                         Text("Augus")
                             .foregroundColor(.gray)
                             .font(.system(size: 20))
-                        
                     }
                 }
             }
             .navigationBarTitle("Love Tian")
         }
     }
+    
+   
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}

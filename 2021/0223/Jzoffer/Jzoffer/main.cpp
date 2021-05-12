@@ -16,6 +16,11 @@
 #include <unordered_map>
 #include <queue>
 
+#include <unordered_map>
+
+#include <stack>
+#include <random>
+
 
 
 using namespace std;
@@ -27,11 +32,14 @@ struct ListNode {
 };
 
 
+
 void printfArray(vector<int> arr) {
     for (int i = 0; i < arr.size(); i++) {
         std::cout << "index:" << i << " value:" << arr[i] << "\n" << endl;
     }
 }
+
+
 
 class Solution {
 public:
@@ -479,6 +487,93 @@ public:
         }
     }
     
+    
+    /// 快速排序 最坏O(n*n) 平均O(nlogn)，空间O(logn)
+    void quick_sort(int *arr,int low,int high) {
+        if (low < high)
+        {
+            int i = low;
+            int j = high;
+            int k = arr[low];
+            while (i < j)
+            {
+                while(i < j && arr[j] >= k)     // 从右向左找第一个小于k的数
+                {
+                    j--;
+                }
+     
+                if(i < j)
+                {
+                    arr[i++] = arr[j];
+                }
+     
+                while(i < j && arr[i] < k)      // 从左向右找第一个大于等于k的数
+                {
+                    i++;
+                }
+     
+                if(i < j)
+                {
+                    arr[j--] = arr[i];
+                }
+            }
+     
+            arr[i] = k;
+     
+            // 递归调用
+            quick_sort(arr, low, i - 1);     // 排序k左边
+            quick_sort(arr, i + 1, high);    // 排序k右边
+        }
+    }
+    
+    /// 归并排序 最好nlogn 最坏n*n，空间O(n)
+    void mergeSort(vector<int> arr,int start,int end) {
+        
+        if (start < end) {
+            int mid = (start + end) / 2;
+            mergeSort(arr,start,mid);
+            mergeSort(arr, mid+1, end);
+            mergeSecondFunc(arr, start, mid, end);
+        }
+    }
+    vector<int> mergeSecondFunc(vector<int> arr,int start,int mid,int end) {
+        
+        int len = end -start + 1;
+        int temp[len];
+        int p1 = start,p2 = mid+1,p = 0;
+        while (p1 <= mid && p2 <= end) {
+            if (arr[p1] < arr[p2]) {
+                temp[p++] = arr[p1++];
+            } else {
+                temp[p++] = arr[p2++];
+            }
+        }
+        
+        while (p1 <= mid) {
+            temp[p++] = arr[p1++];
+        }
+        
+        while (p2 <= end) {
+            temp[p++] = arr[p2++];
+        }
+        for (int i = 0; i < len; i++) {
+            arr[i+start] = temp[i];
+        }
+        
+        return arr;
+    }
+    
+    /// 桶排序 最好的时间复杂度O(n)，空间复杂度O(n)
+    /**
+     
+     时间复杂度
+     假设待排序列数据元素个数为n，桶的数量为m；那么平均每个桶中的数据元素个数为k = n / m，对每个桶中的数据元素进行快速排序，那么每个桶中的时间复杂度为O(k * logk)，也就是(n / m) * O(log (n / m))，总的时间复杂度为O(n * log(n / m))；当桶的个数m接近数据元素个数时，那么log(n / m)就是一个常数，此时时间复杂度为O(n)。
+
+     空间复杂度
+
+     实现过程中，所有桶大小之和等于待排序列数据元素个数；对桶内数据元素进行排序时，可以使用快速排序和归并排序，快速排序的时间复杂度为O(1)，归并排序的时间复杂度为O(n)；所以桶排序的时间复杂度为O(n)。
+     */
+    
     /// 迭代斐波那契
     
     long long Fibb(unsigned n) {
@@ -533,6 +628,17 @@ public:
         }
         
         return false;
+    }
+    
+    bool isPowerOfTwo2(int n) {
+        
+        if (n == 1) {
+            return true;
+        }
+        if (n == 0) {
+            return false;
+        }
+        return (n & (n-1)) == 0;
     }
     
    // 是否是3的幂
@@ -644,11 +750,19 @@ public:
 
     /// 冒泡 最坏==平均n*n 空间O(1) 稳定
 
+
     /// 选择 最坏==平均n*n 空间O(1) 不稳定
+
 
     /// 快速 最坏n*n,平均O(nlogn) 空间O(logn) 不稳定
     
+
+    /// 归并 O(n) nlogn 空间O(n)
     
+
+    
+
+
    // ******************* ListNode ************************
     
     /// 反转链表
@@ -664,10 +778,7 @@ public:
 
     /// 合并两个链表
 
-
-
     /// 找到链表倒数第K个节点 && 删除
-
 
 
     /// 倒序打印链表
@@ -682,22 +793,108 @@ public:
 
 
     /// 左右临界值分离（将小于和大于给定值的节点划分到链表两侧）
-
-
+    
+    
+    
     /// 左右奇偶index值分离 odd:奇数 even偶数
 
     
+
+    /// 股票最大收益 (一次买入，一次卖出)
+    int maxProfit(vector<int> arr) {
+        
+        if (arr.size() == 0) {
+            return -1;
+        }
+        
+        int minPrice = arr[0];
+        int maxProfit = 0;
+        for (int i = 1; i < arr.size(); i++) {
+            if (arr[i] < minPrice) {
+                minPrice = arr[i];
+            } else if(arr[i] - minPrice > maxProfit) {
+                maxProfit = arr[i] - minPrice;
+            }
+        }
+        return maxProfit;
+    }
+    
+    /// 不限制次数 在最低点买入 最高点卖出
+    int maxProfitNoneTimes(vector<int> arr) {
+        if (arr.size() == 0) {
+            return -1;
+        }
+        int maxProfit = 0;
+        for (int i = 1; i < arr.size(); i++) {
+            if (arr[i] > arr[i-1]) {
+                maxProfit += arr[i] - arr[i-1];
+            }
+        }
+        return maxProfit;
+    }
+    
+    /// k次买入卖出股票的最大收益 DP思想
+    int maxProfitKTimes(vector<int> arr,int k) {
+        if (arr.size() == 0) {
+            return -1;
+        }
+        
+        // 最大行
+        int n = (int)arr.size();
+        // 最大列
+        int m = k * 2 + 1;
+        
+        // 初始化结果数组
+        int res[m];
+        
+        //填充状态
+        for (int i = 0; i < m; i+=2) {
+            res[i] = -arr[0];
+        }
+        
+        //自底向上填充数据
+        for (int i = 1; i < n; i++) {
+            for (int j = 1; j < m; j++) {
+                if ((j & 1 )== 1) {// 奇数-
+                    res[j] = max(res[j], res[j-1]-arr[i]);
+                } else {
+                    res[j] = max(res[j], res[j-1]+arr[i]);
+                }
+            }
+        }
+        
+        return res[m-1];
+    }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    /// 股票最大收益 k次买入卖出
+    int maxProfitToKth(vector<int> arr,int k) {
+        
+        if (arr.size() == 0) {
+            return -1;
+        }
+        
+        int n = (int)arr.size();
+        int m = k * 2 + 1;
+        int res[m];
+        
+        for (int i = 1;i < m; i+=2) {
+            res[i] = -arr[0];
+        }
+        
+        for (int i = 1; i < n; i++) {
+            for (int j = 1; j < m; j++) {
+                if ((j & 1) == 1) {
+                    res[j] = max(res[j], res[j-1] - arr[i]);
+                } else {
+                    res[j] = max(res[j], res[j-1] + arr[i]);
+
+                }
+            }
+        }
+        
+        return res[m-1];
+    }
     
     
     
@@ -712,7 +909,7 @@ public:
         ListNode *odd = head;
         ListNode *even = evenHead;
         
-        while (even != nullptr || even->next != nullptr) {
+        while (even || even->next) {
             odd->next = even->next;
             odd = odd->next;
             even->next = odd->next;
@@ -737,6 +934,19 @@ public:
     
     
     /// 出现次数 超过数组长度一半的元素
+    int numOccurMoreHalfOfArray(vector<int> nums) {
+        
+        stack<int> stk;
+                        
+        for (int i = 0; i < nums.size(); i++) {
+            if (stk.empty() || stk.top() == nums[i]) {
+                stk.push(nums[i]);
+            } else {
+                stk.pop();
+            }
+        }
+        return stk.top();
+    }
 
     
 
@@ -751,10 +961,12 @@ public:
 
     /// 移除数组中等于某个值的元素 返回移除后数组的长度
 
+
     /// 三色旗帜问题
 
     
     /// (有序)数组内部的两个值的和为目标值
+
 
     /// 无序数组和大于或等于某值的最小子数组,返回子数组的元素个数
 
@@ -764,7 +976,7 @@ public:
 
     /// 前 K 个高频元素
 
-    
+
     /**
      
      哈希----堆排序：时间复杂度O(nlogK),O(n)
@@ -782,7 +994,7 @@ public:
      */
     vector<int> topKFrequent(vector<int> arr,int k) {
         unordered_map<int, int> m;
-        priority_queue<pair<int, int>> q;
+        priority_queue<pair<int, int>> q;        
         vector<int> res;
         // 把元素作为key进行赋值map
         for (auto a : arr) {
@@ -806,8 +1018,11 @@ public:
         
         return res;
     }
-        
+    
+            
     /// 无序数组中第K大元素
+    
+    
     /**
      
         childIndex----->parentIndex
@@ -934,8 +1149,123 @@ public:
     
     
     /// 合并两个有序的数组
-    // arr1 {1,2,3,0,0,0} m=3;
-    // arr2 {4,5,6} n = 3;
+
+    /// 求两个有序数组的中位数(二分查找)
+    double findMediumSortedArrays(vector<int> arr1,vector<int> arr2) {
+        
+        int n = (int)arr1.size();
+        int m = (int)arr2.size();
+        int left = (n+m+1)/2;
+        int right = (n+m+2)/2;
+        int tmp = getKth(arr1, 0, n-1, arr2, 0, m-1,left) +
+        getKth(arr1, 0, n-1, arr2, 0, m-1, right);
+        
+        return tmp * 0.5;
+    }
+    
+    int getKth(vector<int> arr1,int start1,int end1,vector<int> arr2,int start2,int end2,int k) {
+        int len1 = end1 - start1 + 1;
+        int len2 = end2 - start2 + 1;
+        if (len1 > len2) {
+            return getKth(arr2, start2, end2, arr1, start1, end1, k);
+        }
+        if (len1 == 0) {
+            return arr2[start2 + k - 1];
+        }
+        
+        if (k == 1) {
+            return min(arr1[start1], arr2[start2]);
+        }
+        
+        int i = start1 + min(len1, k/2) - 1;
+        int j = start2 + min(len2, k/2) - 1;
+        
+        if (arr1[i] > arr2[j]) {
+            return getKth(arr1, start1, end1, arr2, j+1, end2, k - (j-start2+1));
+        } else {
+            return getKth(arr1, i+1, end1, arr2, start2, end2, k - (i-start1+1));
+        }
+        
+    }
+    
+    
+    /// 数组全排列 时间复杂度O(n!),空间复杂度O(n)
+    int sum = 0;
+    void permutation(int array[],int len,int index){
+        if(index==len){//全排列结束
+            ++sum;
+            printArr(array,len);
+        }
+        else
+            for(int i=index;i<len;++i){
+                //将第i个元素交换至当前index下标处
+                swapArray(array,index,i);
+                //以递归的方式对剩下元素进行全排列
+                permutation(array,len,index+1);
+
+                //将第i个元素交换回原处
+                swapArray(array,index,i);
+            }
+    }
+ 
+    void swapArray(int* o,int i,int j){
+        int tmp = o[i];
+        o[i] = o[j];
+        o[j] = tmp;
+    }
+    
+    void printArr(int array[],int len){
+        printf("{");
+        for(int i=0; i<len;++i)
+            cout<<array[i]<<" ";
+        printf("}\n");
+    }
+    
+    /// 数组去重
+    vector<int> deDuplication(vector<int> arr) {
+        
+        vector<int> res;
+        int len = (int)arr.size();
+        if (len < 2) {
+            return arr;
+        }
+        
+        set<int> s1(arr.begin(),arr.end());
+        res.assign(s1.begin(), s1.end());
+        
+        return res;
+    }
+    
+    // 二维矩阵的最小路径 时间复杂度O(mn),空间复杂度O(mn)
+    // 空间可以继续优化 只存储上一行的dp值
+    int findMinPath2(vector<vector<int>>& arr) {
+        
+        
+        if (arr.size() == 0 || arr[0].size() == 0) {
+            return 0;
+        }
+        
+        int rows = (int)arr.size(),columns = (int)arr[0].size();
+        auto c = vector<vector<int>> (rows,vector<int> (columns));
+        c[0][0] = arr[0][0];
+        
+        for (int i = 1; i < rows; i++) {
+            c[i][0] = c[i-1][0] + arr[i][0];
+        }
+        
+        for (int j = 1; j < columns; j++) {
+            c[0][j] = c[0][j-1] + arr[0][j];
+        }
+        
+        for (int i = 1; i < rows; i++) {
+            for (int j = 1; j < columns; j++) {
+                c[i][j] = min(c[i-1][j], c[i][j-1]) + arr[i][j];
+            }
+        }
+
+        return c[rows-1][columns-1];
+        
+    }
     
     // ******************* Tree Questions ************************
 
@@ -961,6 +1291,44 @@ public:
     /// 是否是镜像树（这棵树的左右子树对称节点是镜像对称）
 
     ///  树是否相等
+    
+    
+    struct GTreeNode {
+        
+        int val;
+        GTreeNode *left;
+        GTreeNode *right;
+        GTreeNode(int x) : val(x), left(NULL), right(NULL) {};
+        
+    };
+        
+    /// Traverse 遍历树 从左到右
+
+    vector<int> traverseTree(GTreeNode *root) {
+        
+        vector<int> res;
+        if (!root) {
+            return res;
+        }
+        
+        stack<GTreeNode *> s1;
+        s1.push(root);
+        while (!s1.empty()) {
+            GTreeNode *node = s1.top();
+            s1.pop();
+            res.push_back(node->val);
+            
+            if (node->left) {
+                s1.push(node->left);
+            }
+            if (node->right) {
+                s1.push(node->right);
+            }
+            
+        }
+        
+        return res;
+    }
 
 
     // ******************* String Questions ************************
@@ -985,152 +1353,365 @@ public:
     }
     
     /// 最长子串或者子序列 子序列，不连续，子串，连续 动态规划思想
+    
+    
+    /// BM 字符串匹配
+    
+    /// 查找模式串中是否有字符匹配坏字符
+    int findChar(string pattern, char badChar,int index) {
+        
+        for (int i = index - 1; i >= 0; i++) {
+            if (pattern[i] == badChar) {
+                return i;
+            }
+        }
+        
+        return -1;
+    }
+    
+    
+    /// boyerMoore
+    int boyerMoore(string str,string pattern) {
+        
+        int strLen = (int)str.length();
+        int patternLen = (int)pattern.length();
+        
+        // 模式串的起始位置
+        int start = 0;
+        while (start <= strLen - patternLen) {
+            int i;
+            // 从后向前，逐个比较
+            for (i = patternLen-1; i>= 0; i--) {
+                if (str[start+i] != pattern[i]) {
+                    // 发现坏字符,跳出比较，i记录了坏字符的位置
+                    break;
+                }
+            }
+            
+            if (i < 0) {
+                // 匹配成功，返回第一次匹配的下标位置
+                return start;
+            }
+            
+            // 寻找坏字符在模式串中的对应
+            int charIndex = findChar(pattern, str[start+i], i);
+            // 计算坏字符产生的位移
+            // 坏字符规则(后移位数 = 好后缀的位置 - 搜索词中的上一次出现位置)
+            // 如果没有出现上一次出现位置，直接是-1
+            int bcOffset = charIndex >= 0 ? i - charIndex : i+1;
+            
+            // 如果存在好后缀
+//            if (i < patternLen-1) {
+//
+//                int goodIndex = findChar(pattern, pattern[patternLen-1], patternLen -1);
+//                // 好后缀规则(后移位数 = 好后缀的位置 - 搜索词中的上一次出现位置)
+//                int gcOffset = (patternLen -1) - goodIndex;
+//                if (gcOffset > bcOffset) {
+//                    bcOffset = gcOffset;
+//                }
+//            }
+            
+            start += bcOffset;
+            
+        }
+        
+        return -1;
+    }
+    
+    
+    /// KMP 字符串搜索
+    
+    /// kmp-生成部分匹配数组
+    vector<int> nexts(string pattern) {
+        
+        // 模版字符串长度
+        int len = (int)pattern.length();
+        int next[len];
+        // 预先填充，第一个字符的前后缀的最大长度为0
+        next[0] = 0;
+        // j 最大前后缀长度
+        int j = 0;
+        // i 模版字符串下标
+        // 从第二个字符开始遍历
+        for (int i = 1;i < len; i++) {
+            // 递归的求出P[1]···P[i]的最大的相同的前后缀长度j
+            while (j > 0 && pattern[i] != pattern[j]) {
+                j = next[j-1];
+            }
+            
+            if (pattern[i] == pattern[j]) {
+                j++;
+            }
+            
+            next[i] = j;
+        }
+        
+        return vector<int>{next,next+len};
+    }
+    /// kmp 主函数
+    int kmp(string str,string pattern) {
+        
+        // 生成部分匹配数组
+        vector<int> next = nexts(pattern);
+        int strLen = (int)str.length();
+        int patternLen = (int)pattern.length();
+        // 匹配字符串游标
+        int j = 0;
+        // 遍历主字符串
+        for (int i = 0; i < strLen; i++) {
+            // 坏字符
+            while (j > 0 && str[i] != pattern[j]) {
+                j = next[j-1];
+            }
+            if (str[i] == pattern[j]) {
+                j++;
+            }
+            
+            if (j == patternLen) {
+                // 匹配成功
+                return i - patternLen + 1;
+            }
+        }
+        return -1;
+    }
+    
+    
+    /// kmp,匹配字符串
 
+    
+    /// 股票最大收益
+    
+    
+    /// 两个数字字符串相加求和
+    string addString(string s1,string s2) {
+        
+        // add:是否有进位
+        int i = (int)s1.length() - 1,j = (int)s2.length() - 1,add = 0;
+        string res = "";
+        while (i >=0 || j>=0 || add != 0) {
+            int x = i >= 0 ? s1[i] - '0' : 0;
+            int y = j >= 0 ? s2[j] - '0' : 0;
+            int temp = x + y + add;
+            res.push_back('0' + temp % 10);
+            add = temp / 10;
+            i--;
+            j--;
+        }
+        reverse(res.begin(), res.end());
+        
+        return res;
+    }
+    
+    /// 两个有序数组求中位数
+
+    double middleNumSortedArrays(vector<int> arr1,vector<int> arr2) {
+        int n = (int)arr1.size();
+        int m = (int)arr2.size();
+        
+        int left = (n+m+1)/2;
+        int right = (n+m+2)/2;
+        
+        int temp = getKth0(arr1, 0, n-1, arr2, 0, m-1, left) + getKth0(arr1, 0, n-1, arr2, 0, m-1, right);
+        
+        return temp * 0.5;
+    }
+    
+    int getKth0(vector<int> arr1,int start1,int end1,vector<int> arr2,int start2,int end2,int k) {
+        
+        int len1 = end1 - start1 + 1;
+        int len2 = end2 - start2 + 1;
+        
+        if (len1 > len2) {
+            return getKth0(arr2, start2, end2, arr1, start1, end1, k);
+        }
+        
+        if (len1 == 0) {
+            return arr2[start2 + k - 1];
+        }
+        
+        if (k == 1) {
+            return min(arr2[start2], arr1[start1]);
+        }
+        
+        int i = start1 + min(len1, k/2) - 1;
+        int j = start2 + min(len2, k/2) - 1;
+        if (arr1[i] > arr2[j]) {
+            return getKth0(arr1, start1, end1, arr2, j+1, end2, k-(j-start2+1));
+        } else {
+            return getKth0(arr1, i+1, end1, arr2, start2, end2, k-(i-start1+1));
+        }
+
+        
+//        return 0;
+    }
+    
+    
+    
+    
+    double findMiddleNum(vector<int> arr1,vector<int> arr2) {
+        
+        int len1 = (int)arr1.size();
+        int len2 = (int)arr2.size();
+        int left = (len1 + len2 + 1) / 2;
+        int right = (len1 + len2 + 2) / 2;
+        int temp = getKth3(arr1, 0, len1-1, arr2, 0, len2-1, left) + getKth3(arr1, 0, len1-1, arr2, 0, len2-1, right);
+        
+        return temp * 0.5;
+    }
+    
+    int getKth3(vector<int> arr1,int start1,int end1,vector<int> arr2,int start2,int end2,int k) {
+        
+        int len1 = end1 - start1 + 1;
+        int len2 = end2 - start2 + 1;
+        
+        if (len1 > len2) {
+            getKth3(arr2, start2, end2, arr1, start1, end1, k);
+        }
+        
+        if (len1 == 0) {
+            return arr2[k+start2-1];
+        }
+        
+        if (k == 1) {
+            return min(arr1[start1], arr2[start2]);
+        }
+        
+        int i = start1 + min(len1, k/2) - 1;
+        int j = start2 + min(len2, k/2) - 1;
+        
+        
+        if (arr1[i] < arr2[j]) {
+            return getKth3(arr1, i+1, end1, arr2, start2, end2, k-(i-start1+1));
+        } else {
+            return getKth3(arr1, start1, end1, arr2, j+1, end2, k-(j-start2+1));
+        }
+        
+    }
+    
+    
+    int random_0_1()
+    {
+        int i = (int)random();
+        int j = (int)random();
+        int result;
+     
+        while (true)
+        {
+            if (i == 0 && j == 1)
+            {
+                result = 0;
+                break;
+            }
+            else if (i == 1 && j == 0)
+            {
+                result = 1;
+                break;
+            }
+            else
+                continue;
+        }
+     
+        return result;
+    }
+    
+    int random_nw_0() {
+        
+        int i = (int)random();
+        int j= (int)random();
+        int res;
+        while (true) {
+            if (i == 0 && j == 1) {
+                res = 0;
+                break;
+            }else if(i == 1 && j == 0){
+                res = 1;
+                break;
+            } else {
+                continue;
+            }
+        }
+        
+        return res;
+    }
+    
+    
+
+    
+    
+    
+    // two find serach & traverse
+    int twoOfFind(vector<int> arr,int k) {
+        
+        int start = 0;
+        int end = (int)arr.size() - 1;
+        int mid = 0;
+        while(start <= end) {
+            mid = start + (end-start) / 2;
+            
+            
+            // normal
+//            if (arr[mid] == k) {
+//                return mid;
+//            } else if(arr[mid] >= k) {
+//                end = mid - 1;
+//            } else {
+//                start = mid + 1;
+//            }
+            
+            
+            // traverse
+            /**
+             中位数 旋转点 ------目标数
+             
+             A:旋转点在中位数的右侧，那么中位数左侧为升序，且最左侧元素大于中位数
+                如果目标在中位数的左侧，左侧为升序，所以查找条件时 最左侧元素 <= 目标元素 < 中位数
+                如果目标在中位数的右侧，
+                
+             
+             B:旋转点在中位数左侧或重合，那么中位数右侧升序，且最左侧元素大于中位数
+                如果目标出现在中位数的右侧，右侧为升序，条件为 中位数 < 目标数 <= 最右侧元素
+             
+             */
+
+
+//            if (arr[mid] == k) {
+//                return mid;
+//            }
+            // A 旋转点在中位数右侧
+//            if (arr[mid] >= arr[start]) {
+//
+//                // 最左侧元素 <= 目标元素 < 中位数
+//                if (arr[mid] > k && k >= arr[start]) {
+//                    end = mid - 1;
+//                } else {
+//                    start = mid + 1;
+//                }
+//            }
+//            // B 旋转点在中位数左侧或者重合
+//            else {
+//                // 中位数 < 目标 <= 最右侧
+//                if (arr[mid] < k && k <= arr[end]) {
+//                    start = mid + 1;
+//                } else {
+//                    end = mid - 1;
+//                }
+//            }
+            
+
+        }
+        
+    
+        return -1;
+    }
+    
+    
+
+    
+
+    
 };
 
 
-void testPoint() {
-    
-    int a = 5;
-//    int *p1 = &a;
-//    std::cout << p1 << "\n";
-    
-//    int b = 8;
-//    p1 = &b;// 指针修改
-//    std::cout << p1 << "\n";
-//
-//    b = 10;
-//    std::cout << p1 << "\n";
-    
-    
-
-
-    
-    const int *p2 = &a;
-    std::cout << p2 << "\n";
-    
-    a = 10;
-    std::cout << a << "\n";
-    
-    int c = 100;
-    p2 = &c;
-    std::cout << p2 << "\n";
-
-    
-    
-    const int * const p3 = &a;
-    std::cout << p3 << "\n";
-    
-//    p3 = &c;
-    std::cout << p3 << "\n";
-}
-
-/// 指针函数与函数指针
-int* addition(int a,int b) {
-    int *sum = new int(a+b);
-    return sum;
-}
-
-int subtraction(int a,int b) {
-    return a-b;
-}
-
-int operation(int x,int y,int (*func)(int,int)) {
-    return (*func)(x,y);
-}
-
-int (*minus)(int,int) = subtraction;
-
-void test(void *p) {
-    cout << "p is pointer" << p << endl;
-}
-
-void test(int n) {
-    cout << "n is int num" << n << endl;
-}
-
-void testArray(vector<int> arrs) {
-    
-     int nu = arrs[0];
-     std::cout << "Hello," << nu << "\n" << endl;
-    
-    
-
-    
-//        int l = 1;
-//        int r = 2;
-//        int arr[] = {l+1,r+2};
-//        for (int i = 0; i < 2; i++) {
-//            std::cout << "Hello," << arr[i] << "\n" << endl;
-//
-//        }
-//
-//        vector<int> nums = vector<int>(arr,arr+2);
-//        for (int i = 0; i < 2; i++) {
-//            std::cout << "word," << nums[i] << "\n" << endl;
-//        }
-    
-    //    set<int> sets1 = {1,2,3};
-    //    int tmp = 1;
-    //    if (sets1.find(tmp) != sets1.end() ) {
-    //        printf("found \n");
-    //    } else {
-    //        printf("not found\n");
-    //    }
-
-}
-
-// 分割函数
-int quick_partiton(vector<int> arr,int low,int high) {
-    
-    int k = arr[low];
-    while (low < high) {
-        while (low < high && arr[high] >= k) {
-            high--;
-        }
-        if (low < high) {
-            arr[low++] = arr[high];
-        }
-        
-        while (low < high && arr[high] < k) {
-            low++;
-        }
-        if (low < high) {
-            arr[high--] = arr[low];
-        }
-        
-       
-    }
-    
-    arr[low] = k;
-    return high;
-        
-}
-
-// 母函数
-void quick_sort1(vector<int> arr,int low,int high) {
-    
-    if (low < high) {
-        // 基准数索引
-        int k = quick_partiton(arr, low, high);
-        // 排序左边
-        quick_sort1(arr, low, k-1);
-        // 排序右边
-        quick_sort1(arr, k+1, high);
-    }
-    
-    printfArray(arr);
-}
-
-union
-{
-  int i;
-  float f;
-} u;
-
-// Convert floating-point bits to integer:
-//u.f = 3.14159f;
-//printf("As integer: %08x\n", u.i);
 
 
 int main(int argc, const char * argv[]) {
@@ -1144,8 +1725,61 @@ int main(int argc, const char * argv[]) {
     Solution sol;
     
     // 插入排序
-    vector<int> arr0 = {2,6,9,10};
-    vector<int> arr1 = {1,3,4,0,0,0,0};
+//    vector<int> arr0 = {2,6,9,10};
+//    vector<int> arr1 = {1,3,4,0,3,3,3};
+//
+//    int arr[7] = {1,3,4,0,3,3,3};
+    
+//    int res = sol.numOccurMoreHalfOfArray(arr1);
+//    cout << res;
+    
+//    sol.quick_sort(arr, 0, 6);
+//    display(arr, 7);
+    
+//    string str = "AABBCCDEF";
+//    string pattern = "BCCD";
+    
+//    int index = sol.boyerMoore(str, pattern);
+    
+//    int index = sol.kmp0(str, pattern);
+//    cout << index << "\n";
+
+//    string str1 = "ABCDABD";
+//    vector<int> res = sol.nexts0(str1);
+//    printfArray(res);
+    
+//    bool res = sol.isTwoMi(15);
+//    cout << res << "\n";
+    
+    
+//    string s1 = "32";
+//    string s2 = "19";
+//    string res =  sol.addString0(s1, s2);
+//    cout << res << "\n";
+    
+//    vector<int> arr3 = {1,2,3,4};
+//    vector<int> arr4 = {3,4,1,1,2,4,3,1,4};
+    
+    
+//    vector<int> res = sol.deDeplication(arr4);
+//    printfArray(res);
+    
+//    int array[] = {1,2,3};
+//    sol.permutation1(array,0,3);
+
+//    sol.permutation(array, 3, 0);
+//    sol.allArrangement(arr4,3);
+//    int count = (int)res.size();
+//    cout << count << "\n";
+    
+//    double res = sol.findMiddleNum(arr3, arr4);
+//    cout << res << "\n";
+    
+
+    
+//    vector<vector<int>> twoArr = {{1,3,1},{1,5,1},{4,2,1}};
+//    int res = sol.findMinPath1(twoArr);
+//    cout << res << "\n";
     
     
     
@@ -1155,6 +1789,11 @@ int main(int argc, const char * argv[]) {
 //    bubble_sort(arr0);
 //    selection_sort(arr0);
 //    quick_sort1(arr0, 0, 3);
+    
+    
+    int n = 15;
+    bool res = sol.isPowerOfTwo2(n);
+    cout << res << "\n";
     
     
     
@@ -1196,11 +1835,11 @@ int main(int argc, const char * argv[]) {
 
     
     
+//    vector<int> arr11 = {1,3,5,7,10};
+//    int index = sol.twoOfFind(arr11, 7);
+//    cout<< index << "\n" << endl;
+
     
-//    int *m = addition(5, 6);
-//    std::cout << *m << "\n";
-//
-//    int n = operation(3, *m, minus<>);
     
     
     

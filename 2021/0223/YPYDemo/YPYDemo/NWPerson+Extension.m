@@ -23,4 +23,10 @@
 
 }
 
+- (void)foo {
+    
+    NSLog(@"%@ : %@",@(__PRETTY_FUNCTION__),@(__LINE__));
+
+}
+
 @end

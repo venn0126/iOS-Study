@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2733096C2629968900557677 /* china_big_img.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2733096B2629968900557677 /* china_big_img.jpg */; };
 		27E8F1C9260F8D7D002A2F89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E8F1C8260F8D7D002A2F89 /* AppDelegate.swift */; };
 		27E8F1CB260F8D7D002A2F89 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E8F1CA260F8D7D002A2F89 /* SceneDelegate.swift */; };
 		27E8F1CD260F8D7D002A2F89 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E8F1CC260F8D7D002A2F89 /* ContentView.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2733096B2629968900557677 /* china_big_img.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = china_big_img.jpg; path = ../../../0223/YPYDemo/YPYDemo/china_big_img.jpg; sourceTree = "<group>"; };
 		27E8F1C5260F8D7D002A2F89 /* NeedSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeedSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27E8F1C8260F8D7D002A2F89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27E8F1CA260F8D7D002A2F89 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				27E8F1C8260F8D7D002A2F89 /* AppDelegate.swift */,
 				27E8F1CA260F8D7D002A2F89 /* SceneDelegate.swift */,
 				27E8F1CC260F8D7D002A2F89 /* ContentView.swift */,
+				2733096B2629968900557677 /* china_big_img.jpg */,
 				27E8F1CE260F8D82002A2F89 /* Assets.xcassets */,
 				27E8F1D3260F8D82002A2F89 /* LaunchScreen.storyboard */,
 				27E8F1D6260F8D82002A2F89 /* Info.plist */,
@@ -239,6 +242,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2733096C2629968900557677 /* china_big_img.jpg in Resources */,
 				27E8F1D5260F8D82002A2F89 /* LaunchScreen.storyboard in Resources */,
 				27E8F1D2260F8D82002A2F89 /* Preview Assets.xcassets in Resources */,
 				27E8F1CF260F8D82002A2F89 /* Assets.xcassets in Resources */,

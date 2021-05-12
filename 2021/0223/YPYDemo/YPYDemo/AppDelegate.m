@@ -14,8 +14,33 @@
 @implementation AppDelegate
 
 
++ (void)load {
+    
+//    __block id observer =
+//    [[NSNotificationCenter defaultCenter]
+//     addObserverForName:UIApplicationDidFinishLaunchingNotification
+//     object:nil
+//     queue:nil
+//     usingBlock:^(NSNotification *note) {
+//        //             [self setup]; // Do whatever you want
+//        NSLog(@"block begin");
+//        [self setup];
+//        NSLog(@"block end");
+//        
+//        [[NSNotificationCenter defaultCenter] removeObserver:observer];
+//    }];
+}
+
++ (void)setup {
+    
+    NSLog(@"+ set up");
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    NSLog(@"didFinishLaunchingWithOptions");
+    
     return YES;
 }
 
@@ -34,6 +59,11 @@
     // Called when the user discards a scene session.
     // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
     // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    
+    NSLog(@"%@---%@",@(__PRETTY_FUNCTION__),@(__LINE__));
 }
 
 

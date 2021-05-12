@@ -9,6 +9,7 @@
 #include "SingleList.h"
 
 
+
 #define BUF_SIZE 10
 #define MAXSIZE 20
 
@@ -224,23 +225,25 @@ void levelOrderTraverse(BinTNode * tree) {
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
-//        int array[BUF_SIZE] = {12,85,25,16,34,23,49,95,17,61};
-//        int maxlen = BUF_SIZE;
-//
-//        printf("排序前的数组\n");
-//        display(array, maxlen);
-//
-//        QuickSort(array, 0, maxlen-1);  // 快速排序
-////        QSort(array, 0, maxlen-1);
-//
-//        printf("排序后的数组\n");
-//        display(array, maxlen);
+        int array[BUF_SIZE] = {1,2,4,9,0,6,8};
+        int maxlen = BUF_SIZE;
         
-        BinTNode *tree = NULL;
-        tree = CreateBinTree(tree);
-        printf("层次遍历: ");
-        levelOrderTraverse(tree);
-        printf("\n");
+//        vector<int> arr1 = {1,3,4,0,3,3,3};
+        
+        int arr1[7] = {1,3,4,0,3,3,3};
+//
+        printf("排序前的数组\n");
+        display(arr1, 7);
+//
+        QuickSort(arr1, 0, 7-1);  // 快速排序
+        printf("排序后的数组\n");
+        display(arr1, 7);
+        
+//        BinTNode *tree = NULL;
+//        tree = CreateBinTree(tree);
+//        printf("层次遍历: ");
+//        levelOrderTraverse(tree);
+//        printf("\n");
         
         
         

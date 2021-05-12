@@ -9,6 +9,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+//__attribute__((objc_subclassing_restricted))
+
 @interface NWPerson : NSObject
 
 @property (nonatomic, assign)  int result;
@@ -46,6 +48,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 - (void)personPrint;
+
 
 @end
 

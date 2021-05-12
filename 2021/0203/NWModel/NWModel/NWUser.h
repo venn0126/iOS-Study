@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NWUser : NSObject
+@interface NWUser : NSObject<NSCoding>
 
 @property (nonatomic, assign) NSUInteger uid;
 @property (nonatomic, copy) NSString *name;

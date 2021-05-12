@@ -6,7 +6,9 @@
 //
 
 #import "NWUser.h"
-#import <objc/runtime.h>
+//#import <objc/runtime.h>
+#import "NSObject+Archive.h"
+#import "Archive_h.h"
 
 
 @implementation NWUser
@@ -23,8 +25,10 @@
 
 #pragma mark - Encoder & Decoder
 
-//- (void)encodeWithCoder:(NSCoder *)coder {
-//    // 归档
+
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    // 归档
 //    unsigned int count;
 //    Ivar *nwIvars = class_copyIvarList([self class], &count);
 //    if (count <= 0) {
@@ -35,52 +39,57 @@
 //        const char *name = ivar_getName(nwIvar);
 //        NSString *key = [NSString stringWithUTF8String:name];
 //        id value = [self valueForKey:key];
-//        
+//
 //        [coder encodeObject:value forKey:key];
-//        
+//
 //    }
-//    
+//
 //    free(nwIvars);
 //    nwIvars = NULL;
-//}
+    
+    [self encoder:coder];
+
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder {
 //
-//- (instancetype)initWithCoder:(NSCoder *)coder {
-//    
 //    // 解档
 //    self = [super init];
 //    if (!self) {
 //        return nil;
 //    }
-//    
-//    // 获取ivar
+
+    // 获取ivar
 //    unsigned int count;
 //    Class cls = [self class];
-//    
+//
 //    Ivar *nwIvars = class_copyIvarList(cls, &count);
-//    
+//
 //    if (count <= 0) {
 //        return nil;
 //    }
-//    
+//
 //    for (int i = 0; i < count; i++) {
 //        // 取出i位置对应的成员变量
 //        Ivar nwIvar = nwIvars[i];
-//        
+//
 //        // 从ivar 取出成员变量名字
 //        const char *nwIvarName = ivar_getName(nwIvar);
-//        
+//
 //        // c++ ---> oc
 //        NSString *key = [NSString stringWithUTF8String:nwIvarName];
 //        id value = [coder decodeObjectForKey:key];
-//        
+//
 //        [self setValue:value forKey:key];
 //    }
-//    
+//
 //    free(nwIvars);
 //    nwIvars = NULL;
-//    
-//    return self;
-//}
+    
+    [self decode:coder];
+
+    return self;
+}
 
 
 /**

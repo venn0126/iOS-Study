@@ -72,7 +72,7 @@
 
 - (NSString *)description {
     
-    return [NSString stringWithFormat:@"%@ : %@ (%@-%@-%@-%@)",@(__PRETTY_FUNCTION__),@(__LINE__),_movieName,_movieId,_user,_userArray];
+    return [NSString stringWithFormat:@"%@ : LINE(%@) (%@-%@-%@-%@)",@(__PRETTY_FUNCTION__),@(__LINE__),_movieName,_movieId,_user,_userArray];
 }
 
 

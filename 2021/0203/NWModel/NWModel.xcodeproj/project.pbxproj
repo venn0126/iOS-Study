@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2714640025F0D5780071F1F9 /* NWTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 271463FF25F0D5780071F1F9 /* NWTableCell.m */; };
+		271908D62616FE4300C8B78A /* NSObject+Archive.m in Sources */ = {isa = PBXBuildFile; fileRef = 271908D52616FE4300C8B78A /* NSObject+Archive.m */; };
 		273D09D22601C5AE0083F73C /* NSObject+GTModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 273D09D12601C5AE0083F73C /* NSObject+GTModel.m */; };
 		273D09D82601CD630083F73C /* GTMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = 273D09D72601CD630083F73C /* GTMovie.m */; };
 		2753F20D25CA4A2100C8291B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2753F20C25CA4A2100C8291B /* AppDelegate.m */; };
@@ -50,6 +51,9 @@
 /* Begin PBXFileReference section */
 		271463FE25F0D5780071F1F9 /* NWTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NWTableCell.h; sourceTree = "<group>"; };
 		271463FF25F0D5780071F1F9 /* NWTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NWTableCell.m; sourceTree = "<group>"; };
+		271908D42616FE4300C8B78A /* NSObject+Archive.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Archive.h"; sourceTree = "<group>"; };
+		271908D52616FE4300C8B78A /* NSObject+Archive.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Archive.m"; sourceTree = "<group>"; };
+		271908DA261701BA00C8B78A /* Archive_h.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Archive_h.h; sourceTree = "<group>"; };
 		273D09D02601C5AE0083F73C /* NSObject+GTModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+GTModel.h"; sourceTree = "<group>"; };
 		273D09D12601C5AE0083F73C /* NSObject+GTModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+GTModel.m"; sourceTree = "<group>"; };
 		273D09D62601CD630083F73C /* GTMovie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTMovie.h; sourceTree = "<group>"; };
@@ -184,6 +188,9 @@
 				27BD698525ED2CEB008F05D1 /* UIFont+FontSize.m */,
 				2783FFCA25CC56F700E2309A /* CALayer+NWLayer.h */,
 				2783FFCB25CC56F700E2309A /* CALayer+NWLayer.m */,
+				271908D42616FE4300C8B78A /* NSObject+Archive.h */,
+				271908D52616FE4300C8B78A /* NSObject+Archive.m */,
+				271908DA261701BA00C8B78A /* Archive_h.h */,
 				2753F21425CA4A2100C8291B /* Main.storyboard */,
 				2753F21725CA4A2400C8291B /* Assets.xcassets */,
 				2753F21925CA4A2400C8291B /* LaunchScreen.storyboard */,
@@ -405,6 +412,7 @@
 				27F2BB8325D27FCF00F9C9EC /* NWUser.m in Sources */,
 				27BD698025ED2B33008F05D1 /* UILabel+Extension.m in Sources */,
 				273D09D82601CD630083F73C /* GTMovie.m in Sources */,
+				271908D62616FE4300C8B78A /* NSObject+Archive.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

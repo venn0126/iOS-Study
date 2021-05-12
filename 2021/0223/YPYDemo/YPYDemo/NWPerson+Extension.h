@@ -11,6 +11,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NWPerson (Extension)
 
++ (void)foo;
+- (void)foo;
+
 @end
 
 NS_ASSUME_NONNULL_END

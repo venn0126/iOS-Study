@@ -12,7 +12,11 @@
 
 + (id)gt_modelWithDictionary:(NSDictionary *)dictionary {
     
-    if (!dictionary || dictionary.count == 0) {
+    if (!dictionary || dictionary == (id)kCFNull) {
+        return nil;
+    }
+    
+    if (![dictionary isKindOfClass:[NSDictionary class]]) {
         return nil;
     }
     
@@ -29,7 +33,7 @@
         NSString *ivarName = [NSString stringWithUTF8String:name];
         // _name
         NSString *key = [ivarName substringFromIndex:1];
-        // 从字典中取出对应的value赋值给模型
+        // 从字典中根据key取出对应的value赋值给模型
         id value = dictionary[key];
         
         // 计算成员变量类型
@@ -65,19 +69,12 @@
             // 先从数组中取出
             NSArray *tmpArray = (NSArray *)value;
             NSMutableArray *dataArray = [NSMutableArray array];
-            for (NSDictionary *item in tmpArray) {
-                // 获取class nwuser
-                // 获取NWClass 的cls
-                // ivarType
-
-                Class itCls = NSClassFromString(@"NWUser");
-                id model = [itCls gt_modelWithDictionary:item];
-                [dataArray addObject:model];
-
+            for (id item in tmpArray) {
+                if ([item isKindOfClass:[NSDictionary class]]) {
+                    id md = [self gt_modelWithDictionary:item];
+                    [dataArray addObject:md];
+                }
             }
-            
-            value = dataArray;
-            
         }
         
         // kvc 字典转模型

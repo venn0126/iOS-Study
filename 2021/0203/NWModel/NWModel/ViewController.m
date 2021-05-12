@@ -217,44 +217,64 @@ typedef void (^nwBlock) (void);
                            @"sex": @"man"
     };
     
+    
+    
+    
+    
     NSDictionary *dict2 = @{@"movieId" : @"28901",
                             @"movieName" : @"my heart will go on",
                             @"pic_url" : @"http://www.time.com",
                             @"user" : user
     };
     
+    GTMovie *gtModel = [GTMovie gt_modelWithDictionary:dict2];
+    NSLog(@"%@",gtModel);
     
-    NSArray *modelArray = @[dict2,dict2,dict2];
+    
+//    NSLog(@"dataArray0---%@",dataArray);
+    
     NSMutableArray *dataArray = [NSMutableArray array];
     
-    for (NSDictionary *item in modelArray) {
-        GTMovie *moive = [GTMovie gt_modelWithDictionary:item];
-        [dataArray addObject:moive];
+
+    
+
+    
+    NSDictionary *nw0 = @{
+        @"name" : @"niu",
+        @"sex" : @"woman",
+        @"uid" : @(109)
         
-//        NSLog(@"item--%@",item.description);
+    };
+    
+    NSDictionary *nw1 = @{
+        @"name" : @"wei",
+        @"sex" : @"man",
+        @"uid" : @(901)
         
-    }
-    
-    NSLog(@"dataArray0---%@",dataArray);
-    
-    
-    NSArray *interArray = @[user,user];
-    NSDictionary *dict3 = @{@"movieId" : @"28901",
-                            @"movieName" : @"my heart will go on",
-                            @"pic_url" : @"http://www.time.com",
-                            @"userArray" : interArray
     };
     
     
-    [dataArray removeAllObjects];
-    NSArray *array3 = @[dict3,dict3,dict3];
-    for (NSDictionary *item in array3) {
-        GTMovie *movie = [GTMovie gt_modelWithDictionary:item];
-        [dataArray addObject:movie];
-    }
     
-    NSLog(@"dataArray3---%@",dataArray);
     
+    
+    NSArray *nws = @[nw0,nw1];
+    NSDictionary *dict3 = @{@"movieId" : @"28901",
+                            @"movieName" : @"my heart will go on",
+                            @"pic_url" : @"http://www.time.com",
+                            @"userArray" : nws
+    };
+
+
+//    [dataArray removeAllObjects];
+//    NSArray *array3 = @[dict3,dict3,dict3];
+//    for (NSDictionary *item in array3) {
+        GTMovie *movie = [GTMovie gt_modelWithDictionary:dict3];
+//        [dataArray addObject:movie];
+//    }
+
+    NSLog(@"dataArray3---%@",movie);
+
+
 
     
 }

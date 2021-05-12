@@ -19,12 +19,32 @@
 #import "Person.h"
 #import "NiuPersion.h"
 
+#import "NWButton.h"
+
+
+#import <objc/runtime.h>
+
+#import "NWDispatchQueue.h"
+
+#import <execinfo.h>
+
+//#import "IOP"
+#import <ImageIO/ImageIO.h>
+#import "TwoController.h"
+
+
+typedef void(^Testblock) (NSString *name);
+
 static NSString *kCollectionCell = @"NWCollectionViewCell";
 static const CGFloat kImageWidth = 100;
 
 typedef int (^nwBlock) (int param1,int param2);
 
 @interface ViewController ()<NSURLSessionDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UITableViewDelegate,UITableViewDataSource>
+
+
+@property (nonatomic, copy) Testblock testBlock;
+
 
 @property (nonatomic, strong) NSCache *cache;
 @property (nonatomic, strong) NWCacheIOP *cacheIOP;
@@ -44,6 +64,16 @@ typedef int (^nwBlock) (int param1,int param2);
 @property (nonatomic, strong) UITableView *nwTableView;
 
 @property (assign)  NSInteger gtSource;
+
+@property (nonatomic, strong) UIButton *showButton;
+
+
+@property (nonatomic, strong) NSMutableArray *mutArr;
+
+@property (nonatomic, strong) UITextField *passwordTextField;
+@property (nonatomic, strong) UIButton *pushButton;
+
+
 
 
 
@@ -69,99 +99,450 @@ typedef int (^nwBlock) (int param1,int param2);
 //    self.view.backgroundColor = UIColor.linkColor;
 //}
 
+__weak id weakObj = nil;
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+//    NSLog(@"will %@--%ld",weakObj,[self arc_retainCount:weakObj]);
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationEnterBackground) name: UIApplicationDidEnterBackgroundNotification object:nil];
+    
+}
+
+- (void)applicationEnterBackground {
+    
+    NSLog(@"%@---%@",@(__PRETTY_FUNCTION__),@(__LINE__));
+    
+    
+
+    [self testNWDispatchQueue];
+}
+
+//- app
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+//    NSLog(@"did %@--%ld",weakObj,[self arc_retainCount:weakObj]);
+    
+}
+
+- (NSUInteger)arc_retainCount:(id)obj {
+    return CFGetRetainCount((__bridge CFTypeRef)obj);
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    
+    self = [super initWithCoder:coder];
+    // 代码
+    NSLog(@"initWithCoder");
+    
+    return self;
+}
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    
+    // story and nib
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    NSLog(@"initWithNibName");
+
+    
+    return self;
+}
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    NSLog(@"awakeFromNib");
+
+}
+
+//- (void)loadView {
+//
+//    NSLog(@"loadview");
+//    self.view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//    self.view.backgroundColor = UIColor.redColor;
+//
+//}
+
+
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    
-    
-    
-    
-//    NSHashTable
-    
-    // NSCache & NSMutableDictionary
 
-//    [self testCache];
-//    [self testSDWebImage];
-//    _mutableDictionary = [NSMutableDictionary dictionary];
-//    _cfMutableDict = CFDictionaryCreateMutable(CFAllocatorGetDefault(), 0, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
-//
-//    _nwProgressView = [[UIProgressView alloc] initWithFrame:CGRectMake(50, 100, 300, 30)];
-//    _nwProgressView.tintColor = UIColor.greenColor;
-//    [self.view addSubview:_nwProgressView];
+    [self testAutoUITest];
     
-//    _fileData = [NSMutableData new];
-//    [self testNSURLSessionDownload];
+}
+
+
+
+- (void)testAutoUITest {
     
-    // test maptable
-//    for (int i = 5; i < 10; i++) {
-//        [self testNSCacheAccess:(NSUInteger)pow(10, i)];
-//    }
+    // textfield
+    [self.view addSubview:self.passwordTextField];
+    self.passwordTextField.frame = CGRectMake(100, 200, 200, 30);
     
-//    [self testKVO];
-    
-//    [self testFuncProgramm];
-    
-//    self.nwSetBackgroundColor([UIColor yellowColor]);
-    
-//    [self.view addSubview:self.nwPageControl];
-//    [self testCollectionPage];
-//    [self nw_addTimer];
+    [self.view addSubview:self.pushButton];
+    self.pushButton.frame = CGRectMake(100, 300, 100, 50);
     
     
-//    static int a = 2;
-//    void (^myBlock)(void) = ^{
-//
-//        a *= 3;
-//    };
-//    myBlock(); a = 6
-    // block捕获的值 == A对象的strong属性
-    
-//    NSError *error = nil;
-//    NSLog(@"000---%p",error);
-//    id res = [self testErrorParam:nil error:error];
-//    if (error) {
-//        NSLog(@"err---%@ res- %@",error,res);
-//    }
-//    [self testAttributeRect];
-    
-    
-//    [self testCGImageSet];
-    
-    // gpu 管线化
-    
-    // 顶点着色器-曲面细分着色器-几何着色器-投影-剪裁-屏幕映射
-    // 其中着色器是可以开发人员控制开发，曲面和几何是非必须的，投影和屏幕映射是GPU控制的
-    // 剪裁是可以配置的，不允许自定义开发
-    //
-    // 光删化阶段
-    // 图元组装-三角形操作-片元着色器-逐片元操作-frame buffer，
-    // 图元组装和三角形操作是不可控制的，片元着色器是可以控制的，非必须的，逐片元操作是可以配置的
-    
-//    [self testMapAndHashTable];
-    
-//    [self testCateory];
-    
-//    [self testCornerRadius];
-    
-    
-//    [self testAtomic];
+}
+
+- (void)pushButtonAction:(UIButton *)sender {
     
 
-//    [self testWeakForSome];
+    TwoController *two = [[TwoController alloc] init];
+    [self.navigationController pushViewController:two animated:YES];
     
-//    NWPerson *person = [[NWPerson alloc] init];
-//    id pcls = [person class];
+}
+
+
+- (void)testAsync {
     
-//   id cls = [ViewController class];
     
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        NSLog(@"1");
+    });
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+       
+        NSLog(@"2");
+    });
+    
+    
+    dispatch_sync(dispatch_get_global_queue(0, 0), ^{
+       
+        NSLog(@"3--%@",[NSThread currentThread]);
+    });
+    
+    
+    NSLog(@"4");
+
+    
+}
+
+
+- (void)test2018416 {
+    
+
+    /*
+    
+     //  使用  UIGraphicsBeginImageContextWithOptions生成的图片，每个像素需要4个字节表示
+     建议使用 UIGraphicsImageRenderer，这个方法是从iOS10引入的，在iOS12上会自动选择最佳图像格式
+     可以减少很多内存
+     
+     
+     
+     */
+    
+//    CGRect bounds = CGRectMake(0, 0, 300, 300);
+////    UIGraphicsImageRenderer
+//
+//    UIGraphicsImageRenderer *renderer = [[UIGraphicsImageRenderer alloc] initWithSize:bounds.size];
+////    UIImage *img = renderer.
+//
+//   UIImage *img = [renderer imageWithActions:^(UIGraphicsImageRendererContext * _Nonnull rendererContext) {
+//
+//        [[UIColor blackColor] setFill];
+//        UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:bounds byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(20, 20)];
+//        [path addClip];
+//        UIRectFill(bounds);
+//
+//    }];
+//
+//    if (img) {
+//        // if u change color to tintColor of UIImageView
+//
+//    }
+    
+
+    
+
+    // 缩减像素采样 downsampling 使用ImageIO进行处理图片
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"china_big_img" ofType:@"jpg"];
+//    UIImage *imgOfContent = [UIImage imageWithContentsOfFile:path];
+//    CGSize imgSize = imgOfContent.size;
+    
+    // Resizing image for not ImageIO
+//    CGFloat scale = 0.2;
+//    CGSize imgSize1 = CGSizeMake(imgOfContent.size.width * scale, imgOfContent.size.height * scale);
+//    UIGraphicsImageRenderer *renderer = [[UIGraphicsImageRenderer alloc] initWithSize:imgSize1];
+//    UIImage *resizingImage = [renderer imageWithActions:^(UIGraphicsImageRendererContext * _Nonnull rendererContext) {
+//
+//        [imgOfContent drawInRect:CGRectMake(0, 0, imgSize1.width, imgSize1.height)];
+//
+//    }];
+    
+    
+    // for ImageIO
+    NSURL *url = [NSURL URLWithString:path];
+    
+    CGImageSourceRef sourceRef = CGImageSourceCreateWithURL((CFURLRef)url, NULL);
+//    if (!sourceRef) {
+//        NSLog(@"sourceref is null");
+//        return;
+//    }
+
+    
+    CFDictionaryRef imageOptions;
+    CFStringRef imageKeys[2];
+    CFTypeRef imageValues[2];
+    
+    imageKeys[0] = kCGImageSourceThumbnailMaxPixelSize;
+    imageValues[0] = (CFTypeRef)100;
+    
+    imageKeys[1] = kCGImageSourceCreateThumbnailFromImageAlways;
+    imageValues[1] = (CFTypeRef)YES;
+    
+    imageOptions = CFDictionaryCreate(kCFAllocatorNull, (const void **)imageKeys, (const void **)imageValues, 2, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
+//
+//    CGImageSourceRef sourceRef = CGImageSourceCreateWithURL((CFURLRef)url, NULL);
+    CGImageRef imagRef = CGImageSourceCreateThumbnailAtIndex(sourceRef, 0, imageOptions);
+    UIImage *scaleImage = [UIImage imageWithCGImage:imagRef];
+    NSLog(@"IO----%@",NSStringFromCGSize(scaleImage.size));
+    
+    
+    
+    
+    CFRelease(sourceRef);
+//    CFRelease(imageOptions);
+    CFRelease(imageKeys);
+    CFRelease(imageValues);
+    CFRelease(imagRef);
+    
+    
+    
+    
+}
+
+
+void handleSignalException(int signal) {
+    
+    NSMutableString *crashString = [NSMutableString new];
+    void *callstack[128];
+    int i,frames = backtrace(callstack, 128);
+    char ** traceChar = backtrace_symbols(callstack, frames);
+    for (i = 0; i < frames; i++) {
+        [crashString appendFormat:@"%s\n",traceChar[i]];
+    }
+    
+    NSLog(@"%@", crashString);
+    
+}
+
+- (void)testNWDispatchQueue {
+    
+    
+    dispatch_queue_t concurrentQueue = dispatch_queue_create("com.augus.concurrent", DISPATCH_QUEUE_CONCURRENT);
+    NWDispatchQueue *nwQueue = [[NWDispatchQueue alloc] initWithQueue:concurrentQueue concurrentCount:3];
+    
+    
+    
+//    CFTimeInterval time1 = CACurrentMediaTime();
+    
+    [nwQueue async:^{
+
+        for (int i = 0; i < 20; i++) {
+            NSLog(@"开始(%d) --%@",i,[NSThread currentThread]);
+
+            sleep(1);
+
+            NSLog(@"结束(%d) --%@",i,[NSThread currentThread]);
+
+
+        }
+
+    }];
+    
+//    for (int i = 0; i < pow(10, 1); i++) {
+//
+//        NSLog(@"i---%@",@(i));
+//        if (CACurrentMediaTime() - time1 > 3 * 60) {
+//            handleSignalException(-1);
+//        }
+//    }
+    
+}
+
+
+//
+- (id)nw_objectAtIndex:(NSUInteger)index {
+    
+    NSUInteger _offset = 0,_size = 0;
+    NSMutableArray *_list = [NSMutableArray array];
+    
+    NSUInteger fetchOffset = _offset + index;
+    NSUInteger realIndex = fetchOffset - (_size > fetchOffset ? 0 : _size);
+    
+    return _list[realIndex];
+    
+}
+
+- (void)testRetainCycle {
     
 //    Person *p = [[Person alloc] init];
-//    p.lastName = @"111";
     
-    NiuPersion *niu = [[NiuPersion alloc] init];
-    NSLog(@"%p",niu);
-//    niu.lastName = @"niu";
+    
+//    __block Person *bp = p;
+//    p.name = @"niu";
+//    p.pSpeak = ^{
+//        NSLog(@"p name is %@",bp.name);
+//        bp = nil;
+//    };
+//
+//    p.pSpeak();
+    
+//    p.pNameSpeak = ^(NSString * _Nonnull name) {
+//
+//        NSLog(@"name is %@",name);
+//    };
+//    p.pNameSpeak(p.name);
+    
+    
+//    __weak typeof(p)weakP = p;
+//    p.pSpeak = ^{
+//
+//        __strong typeof(weakP)sp = weakP;
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//
+//            NSLog(@"p name is %@--%@",sp.name,sp);
+//
+//        });
+//    };
+//    p.pSpeak();
+    
+    dispatch_queue_t workConcurrentQueue = dispatch_queue_create("example.code", DISPATCH_QUEUE_CONCURRENT);
+    dispatch_queue_t serialQueue = dispatch_queue_create("example.code.task",DISPATCH_QUEUE_SERIAL);
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(4);
+    for (NSInteger i = 0; i < 10; i++) {
+        dispatch_async(serialQueue, ^{
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+            dispatch_async(workConcurrentQueue, ^{
+                NSLog(@"thread-info:%@开始执行任务%d",[NSThread currentThread],(int)i);
+                sleep(1);
+                NSLog(@"thread-info:%@结束执行任务%d",[NSThread currentThread],(int)i);
+                dispatch_semaphore_signal(semaphore);});
+        });
+    }
+    NSLog(@"主线程...!");
+    
+    
+    
+    
+}
+
+- (void)findIMPForByCateory {
+    
+    Class currentClass = [NWPerson class];
+    NWPerson *person = [[NWPerson alloc] init];
+    
+    if (currentClass) {
+        unsigned int methodCount;
+        Method *methodList = class_copyMethodList(currentClass, &methodCount);
+        IMP lastImp = NULL;
+        SEL lastSel = NULL;
+        for (NSInteger i = 0; i < methodCount; i++) {
+            Method method = methodList[i];
+            NSString *methodName = [NSString stringWithUTF8String:sel_getName(method_getName(method))];
+            
+            if ([@"personPrint" isEqualToString:methodName]) {
+                lastImp = method_getImplementation(method);
+                lastSel = method_getName(method);
+            }
+        }
+        typedef void(*fn) (id,SEL);
+        if (lastImp) {
+            fn f = (fn)lastImp;
+            f(person,lastSel);
+        }
+        free(methodList);
+    }
+    
+    
+}
+
+//#define GT_SON(name) typedef struct name##_a *name##_b
+
+
+- (void)testTimerButtonTitle {
+    
+    
+    NWButton *btn = [[NWButton alloc] initWithFrame:CGRectMake(100, 100, 100, 50)];
+    btn.backgroundColor = UIColor.greenColor;
+    [btn setTitleColor:UIColor.redColor forState:UIControlStateNormal];
+    
+    [self.view addSubview:btn];
+    
+    [btn startAnimation];
+}
+
+- (void)testClassAndMemoryAddress {
+    
+    
+    
+    
+    /**
+    类的隐藏参数：self and _cmd
+     _cmd:表示当前调用的方法，其实就是一个方法选择器SEL
+     // 压栈参数1: id self （4）
+      压栈参数2:_cmd (3)
+    id receiver :(等价于self) （1）
+     Class super_class（等价于self.class）（2）
+     objcet_msgSendSuper2(struct objc_super * super,SEL op,...)
+     
+     从那个viewDidLoad中入栈的高低顺序为
+     self,_cmd,super_class,self,obj
+     第一个self和和第二个_cmd是隐藏参数，第三个self.class和self是[super viewDidLoad]方法执行中的参数
+     
+    在调用self.name的时候，本质上是self指针的在内存向高位地址偏移一个指针
+     
+     
+    obj---0x7ffee7b7b130
+     self--- 0x7ffee7b7b138
+     
+     
+     self---0x7ffee7b7b148
+     
+     - (Class)class {
+         return object_getClass(self);
+     }
+
+     Class object_getClass(id obj)
+     {
+         if (obj) return obj->getIsa();
+         else return Nil;
+     }
+     
+     */
+    
+    
+    
+    
+    NSLog(@"ViewController = %@,地址 = %p",self,&self);
+    NSLog(@"%ld",sizeof(self));
+    NSString *three = @"three";
+    
+    id cls = [Person class];
+//    NSLog(@"Person class = %@,地址 = %p",cls,&cls);
+    
+//    id obj0 = &cls;
+//    void *ivar = &obj0 + offset(N);
+  // 0x7ffee4827130--->0x7ffee4827148 16，
+// 20 4个指针大小 每个指针占8个字节
+    // 20，2个位差是一个指针，0x7fff5c7b9a08---》0x7fff5c7b9a10，偏移一个指针
+
+    //Objc中的对象是一个指向ClassObject地址的变量，即 id obj = &ClassObject ， 而对象的实例变量 void *ivar = &obj + offset(N)
+    void *obj = &cls;
+    NSLog(@"void *obj = %@,地址 = %p",obj,&obj);
+
+    [(__bridge  id)obj speak];
+    
+    Person *p = [[Person alloc] init];
+    NSLog(@"Person instance = %@,地址 = %p",p,&p);
+    [p speak];
     
 }
 
@@ -224,29 +605,115 @@ typedef int (^nwBlock) (int param1,int param2);
 
 - (void)testAtomic {
     
+//    Person *p = [Person new];
+    
     // atomic 指定编译器把读写方法设置为原子读写，并添加互斥锁进行保护
-    dispatch_queue_t gtQueue = dispatch_queue_create("gtQueue1", NULL);
-    dispatch_async(gtQueue, ^{
-        for (int i = 0; i < 1000; i++) {
-            
-            self.gtSource += 1;
-        }
+//    dispatch_queue_t gtQueue = dispatch_queue_create("gtQueue1", NULL);
+//    dispatch_async(gtQueue, ^{
+//        for (int i = 0; i < 1000; i++) {
+//
+//            self.gtSource += 1;
+//        }
+//
+//        NSLog(@"gt source0 %ld",(long)self.gtSource);
+//
+//    });
+//
+//    dispatch_queue_t gtQueue2 = dispatch_queue_create("gtQueue2", NULL);
+//    dispatch_async(gtQueue2, ^{
+//        for (int i = 0; i < 1000; i++) {
+//
+//            self.gtSource += 1;
+//        }
+//        NSLog(@"gt source2 %ld",(long)self.gtSource);
+//
+//    });
+//
+//    NSLog(@"gt source1 %ld",(long)self.gtSource);
+    
+//    int __block a = 0;
+//    dispatch_semaphore_t semA = dispatch_semaphore_create(1);
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//
+//        intptr_t wait = dispatch_semaphore_wait(semA, DISPATCH_TIME_FOREVER);
+//        // -1,if wait is bigger 0,and return ,or is block the current thread
+////        @synchronized (self) {
+//
+//            for (int i = 0; i < 100; i++) {
+//                a = 3;
+//                NSLog(@"线程A---%d",a);
+//            }
+////        }
+//        // +1,if signal is bigger 0,and return,or wake up someone thread,
+//        intptr_t signal = dispatch_semaphore_signal(semA);
+//
+//    });
+//
+//
+//    dispatch_semaphore_t semB = dispatch_semaphore_create(1);
+//
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//        dispatch_semaphore_wait(semB, DISPATCH_TIME_FOREVER);
+//
+////        @synchronized (self) {
+//
+//            for (int i = 0; i < 100; i++) {
+//                a = 33;
+//                NSLog(@"线程B---%d",a);
+//            }
+////        }
+//        dispatch_semaphore_signal(semB);
+//
+//    });
+    
+    
+    dispatch_queue_t concurrentQueue = dispatch_queue_create("com.fosafer.concurrent", DISPATCH_QUEUE_CONCURRENT);
+    
+    void (^blk0)(void) = ^{
+        NSLog(@"blk-0");
+        sleep(3);
+    };
+    void (^blk1)(void) = ^{
+        NSLog(@"blk-1");
+        sleep(2);
+    };
+    
+    void (^blk2)(void) = ^{
+        NSLog(@"blk-2");
         
-        NSLog(@"gt source0 %ld",(long)self.gtSource);
-
-    });
+    };
     
-    dispatch_queue_t gtQueue2 = dispatch_queue_create("gtQueue2", NULL);
-    dispatch_async(gtQueue2, ^{
-        for (int i = 0; i < 1000; i++) {
-
-            self.gtSource += 1;
-        }
-        NSLog(@"gt source2 %ld",(long)self.gtSource);
-
-    });
+    void (^barrerBlk)(void) = ^{
+        NSLog(@"blk-barrier");
+    };
     
-    NSLog(@"gt source1 %ld",(long)self.gtSource);
+    
+    dispatch_async(concurrentQueue, blk0);
+    dispatch_async(concurrentQueue, blk1);
+    dispatch_barrier_async(concurrentQueue, barrerBlk);
+    dispatch_async(concurrentQueue, blk2);
+    
+    
+//    BOOL lock = NO;
+//    while (YES) {
+        
+        // 申请锁
+//        lock = YES;
+//        if (lock) {
+//            NSLog(@"临界区");
+//            lock = NO;
+//        }
+        
+        
+        // 释放锁
+//    }
+
+    
+//    objc_sync_enter(self);
+    
+//    objc_sync_wait(self,0.23);
+    
+//    NSProxy *pro = [NSProxy alloc];
     
 }
 
@@ -1011,6 +1478,27 @@ didReceiveResponse:(nonnull NSURLResponse *)response
         
     }
     return _nwTableView;
+}
+
+- (UITextField *)passwordTextField {
+    if (!_passwordTextField) {
+        _passwordTextField = [[UITextField alloc] init];
+        _passwordTextField.placeholder = @"please input some charc";
+        _passwordTextField.backgroundColor = UIColor.greenColor;
+        
+    }
+    return _passwordTextField;
+}
+
+- (UIButton *)pushButton {
+    if (!_pushButton) {
+        _pushButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_pushButton setTitle:@"跳转" forState:UIControlStateNormal];
+        [_pushButton addTarget:self action:@selector(pushButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        [_pushButton setTitleColor:UIColor.blueColor forState:UIControlStateNormal];
+        _pushButton.backgroundColor = UIColor.redColor;
+    }
+    return _pushButton;
 }
 
 @end

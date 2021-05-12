@@ -75,6 +75,11 @@
     
     NSLog(@"---%ld--%ld",a,b);
     
+//    OSat
+    
+    
+//    [UIDevice currentDevice]
+    
 
     
 }
