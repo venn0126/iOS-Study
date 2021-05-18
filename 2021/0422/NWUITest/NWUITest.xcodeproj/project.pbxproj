@@ -16,6 +16,8 @@
 		27421F5A263BF4BB001F8491 /* sample4.caf in Resources */ = {isa = PBXBuildFile; fileRef = 27421F57263BF4BB001F8491 /* sample4.caf */; };
 		27421F6E263BFBD4001F8491 /* GTPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27421F6D263BFBD4001F8491 /* GTPlayerController.m */; };
 		27431725263D580E0091298F /* SampleVideo_1280x720_1mb.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 27431724263D580E0091298F /* SampleVideo_1280x720_1mb.mp4 */; };
+		2747F9E6264E214700FF6622 /* TestSonObj+Son2.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747F9E5264E214700FF6622 /* TestSonObj+Son2.m */; };
+		2747F9EC264E21A300FF6622 /* TestObj2.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747F9EB264E21A300FF6622 /* TestObj2.m */; };
 		2761DAD326497F9A00D73352 /* NSObject+Tian.m in Sources */ = {isa = PBXBuildFile; fileRef = 2761DAD226497F9A00D73352 /* NSObject+Tian.m */; };
 		27749CF626311A5A00EA6402 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27749CF526311A5A00EA6402 /* AppDelegate.m */; };
 		27749CF926311A5A00EA6402 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27749CF826311A5A00EA6402 /* SceneDelegate.m */; };
@@ -31,6 +33,10 @@
 		2794544A264510BD001ABA02 /* AVMetadataItem+NWAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 27945449264510BD001ABA02 /* AVMetadataItem+NWAdditions.m */; };
 		2794545026452CDB001ABA02 /* GTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2794544F26452CDB001ABA02 /* GTPlayerView.m */; };
 		27945456264530AB001ABA02 /* YSPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27945455264530AB001ABA02 /* YSPlayerController.m */; };
+		27A5B8B3264D72540012BB64 /* TestSonObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A5B8B2264D72540012BB64 /* TestSonObj.m */; };
+		27A5B8B9264D72AE0012BB64 /* TestSonObj+TSOCateory.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A5B8B8264D72AE0012BB64 /* TestSonObj+TSOCateory.m */; };
+		27A5B8BF264D74FF0012BB64 /* OneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A5B8BE264D74FF0012BB64 /* OneView.m */; };
+		27A5B8C5264D75100012BB64 /* TwoButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A5B8C4264D75100012BB64 /* TwoButton.m */; };
 		5DB6149D82AE79CCA29391F6 /* libPods-NWUITest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A9E181487FB5034871C2FD89 /* libPods-NWUITest.a */; };
 		818A180D07140150D6D2F8AE /* libPods-NWUITestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0393522EB55E2F230EE19E61 /* libPods-NWUITestTests.a */; };
 		F5996CF16DF7D79942891BDC /* libPods-NWUITest-NWUITestUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A39D2D7C6B8A6D90C59A63F0 /* libPods-NWUITest-NWUITestUITests.a */; };
@@ -71,6 +77,10 @@
 		27421F6C263BFBD4001F8491 /* GTPlayerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTPlayerController.h; sourceTree = "<group>"; };
 		27421F6D263BFBD4001F8491 /* GTPlayerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTPlayerController.m; sourceTree = "<group>"; };
 		27431724263D580E0091298F /* SampleVideo_1280x720_1mb.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = SampleVideo_1280x720_1mb.mp4; sourceTree = "<group>"; };
+		2747F9E4264E214700FF6622 /* TestSonObj+Son2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestSonObj+Son2.h"; sourceTree = "<group>"; };
+		2747F9E5264E214700FF6622 /* TestSonObj+Son2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TestSonObj+Son2.m"; sourceTree = "<group>"; };
+		2747F9EA264E21A300FF6622 /* TestObj2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestObj2.h; sourceTree = "<group>"; };
+		2747F9EB264E21A300FF6622 /* TestObj2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestObj2.m; sourceTree = "<group>"; };
 		2761DAD126497F9A00D73352 /* NSObject+Tian.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Tian.h"; sourceTree = "<group>"; };
 		2761DAD226497F9A00D73352 /* NSObject+Tian.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Tian.m"; sourceTree = "<group>"; };
 		27749CF126311A5A00EA6402 /* NWUITest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NWUITest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +110,14 @@
 		2794544F26452CDB001ABA02 /* GTPlayerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTPlayerView.m; sourceTree = "<group>"; };
 		27945454264530AB001ABA02 /* YSPlayerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YSPlayerController.h; sourceTree = "<group>"; };
 		27945455264530AB001ABA02 /* YSPlayerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YSPlayerController.m; sourceTree = "<group>"; };
+		27A5B8B1264D72540012BB64 /* TestSonObj.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestSonObj.h; sourceTree = "<group>"; };
+		27A5B8B2264D72540012BB64 /* TestSonObj.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestSonObj.m; sourceTree = "<group>"; };
+		27A5B8B7264D72AE0012BB64 /* TestSonObj+TSOCateory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestSonObj+TSOCateory.h"; sourceTree = "<group>"; };
+		27A5B8B8264D72AE0012BB64 /* TestSonObj+TSOCateory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TestSonObj+TSOCateory.m"; sourceTree = "<group>"; };
+		27A5B8BD264D74FF0012BB64 /* OneView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OneView.h; sourceTree = "<group>"; };
+		27A5B8BE264D74FF0012BB64 /* OneView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OneView.m; sourceTree = "<group>"; };
+		27A5B8C3264D75100012BB64 /* TwoButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TwoButton.h; sourceTree = "<group>"; };
+		27A5B8C4264D75100012BB64 /* TwoButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwoButton.m; sourceTree = "<group>"; };
 		72DBBCA7D43FDDF223B9AF48 /* Pods-NWUITest-NWUITestUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NWUITest-NWUITestUITests.release.xcconfig"; path = "Target Support Files/Pods-NWUITest-NWUITestUITests/Pods-NWUITest-NWUITestUITests.release.xcconfig"; sourceTree = "<group>"; };
 		986AB94ADD0ED0DBBE7CB6C5 /* Pods-NWUITest-NWUITestUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NWUITest-NWUITestUITests.debug.xcconfig"; path = "Target Support Files/Pods-NWUITest-NWUITestUITests/Pods-NWUITest-NWUITestUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A39D2D7C6B8A6D90C59A63F0 /* libPods-NWUITest-NWUITestUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NWUITest-NWUITestUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -192,8 +210,20 @@
 				27749CF826311A5A00EA6402 /* SceneDelegate.m */,
 				27749CFA26311A5A00EA6402 /* ViewController.h */,
 				27749CFB26311A5A00EA6402 /* ViewController.m */,
+				27A5B8BD264D74FF0012BB64 /* OneView.h */,
+				27A5B8BE264D74FF0012BB64 /* OneView.m */,
+				27A5B8C3264D75100012BB64 /* TwoButton.h */,
+				27A5B8C4264D75100012BB64 /* TwoButton.m */,
 				272946C8264B76C500AF96B7 /* TestObj.h */,
 				272946C9264B76C500AF96B7 /* TestObj.m */,
+				2747F9EA264E21A300FF6622 /* TestObj2.h */,
+				2747F9EB264E21A300FF6622 /* TestObj2.m */,
+				27A5B8B1264D72540012BB64 /* TestSonObj.h */,
+				27A5B8B2264D72540012BB64 /* TestSonObj.m */,
+				27A5B8B7264D72AE0012BB64 /* TestSonObj+TSOCateory.h */,
+				27A5B8B8264D72AE0012BB64 /* TestSonObj+TSOCateory.m */,
+				2747F9E4264E214700FF6622 /* TestSonObj+Son2.h */,
+				2747F9E5264E214700FF6622 /* TestSonObj+Son2.m */,
 				2761DAD126497F9A00D73352 /* NSObject+Tian.h */,
 				2761DAD226497F9A00D73352 /* NSObject+Tian.m */,
 				2794544E26452CDB001ABA02 /* GTPlayerView.h */,
@@ -451,16 +481,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				27749CFC26311A5A00EA6402 /* ViewController.m in Sources */,
+				27A5B8B3264D72540012BB64 /* TestSonObj.m in Sources */,
+				2747F9EC264E21A300FF6622 /* TestObj2.m in Sources */,
 				2761DAD326497F9A00D73352 /* NSObject+Tian.m in Sources */,
 				27749CF626311A5A00EA6402 /* AppDelegate.m in Sources */,
 				27749D0726311A5C00EA6402 /* main.m in Sources */,
+				2747F9E6264E214700FF6622 /* TestSonObj+Son2.m in Sources */,
+				27A5B8B9264D72AE0012BB64 /* TestSonObj+TSOCateory.m in Sources */,
 				2794544A264510BD001ABA02 /* AVMetadataItem+NWAdditions.m in Sources */,
 				27421F6E263BFBD4001F8491 /* GTPlayerController.m in Sources */,
+				27A5B8C5264D75100012BB64 /* TwoButton.m in Sources */,
 				2794545026452CDB001ABA02 /* GTPlayerView.m in Sources */,
 				27749D2E26311A9500EA6402 /* TwoController.m in Sources */,
 				27421F4A263BDEC9001F8491 /* NWSpeechController.m in Sources */,
 				27945456264530AB001ABA02 /* YSPlayerController.m in Sources */,
 				27041503263C5F3B001A3184 /* GTMemo.m in Sources */,
+				27A5B8BF264D74FF0012BB64 /* OneView.m in Sources */,
 				270414FD263C46A3001A3184 /* GTRecorderController.m in Sources */,
 				27749CF926311A5A00EA6402 /* SceneDelegate.m in Sources */,
 				272946CA264B76C500AF96B7 /* TestObj.m in Sources */,

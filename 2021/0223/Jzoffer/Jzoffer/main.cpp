@@ -199,7 +199,7 @@ public:
     
     /// 删除链表节点(双指针)
     
-    ListNode * delNode(ListNode *head,int val) {
+    ListNode * delDubleNode(ListNode *head,int val) {
     
         //边界条件判断
         if (head == NULL) {
@@ -765,6 +765,47 @@ public:
 
    // ******************* ListNode ************************
     
+    
+    struct GTListNode {
+        
+        int val;
+        GTListNode *next;
+        GTListNode(int x) : val(x),next(NULL) {};
+    };
+    
+    /// 初始化链表
+    ListNode *initListNode(void) {
+        
+        ListNode *head = nullptr;
+        // Create first node with 12.5
+        head = new ListNode(-1); // Allocate new node
+        head->val = 3;    // Store the value
+        head->next = nullptr; // Signify end of list
+        
+        // Create second node with 13.5
+        ListNode *secondPtr = new ListNode(-1);
+        secondPtr->val = 7;
+        secondPtr->next = nullptr; // Second node is end of list
+        head->next = secondPtr; // First node points to second
+        
+        
+        ListNode *thirdPtr = new ListNode(-1);
+        thirdPtr->val = 10;
+        thirdPtr->next = nullptr; // third node is end of list
+        secondPtr->next = thirdPtr;//
+        
+        // Print the list
+        cout << "First item is " << head->val << endl;
+        cout << "Second item is " << head->next->val << endl;
+        cout << "Third item is " << head->next->next->val << endl;
+
+        
+        return head;
+    }
+    
+    
+    
+    
     /// 反转链表
 
 
@@ -782,6 +823,16 @@ public:
 
 
     /// 倒序打印链表
+    void printOfReverse(ListNode *root) {
+        
+        if (root) {
+           
+            if (root->next) {
+                printOfReverse(root->next);
+            }
+            cout << "the node is: " << root->val << "\n";
+        }
+    }
     
     
     /// 删除某个节点
@@ -856,6 +907,7 @@ public:
         for (int i = 1; i < n; i++) {
             for (int j = 1; j < m; j++) {
                 if ((j & 1 )== 1) {// 奇数-
+//                    cout << j << "奇" << "\n";
                     res[j] = max(res[j], res[j-1]-arr[i]);
                 } else {
                     res[j] = max(res[j], res[j-1]+arr[i]);
@@ -1544,50 +1596,7 @@ public:
         
 //        return 0;
     }
-    
-    
-    
-    
-    double findMiddleNum(vector<int> arr1,vector<int> arr2) {
-        
-        int len1 = (int)arr1.size();
-        int len2 = (int)arr2.size();
-        int left = (len1 + len2 + 1) / 2;
-        int right = (len1 + len2 + 2) / 2;
-        int temp = getKth3(arr1, 0, len1-1, arr2, 0, len2-1, left) + getKth3(arr1, 0, len1-1, arr2, 0, len2-1, right);
-        
-        return temp * 0.5;
-    }
-    
-    int getKth3(vector<int> arr1,int start1,int end1,vector<int> arr2,int start2,int end2,int k) {
-        
-        int len1 = end1 - start1 + 1;
-        int len2 = end2 - start2 + 1;
-        
-        if (len1 > len2) {
-            getKth3(arr2, start2, end2, arr1, start1, end1, k);
-        }
-        
-        if (len1 == 0) {
-            return arr2[k+start2-1];
-        }
-        
-        if (k == 1) {
-            return min(arr1[start1], arr2[start2]);
-        }
-        
-        int i = start1 + min(len1, k/2) - 1;
-        int j = start2 + min(len2, k/2) - 1;
-        
-        
-        if (arr1[i] < arr2[j]) {
-            return getKth3(arr1, i+1, end1, arr2, start2, end2, k-(i-start1+1));
-        } else {
-            return getKth3(arr1, start1, end1, arr2, j+1, end2, k-(j-start2+1));
-        }
-        
-    }
-    
+
     
     int random_0_1()
     {
@@ -1705,10 +1714,63 @@ public:
     }
     
     
-
+    // 01 45 56  return 2
+    // 5 5 5 5 5 5 return 01 23 45
+    // 相邻两个位置的数之和是偶数
+    // 结果不能有重合位置
     
+    int evenNumOfArray(vector<int> arr) {
+        
+        int length = (int)arr.size();
+        int sum = 0;
+        vector<int> temp;
+        for (int i = 1; i < length; i++) {
+            sum = arr[i] + arr[i-1];
+            if (sum % 2 == 0) {
+                temp.push_back(sum);
+            }
+        }
+        
+        sum = arr[0] + arr[length-1];
+        if (sum % 2 == 0) {
+            temp.push_back(sum);
+        }
+        
+        set<int> s1(temp.begin(),temp.end());
+        
+        return (int)s1.size();
+    }
 
+ 
+    /// 最长回文子序列
+    int longestPalindromeSubseq(string s) {
+        
+        int len = (int)s.length();
+        if (len == 0) {
+            return 0;
+        }
+  
+        vector<vector<int>> c(len,vector<int>(len));
+        
+        // i i+1      j-1 j
+        // 1 3        4 5
+        for (int i = len-1; i>=0; i--) {
+            // 单个字符的回文字符串长度为1
+            c[i][i] = 1;
+            for (int j = i+1; j < len; j++) {
+                // 如果i+1 j-1存在最长回文子序列 那么则有
+                if (s[i] == s[j]) {
+                    c[i][j] = c[i+1][j-1] + 2;
+                } else {
+                    c[i][j] = max(c[i][j-1], c[i+1][j]);
+                }
+            }
+        }
+        
+        return c[0][len-1];
+    }
     
+    /// end
 };
 
 
@@ -1723,6 +1785,10 @@ int main(int argc, const char * argv[]) {
 
     
     Solution sol;
+//    ListNode *l = sol.initListNode();
+//    sol.printOfReverse(l);
+    
+    
     
     // 插入排序
 //    vector<int> arr0 = {2,6,9,10};
@@ -1757,10 +1823,27 @@ int main(int argc, const char * argv[]) {
 //    string res =  sol.addString0(s1, s2);
 //    cout << res << "\n";
     
-//    vector<int> arr3 = {1,2,3,4};
+//    vector<int> arr3 = {4,2,5,8,7,3,7};
+//    vector<int> arr3 = {14,21,16,35,22};
+//        vector<int> arr3 = {5,5,5,5,5,5};
+
+//    int res = sol.evenNumOfArray(arr3);
+//    cout << res << "\n";
 //    vector<int> arr4 = {3,4,1,1,2,4,3,1,4};
     
     
+    //string s = "bbbab"; // 4
+    // cbbd 2 bbbab
+//    string s = "bbbab";
+//    int res = sol.longestPalindromeSubseq(s);
+//    cout << res << "\n";
+    
+    
+//    vector<int> arr = {1,3,5,8,2};
+//    int res =  sol.maxProfitKTimes(arr, 2);
+//    cout << res << "hh" << "\n";
+    
+
 //    vector<int> res = sol.deDeplication(arr4);
 //    printfArray(res);
     
@@ -1781,9 +1864,6 @@ int main(int argc, const char * argv[]) {
 //    int res = sol.findMinPath1(twoArr);
 //    cout << res << "\n";
     
-    
-    
-    
 //    sol.insert_sort(arr0);
 //    insert_sort(arr0);
 //    bubble_sort(arr0);
@@ -1791,12 +1871,9 @@ int main(int argc, const char * argv[]) {
 //    quick_sort1(arr0, 0, 3);
     
     
-    int n = 15;
-    bool res = sol.isPowerOfTwo2(n);
-    cout << res << "\n";
-    
-    
-    
+//    int n = 15;
+//    bool res = sol.isPowerOfTwo2(n);
+//    cout << res << "\n";
     
 //    int c[] = {0,4,5,9};
 //    sol.insertion_sort(c, 4);

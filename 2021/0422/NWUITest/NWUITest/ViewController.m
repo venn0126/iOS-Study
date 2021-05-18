@@ -30,6 +30,11 @@
 #import <objc/runtime.h>
 
 #import "TestObj.h"
+#import "TestSonObj.h"
+#import "TestSonObj+TSOCateory.h"
+
+#import "OneView.h"
+#import "TwoButton.h"
 
 
 
@@ -118,11 +123,105 @@ static const NSString *YSPlayerItemStatusContext;
     
 //    [self findNumberForBottle:4];
     
-    [self test2Obj];
-    
+//    [self test2Obj];
 
 //    [self testbarrierGCD];
     
+
+//    [self testBAIDU];
+    
+    [self testBlock];
+    
+    
+}
+
+int a = 3;
+- (void)testBlock {
+    
+    static int b = 2;
+    void (^myBlock)(void) = ^{
+        
+        NSLog(@"全局变量 %d,静态局部变量 %d",a,b);
+    };
+    // <__NSGlobalBlock__: 0x10e5aa2f8>
+    // 只用到全局和静态局部也是全局block 不持有对象
+    NSLog(@"%@",myBlock);
+    myBlock();
+    
+    // stack block 是不持有对象的 _NSConcreteStackBlock
+    
+    __block int temp = 10;
+//    int temp = 10; // stack
+//    NSLog(@"stack block --%@",^{NSLog(@"temp %d",temp);});
+    NSLog(@"before %p",&temp);//before 0x7ffee7478d20-140742198063840
+    void (^tBlock)(void) = ^{
+        
+        // 内部捕获的变量，都是赋值给block的结构体，相当于const不可更改
+        // 为了访问并修改外部变量，需要加上__block修饰符
+        temp *= 2;
+        NSLog(@"in block %p",&temp);//in block 0x600000f285d8-175921844550184
+        
+        
+        
+        /**
+         
+         
+        高堆从高到低
+         
+        低 栈从低到高
+         
+         */
+        
+        
+    };
+    
+    NSLog(@"after %p",&temp);//after 0x600000f285d8
+
+    tBlock();
+    
+    
+    // unsigned long int 2^32 - 1
+//    uintptr_t cc = 0;
+//    NSLog(@"%lu",cc);
+    
+    
+    
+    
+    
+}
+
+- (void)testBAIDU {
+    
+//        TestObj *obj = [TestObj new];
+//        [obj printName];
+        
+//        TestSonObj *son = [TestSonObj new];
+//        [son printName];
+    
+    
+//    OneView *one = [OneView new];
+//    one.backgroundColor = UIColor.greenColor;
+//    [self.view addSubview:one];
+//    one.clipsToBounds = YES;
+//
+//    one.frame = CGRectMake(100, 100, 100, 100);
+//
+//    TwoButton *two = [TwoButton new];
+//    two.backgroundColor = UIColor.redColor;
+//    [two addTarget:self action:@selector(twoButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+//    [one addSubview:two];
+//
+//    two.frame = CGRectMake(0, 50, 100, 120);
+    
+    
+}
+
+
+
+- (void)twoButtonAction:(UIButton *)sender {
+    
+    NSLog(@"%@ : %@",@(__PRETTY_FUNCTION__),@(__LINE__));
+
 }
 
 - (void)testbarrierGCD {
@@ -157,6 +256,7 @@ static const NSString *YSPlayerItemStatusContext;
 struct nw_objc_class {
 
     Class isa;
+    Class cache_t;
 };
 
 - (void)test2Obj {
@@ -979,6 +1079,9 @@ bool test_and_set(bool *target) {
     
     NSLog(@"4");
     
+    
+    
+    
     /*
     
     添加异步
@@ -1025,17 +1128,17 @@ bool test_and_set(bool *target) {
      
    
      
-//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-//        NSLog(@"1"); // 任务1
-//        dispatch_sync(dispatch_get_main_queue(), ^{
-//            NSLog(@"2"); // 任务2
-//        });
-//        NSLog(@"3"); // 任务3
-//    });
-//    NSLog(@"4"); // 任务4
-//    while (1) { // 主队列阻塞
-//    }
-//    NSLog(@"5"); // 任务5
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSLog(@"1");  任务1
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            NSLog(@"2");  任务2
+        });
+        NSLog(@"3");  任务3
+    });
+    NSLog(@"4");  任务4
+    while (1) {  主队列阻塞
+    }
+    NSLog(@"5");  任务5
     
      
      

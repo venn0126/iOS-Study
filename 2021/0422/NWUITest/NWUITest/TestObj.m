@@ -9,4 +9,21 @@
 
 @implementation TestObj
 
++ (void)load {
+    
+    NSLog(@"%@ : %@",@(__PRETTY_FUNCTION__),@(__LINE__));
+}
+
++ (void)initialize {
+    
+    NSLog(@"%@ : %@",@(__PRETTY_FUNCTION__),@(__LINE__));
+
+    
+}
+
+- (void)printName {
+    
+    
+}
+
 @end

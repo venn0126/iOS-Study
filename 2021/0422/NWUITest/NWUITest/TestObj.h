@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign)  NSInteger propertyInt;
 
+- (void)printName;
+
 
 @end
 
