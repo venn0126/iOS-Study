@@ -36,11 +36,18 @@
 #import "OneView.h"
 #import "TwoButton.h"
 
+#import "GTTimerController.h"
+#import "QiPlayerVideoController.h"
+#import "QiAudioPlayer.h"
+#import "QiLocationController.h"
+#import "QiDownloadController.h"
+
+#import <dlfcn.h>
 
 
 
 static const NSString *YSPlayerItemStatusContext;
-
+NSString * const AppViewControllerRefreshNotificationName = @"AppViewControllerRefreshNotificationName";
 
 @interface ViewController ()<GTPlayerControllerDelegate>
 
@@ -50,9 +57,18 @@ static const NSString *YSPlayerItemStatusContext;
 @property (nonatomic, strong) NSMutableArray *mutableArray;
 @property (nonatomic, strong) AVPlayer *ysPlayer;
 
+@property (nonatomic, weak) NSTimer *backTimer;
 
+@property (nonatomic, strong) UIColor *buttonBackgroundColor;
+@property (nonatomic, strong) NSMutableArray<UIButton *> *mButtonArray;
+
+
+
+@property (nonatomic,strong) id runtime_Player;
 
 @end
+
+
 
 @implementation ViewController {
     
@@ -73,6 +89,7 @@ static const NSString *YSPlayerItemStatusContext;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"Home";
     // Do any additional setup after loading the view.
     
 //    [self testAutoUITest];
@@ -130,10 +147,249 @@ static const NSString *YSPlayerItemStatusContext;
 
 //    [self testBAIDU];
     
-    [self testBlock];
+//    [self testBlock];
+    
+    
+    [self setupUI];
+//    [self addNotification];
+    
+//    [self testDLOpen];
+//    [self testManSDK];
     
     
 }
+
+- (void)testManSDK {
+    
+    // bundle 路径
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Man" ofType:@"bundle"];
+    
+    // sdk 路径
+    NSString *sdkPath = [path stringByAppendingPathComponent:@"MangoSDK.framework/MangoSDK"];
+    const char *cPath = [sdkPath UTF8String];
+    
+    void *lib = dlopen(cPath, RTLD_LAZY);
+    if (lib == NULL) {
+        NSLog(@"open lib error %s",dlerror());
+    } else {
+        Class mgCls = NSClassFromString(@"MGTool");
+        SEL sel = NSSelectorFromString(@"new");
+        id runInstance = [mgCls performSelector:sel];
+        sel = NSSelectorFromString(@"mg_logName");
+        [runInstance performSelector:sel];
+        dlclose(lib);
+        
+    }
+    
+}
+
+- (void)testDLOpen {
+    
+//    dlopen
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"SomethingJustLikeThis" ofType:@"mp3"];
+    /**
+     mode:（可多选的）
+     // 表示动态库中的symbol什么时候被加载
+     RTLD_LAZY 暂缓决定，等有需要的时候再解析符号
+     RTLD_NOW 立即决定，返回前解除所有未决定的符号
+     // 表示symbol的可见性
+     RTLD_GLOBLE 允许导出符号
+     RTLD_LOCAL
+     */
+    void *lib = dlopen("/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/AVFoundation.framework/AVFoundation", RTLD_NOW | RTLD_GLOBAL);
+    
+    if (lib == NULL) {
+        // open dynamic lib error
+        NSLog(@"open dynamic error: %s",dlerror());
+    } else {
+        Class playerClass = NSClassFromString(@"AVAudioPlayer");
+        SEL sel = NSSelectorFromString(@"initWithData:error:");
+        _runtime_Player = [[playerClass alloc] performSelector:sel withObject:[NSData dataWithContentsOfFile:path] withObject:nil];
+        sel = NSSelectorFromString(@"play");
+        [_runtime_Player performSelector:sel];
+        NSLog(@"dynamic load play");
+        
+        dlclose(lib);
+    }
+    
+    
+    
+
+}
+
+- (void)setupUI {
+    [self setupButtons];
+
+}
+
+- (void)setupButtons {
+    
+    CGFloat topMargin = 200.0;
+    CGFloat leftMargin = 20.0;
+    CGFloat verticalMargin = 30.0;
+    CGFloat btnW = [UIScreen mainScreen].bounds.size.width - leftMargin * 2;
+    CGFloat btnH = 44.0;
+    UIColor *btnColor = [UIColor grayColor];
+    _buttonBackgroundColor = btnColor;
+    _mButtonArray = [NSMutableArray array];
+    
+    UIButton *locationBtn = [[UIButton alloc] initWithFrame:CGRectMake(leftMargin, topMargin, btnW, btnH)];
+    [locationBtn setTitle:@"地图" forState:UIControlStateNormal];
+    locationBtn.backgroundColor = btnColor;
+    [self.view addSubview:locationBtn];
+    [locationBtn addTarget:self action:@selector(locationButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [_mButtonArray addObject:locationBtn];
+    
+    UIButton *playBtn = [[UIButton alloc] initWithFrame:CGRectMake(leftMargin, CGRectGetMaxY(locationBtn.frame) + verticalMargin, btnW, btnH)];
+    [playBtn setTitle:@"播放音乐" forState:UIControlStateNormal];
+    playBtn.backgroundColor = btnColor;
+    [self.view addSubview:playBtn];
+    [playBtn addTarget:self action:@selector(playButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [_mButtonArray addObject:playBtn];
+    
+    UIButton *needRunInBgBtn = [[UIButton alloc] initWithFrame:CGRectMake(leftMargin, CGRectGetMaxY(playBtn.frame) + verticalMargin, btnW, btnH)];
+    [needRunInBgBtn setTitle:@"需要后台运行" forState:UIControlStateNormal];
+    needRunInBgBtn.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:needRunInBgBtn];
+    [needRunInBgBtn addTarget:self action:@selector(needRunInBackgroundButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *downloadBtn = [[UIButton alloc] initWithFrame:CGRectMake(leftMargin, CGRectGetMaxY(needRunInBgBtn.frame) + verticalMargin, btnW, btnH)];
+    [downloadBtn setTitle:@"下载" forState:UIControlStateNormal];
+    downloadBtn.backgroundColor = btnColor;
+    [self.view addSubview:downloadBtn];
+    [downloadBtn addTarget:self action:@selector(downloadButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [_mButtonArray addObject:downloadBtn];
+    
+    UIButton *timerBtn = [[UIButton alloc] initWithFrame:CGRectMake(leftMargin, CGRectGetMaxY(downloadBtn.frame) + verticalMargin, btnW, btnH)];
+    [timerBtn setTitle:@"定时器" forState:UIControlStateNormal];
+    timerBtn.backgroundColor = btnColor;
+    [self.view addSubview:timerBtn];
+    [timerBtn addTarget:self action:@selector(timerButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [_mButtonArray addObject:timerBtn];
+    
+    NSLog(@"*****%lu",(unsigned long)_mButtonArray.count);
+}
+
+
+#pragma mark - 地图视图
+- (void)locationButtonClicked:(UIButton *)sender {
+    
+//    NSURL *url = [NSURL URLWithString:@"https://www.so.com"];
+//    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+//    NSURLSession *session = [NSURLSession sharedSession];
+//    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//        if (error) {
+//            NSLog(@"错误信息：%@", error);
+//        } else {
+//            NSLog(@"数据长度：%lu", (unsigned long)data.length);
+//        }
+//    }];
+//
+//    [dataTask resume];
+//    return;
+    
+    QiLocationController *location = [QiLocationController new];
+    [self.navigationController pushViewController:location animated:YES];
+}
+
+#pragma mark - 播放音乐
+- (void)playButtonClicked:(UIButton *)sender {
+    
+    QiPlayerVideoController *playVieoVC = [QiPlayerVideoController new];
+    [self.navigationController pushViewController:playVieoVC animated:YES];
+    
+}
+
+#pragma mark - 需要后台运行
+- (void)needRunInBackgroundButtonClicked:(UIButton *)sender {
+    
+    NSLog(@"%s: 需要后台音乐播放",__func__);
+    [QiAudioPlayer sharedInstance].needRunBackground = YES;
+}
+
+#pragma mark - 下载
+- (void)downloadButtonClicked:(UIButton *)sender {
+    
+    QiDownloadController *downloadVC = [QiDownloadController new];
+    [self.navigationController pushViewController:downloadVC animated:YES];
+}
+
+
+#pragma mark - 定时器
+- (void)timerButtonClicked:(UIButton *)sender {
+    
+//    GTTimerController *timerVC = [GTTimerController new];
+//    [self.navigationController pushViewController:timerVC animated:YES];
+    
+    [self testManSDK];
+}
+
+
+#pragma mark - 添加通知
+- (void)addNotification {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appRefreshNoti:) name:AppViewControllerRefreshNotificationName object:nil];
+}
+
+- (void)appRefreshNoti:(id)sender {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIColor *btnColor = [UIColor colorWithRed:(arc4random() % 256 / 255.0) green:(arc4random() % 256 / 255.0) blue:(arc4random() % 256 / 255.0) alpha:1.0];
+        [self.mButtonArray enumerateObjectsUsingBlock:^(UIButton * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            obj.backgroundColor = btnColor;
+        }];
+    });
+}
+
+#pragma mark - 移除通知
+- (void)dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:AppViewControllerRefreshNotificationName object:nil];
+}
+
+//- (void)viewWillAppear:(BOOL)animated {
+//    [super viewWillAppear:animated];
+//    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
+//}
+//
+//- (void)viewWillDisappear:(BOOL)animated {
+//    [super viewWillDisappear:animated];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    
+    // UIBackgroundTaskIdentifier
+    NSLog(@"applicationDidEnterBackground");
+    UIBackgroundTaskIdentifier identifier =  [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+            
+        // your long time task
+        NSLog(@"beginBackgroundTaskWithExpirationHandler");
+//        self.backTimer = [NSTimer timerWithTimeInterval:2 * 60 repeats:NO block:^(NSTimer * _Nonnull timer) {
+//
+//
+//        }];
+        
+    }];
+    
+    
+    // 此处为执行任务代码 通常用来保存应用程序关键数据数据
+    NSLog(@"task begin");
+    sleep(2 * 60);
+    NSLog(@"task finish");
+   
+    //当任务执行完成时 调用endBackgroundTask方法 调用后就会将app挂起
+    
+    //后台保活通常时间为3分钟，如果时间到期之前调用endBackgroundTask方法 就会强制杀掉进程，就会造成崩溃
+    [application endBackgroundTask:identifier];
+    
+    
+    
+    NSLog(@"crash identifier is  %ld",identifier);
+}
+
 
 int a = 3;
 - (void)testBlock {
@@ -739,7 +995,7 @@ bool test_and_set(bool *target) {
 }
 
 
-- (void)setupUI {
+- (void)setupUI0 {
     
     for (int i = 0; i < 4; i++) {
         UIButton *btn = [[UIButton alloc] init];
@@ -1298,6 +1554,8 @@ bool test_and_set(bool *target) {
      1 2 3
      
      */
+    
+    
     
 }
 

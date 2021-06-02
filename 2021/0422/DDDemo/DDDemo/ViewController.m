@@ -6,12 +6,44 @@
 //
 
 #import "ViewController.h"
+#import <sys/signal.h>
+
+#import <execinfo.h>
 
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    
+    // UIBackgroundTaskIdentifier
+    NSLog(@"applicationDidEnterBackground");
+    UIBackgroundTaskIdentifier identifier =  [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+            
+        // your long time task
+        
+        NSMutableArray *temoArray = [NSMutableArray array];
+        for (int i = 0; i < pow(10, 9); i++) {
+            [temoArray addObject:[NSNumber numberWithInt:i]];
+        }
+        
+    }];
+    
+    NSLog(@"crash identifier is  %ld",identifier);
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,8 +59,123 @@
 //    NSLog(@"res ---%@",res);
     
     
-    [self testGCDTest];
+//    [self testGCDTest];
+
     
+//    [self testSemaphore];
+    
+//    [self testOCCrash];
+    
+//    NSLog(@"screen scale %.2f",[UIScreen mainScreen].scale);
+  
+    
+//    [self testImageScale];
+    
+//    [self oldMethod:@"sss"];
+    
+//    self.view.superview.setNeedsLayout
+    
+    
+    handleSignalException(0);
+}
+
+/// __attribute__ 演示
+- (void)oldMethod:(NSString *)string __attribute__((availability(ios,introduced=2_0,deprecated=7_0,message="用 -newMethod: 这个方法替代 "))){
+    NSLog(@"我是旧方法,不要调我");
+}
+
+- (void)newMethod:(NSString *)string{
+    NSLog(@"我是新方法");
+}
+
+
+- (void)testImageScale {
+    
+//    CGBitmapContextCreate(void * _Nullable data, size_t width, size_t height, size_t bitsPerComponent, size_t bytesPerRow, CGColorSpaceRef  _Nullable space, uint32_t bitmapInfo)
+    
+    UIImage *image = [UIImage imageNamed:@"icon"];
+    NSLog(@"image size: %@",NSStringFromCGSize(image.size));
+}
+
+void registerSignalHandler(void) {
+    
+    signal(SIGSEGV, handleSignalException);
+}
+
+void handleSignalException(int signal) {
+    
+//    NSMutableString *crashString = [NSMutableString new];
+//    void * callstack[128];
+//    int i,frames = backtrace(callstack,128);
+//    char **traceChar = backtrace_symbol(callstack,frames);
+//    for (int i = 0; i < frames; i++) {
+//        [crashString appendFormat:@"%s\n",[traceChar[i]];
+//    }
+    
+    void *callstack[128];
+    int frames = backtrace(callstack,128);
+    char** strs = backtrace_symbols(callstack, frames);
+    // 存放堆栈数组
+    NSMutableArray *backtraces = [NSMutableArray arrayWithCapacity:frames];
+    for (int i = 0; i < frames; i++) {
+        [backtraces addObject:[NSString stringWithUTF8String:strs[i]]];
+    }
+    NSLog(@"current stack %@",backtraces);
+    free(strs);
+    
+    
+    
+}
+
+- (void)testOCCrash {
+    
+    
+    // 可捕获崩溃
+    NSArray * arr = @[@(1), @(2), @(3),];
+    NSLog(@"arr 4: %@", arr[4]);
+    
+    // 访问相册
+    
+}
+
+- (void)testSemaphore {
+    
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    int timeCount = 0;
+    
+    while (YES) {
+        
+        // 即对 semaphore.count 成功减 1，返回值为 0,顺利执行之后的逻辑
+        // 即对 semaphore.count 没有任何影响，返回值为非 0，卡住当前线程
+      long semaphoreWait = dispatch_semaphore_wait(semaphore, dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC));
+        NSLog(@"long sem %ld",semaphoreWait);
+        // 操作失败 阻塞当前线程 直到semaphore count 大于0
+        if (semaphore != 0) {
+            /*
+             
+             if (!runloopObserver) {
+                timeout = 0;
+                
+             }
+             
+             */
+            
+            NSLog(@"wait 3 s");
+            timeCount += 1;
+            // beforeSourece & afterWaiting
+            if (timeCount == 2) {
+                // 不存在因为 P 操作而阻塞的线程，直接返回 0，semaphore.count 增加了 1
+                // 存在因为 P 操作而阻塞的线程，唤醒该线程，然后返回非 0 值
+                intptr_t signal = dispatch_semaphore_signal(semaphore);
+                NSLog(@"sem %ld",signal);
+
+                break;
+            }
+        }
+    }
+    
+    
+    NSLog(@"success");
 }
 
 

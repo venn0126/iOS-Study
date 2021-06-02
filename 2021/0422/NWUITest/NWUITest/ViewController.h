@@ -9,6 +9,9 @@
 
 typedef void(^callBack) (id param);
 
+extern NSString *const AppViewControllerRefreshNotificationName;
+
+
 @interface ViewController : UIViewController
 
 - (void)printName:(NSString *)name;

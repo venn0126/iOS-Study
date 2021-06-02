@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+//#import <MangoSDK/MangoSDK.h>
 
 int main(int argc, char * argv[]) {
     NSString * appDelegateClassName;
@@ -15,4 +16,8 @@ int main(int argc, char * argv[]) {
         appDelegateClassName = NSStringFromClass([AppDelegate class]);
     }
     return UIApplicationMain(argc, argv, nil, appDelegateClassName);
+    
+    
+//    MGTool *tool = [MGTool new];
+//    [tool mg_logName];
 }

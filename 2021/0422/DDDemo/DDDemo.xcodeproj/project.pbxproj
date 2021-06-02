@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11E0DD0437D8FAD56B400A18 /* libPods-DDDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4AB133CF9EF8543D6384484 /* libPods-DDDemoTests.a */; };
+		23310BC580492F7485816524 /* libPods-DDDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0661CAD1E50184CF6782CB57 /* libPods-DDDemo.a */; };
+		2716301C2655631B002CC215 /* NWTimerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2716301B2655631B002CC215 /* NWTimerCell.m */; };
 		271D7CED26512D3500C3B03F /* TwoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D7CEC26512D3500C3B03F /* TwoController.m */; };
 		271D7CF326512D5C00C3B03F /* DDTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 271D7CF226512D5C00C3B03F /* DDTabBarController.m */; };
 		273595882651371200BDA294 /* ThreeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273595872651371200BDA294 /* ThreeController.m */; };
@@ -19,6 +22,9 @@
 		2747FA1E264EB02500FF6622 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747FA1D264EB02500FF6622 /* main.m */; };
 		2747FA28264EB02500FF6622 /* DDDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747FA27264EB02500FF6622 /* DDDemoTests.m */; };
 		2747FA33264EB02500FF6622 /* DDDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747FA32264EB02500FF6622 /* DDDemoUITests.m */; };
+		275633532654D9F5003575B2 /* SwiftUIDog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275633522654D9F5003575B2 /* SwiftUIDog.swift */; };
+		275633582654DBC1003575B2 /* SwiftDogDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275633572654DBC1003575B2 /* SwiftDogDetail.swift */; };
+		AADA8786D440C3FAA868EA47 /* libPods-DDDemo-DDDemoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EFE6E13CD37AE36DCAE9AB8 /* libPods-DDDemo-DDDemoUITests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +45,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0661CAD1E50184CF6782CB57 /* libPods-DDDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DDDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2716301A2655631B002CC215 /* NWTimerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NWTimerCell.h; sourceTree = "<group>"; };
+		2716301B2655631B002CC215 /* NWTimerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NWTimerCell.m; sourceTree = "<group>"; };
 		271D7CEB26512D3500C3B03F /* TwoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TwoController.h; sourceTree = "<group>"; };
 		271D7CEC26512D3500C3B03F /* TwoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwoController.m; sourceTree = "<group>"; };
 		271D7CF126512D5C00C3B03F /* DDTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDTabBarController.h; sourceTree = "<group>"; };
@@ -63,6 +72,17 @@
 		2747FA2E264EB02500FF6622 /* DDDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DDDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2747FA32264EB02500FF6622 /* DDDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDDemoUITests.m; sourceTree = "<group>"; };
 		2747FA34264EB02500FF6622 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		275633512654D9F5003575B2 /* DDDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DDDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		275633522654D9F5003575B2 /* SwiftUIDog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIDog.swift; sourceTree = "<group>"; };
+		275633572654DBC1003575B2 /* SwiftDogDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDogDetail.swift; sourceTree = "<group>"; };
+		393E583CEBF711730385CBD7 /* Pods-DDDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-DDDemoTests/Pods-DDDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7EFE6E13CD37AE36DCAE9AB8 /* libPods-DDDemo-DDDemoUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DDDemo-DDDemoUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		874679938054A0FDAABA15D1 /* Pods-DDDemo-DDDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDDemo-DDDemoUITests.release.xcconfig"; path = "Target Support Files/Pods-DDDemo-DDDemoUITests/Pods-DDDemo-DDDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9E55B1A820038693AD96BD03 /* Pods-DDDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDDemo.debug.xcconfig"; path = "Target Support Files/Pods-DDDemo/Pods-DDDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		B4AB133CF9EF8543D6384484 /* libPods-DDDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DDDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5B44F6C7F23C0B615983151 /* Pods-DDDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDDemoTests.release.xcconfig"; path = "Target Support Files/Pods-DDDemoTests/Pods-DDDemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		CA3F228B639AD67921BD81AA /* Pods-DDDemo-DDDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDDemo-DDDemoUITests.debug.xcconfig"; path = "Target Support Files/Pods-DDDemo-DDDemoUITests/Pods-DDDemo-DDDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FF16CA3E773A33187243571D /* Pods-DDDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDDemo.release.xcconfig"; path = "Target Support Files/Pods-DDDemo/Pods-DDDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23310BC580492F7485816524 /* libPods-DDDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11E0DD0437D8FAD56B400A18 /* libPods-DDDemoTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AADA8786D440C3FAA868EA47 /* libPods-DDDemo-DDDemoUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +120,8 @@
 				2747FA26264EB02500FF6622 /* DDDemoTests */,
 				2747FA31264EB02500FF6622 /* DDDemoUITests */,
 				2747FA09264EB02200FF6622 /* Products */,
+				308E2350CB4A8A00F0B58AE7 /* Pods */,
+				A575B7B4C030EB2A494C3EBF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,13 +148,18 @@
 				271D7CEC26512D3500C3B03F /* TwoController.m */,
 				273595862651371200BDA294 /* ThreeController.h */,
 				273595872651371200BDA294 /* ThreeController.m */,
+				2716301A2655631B002CC215 /* NWTimerCell.h */,
+				2716301B2655631B002CC215 /* NWTimerCell.m */,
 				271D7CF126512D5C00C3B03F /* DDTabBarController.h */,
 				271D7CF226512D5C00C3B03F /* DDTabBarController.m */,
+				275633522654D9F5003575B2 /* SwiftUIDog.swift */,
+				275633572654DBC1003575B2 /* SwiftDogDetail.swift */,
 				2747FA14264EB02200FF6622 /* Main.storyboard */,
 				2747FA17264EB02500FF6622 /* Assets.xcassets */,
 				2747FA19264EB02500FF6622 /* LaunchScreen.storyboard */,
 				2747FA1C264EB02500FF6622 /* Info.plist */,
 				2747FA1D264EB02500FF6622 /* main.m */,
+				275633512654D9F5003575B2 /* DDDemo-Bridging-Header.h */,
 			);
 			path = DDDemo;
 			sourceTree = "<group>";
@@ -152,6 +182,29 @@
 			path = DDDemoUITests;
 			sourceTree = "<group>";
 		};
+		308E2350CB4A8A00F0B58AE7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9E55B1A820038693AD96BD03 /* Pods-DDDemo.debug.xcconfig */,
+				FF16CA3E773A33187243571D /* Pods-DDDemo.release.xcconfig */,
+				CA3F228B639AD67921BD81AA /* Pods-DDDemo-DDDemoUITests.debug.xcconfig */,
+				874679938054A0FDAABA15D1 /* Pods-DDDemo-DDDemoUITests.release.xcconfig */,
+				393E583CEBF711730385CBD7 /* Pods-DDDemoTests.debug.xcconfig */,
+				C5B44F6C7F23C0B615983151 /* Pods-DDDemoTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A575B7B4C030EB2A494C3EBF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0661CAD1E50184CF6782CB57 /* libPods-DDDemo.a */,
+				7EFE6E13CD37AE36DCAE9AB8 /* libPods-DDDemo-DDDemoUITests.a */,
+				B4AB133CF9EF8543D6384484 /* libPods-DDDemoTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -159,6 +212,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2747FA37264EB02500FF6622 /* Build configuration list for PBXNativeTarget "DDDemo" */;
 			buildPhases = (
+				2AA9E6E2D615D75D5CD4B685 /* [CP] Check Pods Manifest.lock */,
 				2747FA04264EB02200FF6622 /* Sources */,
 				2747FA05264EB02200FF6622 /* Frameworks */,
 				2747FA06264EB02200FF6622 /* Resources */,
@@ -176,6 +230,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2747FA3A264EB02500FF6622 /* Build configuration list for PBXNativeTarget "DDDemoTests" */;
 			buildPhases = (
+				C9120B14E17315E7E53C1C4A /* [CP] Check Pods Manifest.lock */,
 				2747FA1F264EB02500FF6622 /* Sources */,
 				2747FA20264EB02500FF6622 /* Frameworks */,
 				2747FA21264EB02500FF6622 /* Resources */,
@@ -194,6 +249,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2747FA3D264EB02500FF6622 /* Build configuration list for PBXNativeTarget "DDDemoUITests" */;
 			buildPhases = (
+				0717ABE8165B52FF753EACEA /* [CP] Check Pods Manifest.lock */,
 				2747FA2A264EB02500FF6622 /* Sources */,
 				2747FA2B264EB02500FF6622 /* Frameworks */,
 				2747FA2C264EB02500FF6622 /* Resources */,
@@ -218,6 +274,7 @@
 				TargetAttributes = {
 					2747FA07264EB02200FF6622 = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
 					};
 					2747FA22264EB02500FF6622 = {
 						CreatedOnToolsVersion = 12.4;
@@ -276,14 +333,86 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0717ABE8165B52FF753EACEA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DDDemo-DDDemoUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2AA9E6E2D615D75D5CD4B685 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DDDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C9120B14E17315E7E53C1C4A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DDDemoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2747FA04264EB02200FF6622 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2716301C2655631B002CC215 /* NWTimerCell.m in Sources */,
+				275633532654D9F5003575B2 /* SwiftUIDog.swift in Sources */,
 				2747FA13264EB02200FF6622 /* ViewController.m in Sources */,
 				271D7CF326512D5C00C3B03F /* DDTabBarController.m in Sources */,
 				273595882651371200BDA294 /* ThreeController.m in Sources */,
+				275633582654DBC1003575B2 /* SwiftDogDetail.swift in Sources */,
 				2747FA0D264EB02200FF6622 /* AppDelegate.m in Sources */,
 				2747FA1E264EB02500FF6622 /* main.m in Sources */,
 				271D7CED26512D3500C3B03F /* TwoController.m in Sources */,
@@ -456,45 +585,56 @@
 		};
 		2747FA38264EB02500FF6622 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E55B1A820038693AD96BD03 /* Pods-DDDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CVT5K5W5HB;
 				INFOPLIST_FILE = DDDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Co.-Ltd...DDDemo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DDDemo/DDDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		2747FA39264EB02500FF6622 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF16CA3E773A33187243571D /* Pods-DDDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CVT5K5W5HB;
 				INFOPLIST_FILE = DDDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Co.-Ltd...DDDemo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DDDemo/DDDemo-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		2747FA3B264EB02500FF6622 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 393E583CEBF711730385CBD7 /* Pods-DDDemoTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CVT5K5W5HB;
@@ -514,7 +654,9 @@
 		};
 		2747FA3C264EB02500FF6622 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C5B44F6C7F23C0B615983151 /* Pods-DDDemoTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CVT5K5W5HB;
@@ -534,7 +676,9 @@
 		};
 		2747FA3E264EB02500FF6622 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA3F228B639AD67921BD81AA /* Pods-DDDemo-DDDemoUITests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CVT5K5W5HB;
 				INFOPLIST_FILE = DDDemoUITests/Info.plist;
@@ -552,7 +696,9 @@
 		};
 		2747FA3F264EB02500FF6622 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 874679938054A0FDAABA15D1 /* Pods-DDDemo-DDDemoUITests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CVT5K5W5HB;
 				INFOPLIST_FILE = DDDemoUITests/Info.plist;

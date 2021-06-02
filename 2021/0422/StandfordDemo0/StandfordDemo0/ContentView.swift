@@ -68,17 +68,7 @@ struct ContentView: View {
     
 }
 
-func test1()  {
-    DispatchQueue.main.async {
-        
-    }
-    
-    DispatchQueue.global().async {
-        
-    }
-    
-    
-}
+
 
 
 /// A  card view struct
@@ -109,9 +99,6 @@ struct CardView: View {
         }
     }
 }
-
-
-
 
 
 struct ContentView_Previews: PreviewProvider {

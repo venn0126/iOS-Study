@@ -14,6 +14,21 @@
 
 @implementation TwoController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    // add observer
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dd_receiveNofitication:) name:@"DDEventName" object:nil];
+}
+
+- (void)dd_receiveNofitication:(NSNotification *)notification {
+    
+    
+   
+    NSLog(@"%@ : %@(%@)",@(__PRETTY_FUNCTION__),@(__LINE__),[NSThread currentThread]);
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.

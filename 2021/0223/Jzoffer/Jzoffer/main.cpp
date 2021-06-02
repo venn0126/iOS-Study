@@ -27,8 +27,8 @@ using namespace std;
 
 struct ListNode {
     int val;
-    struct ListNode *next;
-    ListNode(int x) { val = x; }
+    ListNode *next;
+    ListNode(int x) : val(x),next(NULL) {};
 };
 
 
@@ -43,21 +43,48 @@ void printfArray(vector<int> arr) {
 
 class Solution {
 public:
-    /// 获取单链表的中点
+    /// 获取两个链表的交点
+    
+    
+    int listNodeOfLen(ListNode *root) {
+        int len = 0;
+        while (root) {
+            len++;
+            root = root->next;
+        }
+        return len;
+    }
+    
+    
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
         
         if (headA == NULL || headB == NULL) {
             return NULL;
         }
         
-        ListNode *node1 = headA;
-        ListNode *node2 = headB;
+        int alen = listNodeOfLen(headA);
+        int blen = listNodeOfLen(headB);
+        int offset = alen - blen;
         
-        while (node1 != node2) {
-            node1 = node1 != NULL ? node1->next : headB;
-            node2 = node2 != NULL ? node2->next : headA;
+        ListNode *pa = headA;
+        ListNode *pb = headB;
+        
+        for (int i = 0; i < abs(offset); i++) {
+            if (offset > 0) {
+                pa = pa->next;
+            } else {
+                pb = pb->next;
+            }
         }
-        return node1;
+        
+        while (pa && pb) {
+            if (pa == pb) {
+                return pb;
+            }
+            pa = pa->next;
+            pb = pb->next;
+        }
+        return nullptr;
     }
     
 
@@ -122,37 +149,8 @@ public:
         
         return -1;
     }
-    
-    /// 判断在一个矩阵中是否存在一条包含某字符串所有字符的路径，（走过的点不能再次走）
-    bool exist(int nums[],const char *str) {
-//        int row = nums.size();
-//        int row = 6;
-//        int col = num[0].size();
-//        int col = 5;
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                if (true) {
-                    
-                }
-            }
-        }
-        
-        return false;
-    }
-    int rows,cols;
-    bool dfs(int nums[],const char *str,int i,int j,int k) {
-        // 检查下标的合法
-        if (i >= rows || i < 0 || j >= cols || j < 0 ) return  false;
-        
-//        if (k == ) {
-//            <#statements#>
-//        }
-        
-        return false;
-    }
-    
-    
-    
+
+
     /// 统计二进制中的1的个数
     int oneCount(int a) {
         int res = 0;
@@ -220,31 +218,6 @@ public:
         return head;
     }
     
-    /// 给定一组非负整数 nums，重新排列它们每个数字的顺序（每个数字不可拆分）使之组成一个最大的整数。
-    
-    const char * largest(int nums[],int len) {
-     
-        const char * null = NULL;
-        // number to string
-        for (int i = 0; i < len; i++) {
-//            nums[i] = String.valueOf(nums[i]);
-            
-        }
-//        nums.sort
-        // 排序 并判断 n1n2 > n2n1
-        
-        // 判断临界值
-//        if (nums[0] == `\0`) {
-//            return "0";
-//        }
-        
-        // 返回字符串
-        
-        return null;
-        
-    }
-    
-    
     /// LCS =====>DP
     /// 构建c[i][j]需要O(mn)，输出1个LCS的序列需要O(m+n)
     int lcs(string s1, string s2) {
@@ -280,137 +253,7 @@ public:
         delete []c;
         return c[n][m];
     }
-    
-
-
-    /// deque
-    
-    void testDeque() {
         
-        // 创建一个有10个元素的双端队列，元素类型为int
-        deque<int> a(5);
-        
-        // 给deque赋值
-        for (int i = 0; i < 5; i++) {
-            a[i] = i;
-        }
-        // 输出a的值
-        for (int i = 0; i < 5; i++) {
-            cout << &a[i] << "\n";
-        }
-        cout << endl;
-        
-        // 在头部加入数据5
-        a.push_front(5);
-        for (int i = 0; i < a.size(); i++) {
-            cout << &a[i] << "\n";
-        }
-        cout << endl;
-        
-        // 在尾部加入数据11
-        a.push_back(11);
-        for (int i = 0; i < a.size(); i++) {
-            cout << &a[i] << "\n";
-        }
-        cout << endl;
-        
-        // 在头部删除数据
-        a.pop_front();
-        for (int i = 0; i < a.size(); i++) {
-            cout << &a[i] << "\n";
-        }
-        cout << endl;
-        
-        // 在尾部删除数据
-        a.pop_back();
-        for (int i = 0; i < a.size(); i++) {
-            cout << &a[i] << "\n";
-        }
-        cout << endl;
-        
-        
-        // emplace_back 省去了复制和移动的过程
-        a.emplace_front(6);
-        for (int i = 0; i < a.size(); i++) {
-            cout << &a[i] << "\n";
-        }
-        cout << endl;
-        
-        // emplace_front 省去了复制和移动的过程
-        a.emplace_back(12);
-        for (int i = 0; i < a.size(); i++) {
-            cout << a[i] << "\n";
-        }
-        cout << endl;
-        
-        
-        // insert 需要移动和复制元素
-//        a.insert(a.begin() + 4, 18);
-//        for (int i = 0; i < a.size(); i++) {
-//            cout << &a[i] << "\n";
-//        }
-//        cout << endl;
-        
-        
-        // emplace 不需要移动和复制元素-》在容器指定位置构造元素
-        a.emplace(a.end() + 1, 10);
-        for (int i = 0; i < a.size(); i++) {
-            cout << a[i] << "\n";
-        }
-        cout << endl;
-        
-        
-    }
-    
-    // test insert and emplace
-    void testEmplace() {
-//        {
-//
-//            const auto start = chrono::high_resolution_clock::now();
-//            vector<string> v;
-//            for(size_t i = 0; i < 9999999; ++i)
-//            v.push_back(string("hello")
-//                        );
-//
-//            cout << chrono::duration_cast<chrono::milliseconds>(chrono::high_resolution_clock::now() - start).count() << endl;
-//        }
-//
-//        {
-//            const auto start = chrono::high_resolution_clock::now();
-//            deque<string> v;
-//            for(size_t i = 0; i < 9999999; ++i)
-//                v.push_back(string("hello")
-//            );
-//
-//            cout << chrono::duration_cast<chrono::milliseconds>(chrono::high_resolution_clock::now() - start).count() << endl;
-//        }
-        
-        int count = 999999;
-        
-        {
-            const auto start = chrono::high_resolution_clock::now();
-            
-            deque<int> v(count);
-            for (int i = 0; i < count; i++) {
-                v.insert(v.begin() + i, i);
-            }
-            
-            cout << chrono::duration_cast<chrono::milliseconds>(chrono::high_resolution_clock::now() - start).count() << endl;
-        }
-        
-        {
-            const auto start = chrono::high_resolution_clock::now();
-            deque<int> v(count);
-            for (int i = 0; i < count; i++) {
-                v.emplace(v.begin() + i, i);
-            }
-            
-            cout << chrono::duration_cast<chrono::milliseconds>(chrono::high_resolution_clock::now() - start).count() << endl;
-        }
-
-    }
-    
-    
     void swap(int a,int b){
         a = a ^ b;// 11 ^ 10 = 01
         b = a ^ b;// 01 ^ 10 = 10;
@@ -746,19 +589,50 @@ public:
 
     
     /// 插入  最坏==平均n*n 空间O(1) 稳定
+    void insertSort(vector<int> arr) {
+        for (int i = 1; i < arr.size(); i++) {
+            int j = i - 1;
+            int k = arr[i];
+            while (j > 0 && k < arr[i]) {
+                arr[j+1] = arr[j];
+            }
+            arr[j+1] = k;
+        }
+    }
 
 
     /// 冒泡 最坏==平均n*n 空间O(1) 稳定
+    void bubbleSort(vector<int> arr) {
+        for (int i = 0; i < arr.size() - 1; i++) {
+            for (int j = 0; j < arr.size() - 1 - i; j++) {
+                if (arr[j] > arr[j+1]) {
+                    std::__1::swap(arr[j], arr[j+1]);
+                }
+            }
+        }
+    }
 
 
     /// 选择 最坏==平均n*n 空间O(1) 不稳定
+    void selectSort(vector<int> arr) {
+        for (int i = 0; i < arr.size() - 1; i++) {
+            int min = i;
+            for (int j = i+1; j < arr.size(); j++) {
+                if (arr[j] < arr[min]) {
+                    min = j;
+                }
+            }
+            if (i != min) {
+                std::__1::swap(arr[i], arr[min]);
+            }
+        }
+    }
 
 
     /// 快速 最坏n*n,平均O(nlogn) 空间O(logn) 不稳定
-    
+
 
     /// 归并 O(n) nlogn 空间O(n)
-    
 
     
 
@@ -807,19 +681,96 @@ public:
     
     
     /// 反转链表
+    ListNode *revserseListNode(ListNode *head) {
+        if (!head) {
+            return nullptr;
+        }
+        
+        ListNode *cur = head;
+        ListNode *pre = nullptr,*tmp = nullptr;
+        while (cur) {
+            tmp = cur->next;
+            cur->next = pre;
+            pre = cur;
+            cur = tmp;
+        }
+        
+        return pre;
+    }
 
 
     
     /// 链表是否有环
+    bool hasCycle(ListNode *head) {
+        if (!head) {
+            return false;
+        }
+        ListNode *slow = head;
+        ListNode *fast = head->next;
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+            if (slow == fast) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 
     /// 两个链表的交点
 
 
-
     /// 合并两个链表
+    ListNode *mergeListNode(ListNode *head1,ListNode *head2) {
+        
+        if (!head1 && !head2) {
+            return nullptr;
+        }
+        
+        if (!head1) {
+            return head2;
+        }
+        if (!head2) {
+            return head1;
+        }
+        
+        ListNode *l3 = nullptr;
+        if (head1->val < head2->val) {
+            l3 = head1;
+            l3->next = mergeListNode(l3->next, head2);
+        } else {
+            l3 = head2;
+            l3->next = mergeListNode(head1, l3->next);
+        }
+        
+        return l3;
+    }
 
     /// 找到链表倒数第K个节点 && 删除
+    
+    void delTailKthListNode(ListNode *head,int k) {
+        if (!head) {
+            return;
+        }
+        
+        ListNode *p1 = head;
+        ListNode *p2 = head;
+        for (int i = 0; i < k-1; i++) {
+            if (p1->next) {
+                p1 = p1->next;
+            } else {
+                return;
+            }
+        }
+        while (p1->next) {
+            p1 = p1->next;
+            p2 = p2->next;
+        }
+        
+        p2->val = p2->next->val;
+        p2->next = p2->next->next;
+    }
 
 
     /// 倒序打印链表
@@ -836,15 +787,87 @@ public:
     
     
     /// 删除某个节点
+    
+    void delNode(ListNode *head) {
+        if (!head || !head->next) {
+            return;
+        }
+        
+        head->val = head->next->val;
+        head->next = head->next->next;
+        
+    }
 
-    /// 删除重复节点
+    /// 删除链表内重复的节点，保留单个节点
+    void removeDuplicateNodes(ListNode *head) {
+        
+        if (!head) {
+            return;
+        }
+        ListNode *cur = head;
+        while (cur->next) {
+            if (cur->val == cur->next->val) {
+                ListNode *delNode = cur->next;
+                cur = delNode->next;
+//                delNode(delNode);
+            } else {
+                cur = cur->next;
+            }
+        }
+    }
  
     
     /// 删除链表里某个值的所有节点
+    ListNode *delAllDuplicateNodes(ListNode *head,int k) {
+        if (!head) {
+            return nullptr;
+        }
+        ListNode *fakeHead = new ListNode(-1);
+        fakeHead->next = head;
+        ListNode *cur = fakeHead;
+        while (cur->next) {
+            if (cur->next->val == k) {
+                ListNode *delNo = cur->next;
+                cur = delNo->next;
+                delNode(delNo);
+            } else {
+                cur = cur->next;
+            }
+        }
+        ListNode *returnHead = fakeHead->next;
+        delNode(fakeHead);
+        return returnHead;
+    }
 
 
     /// 左右临界值分离（将小于和大于给定值的节点划分到链表两侧）
-    
+    ListNode *partitionLinkList(ListNode *head,int k) {
+        if (!head) {
+            return nullptr;
+        }
+        
+        ListNode *left = new ListNode(-1);
+        ListNode *p = left;
+        
+        ListNode *right = new ListNode(-1);
+        ListNode *q = right;
+        
+        while (head != nullptr) {
+            if (head->val < k) {
+                p->next = head;
+                p = p->next;
+            } else {
+                q->next = head;
+                q = q->next;
+            }
+            
+            head = head->next;
+        }
+        
+        q->next = nullptr;
+        p->next = right->next;
+        return left->next;
+    }
     
     
     /// 左右奇偶index值分离 odd:奇数 even偶数
@@ -978,10 +1001,9 @@ public:
     // ******************* Array Questions ************************
 
     /// 检测数组中是否包含重复的元素
-    bool arrayOfDuplicates(vector<int> arr) {
-        
-        sort(arr.begin(), arr.end());
-        return unique(begin(arr), end(arr)) != end(arr);
+    bool hasDuplicateItems(vector<int> arr) {
+        set<int> s1(arr.begin(),arr.end());
+        return s1.size() != arr.size();
     }
     
     
@@ -1003,15 +1025,55 @@ public:
     
 
     /// 数组中只出现一次的数字，其余的都是成对出现
-
+    int onceNum(vector<int> arr) {
+        int res = -1;
+        for (int i = 0; i < arr.size(); i++) {
+            res ^= arr[i];
+        }
+        return res;
+    }
 
     /// 寻找数组中缺失的数字
+    
+    int missNum(vector<int> arr) {
+        int res = -1;
+        int i = 0;
+        for (i = 0; i < arr.size(); i++) {
+            res = arr[i] ^ i ^ res;
+        }
+        return res ^ i;
+    }
 
 
     /// 将所有的0移动到数组末尾 Move Zeros O(n) O(1)
+    
+    void moveZeroTail(vector<int> arr) {
+        int j = 0;
+        for (int i = 0; i < arr.size(); i++) {
+            if (arr[i] != 0) {
+                if (i != j) {
+                    std::__1::swap(arr[i], arr[j++]);
+                } else {
+                    j++;
+                }
+            }
+        }
+    }
 
 
     /// 移除数组中等于某个值的元素 返回移除后数组的长度
+    int removeItemEqualK(vector<int> arr,int k) {
+        int j = 0;
+        for (int i = 0; i < arr.size(); i++) {
+            if (arr[i] != 0) {
+                if (i != j) {
+                    arr[j] = arr[i];
+                }
+                j++;
+            }
+        }
+        return j;
+    }
 
 
     /// 三色旗帜问题
@@ -1021,9 +1083,47 @@ public:
 
 
     /// 无序数组和大于或等于某值的最小子数组,返回子数组的元素个数
+    int minSumArray(vector<int> arr,int k) {
+        
+        int l = 0;
+        int r = -1;
+        int sum = 0;
+        int len = (int)arr.size();
+        int res = len + 1;
+        while (l < r) {
+            if (r+1 < len && sum < k) {
+                sum += arr[r];
+                r++;
+            } else {
+                sum -= arr[l];
+                l++;
+            }
+            
+            if (sum >= k) {
+                res = min(res, r-l+1);
+            }
+        }
+        
+        if (res == len+1) {
+            return 0;
+        }
+        return res;
+        
+    }
 
 
     /// 两个数组的交点元素
+    set<int> intersectionTwoArray(vector<int> arr1,vector<int> arr2) {
+        set<int> res;
+        set<int> s1(arr1.begin(),arr1.end());
+        for (int i = 0; i < arr2.size(); i++) {
+            if (s1.find(arr2[i]) != s1.end()) {
+                res.insert(arr2[i]);
+            }
+        }
+
+        return res;
+    }
 
 
     /// 前 K 个高频元素
@@ -1201,6 +1301,69 @@ public:
     
     
     /// 合并两个有序的数组
+    vector<int> mergeTwoSortArray(vector<int> arr1,vector<int> arr2) {
+        
+        vector<int> res;
+        int m = (int)arr1.size();
+        int n = (int)arr2.size();
+        int len = m + n - 1;
+        while (m > 0 && n > 0) {
+            if (arr1[m-1] > arr2[n-1]) {
+                res[len] = arr1[m-1];
+                m--;
+            } else {
+                res[len] = arr2[n-1];
+                n--;
+            }
+            len--;
+        }
+        
+        while (n > 0) {
+            res[len] = arr2[n-1];
+            n--;
+            len--;
+        }
+        return res;
+    }
+    
+    /// 两个元素和为目标值
+    vector<int> twoSumOfSort(vector<int> arr,int k) {
+        
+        vector<int> res;
+        int i = 0;
+        int j  = (int)arr.size() - 1;
+        while (i < j) {
+            int temp = arr[i] + arr[j];
+            if (temp == k) {
+                res.push_back(i+1);
+                res.push_back(j+1);
+            } else if(temp > k) {
+                j--;
+            } else {
+                i++;
+            }
+        }
+        
+        return res;
+        
+    }
+    
+    vector<int> twoSumOfNoSort(vector<int> arr,int k) {
+        
+        vector<int> res;
+        unordered_map<int, int> m;
+        for (int i = 0; i < arr.size(); i++) {
+            int temp = k - arr[i];
+            if (m.find(temp) != m.end()) {
+                res.push_back(i);
+                res.push_back(m[temp]);
+                return res;
+            }
+            
+            m[arr[i]] = i;
+        }
+        return res;
+    }
 
     /// 求两个有序数组的中位数(二分查找)
     double findMediumSortedArrays(vector<int> arr1,vector<int> arr2) {
@@ -1404,7 +1567,28 @@ public:
         
     }
     
-    /// 最长子串或者子序列 子序列，不连续，子串，连续 动态规划思想
+    /// 最长公共子串或者子序列 子序列，不连续，子串，连续 动态规划思想
+    
+    int longestSubStr(string s1,string s2) {
+        
+        int m = (int)s1.length();
+        int n = (int)s2.length();
+        
+        vector<vector<int>> c(m+1,vector<int>(n+1));
+        for (int i = 0; i <= m; i++) {
+            for (int j = 0; j <= n; j++) {
+                if (i == 0 || j == 0) {
+                    c[i][j] = 0;
+                } else if(s1[i] == s2[j]) {
+                    c[i][j] = c[i-1][j-1] + 1;
+                } else {
+                    c[i][j] = max(c[i-1][j], c[i][j-1]);
+                }
+            }
+        }
+        
+        return c[n][m];
+    }
     
     
     /// BM 字符串匹配
@@ -1598,54 +1782,6 @@ public:
     }
 
     
-    int random_0_1()
-    {
-        int i = (int)random();
-        int j = (int)random();
-        int result;
-     
-        while (true)
-        {
-            if (i == 0 && j == 1)
-            {
-                result = 0;
-                break;
-            }
-            else if (i == 1 && j == 0)
-            {
-                result = 1;
-                break;
-            }
-            else
-                continue;
-        }
-     
-        return result;
-    }
-    
-    int random_nw_0() {
-        
-        int i = (int)random();
-        int j= (int)random();
-        int res;
-        while (true) {
-            if (i == 0 && j == 1) {
-                res = 0;
-                break;
-            }else if(i == 1 && j == 0){
-                res = 1;
-                break;
-            } else {
-                continue;
-            }
-        }
-        
-        return res;
-    }
-    
-    
-
-    
     
     
     // two find serach & traverse
@@ -1782,7 +1918,7 @@ int main(int argc, const char * argv[]) {
     
 //    u.f = 3.14159f;
 //    printf("As integer: %08x\n", u.i);
-
+    
     
     Solution sol;
 //    ListNode *l = sol.initListNode();
@@ -1954,3 +2090,78 @@ int main(int argc, const char * argv[]) {
 
     return 0;
 }
+
+
+
+
+
+// k个有序列表合成一个有序链表
+struct ZRListNode {
+  
+    int val;
+    ZRListNode *next;
+    ZRListNode(int x) : val(x),next(NULL) {};
+    
+};
+
+ZRListNode *zr_mergeListNode(ZRListNode *node1,ZRListNode *node2) {
+    
+    ZRListNode *l3 = nullptr;
+    if (node1->val < node2->val) {
+        l3 = node1;
+        l3->next = zr_mergeListNode(l3->next, node2);
+    } else {
+        l3 = node2;
+        l3->next = zr_mergeListNode(node1, l3->next);
+    }
+    
+    return l3;
+}
+
+ZRListNode *mergeKthListNode(vector<ZRListNode *> nodes) {
+    // 安全判断
+    if (nodes.size() <= 0) {
+        return nullptr;
+    }
+    
+    // 极限判断
+    if (nodes.size() == 1) {
+        ZRListNode *head = nodes[0];
+        if (!head) {
+            return nullptr;
+        }
+        return head;
+    }
+    
+    // 遍历节点数组
+    ZRListNode *resNode = nullptr;
+    int j = 0;
+    for (int i = 0; i < nodes.size(); i++) {
+        j++;
+        if (i == (nodes.size() - 1)) {
+            resNode->next = nodes[i];
+        } else {
+            
+            ZRListNode *temp = zr_mergeListNode(nodes[i], nodes[j]);
+            resNode->next = temp;
+        }
+    }
+    return resNode;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
