@@ -1507,6 +1507,80 @@ public:
 
     ///  树是否相等
     
+    /// 二叉树的最近公共祖先
+    // root = [3,5,1,6,2,0,8,null,null,7,4];
+    // p=5,q=4
+    TreeNode *lowestCommonAncestor(TreeNode *root,TreeNode *p,TreeNode *q) {
+        
+        if (root == p || root == q || !root) {
+            return root;
+        }
+        
+        TreeNode *lnode = lowestCommonAncestor(root->left, p, q);
+        TreeNode *rnode = lowestCommonAncestor(root->right, p, q);
+        if (lnode && rnode) {
+            return root;
+        }
+        return lnode ? lnode : rnode;
+    }
+    
+    // 多叉树公共祖先
+    
+    struct TNode {
+      
+        int id;
+        vector<TNode *> members;
+        
+    };
+    
+    // 1 2 4
+    // 1 3(0,5,6) 6
+    vector<TNode *> res;
+    vector<TNode *> findAllNode(TNode *root,TNode *k) {
+        
+        if (!root || !k) {
+            return res;
+        }
+        res.push_back(root);
+        vector<TNode *> members = root->members;
+        for (int i = 0;i < members.size();i++) {
+           vector<TNode *> temp = findAllNode(members[i], k);
+            if (count(temp.begin(), temp.end(), k)) {
+                return temp;
+            }
+        }
+        return res;
+    }
+    
+   
+    TNode *mulLowestCommonAncestor(TNode *root,TNode *p,TNode *q) {
+        
+        if (!root || p == root || q == root) {
+            return root;
+        }
+        
+        // 在一侧的判断 或者一次判断得出
+        vector<TNode *> temp = root->members;
+        if (count(temp.begin(), temp.end(), p) && count(temp.begin(), temp.end(), q)) {
+            return root;
+        }
+ 
+        // 在两侧的判断
+        // 构造两个不同的集合
+        vector<TNode *> nodeArray1 = findAllNode(root, p);
+        vector<TNode *> nodeArray2 = findAllNode(root, q);
+        
+        // 求1和2的交点
+        set<TNode *> s1(nodeArray1.begin(),nodeArray1.end());
+        for (int i = 0; i < nodeArray2.size(); i++) {
+            if (s1.find(nodeArray2[i]) != s1.end()) {
+                return nodeArray2[i];
+            }
+        }
+        
+        return nullptr;
+    }
+    
     
     struct GTreeNode {
         
@@ -1911,6 +1985,28 @@ public:
 
 
 
+int maxNum(vector<int> arr)
+{
+    
+    if(arr.size() < 2) return -1;
+    int max = 0;
+    int len = (int)arr.size();
+    for(int i = len-1;i>=0;i--)
+    {
+        for(int j = 0;j<i;j++)
+        {
+            //
+           int temp = arr[i] - arr[j];
+           if (temp > max) max = temp;
+           
+        }
+     }
+    
+    return max;
+}
+
+
+
 
 int main(int argc, const char * argv[]) {
     // insert code here...
@@ -1923,6 +2019,32 @@ int main(int argc, const char * argv[]) {
     Solution sol;
 //    ListNode *l = sol.initListNode();
 //    sol.printOfReverse(l);
+    
+    
+    // 指向指针的指针
+//    int val = 4;
+//    int *p1 = &val;
+//    int **p2 = &p1;
+//    
+//    cout << p1 << "\n" << endl;
+//    cout << p2 << "\n" << endl;
+//    int a = 4;
+//    retry:
+//
+//    if (a == 4) {
+//        printf("a == 4");
+//        goto retry;
+//    }
+//
+//    printf("is end\n");
+    
+    
+    
+    int a = 3;
+    int *p1 = &a;
+    int **p2 = &p1;
+    
+    printf("**p2 value is %d",**p2);
     
     
     

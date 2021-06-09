@@ -9,6 +9,7 @@
 #import <sys/signal.h>
 
 #import <execinfo.h>
+#import <mach/task.h>
 
 @interface ViewController ()
 
@@ -76,8 +77,63 @@
 //    self.view.superview.setNeedsLayout
     
     
-    handleSignalException(0);
+//    handleSignalException(0);
+    
+    [self testPtrAndArray];
+    
+//    struct mach_task_basic_info info;
+    
 }
+
+
+- (void)testPtrAndArray {
+    
+    int n = 3;
+//    int (*p)[n]; // 数组指针，指向某n个元素组成的整个数组，返回值是整型指针类型
+    
+    
+    // 指针数组
+    // ptrArray是一个数组，数组有n个整数指针组成
+    int *ptrArray[n];
+    int var[3] = {10,100,100};
+    for (int i = 0; i < n; i++) {
+        ptrArray[i] = &var[i]; // 赋值为整数指针
+    }
+
+    for (int i = 0; i < n; i++) {
+//        printf("ptr index is %d : %d\n",i,*ptrArray[i]);
+    }
+    
+    // 指向字符的数组
+    // names是一个数组，数组中有3个字符指针组成
+    const char *names[3] = {"niu","wei","hao"};
+    for (int i = 0; i < 3; i++) {
+//        printf("%d : %s\n",i,names[i]);
+    }
+    
+    
+    // 数组指针：指向数组的指针
+    // arr2 是一个指向&arr2[0]的指针，即数组的第一个元素的地址
+
+    int arr2[4] = {3,6,7,9};
+    int *ptr2 = (int *)(&arr2 + 1);
+    printf("last value is %d\n",*(ptr2-1));
+    
+    
+    int *pt3 = arr2;
+    printf("last value 2 is: %d",*(pt3 + 3));
+
+    // 3 6 7 9
+    // 6000 60004 60008 6012
+    // 6000 -           6015 共16个字节
+    //
+    // &arr2+1,数组首地址+数组总长，6000 + 16 = 6016
+    // 此时 onPtr就是一个新的数组，此时6016就是数组首地址
+    // onPtr是首元素，onPtr-1是倒着取一个元素6012，onPtr-2是，6008，onPtr-3.6004
+
+}
+
+
 
 /// __attribute__ 演示
 - (void)oldMethod:(NSString *)string __attribute__((availability(ios,introduced=2_0,deprecated=7_0,message="用 -newMethod: 这个方法替代 "))){
@@ -115,15 +171,14 @@ void handleSignalException(int signal) {
     void *callstack[128];
     int frames = backtrace(callstack,128);
     char** strs = backtrace_symbols(callstack, frames);
-    // 存放堆栈数组
-    NSMutableArray *backtraces = [NSMutableArray arrayWithCapacity:frames];
+    // 存放堆栈的数组
+    NSMutableArray *backtraces = [NSMutableArray array];
     for (int i = 0; i < frames; i++) {
         [backtraces addObject:[NSString stringWithUTF8String:strs[i]]];
     }
     NSLog(@"current stack %@",backtraces);
     free(strs);
-    
-    
+
     
 }
 
@@ -279,14 +334,15 @@ void handleSignalException(int signal) {
 
 
     // nsblockoperation
-//    NSBlockOperation *operation = [NSBlockOperation blockOperationWithBlock:task1];
-//    [operation addExecutionBlock:task2];
-//
-//    NSBlockOperation *task3opertaion = [NSBlockOperation blockOperationWithBlock:task3];
-//    [task3opertaion addDependency:operation];
-//
-//    [operation start];
-//    [task3opertaion start];
+    NSBlockOperation *operation = [NSBlockOperation blockOperationWithBlock:task1];
+    [operation addExecutionBlock:task2];
+    
+
+    NSBlockOperation *task3opertaion = [NSBlockOperation blockOperationWithBlock:task3];
+    [task3opertaion addDependency:operation];
+
+    [operation start];
+    [task3opertaion start];
 
     
 

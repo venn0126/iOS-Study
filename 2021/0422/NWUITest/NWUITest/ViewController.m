@@ -63,6 +63,10 @@ NSString * const AppViewControllerRefreshNotificationName = @"AppViewControllerR
 @property (nonatomic, strong) NSMutableArray<UIButton *> *mButtonArray;
 
 
+@property (nonatomic, copy) NSString *target;
+
+
+
 
 @property (nonatomic,strong) id runtime_Player;
 
@@ -150,13 +154,215 @@ NSString * const AppViewControllerRefreshNotificationName = @"AppViewControllerR
 //    [self testBlock];
     
     
-    [self setupUI];
+//    [self setupUI];
 //    [self addNotification];
     
 //    [self testDLOpen];
 //    [self testManSDK];
     
     
+//    [self testAnchoPoint];
+    
+    
+//    [self testWeakAttibute];
+    
+}
+
+
+- (void)largeDataCompute {
+    
+    
+//    pthread_main_thread_np();
+    
+//    NSNotification *notification = [NSNotification notificationWithName:<#(nonnull NSNotificationName)#> object:<#(nullable id)#>]
+    
+    dispatch_queue_t concurrentQueue = dispatch_queue_create("com.fosafer.concurrent", DISPATCH_QUEUE_CONCURRENT);
+    
+    dispatch_block_t block = dispatch_block_create(0, ^{
+       
+        NSLog(@"normal do something");
+    });
+    
+    dispatch_async(concurrentQueue, block);
+    
+    /**
+     
+     QOS_CLASS_USER_INTERACTIVE:等级表示任务需要被立即执行，用来在响应事件之后更新 UI，来提供好的用户体验。这个等级最好保持小规模。
+             __QOS_CLASS_AVAILABLE(macos(10.10), ios(8.0)) = 0x21,
+     QOS_CLASS_USER_INITIATED:等级表示任务由 UI 发起异步执行。适用场景是需要及时结果同时又可以继续交互的时候。
+             __QOS_CLASS_AVAILABLE(macos(10.10), ios(8.0)) = 0x19,
+     QOS_CLASS_DEFAULT:默认优先级
+             __QOS_CLASS_AVAILABLE(macos(10.10), ios(8.0)) = 0x15,
+     QOS_CLASS_UTILITY:等级表示需要长时间运行的任务，伴有用户可见进度指示器。经常会用来做计算，I/O，网络，持续的数据填充等任务。这个任务节能。
+             __QOS_CLASS_AVAILABLE(macos(10.10), ios(8.0)) = 0x11,
+     QOS_CLASS_BACKGROUND:等级表示用户不会察觉的任务，使用它来处理预加载，或者不需要用户交互和对时间不敏感的任务。
+             __QOS_CLASS_AVAILABLE(macos(10.10), ios(8.0)) = 0x09,
+     QOS_CLASS_UNSPECIFIED:未知的
+             __QOS_CLASS_AVAILABLE(macos(10.10), ios(8.0)) = 0x00,
+     */
+    
+    
+    dispatch_block_t qosBlock = dispatch_block_create_with_qos_class(0, QOS_CLASS_UTILITY, 0, ^{
+       
+        NSLog(@"qos do something");
+    });
+    
+    dispatch_async(concurrentQueue, qosBlock);
+    
+}
+
+
+/// 递归删除指定路径下的文件
+/// @param path 指定路径
+- (void)deleteFiles:(NSString *)path {
+    // 1.判断文件还是目录
+    NSFileManager *fileManger = [NSFileManager defaultManager];
+    BOOL isDir = NO;
+    BOOL isExist = [fileManger fileExistsAtPath:path isDirectory:&isDir];
+    if (isExist) {
+        // 2.判断是不是目录
+        if (isDir) {
+            NSArray *dirArray = [fileManger contentsOfDirectoryAtPath:path error:nil];
+            NSString *subPath = nil;
+            for (NSString *str in dirArray) {
+                subPath = [path stringByAppendingPathComponent:str];
+                BOOL issubDir = NO;
+                [fileManger fileExistsAtPath:subPath isDirectory:&issubDir];
+                [self deleteFiles:subPath];
+            }
+        } else {
+            NSLog(@"%@",path);
+            [fileManger removeItemAtPath:path error:nil];
+        }
+    } else {
+        NSLog(@"你打印的是目录或者不存在");
+    }
+}
+
+
+- (void)testNotificationCenter {
+    
+    // 发送通知
+    
+    //NSNotificationName 发送通知的名字 唯一
+    // object 保存发送者对象
+//    [NSNotificationCenter defaultCenter] postNotificationName:(nonnull NSNotificationName) object:(nullable id)
+    
+    // userInfo 接受者可以额外接受的信息
+//    [NSNotificationCenter defaultCenter] postNotificationName:<#(nonnull NSNotificationName)#> object:<#(nullable id)#> userInfo:<#(nullable NSDictionary *)#>
+}
+
+
+- (void)testPtrAndArray {
+    
+    int n = 3;
+//    int (*p)[n]; // 数组指针，指向某n个元素组成的整个数组，返回值是整型指针类型
+    // 指针数组
+    // ptrArray是一个数组，数组有n个整数指针组成
+    int *ptrArray[n];
+    int var[3] = {10,100,100};
+    for (int i = 0; i < n; i++) {
+        ptrArray[i] = &var[i]; // 赋值为整数指针
+    }
+
+    for (int i = 0; i < n; i++) {
+//        printf("ptr index is %d : %d\n",i,*ptrArray[i]);
+    }
+    
+    
+    
+    // 指向字符的数组
+    // names是一个数组，数组中有3个字符指针组成
+    const char *names[3] = {"niu","wei","hao"};
+    for (int i = 0; i < 3; i++) {
+//        printf("%d : %s\n",i,names[i]);
+    }
+    
+    
+    // 数组指针：指向数组的指针
+    // arr2 是一个指向&arr2[0]的指针，即数组的第一个元素的地址
+
+    int arr2[4] = {3,6,7,9};
+    int *ptr2 = (int *)(&arr2 + 1);
+    printf("last value is %d\n",*(ptr2-1));
+    
+    
+    int *pt3 = arr2;
+    printf("last value 2 is: %d",*(pt3 + 3));
+
+    // 3 6 7 9
+    
+    // 假设6000是基地址，一个int类型的数字，占4个字节，那么就有以下的排列结构
+    // 6000 60004 60008 6012
+    // 6000 -           6015 共16个字节
+    //
+    // &arr2+1,数组首地址+数组总长，6000 + 16 = 6016
+    // 此时 ptr2就是一个新的数组，此时6016就是数组首地址
+    // ptr2是首元素地址，ptr2-1是倒着取一个元素6012，ptr2-2是，6008，ptr2-3，6004
+
+}
+
+- (void)testWeakAttibute {
+    
+    // 是什么，有什么作用
+//    OneView *one = [OneView alloc];
+//    id __weak objc = one;
+    
+    
+    // 结构
+    
+    // 源码
+    
+    // 场景
+    
+    // 延伸
+    
+    
+//    dispatch_queue_t queue = dispatch_queue_create("com.fosafer.current", DISPATCH_QUEUE_CONCURRENT);
+//
+//    for (int i = 0; i < 10000; i++) {
+//
+//        dispatch_async(queue, ^{
+//
+//            NSString *str = [NSString stringWithFormat:@"%d:",i];
+//            NSLog(@"%d %s %p",i,object_getClassName(str),str);
+//            self.target = str;
+//        });
+//
+//    }
+    
+    
+}
+
+- (void)testAnchoPoint {
+    
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+    view.backgroundColor = UIColor.redColor;
+    [self.view addSubview:view];
+    
+    
+//    [UIView animateWithDuration:6 animations:^{
+    
+    // width and height bigger than begin,and origin also update
+    // x = 100 - abs(oldw - neww) * 0.5
+    
+    view.bounds = CGRectMake(100, 100, 150, 150);//
+//    }];
+    
+    
+    NSLog(@"1 frame is %@",NSStringFromCGRect(view.frame));// 75 75 150 150
+    
+    view.layer.anchorPoint = CGPointMake(0.0, 0.0);
+    // 默认锚点 是0.5 0.5跟position是重合的，
+    // 更新锚点减小之后是右or下移动，增加origin，增大之后是往左or上侧移动，减小origin
+    //
+    NSLog(@"2 frame is %@",NSStringFromCGRect(view.frame));// 150 150 150 150
+
+    // 增加scale只会更新size，origin不会变化 
+    view.transform = CGAffineTransformMakeScale(2, 2);
+    NSLog(@"3 frame is %@",NSStringFromCGRect(view.frame));// 150 150 300 300
+
 }
 
 - (void)testManSDK {

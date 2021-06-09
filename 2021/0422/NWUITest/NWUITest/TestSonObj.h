@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TestSonObj : TestObj
 
+- (void)print_SonName;
+
 @end
 
 NS_ASSUME_NONNULL_END

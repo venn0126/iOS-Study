@@ -6,12 +6,16 @@
 //
 
 #import "TestObj.h"
+#import "TestSonObj.h"
 
 @implementation TestObj
 
 + (void)load {
     
     NSLog(@"%@ : %@",@(__PRETTY_FUNCTION__),@(__LINE__));
+    
+    TestSonObj *son = [TestSonObj new];
+    [son print_SonName];
 }
 
 + (void)initialize {

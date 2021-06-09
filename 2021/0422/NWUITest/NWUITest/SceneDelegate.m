@@ -30,7 +30,10 @@ static NSString * const kSBGTaskClean = @"com.fosafer.background.clean";
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
     UIWindow *window;
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[ViewController new]];
+    ViewController *vc = [[ViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    
+    NSLog(@"nav init");
 
     if (@available(iOS 13.0, *)) {
         UIWindowScene *windowScene = (UIWindowScene *)scene;
@@ -42,7 +45,8 @@ static NSString * const kSBGTaskClean = @"com.fosafer.background.clean";
         
     }
     
-    [window makeKeyAndVisible];
+//    [window makeKeyAndVisible];
+    [window makeKeyWindow];
     
     // 注册后台任务
     [self registerBGTask];
