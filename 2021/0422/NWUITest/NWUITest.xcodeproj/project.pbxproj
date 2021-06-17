@@ -19,6 +19,7 @@
 		2747F9E6264E214700FF6622 /* TestSonObj+Son2.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747F9E5264E214700FF6622 /* TestSonObj+Son2.m */; };
 		2747F9EC264E21A300FF6622 /* TestObj2.m in Sources */ = {isa = PBXBuildFile; fileRef = 2747F9EB264E21A300FF6622 /* TestObj2.m */; };
 		2761DAD326497F9A00D73352 /* NSObject+Tian.m in Sources */ = {isa = PBXBuildFile; fileRef = 2761DAD226497F9A00D73352 /* NSObject+Tian.m */; };
+		276D9575267340CC00192EDA /* KeyType.m in Sources */ = {isa = PBXBuildFile; fileRef = 276D9574267340CC00192EDA /* KeyType.m */; };
 		27749CF626311A5A00EA6402 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27749CF526311A5A00EA6402 /* AppDelegate.m */; };
 		27749CF926311A5A00EA6402 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27749CF826311A5A00EA6402 /* SceneDelegate.m */; };
 		27749CFC26311A5A00EA6402 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27749CFB26311A5A00EA6402 /* ViewController.m */; };
@@ -106,6 +107,8 @@
 		2747F9EB264E21A300FF6622 /* TestObj2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestObj2.m; sourceTree = "<group>"; };
 		2761DAD126497F9A00D73352 /* NSObject+Tian.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Tian.h"; sourceTree = "<group>"; };
 		2761DAD226497F9A00D73352 /* NSObject+Tian.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Tian.m"; sourceTree = "<group>"; };
+		276D9573267340CC00192EDA /* KeyType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyType.h; sourceTree = "<group>"; };
+		276D9574267340CC00192EDA /* KeyType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyType.m; sourceTree = "<group>"; };
 		27749CF126311A5A00EA6402 /* NWUITest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NWUITest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27749CF426311A5A00EA6402 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		27749CF526311A5A00EA6402 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -248,6 +251,8 @@
 				27749CF826311A5A00EA6402 /* SceneDelegate.m */,
 				27749CFA26311A5A00EA6402 /* ViewController.h */,
 				27749CFB26311A5A00EA6402 /* ViewController.m */,
+				276D9573267340CC00192EDA /* KeyType.h */,
+				276D9574267340CC00192EDA /* KeyType.m */,
 				27FFD28C26672E3C009C67E4 /* GTTimerController.h */,
 				27FFD28D26672E3C009C67E4 /* GTTimerController.m */,
 				27FFD29D2667408D009C67E4 /* QiPlayerVideoController.h */,
@@ -548,6 +553,7 @@
 				27FFD28E26672E3C009C67E4 /* GTTimerController.m in Sources */,
 				27FFD29426673E10009C67E4 /* QiAudioPlayer.m in Sources */,
 				27A5B8C5264D75100012BB64 /* TwoButton.m in Sources */,
+				276D9575267340CC00192EDA /* KeyType.m in Sources */,
 				2794545026452CDB001ABA02 /* GTPlayerView.m in Sources */,
 				27749D2E26311A9500EA6402 /* TwoController.m in Sources */,
 				27421F4A263BDEC9001F8491 /* NWSpeechController.m in Sources */,

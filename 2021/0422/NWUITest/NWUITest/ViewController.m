@@ -44,6 +44,8 @@
 
 #import <dlfcn.h>
 
+#import "KeyType.h"
+
 
 
 static const NSString *YSPlayerItemStatusContext;
@@ -165,6 +167,79 @@ NSString * const AppViewControllerRefreshNotificationName = @"AppViewControllerR
     
     
 //    [self testWeakAttibute];
+    
+    
+//    [self testCopy];
+    
+    
+    
+    [self testDict];
+}
+
+
+- (id)testObjectAtIndex:(NSUInteger)index {
+    
+    
+    NSMutableArray *temp = [NSMutableArray array];
+    // 缓冲区中第一个元素的索引
+    NSUInteger _offSet = 0;
+    // 缓冲区大小
+    NSUInteger size = temp.count;
+    // 元素对应的下标
+    
+    /**
+     
+    offset = 3；size = 10
+    size > fetchOffset
+    index = 0 real = 3
+    index = 4,real = 7
+     
+     
+    uesd = 5 offset = 7
+    index = 0 real = 7
+    index = 4 real = 1
+     
+     
+     */
+    
+
+    NSUInteger fetchOffset = _offSet + index;
+    NSUInteger realOffset = fetchOffset - (size > fetchOffset ? 0 : size);
+    
+    //
+    return temp[realOffset];
+    
+}
+
+
+- (void)testDict {
+    
+//    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+//    KeyType *type = [[KeyType alloc] initWithKeyName:@"niu"];
+//
+//    NSLog(@"for value");
+//    NSLog(@"%@",[type valueForKey:@"retainCount"]);
+//    // type 作为value
+//    [dict setObject:type forKey:@"key1"];
+//    NSLog(@"%@",[type valueForKey:@"retainCount"]);
+//
+//    NSLog(@"for key");
+//    // type 作为key
+//    [dict setObject:@"objc1" forKey:type];
+//    NSLog(@"%@",[type valueForKey:@"retainCount"]);
+    
+    
+    
+    NSLog(@"get value");
+    NSMutableDictionary *dict1 = [NSMutableDictionary dictionary];
+    KeyType *key1 = [[KeyType alloc] initWithKeyName:@"key2"];
+    
+    [dict1 setObject:@"obj2" forKey:key1]; // hash + copy
+    NSLog(@"%lu",(unsigned long)dict1.count);
+    NSLog(@"value: %@",dict1[key1]); // hash + equal
+    
+
+    
     
 }
 
@@ -1415,15 +1490,12 @@ bool test_and_set(bool *target) {
 
 - (void)testCopy {
     
-//    NSString *aString = @"123";
-//    NSString *tempString = [aString copy]; // pointer copy
+    NSString *aString = @"123";
+    NSString *tempString = [aString copy]; // pointer copy
+    NSLog(@"%p %p",aString,tempString);
     
     NSMutableString *mutStr = [[NSMutableString alloc] initWithString:@"456"]; // content copy
     NSString *tempMut = [mutStr mutableCopy];
-    
-    
-    
-    
     NSLog(@"%p-----%p",mutStr,tempMut);
     
     

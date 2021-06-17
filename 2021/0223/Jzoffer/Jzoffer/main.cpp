@@ -1535,20 +1535,20 @@ public:
     
     // 1 2 4
     // 1 3(0,5,6) 6
-    vector<TNode *> res;
-    vector<TNode *> findAllNode(TNode *root,TNode *k) {
+    
+    vector<TNode *> findAllNode(TNode *root,TNode *k,vector<TNode *> res) {
         
-        if (!root || !k) {
+        if (!root || k == root) {
+            res.push_back(root);
             return res;
         }
         res.push_back(root);
         vector<TNode *> members = root->members;
+        
         for (int i = 0;i < members.size();i++) {
-           vector<TNode *> temp = findAllNode(members[i], k);
-            if (count(temp.begin(), temp.end(), k)) {
-                return temp;
-            }
+           findAllNode(members[i], k,res);
         }
+        
         return res;
     }
     
@@ -1567,14 +1567,16 @@ public:
  
         // 在两侧的判断
         // 构造两个不同的集合
-        vector<TNode *> nodeArray1 = findAllNode(root, p);
-        vector<TNode *> nodeArray2 = findAllNode(root, q);
+        vector<TNode *> res1;
+        vector<TNode *> res2;
+        findAllNode(root, p,res1);
+        findAllNode(root, q,res2);
         
         // 求1和2的交点
-        set<TNode *> s1(nodeArray1.begin(),nodeArray1.end());
-        for (int i = 0; i < nodeArray2.size(); i++) {
-            if (s1.find(nodeArray2[i]) != s1.end()) {
-                return nodeArray2[i];
+        set<TNode *> s1(res1.begin(),res1.end());
+        for (auto it = res2.rbegin(); it != res2.rend(); ++it) {
+            if (s1.find(*it) != s1.end()) {
+                return *it;
             }
         }
         
@@ -2008,9 +2010,62 @@ int maxNum(vector<int> arr)
 
 
 
+
+/**
+ 
+ 给定一个字符串，输出本字符串中只出现一次并且最靠前的那个字符的位置？如“abaccddeeef”,字符是b,输出应该是2
+ */
+
+
+/*
+ 时间复杂度T(O) = O(N)
+ 空间复杂度T(o) = O(1)
+ */
+char findSomeChar(string s) {
+    
+    // 检查参数
+    if (s.length() <= 0) {
+        return '0';
+    }
+    
+    
+    // 找到了每个字符的出现次数 次数 ：字符
+    unordered_map<int, char> m;
+    for (auto ch: s) {
+        ++m[ch];
+    }
+    
+    // 找到出现1次的字符，并加入临时集合
+    set<char> chSet;
+    for (auto it : m) {
+        if (it.second == 1) {
+            chSet.insert(it.first);
+        }
+    }
+    
+    // 循环找出对应的下标与之对应
+    vector<char> temp;
+    for (int i = 0; i < s.length(); i++) {
+        if (chSet.find(s[i]) != chSet.end()) {
+            return s[i];
+        }
+    }
+    
+    return '0';
+}
+
+
+
+
+
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     std::cout << "Hello, World!\n";
+    
+    
+    char temp = findSomeChar("abaccddeeef");
+    cout << temp << "\n" << endl;
     
 //    u.f = 3.14159f;
 //    printf("As integer: %08x\n", u.i);
