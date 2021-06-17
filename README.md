@@ -1,3 +1,6 @@
 # iOS-Study
 self study for iOS and Swift
 create a new branch dev
+
+Git is a distributed version control system.
+Git is free software distributed under the GPL.
