@@ -10,3 +10,5 @@ Gao is the best Teacher and she is my wife.
 Git is the best code manger tool.
 
 I love Gao Tian.
+
+Lao zhap is stupid boss.
