@@ -37,8 +37,28 @@ static NSString * const kBGTaskName = @"com.fosafer.task.augus";
         NSLog(@"set active error %@",[error localizedDescription]);
     }
     
+    NSSetUncaughtExceptionHandler(&UncaughtExceptionHandler);
+
+    
     
     return YES;
+}
+
+/// OC instance crash report
+/// @param exception a oc instance of exception
+void UncaughtExceptionHandler(NSException *exception) {
+    NSArray *arr = [exception callStackSymbols]; //得到当前调用栈信息
+    NSString *reason = [exception reason];       //非常重要，就是崩溃的原因
+    NSString *name = [exception name];           //异常类型
+
+    NSString *title = [NSString stringWithFormat:@"%@:%@", reason, name];
+    NSString *content = [arr componentsJoinedByString:@";"];
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault setObject:title forKey:@"CrashTitleIdentifier"];
+    [userDefault setObject:content forKey:@"CrashContentIdentifier"];
+    [userDefault synchronize];
+    NSLog(@"nw0 exception type : %@ \n crash reason : %@ \n call stack info : %@", name, reason, arr);
+//    NSLog(@"nw1 exception type : %@ \n crash reason : %@ \n call stack info : %@", name, reason, arr);
 }
 
 

@@ -23,8 +23,7 @@ class KeyboardResponder: ObservableObject {
         
         
         // 键盘退出
-        
-            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIWindow.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIWindow.keyboardWillHideNotification, object: nil)
         
     }
     

@@ -1,0 +1,298 @@
+sil_stage canonical
+
+import Builtin
+import Swift
+import SwiftShims
+
+import Foundation
+
+enum MyError : Error {
+  case SampleError
+  case HttpError
+  case IOError
+  @_implements(Equatable, ==(_:_:)) static func __derived_enum_equals(_ a: MyError, _ b: MyError) -> Bool
+  var hashValue: Int { get }
+  func hash(into hasher: inout Hasher)
+}
+
+func throwMe(shouldThtor: Bool) throws -> Bool
+
+// main
+sil @main : $@convention(c) (Int32, UnsafeMutablePointer<Optional<UnsafeMutablePointer<Int8>>>) -> Int32 {
+bb0(%0 : $Int32, %1 : $UnsafeMutablePointer<Optional<UnsafeMutablePointer<Int8>>>):
+  %2 = integer_literal $Builtin.Int32, 0          // user: %3
+  %3 = struct $Int32 (%2 : $Builtin.Int32)        // user: %4
+  return %3 : $Int32                              // id: %4
+} // end sil function 'main'
+
+// static MyError.__derived_enum_equals(_:_:)
+sil hidden @$s5throw7MyErrorO21__derived_enum_equalsySbAC_ACtFZ : $@convention(method) (MyError, MyError, @thin MyError.Type) -> Bool {
+// %0 "a"                                         // users: %8, %3
+// %1 "b"                                         // users: %9, %4
+// %2 "self"
+bb0(%0 : $MyError, %1 : $MyError, %2 : $@thin MyError.Type):
+  debug_value %0 : $MyError, let, name "a", argno 1 // id: %3
+  debug_value %1 : $MyError, let, name "b", argno 2 // id: %4
+  %5 = integer_literal $Builtin.Int64, 0          // users: %9, %8
+  %6 = integer_literal $Builtin.Int64, 1          // users: %9, %8
+  %7 = integer_literal $Builtin.Int64, 2          // users: %9, %8
+  %8 = select_enum %0 : $MyError, case #MyError.SampleError!enumelt: %5, case #MyError.HttpError!enumelt: %6, case #MyError.IOError!enumelt: %7 : $Builtin.Int64 // user: %10
+  %9 = select_enum %1 : $MyError, case #MyError.SampleError!enumelt: %5, case #MyError.HttpError!enumelt: %6, case #MyError.IOError!enumelt: %7 : $Builtin.Int64 // user: %10
+  %10 = builtin "cmp_eq_Int64"(%8 : $Builtin.Int64, %9 : $Builtin.Int64) : $Builtin.Int1 // user: %11
+  %11 = struct $Bool (%10 : $Builtin.Int1)        // user: %12
+  return %11 : $Bool                              // id: %12
+} // end sil function '$s5throw7MyErrorO21__derived_enum_equalsySbAC_ACtFZ'
+
+// MyError.hashValue.getter
+sil hidden @$s5throw7MyErrorO9hashValueSivg : $@convention(method) (MyError) -> Int {
+// %0 "self"                                      // users: %10, %13, %1
+bb0(%0 : $MyError):
+  debug_value %0 : $MyError, let, name "self", argno 1 // id: %1
+  %2 = integer_literal $Builtin.Int64, 0          // users: %13, %3
+  %3 = struct $Int (%2 : $Builtin.Int64)          // user: %7
+  %4 = alloc_stack $Hasher                        // users: %19, %18, %16, %9, %8
+  %5 = metatype $@thin Hasher.Type                // user: %7
+  // function_ref Hasher.init(_seed:)
+  %6 = function_ref @$ss6HasherV5_seedABSi_tcfC : $@convention(method) (Int, @thin Hasher.Type) -> Hasher // user: %7
+  %7 = apply %6(%3, %5) : $@convention(method) (Int, @thin Hasher.Type) -> Hasher // user: %8
+  store %7 to %4 : $*Hasher                       // id: %8
+  debug_value_addr %4 : $*Hasher, var, name "hasher", argno 1 // id: %9
+  debug_value %0 : $MyError, let, name "self", argno 2 // id: %10
+  %11 = integer_literal $Builtin.Int64, 1         // user: %13
+  %12 = integer_literal $Builtin.Int64, 2         // user: %13
+  %13 = select_enum %0 : $MyError, case #MyError.SampleError!enumelt: %2, case #MyError.HttpError!enumelt: %11, case #MyError.IOError!enumelt: %12 : $Builtin.Int64 // user: %14
+  %14 = struct $UInt (%13 : $Builtin.Int64)       // user: %16
+  // function_ref Hasher._combine(_:)
+  %15 = function_ref @$ss6HasherV8_combineyySuF : $@convention(method) (UInt, @inout Hasher) -> () // user: %16
+  %16 = apply %15(%14, %4) : $@convention(method) (UInt, @inout Hasher) -> ()
+  // function_ref Hasher._finalize()
+  %17 = function_ref @$ss6HasherV9_finalizeSiyF : $@convention(method) (@inout Hasher) -> Int // user: %18
+  %18 = apply %17(%4) : $@convention(method) (@inout Hasher) -> Int // user: %20
+  dealloc_stack %4 : $*Hasher                     // id: %19
+  return %18 : $Int                               // id: %20
+} // end sil function '$s5throw7MyErrorO9hashValueSivg'
+
+// MyError.hash(into:)
+sil hidden @$s5throw7MyErrorO4hash4intoys6HasherVz_tF : $@convention(method) (@inout Hasher, MyError) -> () {
+// %0 "hasher"                                    // users: %10, %2
+// %1 "self"                                      // users: %7, %3
+bb0(%0 : $*Hasher, %1 : $MyError):
+  debug_value_addr %0 : $*Hasher, var, name "hasher", argno 1 // id: %2
+  debug_value %1 : $MyError, let, name "self", argno 2 // id: %3
+  %4 = integer_literal $Builtin.Int64, 0          // user: %7
+  %5 = integer_literal $Builtin.Int64, 1          // user: %7
+  %6 = integer_literal $Builtin.Int64, 2          // user: %7
+  %7 = select_enum %1 : $MyError, case #MyError.SampleError!enumelt: %4, case #MyError.HttpError!enumelt: %5, case #MyError.IOError!enumelt: %6 : $Builtin.Int64 // user: %8
+  %8 = struct $UInt (%7 : $Builtin.Int64)         // user: %10
+  // function_ref Hasher._combine(_:)
+  %9 = function_ref @$ss6HasherV8_combineyySuF : $@convention(method) (UInt, @inout Hasher) -> () // user: %10
+  %10 = apply %9(%8, %0) : $@convention(method) (UInt, @inout Hasher) -> ()
+  %11 = tuple ()                                  // user: %12
+  return %11 : $()                                // id: %12
+} // end sil function '$s5throw7MyErrorO4hash4intoys6HasherVz_tF'
+
+// protocol witness for static Equatable.== infix(_:_:) in conformance MyError
+sil private [transparent] [thunk] @$s5throw7MyErrorOSQAASQ2eeoiySbx_xtFZTW : $@convention(witness_method: Equatable) (@in_guaranteed MyError, @in_guaranteed MyError, @thick MyError.Type) -> Bool {
+// %0                                             // user: %3
+// %1                                             // user: %4
+bb0(%0 : $*MyError, %1 : $*MyError, %2 : $@thick MyError.Type):
+  %3 = load %0 : $*MyError                        // users: %10, %5
+  %4 = load %1 : $*MyError                        // users: %11, %6
+  debug_value %3 : $MyError, let, name "a", argno 1 // id: %5
+  debug_value %4 : $MyError, let, name "b", argno 2 // id: %6
+  %7 = integer_literal $Builtin.Int64, 0          // users: %11, %10
+  %8 = integer_literal $Builtin.Int64, 1          // users: %11, %10
+  %9 = integer_literal $Builtin.Int64, 2          // users: %11, %10
+  %10 = select_enum %3 : $MyError, case #MyError.SampleError!enumelt: %7, case #MyError.HttpError!enumelt: %8, case #MyError.IOError!enumelt: %9 : $Builtin.Int64 // user: %12
+  %11 = select_enum %4 : $MyError, case #MyError.SampleError!enumelt: %7, case #MyError.HttpError!enumelt: %8, case #MyError.IOError!enumelt: %9 : $Builtin.Int64 // user: %12
+  %12 = builtin "cmp_eq_Int64"(%10 : $Builtin.Int64, %11 : $Builtin.Int64) : $Builtin.Int1 // user: %13
+  %13 = struct $Bool (%12 : $Builtin.Int1)        // user: %14
+  return %13 : $Bool                              // id: %14
+} // end sil function '$s5throw7MyErrorOSQAASQ2eeoiySbx_xtFZTW'
+
+// protocol witness for Hashable.hashValue.getter in conformance MyError
+sil private [transparent] [thunk] @$s5throw7MyErrorOSHAASH9hashValueSivgTW : $@convention(witness_method: Hashable) (@in_guaranteed MyError) -> Int {
+// %0                                             // user: %1
+bb0(%0 : $*MyError):
+  %1 = load %0 : $*MyError                        // users: %14, %11, %2
+  debug_value %1 : $MyError, let, name "self", argno 1 // id: %2
+  %3 = integer_literal $Builtin.Int64, 0          // users: %14, %4
+  %4 = struct $Int (%3 : $Builtin.Int64)          // user: %8
+  %5 = alloc_stack $Hasher                        // users: %20, %19, %17, %10, %9
+  %6 = metatype $@thin Hasher.Type                // user: %8
+  // function_ref Hasher.init(_seed:)
+  %7 = function_ref @$ss6HasherV5_seedABSi_tcfC : $@convention(method) (Int, @thin Hasher.Type) -> Hasher // user: %8
+  %8 = apply %7(%4, %6) : $@convention(method) (Int, @thin Hasher.Type) -> Hasher // user: %9
+  store %8 to %5 : $*Hasher                       // id: %9
+  debug_value_addr %5 : $*Hasher, var, name "hasher", argno 1 // id: %10
+  debug_value %1 : $MyError, let, name "self", argno 2 // id: %11
+  %12 = integer_literal $Builtin.Int64, 1         // user: %14
+  %13 = integer_literal $Builtin.Int64, 2         // user: %14
+  %14 = select_enum %1 : $MyError, case #MyError.SampleError!enumelt: %3, case #MyError.HttpError!enumelt: %12, case #MyError.IOError!enumelt: %13 : $Builtin.Int64 // user: %15
+  %15 = struct $UInt (%14 : $Builtin.Int64)       // user: %17
+  // function_ref Hasher._combine(_:)
+  %16 = function_ref @$ss6HasherV8_combineyySuF : $@convention(method) (UInt, @inout Hasher) -> () // user: %17
+  %17 = apply %16(%15, %5) : $@convention(method) (UInt, @inout Hasher) -> ()
+  // function_ref Hasher._finalize()
+  %18 = function_ref @$ss6HasherV9_finalizeSiyF : $@convention(method) (@inout Hasher) -> Int // user: %19
+  %19 = apply %18(%5) : $@convention(method) (@inout Hasher) -> Int // user: %21
+  dealloc_stack %5 : $*Hasher                     // id: %20
+  return %19 : $Int                               // id: %21
+} // end sil function '$s5throw7MyErrorOSHAASH9hashValueSivgTW'
+
+// protocol witness for Hashable.hash(into:) in conformance MyError
+sil private [transparent] [thunk] @$s5throw7MyErrorOSHAASH4hash4intoys6HasherVz_tFTW : $@convention(witness_method: Hashable) (@inout Hasher, @in_guaranteed MyError) -> () {
+// %0                                             // users: %11, %3
+// %1                                             // user: %2
+bb0(%0 : $*Hasher, %1 : $*MyError):
+  %2 = load %1 : $*MyError                        // users: %8, %4
+  debug_value_addr %0 : $*Hasher, var, name "hasher", argno 1 // id: %3
+  debug_value %2 : $MyError, let, name "self", argno 2 // id: %4
+  %5 = integer_literal $Builtin.Int64, 0          // user: %8
+  %6 = integer_literal $Builtin.Int64, 1          // user: %8
+  %7 = integer_literal $Builtin.Int64, 2          // user: %8
+  %8 = select_enum %2 : $MyError, case #MyError.SampleError!enumelt: %5, case #MyError.HttpError!enumelt: %6, case #MyError.IOError!enumelt: %7 : $Builtin.Int64 // user: %9
+  %9 = struct $UInt (%8 : $Builtin.Int64)         // user: %11
+  // function_ref Hasher._combine(_:)
+  %10 = function_ref @$ss6HasherV8_combineyySuF : $@convention(method) (UInt, @inout Hasher) -> () // user: %11
+  %11 = apply %10(%9, %0) : $@convention(method) (UInt, @inout Hasher) -> ()
+  %12 = tuple ()                                  // user: %13
+  return %12 : $()                                // id: %13
+} // end sil function '$s5throw7MyErrorOSHAASH4hash4intoys6HasherVz_tFTW'
+
+// protocol witness for Hashable._rawHashValue(seed:) in conformance MyError
+sil private [transparent] [thunk] [always_inline] @$s5throw7MyErrorOSHAASH13_rawHashValue4seedS2i_tFTW : $@convention(witness_method: Hashable) (Int, @in_guaranteed MyError) -> Int {
+// %0                                             // user: %5
+// %1                                             // user: %7
+bb0(%0 : $Int, %1 : $*MyError):
+  %2 = alloc_stack $Hasher                        // users: %16, %8, %19, %18, %6
+  %3 = metatype $@thin Hasher.Type                // user: %5
+  // function_ref Hasher.init(_seed:)
+  %4 = function_ref @$ss6HasherV5_seedABSi_tcfC : $@convention(method) (Int, @thin Hasher.Type) -> Hasher // user: %5
+  %5 = apply %4(%0, %3) : $@convention(method) (Int, @thin Hasher.Type) -> Hasher // user: %6
+  store %5 to %2 : $*Hasher                       // id: %6
+  %7 = load %1 : $*MyError                        // users: %13, %9
+  debug_value_addr %2 : $*Hasher, var, name "hasher", argno 1 // id: %8
+  debug_value %7 : $MyError, let, name "self", argno 2 // id: %9
+  %10 = integer_literal $Builtin.Int64, 0         // user: %13
+  %11 = integer_literal $Builtin.Int64, 1         // user: %13
+  %12 = integer_literal $Builtin.Int64, 2         // user: %13
+  %13 = select_enum %7 : $MyError, case #MyError.SampleError!enumelt: %10, case #MyError.HttpError!enumelt: %11, case #MyError.IOError!enumelt: %12 : $Builtin.Int64 // user: %14
+  %14 = struct $UInt (%13 : $Builtin.Int64)       // user: %16
+  // function_ref Hasher._combine(_:)
+  %15 = function_ref @$ss6HasherV8_combineyySuF : $@convention(method) (UInt, @inout Hasher) -> () // user: %16
+  %16 = apply %15(%14, %2) : $@convention(method) (UInt, @inout Hasher) -> ()
+  // function_ref Hasher._finalize()
+  %17 = function_ref @$ss6HasherV9_finalizeSiyF : $@convention(method) (@inout Hasher) -> Int // user: %18
+  %18 = apply %17(%2) : $@convention(method) (@inout Hasher) -> Int // user: %20
+  dealloc_stack %2 : $*Hasher                     // id: %19
+  return %18 : $Int                               // id: %20
+} // end sil function '$s5throw7MyErrorOSHAASH13_rawHashValue4seedS2i_tFTW'
+
+// protocol witness for Error._domain.getter in conformance MyError
+sil private [transparent] [thunk] @$s5throw7MyErrorOs0C0AAsADP7_domainSSvgTW : $@convention(witness_method: Error) (@in_guaranteed MyError) -> @owned String {
+// %0                                             // user: %2
+bb0(%0 : $*MyError):
+  // function_ref Error._domain.getter
+  %1 = function_ref @$ss5ErrorPsE7_domainSSvg : $@convention(method) <τ_0_0 where τ_0_0 : Error> (@in_guaranteed τ_0_0) -> @owned String // user: %2
+  %2 = apply %1<MyError>(%0) : $@convention(method) <τ_0_0 where τ_0_0 : Error> (@in_guaranteed τ_0_0) -> @owned String // user: %3
+  return %2 : $String                             // id: %3
+} // end sil function '$s5throw7MyErrorOs0C0AAsADP7_domainSSvgTW'
+
+// Error._domain.getter
+sil @$ss5ErrorPsE7_domainSSvg : $@convention(method) <τ_0_0 where τ_0_0 : Error> (@in_guaranteed τ_0_0) -> @owned String
+
+// protocol witness for Error._code.getter in conformance MyError
+sil private [transparent] [thunk] @$s5throw7MyErrorOs0C0AAsADP5_codeSivgTW : $@convention(witness_method: Error) (@in_guaranteed MyError) -> Int {
+// %0                                             // user: %2
+bb0(%0 : $*MyError):
+  // function_ref Error._code.getter
+  %1 = function_ref @$ss5ErrorPsE5_codeSivg : $@convention(method) <τ_0_0 where τ_0_0 : Error> (@in_guaranteed τ_0_0) -> Int // user: %2
+  %2 = apply %1<MyError>(%0) : $@convention(method) <τ_0_0 where τ_0_0 : Error> (@in_guaranteed τ_0_0) -> Int // user: %3
+  return %2 : $Int                                // id: %3
+} // end sil function '$s5throw7MyErrorOs0C0AAsADP5_codeSivgTW'
+
+// Error._code.getter
+sil @$ss5ErrorPsE5_codeSivg : $@convention(method) <τ_0_0 where τ_0_0 : Error> (@in_guaranteed τ_0_0) -> Int
+
+// protocol witness for Error._userInfo.getter in conformance MyError
+sil private [transparent] [thunk] @$s5throw7MyErrorOs0C0AAsADP9_userInfoyXlSgvgTW : $@convention(witness_method: Error) (@in_guaranteed MyError) -> @owned Optional<AnyObject> {
+// %0                                             // user: %2
+bb0(%0 : $*MyError):
+  // function_ref Error._userInfo.getter
+  %1 = function_ref @$ss5ErrorPsE9_userInfoyXlSgvg : $@convention(method) <τ_0_0 where τ_0_0 : Error> (@in_guaranteed τ_0_0) -> @owned Optional<AnyObject> // user: %2
+  %2 = apply %1<MyError>(%0) : $@convention(method) <τ_0_0 where τ_0_0 : Error> (@in_guaranteed τ_0_0) -> @owned Optional<AnyObject> // user: %3
+  return %2 : $Optional<AnyObject>                // id: %3
+} // end sil function '$s5throw7MyErrorOs0C0AAsADP9_userInfoyXlSgvgTW'
+
+// Error._userInfo.getter
+sil @$ss5ErrorPsE9_userInfoyXlSgvg : $@convention(method) <τ_0_0 where τ_0_0 : Error> (@in_guaranteed τ_0_0) -> @owned Optional<AnyObject>
+
+// protocol witness for Error._getEmbeddedNSError() in conformance MyError
+sil private [transparent] [thunk] @$s5throw7MyErrorOs0C0AAsADP19_getEmbeddedNSErroryXlSgyFTW : $@convention(witness_method: Error) (@in_guaranteed MyError) -> @owned Optional<AnyObject> {
+// %0                                             // user: %2
+bb0(%0 : $*MyError):
+  // function_ref Error._getEmbeddedNSError()
+  %1 = function_ref @$ss5ErrorPsE19_getEmbeddedNSErroryXlSgyF : $@convention(method) <τ_0_0 where τ_0_0 : Error> (@in_guaranteed τ_0_0) -> @owned Optional<AnyObject> // user: %2
+  %2 = apply %1<MyError>(%0) : $@convention(method) <τ_0_0 where τ_0_0 : Error> (@in_guaranteed τ_0_0) -> @owned Optional<AnyObject> // user: %3
+  return %2 : $Optional<AnyObject>                // id: %3
+} // end sil function '$s5throw7MyErrorOs0C0AAsADP19_getEmbeddedNSErroryXlSgyFTW'
+
+// Error._getEmbeddedNSError()
+sil @$ss5ErrorPsE19_getEmbeddedNSErroryXlSgyF : $@convention(method) <τ_0_0 where τ_0_0 : Error> (@in_guaranteed τ_0_0) -> @owned Optional<AnyObject>
+
+// throwMe(shouldThtor:)
+sil hidden @$s5throw0A2Me11shouldThtorS2b_tKF : $@convention(thin) (Bool) -> (Bool, @error Error) {
+// %0 "shouldThtor"                               // users: %2, %1
+bb0(%0 : $Bool):
+  debug_value %0 : $Bool, let, name "shouldThtor", argno 1 // id: %1
+  %2 = struct_extract %0 : $Bool, #Bool._value    // user: %3
+  cond_br %2, bb1, bb2                            // id: %3
+
+bb1:                                              // Preds: bb0
+  %4 = enum $MyError, #MyError.SampleError!enumelt // user: %7
+  %5 = alloc_existential_box $Error, $MyError     // users: %8, %9, %6
+  %6 = project_existential_box $MyError in %5 : $Error // user: %7
+  store %4 to %6 : $*MyError                      // id: %7
+  %8 = builtin "willThrow"(%5 : $Error) : $()
+  throw %5 : $Error                               // id: %9
+
+bb2:                                              // Preds: bb0
+  %10 = integer_literal $Builtin.Int1, -1         // user: %11
+  %11 = struct $Bool (%10 : $Builtin.Int1)        // user: %12
+  return %11 : $Bool                              // id: %12
+} // end sil function '$s5throw0A2Me11shouldThtorS2b_tKF'
+
+// Hasher.init(_seed:)
+sil [releasenone] @$ss6HasherV5_seedABSi_tcfC : $@convention(method) (Int, @thin Hasher.Type) -> Hasher
+
+// Hasher._finalize()
+sil [releasenone] @$ss6HasherV9_finalizeSiyF : $@convention(method) (@inout Hasher) -> Int
+
+// Hasher._combine(_:)
+sil [releasenone] @$ss6HasherV8_combineyySuF : $@convention(method) (UInt, @inout Hasher) -> ()
+
+sil_witness_table hidden MyError: Equatable module throw {
+  method #Equatable."==": <Self where Self : Equatable> (Self.Type) -> (Self, Self) -> Bool : @$s5throw7MyErrorOSQAASQ2eeoiySbx_xtFZTW	// protocol witness for static Equatable.== infix(_:_:) in conformance MyError
+}
+
+sil_witness_table hidden MyError: Hashable module throw {
+  base_protocol Equatable: MyError: Equatable module throw
+  method #Hashable.hashValue!getter: <Self where Self : Hashable> (Self) -> () -> Int : @$s5throw7MyErrorOSHAASH9hashValueSivgTW	// protocol witness for Hashable.hashValue.getter in conformance MyError
+  method #Hashable.hash: <Self where Self : Hashable> (Self) -> (inout Hasher) -> () : @$s5throw7MyErrorOSHAASH4hash4intoys6HasherVz_tFTW	// protocol witness for Hashable.hash(into:) in conformance MyError
+  method #Hashable._rawHashValue: <Self where Self : Hashable> (Self) -> (Int) -> Int : @$s5throw7MyErrorOSHAASH13_rawHashValue4seedS2i_tFTW	// protocol witness for Hashable._rawHashValue(seed:) in conformance MyError
+}
+
+sil_witness_table hidden MyError: Error module throw {
+  method #Error._domain!getter: <Self where Self : Error> (Self) -> () -> String : @$s5throw7MyErrorOs0C0AAsADP7_domainSSvgTW	// protocol witness for Error._domain.getter in conformance MyError
+  method #Error._code!getter: <Self where Self : Error> (Self) -> () -> Int : @$s5throw7MyErrorOs0C0AAsADP5_codeSivgTW	// protocol witness for Error._code.getter in conformance MyError
+  method #Error._userInfo!getter: <Self where Self : Error> (Self) -> () -> AnyObject? : @$s5throw7MyErrorOs0C0AAsADP9_userInfoyXlSgvgTW	// protocol witness for Error._userInfo.getter in conformance MyError
+  method #Error._getEmbeddedNSError: <Self where Self : Error> (Self) -> () -> AnyObject? : @$s5throw7MyErrorOs0C0AAsADP19_getEmbeddedNSErroryXlSgyFTW	// protocol witness for Error._getEmbeddedNSError() in conformance MyError
+}
+
+
+
+// Mappings from '#fileID' to '#filePath':
+//   'throw/throw.swift' => 'throw.swift'
+
+

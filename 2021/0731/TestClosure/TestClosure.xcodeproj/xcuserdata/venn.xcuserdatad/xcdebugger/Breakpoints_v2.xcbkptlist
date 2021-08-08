@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "AA0D541C-2BD7-4FB5-AFF7-8943E1E6BEC5"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
+         <BreakpointContent
+            uuid = "E2606ED2-657B-4C59-9963-48975076FCC3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            symbolName = "__allocating_init()"
+            moduleName = "">
+            <Locations>
+               <Location
+                  uuid = "E2606ED2-657B-4C59-9963-48975076FCC3 - 91c6912bba788623"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swift._IteratorBox.__allocating_init() -&gt; Swift._IteratorBox&lt;&#x3c4;_0_0&gt;"
+                  moduleName = "libswiftCore.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "E2606ED2-657B-4C59-9963-48975076FCC3 - 77bf04513735c971"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swift._SequenceBox.__allocating_init() -&gt; Swift._SequenceBox&lt;&#x3c4;_0_0&gt;"
+                  moduleName = "libswiftCore.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "E2606ED2-657B-4C59-9963-48975076FCC3 - 5fdd0e72eb33ad47"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swift._AnySequenceBox.__allocating_init() -&gt; Swift._AnySequenceBox&lt;&#x3c4;_0_0&gt;"
+                  moduleName = "libswiftCore.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "E2606ED2-657B-4C59-9963-48975076FCC3 - b32284e12a6022c4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swift.__VaListBuilder.__allocating_init() -&gt; Swift.__VaListBuilder"
+                  moduleName = "libswiftCore.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "E2606ED2-657B-4C59-9963-48975076FCC3 - 35e78bbeb8a2e3f1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swift._AnyCollectionBox.__allocating_init() -&gt; Swift._AnyCollectionBox&lt;&#x3c4;_0_0&gt;"
+                  moduleName = "libswiftCore.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "E2606ED2-657B-4C59-9963-48975076FCC3 - fdf18d09a376ce67"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swift._AnyIteratorBoxBase.__allocating_init() -&gt; Swift._AnyIteratorBoxBase&lt;&#x3c4;_0_0&gt;"
+                  moduleName = "libswiftCore.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "E2606ED2-657B-4C59-9963-48975076FCC3 - 455790e1b4a736c6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swift._SwiftNSMutableArray.__allocating_init() -&gt; Swift._SwiftNSMutableArray"
+                  moduleName = "libswiftCore.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "E2606ED2-657B-4C59-9963-48975076FCC3 - 50604aa2208b483e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swift.__SwiftNativeNSArray.__allocating_init() -&gt; Swift.__SwiftNativeNSArray"
+                  moduleName = "libswiftCore.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "E2606ED2-657B-4C59-9963-48975076FCC3 - cf1c08ce3b501db6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swift.__SwiftDeferredNSArray.__allocating_init() -&gt; Swift.__SwiftDeferredNSArray"
+                  moduleName = "libswiftCore.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "E2606ED2-657B-4C59-9963-48975076FCC3 - 4415a9d13830f520"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swift._SwiftNativeNSMutableArray.__allocating_init() -&gt; Swift._SwiftNativeNSMutableArray"
+                  moduleName = "libswiftCore.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "E2606ED2-657B-4C59-9963-48975076FCC3 - 6dff2b33161d9124"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swift.__ContiguousArrayStorageBase.__allocating_init() -&gt; Swift.__ContiguousArrayStorageBase"
+                  moduleName = "libswiftCore.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "E2606ED2-657B-4C59-9963-48975076FCC3 - 3bf8be98e4815e5a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swift.__SwiftNativeNSArrayWithContiguousStorage.__allocating_init() -&gt; Swift.__SwiftNativeNSArrayWithContiguousStorage"
+                  moduleName = "libswiftCore.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "E2606ED2-657B-4C59-9963-48975076FCC3 - b93aee05e64fc46a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Dispatch.DispatchSpecificKey.__allocating_init() -&gt; Dispatch.DispatchSpecificKey&lt;&#x3c4;_0_0&gt;"
+                  moduleName = "libswiftDispatch.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "E2606ED2-657B-4C59-9963-48975076FCC3 - d74f929d3cb746e2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Foundation.JSONDecoder.__allocating_init() -&gt; Foundation.JSONDecoder"
+                  moduleName = "libswiftFoundation.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "E2606ED2-657B-4C59-9963-48975076FCC3 - 4f614cce8167f15e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Foundation.JSONEncoder.__allocating_init() -&gt; Foundation.JSONEncoder"
+                  moduleName = "libswiftFoundation.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "E2606ED2-657B-4C59-9963-48975076FCC3 - 4671dfaeb66c0db0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Foundation.PropertyListDecoder.__allocating_init() -&gt; Foundation.PropertyListDecoder"
+                  moduleName = "libswiftFoundation.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "E2606ED2-657B-4C59-9963-48975076FCC3 - fecd61eb15a18fac"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Foundation.PropertyListEncoder.__allocating_init() -&gt; Foundation.PropertyListEncoder"
+                  moduleName = "libswiftFoundation.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "E2606ED2-657B-4C59-9963-48975076FCC3 - 42092bf2b6c5ec74"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Foundation.NSKeyValueObservation.__allocating_init() -&gt; Foundation.NSKeyValueObservation"
+                  moduleName = "libswiftFoundation.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "E2606ED2-657B-4C59-9963-48975076FCC3 - 7487d16252127484"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Combine.PublisherBox.__allocating_init() -&gt; Combine.PublisherBox&lt;&#x3c4;_0_0&gt;"
+                  moduleName = "Combine"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "E2606ED2-657B-4C59-9963-48975076FCC3 - 698ca8c40611c5a0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Combine.AnySubscriberBox.__allocating_init() -&gt; Combine.AnySubscriberBox&lt;&#x3c4;_0_0&gt;"
+                  moduleName = "Combine"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "E2606ED2-657B-4C59-9963-48975076FCC3 - 9fda482ffa2d65b0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Combine.PublisherBoxBase.__allocating_init() -&gt; Combine.PublisherBoxBase&lt;&#x3c4;_0_0, &#x3c4;_0_1&gt;"
+                  moduleName = "Combine"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "E2606ED2-657B-4C59-9963-48975076FCC3 - ea8a9bac6992cf84"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Combine.AnySubscriberBase.__allocating_init() -&gt; Combine.AnySubscriberBase&lt;&#x3c4;_0_0, &#x3c4;_0_1&gt;"
+                  moduleName = "Combine"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "E2606ED2-657B-4C59-9963-48975076FCC3 - cf3492725aef7560"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Combine.PassthroughSubject.__allocating_init() -&gt; Combine.PassthroughSubject&lt;&#x3c4;_0_0, &#x3c4;_0_1&gt;"
+                  moduleName = "Combine"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "E2606ED2-657B-4C59-9963-48975076FCC3 - 418ca06ebe5a2471"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Combine.ClosureBasedAnySubscriber.__allocating_init() -&gt; Combine.ClosureBasedAnySubscriber&lt;&#x3c4;_0_0, &#x3c4;_0_1&gt;"
+                  moduleName = "Combine"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "E2606ED2-657B-4C59-9963-48975076FCC3 - ee4fd91363929799"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Combine.ObservableObjectPublisher.__allocating_init() -&gt; Combine.ObservableObjectPublisher"
+                  moduleName = "Combine"
+                  usesParentBreakpointCondition = "Yes"
+                  offsetFromSymbolStart = "0">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A1FF1308-20C8-4CB4-84B8-D5E194DDA515"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TestClosure/main.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

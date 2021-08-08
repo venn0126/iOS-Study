@@ -1,6 +1,0 @@
-framework module MangoSDK {
-  umbrella header "MangoSDK.h"
-
-  export *
-  module * { export * }
-}

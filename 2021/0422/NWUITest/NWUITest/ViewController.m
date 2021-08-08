@@ -46,6 +46,9 @@
 
 #import "KeyType.h"
 
+#import "SNDispatchQueuePool.h"
+#import "YYDispatchQueuePool.h"
+
 
 
 static const NSString *YSPlayerItemStatusContext;
@@ -76,6 +79,8 @@ NSString * const AppViewControllerRefreshNotificationName = @"AppViewControllerR
 
 
 
+static SNDispatchQueuePool *kDispatchPool;
+
 @implementation ViewController {
     
     GTPlayerController *_nwPlayer;
@@ -92,6 +97,11 @@ NSString * const AppViewControllerRefreshNotificationName = @"AppViewControllerR
 //    }
 //    return [super init];
 //}
+
+
+
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -173,7 +183,65 @@ NSString * const AppViewControllerRefreshNotificationName = @"AppViewControllerR
     
     
     
-    [self testDict];
+//    [self testDict];
+    
+    [self testSNDispatchPool];
+    
+    
+    
+
+    
+}
+
+static int testUpdateCArrayItem(int arr[],int idx) {
+    
+    /**
+     
+     static int *carray[5] = {0};
+     
+     // * 间接取值
+     // & 取地址运算符
+     
+
+     int temp = testUpdateCArrayItem((int *)carray, 4);
+     NSLog(@"temp is %d",temp);
+     */
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        arr[idx] = idx + 8;
+    });
+    
+    return arr[idx];
+}
+
+- (void)testSNDispatchPool {
+    
+    
+    // 从全局队列中队列池中获取到一个串行队列
+//    dispatch_queue_t queue = SNDispatchQueueGetForQOS(NSQualityOfServiceUtility);
+
+    // 获得一个指定类型的串行队列池
+//    SNDispatchQueuePool *pool = [[SNDispatchQueuePool alloc] initWithName:@"file.read" queueCount:3 qos:NSQualityOfServiceBackground];
+    // 从队列池中获取一个串行队列
+//    dispatch_queue_t queue = [pool queue];
+    
+//    SNDispatchQueuePool *pool = [SNDispatchQueuePool defaultPoolForQos:NSQualityOfServiceUtility];
+    if (!kDispatchPool) {
+        kDispatchPool = [SNDispatchQueuePool defaultPoolForQos:NSQualityOfServiceUtility];
+    }
+    
+//    YYDispatchQueuePool *pool = [YYDispatchQueuePool defaultPoolForQOS:NSQualityOfServiceUtility];
+    for (NSUInteger i = 0; i < 10000; i++) {
+        dispatch_queue_t queue = [kDispatchPool queue];
+        dispatch_async(queue, ^{
+           
+            NSLog(@"sn test");
+            sleep(.5);
+        });
+    }
+    
 }
 
 
@@ -788,6 +856,8 @@ int a = 3;
     dispatch_async(concurrentQueue, blk1);
     dispatch_barrier_async(concurrentQueue, barrerBlk);
     dispatch_async(concurrentQueue, blk2);
+    
+
 }
 
 struct nw_objc_class {
