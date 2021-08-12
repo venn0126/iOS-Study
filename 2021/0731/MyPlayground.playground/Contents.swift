@@ -50,7 +50,7 @@ class AutoDoc: Document {
     }
 }
 
-*/
+
 
 /// Protocol
 protocol FullyName {
@@ -270,3 +270,343 @@ let tracker = DiceGameTracker()
 let game = SnakesAndLadders()
 game.delegate = tracker
 game.play()
+
+ */
+
+/// Add protocol conformance with an extensions
+protocol TextDescription {
+    var description: String { get }
+}
+
+
+protocol HasName {
+    var name: String { get }
+}
+
+struct Cat {
+    var name: String = "Tom"
+    var age: Int = 18
+}
+
+extension Cat: TextDescription {
+    var description: String {
+        return "The cat name is \(name) and ags is \(age)"
+    }
+}
+
+struct Car: HasName {
+    var name: String = "DZ"
+    var wheel: Int = 2
+    
+
+}
+
+extension Car: TextDescription {
+    var description: String {
+        return "The Car name is \(name) and has \(wheel) wheels"
+    }
+}
+
+let aCar = Car()
+aCar.description
+
+let aCat = Cat()
+aCat.description
+
+extension Array: TextDescription where Element: HasName {
+    
+    func mapSomething() -> [String] {
+        
+        let res = self.map {
+            $0.name
+        }
+        return res
+    }
+}
+
+struct Hamster: HasName {
+    var name: String = "Tom"
+    var description: String {
+        return "A hamster name is \(name)"
+    }
+}
+
+extension Hamster: TextDescription {}
+
+var aHamster = Hamster(name: "gao")
+aHamster.name = "weo"
+aHamster.description
+
+struct Vector3D: Equatable {
+    var x = 0.0,y = 0.0,z = 0.0
+    var decription: String {
+        return "xxx"
+    }
+}
+
+let aTwo = Vector3D(x: 2.0, y: 3.0, z: 4.0)
+let otherTwo = Vector3D(x: 2.0, y: 3.0, z: 4.0)
+if aTwo == otherTwo {
+    print("atwo is equal thetwo")
+} else {
+    print("atwo is not equal thetwo")
+
+}
+aTwo.decription
+
+enum Week: Equatable,Hashable {
+    case Monday,Tuseday,Wednesday
+    var description: String {
+        return "The day is \(self)"
+    }
+}
+
+let aDay = Week.Monday
+let otherDay = Week.Monday
+if  aDay == otherDay {
+    print("aday is equal other theday")
+} else {
+    print("aday is not equal other theday")
+}
+aDay.description
+
+if aDay.hashValue == otherDay.hashValue {
+    print("aday hash is equal theday")
+} else {
+    print("aday hash is not equal theday")
+
+}
+
+enum SkillLevel: Comparable {
+    case beginner
+    case intermediate
+    case expert(start: Int)
+}
+
+var levels = [SkillLevel.beginner,SkillLevel.intermediate,SkillLevel.expert(start: 3),SkillLevel.expert(start: 5)]
+                
+for level in levels.sorted() {
+    print(level)
+}
+
+let things: [TextDescription] = [aCat,aCar,aHamster]
+for thing in things {
+    print(thing.description)
+}
+
+/// Protocol Inheritance
+
+protocol PrettyTextDescription: TextDescription {
+    var prettyTextDescription: String { get }
+}
+
+extension Car: PrettyTextDescription {
+    var prettyTextDescription: String {
+        return "🐈‍⬛ name is \(name)"
+    }
+}
+
+aCar.prettyTextDescription
+
+/// Class-Only Protocol
+protocol MaxTextDescription: AnyObject,HasName {
+    
+    var maxTextDescription: String { get }
+}
+class Peron {
+    var height: Double
+    init(height: Double) {
+        self.height = height
+    }
+}
+
+extension Peron: MaxTextDescription {
+    var name: String {
+        return "Niu"
+    }
+    var maxTextDescription: String {
+        return "The max person height is \(height)"
+    }
+}
+
+let aPerson = Peron(height: 17.8)
+aPerson.maxTextDescription
+
+/// Non-class not comform AnyObjct protocl
+//struct Rect: MaxTextDescription {
+//    var name: String
+//
+//}
+
+
+/// Protocol Composition
+protocol Named {
+    var name: String { get }
+}
+
+protocol Aged {
+    var aged: Int { get }
+}
+
+struct SPerson: Named,Aged {
+    var name: String
+    var aged: Int
+}
+
+func wishHappyBirthday(to celebrator: Named & Aged) {
+    print("Happy birthday,celebrator's name is \(celebrator.name) and age is \(celebrator.aged)")
+}
+
+let sp = SPerson(name: "Gao", aged: 17)
+wishHappyBirthday(to: sp)
+//wishHappyBirthday(to: aCar)
+
+class Location {
+    var latitude: Double
+    var longitude: Double
+    init(latitude: Double,longitude: Double) {
+        self.latitude = latitude
+        self.longitude = longitude
+    }
+}
+
+class City: Location,Named {
+    
+    var name: String
+    init(name: String,latitude: Double,longitude: Double) {
+        self.name = name
+        super.init(latitude: latitude, longitude: longitude)
+    }
+}
+
+func beginConcert(in location: Location & Named) {
+    print("The \(location.name) city lat \(location.latitude) and longitude \(location.longitude)")
+
+}
+
+let aCity = City(name: "Beijing", latitude: 112.9, longitude: 121.2)
+beginConcert(in: aCity)
+
+
+/// check protocol conformance
+protocol HasArea {
+    var area: Double { get }
+}
+
+class Circle: HasArea {
+    var radius: Double
+    var area: Double {
+        return (radius * radius * 3.14)
+    }
+    
+    init(radius: Double) {
+        self.radius = radius
+    }
+}
+
+class Country: HasArea {
+    var area: Double
+    init(area: Double) {
+        self.area = area
+    }
+}
+
+let objects: [AnyObject] = [Circle(radius: 10.0),Country(area: 5.0),Peron(height: 12.2)]
+for obc in objects {
+    if let ob = obc as? HasArea {
+        print("The are is \(ob.area)")
+    } else {
+        print("ob is no area")
+    }
+}
+
+@objc protocol CounterDataSource {
+    @objc optional func increment(forCount count: Int) -> Int
+    @objc optional var fixedIncrement: Int { get }
+}
+
+class Counter {
+    var count = 0
+    var dataSource: CounterDataSource?
+    func increment()  {
+        if let amount = dataSource?.increment?(forCount: count) {
+            count += amount
+        } else if let amount = dataSource?.fixedIncrement {
+            count += amount
+        }
+    }
+}
+
+class ThreeSource: NSObject,CounterDataSource {
+    let fixedIncrement = 3
+}
+
+
+var counter = Counter()
+counter.dataSource = ThreeSource()
+for _ in 1...4 {
+    counter.increment()
+    print(counter.count)
+}
+
+class ZeroSource: NSObject,CounterDataSource {
+    func increment(forCount count: Int) -> Int {
+        if  count == 0 {
+            return 0
+        } else if count < 0 {
+            return 1
+        } else {
+            return -1
+        }
+    }
+}
+
+counter.dataSource = ZeroSource()
+counter.count = -4
+for _ in 1...4 {
+    counter.increment()
+    print(counter.count)
+}
+
+
+/// Protocl Extensions
+extension HasArea {
+    func isArea() -> Bool {
+        return area > 0.5
+    }
+}
+
+let acountry = Country(area: 0.9)
+acountry.isArea()
+
+// Provide default implention
+
+extension HasName {
+    var name: String {
+        return  name
+    }
+}
+
+extension MaxTextDescription {
+    var maxTextDescription: String {
+        return name
+    }
+}
+
+// Add Constraints to protocol extensions
+extension Collection where Element: Equatable {
+    
+    func allEqual() -> Bool {
+        for element in self {
+            if element != self.first {
+                return false
+            }
+        }
+        return true
+    }
+}
+
+let array1 = [1,2,1,1]
+let array2 = [2,2,2,2]
+print(array1.allEqual())
+print(array2.allEqual())
