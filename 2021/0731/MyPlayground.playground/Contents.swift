@@ -271,7 +271,7 @@ let game = SnakesAndLadders()
 game.delegate = tracker
 game.play()
 
- */
+
 
 /// Add protocol conformance with an extensions
 protocol TextDescription {
@@ -610,3 +610,86 @@ let array1 = [1,2,1,1]
 let array2 = [2,2,2,2]
 print(array1.allEqual())
 print(array2.allEqual())
+ 
+ */
+/// Associated Types
+protocol Container {
+    
+    associatedtype Item
+    mutating func append(_ item: Item)
+    var count: Int { get }
+    subscript(i: Int) -> Item { get }
+    
+}
+
+struct IntStack: Container {
+    // original instack implemetation
+    var items = [Int]()
+    mutating func push(_ item: Int) {
+        items.append(item)
+    }
+    
+    mutating func pop() -> Int {
+        items.removeLast()
+    }
+    
+    // conformance to the Container protocol
+//    typealias Item = Int
+    mutating func append(_ item: Item) {
+        self.push(item)
+    }
+    
+    var count: Int {
+        return items.count
+    }
+    
+    subscript(i: Int) -> Int {
+        return items[i]
+    }
+    
+}
+
+var st = IntStack()
+st.push(1)
+st.push(2)
+print(st.items)
+
+
+struct StackT<T>: Container {
+    // origin implemetion
+    var items = [T]()
+    
+    mutating func push(item: T)  {
+        items.append(item)
+    }
+    
+    mutating func pop() {
+        items.removeLast()
+    }
+    
+    // protocol container implementation
+    typealias Item = T
+    mutating func append(_ item: Item) {
+        self.push(item: item)
+    }
+    
+    var count: Int {
+        return items.count
+    }
+    
+    subscript(i: Int) -> T {
+        return items[i]
+    }
+}
+
+var stt = StackT<String>()
+stt.push(item: "niu")
+stt.push(item: "wei")
+print(stt.items)
+stt.pop()
+
+extension Array: Container {}
+var arr = Array<String>()
+arr.append("sss")
+
+
