@@ -611,7 +611,7 @@ let array2 = [2,2,2,2]
 print(array1.allEqual())
 print(array2.allEqual())
  
- */
+
 /// Associated Types
 protocol Container {
     
@@ -691,5 +691,138 @@ stt.pop()
 extension Array: Container {}
 var arr = Array<String>()
 arr.append("sss")
+
+
+func allItemMatch<C1: Container,C2: Container>(_ someContainer: C1,_ otherContainer: C2) -> Bool where C1.Item == C2.Item,C1.Item: Equatable {
+    
+    if someContainer.count != otherContainer.count {
+        return false
+    }
+    
+    for i in 0..<someContainer.count {
+        if someContainer[i] != otherContainer[i] {
+            return false
+        }
+    }
+    
+    return true
+}
+
+var stackOfStr = StackT<String>()
+stackOfStr.push(item: "niu")
+stackOfStr.push(item: "wei")
+
+var otherStrArray = ["niu","weis"]
+if allItemMatch(stackOfStr, otherStrArray) {
+    print("two container is equal")
+} else {
+    print("two container is not equal")
+}
+
+// Extensions with a generic where
+// clause
+
+extension StackT where T: Equatable {
+    
+    func isTop(_ item: T) -> Bool {
+        
+        guard let top = items.last else {
+            return false
+        }
+        
+        return top == items.last
+    }
+}
+
+var topInt = StackT<Int>()
+topInt.push(item: 1)
+topInt.push(item: 2)
+topInt.push(item: 3)
+
+if topInt.isTop(3) {
+    print("it is top")
+} else {
+    print("it is not top")
+}
+
+extension Container where Item: Equatable {
+    
+    func startsWith(_ item: Item) -> Bool {
+        
+        return count >= 1 && self[0] == item
+    }
+}
+
+
+if [1,2,3].startsWith(1) {
+    print("Begin is 1")
+} else {
+    print("Begin is not 1")
+}
+
+extension Container where Item == Double {
+    
+    func average() -> Double {
+        var sum = 0.0
+        for idx in 0..<count {
+            sum += self[idx]
+        }
+        return sum / Double(count)
+    }
+}
+
+print("avergae is \([1.1,2.2,3.24].average())")
+
+
+// Contextual where clauses
+extension Container where Item ==  Int {
+    func average() -> Double {
+        
+        var sum = 0.0
+        for idx in 0..<count {
+            sum += Double(self[idx])
+        }
+        return sum / Double(count)
+    }
+}
+
+extension Container where Item: Equatable {
+    
+    func endWith(_ item: Item) -> Bool {
+        return count >= 1 && item == self[count-1]
+    }
+}
+ */
+
+// Associated types with a generic where clause
+
+protocol Container {
+    associatedtype Item
+    mutating func append(_ item: Item)
+    var count: Int { get }
+    subscript(i: Int) -> Item { get }
+    
+    //
+    associatedtype Iterator: IteratorProtocol where Iterator.Element == Item
+    func makeIterator() -> Iterator
+    
+    
+}
+
+protocol ComparableContainer: Container where Item: Comparable {
+    
+}
+
+// Gemeroc subcripts
+extension Container {
+    subscript<Indices: Sequence>(indices: Indices) -> [Item] where Indices.Iterator.Element == Int {
+        var  result = [Item]()
+        for idx in 0..<count {
+            result.append(self[idx])
+        }
+        return result
+    }
+}
+
 
 
