@@ -813,7 +813,7 @@ protocol ComparableContainer: Container where Item: Comparable {
     
 }
 
-// Gemeroc subcripts
+// Generic subcripts
 extension Container {
     subscript<Indices: Sequence>(indices: Indices) -> [Item] where Indices.Iterator.Element == Int {
         var  result = [Item]()
