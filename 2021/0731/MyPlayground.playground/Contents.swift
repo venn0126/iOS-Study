@@ -792,7 +792,7 @@ extension Container where Item: Equatable {
         return count >= 1 && item == self[count-1]
     }
 }
- */
+
 
 // Associated types with a generic where clause
 
@@ -823,6 +823,84 @@ extension Container {
         return result
     }
 }
+ 
+ */
+
+/// Memory safey
+
+var apple = 1 // write
+print("apple's value is \(apple)") // read
+
+func addNumber(_ number: Int) -> Int {// write
+    
+    //
+//    number += 1
+    // read
+    return number + 1
+}
+
+
+var stepSize = 1
+func increment(_ num: inout Int) {// if num is stepSize so writing stepSize
+    num += stepSize // stepSize is reading
+}
+
+var num = 3
+// read and write is same time
+//increment(&stepSize)
+
+print("num is \(num)")
+
+// slove situation
+// make an explict copy
+
+var copyStepSize = stepSize
+print("copy value is\(copyStepSize) and step size is \(stepSize)")
+increment(&copyStepSize)
+print("copy value is\(copyStepSize) and step size is \(stepSize)")
+
+
+func balance(_ x: inout Int,_ y: inout Int) {// write x & y variable
+    
+    let temp = x + y // read x and y
+    x = temp / 2 // write x
+    y = temp - x // write y
+    
+}
+
+var one = 43
+var two = 30
+balance(&one, &two)
+//balance(&one, &one)
+
+// clouse of strong cycle
+
+class Tian {
+    
+    var name: String
+    var description: ()-> Void {
+        return { [unowned self] in
+            print("name is \(self.name)")
+        }
+    }
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    deinit {
+        print("tian is deinitalization")
+    }
+}
+
+var t1: Tian?
+t1 = Tian(name: "gao")
+t1?.description()
+t1 = nil
+
+
+
+
 
 
 
