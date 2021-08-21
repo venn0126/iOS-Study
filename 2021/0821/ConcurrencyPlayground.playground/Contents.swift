@@ -40,4 +40,43 @@ getData(from: url) { data, response, error in
 }
 
 
+/// async & await vs closure
+/// Closure
+func fetchImages(completion: (Result<[UIImage], Error>) -> Void) {
+    // .. perform data request
+}
+
+/// Now async
+@Sendable func asyncFetchImages() async throws -> [UIImage] {
+    
+    return []
+}
+
+/// Call async method
+
+Task {
+    do {
+        let images = try await asyncFetchImages()
+        print(images.count)
+    } catch {
+        print("happen error \(error)")
+    }
+}
+
+
+class TryThis {
+    func getSomethingLater(_ number: Double) async -> String {
+        // test - sleep for 3 seconds, then return
+        Thread.sleep(forTimeInterval: 3)
+        return String(format: ">>>%8.2f<<<", number)
+    }
+}
+
+let tryThis = TryThis()
+
+Task {
+    let result = await tryThis.getSomethingLater(3.141592653589793238462)
+    print("result: \(result)")
+}
+
 
