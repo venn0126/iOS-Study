@@ -79,4 +79,29 @@ Task {
     print("result: \(result)")
 }
 
+actor TemptureMeasure {
+    let label: String
+    var mesuars: [Int]
+    private(set) var max: Int
+    init(label: String,mesuras: Int) {
+        self.label = label
+        self.mesuars = [mesuras]
+        self.max = mesuras
+    }
+}
+
+extension TemptureMeasure {
+    func updateMeasure(mesuare: Int) {
+        mesuars.append(mesuare)
+        if mesuare > max {
+            max = mesuare
+        }
+    }
+}
+
+let logger = TemptureMeasure(label: "Aym", mesuras: 10)
+print(await logger.max)
+
+
+
 
