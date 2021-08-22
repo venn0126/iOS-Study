@@ -100,7 +100,9 @@ extension TemptureMeasure {
 }
 
 let logger = TemptureMeasure(label: "Aym", mesuras: 10)
-print(await logger.max)
+Task {
+    print(await logger.max)
+}
 
 
 
