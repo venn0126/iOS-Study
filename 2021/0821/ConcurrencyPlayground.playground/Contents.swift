@@ -1,5 +1,6 @@
 import UIKit
 
+/**
 var greeting = "Hello, playground"
 
 func someNames() async -> [String] {
@@ -103,6 +104,54 @@ let logger = TemptureMeasure(label: "Aym", mesuras: 10)
 Task {
     print(await logger.max)
 }
+
+//Task {
+//
+//    async let img = fetchImage(name: "img0")
+//    async let img1 = fetchImage(name: "img1")
+//
+//    let arrary = await [img,img1]
+//    print(arrary)
+//
+//}
+
+*/
+class Person {
+    
+    var name: String
+    init(name: String) {
+        self.name = name
+    }
+}
+
+actor BankAccount {
+ 
+    var owners: [Person] = [Person(name: "augus")]
+    func primaryOwner() -> Person? {
+        return owners.first
+    }
+}
+
+let account = BankAccount()
+//Task.detached(priority: .background) {
+//    if let primary = await account.primaryOwner() {
+//        primary.name = "gao"
+//        print("primary name is \(primary.name)")
+//    }
+//}
+
+//Task(priority: .background, operation: {
+//
+//    if let primary = await account.primaryOwner() {
+//        primary.name = "gao"
+//        print("primary name is \(primary.name)")
+//    }
+//})
+
+//print("The end")
+
+
+
 
 
 
