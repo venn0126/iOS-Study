@@ -223,6 +223,43 @@ extension UIImage {
 
 // snap
 
+struct Feed {
+    var url: URL
+}
+
+
+let feed1 = Feed(url: URL(string: "xxx")!)
+let feed2 = Feed(url: URL(string: "xxx")!)
+let feed3 = Feed(url: URL(string: "xxx")!)
+
+let feedsToUpdate = [feed1,feed2,feed3]
+
+let urlSession = URLSession(configuration: .default)
+for feed in feedsToUpdate {
+    let dataTask = urlSession.dataTask(with: feed.url) {data, response, error in
+        guard let data = data else { return }
+        do {
+            // transfer data to some thing
+            // update UI by some thing
+        } catch {
+            
+        }
+        
+    }
+    dataTask.resume()
+}
+
+/// to transfer by  async and await
+
+Task {
+    
+//    let (response, data) = await urlSession.dataTask(with: feed1.url)
+//    guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+//        throw FetchError.NotFound
+//    }
+    
+    
+}
 
 
 
