@@ -17,6 +17,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.view.backgroundColor = UIColor.whiteColor;
     if ([self.params objectForKey:@"title"]) {
         self.title = [self.params objectForKey:@"title"] ?: @"unknown";
     }

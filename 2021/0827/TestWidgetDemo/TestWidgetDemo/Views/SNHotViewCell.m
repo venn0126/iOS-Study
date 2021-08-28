@@ -28,13 +28,7 @@
         return nil;
     }
     
-    [self setupSubviews];
-    // add subviews
-    
-    // layout
-    
-    // set attribute
-    
+    [self setupSubviews];    
     return self;
 }
 
@@ -63,6 +57,13 @@
     self.hotSubLabel.text = model.subTitle;
 }
 
+
+#pragma mark - Getter
+
+
+- (NSString *)mainTitle {
+    return self.hotLabel.text;
+}
 
 #pragma mark - Lazy load
 

@@ -23,8 +23,7 @@ typedef void(^fail) (void);
 @interface SNHotViewModel : NSObject
 
 /// To update model for ViewModel
-
-
+/// 业务逻辑，网络请求，数据缓存...
 - (instancetype)initWithSuccess:(success)success fail:(fail)fail;
 
 // 选中的标签

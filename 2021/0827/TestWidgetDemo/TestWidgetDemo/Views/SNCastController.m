@@ -11,14 +11,17 @@
 #import "SNHotDataSource.h"
 #import "SNHotViewModel.h"
 #import "SNCastDetailController.h"
+#import "SNHotDelegate.h"
 
 static NSString * const kCastCellIdentifier = @"kCastCellIdentifier";
 
-@interface SNCastController ()<UITableViewDelegate>
+@interface SNCastController ()
 
 @property (nonatomic, strong) UITableView *castTableView;
 @property (nonatomic, strong) SNHotDataSource *castDataSource;
 @property (nonatomic, strong) SNHotViewModel *castViewModel;
+@property (nonatomic, strong) SNHotDelegate *hotDelegate;
+
 
 @end
 
@@ -59,33 +62,10 @@ static NSString * const kCastCellIdentifier = @"kCastCellIdentifier";
 - (void)setupSubviews {
 
     [self.view addSubview:self.castTableView];
-    self.castTableView.delegate = self;
+    self.castTableView.delegate = self.hotDelegate;
     self.castTableView.dataSource = self.castDataSource;
     [self.castTableView registerClass:[SNHotViewCell class] forCellReuseIdentifier:kCastCellIdentifier];
 }
-
-#pragma mark - Delegate
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    return  80;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    
-    SNHotViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    NSString *title = cell.textLabel.text ?: @"unknown";
-    
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject:title forKey:@"title"];
-    SNCastDetailController *cast = [[SNCastDetailController alloc] init];
-    cast.params = [dict copy];
-    
-    [self.navigationController pushViewController:cast animated:YES];
-}
-
 
 #pragma mark - Lazy Load
 
@@ -96,6 +76,13 @@ static NSString * const kCastCellIdentifier = @"kCastCellIdentifier";
         
     }
     return _castTableView;
+}
+
+- (SNHotDelegate *)hotDelegate {
+    if (!_hotDelegate) {
+        _hotDelegate = [[SNHotDelegate alloc] init];
+    }
+    return _hotDelegate;
 }
 
 /*

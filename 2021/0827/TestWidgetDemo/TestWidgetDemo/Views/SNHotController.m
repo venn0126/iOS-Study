@@ -11,16 +11,19 @@
 #import "SNHotViewModel.h"
 #import "SNHotDataSource.h"
 #import "SNHotViewModel.h"
+#import "SNHotDelegate.h"
 
 
 
 static NSString * const kHotCellIdentifier = @"kHotCellIdentifier";
 
-@interface SNHotController ()<UITableViewDelegate>
+@interface SNHotController ()
 
 @property (nonatomic, strong) UITableView *hotTableView;
 @property (nonatomic, strong) SNHotDataSource *hotDataSource;
 @property (nonatomic, strong) SNHotViewModel *hotViewModel;
+@property (nonatomic, strong) SNHotDelegate *hotDelegate;
+
 
 
 
@@ -64,54 +67,33 @@ static NSString * const kHotCellIdentifier = @"kHotCellIdentifier";
 - (void)setupSubviews {
 
     [self.view addSubview:self.hotTableView];
-    self.hotTableView.delegate = self;
+    self.hotTableView.delegate = self.hotDelegate;
     self.hotTableView.dataSource = self.hotDataSource;
     [self.hotTableView registerClass:[SNHotViewCell class] forCellReuseIdentifier:kHotCellIdentifier];
 }
 
 
-#pragma mark - DataSource
-
-//- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-//    SNHotViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
-//    if (!cell) {
-//        cell = [[SNHotViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellIdentifier];
-//    }
-//
-////    cell.textLabel.textColor = UIColor.redColor;
-////    cell.textLabel.text = [NSString stringWithFormat:@"Augus---%@",@(indexPath.row)];
-//
-////    cell configCellData:<#(nonnull SNHotItemModel *)#>
-//
-//    return cell;
-//}
-//
-//- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return  20;
-//}
-
-
 #pragma mark - Delegate
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    return  80;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    NSString *title = cell.textLabel.text ?: @"unknown";
-    
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    [dict setObject:title forKey:@"title"];
-    SNHotDetailController *detail = [[SNHotDetailController alloc] init];
-    detail.params = [dict copy];
-    
-    [self.navigationController pushViewController:detail animated:YES];
-}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//
+//    return  80;
+//}
+//
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//
+//
+//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    NSString *title = cell.textLabel.text ?: @"unknown";
+//
+//    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+//    [dict setObject:title forKey:@"title"];
+//    SNHotDetailController *detail = [[SNHotDetailController alloc] init];
+//    detail.params = [dict copy];
+//
+//    [self.navigationController pushViewController:detail animated:YES];
+//}
 
 
 #pragma mark - Lazy Load
@@ -123,6 +105,13 @@ static NSString * const kHotCellIdentifier = @"kHotCellIdentifier";
         
     }
     return _hotTableView;
+}
+
+- (SNHotDelegate *)hotDelegate {
+    if (!_hotDelegate) {
+        _hotDelegate = [[SNHotDelegate alloc] init];
+    }
+    return _hotDelegate;
 }
 
 
