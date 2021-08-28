@@ -9,6 +9,10 @@ import WidgetKit
 import SwiftUI
 import Intents
 
+
+/**
+
+/// 为小组件展示提供一切必要信息的的结构体，必须实现`IntentTimelineProvider`协议
 struct Provider: IntentTimelineProvider {
     // 占位图，网络错误，系统错误的时候会展示
     func placeholder(in context: Context) -> SimpleEntry {
@@ -21,7 +25,8 @@ struct Provider: IntentTimelineProvider {
         completion(entry)
     }
 
-    // 进行数据的预处理，网络等，转化成Entry
+    // 在这个方法内可以进行网络请求等数据处理，
+    // 拿到的数据保存在对应的entry中，调用completion之后会到刷新小组件
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [SimpleEntry] = []
 
@@ -38,11 +43,15 @@ struct Provider: IntentTimelineProvider {
     }
 }
 
+
+/// 实现`TimelineEntry`协议，用来保存所需的数据
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let configuration: ConfigurationIntent
 }
 
+
+/// 展示的视图的载体，自定义界面搭建等
 struct SubWidgetEntryView : View {
     var entry: Provider.Entry
     
@@ -67,7 +76,14 @@ struct SubWidgetEntryView : View {
     }
 }
 
-//@main
+
+//@main 代表着Widget的主入口，系统从这里加载
+
+// kind:是Widget的唯一标识
+// IntentConfiguration：初始化配置代码
+// configurationDisplayName：添加编辑界面的展示标题
+// description：添加编辑界面展示的描述内容
+// supportedFamilies：这里可以限制要提供展示三个样式中的哪几个，不设置则全部支持
 struct SubWidget: Widget {
     let kind: String = "SubWidget"
 
@@ -77,51 +93,29 @@ struct SubWidget: Widget {
         }
         .configurationDisplayName("Augus Widget")
         .description("This is an example for augus's widget.")
+//        .supportedFamilies([.sys])
     }
 }
 
-struct HotWidget: Widget {
-    
-    let kind: String = "HotWidget"
-
-    var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
-            SubWidgetEntryView(entry: entry)
-        }
-        .configurationDisplayName("Hot Widget")
-        .description("This is an example for hot's widget.")
-    }
-}
-
-
-struct CastWidget: Widget {
-    
-    let kind: String = "CastWidget"
-
-    var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
-            SubWidgetEntryView(entry: entry)
-        }
-        .configurationDisplayName("Cast Widget")
-        .description("This is an example for cast's widget.")
-    }
-}
+ */
 
 
 @main
-struct SNWidgets: WidgetBundle {
+struct SubWidgets: WidgetBundle {
     @WidgetBundleBuilder
     var body: some Widget {
-        SubWidget()
-        HotWidget()
-        CastWidget()
+        
+        PoetryWidget()
+
     } 
 }
 
 
-struct SubWidget_Previews: PreviewProvider {
-    static var previews: some View {
-        SubWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
-    }
-}
+
+/// 小组件预览界面，需实现`PreviewProvider`协议，实时查看
+//struct SubWidget_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SubWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+//            .previewContext(WidgetPreviewContext(family: .systemSmall))
+//    }
+//}

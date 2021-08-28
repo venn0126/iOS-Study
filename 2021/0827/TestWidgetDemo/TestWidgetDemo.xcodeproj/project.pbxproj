@@ -32,6 +32,12 @@
 		27E772F926D9E6B50060CF2F /* SubWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 27E772F426D9E6B30060CF2F /* SubWidget.intentdefinition */; };
 		27E772FC26D9E6B50060CF2F /* SubWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 27E772EB26D9E6B30060CF2F /* SubWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		27E7731026DA50AE0060CF2F /* SNHotDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E7730F26DA50AE0060CF2F /* SNHotDelegate.m */; };
+		27E7731226DA89900060CF2F /* Poetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E7731126DA89900060CF2F /* Poetry.swift */; };
+		27E7731426DA8A860060CF2F /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E7731326DA8A860060CF2F /* URLRequest.swift */; };
+		27E7731626DA90DD0060CF2F /* PoetryWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E7731526DA90DD0060CF2F /* PoetryWidget.swift */; };
+		27E7731826DA9C9E0060CF2F /* Poetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E7731126DA89900060CF2F /* Poetry.swift */; };
+		27E7731926DA9CA20060CF2F /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E7731326DA8A860060CF2F /* URLRequest.swift */; };
+		27E7731A26DA9E4B0060CF2F /* PoetryWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E7731526DA90DD0060CF2F /* PoetryWidget.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +123,9 @@
 		27E7730126D9EEA70060CF2F /* TestWidgetDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestWidgetDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		27E7730E26DA50AE0060CF2F /* SNHotDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNHotDelegate.h; sourceTree = "<group>"; };
 		27E7730F26DA50AE0060CF2F /* SNHotDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNHotDelegate.m; sourceTree = "<group>"; };
+		27E7731126DA89900060CF2F /* Poetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poetry.swift; sourceTree = "<group>"; };
+		27E7731326DA8A860060CF2F /* URLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
+		27E7731526DA90DD0060CF2F /* PoetryWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoetryWidget.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,6 +276,9 @@
 			isa = PBXGroup;
 			children = (
 				27E772F226D9E6B30060CF2F /* SubWidget.swift */,
+				27E7731526DA90DD0060CF2F /* PoetryWidget.swift */,
+				27E7731126DA89900060CF2F /* Poetry.swift */,
+				27E7731326DA8A860060CF2F /* URLRequest.swift */,
 				27E772F426D9E6B30060CF2F /* SubWidget.intentdefinition */,
 				27E772F526D9E6B50060CF2F /* Assets.xcassets */,
 				27E772F726D9E6B50060CF2F /* Info.plist */,
@@ -442,14 +454,17 @@
 				27E772E326D9E1D00060CF2F /* SNCastController.m in Sources */,
 				27E772A826D93DA10060CF2F /* main.m in Sources */,
 				27E772D426D9407F0060CF2F /* SNHotViewModel.m in Sources */,
+				27E7731626DA90DD0060CF2F /* PoetryWidget.swift in Sources */,
 				27E772D726D946410060CF2F /* SNHotController.m in Sources */,
 				27E772E026D9611E0060CF2F /* SNHotDataSource.m in Sources */,
+				27E7731426DA8A860060CF2F /* URLRequest.swift in Sources */,
 				27E772DA26D94CCD0060CF2F /* SNHotDetailController.m in Sources */,
 				27E772DD26D94F410060CF2F /* SNHotViewCell.m in Sources */,
 				27E7731026DA50AE0060CF2F /* SNHotDelegate.m in Sources */,
 				27E772F926D9E6B50060CF2F /* SubWidget.intentdefinition in Sources */,
 				27E772D126D9404A0060CF2F /* SNHotItemModel.m in Sources */,
 				27E772E626D9E1E30060CF2F /* SNCastDetailController.m in Sources */,
+				27E7731226DA89900060CF2F /* Poetry.swift in Sources */,
 				27E7729A26D93D9F0060CF2F /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -475,7 +490,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				27E772F326D9E6B30060CF2F /* SubWidget.swift in Sources */,
+				27E7731826DA9C9E0060CF2F /* Poetry.swift in Sources */,
 				27E772F826D9E6B50060CF2F /* SubWidget.intentdefinition in Sources */,
+				27E7731A26DA9E4B0060CF2F /* PoetryWidget.swift in Sources */,
+				27E7731926DA9CA20060CF2F /* URLRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -681,6 +699,7 @@
 		27E772C526D93DA10060CF2F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z75EHQZQ54;
@@ -701,6 +720,7 @@
 		27E772C626D93DA10060CF2F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z75EHQZQ54;
@@ -721,6 +741,7 @@
 		27E772C826D93DA10060CF2F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z75EHQZQ54;
 				INFOPLIST_FILE = TestWidgetDemoUITests/Info.plist;
@@ -739,6 +760,7 @@
 		27E772C926D93DA10060CF2F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z75EHQZQ54;
 				INFOPLIST_FILE = TestWidgetDemoUITests/Info.plist;
