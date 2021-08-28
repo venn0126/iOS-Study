@@ -14,7 +14,7 @@
 
 
 
-static NSString * const kCellIdentifier = @"kCellIdentifier";
+static NSString * const kHotCellIdentifier = @"kHotCellIdentifier";
 
 @interface SNHotController ()<UITableViewDelegate>
 
@@ -39,8 +39,8 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     
     
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.hotViewModel refreshSNHotViewModel];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.hotViewModel refreshSNHotViewModel:SNViewModelTypeHot];
     });
     
 }
@@ -48,7 +48,7 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 - (void)bindModelData {
     
     __weak typeof(self)weakSelf = self;
-    self.hotDataSource = [[SNHotDataSource alloc] initWithIdentifier:kCellIdentifier config:^(id  _Nonnull cell, id  _Nonnull model, NSIndexPath * _Nonnull indexPath) {
+    self.hotDataSource = [[SNHotDataSource alloc] initWithIdentifier:kHotCellIdentifier config:^(id  _Nonnull cell, id  _Nonnull model, NSIndexPath * _Nonnull indexPath) {
        
         [cell configCellData:model];
     }];
@@ -60,15 +60,13 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
         
     }];
     
-    
-    
 }
 - (void)setupSubviews {
 
     [self.view addSubview:self.hotTableView];
     self.hotTableView.delegate = self;
     self.hotTableView.dataSource = self.hotDataSource;
-    [self.hotTableView registerClass:[SNHotViewCell class] forCellReuseIdentifier:kCellIdentifier];
+    [self.hotTableView registerClass:[SNHotViewCell class] forCellReuseIdentifier:kHotCellIdentifier];
 }
 
 

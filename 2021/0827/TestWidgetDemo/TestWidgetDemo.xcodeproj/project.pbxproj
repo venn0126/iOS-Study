@@ -22,6 +22,8 @@
 		27E772DA26D94CCD0060CF2F /* SNHotDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E772D926D94CCD0060CF2F /* SNHotDetailController.m */; };
 		27E772DD26D94F410060CF2F /* SNHotViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E772DC26D94F410060CF2F /* SNHotViewCell.m */; };
 		27E772E026D9611E0060CF2F /* SNHotDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E772DF26D9611E0060CF2F /* SNHotDataSource.m */; };
+		27E772E326D9E1D00060CF2F /* SNCastController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E772E226D9E1D00060CF2F /* SNCastController.m */; };
+		27E772E626D9E1E30060CF2F /* SNCastDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E772E526D9E1E30060CF2F /* SNCastDetailController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,10 @@
 		27E772DC26D94F410060CF2F /* SNHotViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNHotViewCell.m; sourceTree = "<group>"; };
 		27E772DE26D9611E0060CF2F /* SNHotDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNHotDataSource.h; sourceTree = "<group>"; };
 		27E772DF26D9611E0060CF2F /* SNHotDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNHotDataSource.m; sourceTree = "<group>"; };
+		27E772E126D9E1D00060CF2F /* SNCastController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNCastController.h; sourceTree = "<group>"; };
+		27E772E226D9E1D00060CF2F /* SNCastController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNCastController.m; sourceTree = "<group>"; };
+		27E772E426D9E1E30060CF2F /* SNCastDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNCastDetailController.h; sourceTree = "<group>"; };
+		27E772E526D9E1E30060CF2F /* SNCastDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNCastDetailController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +189,10 @@
 				27E772D626D946410060CF2F /* SNHotController.m */,
 				27E772D826D94CCD0060CF2F /* SNHotDetailController.h */,
 				27E772D926D94CCD0060CF2F /* SNHotDetailController.m */,
+				27E772E126D9E1D00060CF2F /* SNCastController.h */,
+				27E772E226D9E1D00060CF2F /* SNCastController.m */,
+				27E772E426D9E1E30060CF2F /* SNCastDetailController.h */,
+				27E772E526D9E1E30060CF2F /* SNCastDetailController.m */,
 				27E772DB26D94F410060CF2F /* SNHotViewCell.h */,
 				27E772DC26D94F410060CF2F /* SNHotViewCell.m */,
 				27E772DE26D9611E0060CF2F /* SNHotDataSource.h */,
@@ -322,6 +332,7 @@
 			files = (
 				27E7729D26D93D9F0060CF2F /* ViewController.m in Sources */,
 				27E7729726D93D9F0060CF2F /* AppDelegate.m in Sources */,
+				27E772E326D9E1D00060CF2F /* SNCastController.m in Sources */,
 				27E772A826D93DA10060CF2F /* main.m in Sources */,
 				27E772D426D9407F0060CF2F /* SNHotViewModel.m in Sources */,
 				27E772D726D946410060CF2F /* SNHotController.m in Sources */,
@@ -329,6 +340,7 @@
 				27E772DA26D94CCD0060CF2F /* SNHotDetailController.m in Sources */,
 				27E772DD26D94F410060CF2F /* SNHotViewCell.m in Sources */,
 				27E772D126D9404A0060CF2F /* SNHotItemModel.m in Sources */,
+				27E772E626D9E1E30060CF2F /* SNCastDetailController.m in Sources */,
 				27E7729A26D93D9F0060CF2F /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

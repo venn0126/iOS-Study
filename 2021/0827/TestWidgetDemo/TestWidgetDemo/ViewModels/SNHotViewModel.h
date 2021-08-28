@@ -9,6 +9,12 @@
 
 @class SNHotItemModel;
 
+
+typedef enum : NSUInteger {
+    SNViewModelTypeHot,
+    SNViewMddelTypeBroadcast,
+} SNViewModelType;
+
 NS_ASSUME_NONNULL_BEGIN
 
 typedef void(^success) (id data);
@@ -26,7 +32,7 @@ typedef void(^fail) (void);
 // 存放数据数组
 @property (nonatomic, strong, readonly) NSMutableArray<SNHotItemModel *> *items;
 // Refresh Action
-- (void)refreshSNHotViewModel;
+- (void)refreshSNHotViewModel:(SNViewModelType)type;
 
 
 @end

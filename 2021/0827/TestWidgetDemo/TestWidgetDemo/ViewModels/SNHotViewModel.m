@@ -58,10 +58,10 @@
 }
 
 
-- (void)refreshSNHotViewModel {
+- (void)refreshSNHotViewModel:(SNViewModelType)type {
     
     // simulate request of http
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
         
         if (self.items.count > 0) {
@@ -71,8 +71,19 @@
         for (int i = 0; i < 30; i++) {
             
             SNHotItemModel *model = [[SNHotItemModel alloc] init];
-            model.title = [NSString stringWithFormat:@"augus-%@",@(i)];
-            model.imageName = [NSString stringWithFormat:@"gao-%@",@(i)];
+            
+            if (type == SNViewModelTypeHot) {
+                
+                model.title = [NSString stringWithFormat:@"Hot-augus-%@",@(i)];
+                model.imageName = [NSString stringWithFormat:@"%@",@"hot"];
+                model.subTitle = [NSString stringWithFormat:@"hot-sub-%@",@(i)];
+            } else {
+                model.title = [NSString stringWithFormat:@"Cast-augus-%@",@(i)];
+                model.imageName = [NSString stringWithFormat:@"%@",@"fever"];
+                model.subTitle = [NSString stringWithFormat:@"Cast-sub-%@",@(i)];
+
+            }
+            
             [self.items addObject:model];
         }
         
