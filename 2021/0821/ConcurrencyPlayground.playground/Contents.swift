@@ -247,6 +247,9 @@ for feed in feedsToUpdate {
         
     }
     dataTask.resume()
+    
+    
+    
 }
 
 /// to transfer by  async and await
