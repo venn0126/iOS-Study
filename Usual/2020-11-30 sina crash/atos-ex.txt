@@ -1,3 +1,0 @@
-atos -arch arm64 -o dSYMs/远鉴AI云.app.dSYM/Contents/Resources/DWARF/远鉴AI云 -l 0x1049c8000 0x104a35ed0
-
--[FOSInteractiveController fos_faceAuth] (in ) (FOSInteractiveController.m:476)

@@ -1,6 +1,0 @@
-framework module Pods_Test0929 {
-  umbrella header "Pods-Test0929-umbrella.h"
-
-  export *
-  module * { export * }
-}
