@@ -22,6 +22,20 @@
     // Do any additional setup after loading the view.
     
     
+
+    
+}
+
+
+- (void)testAnimationFromPoint {
+    
+    
+}
+
+
+- (void)testFishHook {
+    
+    
     NSLog(@"hhhh");
 
     
@@ -49,7 +63,6 @@
     
     
     self.view.backgroundColor = UIColor.linkColor;
-    
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
