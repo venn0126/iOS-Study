@@ -1,2 +1,0 @@
-# FSMorphingLabel
-LTMorphingLabel的OC版本
