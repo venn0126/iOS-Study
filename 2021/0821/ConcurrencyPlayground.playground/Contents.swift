@@ -115,7 +115,7 @@ Task {
 //
 //}
 
-*/
+
 class Person {
     
     var name: String
@@ -264,5 +264,9 @@ Task {
     
 }
 
+ */
 
 
+let playURLString = "http://forwardurl=audioplay://playStatus=1&playLoc=2"
+//let ecapedString = playURLString.!
+//print(ecapedString)
