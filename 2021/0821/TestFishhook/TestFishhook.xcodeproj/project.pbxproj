@@ -18,6 +18,7 @@
 		27F26A4526D09F410002E7BA /* TestFishhookUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F26A4426D09F410002E7BA /* TestFishhookUITests.m */; };
 		27F26A5426D0A4250002E7BA /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 27F26A5326D0A4250002E7BA /* fishhook.c */; };
 		B10F7ED02701A8A200C09FD0 /* UIView+ShakeAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = B10F7ECF2701A8A200C09FD0 /* UIView+ShakeAnimation.m */; };
+		B10F7ED92701DF1500C09FD0 /* SNAugusPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = B10F7ED82701DF1500C09FD0 /* SNAugusPopView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		27F26A5326D0A4250002E7BA /* fishhook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fishhook.c; sourceTree = "<group>"; };
 		B10F7ECE2701A8A200C09FD0 /* UIView+ShakeAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+ShakeAnimation.h"; sourceTree = "<group>"; };
 		B10F7ECF2701A8A200C09FD0 /* UIView+ShakeAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+ShakeAnimation.m"; sourceTree = "<group>"; };
+		B10F7ED72701DF1500C09FD0 /* SNAugusPopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNAugusPopView.h; sourceTree = "<group>"; };
+		B10F7ED82701DF1500C09FD0 /* SNAugusPopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNAugusPopView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +123,8 @@
 				27F26A2426D09F3F0002E7BA /* ViewController.m */,
 				B10F7ECE2701A8A200C09FD0 /* UIView+ShakeAnimation.h */,
 				B10F7ECF2701A8A200C09FD0 /* UIView+ShakeAnimation.m */,
+				B10F7ED72701DF1500C09FD0 /* SNAugusPopView.h */,
+				B10F7ED82701DF1500C09FD0 /* SNAugusPopView.m */,
 				27F26A2626D09F3F0002E7BA /* Main.storyboard */,
 				27F26A2926D09F400002E7BA /* Assets.xcassets */,
 				27F26A2B26D09F400002E7BA /* LaunchScreen.storyboard */,
@@ -279,6 +284,7 @@
 				27F26A2526D09F3F0002E7BA /* ViewController.m in Sources */,
 				27F26A5426D0A4250002E7BA /* fishhook.c in Sources */,
 				B10F7ED02701A8A200C09FD0 /* UIView+ShakeAnimation.m in Sources */,
+				B10F7ED92701DF1500C09FD0 /* SNAugusPopView.m in Sources */,
 				27F26A1F26D09F3F0002E7BA /* AppDelegate.m in Sources */,
 				27F26A3026D09F400002E7BA /* main.m in Sources */,
 				27F26A2226D09F3F0002E7BA /* SceneDelegate.m in Sources */,

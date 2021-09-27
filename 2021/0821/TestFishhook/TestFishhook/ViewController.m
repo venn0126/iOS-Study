@@ -32,20 +32,8 @@
 //    [self.view addSubview:self.testView];
     [self.view addSubview:self.testLabel];
     
-    int y;
-    float a = 0.0;
-    __asm__("fcvtzs %w0, %s1\n\t" : "=r"(y) : "w"(a));
-    
-    
+
 }
-
-#define TTDASSERT(xx) { if (!(xx)) { TTDPRINT(@"TTDASSERT failed: %s", #xx); \
-if (TTIsInDebugger()) { __asm__("int $3\n" : : ); }; } \
-} ((void)0)
-
-
-
-
 
 
 - (void)testFishHook {
