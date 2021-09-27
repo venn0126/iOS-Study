@@ -11,7 +11,12 @@
 #import <dlfcn.h>
 #import <mach-o/loader.h>
 
+#import "UIView+ShakeAnimation.h"
+
 @interface ViewController ()
+
+@property (nonatomic, strong) UIView *testView;
+@property (nonatomic, strong) UILabel *testLabel;
 
 @end
 
@@ -24,13 +29,23 @@
     
 
     
-}
-
-
-- (void)testAnimationFromPoint {
+//    [self.view addSubview:self.testView];
+    [self.view addSubview:self.testLabel];
+    
+    int y;
+    float a = 0.0;
+    __asm__("fcvtzs %w0, %s1\n\t" : "=r"(y) : "w"(a));
     
     
 }
+
+#define TTDASSERT(xx) { if (!(xx)) { TTDPRINT(@"TTDASSERT failed: %s", #xx); \
+if (TTIsInDebugger()) { __asm__("int $3\n" : : ); }; } \
+} ((void)0)
+
+
+
+
 
 
 - (void)testFishHook {
@@ -68,6 +83,9 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
     NSLog(@"touch begin screen");
+    
+        
+    [self.testLabel shakeTimes:4 speed:0.05 range:2 shakeDirection:SNAugusDirectionHorizontal];
 }
 
 
@@ -81,6 +99,27 @@ void nwLog(NSString *format,...) {
     sys_nslog(format);
 }
 
+
+- (UIView *)testView {
+    if(!_testView) {
+        _testView = [[UIView alloc] init];
+        _testView.frame = CGRectMake(100, 100, 100, 50);
+        _testView.backgroundColor = UIColor.blueColor;
+    }
+    return _testView;
+}
+
+
+- (UILabel *)testLabel {
+    if (!_testLabel) {
+        _testLabel = [[UILabel alloc] init];
+        _testLabel.frame = CGRectMake(100, 100, 100, 50);
+        _testLabel.text = @"请阅读并勾选下方协议";
+        _testLabel.backgroundColor = UIColor.greenColor;
+        [_testLabel sizeToFit];
+    }
+    return _testLabel;
+}
 
 
 @end
