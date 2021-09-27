@@ -12,6 +12,7 @@
 #import <mach-o/loader.h>
 
 #import "UIView+ShakeAnimation.h"
+#import "SNAugusPopView.h"
 
 @interface ViewController ()
 
@@ -30,7 +31,11 @@
 
     
 //    [self.view addSubview:self.testView];
-    [self.view addSubview:self.testLabel];
+//    [self.view addSubview:self.testLabel];
+    
+    
+    SNAugusPopView *popView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(100, 100, 200, 50) text:@"请阅读并勾选以下协议"];
+    [self.view addSubview:popView];
     
 
 }

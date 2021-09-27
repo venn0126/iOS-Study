@@ -26,7 +26,7 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
 
 /// The attributes about popView
 @property (nonatomic, assign) CGFloat cornerRadius;
-@property (nonatomic, strong) UIColor *backgroundColor;
+@property (nonatomic, strong) UIColor *aBackgroundColor;
 /// The attibutes about popView of border
 @property (nonatomic, strong) UIColor *borderColor;
 @property (nonatomic, assign) CGFloat borderWidth;
@@ -36,12 +36,16 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
 @property (nonatomic, assign) NSTimeInterval animationDuration;
 
 /// The attributes about arrow
-@property (nonatomic, assign) CGFloat horizontalMargin;
+@property (nonatomic, assign) CGFloat horizontalPadding;
 @property (nonatomic, assign) SNAugusPopViewDirection direction;
 
 /// The attibutes about popView of shadow
 
+
+
 - (instancetype)initWithText:(NSString *)text;
+
+- (instancetype)initWithFrame:(CGRect)frame text:(NSString *)text;
 
 @end
 

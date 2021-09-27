@@ -11,9 +11,13 @@
 
 static CGFloat kAugusPopViewCornerRadius = 10.0;
 static NSTimeInterval kAugusPopViewAnimationDuration = 0.2;
-static CGFloat kAugusPopViewHorizontalMargin = 10.0;
-static CGFloat kAugusPopViewArrowWidth = 12.0;
-static CGFloat kAugusPopViewArrowHeight = 12.0;
+static CGFloat kAugusPopViewHorizontalPadding = 10.0;
+static CGFloat kAugusPopViewArrowWidth = 24.0;
+static CGFloat kAugusPopViewArrowHeight = 24.0;
+
+
+#define kScreenWidth [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
 
 
 @interface SNAugusPopView ()
@@ -34,33 +38,95 @@ static CGFloat kAugusPopViewArrowHeight = 12.0;
     // set defalut params
     _cornerRadius = kAugusPopViewCornerRadius;
     _animationDuration = kAugusPopViewAnimationDuration;
-    _horizontalMargin = kAugusPopViewHorizontalMargin;
+    _horizontalPadding = kAugusPopViewHorizontalPadding;
+    _aBackgroundColor = UIColor.greenColor;
     _text = text;
     
-    // UIView(maskLayer) + label
+    // frame
     
+    // set up ui
     [self setupUI];
     
     return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame text:(NSString *)text {
+   
+    self = [super initWithFrame:frame];
+    if (!self) {
+        return nil;
+    }
+    
+    // set defalut params
+    _cornerRadius = kAugusPopViewCornerRadius;
+    _animationDuration = kAugusPopViewAnimationDuration;
+    _horizontalPadding = kAugusPopViewHorizontalPadding;
+    _aBackgroundColor = UIColor.greenColor;
+    _direction = SNAugusPopViewDirectionUp;
+    _text = text;
+    
+    // set up ui
+    [self setupUI];
+    
+    // draw background mask
+    [self drawBackGroundLayerWithAnglePoint:CGPointMake(kAugusPopViewArrowWidth, -kAugusPopViewArrowHeight)];
+    
+    return self;
+    
 }
 
 #pragma mark - Set up UI
 
 - (void)setupUI {
     
-    CGRect rect = self.bounds;
-    CGFloat width = rect.size.width;
-    CGFloat height = rect.size.height;
+    self.backgroundColor = self.aBackgroundColor;
     
-    if (width == 0 || height == 0) {
-        width = [UIScreen mainScreen].bounds.size.width;
-        height = 20;
-    }
+//    CGFloat width = self.bounds.size.width;
+    CGFloat height = self.bounds.size.height;
     
+    self.textLabel.text = self.text;
+//    CGFloat x =
+    self.textLabel.frame = CGRectMake(kAugusPopViewHorizontalPadding, 0,self.textWidth, height);
     [self addSubview:self.textLabel];
-    
+    // update self frame
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, kAugusPopViewHorizontalPadding * 2 + self.textWidth, height);
     
 }
+
+
+#pragma mark - Size For Subview
+
+
+- (CGFloat)textHeight {
+    
+    if (self.text.length <= 0) {
+        return 0;
+    }
+    
+    CGSize maxSize = CGSizeMake(self.maxWidth - kAugusPopViewHorizontalPadding * 2, CGFLOAT_MAX);
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self.textLabel.font,NSFontAttributeName, nil];
+    CGSize size = [self.text boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:dict context:nil].size;
+    return size.height;
+}
+
+- (CGFloat)textWidth {
+    
+    if (self.text.length <= 0) {
+        return 0;
+    }
+    
+    CGSize maxSize = CGSizeMake(CGFLOAT_MAX, self.bounds.size.height);
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:self.textLabel.font,NSFontAttributeName, nil];
+    CGSize size = [self.text boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:dict context:nil].size;
+    return size.width;
+}
+
+-(CGFloat)maxWidth {
+    return self.bounds.size.width <= 0 ? (kScreenWidth - 2 * 25) : self.bounds.size.width;
+}
+
+
+ #pragma mark - Draw Background Layer
 
 - (void)drawBackGroundLayerWithAnglePoint:(CGPoint)anglePoint {
     
@@ -75,6 +141,9 @@ static CGFloat kAugusPopViewArrowHeight = 12.0;
     
     switch (_direction) {
         case SNAugusPopViewDirectionUp:{
+            
+            [path moveToPoint:CGPointMake(0, 0)];
+            [path addLineToPoint:CGPointMake(kAugusPopViewArrowWidth, 0)];
             
         }break;
         case SNAugusPopViewDirectionDown:{
@@ -98,6 +167,7 @@ static CGFloat kAugusPopViewArrowHeight = 12.0;
         _textLabel.font = [UIFont systemFontOfSize:16];
         _textLabel.textColor = UIColor.whiteColor;
         _textLabel.textAlignment = NSTextAlignmentCenter;
+        _textLabel.backgroundColor = UIColor.redColor;
         [_textLabel sizeToFit];
         
     }
