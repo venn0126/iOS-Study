@@ -11,13 +11,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
     // up
-    SNAugusPopViewDirectionUp,
+    SNAugusPopViewDirectionTop = 1 << 0,
     // down
-    SNAugusPopViewDirectionDown,
+    SNAugusPopViewDirectionBottom = 1 << 1,
     // right
-    SNAugusPopViewDirectionRight,
+    SNAugusPopViewDirectionLeft = 1 << 2,
     // left
-    SNAugusPopViewDirectionLeft,
+    SNAugusPopViewDirectionRight = 1 << 3,
+    // All
+    SNAugusPopViewDirectionAll = SNAugusPopViewDirectionTop | SNAugusPopViewDirectionBottom | SNAugusPopViewDirectionLeft | SNAugusPopViewDirectionRight,
     
 };
 
@@ -49,6 +51,10 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
 
 
 - (instancetype)initWithFrame:(CGRect)frame text:(NSString *)text;
+
+- (void)show;
+
+- (void)dismiss;
 
 @end
 

@@ -18,6 +18,8 @@
 
 @property (nonatomic, strong) UIView *testView;
 @property (nonatomic, strong) UILabel *testLabel;
+@property (nonatomic, strong) SNAugusPopView *popView;
+
 
 @end
 
@@ -34,11 +36,16 @@
 //    [self.view addSubview:self.testLabel];
     
     
-//    SNAugusPopView *popView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(100, 100, 200, 50) text:@"请阅读并勾选以下协议"];
-//    [self.view addSubview:popView];
+    UIView *redView = [[UIView alloc] init];
+    redView.backgroundColor = UIColor.redColor;
+    redView.frame = CGRectMake(100, 100, 100, 50);
+    [self.view addSubview:redView];
+    
+    self.popView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(100-90, 100+35, 200, 50) text:@"请阅读并勾选以下协议"];
+    [self.view addSubview:self.popView];
     
 //    [self threeTwoSize];
-    [self testBundleOfTwoAndThree];
+//    [self testBundleOfTwoAndThree];
     
 
 }
@@ -105,10 +112,12 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
-    NSLog(@"touch begin screen");
+//    NSLog(@"touch begin screen");
+//    [self.testLabel shakeTimes:4 speed:0.05 range:2 shakeDirection:SNAugusDirectionHorizontal];
     
-        
-    [self.testLabel shakeTimes:4 speed:0.05 range:2 shakeDirection:SNAugusDirectionHorizontal];
+    
+    
+    [self.popView show];
 }
 
 

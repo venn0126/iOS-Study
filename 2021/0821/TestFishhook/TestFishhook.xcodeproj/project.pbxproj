@@ -19,7 +19,6 @@
 		27F26A5426D0A4250002E7BA /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 27F26A5326D0A4250002E7BA /* fishhook.c */; };
 		B10F7ED02701A8A200C09FD0 /* UIView+ShakeAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = B10F7ECF2701A8A200C09FD0 /* UIView+ShakeAnimation.m */; };
 		B10F7ED92701DF1500C09FD0 /* SNAugusPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = B10F7ED82701DF1500C09FD0 /* SNAugusPopView.m */; };
-		B19442A827032BF700086E23 /* Test.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B19442A727032BF700086E23 /* Test.bundle */; };
 		B19442AB27032CB200086E23 /* icoland_sina_v51.png in Resources */ = {isa = PBXBuildFile; fileRef = B19442A927032CB200086E23 /* icoland_sina_v51.png */; };
 		B19442AC27032CB200086E23 /* icoland_sina_v5.png in Resources */ = {isa = PBXBuildFile; fileRef = B19442AA27032CB200086E23 /* icoland_sina_v5.png */; };
 /* End PBXBuildFile section */
@@ -66,7 +65,6 @@
 		B10F7ECF2701A8A200C09FD0 /* UIView+ShakeAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+ShakeAnimation.m"; sourceTree = "<group>"; };
 		B10F7ED72701DF1500C09FD0 /* SNAugusPopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNAugusPopView.h; sourceTree = "<group>"; };
 		B10F7ED82701DF1500C09FD0 /* SNAugusPopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNAugusPopView.m; sourceTree = "<group>"; };
-		B19442A727032BF700086E23 /* Test.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Test.bundle; path = ../../../../../../Desktop/Test.bundle; sourceTree = "<group>"; };
 		B19442A927032CB200086E23 /* icoland_sina_v51.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icoland_sina_v51.png; sourceTree = "<group>"; };
 		B19442AA27032CB200086E23 /* icoland_sina_v5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icoland_sina_v5.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,7 +117,6 @@
 		27F26A1C26D09F3F0002E7BA /* TestFishhook */ = {
 			isa = PBXGroup;
 			children = (
-				B19442A727032BF700086E23 /* Test.bundle */,
 				27F26A5326D0A4250002E7BA /* fishhook.c */,
 				27F26A5226D0A4250002E7BA /* fishhook.h */,
 				27F26A1D26D09F3F0002E7BA /* AppDelegate.h */,
@@ -267,7 +264,6 @@
 				27F26A2D26D09F400002E7BA /* LaunchScreen.storyboard in Resources */,
 				27F26A2A26D09F400002E7BA /* Assets.xcassets in Resources */,
 				27F26A2826D09F3F0002E7BA /* Main.storyboard in Resources */,
-				B19442A827032BF700086E23 /* Test.bundle in Resources */,
 				B19442AB27032CB200086E23 /* icoland_sina_v51.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
