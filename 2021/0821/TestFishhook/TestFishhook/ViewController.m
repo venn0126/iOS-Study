@@ -34,10 +34,40 @@
 //    [self.view addSubview:self.testLabel];
     
     
-    SNAugusPopView *popView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(100, 100, 200, 50) text:@"请阅读并勾选以下协议"];
-    [self.view addSubview:popView];
+//    SNAugusPopView *popView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(100, 100, 200, 50) text:@"请阅读并勾选以下协议"];
+//    [self.view addSubview:popView];
+    
+//    [self threeTwoSize];
+    [self testBundleOfTwoAndThree];
     
 
+}
+
+- (void)testBundleOfTwoAndThree {
+    
+    
+    UIImage *image = [UIImage imageNamed:@"icoland_sina_v51.png"];
+    NSLog(@"2 Image is %@ and scale is %.2f",NSStringFromCGSize(image.size),[UIScreen mainScreen].scale);
+
+    UIImage *testImage = [UIImage imageNamed:@"icoland_sina_v5.png"];
+    NSLog(@"3 Image is %@ and scale is %.2f",NSStringFromCGSize(testImage.size),[UIScreen mainScreen].scale);
+
+}
+
+- (void)threeTwoSize {
+    
+    
+    UIImage *testImage = [UIImage imageNamed:@"icoland_apple_v5"];
+    
+    
+    UIImageView *testImageView  = [[UIImageView alloc] initWithImage:testImage];
+    testImageView.frame = CGRectMake(100, 100, 34, 34);
+    [testImageView sizeToFit];
+    [self.view addSubview:testImageView];
+    
+    NSLog(@"testImage is %@ and scale is %.2f",NSStringFromCGSize(testImageView.frame.size),[UIScreen mainScreen].scale);
+    
+    
 }
 
 

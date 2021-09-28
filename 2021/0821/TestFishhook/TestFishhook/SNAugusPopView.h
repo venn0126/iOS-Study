@@ -14,6 +14,11 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
     SNAugusPopViewDirectionUp,
     // down
     SNAugusPopViewDirectionDown,
+    // right
+    SNAugusPopViewDirectionRight,
+    // left
+    SNAugusPopViewDirectionLeft,
+    
 };
 
 @interface SNAugusPopView : UIView
@@ -36,14 +41,12 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
 @property (nonatomic, assign) NSTimeInterval animationDuration;
 
 /// The attributes about arrow
-@property (nonatomic, assign) CGFloat horizontalPadding;
+@property (nonatomic, assign) CGFloat horizontalLabelPadding;
 @property (nonatomic, assign) SNAugusPopViewDirection direction;
 
 /// The attibutes about popView of shadow
 
 
-
-- (instancetype)initWithText:(NSString *)text;
 
 - (instancetype)initWithFrame:(CGRect)frame text:(NSString *)text;
 
