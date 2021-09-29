@@ -33,6 +33,7 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 @interface SNAugusPopView ()
 
 @property (nonatomic, strong) UILabel *textLabel;
+@property (nonatomic, assign) BOOL isPopViewShow;
 
 @end
 
@@ -51,6 +52,7 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     _aBackgroundColor = UIColor.blackColor;
     _direction = SNAugusPopViewDirectionTop;
     _textFont = [UIFont systemFontOfSize:18];
+    _isPopViewShow = NO;
     
     
     _text = text;
@@ -60,6 +62,11 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     
     // draw background mask
     [self addArrowBorderoffset:(kAugusPopViewMargin + kAugusPopViewArrowWidth * 0.5) width:kAugusPopViewArrowWidth height:kAugusPopViewArrowHeight cornerRadius:kAugusPopViewCornerRadius direction:SNAugusPopViewDirectionTop];
+    
+    
+    // add gesture to view
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
+    [self addGestureRecognizer:tap];
     
     return self;
     
@@ -262,15 +269,26 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
         self.layer.anchorPoint = CGPointMake(0.1, 0.1);
     }
     
+//    NSLog(@"00000");
     
+//    if (self.isPopViewShow || self.alpha == 0.6) {
+//        NSLog(@"1111");
+//
+//        return;
+//    }
+//    NSLog(@"222");
+
     
+    self.isPopViewShow = YES;
     [UIView animateWithDuration:self.animationDuration animations:^{
         self.alpha = 0.6;
         self.transform = CGAffineTransformMakeScale(1, 1);
     } completion:^(BOOL finished) {
-        
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self dismiss];
+            
+            if (self.alpha > 0.01) {
+                [self dismiss];
+            }
         });
         
     }];
@@ -282,14 +300,27 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 
 - (void)dismiss {
     
+    self.isPopViewShow = NO;
     [UIView animateWithDuration:self.animationDuration animations:^{
-        self.alpha = 0.0;
+        self.alpha = 0.01;
         self.transform = CGAffineTransformMakeScale(0.01, 0.01);
     } completion:^(BOOL finished) {
 //        [self removeAugusBorder];
         
     }];
 }
+
+#pragma mark - Tap Action
+
+- (void)tapAction {
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(tapGesturePopView)]) {
+        
+        [self.delegate tapGesturePopView];
+    }
+}
+
+
 
 
 #pragma mark - Lazy Load

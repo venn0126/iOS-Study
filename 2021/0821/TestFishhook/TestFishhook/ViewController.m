@@ -14,7 +14,7 @@
 #import "UIView+ShakeAnimation.h"
 #import "SNAugusPopView.h"
 
-@interface ViewController ()
+@interface ViewController ()<SNAugusPopViewDelagate>
 
 @property (nonatomic, strong) UIView *testView;
 @property (nonatomic, strong) UILabel *testLabel;
@@ -42,13 +42,35 @@
     [self.view addSubview:redView];
     
     self.popView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(100-90, 100+35, 200, 50) text:@"请阅读并勾选以下协议"];
+    self.popView.delegate = self;
+    
     [self.view addSubview:self.popView];
+    
     
 //    [self threeTwoSize];
 //    [self testBundleOfTwoAndThree];
     
+    UIButton *showPopViewButton = [[UIButton alloc] initWithFrame:CGRectMake(100, 300, 100, 50)];
+    [showPopViewButton setTitle:@"show pop" forState:UIControlStateNormal];
+    showPopViewButton.backgroundColor = UIColor.greenColor;
+    [showPopViewButton addTarget:self action:@selector(showPopViewButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:showPopViewButton];
+    
 
 }
+
+
+- (void)showPopViewButtonAction:(UIButton *)sender {
+    
+    [self.popView show];
+}
+
+- (void)tapGesturePopView {
+    
+    NSLog(@"vc tap respond");
+    
+}
+
 
 - (void)testBundleOfTwoAndThree {
     
@@ -117,7 +139,7 @@
     
     
     
-    [self.popView show];
+//    [self.popView show];
 }
 
 

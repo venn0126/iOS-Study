@@ -23,6 +23,14 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
     
 };
 
+@protocol SNAugusPopViewDelagate <NSObject>
+
+@optional
+
+- (void)tapGesturePopView;
+
+@end
+
 @interface SNAugusPopView : UIView
 
 /// The attibutes about text
@@ -48,6 +56,9 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
 
 /// The attibutes about popView of shadow
 
+
+
+@property (nonatomic, weak) id<SNAugusPopViewDelagate> delegate;
 
 
 - (instancetype)initWithFrame:(CGRect)frame text:(NSString *)text;
