@@ -41,9 +41,14 @@
     redView.frame = CGRectMake(100, 100, 100, 50);
     [self.view addSubview:redView];
     
-    self.popView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(100-90, 100+35, 200, 50) text:@"请阅读并勾选以下协议"];
-    self.popView.delegate = self;
+    // Test popView for top
+//    self.popView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(100-90, 100+35, 200, 50) text:@"请阅读并勾选以下协议"];
+//    self.popView.delegate = self;
+//    [self.view addSubview:self.popView];
     
+    // Test popView for bottom
+    self.popView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(100-90, 100-50, 200, 50) text:@"请阅读并勾选以下协议" direction:SNAugusPopViewDirectionBottom];
+    self.popView.delegate = self;
     [self.view addSubview:self.popView];
     
     
@@ -52,6 +57,7 @@
     
     UIButton *showPopViewButton = [[UIButton alloc] initWithFrame:CGRectMake(100, 300, 100, 50)];
     [showPopViewButton setTitle:@"show pop" forState:UIControlStateNormal];
+    [showPopViewButton setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
     showPopViewButton.backgroundColor = UIColor.greenColor;
     [showPopViewButton addTarget:self action:@selector(showPopViewButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:showPopViewButton];

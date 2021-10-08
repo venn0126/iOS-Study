@@ -61,7 +61,16 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
 @property (nonatomic, weak) id<SNAugusPopViewDelagate> delegate;
 
 
+
+/// A pop view initalzation,default direction is top.
+/// @param frame A frame of pop view
+/// @param text A text of pop View
 - (instancetype)initWithFrame:(CGRect)frame text:(NSString *)text;
+
+
+- (instancetype)initWithFrame:(CGRect)frame
+                         text:(NSString *)text
+                    direction:(SNAugusPopViewDirection)direction;
 
 - (void)show;
 
