@@ -1,6 +1,6 @@
 //
 //  SNAugusPopView.m
-//  TestFishhook
+//  com.sohu.news
 //
 //  Created by Augus on 2021/9/27.
 //
@@ -20,15 +20,13 @@ static CGFloat kAugusPopViewLabelVerticalPadding = 8.0;
 static CGFloat kAugusPopViewArrowWidth = 12.0;
 static CGFloat kAugusPopViewArrowHeight = 7.0;
 // (0,12]
-static CGFloat kAugusPopViewMargin = 12.0;
+static CGFloat kAugusArrowHorizontalPadding = 12.0;
+static CGFloat kAugusArrowVerticalPadding = 3.0;
+
 
 
 static NSString *SNAugusBorderLayerKey = @"SNAugusBorderLayerKey";
 static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
-
-
-#define kScreenWidth [UIScreen mainScreen].bounds.size.width
-#define kScreenHeight [UIScreen mainScreen].bounds.size.height
 
 
 @interface SNAugusPopView ()
@@ -111,12 +109,16 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 }
 
 
-- (void)setArrowPadding:(CGFloat)arrowPadding {
-    
-    _arrowPadding = arrowPadding;
+- (void)setArrowHorizontalPadding:(CGFloat)arrowHorizontalPadding {
+    _arrowHorizontalPadding = arrowHorizontalPadding;
     [self configurePopView];
 }
 
+
+- (void)setArrowVerticalPadding:(CGFloat)arrowVerticalPadding {
+    _arrowVerticalPadding = arrowVerticalPadding;
+    [self configurePopView];
+}
 
 - (void)setAnimationDuration:(NSTimeInterval)animationDuration {
     _animationDuration = animationDuration;
@@ -140,7 +142,10 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     CGFloat verticalPadding = self.verticalLabelPadding > 0 ? self.verticalLabelPadding : kAugusPopViewLabelVerticalPadding;
     
     CGFloat cornerRadius = self.cornerRadius > 0 ? self.cornerRadius : kAugusPopViewCornerRadius;
-    CGFloat arrowPadding = self.arrowPadding > 0 ? self.arrowPadding : kAugusPopViewMargin;
+    
+    CGFloat arrowHorizontalPadding = self.arrowHorizontalPadding > 0 ? self.arrowHorizontalPadding : kAugusArrowHorizontalPadding;
+    CGFloat arrowVerticalPadding = self.arrowVerticalPadding > 0 ? self.arrowVerticalPadding : kAugusPopViewLabelVerticalPadding;
+    
     CGFloat arrowWidth = self.arrowWidth > 0 ? self.arrowWidth : kAugusPopViewArrowWidth;
     CGFloat arrowHeight = self.arrowHeight > 0 ? self.arrowHeight : kAugusPopViewArrowHeight;
     
@@ -164,7 +169,13 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     
     
     // draw background mask
-    [self addArrowBorderoffset:(arrowPadding + arrowWidth * 0.5) width:arrowWidth height:arrowHeight cornerRadius:cornerRadius direction:self.direction];
+    CGFloat offset = 0;
+    if (self.direction == SNAugusPopViewDirectionTop || self.direction == SNAugusPopViewDirectionBottom) {
+        offset = arrowHorizontalPadding + arrowWidth * 0.5;
+    } else if(self.direction == SNAugusPopViewDirectionLeft || self.direction == SNAugusPopViewDirectionRight) {
+        offset = arrowVerticalPadding + arrowWidth * 0.5;
+    }
+    [self addArrowBorderoffset:offset width:arrowWidth height:arrowHeight cornerRadius:cornerRadius direction:self.direction];
     
 }
 
@@ -205,13 +216,13 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 
 
 /**
- 给view添加一个带箭头的边框
+ Add border with arrow for view
  
- @param direction 箭头朝向
+ @param direction direction of arrow
  @param offset 箭头的坐标，如果是在左右朝向，传箭头中心位置的y值；如果是上下朝向，传箭头中心位置x值
- @param width 箭头的宽度
- @param height 箭头的高度
- @param cornerRadius 圆角半径，<=0不设圆角
+ @param width The width of arrow.
+ @param height The height of arrow.
+ @param cornerRadius The corner radius, if cornerRadius <= 0 is none.
 
  */
 
@@ -246,10 +257,10 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
         self.textLabel.center = CGPointMake(self.bounds.size.width * 0.5, self.bounds.size.height * 0.5);
     }
     
-    // 上边
+    // top line
     [path moveToPoint:CGPointMake(minX + cornerRadius, minY)];
 
-    // 上箭头
+    // top arrow
     if (direction == SNAugusPopViewDirectionTop) {
         [path addLineToPoint:CGPointMake(offset- width * 0.5, minY)];
         [path addLineToPoint:CGPointMake(offset, minY - height)];
@@ -259,13 +270,13 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     [path addLineToPoint:CGPointMake(maxX-cornerRadius, minY)];
 
     
-    // 右上角
+    // right and top corner radius
     if (cornerRadius > 0) {
         [path addArcWithCenter:CGPointMake(maxX - cornerRadius, minY + cornerRadius) radius:cornerRadius startAngle:-M_PI_2 endAngle:0 clockwise:YES];
     }
     
     
-    // 右边
+    // right line
     if (direction == SNAugusPopViewDirectionRight) {
         [path addLineToPoint:CGPointMake(maxX, offset - width * 0.5)];
         [path addLineToPoint:CGPointMake(maxX + height, offset)];
@@ -273,12 +284,12 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     }
     [path addLineToPoint:CGPointMake(maxX, maxY - cornerRadius)];
     
-    // 右下角
+    // right and bottom corner radius
     if (cornerRadius > 0) {
         [path addArcWithCenter:CGPointMake(maxX - cornerRadius, maxY - cornerRadius) radius:cornerRadius startAngle:0 endAngle:M_PI_2 clockwise:YES];
     }
     
-    // 下边（箭头）
+    // bottom arrow
     if (direction == SNAugusPopViewDirectionBottom) {
         [path addLineToPoint:CGPointMake(offset + width * 0.5, maxY)];
         [path addLineToPoint:CGPointMake(offset, maxY + height)];
@@ -286,13 +297,13 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     }
     [path addLineToPoint:CGPointMake(minX + cornerRadius, maxY)];
     
-    // 左下角
+    // left and bottom corner radius
     if (cornerRadius > 0) {
         [path addArcWithCenter:CGPointMake(minX + cornerRadius, maxY - cornerRadius) radius:cornerRadius startAngle:M_PI_2 endAngle:M_PI clockwise:YES];
     }
     
     
-    // 左边
+    // left line
     if (direction == SNAugusPopViewDirectionLeft) {
         [path addLineToPoint:CGPointMake(minX, offset + width * 0.5)];
         [path addLineToPoint:CGPointMake(minX-height, offset)];
@@ -300,13 +311,14 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     }
     [path addLineToPoint:CGPointMake(minX, minY+cornerRadius)];
     
-    // 左上角
+    // left and top corner radius
     if (cornerRadius > 0) {
         [path addArcWithCenter:CGPointMake(minX+cornerRadius, minY+cornerRadius) radius:cornerRadius startAngle:M_PI endAngle:M_PI_2 * 3 clockwise:YES];
     }
     
     mask.path = [path CGPath];
     
+    // shap layer
 //    if (borderWidth>0) {
         CAShapeLayer *border = [[CAShapeLayer alloc] init];
         border.path = [path CGPath];
@@ -334,7 +346,7 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 }
 
 
-#pragma mark - Animation
+#pragma mark - Animation Methods
 
 - (void)show {
     

@@ -94,10 +94,10 @@
     
     self.topPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(100+60, 100+70, 0, 0) text:@"请阅读并勾选以下协议Top" direction:SNAugusPopViewDirectionTop];
     self.topPopView.delegate = self;
+    self.topPopView.textFont = [UIFont systemFontOfSize:13];
+    self.topPopView.verticalLabelPadding = 10;
     [self.view addSubview:self.topPopView];
     
-//    self.topPopView.textFont = [UIFont systemFontOfSize:13];
-//    self.topPopView.verticalLabelPadding = 10;
     
     
     UIButton *showPopViewButton = [[UIButton alloc] initWithFrame:CGRectMake(30, 300, 100, 50)];
