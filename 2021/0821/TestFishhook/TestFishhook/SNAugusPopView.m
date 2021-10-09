@@ -12,9 +12,10 @@
 
 static CGFloat kAugusPopViewCornerRadius = 5.0;
 static NSTimeInterval kAugusPopViewAnimationDuration = 0.5;
+static NSTimeInterval kAugusPopViewDismissDuration = 2.0;
 
-static CGFloat kAugusPopViewLabelHorizontalPadding = 10.0;
-static CGFloat kAugusPopViewLabelVerticalPadding = 6;
+static CGFloat kAugusPopViewLabelHorizontalPadding = 8.0;
+static CGFloat kAugusPopViewLabelVerticalPadding = 8.0;
 
 static CGFloat kAugusPopViewArrowWidth = 12.0;
 static CGFloat kAugusPopViewArrowHeight = 7.0;
@@ -33,44 +34,12 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 @interface SNAugusPopView ()
 
 @property (nonatomic, strong) UILabel *textLabel;
-@property (nonatomic, assign) BOOL isPopViewShow;
 
 @end
 
 @implementation SNAugusPopView
 
-- (instancetype)initWithFrame:(CGRect)frame text:(NSString *)text {
-   
-    self = [super initWithFrame:frame];
-    if (!self) {
-        return nil;
-    }
-    
-    // set defalut params
-    _cornerRadius = kAugusPopViewCornerRadius;
-    _animationDuration = kAugusPopViewAnimationDuration;
-    _aBackgroundColor = UIColor.blackColor;
-    _direction = SNAugusPopViewDirectionTop;
-    _textFont = [UIFont systemFontOfSize:18];
-    _isPopViewShow = NO;
-    
-    
-    _text = text;
-    
-    // set up ui
-    [self setupUI];
-    
-    // draw background mask
-    [self addArrowBorderoffset:(kAugusPopViewMargin + kAugusPopViewArrowWidth * 0.5) width:kAugusPopViewArrowWidth height:kAugusPopViewArrowHeight cornerRadius:kAugusPopViewCornerRadius direction:SNAugusPopViewDirectionTop];
-    
-    
-    // add gesture to view
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
-    [self addGestureRecognizer:tap];
-    
-    return self;
-    
-}
+#pragma mark - Initalzation
 
 - (instancetype)initWithFrame:(CGRect)frame text:(NSString *)text direction:(SNAugusPopViewDirection)direction {
     
@@ -82,20 +51,17 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     // set defalut params
     _cornerRadius = kAugusPopViewCornerRadius;
     _animationDuration = kAugusPopViewAnimationDuration;
+    
     _aBackgroundColor = UIColor.blackColor;
     _direction = SNAugusPopViewDirectionTop;
-    _textFont = [UIFont systemFontOfSize:18];
-    _isPopViewShow = NO;
+    // Default font 18
+    _textFont = [UIFont systemFontOfSize:13];
+    
     _direction = direction;
     _text = text;
     
-    
     // set up ui
-    [self setupUI];
-    
-    // draw background mask
-    [self addArrowBorderoffset:(kAugusPopViewMargin + kAugusPopViewArrowWidth * 0.5) width:kAugusPopViewArrowWidth height:kAugusPopViewArrowHeight cornerRadius:kAugusPopViewCornerRadius direction:direction];
-    
+    [self configurePopView];
     
     // add gesture to view
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
@@ -105,35 +71,100 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     
 }
 
+#pragma mark - Setter
+
+- (void)setTextFont:(UIFont *)textFont {
+    
+    _textFont = textFont;
+    self.textLabel.font = _textFont;
+    [self configurePopView];
+}
+
+
+- (void)setVerticalLabelPadding:(CGFloat)verticalLabelPadding {
+    
+    _verticalLabelPadding = verticalLabelPadding;
+    [self configurePopView];
+}
+
+
+- (void)setHorizontalLabelPadding:(CGFloat)horizontalLabelPadding {
+    _horizontalLabelPadding = horizontalLabelPadding;
+    [self configurePopView];
+}
+
+- (void)setCornerRadius:(CGFloat)cornerRadius {
+    _cornerRadius = cornerRadius;
+    [self configurePopView];
+}
+
+
+- (void)setArrowWidth:(CGFloat)arrowWidth {
+    _arrowWidth = arrowWidth;
+    [self configurePopView];
+}
+
+
+- (void)setArrowHeight:(CGFloat)arrowHeight {
+    _arrowHeight = arrowHeight;
+    [self configurePopView];
+}
+
+
+- (void)setArrowPadding:(CGFloat)arrowPadding {
+    
+    _arrowPadding = arrowPadding;
+    [self configurePopView];
+}
+
+
+- (void)setAnimationDuration:(NSTimeInterval)animationDuration {
+    _animationDuration = animationDuration;
+}
+
+
+- (void)setDismissDuration:(NSTimeInterval)dismissDuration {
+    _dismissDuration = dismissDuration;
+}
+
 #pragma mark - Set up UI
 
-- (void)setupUI {
+- (void)configurePopView {
     
     self.backgroundColor = self.aBackgroundColor;
     
-    CGFloat width = self.bounds.size.width;
-    CGFloat height = self.bounds.size.height;
-    
     self.textLabel.text = self.text;
     self.textLabel.font = self.textFont;
-//    CGFloat textY = (height - self.textHeight) * 0.5;
-    self.textLabel.frame = CGRectMake(0, 0,self.textWidth, self.textHeight);
+    
+    CGFloat horizontalPadding = self.horizontalLabelPadding > 0 ? self.horizontalLabelPadding : kAugusPopViewLabelHorizontalPadding;
+    CGFloat verticalPadding = self.verticalLabelPadding > 0 ? self.verticalLabelPadding : kAugusPopViewLabelVerticalPadding;
+    
+    CGFloat cornerRadius = self.cornerRadius > 0 ? self.cornerRadius : kAugusPopViewCornerRadius;
+    CGFloat arrowPadding = self.arrowPadding > 0 ? self.arrowPadding : kAugusPopViewMargin;
+    CGFloat arrowWidth = self.arrowWidth > 0 ? self.arrowWidth : kAugusPopViewArrowWidth;
+    CGFloat arrowHeight = self.arrowHeight > 0 ? self.arrowHeight : kAugusPopViewArrowHeight;
+    
+    CGFloat cWidth = self.textWidth + 2 * horizontalPadding;
+    CGFloat cHeight = self.textHeight + 2 * verticalPadding;
+    
+    if (self.direction == SNAugusPopViewDirectionTop || self.direction == SNAugusPopViewDirectionBottom) {
+        cHeight = cHeight + arrowHeight;
+    } else if(self.direction == SNAugusPopViewDirectionLeft || self.direction == SNAugusPopViewDirectionRight) {
+        cWidth = cWidth + arrowHeight;
+    }
+    
+    
+    self.textLabel.frame = CGRectMake(horizontalPadding, verticalPadding,self.textWidth, self.textHeight);
     [self addSubview:self.textLabel];
     
    
     // update self frame
-    self.bounds = CGRectMake(0, 0, kAugusPopViewLabelHorizontalPadding * 2 + self.textWidth, self.textHeight);
-    
-    // update textlable center
-        
-    if (self.direction == SNAugusPopViewDirectionTop) {
-        self.textLabel.center = CGPointMake(width * 0.5, height * 0.5 + 3.5);
-    } else if(self.direction == SNAugusPopViewDirectionBottom) {
-        self.textLabel.center = CGPointMake(width * 0.5, height * 0.5 - kAugusPopViewArrowHeight);
-    }
-    
-    
+    self.bounds = CGRectMake(0, 0, cWidth,cHeight);
     self.alpha = 0.01;
+    
+    
+    // draw background mask
+    [self addArrowBorderoffset:(arrowPadding + arrowWidth * 0.5) width:arrowWidth height:arrowHeight cornerRadius:cornerRadius direction:self.direction];
     
 }
 
@@ -166,7 +197,7 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 }
 
 -(CGFloat)maxWidth {
-    return self.bounds.size.width <= 0 ? (kScreenWidth - 2 * 25) : self.bounds.size.width;
+    return self.bounds.size.width;
 }
 
 
@@ -202,22 +233,31 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     CGFloat minX = 0, minY = 0, maxX = self.bounds.size.width, maxY = self.bounds.size.height;
     if (direction == SNAugusPopViewDirectionTop) {
         minY = height;
+        self.textLabel.center = CGPointMake(self.bounds.size.width * 0.5, self.bounds.size.height * 0.5 + height * 0.5);
     }else if (_direction == SNAugusPopViewDirectionRight){
         maxX -= height;
+        self.textLabel.center = CGPointMake(self.bounds.size.width * 0.5 - height * 0.5, self.bounds.size.height * 0.5);
     }else if (_direction == SNAugusPopViewDirectionLeft){
         minX += height;
+        self.textLabel.center = CGPointMake(self.bounds.size.width * 0.5 + height * 0.5, self.bounds.size.height * 0.5);
     }else if (_direction == SNAugusPopViewDirectionBottom){
         maxY -= height;
+    } else {
+        self.textLabel.center = CGPointMake(self.bounds.size.width * 0.5, self.bounds.size.height * 0.5);
     }
     
     // 上边
     [path moveToPoint:CGPointMake(minX + cornerRadius, minY)];
+
+    // 上箭头
     if (direction == SNAugusPopViewDirectionTop) {
         [path addLineToPoint:CGPointMake(offset- width * 0.5, minY)];
         [path addLineToPoint:CGPointMake(offset, minY - height)];
         [path addLineToPoint:CGPointMake(offset + width * 0.5, minY)];
+        
     }
     [path addLineToPoint:CGPointMake(maxX-cornerRadius, minY)];
+
     
     // 右上角
     if (cornerRadius > 0) {
@@ -238,11 +278,11 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
         [path addArcWithCenter:CGPointMake(maxX - cornerRadius, maxY - cornerRadius) radius:cornerRadius startAngle:0 endAngle:M_PI_2 clockwise:YES];
     }
     
-    // 下边
+    // 下边（箭头）
     if (direction == SNAugusPopViewDirectionBottom) {
-        [path addLineToPoint:CGPointMake(offset - width * 0.5, maxY)];
-        [path addLineToPoint:CGPointMake(offset, maxY + height)];
         [path addLineToPoint:CGPointMake(offset + width * 0.5, maxY)];
+        [path addLineToPoint:CGPointMake(offset, maxY + height)];
+        [path addLineToPoint:CGPointMake(offset - width * 0.5, maxY)];
     }
     [path addLineToPoint:CGPointMake(minX + cornerRadius, maxY)];
     
@@ -254,9 +294,9 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     
     // 左边
     if (direction == SNAugusPopViewDirectionLeft) {
-        [path addLineToPoint:CGPointMake(minX, offset - width * 0.5)];
-        [path addLineToPoint:CGPointMake(minX-height, offset)];
         [path addLineToPoint:CGPointMake(minX, offset + width * 0.5)];
+        [path addLineToPoint:CGPointMake(minX-height, offset)];
+        [path addLineToPoint:CGPointMake(minX, offset - width * 0.5)];
     }
     [path addLineToPoint:CGPointMake(minX, minY+cornerRadius)];
     
@@ -271,7 +311,7 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
         CAShapeLayer *border = [[CAShapeLayer alloc] init];
         border.path = [path CGPath];
 //        border.strokeColor = borderColor.CGColor;
-//        border.lineWidth = borderWidth*2;
+//        border.lineWidth = 5;
         border.fillColor = [UIColor clearColor].CGColor;
         [self.layer addSublayer:border];
 //
@@ -304,47 +344,41 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     if (self.direction == SNAugusPopViewDirectionTop) {
         self.layer.anchorPoint = CGPointMake(0.1, 0.1);
     }else if(self.direction == SNAugusPopViewDirectionBottom) {
-        self.layer.anchorPoint = CGPointMake(0.1, 0.5);
+        self.layer.anchorPoint = CGPointMake(0.1, 0.8);
+    }else if(self.direction == SNAugusPopViewDirectionRight) {
+        self.layer.anchorPoint = CGPointMake(1, 0.5);
+    }else if(self.direction == SNAugusPopViewDirectionLeft) {
+        self.layer.anchorPoint = CGPointMake(0.0, 0.5);
+    } else {
+        self.layer.anchorPoint = CGPointMake(0.5, 0.5);
     }
     
-//    NSLog(@"00000");
-    
-//    if (self.isPopViewShow || self.alpha == 0.6) {
-//        NSLog(@"1111");
-//
-//        return;
-//    }
-//    NSLog(@"222");
-
-    
-    self.isPopViewShow = YES;
-    [UIView animateWithDuration:self.animationDuration animations:^{
+    CGFloat duration = self.animationDuration > 0 ? self.animationDuration : kAugusPopViewAnimationDuration;
+    CGFloat dismissDuration = self.dismissDuration > 0 ? self.dismissDuration : kAugusPopViewDismissDuration;
+        
+    [UIView animateWithDuration:duration animations:^{
         self.alpha = 0.6;
         self.transform = CGAffineTransformMakeScale(1, 1);
     } completion:^(BOOL finished) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            
-            if (self.alpha > 0.01) {
-                [self dismiss];
-            }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(dismissDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+
+            [self dismiss];
+            NSLog(@"finish show");
         });
         
     }];
-    
-    
-    
+
 }
 
 
 - (void)dismiss {
     
-    self.isPopViewShow = NO;
     [UIView animateWithDuration:self.animationDuration animations:^{
         self.alpha = 0.01;
         self.transform = CGAffineTransformMakeScale(0.01, 0.01);
     } completion:^(BOOL finished) {
 //        [self removeAugusBorder];
-        
+        NSLog(@"finish dismiss");
     }];
 }
 
@@ -366,7 +400,7 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 - (UILabel *)textLabel {
     if (!_textLabel) {
         _textLabel = [[UILabel alloc] init];
-        _textLabel.font = [UIFont systemFontOfSize:16];
+        _textLabel.font = [UIFont systemFontOfSize:13];
         _textLabel.textColor = UIColor.whiteColor;
         _textLabel.textAlignment = NSTextAlignmentCenter;
 //        _textLabel.backgroundColor = UIColor.whiteColor;

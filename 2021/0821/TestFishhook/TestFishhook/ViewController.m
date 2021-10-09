@@ -18,7 +18,11 @@
 
 @property (nonatomic, strong) UIView *testView;
 @property (nonatomic, strong) UILabel *testLabel;
-@property (nonatomic, strong) SNAugusPopView *popView;
+@property (nonatomic, strong) SNAugusPopView *topPopView;
+@property (nonatomic, strong) SNAugusPopView *bottomPopView;
+
+@property (nonatomic, strong) SNAugusPopView *rightPopView;
+@property (nonatomic, strong) SNAugusPopView *leftPopView;
 
 
 @end
@@ -30,45 +34,125 @@
     // Do any additional setup after loading the view.
     
     
-
-    
-//    [self.view addSubview:self.testView];
-//    [self.view addSubview:self.testLabel];
-    
-    
     UIView *redView = [[UIView alloc] init];
     redView.backgroundColor = UIColor.redColor;
-    redView.frame = CGRectMake(100, 100, 100, 50);
+    CGFloat x = (self.view.bounds.size.width - 100) * 0.5;
+    redView.frame = CGRectMake(x, 100, 100, 50);
     [self.view addSubview:redView];
     
+//    self.view.backgroundColor = UIColor.lightGrayColor;
+    
     // Test popView for top
-//    self.popView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(100-90, 100+35, 200, 50) text:@"请阅读并勾选以下协议"];
-//    self.popView.delegate = self;
-//    [self.view addSubview:self.popView];
-    
+    [self showPopTop];
     // Test popView for bottom
-    self.popView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(100-90, 100-50, 200, 50) text:@"请阅读并勾选以下协议" direction:SNAugusPopViewDirectionBottom];
-    self.popView.delegate = self;
-    [self.view addSubview:self.popView];
+    [self showPopBottom];
+    
+    [self showPopRight];
+    
+    [self showPopLeft];
+}
+
+
+- (void)showPopLeft {
+    
+    self.leftPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(230, 100+25, 0, 0) text:@"请阅读并勾选以下协议Left" direction:SNAugusPopViewDirectionLeft];
+    self.leftPopView.delegate = self;
+    [self.view addSubview:self.leftPopView];
+    
+    self.leftPopView.textFont = [UIFont systemFontOfSize:10];
+//    self.topPopView.verticalLabelPadding = 10;
     
     
-//    [self threeTwoSize];
-//    [self testBundleOfTwoAndThree];
+    UIButton *showPopViewButton = [[UIButton alloc] initWithFrame:CGRectMake(250, 400, 100, 50)];
+    [showPopViewButton setTitle:@"showLeft" forState:UIControlStateNormal];
+    [showPopViewButton setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
+    showPopViewButton.backgroundColor = UIColor.greenColor;
+    [showPopViewButton addTarget:self action:@selector(showLeftPopViewAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:showPopViewButton];
+}
+
+- (void)showPopRight {
     
-    UIButton *showPopViewButton = [[UIButton alloc] initWithFrame:CGRectMake(100, 300, 100, 50)];
-    [showPopViewButton setTitle:@"show pop" forState:UIControlStateNormal];
+    self.rightPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(160, 100+25, 0, 0) text:@"请阅读并勾选以下协议Right" direction:SNAugusPopViewDirectionRight];
+    self.rightPopView.delegate = self;
+    [self.view addSubview:self.rightPopView];
+    
+    self.rightPopView.textFont = [UIFont systemFontOfSize:10];
+//    self.topPopView.verticalLabelPadding = 10;
+    
+    
+    UIButton *showPopViewButton = [[UIButton alloc] initWithFrame:CGRectMake(30, 400, 100, 50)];
+    [showPopViewButton setTitle:@"showRight" forState:UIControlStateNormal];
+    [showPopViewButton setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
+    showPopViewButton.backgroundColor = UIColor.greenColor;
+    [showPopViewButton addTarget:self action:@selector(showRightPopViewAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:showPopViewButton];
+}
+
+
+- (void)showPopTop {
+    
+    self.topPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(100+60, 100+70, 0, 0) text:@"请阅读并勾选以下协议Top" direction:SNAugusPopViewDirectionTop];
+    self.topPopView.delegate = self;
+    [self.view addSubview:self.topPopView];
+    
+//    self.topPopView.textFont = [UIFont systemFontOfSize:13];
+//    self.topPopView.verticalLabelPadding = 10;
+    
+    
+    UIButton *showPopViewButton = [[UIButton alloc] initWithFrame:CGRectMake(30, 300, 100, 50)];
+    [showPopViewButton setTitle:@"showTop" forState:UIControlStateNormal];
     [showPopViewButton setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
     showPopViewButton.backgroundColor = UIColor.greenColor;
     [showPopViewButton addTarget:self action:@selector(showPopViewButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:showPopViewButton];
-    
+}
 
+
+- (void)showPopBottom {
+    
+    
+    self.bottomPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(100+60, 100-20, 0, 0) text:@"请阅读并勾选以下协议Bottom" direction:SNAugusPopViewDirectionBottom];
+    self.bottomPopView.delegate = self;
+    [self.view addSubview:self.bottomPopView];
+    
+//    self.bottomPopView.verticalLabelPadding = 10;
+//    self.bottomPopView.textFont = [UIFont systemFontOfSize:13];
+
+    
+    UIButton *showPopViewButton = [[UIButton alloc] initWithFrame:CGRectMake(250, 300, 120, 50)];
+    [showPopViewButton setTitle:@"showBottom" forState:UIControlStateNormal];
+    [showPopViewButton setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
+    showPopViewButton.backgroundColor = UIColor.linkColor;
+    [showPopViewButton addTarget:self action:@selector(showPopViewBottomnAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:showPopViewButton];
+    
+}
+
+
+#pragma mark - Button Action
+
+
+- (void)showLeftPopViewAction {
+    
+    [self.leftPopView show];
+}
+
+- (void)showRightPopViewAction {
+    
+    [self.rightPopView show];
+    
+}
+
+- (void)showPopViewBottomnAction:(UIButton *)sender {
+    [self.bottomPopView show];
+    
 }
 
 
 - (void)showPopViewButtonAction:(UIButton *)sender {
     
-    [self.popView show];
+    [self.topPopView show];
 }
 
 - (void)tapGesturePopView {
