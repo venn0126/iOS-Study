@@ -55,12 +55,22 @@
     [self showPopLeft];
     
     [self showPopViewMulLines];
+//    [self showPopViewCloseButton];
 }
 
 
+- (void)showPopViewCloseButton {
+    
+    self.mulLinesPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(50, 250, 0, 0) text:@"请阅读并勾选以下协议MulLines发现新的炼金珠女呗冲啊擦法close" direction:SNAugusPopViewDirectionBottom singleLine:NO closeButtonName:@"Close"];
+    [self.view addSubview:self.mulLinesPopView];
+    [self.mulLinesPopView show];
+    
+    
+}
+
 - (void)showPopViewMulLines {
     
-    self.mulLinesPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(50, 200, 0, 0) text:@"请阅读并勾选以下协议MulLines发现新的炼金珠女呗冲啊擦法" direction:SNAugusPopViewDirectionBottom singleLine:NO];
+    self.mulLinesPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(50, 250, 0, 0) text:@"请阅读并勾选以下协议MulLines发现新的炼金珠女呗冲啊擦法" direction:SNAugusPopViewDirectionBottom singleLine:NO];
     [self.view addSubview:self.mulLinesPopView];
 //    self.mulLinesPopView.backgroundColor = UIColor.yellowColor;
     [self.mulLinesPopView show];
@@ -75,7 +85,7 @@
     [self.view addSubview:self.leftPopView];
     
     self.leftPopView.textFont = [UIFont systemFontOfSize:10];
-//    self.topPopView.verticalLabelPadding = 10;
+//    self.leftPopView.verticalLabelPadding = 10;
     
     
     UIButton *showPopViewButton = [[UIButton alloc] initWithFrame:CGRectMake(250, 400, 100, 50)];
@@ -133,8 +143,8 @@
     self.bottomPopView.delegate = self;
     [self.view addSubview:self.bottomPopView];
     
-//    self.bottomPopView.verticalLabelPadding = 10;
-//    self.bottomPopView.textFont = [UIFont systemFontOfSize:13];
+    self.bottomPopView.verticalLabelPadding = 10;
+    self.bottomPopView.textFont = [UIFont systemFontOfSize:18];
 
     
     UIButton *showPopViewButton = [[UIButton alloc] initWithFrame:CGRectMake(250, 300, 120, 50)];

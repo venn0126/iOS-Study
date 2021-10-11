@@ -11,8 +11,10 @@
 #pragma mark - Some Constans
 
 static CGFloat kAugusPopViewCornerRadius = 5.0;
-static NSTimeInterval kAugusPopViewAnimationDuration = 0.5;
-static NSTimeInterval kAugusPopViewDismissDuration = 2.0;
+
+static NSTimeInterval kAugusPopViewAnimationDuration = 3.0;
+static NSTimeInterval kAugusPopViewDismissDuration = 0.3;
+static NSTimeInterval kAugusPopViewShowDuration = 0.3;
 
 static CGFloat kAugusPopViewLabelHorizontalPadding = 8.0;
 static CGFloat kAugusPopViewLabelVerticalPadding = 8.0;
@@ -23,7 +25,12 @@ static CGFloat kAugusPopViewArrowHeight = 7.0;
 static CGFloat kAugusArrowHorizontalPadding = 12.0;
 //static CGFloat kAugusArrowVerticalPadding = 3.0;
 
-static CGFloat kAugusPopViewSingleLineForWidth = 200.0;
+static CGFloat kAugusPopViewMulLineForWidth = 200.0;
+
+static CGFloat kAugusCloseButtonLeading = 5.0;
+static CGFloat kAugusCloseButtonWidth = 15.0;
+static CGFloat kAugusCloseButtonTopPadding = 8.0;
+
 
 static NSString *SNAugusBorderLayerKey = @"SNAugusBorderLayerKey";
 static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
@@ -34,12 +41,29 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 @property (nonatomic, strong) UILabel *textLabel;
 @property (nonatomic, assign) BOOL showing;
 @property (nonatomic, assign) BOOL singleLine;
+@property (nonatomic, copy) NSString *closeButtonName;
+@property (nonatomic, copy) NSString *leftImageName;
+@property (nonatomic, strong) UIButton *closeButton;
+
+
 
 @end
 
 @implementation SNAugusPopView
 
 #pragma mark - Initalzation
+
+- (instancetype)init {
+    return [self initWithFrame:CGRectZero text:@"请阅读并勾选以下协议" direction:SNAugusPopViewDirectionTop singleLine:YES closeButtonName:@"" leftImageName:@""];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    return [self initWithFrame:CGRectZero text:@"请阅读并勾选以下协议" direction:SNAugusPopViewDirectionTop singleLine:YES closeButtonName:@"" leftImageName:@""];
+}
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    return [self initWithFrame:frame text:@"请阅读并勾选以下协议" direction:SNAugusPopViewDirectionTop singleLine:YES closeButtonName:@"" leftImageName:@""];;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame
                          text:(NSString *)text
@@ -54,18 +78,36 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     }
     
     // set defalut params
+    
     _cornerRadius = kAugusPopViewCornerRadius;
+    
     _animationDuration = kAugusPopViewAnimationDuration;
+    _showDuration = kAugusPopViewShowDuration;
+    _dismissDuration = kAugusPopViewDismissDuration;
+    
+    _horizontalLabelPadding = kAugusPopViewLabelHorizontalPadding;
+    _verticalLabelPadding = kAugusPopViewLabelVerticalPadding;
+    
+    _arrowWidth = kAugusPopViewArrowWidth;
+    _arrowHeight = kAugusPopViewArrowHeight;
+    _arrowHorizontalPadding = kAugusArrowHorizontalPadding;
+    
+    _mulLineWidth = kAugusPopViewMulLineForWidth;
+    _closeButtonleading = kAugusCloseButtonLeading;
+    _closeButtonWidth = kAugusCloseButtonWidth;
+    _closeButtonTopPadding = kAugusCloseButtonTopPadding;
     
     _aBackgroundColor = UIColor.blackColor;
-    _direction = SNAugusPopViewDirectionTop;
-    // Default font 18
+    // Default font 13
     _textFont = [UIFont systemFontOfSize:13];
+    
     
     _direction = direction;
     _text = text;
     _showing = NO;
     _singleLine = singleLine;
+    _closeButtonName = closeButtonName;
+    _leftImageName = leftImageName;
     
     // set up ui
     [self configurePopView];
@@ -84,15 +126,7 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
                    singleLine:(BOOL)singleLine
               closeButtonName:(NSString *)closeButtonName {
     
-    self = [super initWithFrame:frame];
-    if (!self) {
-        return nil;
-    }
-    
-
-    
-    
-    return self;
+    return [self initWithFrame:frame text:text direction:direction singleLine:singleLine closeButtonName:closeButtonName leftImageName:@""];
 }
 
 
@@ -102,13 +136,7 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
                    singleLine:(BOOL)singleLine
                 leftImageName:(NSString *)leftImageName {
     
-    self = [super initWithFrame:frame];
-    if (!self) {
-        return nil;
-    }
-    
-    
-    return self;
+    return [self initWithFrame:frame text:text direction:direction singleLine:singleLine closeButtonName:@"" leftImageName:leftImageName];
 }
 
 
@@ -122,33 +150,8 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 
 
 - (instancetype)initWithFrame:(CGRect)frame text:(NSString *)text direction:(SNAugusPopViewDirection)direction {
-    
-    self = [super initWithFrame:frame];
-    if (!self) {
-        return nil;
-    }
-    
-    // set defalut params
-    _cornerRadius = kAugusPopViewCornerRadius;
-    _animationDuration = kAugusPopViewAnimationDuration;
-    
-    _aBackgroundColor = UIColor.blackColor;
-    _direction = SNAugusPopViewDirectionTop;
-    // Default font 18
-    _textFont = [UIFont systemFontOfSize:13];
-    
-    _direction = direction;
-    _text = text;
-    _showing = NO;
-    
-    // set up ui
-    [self configurePopView];
-    
-    // add gesture to view
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
-    [self addGestureRecognizer:tap];
-    
-    return self;
+
+    return [self initWithFrame:frame text:text direction:direction singleLine:YES closeButtonName:@"" leftImageName:@""];
     
 }
 
@@ -157,7 +160,6 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 - (void)setTextFont:(UIFont *)textFont {
     
     _textFont = textFont;
-    self.textLabel.font = _textFont;
     [self configurePopView];
 }
 
@@ -207,52 +209,81 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     _animationDuration = animationDuration;
 }
 
+- (void)setShowDuration:(NSTimeInterval)showDuration {
+    _showDuration = showDuration;
+}
 
 - (void)setDismissDuration:(NSTimeInterval)dismissDuration {
     _dismissDuration = dismissDuration;
 }
+
+- (void)setMulLineWidth:(CGFloat)mulLineWidth {
+    _mulLineWidth = mulLineWidth;
+    [self configurePopView];
+}
+
+- (void)setCloseButtonTopPadding:(CGFloat)closeButtonTopPadding {
+    _closeButtonTopPadding = closeButtonTopPadding;
+    [self configurePopView];
+}
+
 
 #pragma mark - Set up UI
 
 - (void)configurePopView {
     
     self.backgroundColor = self.aBackgroundColor;
-    
     self.textLabel.text = self.text;
     self.textLabel.font = self.textFont;
-    
-    CGFloat horizontalPadding = self.horizontalLabelPadding > 0 ? self.horizontalLabelPadding : kAugusPopViewLabelHorizontalPadding;
-    CGFloat verticalPadding = self.verticalLabelPadding > 0 ? self.verticalLabelPadding : kAugusPopViewLabelVerticalPadding;
-    
-    CGFloat cornerRadius = self.cornerRadius > 0 ? self.cornerRadius : kAugusPopViewCornerRadius;
-    
-    CGFloat arrowHorizontalPadding = self.arrowHorizontalPadding > 0 ? self.arrowHorizontalPadding : kAugusArrowHorizontalPadding;
-    CGFloat arrowVerticalPadding = self.arrowVerticalPadding > 0 ? self.arrowVerticalPadding : kAugusPopViewLabelVerticalPadding;
-    
-    CGFloat arrowWidth = self.arrowWidth > 0 ? self.arrowWidth : kAugusPopViewArrowWidth;
-    CGFloat arrowHeight = self.arrowHeight > 0 ? self.arrowHeight : kAugusPopViewArrowHeight;
-    
-    CGFloat cWidth = self.textWidth + 2 * horizontalPadding;
-    CGFloat cHeight = self.textHeight + 2 * verticalPadding;
+        
+    CGFloat cWidth = self.textWidth + 2 * self.horizontalLabelPadding;
+    CGFloat cHeight = self.textHeight + 2 * self.verticalLabelPadding;
     
     if (self.direction == SNAugusPopViewDirectionTop || self.direction == SNAugusPopViewDirectionBottom) {
-        cHeight = cHeight + arrowHeight;
+        cHeight = cHeight + self.arrowHeight;
     } else if(self.direction == SNAugusPopViewDirectionLeft || self.direction == SNAugusPopViewDirectionRight) {
-        cWidth = cWidth + arrowHeight;
+        cWidth = cWidth + self.arrowHeight;
     }
     
     // single line & mul line
     if (!self.singleLine) { // mul line
         // set width
-        self.singleLineForWidth = self.singleLineForWidth > 0 ? self.singleLineForWidth : kAugusPopViewSingleLineForWidth;
-        // Default is 1 line
         self.textLabel.numberOfLines = 0;
-        self.textLabel.frame = CGRectMake(self.singleLineForWidth, verticalPadding, self.singleLineForWidth, self.mulLineTextHeight + kAugusPopViewLabelVerticalPadding * 2);
-        cWidth = self.textLabel.frame.size.width + 2 * kAugusArrowHorizontalPadding;
+        CGFloat mulY = (cHeight - self.mulLineTextHeight - self.arrowHeight) * 0.5;
+        self.textLabel.frame = CGRectMake(self.horizontalLabelPadding, mulY, self.mulLineWidth, self.mulLineTextHeight);
+        cWidth = self.mulLineWidth + 2 * self.horizontalLabelPadding;
+        cHeight = self.mulLineTextHeight + 2 * self.verticalLabelPadding;
+        
         
     } else {// single line
         
-        self.textLabel.frame = CGRectMake(horizontalPadding, verticalPadding,self.textWidth, self.textHeight);
+        self.textLabel.frame = CGRectMake(self.horizontalLabelPadding, self.verticalLabelPadding,self.textWidth, self.textHeight);
+    }
+    
+    
+    // close button name
+    if (self.closeButtonName.length > 0) {
+        
+        if (self.singleLine) {
+            
+            CGFloat y = (cHeight - self.closeButtonWidth - self.arrowHeight) * 0.5;
+            self.closeButton.frame = CGRectMake(self.textLabel.frame.origin.x + self.textLabel.frame.size.width + self.closeButtonleading, y, self.closeButtonWidth, self.closeButtonWidth);
+
+        } else {
+            CGFloat mulY = (cHeight - self.mulLineTextHeight - self.arrowHeight) * 0.5;
+            self.textLabel.frame = CGRectMake(self.textLabel.frame.origin.x, mulY, self.textLabel.frame.size.width, self.textLabel.frame.size.height);
+            self.closeButton.frame = CGRectMake(self.textLabel.frame.origin.x + self.textLabel.frame.size.width + self.closeButtonleading, self.closeButtonTopPadding, self.closeButtonWidth, self.closeButtonWidth);
+
+        }
+        
+        
+        cWidth += self.closeButton.frame.size.width + self.closeButtonleading;
+        [self addSubview:self.closeButton];
+    }
+    
+    // left image name
+    if (self.leftImageName.length > 0) {
+        
     }
     
     
@@ -267,11 +298,11 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     // draw background mask
     CGFloat offset = 0;
     if (self.direction == SNAugusPopViewDirectionTop || self.direction == SNAugusPopViewDirectionBottom) {
-        offset = arrowHorizontalPadding + arrowWidth * 0.5;
+        offset = self.arrowHorizontalPadding + self.arrowWidth * 0.5;
     } else if(self.direction == SNAugusPopViewDirectionLeft || self.direction == SNAugusPopViewDirectionRight) {
-        offset = arrowVerticalPadding + arrowWidth * 0.5;
+        offset = self.arrowVerticalPadding + self.arrowWidth * 0.5;
     }
-    [self addArrowBorderoffset:offset width:arrowWidth height:arrowHeight cornerRadius:cornerRadius direction:self.direction];
+    [self addArrowBorderoffset:offset width:self.arrowWidth height:self.arrowHeight cornerRadius:self.cornerRadius direction:self.direction];
     
 }
 
@@ -289,7 +320,7 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     NSDictionary *attributes = @{NSFontAttributeName:self.textLabel.font, NSParagraphStyleAttributeName:paragraphStyle};
     
-    CGSize maxSize = CGSizeMake(self.singleLineForWidth, CGFLOAT_MAX);
+    CGSize maxSize = CGSizeMake(self.mulLineWidth, CGFLOAT_MAX);
     CGSize size = [self.text boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:attributes context:nil].size;
     return  ceil(size.height);
 }
@@ -366,7 +397,7 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     }else if (_direction == SNAugusPopViewDirectionBottom){
         maxY -= height;
         if (!self.singleLine) {
-            self.textLabel.center = CGPointMake(self.bounds.size.width * 0.5, self.bounds.size.height * 0.5 - kAugusPopViewLabelVerticalPadding * 0.5);
+//            self.textLabel.center = CGPointMake(self.bounds.size.width * 0.5, self.bounds.size.height * 0.5 - kAugusPopViewLabelVerticalPadding * 0.5);
         }
     } else {
         self.textLabel.center = CGPointMake(self.bounds.size.width * 0.5, self.bounds.size.height * 0.5);
@@ -485,14 +516,14 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     }
     
     CGFloat duration = self.animationDuration > 0 ? self.animationDuration : kAugusPopViewAnimationDuration;
-    CGFloat dismissDuration = self.dismissDuration > 0 ? self.dismissDuration : kAugusPopViewDismissDuration;
+    CGFloat showDuration = self.showDuration > 0 ? self.showDuration : kAugusPopViewShowDuration;
         
-    [UIView animateWithDuration:duration animations:^{
+    [UIView animateWithDuration:showDuration animations:^{
         self.alpha = 0.6;
         self.transform = CGAffineTransformMakeScale(1, 1);
         self.showing = YES;
     } completion:^(BOOL finished) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(dismissDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(duration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 
 //            [self dismiss];
             NSLog(@"finish show");
@@ -506,7 +537,7 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 - (void)dismiss {
     
     self.showing = NO;
-    [UIView animateWithDuration:self.animationDuration animations:^{
+    [UIView animateWithDuration:self.dismissDuration animations:^{
         self.alpha = 0.01;
         self.transform = CGAffineTransformMakeScale(0.01, 0.01);
     } completion:^(BOOL finished) {
@@ -545,6 +576,9 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     }
 }
 
+- (void)closeButtonAction:(UIButton *)sender {
+    [self dismiss];
+}
 
 
 
@@ -561,6 +595,16 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
         
     }
     return _textLabel;
+}
+
+- (UIButton *)closeButton {
+    if (!_closeButton) {
+        _closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [_closeButton setBackgroundImage:[UIImage imageNamed:@"xmark"] forState:UIControlStateNormal];
+        [_closeButton addTarget:self action:@selector(closeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        _closeButton.backgroundColor = UIColor.greenColor;
+    }
+    return _closeButton;
 }
 
 

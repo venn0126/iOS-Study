@@ -70,6 +70,8 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
 
 /// The attributes about show anmiaton duration
 @property (nonatomic, assign) NSTimeInterval animationDuration;
+/// The attributes about show anmiaton duration
+@property (nonatomic, assign) NSTimeInterval showDuration;
 /// The attributes about dismiss anmiaton duration
 @property (nonatomic, assign) NSTimeInterval dismissDuration;
 
@@ -85,15 +87,26 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
 
 /// The attibutes about popView of arrow
 @property (nonatomic, assign) CGFloat arrowHorizontalPadding;
+/// No working
 @property (nonatomic, assign) CGFloat arrowVerticalPadding;
 @property (nonatomic, assign) CGFloat arrowWidth;
 @property (nonatomic, assign) CGFloat arrowHeight;
 
-@property (nonatomic, assign) CGFloat singleLineForWidth;
+/// Mul lines attributes
+@property (nonatomic, assign) CGFloat mulLineWidth;
+/// Close button attributes
+@property (nonatomic, assign) CGFloat closeButtonleading;
+@property (nonatomic, assign) CGFloat closeButtonWidth;
+/// If mul lines top padding
+@property (nonatomic, assign) CGFloat closeButtonTopPadding;
+
+
+
+
+
+
 
 @property (nonatomic, weak) id<SNAugusPopViewDelagate> delegate;
-
-
 
 /// A pop view  designated initalzation
 /// @param frame A origin of pop view and size is auto calucate
@@ -102,12 +115,25 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
 /// @param singleLine YES is 1 line, and NO is mul lines
 /// @param closeButtonName A button in top and right show,if name = @"" stand for not show
 /// @param leftImageName A imageView in centerY and left ,if name = @"" stand for not show
-/// NS_DESIGNATED_INITIALIZER
 - (instancetype)initWithFrame:(CGRect)frame
                          text:(NSString *)text
                     direction:(SNAugusPopViewDirection)direction
                    singleLine:(BOOL)singleLine
               closeButtonName:(NSString *)closeButtonName
+                leftImageName:(NSString *)leftImageName NS_DESIGNATED_INITIALIZER;
+
+
+- (instancetype)initWithFrame:(CGRect)frame
+                         text:(NSString *)text
+                    direction:(SNAugusPopViewDirection)direction
+                   singleLine:(BOOL)singleLine
+              closeButtonName:(NSString *)closeButtonName;
+
+
+- (instancetype)initWithFrame:(CGRect)frame
+                         text:(NSString *)text
+                    direction:(SNAugusPopViewDirection)direction
+                   singleLine:(BOOL)singleLine
                 leftImageName:(NSString *)leftImageName;
 
 
@@ -116,10 +142,7 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
                     direction:(SNAugusPopViewDirection)direction
                    singleLine:(BOOL)singleLine;
 
-/// A pop view initalzation,default direction is top.
-/// @param frame A origin of pop view and size is auto calucate
-/// @param text A text of pop View
-/// @param direction A text of popView's arrow direction
+
 - (instancetype)initWithFrame:(CGRect)frame
                          text:(NSString *)text
                     direction:(SNAugusPopViewDirection)direction;
