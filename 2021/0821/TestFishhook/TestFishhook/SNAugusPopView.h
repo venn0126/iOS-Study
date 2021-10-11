@@ -107,6 +107,8 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
 /// A popView dismiss method.
 - (void)dismiss;
 
+- (void)showToView:(UIView *)toView;
+
 @end
 
 NS_ASSUME_NONNULL_END

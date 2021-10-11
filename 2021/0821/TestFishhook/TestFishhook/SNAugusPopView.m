@@ -21,7 +21,7 @@ static CGFloat kAugusPopViewArrowWidth = 12.0;
 static CGFloat kAugusPopViewArrowHeight = 7.0;
 // (0,12]
 static CGFloat kAugusArrowHorizontalPadding = 12.0;
-static CGFloat kAugusArrowVerticalPadding = 3.0;
+//static CGFloat kAugusArrowVerticalPadding = 3.0;
 
 
 
@@ -32,6 +32,7 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 @interface SNAugusPopView ()
 
 @property (nonatomic, strong) UILabel *textLabel;
+@property (nonatomic, assign) BOOL showing;
 
 @end
 
@@ -57,6 +58,7 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     
     _direction = direction;
     _text = text;
+    _showing = NO;
     
     // set up ui
     [self configurePopView];
@@ -350,6 +352,10 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 
 - (void)show {
     
+    if (self.showing) {
+        return;
+    }
+    
     self.transform = CGAffineTransformMakeScale(0.01,0.01);
     self.alpha = 0.01;
     
@@ -371,6 +377,7 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     [UIView animateWithDuration:duration animations:^{
         self.alpha = 0.6;
         self.transform = CGAffineTransformMakeScale(1, 1);
+        self.showing = YES;
     } completion:^(BOOL finished) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(dismissDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 
@@ -385,6 +392,7 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 
 - (void)dismiss {
     
+    self.showing = NO;
     [UIView animateWithDuration:self.animationDuration animations:^{
         self.alpha = 0.01;
         self.transform = CGAffineTransformMakeScale(0.01, 0.01);
@@ -392,6 +400,26 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 //        [self removeAugusBorder];
         NSLog(@"finish dismiss");
     }];
+}
+
+- (void)showToView:(UIView *)toView {
+    if (!toView) {
+        return;
+    }
+    
+    BOOL isContained = NO;
+    for (UIView *subView in toView.subviews) {
+        if ([subView isKindOfClass:[SNAugusPopView class]]) {
+            isContained = YES;
+        }
+    }
+    
+    if (isContained) {
+        return;
+    }
+    
+    [toView addSubview:self];
+    [self show];
 }
 
 #pragma mark - Tap Action

@@ -38,6 +38,8 @@
     redView.backgroundColor = UIColor.redColor;
     CGFloat x = (self.view.bounds.size.width - 100) * 0.5;
     redView.frame = CGRectMake(x, 100, 100, 50);
+    
+    self.testView = redView;
     [self.view addSubview:redView];
     
 //    self.view.backgroundColor = UIColor.lightGrayColor;
@@ -92,11 +94,13 @@
 
 - (void)showPopTop {
     
-    self.topPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(100+60, 100+70, 0, 0) text:@"请阅读并勾选以下协议Top" direction:SNAugusPopViewDirectionTop];
+    self.topPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(10, self.testView.frame.size.height + 10, 0, 0) text:@"请阅读并勾选以下协议Top" direction:SNAugusPopViewDirectionTop];
     self.topPopView.delegate = self;
     self.topPopView.textFont = [UIFont systemFontOfSize:13];
     self.topPopView.verticalLabelPadding = 10;
-    [self.view addSubview:self.topPopView];
+//    [self.view addSubview:self.topPopView];
+    
+    [self.topPopView showToView:self.testView];
     
     
     
