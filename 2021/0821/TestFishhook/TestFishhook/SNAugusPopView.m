@@ -398,6 +398,7 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
         self.transform = CGAffineTransformMakeScale(0.01, 0.01);
     } completion:^(BOOL finished) {
 //        [self removeAugusBorder];
+        [self removeFromSuperview];
         NSLog(@"finish dismiss");
     }];
 }
