@@ -23,6 +23,7 @@
 
 @property (nonatomic, strong) SNAugusPopView *rightPopView;
 @property (nonatomic, strong) SNAugusPopView *leftPopView;
+@property (nonatomic, strong) SNAugusPopView *mulLinesPopView;
 
 
 @end
@@ -52,8 +53,20 @@
     [self showPopRight];
     
     [self showPopLeft];
+    
+    [self showPopViewMulLines];
 }
 
+
+- (void)showPopViewMulLines {
+    
+    self.mulLinesPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(50, 200, 0, 0) text:@"请阅读并勾选以下协议MulLines发现新的炼金珠女呗冲啊擦法" direction:SNAugusPopViewDirectionBottom singleLine:NO];
+    [self.view addSubview:self.mulLinesPopView];
+//    self.mulLinesPopView.backgroundColor = UIColor.yellowColor;
+    [self.mulLinesPopView show];
+    
+    
+}
 
 - (void)showPopLeft {
     
@@ -107,7 +120,7 @@
     UIButton *showPopViewButton = [[UIButton alloc] initWithFrame:CGRectMake(30, 300, 100, 50)];
     [showPopViewButton setTitle:@"showTop" forState:UIControlStateNormal];
     [showPopViewButton setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
-    showPopViewButton.backgroundColor = UIColor.blueColor;
+    showPopViewButton.backgroundColor = UIColor.linkColor;
     [showPopViewButton addTarget:self action:@selector(showPopViewButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:showPopViewButton];
 }

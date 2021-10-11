@@ -29,13 +29,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
-    // up
+    // Top
     SNAugusPopViewDirectionTop = 1 << 0,
-    // down
+    // Bottom
     SNAugusPopViewDirectionBottom = 1 << 1,
-    // right
+    // Left
     SNAugusPopViewDirectionLeft = 1 << 2,
-    // left
+    // Right
     SNAugusPopViewDirectionRight = 1 << 3,
     // All
     SNAugusPopViewDirectionAll = SNAugusPopViewDirectionTop | SNAugusPopViewDirectionBottom | SNAugusPopViewDirectionLeft | SNAugusPopViewDirectionRight,
@@ -89,9 +89,32 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
 @property (nonatomic, assign) CGFloat arrowWidth;
 @property (nonatomic, assign) CGFloat arrowHeight;
 
+@property (nonatomic, assign) CGFloat singleLineForWidth;
+
 @property (nonatomic, weak) id<SNAugusPopViewDelagate> delegate;
 
 
+
+/// A pop view  designated initalzation
+/// @param frame A origin of pop view and size is auto calucate
+/// @param text  A text of pop View
+/// @param direction A text of popView's arrow direction
+/// @param singleLine YES is 1 line, and NO is mul lines
+/// @param closeButtonName A button in top and right show,if name = @"" stand for not show
+/// @param leftImageName A imageView in centerY and left ,if name = @"" stand for not show
+/// NS_DESIGNATED_INITIALIZER
+- (instancetype)initWithFrame:(CGRect)frame
+                         text:(NSString *)text
+                    direction:(SNAugusPopViewDirection)direction
+                   singleLine:(BOOL)singleLine
+              closeButtonName:(NSString *)closeButtonName
+                leftImageName:(NSString *)leftImageName;
+
+
+- (instancetype)initWithFrame:(CGRect)frame
+                         text:(NSString *)text
+                    direction:(SNAugusPopViewDirection)direction
+                   singleLine:(BOOL)singleLine;
 
 /// A pop view initalzation,default direction is top.
 /// @param frame A origin of pop view and size is auto calucate
@@ -109,7 +132,15 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
 /// A popView dismiss method.
 - (void)dismiss;
 
+
+/// Show popView to super view.
+/// @param toView A super view.
 - (void)showToView:(UIView *)toView;
+
+
+// TODO: The multiple lines show
+// TODO: The right and top close btn,width and height, left,default width=height
+// TODO: The left and centerY of imageView
 
 @end
 

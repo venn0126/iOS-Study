@@ -23,7 +23,7 @@ static CGFloat kAugusPopViewArrowHeight = 7.0;
 static CGFloat kAugusArrowHorizontalPadding = 12.0;
 //static CGFloat kAugusArrowVerticalPadding = 3.0;
 
-
+static CGFloat kAugusPopViewSingleLineForWidth = 200.0;
 
 static NSString *SNAugusBorderLayerKey = @"SNAugusBorderLayerKey";
 static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
@@ -33,12 +33,93 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 
 @property (nonatomic, strong) UILabel *textLabel;
 @property (nonatomic, assign) BOOL showing;
+@property (nonatomic, assign) BOOL singleLine;
 
 @end
 
 @implementation SNAugusPopView
 
 #pragma mark - Initalzation
+
+- (instancetype)initWithFrame:(CGRect)frame
+                         text:(NSString *)text
+                    direction:(SNAugusPopViewDirection)direction
+                   singleLine:(BOOL)singleLine
+              closeButtonName:(NSString *)closeButtonName
+                leftImageName:(NSString *)leftImageName {
+    
+    self = [super initWithFrame:frame];
+    if (!self) {
+        return nil;
+    }
+    
+    // set defalut params
+    _cornerRadius = kAugusPopViewCornerRadius;
+    _animationDuration = kAugusPopViewAnimationDuration;
+    
+    _aBackgroundColor = UIColor.blackColor;
+    _direction = SNAugusPopViewDirectionTop;
+    // Default font 18
+    _textFont = [UIFont systemFontOfSize:13];
+    
+    _direction = direction;
+    _text = text;
+    _showing = NO;
+    _singleLine = singleLine;
+    
+    // set up ui
+    [self configurePopView];
+    
+    // add gesture to view
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
+    [self addGestureRecognizer:tap];
+    
+    return self;
+}
+
+
+- (instancetype)initWithFrame:(CGRect)frame
+                         text:(NSString *)text
+                    direction:(SNAugusPopViewDirection)direction
+                   singleLine:(BOOL)singleLine
+              closeButtonName:(NSString *)closeButtonName {
+    
+    self = [super initWithFrame:frame];
+    if (!self) {
+        return nil;
+    }
+    
+
+    
+    
+    return self;
+}
+
+
+- (instancetype)initWithFrame:(CGRect)frame
+                         text:(NSString *)text
+                    direction:(SNAugusPopViewDirection)direction
+                   singleLine:(BOOL)singleLine
+                leftImageName:(NSString *)leftImageName {
+    
+    self = [super initWithFrame:frame];
+    if (!self) {
+        return nil;
+    }
+    
+    
+    return self;
+}
+
+
+- (instancetype)initWithFrame:(CGRect)frame
+                         text:(NSString *)text
+                    direction:(SNAugusPopViewDirection)direction
+                   singleLine:(BOOL)singleLine {
+    
+    return [self initWithFrame:frame text:text direction:direction singleLine:singleLine closeButtonName:@"" leftImageName:@""];
+}
+
 
 - (instancetype)initWithFrame:(CGRect)frame text:(NSString *)text direction:(SNAugusPopViewDirection)direction {
     
@@ -160,8 +241,21 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
         cWidth = cWidth + arrowHeight;
     }
     
+    // single line & mul line
+    if (!self.singleLine) { // mul line
+        // set width
+        self.singleLineForWidth = self.singleLineForWidth > 0 ? self.singleLineForWidth : kAugusPopViewSingleLineForWidth;
+        // Default is 1 line
+        self.textLabel.numberOfLines = 0;
+        self.textLabel.frame = CGRectMake(self.singleLineForWidth, verticalPadding, self.singleLineForWidth, self.mulLineTextHeight + kAugusPopViewLabelVerticalPadding * 2);
+        cWidth = self.textLabel.frame.size.width + 2 * kAugusArrowHorizontalPadding;
+        
+    } else {// single line
+        
+        self.textLabel.frame = CGRectMake(horizontalPadding, verticalPadding,self.textWidth, self.textHeight);
+    }
     
-    self.textLabel.frame = CGRectMake(horizontalPadding, verticalPadding,self.textWidth, self.textHeight);
+    
     [self addSubview:self.textLabel];
     
    
@@ -183,6 +277,22 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 
 
 #pragma mark - Size For Subview
+
+
+- (CGFloat)mulLineTextHeight {
+    
+    if (self.text.length <= 0) {
+        return 0;
+    }
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    NSDictionary *attributes = @{NSFontAttributeName:self.textLabel.font, NSParagraphStyleAttributeName:paragraphStyle};
+    
+    CGSize maxSize = CGSizeMake(self.singleLineForWidth, CGFLOAT_MAX);
+    CGSize size = [self.text boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:attributes context:nil].size;
+    return  ceil(size.height);
+}
 
 
 - (CGFloat)textHeight {
@@ -255,6 +365,9 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
         self.textLabel.center = CGPointMake(self.bounds.size.width * 0.5 + height * 0.5, self.bounds.size.height * 0.5);
     }else if (_direction == SNAugusPopViewDirectionBottom){
         maxY -= height;
+        if (!self.singleLine) {
+            self.textLabel.center = CGPointMake(self.bounds.size.width * 0.5, self.bounds.size.height * 0.5 - kAugusPopViewLabelVerticalPadding * 0.5);
+        }
     } else {
         self.textLabel.center = CGPointMake(self.bounds.size.width * 0.5, self.bounds.size.height * 0.5);
     }
@@ -352,9 +465,9 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 
 - (void)show {
     
-    if (self.showing) {
-        return;
-    }
+//    if (self.showing) {
+//        return;
+//    }
     
     self.transform = CGAffineTransformMakeScale(0.01,0.01);
     self.alpha = 0.01;
