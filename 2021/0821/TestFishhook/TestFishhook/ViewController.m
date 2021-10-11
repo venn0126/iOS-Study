@@ -94,20 +94,20 @@
 
 - (void)showPopTop {
     
-    self.topPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(10, self.testView.frame.size.height + 10, 0, 0) text:@"请阅读并勾选以下协议Top" direction:SNAugusPopViewDirectionTop];
+    self.topPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(160, self.testView.frame.origin.y + 60, 0, 0) text:@"请阅读并勾选以下协议Top" direction:SNAugusPopViewDirectionTop];
     self.topPopView.delegate = self;
     self.topPopView.textFont = [UIFont systemFontOfSize:13];
     self.topPopView.verticalLabelPadding = 10;
-//    [self.view addSubview:self.topPopView];
+    [self.view addSubview:self.topPopView];
     
-    [self.topPopView showToView:self.testView];
+//    [self.topPopView showToView:self.testView];
     
     
     
     UIButton *showPopViewButton = [[UIButton alloc] initWithFrame:CGRectMake(30, 300, 100, 50)];
     [showPopViewButton setTitle:@"showTop" forState:UIControlStateNormal];
     [showPopViewButton setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
-    showPopViewButton.backgroundColor = UIColor.greenColor;
+    showPopViewButton.backgroundColor = UIColor.blueColor;
     [showPopViewButton addTarget:self action:@selector(showPopViewButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:showPopViewButton];
 }
@@ -159,7 +159,7 @@
     [self.topPopView show];
 }
 
-- (void)tapGesturePopView {
+- (void)augusPopViewClick:(SNAugusPopView *)popView {
     
     NSLog(@"vc tap respond");
     

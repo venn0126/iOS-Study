@@ -381,7 +381,7 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     } completion:^(BOOL finished) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(dismissDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 
-            [self dismiss];
+//            [self dismiss];
             NSLog(@"finish show");
         });
         
@@ -398,7 +398,7 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
         self.transform = CGAffineTransformMakeScale(0.01, 0.01);
     } completion:^(BOOL finished) {
 //        [self removeAugusBorder];
-        [self removeFromSuperview];
+//        [self removeFromSuperview];
         NSLog(@"finish dismiss");
     }];
 }
@@ -427,9 +427,8 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 
 - (void)tapAction {
     
-    if (self.delegate && [self.delegate respondsToSelector:@selector(tapGesturePopView)]) {
-        
-        [self.delegate tapGesturePopView];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(augusPopViewClick:)]) {
+        [self.delegate augusPopViewClick:self];
     }
 }
 

@@ -42,11 +42,13 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
     
 };
 
+
+@class SNAugusPopView;
 @protocol SNAugusPopViewDelagate <NSObject>
 
 @optional
 
-- (void)tapGesturePopView;
+- (void)augusPopViewClick:(SNAugusPopView *)popView;
 
 @end
 
