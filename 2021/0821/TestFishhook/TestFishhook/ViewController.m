@@ -52,9 +52,9 @@
     
 //    [self testAlphaAndBackgroundColor];
     
-//    [self testAugusPopView];
+    [self testAugusPopView];
     
-    [self testGradientLayer];
+//    [self testGradientLayer];
     
 
 }
@@ -64,20 +64,22 @@
     
     UIView *colorView = [[UIView alloc] init];
     colorView.frame = CGRectMake(0, 0, 200, 200);
-    colorView.center = CGPointMake(375/2.0, 667/2.0-100);
+    colorView.center = CGPointMake(375/2.0, 400);
     [self.view addSubview:colorView];
         
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = colorView.bounds;
     
-    gradient.colors = @[(id)[UIColor blackColor].CGColor,(id)[UIColor whiteColor].CGColor];
-    //
-    gradient.startPoint = CGPointMake(0, 1);
-    gradient.endPoint = CGPointMake(1, 0);
-    // gradient location area
-//    gradient.locations = @[@(0.0f), @(1.0f)];
+    gradient.colors = @[(id)[UIColor orangeColor].CGColor,(id)[UIColor redColor].CGColor];
+    // gradient line from start to end
+    gradient.startPoint = CGPointMake(0, 0.5);
+    gradient.endPoint = CGPointMake(1, 0.5);
+    // gradient location area,default 0-1
+    
+    gradient.locations = @[@(0.0f), @(1.0f)];
 //    gradient.locations = @[@(0.5f), @(1.0f)];
     [colorView.layer addSublayer:gradient];
+        
 }
 
 - (void)testAugusPopView {
@@ -120,7 +122,7 @@
 
 - (void)showPopViewAll {
     
-    self.allPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(50, 700, 0, 0) text:@"请阅读并勾选以下协议勾选以下协议All" direction:SNAugusPopViewDirectionBottom singleLine:YES closeButtonName:@"close" leftImageName:@"left"];
+    self.allPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(50, 700, 0, 0) text:@"请阅读并勾选以下协议勾选以下协议All" direction:SNAugusPopViewDirectionBottom singleLine:YES closeButtonName:@"close" leftImageName:@"left" gradient:NO];
     [self.view addSubview:self.allPopView];
     
 //    self.allPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(50, 700, 0, 0) text:@"请阅读并勾选以下协议勾选以下协议发发现新的炼金珠女呗冲啊擦法All" direction:SNAugusPopViewDirectionBottom singleLine:NO closeButtonName:@"close" leftImageName:@"left"];
@@ -130,6 +132,7 @@
 //    self.leftImagePopView.leftImageWidth = 30;
 //    self.leftImagePopView.leftImageHeight = 15;
 //    self.leftImagePopView.leftImageLabelPadding = 20;
+//    self.allPopView.textColor = UIColor.blackColor;
 
     
     
@@ -146,7 +149,7 @@
     
 //    self.closePopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(50, 500, 0, 0) text:@"请阅读并勾选以下协议MulLines发现新的炼金珠女呗冲啊擦法close" direction:SNAugusPopViewDirectionBottom singleLine:NO closeButtonName:@"Close"];
     
-    self.leftImagePopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(50, 580, 0, 0) text:@"请阅读并勾选以下协议LeftImage" direction:SNAugusPopViewDirectionBottom singleLine:YES leftImageName:@"left"];
+    self.leftImagePopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(50, 580, 0, 0) text:@"请阅读并勾选以下协议LeftImage" direction:SNAugusPopViewDirectionBottom singleLine:YES leftImageName:@"left" gradient:NO];
     [self.view addSubview:self.leftImagePopView];
     [self.leftImagePopView show];
     
@@ -170,7 +173,7 @@
     
 //    self.closePopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(50, 500, 0, 0) text:@"请阅读并勾选以下协议MulLines发现新的炼金珠女呗冲啊擦法close" direction:SNAugusPopViewDirectionBottom singleLine:NO closeButtonName:@"Close"];
     
-    self.closePopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(50, 480, 0, 0) text:@"请阅读并勾选以下协议SingleClose" direction:SNAugusPopViewDirectionBottom singleLine:YES closeButtonName:@"Close"];
+    self.closePopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(50, 480, 0, 0) text:@"请阅读并勾选以下协议SingleClose" direction:SNAugusPopViewDirectionBottom singleLine:YES closeButtonName:@"Close" gradient:NO];
     [self.view addSubview:self.closePopView];
     [self.closePopView show];
     
@@ -186,13 +189,18 @@
 
 - (void)showPopViewMulLines {
     
-    self.mulLinesPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(30, 250, 0, 0) text:@"这就是爱你的哥呀请阅读并勾选以下协议MulLines发现新的炼金珠女呗冲啊擦法" direction:SNAugusPopViewDirectionBottom singleLine:NO];
+    self.mulLinesPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(30, 250, 0, 0) text:@"这就是爱你的哥呀请阅读并勾选以下协议MulLines发现新的炼金珠女呗冲啊擦法" direction:SNAugusPopViewDirectionBottom singleLine:NO gradient:NO];
     self.mulLinesPopView.mulLineWidth = 100.0;
 //    self.mulLinesPopView.arrowVerticalPadding = 30.0;
     self.mulLinesPopView.textAlignment = NSTextAlignmentLeft;
 
     [self.view addSubview:self.mulLinesPopView];
 //    self.mulLinesPopView.backgroundColor = UIColor.yellowColor;
+    
+    self.mulLinesPopView.borderWidth = 5.0;
+    self.mulLinesPopView.borderColor = UIColor.greenColor;
+    
+    
     [self.mulLinesPopView show];
     
     
@@ -207,7 +215,7 @@
 
 - (void)showPopLeft {
     
-    self.leftPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(230, 100+25, 0, 0) text:@"请阅读并勾选以下协议Left" direction:SNAugusPopViewDirectionLeft];
+    self.leftPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(230, 100+25, 0, 0) text:@"请阅读并勾选以下协议Left" direction:SNAugusPopViewDirectionLeft gradient:NO];
     self.leftPopView.delegate = self;
     [self.view addSubview:self.leftPopView];
     
@@ -232,7 +240,7 @@
 
 - (void)showPopRight {
     
-    self.rightPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(160, 100+25, 0, 0) text:@"请阅读并勾选以下协议Right" direction:SNAugusPopViewDirectionRight];
+    self.rightPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(160, 100+25, 0, 0) text:@"请阅读并勾选以下协议Right" direction:SNAugusPopViewDirectionRight gradient:NO];
     self.rightPopView.delegate = self;
     [self.view addSubview:self.rightPopView];
     
@@ -252,7 +260,7 @@
 
 - (void)showPopTop {
     
-    self.topPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(160, self.testView.frame.origin.y + 60, 0, 0) text:@"请阅读并勾选以下协议Top" direction:SNAugusPopViewDirectionTop];
+    self.topPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(160, self.testView.frame.origin.y + 60, 0, 0) text:@"请阅读并勾选以下协议Top" direction:SNAugusPopViewDirectionTop gradient:NO];
     self.topPopView.delegate = self;
     self.topPopView.textFont = [UIFont systemFontOfSize:13];
     self.topPopView.arrowHorizontalPadding = 50;
@@ -276,12 +284,17 @@
 - (void)showPopBottom {
     
     
-    self.bottomPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(100+60, 100-20, 0, 0) text:@"请阅读并勾选以下协议Bottom" direction:SNAugusPopViewDirectionBottom];
+    self.bottomPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(100+60, 100-20, 0, 0) text:@"请阅读并勾选以下协议Bottom" direction:SNAugusPopViewDirectionBottom gradient:YES];
     self.bottomPopView.delegate = self;
     [self.view addSubview:self.bottomPopView];
     
 //    self.bottomPopView.verticalLabelPadding = 10;
     self.bottomPopView.textFont = [UIFont systemFontOfSize:16];
+    
+    self.bottomPopView.gradientColors = @[(id)(UIColor.orangeColor.CGColor),(id)UIColor.redColor.CGColor];
+    self.bottomPopView.gradientStartPoint = CGPointMake(1.0, 0.5);
+    self.bottomPopView.gradientEndPoint = CGPointMake(0.0, 0.5);
+    self.bottomPopView.gradientLocations = @[@0.5,@1.0];
 
     
     UIButton *showPopViewButton = [[UIButton alloc] initWithFrame:CGRectMake(250, 300, 120, 50)];

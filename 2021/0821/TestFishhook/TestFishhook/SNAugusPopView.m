@@ -54,7 +54,7 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 @property (nonatomic, copy) NSString *closeButtonName;
 @property (nonatomic, strong) UIButton *closeButton;
 @property (nonatomic, strong) UIImageView *leftImageView;
-
+@property (nonatomic, assign) BOOL aGradient;
 
 
 @end
@@ -64,17 +64,17 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 #pragma mark - Initalzation
 
 - (instancetype)init {
-    return [self initWithFrame:CGRectZero text:@"请阅读并勾选以下协议" direction:SNAugusPopViewDirectionTop singleLine:YES closeButtonName:@"" leftImageName:@""];
+    return [self initWithFrame:CGRectZero text:@"请阅读并勾选以下协议" direction:SNAugusPopViewDirectionTop singleLine:YES closeButtonName:@"" leftImageName:@"" gradient:NO];
 }
 
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
-    return [self initWithFrame:CGRectZero text:@"请阅读并勾选以下协议" direction:SNAugusPopViewDirectionTop singleLine:YES closeButtonName:@"" leftImageName:@""];
+    return [self initWithFrame:CGRectZero text:@"请阅读并勾选以下协议" direction:SNAugusPopViewDirectionTop singleLine:YES closeButtonName:@"" leftImageName:@"" gradient:NO];
 }
 
 
 - (instancetype)initWithFrame:(CGRect)frame {
-    return [self initWithFrame:frame text:@"请阅读并勾选以下协议" direction:SNAugusPopViewDirectionTop singleLine:YES closeButtonName:@"" leftImageName:@""];;
+    return [self initWithFrame:frame text:@"请阅读并勾选以下协议" direction:SNAugusPopViewDirectionTop singleLine:YES closeButtonName:@"" leftImageName:@"" gradient:NO];;
 }
 
 
@@ -83,7 +83,8 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
                     direction:(SNAugusPopViewDirection)direction
                    singleLine:(BOOL)singleLine
               closeButtonName:(NSString *)closeButtonName
-                leftImageName:(NSString *)leftImageName {
+                leftImageName:(NSString *)leftImageName
+                     gradient:(BOOL)gradient{
     
     self = [super initWithFrame:frame];
     if (!self) {
@@ -115,8 +116,18 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     _leftImageWidth = kAugusLeftImageWidth;
     _leftImageHeight = kAugusLeftImageHeight;
     _leftImageLabelPadding = kAugusLeftImageLabelPadding;
-
     
+    // gradient
+    _gradientColors = nil;
+    _gradientStartPoint = CGPointMake(0, 0.5);
+    _gradientEndPoint = CGPointMake(1, 0.5);
+    _gradientLocations = @[@0.0,@1.0];
+    _aGradient = gradient;
+    
+    // border
+    _borderWidth = 0.0;
+    _borderColor = UIColor.clearColor;
+
     // about self
     _aBackgroundRed = kAugusBackgroundRed;
     _aBackgroundGreen = kAugusBackgroundGreen;
@@ -154,9 +165,10 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
                          text:(NSString *)text
                     direction:(SNAugusPopViewDirection)direction
                    singleLine:(BOOL)singleLine
-              closeButtonName:(NSString *)closeButtonName {
+              closeButtonName:(NSString *)closeButtonName
+                     gradient:(BOOL)gradient {
     
-    return [self initWithFrame:frame text:text direction:direction singleLine:singleLine closeButtonName:closeButtonName leftImageName:@""];
+    return [self initWithFrame:frame text:text direction:direction singleLine:singleLine closeButtonName:closeButtonName leftImageName:@"" gradient:gradient];
 }
 
 
@@ -164,24 +176,29 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
                          text:(NSString *)text
                     direction:(SNAugusPopViewDirection)direction
                    singleLine:(BOOL)singleLine
-                leftImageName:(NSString *)leftImageName {
+                leftImageName:(NSString *)leftImageName
+                     gradient:(BOOL)gradient {
     
-    return [self initWithFrame:frame text:text direction:direction singleLine:singleLine closeButtonName:@"" leftImageName:leftImageName];
+    return [self initWithFrame:frame text:text direction:direction singleLine:singleLine closeButtonName:@"" leftImageName:leftImageName gradient:gradient];
 }
 
 
 - (instancetype)initWithFrame:(CGRect)frame
                          text:(NSString *)text
                     direction:(SNAugusPopViewDirection)direction
-                   singleLine:(BOOL)singleLine {
+                   singleLine:(BOOL)singleLine
+                     gradient:(BOOL)gradient {
     
-    return [self initWithFrame:frame text:text direction:direction singleLine:singleLine closeButtonName:@"" leftImageName:@""];
+    return [self initWithFrame:frame text:text direction:direction singleLine:singleLine closeButtonName:@"" leftImageName:@"" gradient:gradient];
 }
 
 
-- (instancetype)initWithFrame:(CGRect)frame text:(NSString *)text direction:(SNAugusPopViewDirection)direction {
+- (instancetype)initWithFrame:(CGRect)frame
+                         text:(NSString *)text
+                    direction:(SNAugusPopViewDirection)direction
+                     gradient:(BOOL)gradient {
 
-    return [self initWithFrame:frame text:text direction:direction singleLine:YES closeButtonName:@"" leftImageName:@""];
+    return [self initWithFrame:frame text:text direction:direction singleLine:YES closeButtonName:@"" leftImageName:@"" gradient:gradient];
     
 }
 
@@ -320,6 +337,42 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 
 - (void)setLeftImageLabelPadding:(CGFloat)leftImageLabelPadding {
     _leftImageLabelPadding = leftImageLabelPadding;
+    [self configurePopView];
+}
+
+
+- (void)setGradientColors:(NSArray *)gradientColors {
+    _gradientColors = gradientColors;
+    [self configurePopView];
+}
+
+
+- (void)setGradientStartPoint:(CGPoint)gradientStartPoint {
+    _gradientStartPoint = CGPointMake(gradientStartPoint.x, gradientStartPoint.y);
+    [self configurePopView];
+}
+
+
+- (void)setGradientEndPoint:(CGPoint)gradientEndPoint {
+    _gradientEndPoint = CGPointMake(gradientEndPoint.x, gradientEndPoint.y);
+    [self configurePopView];
+}
+
+
+- (void)setGradientLocations:(NSArray<NSNumber *> *)gradientLocations {
+    _gradientLocations = gradientLocations;
+    [self configurePopView];
+}
+
+
+- (void)setBorderWidth:(CGFloat)borderWidth {
+    _borderWidth = borderWidth;
+    [self configurePopView];
+}
+
+
+- (void)setBorderColor:(UIColor *)borderColor {
+    _borderColor = borderColor;
     [self configurePopView];
 }
 
@@ -471,7 +524,7 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
                      height:(CGFloat)height
                cornerRadius:(CGFloat)cornerRadius direction:(SNAugusPopViewDirection)direction{
     
-    [self removeAugusBorder];
+    [self removeSomeLayer];
     
     // Only a mask layer
     CAShapeLayer *mask = [[CAShapeLayer alloc] init];
@@ -558,31 +611,54 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     
     mask.path = [path CGPath];
     
-    // shap layer
-//    if (borderWidth>0) {
+    // Shadow attributes
+    if (self.borderWidth > 0) {
         CAShapeLayer *border = [[CAShapeLayer alloc] init];
         border.path = [path CGPath];
-//        border.strokeColor = borderColor.CGColor;
-//        border.lineWidth = 5;
+        border.strokeColor = self.borderColor.CGColor;
+        border.lineWidth = self.borderWidth;
         border.fillColor = [UIColor clearColor].CGColor;
         [self.layer addSublayer:border];
-//
-        [self markFCBorder:border];
-//    }
+        [self markSomeLayer:border];
+    }
+    
+    // Gradient effect
+    if (self.aGradient) {
+        CAGradientLayer *gradient = [CAGradientLayer layer];
+        gradient.frame = self.bounds;
+        gradient.colors = self.gradientColors;
+        // gradient line from start to end
+        gradient.startPoint = CGPointMake(self.gradientStartPoint.x, self.gradientStartPoint.y);
+        NSLog(@"start point %@",NSStringFromCGPoint(self.gradientStartPoint));
+
+        gradient.endPoint = CGPointMake(self.gradientEndPoint.x, self.gradientEndPoint.y);
+        NSLog(@"end point %@",NSStringFromCGPoint(self.gradientEndPoint));
+        // gradient location area,default 0-1
+        gradient.locations = self.gradientLocations;
+        
+        NSLog(@"locations %@",self.gradientLocations);
+
+        //    gradient.locations = @[@(0.5f), @(1.0f)];
+        //    [self.layer addSublayer:gradient];
+        [self.layer insertSublayer:gradient atIndex:0];
+        [self markSomeLayer:gradient];
+    }
+    
 }
 
--(void)markFCBorder:(CALayer *)layer{
+-(void)markSomeLayer:(CALayer *)layer{
     
     objc_setAssociatedObject(self, &SNAugusBorderLayerKey, layer, OBJC_ASSOCIATION_RETAIN);
 }
 
--(void)removeAugusBorder {
+-(void)removeSomeLayer {
     if ([self.layer.mask.name isEqualToString:SNAugusBorderMaskName]) {
         self.layer.mask = nil;
     }
     
     CAShapeLayer *oldLayer = objc_getAssociatedObject(self, &SNAugusBorderLayerKey);
     if (oldLayer) [oldLayer removeFromSuperlayer];
+    
 }
 
 

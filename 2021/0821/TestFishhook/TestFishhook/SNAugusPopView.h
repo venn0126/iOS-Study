@@ -118,6 +118,26 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
 @property (nonatomic, assign) CGFloat leftImageHeight;
 @property (nonatomic, assign) CGFloat leftImageLabelPadding;
 
+/// Gradient Effect attributes
+// The array of CGColorRef objects defining the color of each gradient
+// stop. Defaults to nil. Animatable.
+@property (nonatomic, copy) NSArray *gradientColors;
+/* The start and end points of the gradient when drawn into the layer's
+ * coordinate space. The start point corresponds to the first gradient
+ * stop, the end point to the last gradient stop. Both points are
+ * defined in a unit coordinate space that is then mapped to the
+ * layer's bounds rectangle when drawn. (I.e. [0,0] is the bottom-left
+ * corner of the layer, [1,1] is the top-right corner.) The default values
+ * are [.5,0] and [.5,1] respectively. Both are animatable. */
+@property (nonatomic, assign) CGPoint gradientStartPoint;
+@property (nonatomic, assign) CGPoint gradientEndPoint;
+/* An optional array of NSNumber objects defining the location of each
+ * gradient stop as a value in the range [0,1]. The values must be
+ * monotonically increasing. If a nil array is given, the stops are
+ * assumed to spread uniformly across the [0,1] range. When rendered,
+ * the colors are mapped to the output colorspace before being
+ * interpolated. Defaults to nil. Animatable. */
+@property(nonatomic, copy) NSArray<NSNumber *> *gradientLocations;
 
 
 @property (nonatomic, weak) id<SNAugusPopViewDelagate> delegate;
@@ -129,37 +149,43 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
 /// @param singleLine YES is 1 line, and NO is mul lines
 /// @param closeButtonName A button in top and right show,if name = @"" stand for not show
 /// @param leftImageName A imageView in centerY and left ,if name = @"" stand for not show
+/// @param gradient The popView has gradient effect or not,you need to set about gradient attributes,eg gradientColors
 - (instancetype)initWithFrame:(CGRect)frame
                          text:(NSString *)text
                     direction:(SNAugusPopViewDirection)direction
                    singleLine:(BOOL)singleLine
               closeButtonName:(NSString *)closeButtonName
-                leftImageName:(NSString *)leftImageName NS_DESIGNATED_INITIALIZER;
+                leftImageName:(NSString *)leftImageName
+                     gradient:(BOOL)gradient NS_DESIGNATED_INITIALIZER;
 
 
 - (instancetype)initWithFrame:(CGRect)frame
                          text:(NSString *)text
                     direction:(SNAugusPopViewDirection)direction
                    singleLine:(BOOL)singleLine
-              closeButtonName:(NSString *)closeButtonName;
+              closeButtonName:(NSString *)closeButtonName
+                     gradient:(BOOL)gradient;
 
 
 - (instancetype)initWithFrame:(CGRect)frame
                          text:(NSString *)text
                     direction:(SNAugusPopViewDirection)direction
                    singleLine:(BOOL)singleLine
-                leftImageName:(NSString *)leftImageName;
+                leftImageName:(NSString *)leftImageName
+                     gradient:(BOOL)gradient;
 
 
 - (instancetype)initWithFrame:(CGRect)frame
                          text:(NSString *)text
                     direction:(SNAugusPopViewDirection)direction
-                   singleLine:(BOOL)singleLine;
+                   singleLine:(BOOL)singleLine
+                     gradient:(BOOL)gradient;
 
 
 - (instancetype)initWithFrame:(CGRect)frame
                          text:(NSString *)text
-                    direction:(SNAugusPopViewDirection)direction;
+                    direction:(SNAugusPopViewDirection)direction
+                     gradient:(BOOL)gradient;
 
 
 /// A popView show method.
