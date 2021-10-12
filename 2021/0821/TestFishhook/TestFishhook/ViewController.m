@@ -52,11 +52,33 @@
     
 //    [self testAlphaAndBackgroundColor];
     
-    [self testAugusPopView];
+//    [self testAugusPopView];
+    
+    [self testGradientLayer];
     
 
 }
 
+
+- (void)testGradientLayer {
+    
+    UIView *colorView = [[UIView alloc] init];
+    colorView.frame = CGRectMake(0, 0, 200, 200);
+    colorView.center = CGPointMake(375/2.0, 667/2.0-100);
+    [self.view addSubview:colorView];
+        
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = colorView.bounds;
+    
+    gradient.colors = @[(id)[UIColor blackColor].CGColor,(id)[UIColor whiteColor].CGColor];
+    //
+    gradient.startPoint = CGPointMake(0, 1);
+    gradient.endPoint = CGPointMake(1, 0);
+    // gradient location area
+//    gradient.locations = @[@(0.0f), @(1.0f)];
+//    gradient.locations = @[@(0.5f), @(1.0f)];
+    [colorView.layer addSublayer:gradient];
+}
 
 - (void)testAugusPopView {
     

@@ -176,6 +176,7 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
 
 
 // TODO: The customView for popView
+// TODO: The self backgroundColor gradient
 
 @end
 
