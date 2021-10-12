@@ -12,6 +12,11 @@
 
 static CGFloat kAugusPopViewCornerRadius = 5.0;
 
+static CGFloat kAugusBackgroundRed = 0.0;
+static CGFloat kAugusBackgroundGreen = 0.0;
+static CGFloat kAugusBackgroundBlue = 0.0;
+static CGFloat kAugusBackgroundShowAlpha = 0.7;
+
 static NSTimeInterval kAugusPopViewAnimationDuration = 3.0;
 static NSTimeInterval kAugusPopViewDismissDuration = 0.3;
 static NSTimeInterval kAugusPopViewShowDuration = 0.3;
@@ -29,7 +34,12 @@ static CGFloat kAugusPopViewMulLineForWidth = 200.0;
 
 static CGFloat kAugusCloseButtonLeading = 5.0;
 static CGFloat kAugusCloseButtonWidth = 15.0;
+static CGFloat kAugusCloseButtonHeight = 15.0;
 static CGFloat kAugusCloseButtonTopPadding = 8.0;
+
+static CGFloat kAugusLeftImageWidth = 15.0;
+static CGFloat kAugusLeftImageHeight = 15.0;
+static CGFloat kAugusLeftImageLabelPadding = 10.0;
 
 
 static NSString *SNAugusBorderLayerKey = @"SNAugusBorderLayerKey";
@@ -42,8 +52,8 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 @property (nonatomic, assign) BOOL showing;
 @property (nonatomic, assign) BOOL singleLine;
 @property (nonatomic, copy) NSString *closeButtonName;
-@property (nonatomic, copy) NSString *leftImageName;
 @property (nonatomic, strong) UIButton *closeButton;
+@property (nonatomic, strong) UIImageView *leftImageView;
 
 
 
@@ -57,13 +67,16 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     return [self initWithFrame:CGRectZero text:@"请阅读并勾选以下协议" direction:SNAugusPopViewDirectionTop singleLine:YES closeButtonName:@"" leftImageName:@""];
 }
 
+
 - (instancetype)initWithCoder:(NSCoder *)coder {
     return [self initWithFrame:CGRectZero text:@"请阅读并勾选以下协议" direction:SNAugusPopViewDirectionTop singleLine:YES closeButtonName:@"" leftImageName:@""];
 }
 
+
 - (instancetype)initWithFrame:(CGRect)frame {
     return [self initWithFrame:frame text:@"请阅读并勾选以下协议" direction:SNAugusPopViewDirectionTop singleLine:YES closeButtonName:@"" leftImageName:@""];;
 }
+
 
 - (instancetype)initWithFrame:(CGRect)frame
                          text:(NSString *)text
@@ -96,10 +109,27 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     _closeButtonleading = kAugusCloseButtonLeading;
     _closeButtonWidth = kAugusCloseButtonWidth;
     _closeButtonTopPadding = kAugusCloseButtonTopPadding;
+    _closeButtonHeight = kAugusCloseButtonHeight;
     
-    _aBackgroundColor = UIColor.blackColor;
+    _leftImageName = leftImageName;
+    _leftImageWidth = kAugusLeftImageWidth;
+    _leftImageHeight = kAugusLeftImageHeight;
+    _leftImageLabelPadding = kAugusLeftImageLabelPadding;
+
+    
+    // about self
+    _aBackgroundRed = kAugusBackgroundRed;
+    _aBackgroundGreen = kAugusBackgroundGreen;
+    _aBackgroundBlue = kAugusBackgroundBlue;
+    _aBackgroundShowAlpha = kAugusBackgroundShowAlpha;
+    
+    _aBackgroundColor = [UIColor colorWithRed:_aBackgroundRed green:_aBackgroundGreen blue:_aBackgroundBlue alpha:1];
+    // about text
     // Default font 13
     _textFont = [UIFont systemFontOfSize:13];
+    // Text alignment default center
+    _textAlignment = NSTextAlignmentCenter;
+    _textColor = UIColor.whiteColor;
     
     
     _direction = direction;
@@ -164,6 +194,18 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 }
 
 
+- (void)setTextColor:(UIColor *)textColor {
+    _textColor = textColor;
+    self.textLabel.textColor = _textColor;
+}
+
+
+- (void)setTextAlignment:(NSTextAlignment)textAlignment {
+    _textAlignment = textAlignment;
+    self.textLabel.textAlignment = _textAlignment;
+}
+
+
 - (void)setVerticalLabelPadding:(CGFloat)verticalLabelPadding {
     
     _verticalLabelPadding = verticalLabelPadding;
@@ -205,22 +247,27 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     [self configurePopView];
 }
 
+
 - (void)setAnimationDuration:(NSTimeInterval)animationDuration {
     _animationDuration = animationDuration;
 }
+
 
 - (void)setShowDuration:(NSTimeInterval)showDuration {
     _showDuration = showDuration;
 }
 
+
 - (void)setDismissDuration:(NSTimeInterval)dismissDuration {
     _dismissDuration = dismissDuration;
 }
+
 
 - (void)setMulLineWidth:(CGFloat)mulLineWidth {
     _mulLineWidth = mulLineWidth;
     [self configurePopView];
 }
+
 
 - (void)setCloseButtonTopPadding:(CGFloat)closeButtonTopPadding {
     _closeButtonTopPadding = closeButtonTopPadding;
@@ -228,16 +275,81 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 }
 
 
+- (void)setCloseButtonHeight:(CGFloat)closeButtonHeight {
+    _closeButtonHeight = closeButtonHeight;
+    [self configurePopView];
+}
+
+
+- (void)setLeftImageName:(NSString *)leftImageName {
+    _leftImageName = leftImageName;
+    [self configurePopView];
+}
+
+
+- (void)setLeftImageWidth:(CGFloat)leftImageWidth {
+    _leftImageWidth = leftImageWidth;
+    [self configurePopView];
+}
+
+
+- (void)setLeftImageHeight:(CGFloat)leftImageHeight {
+    _leftImageHeight = leftImageHeight;
+    [self configurePopView];
+}
+
+
+- (void)setABackgroundRed:(CGFloat)aBackgroundRed {
+    _aBackgroundRed = aBackgroundRed;
+}
+
+
+- (void)setABackgroundGreen:(CGFloat)aBackgroundGreen {
+    _aBackgroundGreen = aBackgroundGreen;
+}
+
+
+- (void)setABackgroundBlue:(CGFloat)aBackgroundBlue {
+    _aBackgroundBlue = aBackgroundBlue;
+}
+
+- (void)setABackgroundShowAlpha:(CGFloat)aBackgroundShowAlpha {
+    _aBackgroundShowAlpha = aBackgroundShowAlpha;
+}
+
+
+- (void)setLeftImageLabelPadding:(CGFloat)leftImageLabelPadding {
+    _leftImageLabelPadding = leftImageLabelPadding;
+    [self configurePopView];
+}
+
 #pragma mark - Set up UI
 
 - (void)configurePopView {
     
-    self.backgroundColor = self.aBackgroundColor;
     self.textLabel.text = self.text;
     self.textLabel.font = self.textFont;
-        
+    self.textLabel.textAlignment = self.textAlignment;
+    self.textLabel.textColor = self.textColor;
+  
+    // cwidth depend on text and font
     CGFloat cWidth = self.textWidth + 2 * self.horizontalLabelPadding;
     CGFloat cHeight = self.textHeight + 2 * self.verticalLabelPadding;
+    
+    
+    // left image name
+    // default support single line + left image
+    if (self.leftImageName.length > 0 && self.singleLine) {
+        self.leftImageView.image = [UIImage imageNamed:self.leftImageName];
+        CGFloat y = (cHeight - self.leftImageHeight) * 0.5;
+        self.leftImageView.frame = CGRectMake(self.horizontalLabelPadding, y, self.leftImageWidth, self.leftImageHeight);
+        
+        cWidth += self.leftImageView.frame.size.width + self.leftImageLabelPadding;
+        [self addSubview:self.leftImageView];
+    }
+    
+    // add textLabel depend on leftImageView
+    [self addSubview:self.textLabel];
     
     if (self.direction == SNAugusPopViewDirectionTop || self.direction == SNAugusPopViewDirectionBottom) {
         cHeight = cHeight + self.arrowHeight;
@@ -246,18 +358,19 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     }
     
     // single line & mul line
-    if (!self.singleLine) { // mul line
+    if (self.singleLine) { // single line
+        CGFloat x = self.horizontalLabelPadding;
+        if (self.leftImageView.frame.origin.x > 0) {
+            x = self.leftImageView.frame.origin.x + self.leftImageView.frame.size.width + self.leftImageLabelPadding;
+        }
+        self.textLabel.frame = CGRectMake(x, self.verticalLabelPadding,self.textWidth, self.textHeight);
+    } else {// mul lines
         // set width
         self.textLabel.numberOfLines = 0;
-        CGFloat mulY = (cHeight - self.mulLineTextHeight - self.arrowHeight) * 0.5;
-        self.textLabel.frame = CGRectMake(self.horizontalLabelPadding, mulY, self.mulLineWidth, self.mulLineTextHeight);
+        self.textLabel.frame = CGRectMake(self.horizontalLabelPadding, self.verticalLabelPadding * 0.5, self.mulLineWidth, self.mulLineTextHeight);
         cWidth = self.mulLineWidth + 2 * self.horizontalLabelPadding;
         cHeight = self.mulLineTextHeight + 2 * self.verticalLabelPadding;
         
-        
-    } else {// single line
-        
-        self.textLabel.frame = CGRectMake(self.horizontalLabelPadding, self.verticalLabelPadding,self.textWidth, self.textHeight);
     }
     
     
@@ -267,33 +380,23 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
         if (self.singleLine) {
             
             CGFloat y = (cHeight - self.closeButtonWidth - self.arrowHeight) * 0.5;
-            self.closeButton.frame = CGRectMake(self.textLabel.frame.origin.x + self.textLabel.frame.size.width + self.closeButtonleading, y, self.closeButtonWidth, self.closeButtonWidth);
+            self.closeButton.frame = CGRectMake(self.textLabel.frame.origin.x + self.textLabel.frame.size.width + self.closeButtonleading, y, self.closeButtonWidth, self.closeButtonHeight);
 
         } else {
             CGFloat mulY = (cHeight - self.mulLineTextHeight - self.arrowHeight) * 0.5;
             self.textLabel.frame = CGRectMake(self.textLabel.frame.origin.x, mulY, self.textLabel.frame.size.width, self.textLabel.frame.size.height);
-            self.closeButton.frame = CGRectMake(self.textLabel.frame.origin.x + self.textLabel.frame.size.width + self.closeButtonleading, self.closeButtonTopPadding, self.closeButtonWidth, self.closeButtonWidth);
-
+            self.closeButton.frame = CGRectMake(self.textLabel.frame.origin.x + self.textLabel.frame.size.width + self.closeButtonleading, self.closeButtonTopPadding, self.closeButtonWidth, self.closeButtonHeight);
         }
-        
         
         cWidth += self.closeButton.frame.size.width + self.closeButtonleading;
         [self addSubview:self.closeButton];
     }
     
-    // left image name
-    if (self.leftImageName.length > 0) {
-        
-    }
-    
-    
-    [self addSubview:self.textLabel];
-    
-   
     // update self frame
     self.bounds = CGRectMake(0, 0, cWidth,cHeight);
-    self.alpha = 0.01;
-    
+//    self.alpha = 0.01;
+//    self.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.01];
+    self.hidden = YES;
     
     // draw background mask
     CGFloat offset = 0;
@@ -357,18 +460,12 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 
  #pragma mark - Draw Background Layer
 
-
-/**
- Add border with arrow for view
- 
- @param direction direction of arrow
- @param offset 箭头的坐标，如果是在左右朝向，传箭头中心位置的y值；如果是上下朝向，传箭头中心位置x值
- @param width The width of arrow.
- @param height The height of arrow.
- @param cornerRadius The corner radius, if cornerRadius <= 0 is none.
-
- */
-
+/// Add border with arrow for view
+/// @param offset arrow's origin,if left and right pass y of center,or pass x of center
+/// @param width  The width of arrow.
+/// @param height The height of arrow.
+/// @param cornerRadius  The corner radius, if cornerRadius <= 0 is none.
+/// @param direction direction of arrow
 -(void)addArrowBorderoffset:(CGFloat)offset
                       width:(CGFloat)width
                      height:(CGFloat)height
@@ -396,9 +493,6 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
         self.textLabel.center = CGPointMake(self.bounds.size.width * 0.5 + height * 0.5, self.bounds.size.height * 0.5);
     }else if (_direction == SNAugusPopViewDirectionBottom){
         maxY -= height;
-        if (!self.singleLine) {
-//            self.textLabel.center = CGPointMake(self.bounds.size.width * 0.5, self.bounds.size.height * 0.5 - kAugusPopViewLabelVerticalPadding * 0.5);
-        }
     } else {
         self.textLabel.center = CGPointMake(self.bounds.size.width * 0.5, self.bounds.size.height * 0.5);
     }
@@ -422,7 +516,7 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     }
     
     
-    // right line
+    // right arrow
     if (direction == SNAugusPopViewDirectionRight) {
         [path addLineToPoint:CGPointMake(maxX, offset - width * 0.5)];
         [path addLineToPoint:CGPointMake(maxX + height, offset)];
@@ -449,7 +543,7 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     }
     
     
-    // left line
+    // left arrow
     if (direction == SNAugusPopViewDirectionLeft) {
         [path addLineToPoint:CGPointMake(minX, offset + width * 0.5)];
         [path addLineToPoint:CGPointMake(minX-height, offset)];
@@ -501,7 +595,9 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 //    }
     
     self.transform = CGAffineTransformMakeScale(0.01,0.01);
-    self.alpha = 0.01;
+//    self.alpha = 0.01;
+    self.backgroundColor = [UIColor colorWithRed:self.aBackgroundRed green:self.aBackgroundGreen blue:self.aBackgroundBlue alpha:0.01];
+
     
     if (self.direction == SNAugusPopViewDirectionTop) {
         self.layer.anchorPoint = CGPointMake(0.1, 0.1);
@@ -519,7 +615,10 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     CGFloat showDuration = self.showDuration > 0 ? self.showDuration : kAugusPopViewShowDuration;
         
     [UIView animateWithDuration:showDuration animations:^{
-        self.alpha = 0.6;
+//        self.alpha = 0.7;
+        self.backgroundColor = [UIColor colorWithRed:self.aBackgroundRed green:self.aBackgroundGreen blue:self.aBackgroundBlue alpha:self.aBackgroundShowAlpha];
+        self.hidden = NO;
+
         self.transform = CGAffineTransformMakeScale(1, 1);
         self.showing = YES;
     } completion:^(BOOL finished) {
@@ -538,7 +637,9 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     
     self.showing = NO;
     [UIView animateWithDuration:self.dismissDuration animations:^{
-        self.alpha = 0.01;
+//        self.alpha = 0.01;
+        self.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.01];
+
         self.transform = CGAffineTransformMakeScale(0.01, 0.01);
     } completion:^(BOOL finished) {
 //        [self removeAugusBorder];
@@ -590,7 +691,7 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
         _textLabel.font = [UIFont systemFontOfSize:13];
         _textLabel.textColor = UIColor.whiteColor;
         _textLabel.textAlignment = NSTextAlignmentCenter;
-//        _textLabel.backgroundColor = UIColor.whiteColor;
+//        _textLabel.backgroundColor = UIColor.blackColor;
         [_textLabel sizeToFit];
         
     }
@@ -605,6 +706,15 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
         _closeButton.backgroundColor = UIColor.greenColor;
     }
     return _closeButton;
+}
+
+
+- (UIImageView *)leftImageView {
+    if (!_leftImageView) {
+        _leftImageView = [[UIImageView alloc] init];
+        _leftImageView.backgroundColor = UIColor.redColor;
+    }
+    return _leftImageView;
 }
 
 

@@ -23,7 +23,12 @@
 
 @property (nonatomic, strong) SNAugusPopView *rightPopView;
 @property (nonatomic, strong) SNAugusPopView *leftPopView;
+
 @property (nonatomic, strong) SNAugusPopView *mulLinesPopView;
+@property (nonatomic, strong) SNAugusPopView *closePopView;
+
+@property (nonatomic, strong) SNAugusPopView *leftImagePopView;
+@property (nonatomic, strong) SNAugusPopView *allPopView;
 
 
 @end
@@ -35,6 +40,7 @@
     // Do any additional setup after loading the view.
     
     
+//    self.view.backgroundColor = UIColor.linkColor;
     UIView *redView = [[UIView alloc] init];
     redView.backgroundColor = UIColor.redColor;
     CGFloat x = (self.view.bounds.size.width - 100) * 0.5;
@@ -43,7 +49,16 @@
     self.testView = redView;
     [self.view addSubview:redView];
     
-//    self.view.backgroundColor = UIColor.lightGrayColor;
+    
+//    [self testAlphaAndBackgroundColor];
+    
+    [self testAugusPopView];
+    
+
+}
+
+
+- (void)testAugusPopView {
     
     // Test popView for top
     [self showPopTop];
@@ -54,27 +69,117 @@
     
     [self showPopLeft];
     
+    // mul lines
     [self showPopViewMulLines];
-//    [self showPopViewCloseButton];
+    // close button 500
+    [self showPopViewCloseButton];
+    
+    [self showPopViewLeftImage];
+    
+    [self showPopViewAll];
+}
+
+- (void)testAlphaAndBackgroundColor {
+    
+    UIView *view = [[UIView alloc] init];
+    //red, green, blue 的值 随意填， 关键的是 alpha 要为 0
+    view.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.7];
+    view.frame = CGRectMake(30, 100, 200, 200);
+    [self.view addSubview:view];
+    
+    UILabel *label = [[UILabel alloc] init];
+    label.frame = CGRectMake(10, 10, 200, 50);
+    label.text = @"White 1";
+    label.textColor = UIColor.whiteColor;
+//    label.backgroundColor = [UIColor blueColor];
+    [view addSubview:label];
+}
+
+
+- (void)showPopViewAll {
+    
+    self.allPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(50, 700, 0, 0) text:@"请阅读并勾选以下协议勾选以下协议All" direction:SNAugusPopViewDirectionBottom singleLine:YES closeButtonName:@"close" leftImageName:@"left"];
+    [self.view addSubview:self.allPopView];
+    
+//    self.allPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(50, 700, 0, 0) text:@"请阅读并勾选以下协议勾选以下协议发发现新的炼金珠女呗冲啊擦法All" direction:SNAugusPopViewDirectionBottom singleLine:NO closeButtonName:@"close" leftImageName:@"left"];
+    [self.view addSubview:self.allPopView];
+    [self.allPopView show];
+    
+//    self.leftImagePopView.leftImageWidth = 30;
+//    self.leftImagePopView.leftImageHeight = 15;
+//    self.leftImagePopView.leftImageLabelPadding = 20;
+
+    
+    
+    UIButton *showPopViewButton = [[UIButton alloc] initWithFrame:CGRectMake(250, 600, 130, 50)];
+    [showPopViewButton setTitle:@"showAll" forState:UIControlStateNormal];
+    [showPopViewButton setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
+//    showPopViewButton
+    showPopViewButton.backgroundColor = UIColor.greenColor;
+    [showPopViewButton addTarget:self action:@selector(showAllPopViewAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:showPopViewButton];
+}
+
+- (void)showPopViewLeftImage {
+    
+//    self.closePopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(50, 500, 0, 0) text:@"请阅读并勾选以下协议MulLines发现新的炼金珠女呗冲啊擦法close" direction:SNAugusPopViewDirectionBottom singleLine:NO closeButtonName:@"Close"];
+    
+    self.leftImagePopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(50, 580, 0, 0) text:@"请阅读并勾选以下协议LeftImage" direction:SNAugusPopViewDirectionBottom singleLine:YES leftImageName:@"left"];
+    [self.view addSubview:self.leftImagePopView];
+    [self.leftImagePopView show];
+    
+    self.leftImagePopView.leftImageWidth = 30;
+    self.leftImagePopView.leftImageHeight = 15;
+//    self.leftImagePopView.leftImageLabelPadding = 20;
+
+    
+    
+    UIButton *showPopViewButton = [[UIButton alloc] initWithFrame:CGRectMake(30, 600, 130, 50)];
+    [showPopViewButton setTitle:@"showLeftImage" forState:UIControlStateNormal];
+    [showPopViewButton setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
+//    showPopViewButton
+    showPopViewButton.backgroundColor = UIColor.greenColor;
+    [showPopViewButton addTarget:self action:@selector(showLeftImagePopViewAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:showPopViewButton];
 }
 
 
 - (void)showPopViewCloseButton {
     
-    self.mulLinesPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(50, 250, 0, 0) text:@"请阅读并勾选以下协议MulLines发现新的炼金珠女呗冲啊擦法close" direction:SNAugusPopViewDirectionBottom singleLine:NO closeButtonName:@"Close"];
-    [self.view addSubview:self.mulLinesPopView];
-    [self.mulLinesPopView show];
+//    self.closePopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(50, 500, 0, 0) text:@"请阅读并勾选以下协议MulLines发现新的炼金珠女呗冲啊擦法close" direction:SNAugusPopViewDirectionBottom singleLine:NO closeButtonName:@"Close"];
     
+    self.closePopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(50, 480, 0, 0) text:@"请阅读并勾选以下协议SingleClose" direction:SNAugusPopViewDirectionBottom singleLine:YES closeButtonName:@"Close"];
+    [self.view addSubview:self.closePopView];
+    [self.closePopView show];
+    
+    
+    UIButton *showPopViewButton = [[UIButton alloc] initWithFrame:CGRectMake(30, 500, 100, 50)];
+    [showPopViewButton setTitle:@"showClose" forState:UIControlStateNormal];
+    [showPopViewButton setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
+    showPopViewButton.backgroundColor = UIColor.greenColor;
+    [showPopViewButton addTarget:self action:@selector(showClosePopViewAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:showPopViewButton];
     
 }
 
 - (void)showPopViewMulLines {
     
-    self.mulLinesPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(50, 250, 0, 0) text:@"请阅读并勾选以下协议MulLines发现新的炼金珠女呗冲啊擦法" direction:SNAugusPopViewDirectionBottom singleLine:NO];
+    self.mulLinesPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(30, 250, 0, 0) text:@"这就是爱你的哥呀请阅读并勾选以下协议MulLines发现新的炼金珠女呗冲啊擦法" direction:SNAugusPopViewDirectionBottom singleLine:NO];
+    self.mulLinesPopView.mulLineWidth = 100.0;
+//    self.mulLinesPopView.arrowVerticalPadding = 30.0;
+    self.mulLinesPopView.textAlignment = NSTextAlignmentLeft;
+
     [self.view addSubview:self.mulLinesPopView];
 //    self.mulLinesPopView.backgroundColor = UIColor.yellowColor;
     [self.mulLinesPopView show];
     
+    
+    UIButton *showPopViewButton = [[UIButton alloc] initWithFrame:CGRectMake(250, 500, 100, 50)];
+    [showPopViewButton setTitle:@"showMul" forState:UIControlStateNormal];
+    [showPopViewButton setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
+    showPopViewButton.backgroundColor = UIColor.greenColor;
+    [showPopViewButton addTarget:self action:@selector(showMulLinesPopViewAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:showPopViewButton];
     
 }
 
@@ -85,7 +190,14 @@
     [self.view addSubview:self.leftPopView];
     
     self.leftPopView.textFont = [UIFont systemFontOfSize:10];
-//    self.leftPopView.verticalLabelPadding = 10;
+    self.leftPopView.arrowVerticalPadding = 10;
+    // 255 52 179
+    self.leftPopView.aBackgroundRed = 0/255.0;
+    self.leftPopView.aBackgroundGreen = 191/255.0;
+    self.leftPopView.aBackgroundBlue = 255/255.0;
+    
+//    self.leftPopView.aBackgroundShowAlpha = 0.01;
+    
     
     
     UIButton *showPopViewButton = [[UIButton alloc] initWithFrame:CGRectMake(250, 400, 100, 50)];
@@ -103,7 +215,8 @@
     [self.view addSubview:self.rightPopView];
     
     self.rightPopView.textFont = [UIFont systemFontOfSize:10];
-//    self.topPopView.verticalLabelPadding = 10;
+    self.rightPopView.arrowVerticalPadding = 5;
+    self.rightPopView.textColor = UIColor.redColor;
     
     
     UIButton *showPopViewButton = [[UIButton alloc] initWithFrame:CGRectMake(30, 400, 100, 50)];
@@ -120,7 +233,9 @@
     self.topPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(160, self.testView.frame.origin.y + 60, 0, 0) text:@"请阅读并勾选以下协议Top" direction:SNAugusPopViewDirectionTop];
     self.topPopView.delegate = self;
     self.topPopView.textFont = [UIFont systemFontOfSize:13];
-    self.topPopView.verticalLabelPadding = 10;
+    self.topPopView.arrowHorizontalPadding = 50;
+//    self.topPopView.textColor = UIColor.blueColor;
+//    self.topPopView.textAlignment
     [self.view addSubview:self.topPopView];
     
 //    [self.topPopView showToView:self.testView];
@@ -143,8 +258,8 @@
     self.bottomPopView.delegate = self;
     [self.view addSubview:self.bottomPopView];
     
-    self.bottomPopView.verticalLabelPadding = 10;
-    self.bottomPopView.textFont = [UIFont systemFontOfSize:18];
+//    self.bottomPopView.verticalLabelPadding = 10;
+    self.bottomPopView.textFont = [UIFont systemFontOfSize:16];
 
     
     UIButton *showPopViewButton = [[UIButton alloc] initWithFrame:CGRectMake(250, 300, 120, 50)];
@@ -158,6 +273,27 @@
 
 
 #pragma mark - Button Action
+
+
+- (void)showAllPopViewAction {
+    
+    [self.allPopView show];
+}
+
+- (void)showLeftImagePopViewAction {
+    
+    [self.leftImagePopView show];
+}
+
+- (void)showClosePopViewAction {
+    
+    [self.closePopView show];
+}
+
+- (void)showMulLinesPopViewAction {
+    
+    [self.mulLinesPopView show];
+}
 
 
 - (void)showLeftPopViewAction {

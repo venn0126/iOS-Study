@@ -60,9 +60,19 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
 @property (nonatomic, strong) UIFont *textFont;
 @property (nonatomic, assign) NSTextAlignment textAlignment;
 
-/// The attributes about popView
+/// The attributes of cornerRadius
 @property (nonatomic, assign) CGFloat cornerRadius;
+/// The attributes of backgroundColor
 @property (nonatomic, strong) UIColor *aBackgroundColor;
+/// The attributes of backgroundColor alpha
+@property (nonatomic, assign) CGFloat aBackgroundShowAlpha;
+/// The attributes of popView's backgroundColor default black (0,0,0)
+/// You only set backgroundColor by `colorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha`,others methods  no working
+/// The number for red ,blue,green number[0,1]
+@property (nonatomic, assign) CGFloat aBackgroundRed;
+@property (nonatomic, assign) CGFloat aBackgroundGreen;
+@property (nonatomic, assign) CGFloat aBackgroundBlue;
+
 /// The attibutes about popView of border
 @property (nonatomic, strong) UIColor *borderColor;
 @property (nonatomic, assign) CGFloat borderWidth;
@@ -76,8 +86,9 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
 @property (nonatomic, assign) NSTimeInterval dismissDuration;
 
 
-/// The attributes about arrow
+/// The distance about arrow of top and bottom
 @property (nonatomic, assign) CGFloat horizontalLabelPadding;
+/// The distance about arrow of left and right
 @property (nonatomic, assign) CGFloat verticalLabelPadding;
 @property (nonatomic, assign) SNAugusPopViewDirection direction;
 
@@ -97,12 +108,15 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
 /// Close button attributes
 @property (nonatomic, assign) CGFloat closeButtonleading;
 @property (nonatomic, assign) CGFloat closeButtonWidth;
+@property (nonatomic, assign) CGFloat closeButtonHeight;
 /// If mul lines top padding
 @property (nonatomic, assign) CGFloat closeButtonTopPadding;
 
-
-
-
+/// LeftImageView
+@property (nonatomic, copy) NSString *leftImageName;
+@property (nonatomic, assign) CGFloat leftImageWidth;
+@property (nonatomic, assign) CGFloat leftImageHeight;
+@property (nonatomic, assign) CGFloat leftImageLabelPadding;
 
 
 
@@ -161,9 +175,7 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
 - (void)showToView:(UIView *)toView;
 
 
-// TODO: The multiple lines show
-// TODO: The right and top close btn,width and height, left,default width=height
-// TODO: The left and centerY of imageView
+// TODO: The customView for popView
 
 @end
 
