@@ -92,9 +92,6 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
 @property (nonatomic, assign) CGFloat verticalLabelPadding;
 @property (nonatomic, assign) SNAugusPopViewDirection direction;
 
-/// TODO: The attibutes about popView of shadow
-
-
 
 /// The attibutes about popView of arrow
 @property (nonatomic, assign) CGFloat arrowHorizontalPadding;
