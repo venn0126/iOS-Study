@@ -426,11 +426,10 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     }
     
     
-    // close button name
+    // close button
     if (self.closeButtonName.length > 0) {
         
         if (self.singleLine) {
-            
             CGFloat y = (cHeight - self.closeButtonWidth - self.arrowHeight) * 0.5;
             self.closeButton.frame = CGRectMake(self.textLabel.frame.origin.x + self.textLabel.frame.size.width + self.closeButtonleading, y, self.closeButtonWidth, self.closeButtonHeight);
 

@@ -14,7 +14,7 @@
 /// The alpha of popView not effect text alpha
 /// You can custom some fantasy grandient or border effect
 /// And you can touch popView to respond a tap action that only you need to conform the SNAugusPopViewDelagate
-/// For example, this show use a top popView, and set  and text font
+/// For example, this show use a bottom popView, and set some properties
 ///
 ///     self.topPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(150, 200, 0, 0) text:@"请阅读并勾选以下协议勾选以下协议All" direction:SNAugusPopViewDirectionBottom singleLine:YES closeButtonName:@"close" leftImageName:@"left" gradient:YES];
 ///     self.allPopView.textFont = [UIFont systemFontOfSize:16];
