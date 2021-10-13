@@ -28,7 +28,7 @@ static CGFloat kAugusPopViewArrowWidth = 12.0;
 static CGFloat kAugusPopViewArrowHeight = 7.0;
 // (0,12]
 static CGFloat kAugusArrowHorizontalPadding = 12.0;
-//static CGFloat kAugusArrowVerticalPadding = 3.0;
+static CGFloat kAugusArrowVerticalPadding = 3.0;
 
 static CGFloat kAugusPopViewMulLineForWidth = 200.0;
 
@@ -92,7 +92,6 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     }
     
     // set defalut params
-    
     _cornerRadius = kAugusPopViewCornerRadius;
     
     _animationDuration = kAugusPopViewAnimationDuration;
@@ -105,6 +104,7 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     _arrowWidth = kAugusPopViewArrowWidth;
     _arrowHeight = kAugusPopViewArrowHeight;
     _arrowHorizontalPadding = kAugusArrowHorizontalPadding;
+    _arrowVerticalPadding = kAugusArrowVerticalPadding;
     
     _mulLineWidth = kAugusPopViewMulLineForWidth;
     _closeButtonleading = kAugusCloseButtonLeading;
@@ -134,8 +134,7 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     _aBackgroundBlue = kAugusBackgroundBlue;
     _aBackgroundShowAlpha = kAugusBackgroundShowAlpha;
     
-    _aBackgroundColor = [UIColor colorWithRed:_aBackgroundRed green:_aBackgroundGreen blue:_aBackgroundBlue alpha:1];
-    // about text
+    // Text
     // Default font 13
     _textFont = [UIFont systemFontOfSize:13];
     // Text alignment default center
@@ -777,7 +776,6 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 - (UIButton *)closeButton {
     if (!_closeButton) {
         _closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//        [_closeButton setBackgroundImage:[UIImage imageNamed:@"xmark"] forState:UIControlStateNormal];
         [_closeButton addTarget:self action:@selector(closeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         _closeButton.backgroundColor = UIColor.greenColor;
     }
@@ -788,7 +786,7 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 - (UIImageView *)leftImageView {
     if (!_leftImageView) {
         _leftImageView = [[UIImageView alloc] init];
-        _leftImageView.backgroundColor = UIColor.redColor;
+        _leftImageView.backgroundColor = UIColor.blueColor;
     }
     return _leftImageView;
 }

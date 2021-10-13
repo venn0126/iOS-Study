@@ -11,14 +11,21 @@
 /// The class uses run-time to mark the instance avoid show some duplicates instances.
 /// The class shows corner radius used to be bezierPath
 /// You can custome some attributes,eg animation duration,arrow width and height and so on.
+/// The alpha of popView not effect text alpha
+/// You can custom some fantasy grandient or border effect
 /// And you can touch popView to respond a tap action that only you need to conform the SNAugusPopViewDelagate
 /// For example, this show use a top popView, and set  and text font
 ///
-///     self.topPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(160, 160, 0, 0) text:@"请阅读并勾选以下协议Top" direction:SNAugusPopViewDirectionTop];
-///     self.topPopView.delegate = self;
-///     self.topPopView.textFont = [UIFont systemFontOfSize:13];
-///     self.topPopView.verticalLabelPadding = 10;
-///     [self.view addSubview:self.topPopView];
+///     self.topPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(150, 200, 0, 0) text:@"请阅读并勾选以下协议勾选以下协议All" direction:SNAugusPopViewDirectionBottom singleLine:YES closeButtonName:@"close" leftImageName:@"left" gradient:YES];
+///     self.allPopView.textFont = [UIFont systemFontOfSize:16];
+///     self.allPopView.gradientColors = @[(id)(UIColor.orangeColor.CGColor),(id)UIColor.redColor.CGColor];
+///     self.allPopView.gradientStartPoint = CGPointMake(1.0, 0.5);
+///     self.allPopView.gradientEndPoint = CGPointMake(0.0, 0.5);
+///     self.allPopView.gradientLocations = @[@0.5,@1.0];
+
+///     self.leftImagePopView.leftImageWidth = 30;
+///     self.leftImagePopView.leftImageHeight = 15;
+///     self.leftImagePopView.leftImageLabelPadding = 20;
 ///
 ///     [self.topPopView show];
 ///
@@ -62,8 +69,7 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
 
 /// The attributes of cornerRadius
 @property (nonatomic, assign) CGFloat cornerRadius;
-/// The attributes of backgroundColor
-@property (nonatomic, strong) UIColor *aBackgroundColor;
+
 /// The attributes of backgroundColor alpha
 @property (nonatomic, assign) CGFloat aBackgroundShowAlpha;
 /// The attributes of popView's backgroundColor default black (0,0,0)
@@ -86,33 +92,35 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
 @property (nonatomic, assign) NSTimeInterval dismissDuration;
 
 
-/// The distance about arrow of top and bottom
-@property (nonatomic, assign) CGFloat horizontalLabelPadding;
-/// The distance about arrow of left and right
-@property (nonatomic, assign) CGFloat verticalLabelPadding;
 @property (nonatomic, assign) SNAugusPopViewDirection direction;
+/// The distance about arrow for top and bottom
+@property (nonatomic, assign) CGFloat horizontalLabelPadding;
+/// The distance about arrow for left and right
+@property (nonatomic, assign) CGFloat verticalLabelPadding;
 
-
-/// The attibutes about popView of arrow
+/// The distance about arrow from self leading for SNAugusPopViewDirection bottom and top
 @property (nonatomic, assign) CGFloat arrowHorizontalPadding;
-/// No working
+/// The distance about arrow from self top for SNAugusPopViewDirection and right
 @property (nonatomic, assign) CGFloat arrowVerticalPadding;
+/// The bottom edge of the arrow
 @property (nonatomic, assign) CGFloat arrowWidth;
+/// The height of the arrow
 @property (nonatomic, assign) CGFloat arrowHeight;
 
-/// Mul lines attributes
+/// The text width of multiple lines
 @property (nonatomic, assign) CGFloat mulLineWidth;
 /// Close button attributes
 @property (nonatomic, assign) CGFloat closeButtonleading;
 @property (nonatomic, assign) CGFloat closeButtonWidth;
 @property (nonatomic, assign) CGFloat closeButtonHeight;
-/// If mul lines top padding
+/// The attibutes for multiple lines include close button
 @property (nonatomic, assign) CGFloat closeButtonTopPadding;
 
 /// LeftImageView
 @property (nonatomic, copy) NSString *leftImageName;
 @property (nonatomic, assign) CGFloat leftImageWidth;
 @property (nonatomic, assign) CGFloat leftImageHeight;
+/// The distance of lable horizontal
 @property (nonatomic, assign) CGFloat leftImageLabelPadding;
 
 /// Gradient Effect attributes
@@ -136,8 +144,8 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
  * interpolated. Defaults to nil. Animatable. */
 @property(nonatomic, copy) NSArray<NSNumber *> *gradientLocations;
 
-
 @property (nonatomic, weak) id<SNAugusPopViewDelagate> delegate;
+
 
 /// A pop view  designated initalzation
 /// @param frame A origin of pop view and size is auto calucate
@@ -146,7 +154,7 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
 /// @param singleLine YES is 1 line, and NO is mul lines
 /// @param closeButtonName A button in top and right show,if name = @"" stand for not show
 /// @param leftImageName A imageView in centerY and left ,if name = @"" stand for not show
-/// @param gradient The popView has gradient effect or not,you need to set about gradient attributes,eg gradientColors
+/// @param gradient The popView has gradient effect or not,you need to set about gradient attributes,eg gradientColors, or no working
 - (instancetype)initWithFrame:(CGRect)frame
                          text:(NSString *)text
                     direction:(SNAugusPopViewDirection)direction
@@ -199,7 +207,6 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
 
 
 // TODO: The customView for popView
-// TODO: The self backgroundColor gradient
 
 @end
 

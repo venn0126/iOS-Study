@@ -122,16 +122,23 @@
 
 - (void)showPopViewAll {
     
-    self.allPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(50, 700, 0, 0) text:@"请阅读并勾选以下协议勾选以下协议All" direction:SNAugusPopViewDirectionBottom singleLine:YES closeButtonName:@"close" leftImageName:@"left" gradient:NO];
+    self.allPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(50, 700, 0, 0) text:@"请阅读并勾选以下协议勾选以下协议All" direction:SNAugusPopViewDirectionBottom singleLine:YES closeButtonName:@"close" leftImageName:@"left" gradient:YES];
+    
+//    self.allPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(50, 750, 0, 0) text:@"请阅读并勾选以下协议勾选以下协议发发现新的炼金珠女呗冲啊擦法All" direction:SNAugusPopViewDirectionBottom singleLine:NO closeButtonName:@"close" leftImageName:@"left" gradient:YES];
+    
     [self.view addSubview:self.allPopView];
     
-//    self.allPopView = [[SNAugusPopView alloc] initWithFrame:CGRectMake(50, 700, 0, 0) text:@"请阅读并勾选以下协议勾选以下协议发发现新的炼金珠女呗冲啊擦法All" direction:SNAugusPopViewDirectionBottom singleLine:NO closeButtonName:@"close" leftImageName:@"left"];
-    [self.view addSubview:self.allPopView];
+    self.allPopView.textFont = [UIFont systemFontOfSize:16];
+    self.allPopView.gradientColors = @[(id)(UIColor.orangeColor.CGColor),(id)UIColor.redColor.CGColor];
+    self.allPopView.gradientStartPoint = CGPointMake(1.0, 0.5);
+    self.allPopView.gradientEndPoint = CGPointMake(0.0, 0.5);
+    self.allPopView.gradientLocations = @[@0.5,@1.0];
+    
+    self.leftImagePopView.leftImageWidth = 30;
+    self.leftImagePopView.leftImageHeight = 15;
+    self.leftImagePopView.leftImageLabelPadding = 20;
     [self.allPopView show];
     
-//    self.leftImagePopView.leftImageWidth = 30;
-//    self.leftImagePopView.leftImageHeight = 15;
-//    self.leftImagePopView.leftImageLabelPadding = 20;
 //    self.allPopView.textColor = UIColor.blackColor;
 
     
