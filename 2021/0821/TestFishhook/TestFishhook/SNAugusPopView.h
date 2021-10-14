@@ -55,77 +55,94 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
 
 @optional
 
+/// The respond method of popView
+/// @param popView The instance of respond.
 - (void)augusPopViewClick:(SNAugusPopView *)popView;
 
 @end
 
 @interface SNAugusPopView : UIView
 
-/// The attibutes about text
+// About Text.
+/// The text of popView's label show.
 @property (nonatomic, copy) NSString *text;
+/// The text color of popView's label.
 @property (nonatomic, strong) UIColor *textColor;
+/// The text font of popView's label.
 @property (nonatomic, strong) UIFont *textFont;
+/// The type text alignment of popView's label.
 @property (nonatomic, assign) NSTextAlignment textAlignment;
 
-/// The attributes of cornerRadius
+/// The popView's cornerRadius.
 @property (nonatomic, assign) CGFloat cornerRadius;
 
-/// The attributes of backgroundColor alpha
+/// The popView's backgroundColor alpha.
 @property (nonatomic, assign) CGFloat aBackgroundShowAlpha;
-/// The attributes of popView's backgroundColor default black (0,0,0)
-/// You only set backgroundColor by `colorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha`,others methods  no working
-/// The number for red ,blue,green number[0,1]
+/* The attributes of popView's backgroundColor default black (0,0,0).You only set backgroundColor by `colorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha`,others methods current no working */
+/// The popView's aBackground color's red number [0,1].
 @property (nonatomic, assign) CGFloat aBackgroundRed;
+/// The popView's aBackground color's green number [0,1].
 @property (nonatomic, assign) CGFloat aBackgroundGreen;
+/// The popView's aBackground color's blue number [0,1].
 @property (nonatomic, assign) CGFloat aBackgroundBlue;
 
-/// The attibutes about popView of border
+// About popView border.
+/// The popView's border color, default is nil.
 @property (nonatomic, strong) UIColor *borderColor;
+/// The popView's border width,default is 0.
 @property (nonatomic, assign) CGFloat borderWidth;
 
-
-/// The attributes about show anmiaton duration
+// About popView animation.
+/// The popView display animation duration,default is 3.
 @property (nonatomic, assign) NSTimeInterval animationDuration;
-/// The attributes about show anmiaton duration
+/// The popView show animation duration,default is 0.3.
 @property (nonatomic, assign) NSTimeInterval showDuration;
-/// The attributes about dismiss anmiaton duration
+/// The popView dismiss animation duration,default is 0.3.
 @property (nonatomic, assign) NSTimeInterval dismissDuration;
 
 
+/// The popView's arrow direction.
 @property (nonatomic, assign) SNAugusPopViewDirection direction;
-/// The distance about arrow for top and bottom
-@property (nonatomic, assign) CGFloat horizontalLabelPadding;
-/// The distance about arrow for left and right
-@property (nonatomic, assign) CGFloat verticalLabelPadding;
+/// The popView's label padding from left and right margins.
+@property (nonatomic, assign) CGFloat labelHorizontalPadding;
+/// The popView's label padding from top and bottom margins.
+@property (nonatomic, assign) CGFloat labelVerticalPadding;
 
-/// The distance about arrow from self leading for SNAugusPopViewDirection bottom and top
+/// The arrow padding from left margin or subView when direction is bottom and top.
 @property (nonatomic, assign) CGFloat arrowHorizontalPadding;
-/// The distance about arrow from self top for SNAugusPopViewDirection and right
+/// The arrow padding from top margin or subView when direction is left and right.
 @property (nonatomic, assign) CGFloat arrowVerticalPadding;
-/// The bottom edge of the arrow
+/// The arrow's bottom edge.
 @property (nonatomic, assign) CGFloat arrowWidth;
-/// The height of the arrow
+/// The arrow's height.
 @property (nonatomic, assign) CGFloat arrowHeight;
 
-/// The text width of multiple lines
+/// The text width that popView show multiple lines,default is 200.
 @property (nonatomic, assign) CGFloat mulLineWidth;
-/// Close button attributes
-@property (nonatomic, assign) CGFloat closeButtonleading;
-@property (nonatomic, assign) CGFloat closeButtonWidth;
-@property (nonatomic, assign) CGFloat closeButtonHeight;
-/// The attibutes for multiple lines include close button
-@property (nonatomic, assign) CGFloat closeButtonTopPadding;
 
-/// LeftImageView
+// About close button.
+/// The close button's padding from left margin or subview.
+@property (nonatomic, assign) CGFloat closeButtonleading;
+/// The close button's padding from top margin or subview.
+@property (nonatomic, assign) CGFloat closeButtonTopPadding;
+/// The close button's width.
+@property (nonatomic, assign) CGFloat closeButtonWidth;
+/// The close button's height.
+@property (nonatomic, assign) CGFloat closeButtonHeight;
+
+// About leftImageView.
+/// The leftImageView's image name,default is @"".
 @property (nonatomic, copy) NSString *leftImageName;
+/// The leftImageView's width.
 @property (nonatomic, assign) CGFloat leftImageWidth;
+/// The leftImageView's height.
 @property (nonatomic, assign) CGFloat leftImageHeight;
-/// The distance of lable horizontal
+/// The distance of  leftImageView to lable horizontal
+/// The leftImageView's padding from left margin or subview.
 @property (nonatomic, assign) CGFloat leftImageLabelPadding;
 
-/// Gradient Effect attributes
-// The array of CGColorRef objects defining the color of each gradient
-// stop. Defaults to nil. Animatable.
+// About gradient effect.
+/// The array of CGColorRef objects defining the color of each gradient stop. Defaults to nil. Animatable.
 @property (nonatomic, copy) NSArray *gradientColors;
 /* The start and end points of the gradient when drawn into the layer's
  * coordinate space. The start point corresponds to the first gradient
@@ -134,7 +151,9 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
  * layer's bounds rectangle when drawn. (I.e. [0,0] is the bottom-left
  * corner of the layer, [1,1] is the top-right corner.) The default values
  * are [.5,0] and [.5,1] respectively. Both are animatable. */
+/// The gradient effect's start point,default is [0.5,0].
 @property (nonatomic, assign) CGPoint gradientStartPoint;
+/// The gradient effect's end point,default is [0,5,1].
 @property (nonatomic, assign) CGPoint gradientEndPoint;
 /* An optional array of NSNumber objects defining the location of each
  * gradient stop as a value in the range [0,1]. The values must be
@@ -142,8 +161,10 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
  * assumed to spread uniformly across the [0,1] range. When rendered,
  * the colors are mapped to the output colorspace before being
  * interpolated. Defaults to nil. Animatable. */
+/// The gradient effect's location,default is [0,1].
 @property(nonatomic, copy) NSArray<NSNumber *> *gradientLocations;
 
+/// The popView's click action delegate.
 @property (nonatomic, weak) id<SNAugusPopViewDelagate> delegate;
 
 

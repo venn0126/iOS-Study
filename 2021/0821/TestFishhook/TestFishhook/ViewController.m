@@ -128,11 +128,14 @@
     
     [self.view addSubview:self.allPopView];
     
+    
     self.allPopView.textFont = [UIFont systemFontOfSize:16];
     self.allPopView.gradientColors = @[(id)(UIColor.orangeColor.CGColor),(id)UIColor.redColor.CGColor];
     self.allPopView.gradientStartPoint = CGPointMake(1.0, 0.5);
     self.allPopView.gradientEndPoint = CGPointMake(0.0, 0.5);
     self.allPopView.gradientLocations = @[@0.5,@1.0];
+    
+//    self.allPopView.gra
     
     self.leftImagePopView.leftImageWidth = 30;
     self.leftImagePopView.leftImageHeight = 15;

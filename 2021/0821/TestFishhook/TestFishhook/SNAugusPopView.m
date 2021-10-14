@@ -41,20 +41,26 @@ static CGFloat kAugusLeftImageWidth = 15.0;
 static CGFloat kAugusLeftImageHeight = 15.0;
 static CGFloat kAugusLeftImageLabelPadding = 10.0;
 
-
 static NSString *SNAugusBorderLayerKey = @"SNAugusBorderLayerKey";
 static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 
-
 @interface SNAugusPopView ()
 
+
+/// The label show text.
 @property (nonatomic, strong) UILabel *textLabel;
+/// The popView is showing or not.
 @property (nonatomic, assign) BOOL showing;
+/// The popView's text is single or multiple.
 @property (nonatomic, assign) BOOL singleLine;
+/// The closeButton's name.
 @property (nonatomic, copy) NSString *closeButtonName;
+/// The closeButton custom.
 @property (nonatomic, strong) UIButton *closeButton;
+/// The leftImageView custom.
 @property (nonatomic, strong) UIImageView *leftImageView;
-@property (nonatomic, assign) BOOL aGradient;
+/// The popView's gradient is effect or not.
+@property (nonatomic, assign) BOOL gradient;
 
 
 @end
@@ -98,8 +104,8 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     _showDuration = kAugusPopViewShowDuration;
     _dismissDuration = kAugusPopViewDismissDuration;
     
-    _horizontalLabelPadding = kAugusPopViewLabelHorizontalPadding;
-    _verticalLabelPadding = kAugusPopViewLabelVerticalPadding;
+    _labelHorizontalPadding = kAugusPopViewLabelHorizontalPadding;
+    _labelVerticalPadding = kAugusPopViewLabelVerticalPadding;
     
     _arrowWidth = kAugusPopViewArrowWidth;
     _arrowHeight = kAugusPopViewArrowHeight;
@@ -122,22 +128,20 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     _gradientStartPoint = CGPointMake(0, 0.5);
     _gradientEndPoint = CGPointMake(1, 0.5);
     _gradientLocations = @[@0.0,@1.0];
-    _aGradient = gradient;
+    _gradient = gradient;
     
     // border
     _borderWidth = 0.0;
     _borderColor = UIColor.clearColor;
 
-    // about self
+    // background color
     _aBackgroundRed = kAugusBackgroundRed;
     _aBackgroundGreen = kAugusBackgroundGreen;
     _aBackgroundBlue = kAugusBackgroundBlue;
     _aBackgroundShowAlpha = kAugusBackgroundShowAlpha;
     
     // Text
-    // Default font 13
     _textFont = [UIFont systemFontOfSize:13];
-    // Text alignment default center
     _textAlignment = NSTextAlignmentCenter;
     _textColor = UIColor.whiteColor;
     
@@ -222,15 +226,15 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 }
 
 
-- (void)setVerticalLabelPadding:(CGFloat)verticalLabelPadding {
-    
-    _verticalLabelPadding = verticalLabelPadding;
+- (void)setLabelHorizontalPadding:(CGFloat)labelHorizontalPadding {
+    _labelHorizontalPadding = labelHorizontalPadding;
     [self configurePopView];
+
 }
 
 
-- (void)setHorizontalLabelPadding:(CGFloat)horizontalLabelPadding {
-    _horizontalLabelPadding = horizontalLabelPadding;
+- (void)setLabelVerticalPadding:(CGFloat)labelVerticalPadding {
+    _labelVerticalPadding = labelVerticalPadding;
     [self configurePopView];
 }
 
@@ -385,8 +389,8 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     self.textLabel.textColor = self.textColor;
   
     // cwidth depend on text and font
-    CGFloat cWidth = self.textWidth + 2 * self.horizontalLabelPadding;
-    CGFloat cHeight = self.textHeight + 2 * self.verticalLabelPadding;
+    CGFloat cWidth = self.textWidth + 2 * self.labelHorizontalPadding;
+    CGFloat cHeight = self.textHeight + 2 * self.labelVerticalPadding;
     
     
     // left image name
@@ -394,7 +398,7 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     if (self.leftImageName.length > 0 && self.singleLine) {
         self.leftImageView.image = [UIImage imageNamed:self.leftImageName];
         CGFloat y = (cHeight - self.leftImageHeight) * 0.5;
-        self.leftImageView.frame = CGRectMake(self.horizontalLabelPadding, y, self.leftImageWidth, self.leftImageHeight);
+        self.leftImageView.frame = CGRectMake(self.labelHorizontalPadding, y, self.leftImageWidth, self.leftImageHeight);
         
         cWidth += self.leftImageView.frame.size.width + self.leftImageLabelPadding;
         [self addSubview:self.leftImageView];
@@ -411,17 +415,17 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     
     // single line & mul line
     if (self.singleLine) { // single line
-        CGFloat x = self.horizontalLabelPadding;
+        CGFloat x = self.labelHorizontalPadding;
         if (self.leftImageView.frame.origin.x > 0) {
             x = self.leftImageView.frame.origin.x + self.leftImageView.frame.size.width + self.leftImageLabelPadding;
         }
-        self.textLabel.frame = CGRectMake(x, self.verticalLabelPadding,self.textWidth, self.textHeight);
+        self.textLabel.frame = CGRectMake(x, self.labelVerticalPadding,self.textWidth, self.textHeight);
     } else {// mul lines
         // set width
         self.textLabel.numberOfLines = 0;
-        self.textLabel.frame = CGRectMake(self.horizontalLabelPadding, self.verticalLabelPadding * 0.5, self.mulLineWidth, self.mulLineTextHeight);
-        cWidth = self.mulLineWidth + 2 * self.horizontalLabelPadding;
-        cHeight = self.mulLineTextHeight + 2 * self.verticalLabelPadding;
+        self.textLabel.frame = CGRectMake(self.labelHorizontalPadding, self.labelVerticalPadding * 0.5, self.mulLineWidth, self.mulLineTextHeight);
+        cWidth = self.mulLineWidth + 2 * self.labelHorizontalPadding;
+        cHeight = self.mulLineTextHeight + 2 * self.labelVerticalPadding;
         
     }
     
@@ -621,7 +625,7 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     }
     
     // Gradient effect
-    if (self.aGradient) {
+    if (self.gradient) {
         CAGradientLayer *gradient = [CAGradientLayer layer];
         gradient.frame = self.bounds;
         gradient.colors = self.gradientColors;
