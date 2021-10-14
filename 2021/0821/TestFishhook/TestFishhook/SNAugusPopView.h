@@ -129,6 +129,8 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
 @property (nonatomic, assign) CGFloat closeButtonWidth;
 /// The close button's height.
 @property (nonatomic, assign) CGFloat closeButtonHeight;
+/// The close button's backgroundColor.
+@property (nonatomic, strong) UIColor *closeButtonBackgroundColor;
 
 // About leftImageView.
 /// The leftImageView's image name,default is @"".
@@ -137,9 +139,10 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
 @property (nonatomic, assign) CGFloat leftImageWidth;
 /// The leftImageView's height.
 @property (nonatomic, assign) CGFloat leftImageHeight;
-/// The distance of  leftImageView to lable horizontal
 /// The leftImageView's padding from left margin or subview.
 @property (nonatomic, assign) CGFloat leftImageLabelPadding;
+/// The leftImageView's backgroundColor.
+@property (nonatomic, strong) UIColor *leftImageBackgroundColor;
 
 // About gradient effect.
 /// The array of CGColorRef objects defining the color of each gradient stop. Defaults to nil. Animatable.

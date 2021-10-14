@@ -117,11 +117,13 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     _closeButtonWidth = kAugusCloseButtonWidth;
     _closeButtonTopPadding = kAugusCloseButtonTopPadding;
     _closeButtonHeight = kAugusCloseButtonHeight;
+    _closeButtonBackgroundColor = UIColor.greenColor;
     
     _leftImageName = leftImageName;
     _leftImageWidth = kAugusLeftImageWidth;
     _leftImageHeight = kAugusLeftImageHeight;
     _leftImageLabelPadding = kAugusLeftImageLabelPadding;
+    _leftImageBackgroundColor = UIColor.blueColor;
     
     // gradient
     _gradientColors = nil;
@@ -377,6 +379,19 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
 - (void)setBorderColor:(UIColor *)borderColor {
     _borderColor = borderColor;
     [self configurePopView];
+}
+
+
+- (void)setCloseButtonBackgroundColor:(UIColor *)closeButtonBackgroundColor {
+    _closeButtonBackgroundColor = closeButtonBackgroundColor;
+    self.closeButton.backgroundColor = _closeButtonBackgroundColor;
+}
+
+
+- (void)setLeftImageBackgroundColor:(UIColor *)leftImageBackgroundColor {
+    
+    _leftImageBackgroundColor = leftImageBackgroundColor;
+    self.leftImageView.backgroundColor = _leftImageBackgroundColor;
 }
 
 #pragma mark - Set up UI

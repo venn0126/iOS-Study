@@ -135,7 +135,8 @@
     self.allPopView.gradientEndPoint = CGPointMake(0.0, 0.5);
     self.allPopView.gradientLocations = @[@0.5,@1.0];
     
-//    self.allPopView.gra
+//    self.allPopView.closeButtonBackgroundColor = UIColor.blackColor;
+//    self.allPopView.leftImageBackgroundColor = UIColor.yellowColor;
     
     self.leftImagePopView.leftImageWidth = 30;
     self.leftImagePopView.leftImageHeight = 15;
