@@ -464,8 +464,6 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
     
     // update self frame
     self.bounds = CGRectMake(0, 0, cWidth,cHeight);
-//    self.alpha = 0.01;
-//    self.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.01];
     self.hidden = YES;
     
     // draw background mask
@@ -646,15 +644,11 @@ static NSString *SNAugusBorderMaskName = @"SNAugusBorderMaskName";
         gradient.colors = self.gradientColors;
         // gradient line from start to end
         gradient.startPoint = CGPointMake(self.gradientStartPoint.x, self.gradientStartPoint.y);
-        NSLog(@"start point %@",NSStringFromCGPoint(self.gradientStartPoint));
 
         gradient.endPoint = CGPointMake(self.gradientEndPoint.x, self.gradientEndPoint.y);
-        NSLog(@"end point %@",NSStringFromCGPoint(self.gradientEndPoint));
         // gradient location area,default 0-1
         gradient.locations = self.gradientLocations;
         
-        NSLog(@"locations %@",self.gradientLocations);
-
         //    gradient.locations = @[@(0.5f), @(1.0f)];
         //    [self.layer addSublayer:gradient];
         [self.layer insertSublayer:gradient atIndex:0];
