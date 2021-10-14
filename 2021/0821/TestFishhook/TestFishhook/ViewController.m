@@ -237,7 +237,6 @@
     self.leftPopView.aBackgroundGreen = 191/255.0;
     self.leftPopView.aBackgroundBlue = 255/255.0;
     
-//    self.leftPopView.aBackgroundShowAlpha = 0.01;
     
     
     
