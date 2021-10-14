@@ -44,8 +44,8 @@ typedef NS_ENUM(NSUInteger, SNAugusPopViewDirection) {
     SNAugusPopViewDirectionLeft = 1 << 2,
     // Right
     SNAugusPopViewDirectionRight = 1 << 3,
-    // All
-    SNAugusPopViewDirectionAll = SNAugusPopViewDirectionTop | SNAugusPopViewDirectionBottom | SNAugusPopViewDirectionLeft | SNAugusPopViewDirectionRight,
+    // None
+    SNAugusPopViewDirectionNone = SNAugusPopViewDirectionTop | SNAugusPopViewDirectionBottom | SNAugusPopViewDirectionLeft | SNAugusPopViewDirectionRight,
     
 };
 
