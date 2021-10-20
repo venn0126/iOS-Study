@@ -68,7 +68,7 @@
 
 ## 数据机构&算法
 
-## 数学实现
+### 数学实现
 
 * 斐波那契数列
 
@@ -162,7 +162,7 @@ int rotateBinarySearch(vector<int> arr,int goal) {
     }
 ```
 
-## 算法实现
+### 算法实现
 
 * 冒泡 最坏==平均n*n 空间O(1) 稳定
 
@@ -293,8 +293,7 @@ int rotateBinarySearch(vector<int> arr,int goal) {
     }
 ```
 
-
-## 链表
+### 链表
 
 ```c++
 struct ListNode{
@@ -466,9 +465,9 @@ int listNodeOfLen(ListNode *root) {
 
 ```
 
-### 3.6 删除链表里的某个节点
+* 删除链表里的某个节点
 
-```
+```c++
     void delNode(ListNode *head) {
         if (!head || !head->next) {
             return;
@@ -588,7 +587,7 @@ int listNodeOfLen(ListNode *root) {
     }
 ```
 
-## 数组
+### 数组
 
 * 检测数组中是否包含重复的元素
 
@@ -599,9 +598,9 @@ int listNodeOfLen(ListNode *root) {
  }
 ```
 
-### 4.1 出现次数超过数组长度一半的元素
+* 出现次数超过数组长度一半的元素
 
-```
+```c++
     int numOccurMoreHalfOfArray(vector<int> nums) {
         
         stack<int> stk;              
@@ -1049,10 +1048,7 @@ int listNodeOfLen(ListNode *root) {
     }
 ```
 
-
-
-
-## 二叉树
+### 二叉树
 
 ```c++
 struct GTreeNode {
@@ -1171,7 +1167,7 @@ struct GTreeNode {
 
 ```
 
-## 字符串
+### 字符串
 
 * 最长公共子序列
 
