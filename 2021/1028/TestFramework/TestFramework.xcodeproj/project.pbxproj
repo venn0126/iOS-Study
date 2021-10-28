@@ -17,6 +17,10 @@
 		B1D9CAFB272A91AD00C3FE4A /* TestFrameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D9CAFA272A91AD00C3FE4A /* TestFrameworkTests.m */; };
 		B1D9CB05272A91AD00C3FE4A /* TestFrameworkUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D9CB04272A91AD00C3FE4A /* TestFrameworkUITests.m */; };
 		B1D9CB07272A91AD00C3FE4A /* TestFrameworkUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D9CB06272A91AD00C3FE4A /* TestFrameworkUITestsLaunchTests.m */; };
+		B1D9CB14272A920800C3FE4A /* DMSTAIDSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D9CB13272A920800C3FE4A /* DMSTAIDSDK.framework */; };
+		B1D9CB16272A9F6500C3FE4A /* CTID_Verification.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D9CB15272A9F6500C3FE4A /* CTID_Verification.framework */; };
+		B1D9CB18272AA05800C3FE4A /* FosaferAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D9CB17272AA05800C3FE4A /* FosaferAuth.framework */; };
+		B1D9CB1B272AA0BD00C3FE4A /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B1D9CB1A272AA0BD00C3FE4A /* libc++.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +58,10 @@
 		B1D9CB00272A91AD00C3FE4A /* TestFrameworkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestFrameworkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1D9CB04272A91AD00C3FE4A /* TestFrameworkUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestFrameworkUITests.m; sourceTree = "<group>"; };
 		B1D9CB06272A91AD00C3FE4A /* TestFrameworkUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestFrameworkUITestsLaunchTests.m; sourceTree = "<group>"; };
+		B1D9CB13272A920800C3FE4A /* DMSTAIDSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DMSTAIDSDK.framework; sourceTree = "<group>"; };
+		B1D9CB15272A9F6500C3FE4A /* CTID_Verification.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CTID_Verification.framework; sourceTree = "<group>"; };
+		B1D9CB17272AA05800C3FE4A /* FosaferAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FosaferAuth.framework; sourceTree = "<group>"; };
+		B1D9CB1A272AA0BD00C3FE4A /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +69,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1D9CB1B272AA0BD00C3FE4A /* libc++.tbd in Frameworks */,
+				B1D9CB14272A920800C3FE4A /* DMSTAIDSDK.framework in Frameworks */,
+				B1D9CB18272AA05800C3FE4A /* FosaferAuth.framework in Frameworks */,
+				B1D9CB16272A9F6500C3FE4A /* CTID_Verification.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,10 +96,14 @@
 		B1D9CAD2272A91AC00C3FE4A = {
 			isa = PBXGroup;
 			children = (
+				B1D9CB17272AA05800C3FE4A /* FosaferAuth.framework */,
+				B1D9CB13272A920800C3FE4A /* DMSTAIDSDK.framework */,
+				B1D9CB15272A9F6500C3FE4A /* CTID_Verification.framework */,
 				B1D9CADD272A91AC00C3FE4A /* TestFramework */,
 				B1D9CAF9272A91AD00C3FE4A /* TestFrameworkTests */,
 				B1D9CB03272A91AD00C3FE4A /* TestFrameworkUITests */,
 				B1D9CADC272A91AC00C3FE4A /* Products */,
+				B1D9CB19272AA0BD00C3FE4A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -134,6 +150,14 @@
 				B1D9CB06272A91AD00C3FE4A /* TestFrameworkUITestsLaunchTests.m */,
 			);
 			path = TestFrameworkUITests;
+			sourceTree = "<group>";
+		};
+		B1D9CB19272AA0BD00C3FE4A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B1D9CB1A272AA0BD00C3FE4A /* libc++.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -445,6 +469,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AQDKUEE5C2;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TestFramework/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -452,6 +481,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -472,6 +502,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AQDKUEE5C2;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TestFramework/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -479,6 +514,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
