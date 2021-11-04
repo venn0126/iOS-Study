@@ -1,6 +1,0 @@
-framework module DMSTAIDSDK {
-  umbrella header "DMSTAIDSDK.h"
-
-  export *
-  module * { export * }
-}

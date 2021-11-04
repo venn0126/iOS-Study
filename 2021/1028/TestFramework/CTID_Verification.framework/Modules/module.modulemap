@@ -1,6 +1,0 @@
-framework module CTID_Verification {
-  umbrella header "CTID_Verification.h"
-
-  export *
-  module * { export * }
-}
