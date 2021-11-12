@@ -44,4 +44,10 @@
     }
 }
 
+-  (void)testUIRecording {
+    
+
+
+}
+
 @end
