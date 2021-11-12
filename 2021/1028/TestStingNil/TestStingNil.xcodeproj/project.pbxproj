@@ -17,6 +17,7 @@
 		B137F46C273D0F34009027AC /* TestStingNilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B137F46B273D0F34009027AC /* TestStingNilTests.m */; };
 		B137F476273D0F34009027AC /* TestStingNilUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B137F475273D0F34009027AC /* TestStingNilUITests.m */; };
 		B137F478273D0F34009027AC /* TestStingNilUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B137F477273D0F34009027AC /* TestStingNilUITestsLaunchTests.m */; };
+		B1C9679D273ECBA00046017A /* SNPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C9679C273ECBA00046017A /* SNPerson.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		B137F471273D0F34009027AC /* TestStingNilUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestStingNilUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B137F475273D0F34009027AC /* TestStingNilUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestStingNilUITests.m; sourceTree = "<group>"; };
 		B137F477273D0F34009027AC /* TestStingNilUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestStingNilUITestsLaunchTests.m; sourceTree = "<group>"; };
+		B1C9679B273ECBA00046017A /* SNPerson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNPerson.h; sourceTree = "<group>"; };
+		B1C9679C273ECBA00046017A /* SNPerson.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNPerson.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +113,8 @@
 				B137F453273D0F33009027AC /* SceneDelegate.m */,
 				B137F455273D0F33009027AC /* ViewController.h */,
 				B137F456273D0F33009027AC /* ViewController.m */,
+				B1C9679B273ECBA00046017A /* SNPerson.h */,
+				B1C9679C273ECBA00046017A /* SNPerson.m */,
 				B137F458273D0F33009027AC /* Main.storyboard */,
 				B137F45B273D0F34009027AC /* Assets.xcassets */,
 				B137F45D273D0F34009027AC /* LaunchScreen.storyboard */,
@@ -267,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B137F457273D0F33009027AC /* ViewController.m in Sources */,
+				B1C9679D273ECBA00046017A /* SNPerson.m in Sources */,
 				B137F451273D0F33009027AC /* AppDelegate.m in Sources */,
 				B137F462273D0F34009027AC /* main.m in Sources */,
 				B137F454273D0F33009027AC /* SceneDelegate.m in Sources */,
