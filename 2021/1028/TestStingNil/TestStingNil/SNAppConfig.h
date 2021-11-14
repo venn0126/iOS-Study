@@ -6,10 +6,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SNAppConfigABTest.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SNAppConfig : NSObject
+
+@property (nonatomic, strong) SNAppConfigABTest *appConfigABTest;
 
 @end
 

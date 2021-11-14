@@ -11,6 +11,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SNAppConfigABTest : NSObject
 
+@property (nonatomic, copy, readonly) NSString *abTestExpose;
+@property (nonatomic, strong, readonly) NSArray *abTestList;
+
+- (void)updateWithDic:(NSDictionary *)dic;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -19,8 +19,6 @@
 		2773342925B873140049A6AB /* TesLockUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2773342825B873140049A6AB /* TesLockUITests.m */; };
 		27D60E1C25BAA903006E70F5 /* l-03.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D60E1B25BAA903006E70F5 /* l-03.png */; };
 		27D60F7A25BC3CCC006E70F5 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D60F7925BC3CCC006E70F5 /* libc++.tbd */; };
-		27D60F8525BC405A006E70F5 /* TestBundle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D60F8425BC405A006E70F5 /* TestBundle.framework */; };
-		27D60F8925BC4073006E70F5 /* TestBundle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 27D60F8425BC405A006E70F5 /* TestBundle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +45,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				27D60F8925BC4073006E70F5 /* TestBundle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,7 +73,6 @@
 		2773342A25B873140049A6AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27D60E1B25BAA903006E70F5 /* l-03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "l-03.png"; sourceTree = "<group>"; };
 		27D60F7925BC3CCC006E70F5 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		27D60F8425BC405A006E70F5 /* TestBundle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TestBundle.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +80,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27D60F8525BC405A006E70F5 /* TestBundle.framework in Frameworks */,
 				27D60F7A25BC3CCC006E70F5 /* libc++.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -109,7 +104,6 @@
 		277333F525B873100049A6AB = {
 			isa = PBXGroup;
 			children = (
-				27D60F8425BC405A006E70F5 /* TestBundle.framework */,
 				2773340025B873100049A6AB /* TesLock */,
 				2773341C25B873130049A6AB /* TesLockTests */,
 				2773342725B873140049A6AB /* TesLockUITests */,
@@ -238,7 +232,7 @@
 		277333F625B873100049A6AB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1230;
+				LastUpgradeCheck = 1310;
 				TargetAttributes = {
 					277333FD25B873100049A6AB = {
 						CreatedOnToolsVersion = 12.3;
@@ -416,7 +410,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -469,7 +463,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -483,7 +477,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CVT5K5W5HB;
+				DEVELOPMENT_TEAM = AQDKUEE5C2;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -491,13 +485,13 @@
 					"$(PROJECT_DIR)/TesLock",
 				);
 				INFOPLIST_FILE = TesLock/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "Co.-Ltd...TesLock";
+				PRODUCT_BUNDLE_IDENTIFIER = "Co.-Ltd...TesLock0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -509,7 +503,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CVT5K5W5HB;
+				DEVELOPMENT_TEAM = AQDKUEE5C2;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -517,13 +511,13 @@
 					"$(PROJECT_DIR)/TesLock",
 				);
 				INFOPLIST_FILE = TesLock/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "Co.-Ltd...TesLock";
+				PRODUCT_BUNDLE_IDENTIFIER = "Co.-Ltd...TesLock0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

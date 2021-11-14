@@ -10,7 +10,7 @@
 #import <libkern/OSAtomic.h>
 #import <QuartzCore/QuartzCore.h>
 #import <os/lock.h>
-#import <TestBundle/TestBundle.h>
+//#import <TestBundle/TestBundle.h>
 //#import <FosaferAuth/FOSOut.h>
 #import "responderView.h"
 
@@ -69,6 +69,8 @@ int TimeCount = 0;
 //    testB();
     
 //    [self testResponder];
+    
+    [self testSomeLock];
 
 }
 

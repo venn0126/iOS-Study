@@ -7,6 +7,8 @@
 
 #import "ViewController.h"
 #import "SNPerson.h"
+#import "SNAppConfigABTest.h"
+#import <pthread.h>
 
 @interface ViewController ()
 
@@ -31,24 +33,49 @@
 
 - (void)testCrash {
     
-//    NSLock *lock = [[NSLock alloc] init];
+    NSLock *lock = [[NSLock alloc] init];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    pthread_mutex_t pLock;
+    pthread_mutex_init(&pLock,NULL);
+    
+    NSTimeInterval begin = CACurrentMediaTime();
     
     for(int i = 0; i < 10000; i++) {
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//            [lock lock];
-            self.person = [[SNPerson alloc] init];
-//            [lock unlock];
+            [lock lock];
+//            pthread_mutex_lock(&pLock);
+            
+            SNAppConfigABTest *abTest = [SNPerson shared].configABTest;
+            if (abTest.abTestExpose.length > 0) {
+                [dict setValue:abTest.abTestExpose forKey:@"abtestExpose"];
+                NSLog(@"read abtestExpose");
+            }
+            [lock unlock];
+//            pthread_mutex_unlock(&pLock);
+
+
+            
         });
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-//            [lock lock];
-            self.person = [[SNPerson alloc] init];
-//            [lock unlock];
+            [lock lock];
+//            pthread_mutex_lock(&pLock);
+        
+            [[SNPerson shared] requestConfigAsync];
+            NSLog(@"write abtestexpose");
+
+            
+            [lock unlock];
+//            pthread_mutex_unlock(&pLock);
+
         });
         
         NSLog(@"asyc idx %d",i);
     }
+    
+    NSLog(@"all time is %.2f",CACurrentMediaTime() - begin);
 }
+
 
 - (void)testStringNil {
     

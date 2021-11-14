@@ -9,4 +9,17 @@
 
 @implementation SNAppConfig
 
+- (instancetype)init {
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+    
+    
+    
+    self.appConfigABTest = [[SNAppConfigABTest alloc] init];
+    
+    return self;
+}
+
 @end

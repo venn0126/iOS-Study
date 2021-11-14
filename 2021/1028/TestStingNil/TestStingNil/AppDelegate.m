@@ -6,6 +6,7 @@
 //
 
 #import "AppDelegate.h"
+#import "SNPerson.h"
 
 @interface AppDelegate ()
 
