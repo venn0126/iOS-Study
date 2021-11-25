@@ -52,6 +52,10 @@
         _son = nil;
     }
     _son = [[SNSon alloc] init];
+    
+//    if (!_son) {
+//        _son = [[SNSon alloc] init];
+//    }
     [_son requestConfigAsync];
     
 }

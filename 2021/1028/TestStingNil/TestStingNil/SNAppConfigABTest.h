@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)updateWithDic:(NSDictionary *)dic;
 
++ (NSString *)appVersion;
+
 @end
 
 NS_ASSUME_NONNULL_END

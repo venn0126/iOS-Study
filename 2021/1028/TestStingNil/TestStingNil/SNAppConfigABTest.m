@@ -26,4 +26,20 @@
 
 }
 
+
++ (NSString *)appVersion {
+    static dispatch_once_t onceToken;
+    static NSString *appVersion;
+    dispatch_once(&onceToken, ^{
+        NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+        //6.2.3.1 -> 6.2.3
+        if (version.length > 5) {
+            appVersion = [version substringToIndex:5];
+        } else {
+            appVersion = version;
+        }
+    });
+    return appVersion;
+}
+
 @end
