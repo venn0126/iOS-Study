@@ -27,7 +27,35 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = UIColor.linkColor;
 //    [self testStringNil];
-    [self testCrash];
+//    [self testCrash];
+    
+    [self testGradientButton];
+}
+
+
+- (void)testGradientButton {
+    
+    UIButton *forwardButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [forwardButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
+//    forwardButton.titleLabel.font = [UIFont systemFontOfSize:17];
+    [forwardButton setTitle:@"立即转发" forState:UIControlStateNormal];
+    forwardButton.frame = CGRectMake(100, 100, 100, 50);
+    [self.view addSubview:forwardButton];
+    
+    CAGradientLayer *gradientLayer = [[CAGradientLayer alloc] init];
+    gradientLayer.colors = @[(id)[UIColor yellowColor].CGColor,(id)[UIColor orangeColor].CGColor];
+    gradientLayer.startPoint = CGPointMake(0.0, 0.0);
+    gradientLayer.endPoint = CGPointMake(1.0, 0.0);
+    gradientLayer.frame = forwardButton.bounds;
+//    gradientLayer.locations = @[@0.5,@1.0];
+    gradientLayer.cornerRadius = 12.0;
+    [forwardButton.layer insertSublayer:gradientLayer atIndex:0];
+
+    
+  
+    
+    
+    
 }
 
 
