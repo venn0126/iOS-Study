@@ -10,6 +10,11 @@
 #import "SNAppConfigABTest.h"
 #import <pthread.h>
 
+/// mutex0
+static pthread_mutex_t mutex_0 = PTHREAD_MUTEX_INITIALIZER;
+static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
+
+
 @interface ViewController ()
 
 @property (nonatomic, strong) NSMutableArray *array;
@@ -27,9 +32,9 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = UIColor.linkColor;
 //    [self testStringNil];
-//    [self testCrash];
+    [self testCrash];
     
-    [self testGradientButton];
+//    [self testGradientButton];
 }
 
 
@@ -37,9 +42,9 @@
     
     UIButton *forwardButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [forwardButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
-//    forwardButton.titleLabel.font = [UIFont systemFontOfSize:17];
+    forwardButton.titleLabel.font = [UIFont systemFontOfSize:13];
     [forwardButton setTitle:@"立即转发" forState:UIControlStateNormal];
-    forwardButton.frame = CGRectMake(100, 100, 100, 50);
+    forwardButton.frame = CGRectMake(100, 100, 72, 24);
     [self.view addSubview:forwardButton];
     
     CAGradientLayer *gradientLayer = [[CAGradientLayer alloc] init];
@@ -52,7 +57,15 @@
     [forwardButton.layer insertSublayer:gradientLayer atIndex:0];
 
     
-  
+    CALayer *maskLayer = [CALayer layer];
+    maskLayer.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.2].CGColor;
+    maskLayer.frame = forwardButton.bounds;
+    maskLayer.cornerRadius = 12.0;
+    [forwardButton.layer addSublayer:maskLayer];
+    
+//    UIView *maskView = [[UIView alloc] init];
+    
+
     
     
     
@@ -82,7 +95,7 @@
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
 //            [lock lock];
-//            pthread_mutex_lock(&pLock);
+            pthread_mutex_lock(&mutex_0);
             
             SNAppConfigABTest *abTest = [SNPerson shared].configABTest;
             if (abTest.abTestExpose.length > 0) {
@@ -90,21 +103,21 @@
                 NSLog(@"read abtestExpose---%d",i);
             }
 //            [lock unlock];
-//            pthread_mutex_unlock(&pLock);
+            pthread_mutex_unlock(&mutex_0);
 
 
             
         });
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 //            [lock lock];
-//            pthread_mutex_lock(&pLock);
+            pthread_mutex_lock(&mutex_1);
         
             [[SNPerson shared] requestConfigAsync];
             NSLog(@"write abtestexpose --%d",i);
 
             
 //            [lock unlock];
-//            pthread_mutex_unlock(&pLock);
+            pthread_mutex_unlock(&mutex_1);
 
 
         });
