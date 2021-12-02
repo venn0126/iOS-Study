@@ -19,6 +19,7 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
 
 @property (nonatomic, strong) NSMutableArray *array;
 @property (nonatomic, strong) SNPerson *person;
+@property (nonatomic, copy) NSArray *dataArray;
 
 @end
 
@@ -32,7 +33,8 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
     // Do any additional setup after loading the view.
     self.view.backgroundColor = UIColor.linkColor;
 //    [self testStringNil];
-    [self testCrash];
+//    [self testCrash];
+    [self testPthreadRWLock];
     
 //    [self testGradientButton];
 }
@@ -130,6 +132,49 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
   
 }
 
+- (void)testPthreadRWLock {
+    
+    static pthread_rwlock_t rwLock;
+    pthread_rwlock_init(&rwLock, NULL);
+    SNPerson *person = [SNPerson shared];
+    person.name = @"Augus";
+    
+    // 2 pthread read properties
+    for (int i = 0; i < 100000; i++) {
+        
+        // read
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            
+            pthread_rwlock_rdlock(&rwLock);
+            
+            NSLog(@"1 thread read name %d: %@",i,person.name);
+            
+            pthread_rwlock_unlock(&rwLock);
+        });
+        
+        // read
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            
+            pthread_rwlock_rdlock(&rwLock);
+            
+            NSLog(@"2 thread read name %d: %@",i,person.name);
+            
+            pthread_rwlock_unlock(&rwLock);
+        });
+        
+        // write
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            
+            pthread_rwlock_wrlock(&rwLock);
+            NSInteger index = arc4random() % self.dataArray.count;
+            person.name = self.dataArray[index];
+            NSLog(@"3 thread write name %d: %@",i,person.name);
+
+            pthread_rwlock_unlock(&rwLock);
+        });
+    }
+}
+
 
 - (void)testStringNil {
     
@@ -149,6 +194,15 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
     if (!str2.length) {
         NSLog(@"str2 is nil");
     }
+}
+
+#pragma mark - Lazy Load
+
+- (NSArray *)dataArray {
+    if (!_dataArray) {
+        _dataArray = @[@"Li",@"Tian",@"Xiong",@"Zhao",@"Xing",@"Wang",@"Yang",@"EnHao",@"Teng",@"Long",@"Xiao"];
+    }
+    return _dataArray;
 }
 
 @end

@@ -28,6 +28,8 @@ typedef NS_ENUM(NSInteger,LockType) {
     LockTypeNSConditionLock,
     LockTypesynchronized,
     LockTypeOSUnfairLock,
+    LockTypepthread_rwlock_rd,
+    LockTypepthread_rwlock_wr,
     LockTypeCount,
 };
 
@@ -317,6 +319,36 @@ void testB(){
         printf("osUnfairLock:            %8.2f ms\n", (end - begin) * 1000);
 
         
+    }
+    {
+        pthread_rwlockattr_t rwattr;
+        pthread_rwlockattr_init(&rwattr);
+        pthread_rwlockattr_setpshared(&rwattr, PTHREAD_PROCESS_PRIVATE);
+        
+        pthread_rwlock_t rdLock;
+        pthread_rwlock_init(&rdLock, &rwattr);
+        
+        begin = CACurrentMediaTime();
+        for(int i = 0;i < count;i++) {
+            pthread_rwlock_rdlock(&rdLock);
+            pthread_rwlock_unlock(&rdLock);
+        }
+        end = CACurrentMediaTime();
+        TimeCosts[LockTypepthread_rwlock_rd] += end - begin;
+        printf("pthread_rwlock_rdlock:    %8.2f ms\n",(end - begin) * 1000);
+    }
+    {
+        
+        pthread_rwlock_t wrLock;
+        pthread_rwlock_init(&wrLock, NULL);
+        begin = CACurrentMediaTime();
+        for(int i = 0;i < count;i++) {
+            pthread_rwlock_wrlock(&wrLock);
+            pthread_rwlock_unlock(&wrLock);
+        }
+        end = CACurrentMediaTime();
+        TimeCosts[LockTypepthread_rwlock_wr] += end - begin;
+        printf("pthread_rwlock_wrlock:    %8.2f ms\n",(end - begin) * 1000);
     }
     
     printf("---- fin (%d) ----\n\n",count);
