@@ -6,134 +6,53 @@ import SwiftShims
 
 import Foundation
 
-class Cat {
-  @_hasStorage @_hasInitialValue var name: String { get set }
-  @_hasStorage @_hasInitialValue var age: Int { get set }
-  @objc deinit
-  init()
+enum Fruits {
+  case apple(Int)
+  case banana(Int, Double)
+  case peach(String, Double, Int)
 }
 
-@_hasStorage @_hasInitialValue let aCat: Cat { get }
+@_hasStorage @_hasInitialValue let f: Fruits { get }
 
-// aCat
-sil_global hidden [let] @main.aCat : main.Cat : $Cat
+// f
+sil_global hidden [let] @main.f : main.Fruits : $Fruits
 
 // main
 sil @main : $@convention(c) (Int32, UnsafeMutablePointer<Optional<UnsafeMutablePointer<Int8>>>) -> Int32 {
 bb0(%0 : $Int32, %1 : $UnsafeMutablePointer<Optional<UnsafeMutablePointer<Int8>>>):
-  alloc_global @main.aCat : main.Cat              // id: %2
-  %3 = global_addr @main.aCat : main.Cat : $*Cat  // users: %14, %7
-  %4 = metatype $@thick Cat.Type                  // user: %6
-  // function_ref Cat.__allocating_init()
-  %5 = function_ref @main.Cat.__allocating_init() -> main.Cat : $@convention(method) (@thick Cat.Type) -> @owned Cat // user: %6
-  %6 = apply %5(%4) : $@convention(method) (@thick Cat.Type) -> @owned Cat // user: %7
-  store %6 to %3 : $*Cat                          // id: %7
-  %8 = integer_literal $Builtin.Word, 1           // user: %10
-  // function_ref _allocateUninitializedArray<A>(_:)
-  %9 = function_ref @Swift._allocateUninitializedArray<A>(Builtin.Word) -> ([A], Builtin.RawPointer) : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // user: %10
-  %10 = apply %9<Any>(%8) : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // users: %12, %11
-  %11 = tuple_extract %10 : $(Array<Any>, Builtin.RawPointer), 0 // user: %20
-  %12 = tuple_extract %10 : $(Array<Any>, Builtin.RawPointer), 1 // user: %13
-  %13 = pointer_to_address %12 : $Builtin.RawPointer to [strict] $*Any // user: %17
-  %14 = load %3 : $*Cat                           // users: %15, %16
-  %15 = class_method %14 : $Cat, #Cat.age!getter : (Cat) -> () -> Int, $@convention(method) (@guaranteed Cat) -> Int // user: %16
-  %16 = apply %15(%14) : $@convention(method) (@guaranteed Cat) -> Int // user: %18
-  %17 = init_existential_addr %13 : $*Any, $Int   // user: %18
-  store %16 to %17 : $*Int                        // id: %18
-  // function_ref _finalizeUninitializedArray<A>(_:)
-  %19 = function_ref @Swift._finalizeUninitializedArray<A>(__owned [A]) -> [A] : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // user: %20
-  %20 = apply %19<Any>(%11) : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // users: %29, %26
-  // function_ref default argument 1 of print(_:separator:terminator:)
-  %21 = function_ref @default argument 1 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> () : $@convention(thin) () -> @owned String // user: %22
-  %22 = apply %21() : $@convention(thin) () -> @owned String // users: %28, %26
-  // function_ref default argument 2 of print(_:separator:terminator:)
-  %23 = function_ref @default argument 2 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> () : $@convention(thin) () -> @owned String // user: %24
-  %24 = apply %23() : $@convention(thin) () -> @owned String // users: %27, %26
-  // function_ref print(_:separator:terminator:)
-  %25 = function_ref @Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> () : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> () // user: %26
-  %26 = apply %25(%20, %22, %24) : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> ()
-  release_value %24 : $String                     // id: %27
-  release_value %22 : $String                     // id: %28
-  release_value %20 : $Array<Any>                 // id: %29
-  %30 = integer_literal $Builtin.Int32, 0         // user: %31
-  %31 = struct $Int32 (%30 : $Builtin.Int32)      // user: %32
-  return %31 : $Int32                             // id: %32
-} // end sil function 'main'
-
-// variable initialization expression of Cat.name
-sil hidden [transparent] @variable initialization expression of main.Cat.name : Swift.String : $@convention(thin) () -> @owned String {
-bb0:
-  %0 = string_literal utf8 "tian"                 // user: %5
-  %1 = integer_literal $Builtin.Word, 4           // user: %5
-  %2 = integer_literal $Builtin.Int1, -1          // user: %5
-  %3 = metatype $@thin String.Type                // user: %5
+  alloc_global @main.f : main.Fruits             // id: %2
+  %3 = global_addr @main.f : main.Fruits : $*Fruits // user: %17
+  %4 = metatype $@thin Fruits.Type
+  %5 = string_literal utf8 "taozi"                // user: %10
+  %6 = integer_literal $Builtin.Word, 5           // user: %10
+  %7 = integer_literal $Builtin.Int1, -1          // user: %10
+  %8 = metatype $@thin String.Type                // user: %10
   // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
-  %4 = function_ref @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -> Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %5
-  %5 = apply %4(%0, %1, %2, %3) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %6
-  return %5 : $String                             // id: %6
-} // end sil function 'variable initialization expression of main.Cat.name : Swift.String'
+  %9 = function_ref @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -> Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %10
+  %10 = apply %9(%5, %6, %7, %8) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %15
+  %11 = float_literal $Builtin.FPIEEE64, 0x40285C28F5C28F5C // 12.18 // user: %12
+  %12 = struct $Double (%11 : $Builtin.FPIEEE64)  // user: %15
+  %13 = integer_literal $Builtin.Int64, 2021      // user: %14
+  %14 = struct $Int (%13 : $Builtin.Int64)        // user: %15
+  %15 = tuple (%10 : $String, %12 : $Double, %14 : $Int) // user: %16
+  %16 = enum $Fruits, #Fruits.peach!enumelt, %15 : $(String, Double, Int) // user: %17
+  store %16 to %3 : $*Fruits                      // id: %17
+  %18 = integer_literal $Builtin.Int32, 0         // user: %19
+  %19 = struct $Int32 (%18 : $Builtin.Int32)      // user: %20
+  return %19 : $Int32                             // id: %20
+} // end sil function 'main'
 
 // String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
 sil [serialized] [always_inline] [readonly] [_semantics "string.makeUTF8"] @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -> Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String
 
-// Cat.name.getter
-sil hidden [transparent] @main.Cat.name.getter : Swift.String : $@convention(method) (@guaranteed Cat) -> @owned String {
-// %0 "self"                                      // users: %2, %1
-bb0(%0 : $Cat):
-  debug_value %0 : $Cat, let, name "self", argno 1 // id: %1
-  %2 = ref_element_addr %0 : $Cat, #Cat.name      // user: %3
-  %3 = begin_access [read] [dynamic] %2 : $*String // users: %4, %6
-  %4 = load %3 : $*String                         // users: %7, %5
-  retain_value %4 : $String                       // id: %5
-  end_access %3 : $*String                        // id: %6
-  return %4 : $String                             // id: %7
-} // end sil function 'main.Cat.name.getter : Swift.String'
-
-// Cat.name.setter
-sil hidden [transparent] @main.Cat.name.setter : Swift.String : $@convention(method) (@owned String, @guaranteed Cat) -> () {
-// %0 "value"                                     // users: %11, %8, %4, %2
-// %1 "self"                                      // users: %5, %3
-bb0(%0 : $String, %1 : $Cat):
-  debug_value %0 : $String, let, name "value", argno 1 // id: %2
-  debug_value %1 : $Cat, let, name "self", argno 2 // id: %3
-  retain_value %0 : $String                       // id: %4
-  %5 = ref_element_addr %1 : $Cat, #Cat.name      // user: %6
-  %6 = begin_access [modify] [dynamic] %5 : $*String // users: %8, %7, %10
-  %7 = load %6 : $*String                         // user: %9
-  store %0 to %6 : $*String                       // id: %8
-  release_value %7 : $String                      // id: %9
-  end_access %6 : $*String                        // id: %10
-  release_value %0 : $String                      // id: %11
-  %12 = tuple ()                                  // user: %13
-  return %12 : $()                                // id: %13
-} // end sil function 'main.Cat.name.setter : Swift.String'
-
-// Cat.name.modify
-sil hidden [transparent] @main.Cat.name.modify : Swift.String : $@yield_once @convention(method) (@guaranteed Cat) -> @yields @inout String {
-// %0 "self"                                      // users: %2, %1
-bb0(%0 : $Cat):
-  debug_value %0 : $Cat, let, name "self", argno 1 // id: %1
-  %2 = ref_element_addr %0 : $Cat, #Cat.name      // user: %3
-  %3 = begin_access [modify] [dynamic] %2 : $*String // users: %5, %8, %4
-  yield %3 : $*String, resume bb1, unwind bb2     // id: %4
-
-bb1:                                              // Preds: bb0
-  end_access %3 : $*String                        // id: %5
-  %6 = tuple ()                                   // user: %7
-  return %6 : $()                                 // id: %7
-
-bb2:                                              // Preds: bb0
-  end_access %3 : $*String                        // id: %8
-  unwind                                          // id: %9
-} // end sil function 'main.Cat.name.modify : Swift.String'
-
-// variable initialization expression of Cat.age
-sil hidden [transparent] @variable initialization expression of main.Cat.age : Swift.Int : $@convention(thin) () -> Int {
-bb0:
-  %0 = integer_literal $Builtin.Int64, 18         // user: %1
-  %1 = struct $Int (%0 : $Builtin.Int64)          // user: %2
-  return %1 : $Int                                // id: %2
-} // end sil function 'variable initialization expression of main.Cat.age : Swift.Int'
+// Double.init(_builtinFloatLiteral:)
+sil public_external [transparent] [serialized] @Swift.Double.init(_builtinFloatLiteral: Builtin.FPIEEE80) -> Swift.Double : $@convention(method) (Builtin.FPIEEE80, @thin Double.Type) -> Double {
+// %0                                             // user: %2
+bb0(%0 : $Builtin.FPIEEE80, %1 : $@thin Double.Type):
+  %2 = builtin "fptrunc_FPIEEE80_FPIEEE64"(%0 : $Builtin.FPIEEE80) : $Builtin.FPIEEE64 // user: %3
+  %3 = struct $Double (%2 : $Builtin.FPIEEE64)    // user: %4
+  return %3 : $Double                             // id: %4
+} // end sil function 'Swift.Double.init(_builtinFloatLiteral: Builtin.FPIEEE80) -> Swift.Double'
 
 // Int.init(_builtinIntegerLiteral:)
 sil public_external [transparent] [serialized] @Swift.Int.init(_builtinIntegerLiteral: Builtin.IntLiteral) -> Swift.Int : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int {
@@ -144,185 +63,6 @@ bb0(%0 : $Builtin.IntLiteral, %1 : $@thin Int.Type):
   %4 = struct $Int (%3 : $Builtin.Int64)          // user: %5
   return %4 : $Int                                // id: %5
 } // end sil function 'Swift.Int.init(_builtinIntegerLiteral: Builtin.IntLiteral) -> Swift.Int'
-
-// Cat.age.getter
-sil hidden [transparent] @main.Cat.age.getter : Swift.Int : $@convention(method) (@guaranteed Cat) -> Int {
-// %0 "self"                                      // users: %2, %1
-bb0(%0 : $Cat):
-  debug_value %0 : $Cat, let, name "self", argno 1 // id: %1
-  %2 = ref_element_addr %0 : $Cat, #Cat.age       // user: %3
-  %3 = begin_access [read] [dynamic] %2 : $*Int   // users: %4, %5
-  %4 = load %3 : $*Int                            // user: %6
-  end_access %3 : $*Int                           // id: %5
-  return %4 : $Int                                // id: %6
-} // end sil function 'main.Cat.age.getter : Swift.Int'
-
-// Cat.age.setter
-sil hidden [transparent] @main.Cat.age.setter : Swift.Int : $@convention(method) (Int, @guaranteed Cat) -> () {
-// %0 "value"                                     // users: %6, %2
-// %1 "self"                                      // users: %4, %3
-bb0(%0 : $Int, %1 : $Cat):
-  debug_value %0 : $Int, let, name "value", argno 1 // id: %2
-  debug_value %1 : $Cat, let, name "self", argno 2 // id: %3
-  %4 = ref_element_addr %1 : $Cat, #Cat.age       // user: %5
-  %5 = begin_access [modify] [dynamic] %4 : $*Int // users: %6, %7
-  store %0 to %5 : $*Int                          // id: %6
-  end_access %5 : $*Int                           // id: %7
-  %8 = tuple ()                                   // user: %9
-  return %8 : $()                                 // id: %9
-} // end sil function 'main.Cat.age.setter : Swift.Int'
-
-// Cat.age.modify
-sil hidden [transparent] @main.Cat.age.modify : Swift.Int : $@yield_once @convention(method) (@guaranteed Cat) -> @yields @inout Int {
-// %0 "self"                                      // users: %2, %1
-bb0(%0 : $Cat):
-  debug_value %0 : $Cat, let, name "self", argno 1 // id: %1
-  %2 = ref_element_addr %0 : $Cat, #Cat.age       // user: %3
-  %3 = begin_access [modify] [dynamic] %2 : $*Int // users: %5, %8, %4
-  yield %3 : $*Int, resume bb1, unwind bb2        // id: %4
-
-bb1:                                              // Preds: bb0
-  end_access %3 : $*Int                           // id: %5
-  %6 = tuple ()                                   // user: %7
-  return %6 : $()                                 // id: %7
-
-bb2:                                              // Preds: bb0
-  end_access %3 : $*Int                           // id: %8
-  unwind                                          // id: %9
-} // end sil function 'main.Cat.age.modify : Swift.Int'
-
-// Cat.deinit
-sil hidden @main.Cat.deinit : $@convention(method) (@guaranteed Cat) -> @owned Builtin.NativeObject {
-// %0 "self"                                      // users: %6, %2, %1
-bb0(%0 : $Cat):
-  debug_value %0 : $Cat, let, name "self", argno 1 // id: %1
-  %2 = ref_element_addr %0 : $Cat, #Cat.name      // user: %3
-  %3 = begin_access [deinit] [static] %2 : $*String // users: %5, %4
-  destroy_addr %3 : $*String                      // id: %4
-  end_access %3 : $*String                        // id: %5
-  %6 = unchecked_ref_cast %0 : $Cat to $Builtin.NativeObject // user: %7
-  return %6 : $Builtin.NativeObject               // id: %7
-} // end sil function 'main.Cat.deinit'
-
-// Cat.__deallocating_deinit
-sil hidden @main.Cat.__deallocating_deinit : $@convention(method) (@owned Cat) -> () {
-// %0 "self"                                      // users: %3, %1
-bb0(%0 : $Cat):
-  debug_value %0 : $Cat, let, name "self", argno 1 // id: %1
-  // function_ref Cat.deinit
-  %2 = function_ref @main.Cat.deinit : $@convention(method) (@guaranteed Cat) -> @owned Builtin.NativeObject // user: %3
-  %3 = apply %2(%0) : $@convention(method) (@guaranteed Cat) -> @owned Builtin.NativeObject // user: %4
-  %4 = unchecked_ref_cast %3 : $Builtin.NativeObject to $Cat // user: %5
-  dealloc_ref %4 : $Cat                           // id: %5
-  %6 = tuple ()                                   // user: %7
-  return %6 : $()                                 // id: %7
-} // end sil function 'main.Cat.__deallocating_deinit'
-
-// Cat.__allocating_init()
-sil hidden [exact_self_class] @main.Cat.__allocating_init() -> main.Cat : $@convention(method) (@thick Cat.Type) -> @owned Cat {
-// %0 "$metatype"
-bb0(%0 : $@thick Cat.Type):
-  %1 = alloc_ref $Cat                             // user: %3
-  // function_ref Cat.init()
-  %2 = function_ref @main.Cat.init() -> main.Cat : $@convention(method) (@owned Cat) -> @owned Cat // user: %3
-  %3 = apply %2(%1) : $@convention(method) (@owned Cat) -> @owned Cat // user: %4
-  return %3 : $Cat                                // id: %4
-} // end sil function 'main.Cat.__allocating_init() -> main.Cat'
-
-// Cat.init()
-sil hidden @main.Cat.init() -> main.Cat : $@convention(method) (@owned Cat) -> @owned Cat {
-// %0 "self"                                      // users: %10, %2, %14, %1
-bb0(%0 : $Cat):
-  debug_value %0 : $Cat, let, name "self", argno 1 // id: %1
-  %2 = ref_element_addr %0 : $Cat, #Cat.name      // user: %9
-  %3 = string_literal utf8 "tian"                 // user: %8
-  %4 = integer_literal $Builtin.Word, 4           // user: %8
-  %5 = integer_literal $Builtin.Int1, -1          // user: %8
-  %6 = metatype $@thin String.Type                // user: %8
-  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
-  %7 = function_ref @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -> Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %8
-  %8 = apply %7(%3, %4, %5, %6) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %9
-  store %8 to %2 : $*String                       // id: %9
-  %10 = ref_element_addr %0 : $Cat, #Cat.age      // user: %13
-  %11 = integer_literal $Builtin.Int64, 18        // user: %12
-  %12 = struct $Int (%11 : $Builtin.Int64)        // user: %13
-  store %12 to %10 : $*Int                        // id: %13
-  return %0 : $Cat                                // id: %14
-} // end sil function 'main.Cat.init() -> main.Cat'
-
-// _allocateUninitializedArray<A>(_:)
-sil [serialized] [always_inline] [_semantics "array.uninitialized_intrinsic"] @Swift._allocateUninitializedArray<A>(Builtin.Word) -> ([A], Builtin.RawPointer) : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer)
-
-// _finalizeUninitializedArray<A>(_:)
-sil shared_external [serialized] [readnone] [_semantics "array.finalize_intrinsic"] @Swift._finalizeUninitializedArray<A>(__owned [A]) -> [A] : $@convention(thin) <Element> (@owned Array<Element>) -> @owned Array<Element> {
-// %0                                             // user: %2
-bb0(%0 : $Array<Element>):
-  %1 = alloc_stack $Array<Element>                // users: %6, %5, %4, %2
-  store %0 to %1 : $*Array<Element>               // id: %2
-  // function_ref Array._endMutation()
-  %3 = function_ref @Swift.Array._endMutation() -> () : $@convention(method) <τ_0_0> (@inout Array<τ_0_0>) -> () // user: %4
-  %4 = apply %3<Element>(%1) : $@convention(method) <τ_0_0> (@inout Array<τ_0_0>) -> ()
-  %5 = load %1 : $*Array<Element>                 // user: %7
-  dealloc_stack %1 : $*Array<Element>             // id: %6
-  return %5 : $Array<Element>                     // id: %7
-} // end sil function 'Swift._finalizeUninitializedArray<A>(__owned [A]) -> [A]'
-
-// default argument 1 of print(_:separator:terminator:)
-sil shared_external [serialized] @default argument 1 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> () : $@convention(thin) () -> @owned String {
-bb0:
-  %0 = string_literal utf8 " "                    // user: %5
-  %1 = integer_literal $Builtin.Word, 1           // user: %5
-  %2 = integer_literal $Builtin.Int1, -1          // user: %5
-  %3 = metatype $@thin String.Type                // user: %5
-  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
-  %4 = function_ref @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -> Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %5
-  %5 = apply %4(%0, %1, %2, %3) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %6
-  return %5 : $String                             // id: %6
-} // end sil function 'default argument 1 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> ()'
-
-// default argument 2 of print(_:separator:terminator:)
-sil shared_external [serialized] @default argument 2 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> () : $@convention(thin) () -> @owned String {
-bb0:
-  %0 = string_literal utf8 "\n"                   // user: %5
-  %1 = integer_literal $Builtin.Word, 1           // user: %5
-  %2 = integer_literal $Builtin.Int1, -1          // user: %5
-  %3 = metatype $@thin String.Type                // user: %5
-  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
-  %4 = function_ref @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -> Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %5
-  %5 = apply %4(%0, %1, %2, %3) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %6
-  return %5 : $String                             // id: %6
-} // end sil function 'default argument 2 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> ()'
-
-// print(_:separator:terminator:)
-sil @Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> () : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> ()
-
-// Array._endMutation()
-sil shared_external [serialized] [_semantics "array.end_mutation"] @Swift.Array._endMutation() -> () : $@convention(method) <Element> (@inout Array<Element>) -> () {
-// %0                                             // users: %9, %1
-bb0(%0 : $*Array<Element>):
-  %1 = struct_element_addr %0 : $*Array<Element>, #Array._buffer // user: %2
-  %2 = struct_element_addr %1 : $*_ArrayBuffer<Element>, #_ArrayBuffer._storage // user: %3
-  %3 = struct_element_addr %2 : $*_BridgeStorage<__ContiguousArrayStorageBase>, #_BridgeStorage.rawValue // user: %4
-  %4 = load %3 : $*Builtin.BridgeObject           // user: %5
-  %5 = end_cow_mutation %4 : $Builtin.BridgeObject // user: %6
-  %6 = struct $_BridgeStorage<__ContiguousArrayStorageBase> (%5 : $Builtin.BridgeObject) // user: %7
-  %7 = struct $_ArrayBuffer<Element> (%6 : $_BridgeStorage<__ContiguousArrayStorageBase>) // user: %8
-  %8 = struct $Array<Element> (%7 : $_ArrayBuffer<Element>) // user: %9
-  store %8 to %0 : $*Array<Element>               // id: %9
-  %10 = tuple ()                                  // user: %11
-  return %10 : $()                                // id: %11
-} // end sil function 'Swift.Array._endMutation() -> ()'
-
-sil_vtable Cat {
-  #Cat.name!getter: (Cat) -> () -> String : @main.Cat.name.getter : Swift.String	// Cat.name.getter
-  #Cat.name!setter: (Cat) -> (String) -> () : @main.Cat.name.setter : Swift.String	// Cat.name.setter
-  #Cat.name!modify: (Cat) -> () -> () : @main.Cat.name.modify : Swift.String	// Cat.name.modify
-  #Cat.age!getter: (Cat) -> () -> Int : @main.Cat.age.getter : Swift.Int	// Cat.age.getter
-  #Cat.age!setter: (Cat) -> (Int) -> () : @main.Cat.age.setter : Swift.Int	// Cat.age.setter
-  #Cat.age!modify: (Cat) -> () -> () : @main.Cat.age.modify : Swift.Int	// Cat.age.modify
-  #Cat.init!allocator: (Cat.Type) -> () -> Cat : @main.Cat.__allocating_init() -> main.Cat	// Cat.__allocating_init()
-  #Cat.deinit!deallocator: @main.Cat.__deallocating_deinit	// Cat.__deallocating_deinit
-}
 
 
 
