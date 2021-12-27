@@ -7,6 +7,8 @@
 
 #import <UIKit/UIKit.h>
 
+static NSString *cipherText = nil;
+
 @interface ViewController : UIViewController
 
 

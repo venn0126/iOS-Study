@@ -17,6 +17,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"1227Augus" forKey:@"clientId"];
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"cId"];
+
+    
     return YES;
 }
 
