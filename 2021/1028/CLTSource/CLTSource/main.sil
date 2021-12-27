@@ -1,0 +1,442 @@
+sil_stage canonical
+
+import Builtin
+import Swift
+import SwiftShims
+
+import Foundation
+
+enum Fruits : Int {
+  case apple
+  case banana
+  case peach
+  init?(rawValue: Int)
+  typealias RawValue = Int
+  var rawValue: Int { get }
+}
+
+@_hasStorage @_hasInitialValue var f: Fruits { get set }
+
+// f
+sil_global hidden @main.f : main.Fruits : $Fruits
+
+// main
+sil @main : $@convention(c) (Int32, UnsafeMutablePointer<Optional<UnsafeMutablePointer<Int8>>>) -> Int32 {
+bb0(%0 : $Int32, %1 : $UnsafeMutablePointer<Optional<UnsafeMutablePointer<Int8>>>):
+  alloc_global @main.f : main.Fruits             // id: %2
+  %3 = global_addr @main.f : main.Fruits : $*Fruits // users: %6, %15
+  %4 = metatype $@thin Fruits.Type
+  %5 = enum $Fruits, #Fruits.peach!enumelt        // user: %6
+  store %5 to %3 : $*Fruits                       // id: %6
+  %7 = alloc_stack $()                            // users: %22, %17
+  // function_ref closure #1 in 
+  %8 = function_ref @closure #1 (Swift.UnsafePointer<main.Fruits>) -> () in main : $@convention(thin) (UnsafePointer<Fruits>) -> () // user: %9
+  %9 = convert_function %8 : $@convention(thin) (UnsafePointer<Fruits>) -> () to $@convention(thin) @noescape (UnsafePointer<Fruits>) -> () // user: %10
+  %10 = thin_to_thick_function %9 : $@convention(thin) @noescape (UnsafePointer<Fruits>) -> () to $@noescape @callee_guaranteed (UnsafePointer<Fruits>) -> () // user: %11
+  %11 = convert_function %10 : $@noescape @callee_guaranteed (UnsafePointer<Fruits>) -> () to $@noescape @callee_guaranteed (UnsafePointer<Fruits>) -> @error Error // user: %13
+  // function_ref thunk for @callee_guaranteed (@unowned UnsafePointer<Fruits>) -> (@error @owned Error)
+  %12 = function_ref @reabstraction thunk helper from @callee_guaranteed (@unowned Swift.UnsafePointer<main.Fruits>) -> (@error @owned Swift.Error) to @escaping @callee_guaranteed (@unowned Swift.UnsafePointer<main.Fruits>) -> (@out (), @error @owned Swift.Error) : $@convention(thin) (UnsafePointer<Fruits>, @noescape @callee_guaranteed (UnsafePointer<Fruits>) -> @error Error) -> (@out (), @error Error) // user: %13
+  %13 = partial_apply [callee_guaranteed] [on_stack] %12(%11) : $@convention(thin) (UnsafePointer<Fruits>, @noescape @callee_guaranteed (UnsafePointer<Fruits>) -> @error Error) -> (@out (), @error Error) // users: %19, %14
+  %14 = convert_function %13 : $@noescape @callee_guaranteed (UnsafePointer<Fruits>) -> (@out (), @error Error) to $@noescape @callee_guaranteed @substituted <τ_0_0, τ_0_1> (UnsafePointer<τ_0_0>) -> (@out τ_0_1, @error Error) for <Fruits, ()> // user: %17
+  %15 = begin_access [modify] [dynamic] %3 : $*Fruits // users: %20, %17
+  // function_ref withUnsafePointer<A, B>(to:_:)
+  %16 = function_ref @Swift.withUnsafePointer<A, B>(to: inout A, _: (Swift.UnsafePointer<A>) throws -> B) throws -> B : $@convention(thin) <τ_0_0, τ_0_1> (@inout τ_0_0, @noescape @callee_guaranteed @substituted <τ_0_0, τ_0_1> (UnsafePointer<τ_0_0>) -> (@out τ_0_1, @error Error) for <τ_0_0, τ_0_1>) -> (@out τ_0_1, @error Error) // user: %17
+  try_apply %16<Fruits, ()>(%7, %15, %14) : $@convention(thin) <τ_0_0, τ_0_1> (@inout τ_0_0, @noescape @callee_guaranteed @substituted <τ_0_0, τ_0_1> (UnsafePointer<τ_0_0>) -> (@out τ_0_1, @error Error) for <τ_0_0, τ_0_1>) -> (@out τ_0_1, @error Error), normal bb1, error bb2 // id: %17
+
+bb1(%18 : $()):                                   // Preds: bb0
+  dealloc_stack %13 : $@noescape @callee_guaranteed (UnsafePointer<Fruits>) -> (@out (), @error Error) // id: %19
+  end_access %15 : $*Fruits                       // id: %20
+  %21 = tuple ()
+  dealloc_stack %7 : $*()                         // id: %22
+  %23 = integer_literal $Builtin.Word, 1          // user: %25
+  // function_ref _allocateUninitializedArray<A>(_:)
+  %24 = function_ref @Swift._allocateUninitializedArray<A>(Builtin.Word) -> ([A], Builtin.RawPointer) : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // user: %25
+  %25 = apply %24<Any>(%23) : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // users: %27, %26
+  %26 = tuple_extract %25 : $(Array<Any>, Builtin.RawPointer), 0 // user: %38
+  %27 = tuple_extract %25 : $(Array<Any>, Builtin.RawPointer), 1 // user: %28
+  %28 = pointer_to_address %27 : $Builtin.RawPointer to [strict] $*Any // user: %35
+  %29 = string_literal utf8 "end"                 // user: %34
+  %30 = integer_literal $Builtin.Word, 3          // user: %34
+  %31 = integer_literal $Builtin.Int1, -1         // user: %34
+  %32 = metatype $@thin String.Type               // user: %34
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %33 = function_ref @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -> Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %34
+  %34 = apply %33(%29, %30, %31, %32) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %36
+  %35 = init_existential_addr %28 : $*Any, $String // user: %36
+  store %34 to %35 : $*String                     // id: %36
+  // function_ref _finalizeUninitializedArray<A>(_:)
+  %37 = function_ref @Swift._finalizeUninitializedArray<A>(__owned [A]) -> [A] : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // user: %38
+  %38 = apply %37<Any>(%26) : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // users: %47, %44
+  // function_ref default argument 1 of print(_:separator:terminator:)
+  %39 = function_ref @default argument 1 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> () : $@convention(thin) () -> @owned String // user: %40
+  %40 = apply %39() : $@convention(thin) () -> @owned String // users: %46, %44
+  // function_ref default argument 2 of print(_:separator:terminator:)
+  %41 = function_ref @default argument 2 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> () : $@convention(thin) () -> @owned String // user: %42
+  %42 = apply %41() : $@convention(thin) () -> @owned String // users: %45, %44
+  // function_ref print(_:separator:terminator:)
+  %43 = function_ref @Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> () : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> () // user: %44
+  %44 = apply %43(%38, %40, %42) : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> ()
+  release_value %42 : $String                     // id: %45
+  release_value %40 : $String                     // id: %46
+  release_value %38 : $Array<Any>                 // id: %47
+  %48 = integer_literal $Builtin.Int32, 0         // user: %49
+  %49 = struct $Int32 (%48 : $Builtin.Int32)      // user: %50
+  return %49 : $Int32                             // id: %50
+
+bb2(%51 : $Error):                                // Preds: bb0
+  unreachable                                     // id: %52
+} // end sil function 'main'
+
+// Fruits.init(rawValue:)
+sil hidden @main.Fruits.init(rawValue: Swift.Int) -> main.Fruits? : $@convention(method) (Int, @thin Fruits.Type) -> Optional<Fruits> {
+// %0 "rawValue"                                  // users: %23, %14, %5, %3
+// %1 "$metatype"
+bb0(%0 : $Int, %1 : $@thin Fruits.Type):
+  %2 = alloc_stack $Fruits, var, name "self"      // users: %34, %27, %18, %9, %36, %31
+  debug_value %0 : $Int, let, name "rawValue", argno 1 // id: %3
+  %4 = integer_literal $Builtin.Int64, 11         // user: %6
+  %5 = struct_extract %0 : $Int, #Int._value      // user: %6
+  %6 = builtin "cmp_eq_Int64"(%4 : $Builtin.Int64, %5 : $Builtin.Int64) : $Builtin.Int1 // user: %7
+  cond_br %6, bb1, bb2                            // id: %7
+
+bb1:                                              // Preds: bb0
+  %8 = enum $Fruits, #Fruits.apple!enumelt        // user: %10
+  %9 = begin_access [modify] [static] %2 : $*Fruits // users: %10, %11
+  store %8 to %9 : $*Fruits                       // id: %10
+  end_access %9 : $*Fruits                        // id: %11
+  br bb7                                          // id: %12
+
+bb2:                                              // Preds: bb0
+  %13 = integer_literal $Builtin.Int64, 24        // user: %15
+  %14 = struct_extract %0 : $Int, #Int._value     // user: %15
+  %15 = builtin "cmp_eq_Int64"(%13 : $Builtin.Int64, %14 : $Builtin.Int64) : $Builtin.Int1 // user: %16
+  cond_br %15, bb3, bb4                           // id: %16
+
+bb3:                                              // Preds: bb2
+  %17 = enum $Fruits, #Fruits.banana!enumelt      // user: %19
+  %18 = begin_access [modify] [static] %2 : $*Fruits // users: %19, %20
+  store %17 to %18 : $*Fruits                     // id: %19
+  end_access %18 : $*Fruits                       // id: %20
+  br bb7                                          // id: %21
+
+bb4:                                              // Preds: bb2
+  %22 = integer_literal $Builtin.Int64, 8         // user: %24
+  %23 = struct_extract %0 : $Int, #Int._value     // user: %24
+  %24 = builtin "cmp_eq_Int64"(%22 : $Builtin.Int64, %23 : $Builtin.Int64) : $Builtin.Int1 // user: %25
+  cond_br %24, bb5, bb6                           // id: %25
+
+bb5:                                              // Preds: bb4
+  %26 = enum $Fruits, #Fruits.peach!enumelt       // user: %28
+  %27 = begin_access [modify] [static] %2 : $*Fruits // users: %28, %29
+  store %26 to %27 : $*Fruits                     // id: %28
+  end_access %27 : $*Fruits                       // id: %29
+  br bb7                                          // id: %30
+
+bb6:                                              // Preds: bb4
+  dealloc_stack %2 : $*Fruits                     // id: %31
+  %32 = enum $Optional<Fruits>, #Optional.none!enumelt // user: %33
+  br bb8(%32 : $Optional<Fruits>)                 // id: %33
+
+bb7:                                              // Preds: bb5 bb3 bb1
+  %34 = load %2 : $*Fruits                        // user: %35
+  %35 = enum $Optional<Fruits>, #Optional.some!enumelt, %34 : $Fruits // user: %37
+  dealloc_stack %2 : $*Fruits                     // id: %36
+  br bb8(%35 : $Optional<Fruits>)                 // id: %37
+
+// %38                                            // user: %39
+bb8(%38 : $Optional<Fruits>):                     // Preds: bb7 bb6
+  return %38 : $Optional<Fruits>                  // id: %39
+} // end sil function 'main.Fruits.init(rawValue: Swift.Int) -> main.Fruits?'
+
+// Int.init(_builtinIntegerLiteral:)
+sil public_external [transparent] @Swift.Int.init(_builtinIntegerLiteral: Builtin.IntLiteral) -> Swift.Int : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int {
+// %0                                             // user: %2
+bb0(%0 : $Builtin.IntLiteral, %1 : $@thin Int.Type):
+  %2 = builtin "s_to_s_checked_trunc_IntLiteral_Int64"(%0 : $Builtin.IntLiteral) : $(Builtin.Int64, Builtin.Int1) // user: %3
+  %3 = tuple_extract %2 : $(Builtin.Int64, Builtin.Int1), 0 // user: %4
+  %4 = struct $Int (%3 : $Builtin.Int64)          // user: %5
+  return %4 : $Int                                // id: %5
+} // end sil function 'Swift.Int.init(_builtinIntegerLiteral: Builtin.IntLiteral) -> Swift.Int'
+
+// ~= infix<A>(_:_:)
+sil public_external [transparent] @Swift.~= infix<A where A: Swift.Equatable>(A, A) -> Swift.Bool : $@convention(thin) <T where T : Equatable> (@in_guaranteed T, @in_guaranteed T) -> Bool {
+// %0                                             // user: %4
+// %1                                             // user: %4
+bb0(%0 : $*T, %1 : $*T):
+  %2 = metatype $@thick T.Type                    // user: %4
+  %3 = witness_method $T, #Equatable."==" : <Self where Self : Equatable> (Self.Type) -> (Self, Self) -> Bool : $@convention(witness_method: Equatable) <τ_0_0 where τ_0_0 : Equatable> (@in_guaranteed τ_0_0, @in_guaranteed τ_0_0, @thick τ_0_0.Type) -> Bool // user: %4
+  %4 = apply %3<T>(%0, %1, %2) : $@convention(witness_method: Equatable) <τ_0_0 where τ_0_0 : Equatable> (@in_guaranteed τ_0_0, @in_guaranteed τ_0_0, @thick τ_0_0.Type) -> Bool // user: %5
+  return %4 : $Bool                               // id: %5
+} // end sil function 'Swift.~= infix<A where A: Swift.Equatable>(A, A) -> Swift.Bool'
+
+// Fruits.rawValue.getter
+sil hidden @main.Fruits.rawValue.getter : Swift.Int : $@convention(method) (Fruits) -> Int {
+// %0 "self"                                      // users: %2, %1
+bb0(%0 : $Fruits):
+  debug_value %0 : $Fruits, let, name "self", argno 1 // id: %1
+  switch_enum %0 : $Fruits, case #Fruits.apple!enumelt: bb1, case #Fruits.banana!enumelt: bb2, case #Fruits.peach!enumelt: bb3 // id: %2
+
+bb1:                                              // Preds: bb0
+  %3 = integer_literal $Builtin.Int64, 11         // user: %4
+  %4 = struct $Int (%3 : $Builtin.Int64)          // user: %5
+  br bb4(%4 : $Int)                               // id: %5
+
+bb2:                                              // Preds: bb0
+  %6 = integer_literal $Builtin.Int64, 24         // user: %7
+  %7 = struct $Int (%6 : $Builtin.Int64)          // user: %8
+  br bb4(%7 : $Int)                               // id: %8
+
+bb3:                                              // Preds: bb0
+  %9 = integer_literal $Builtin.Int64, 8          // user: %10
+  %10 = struct $Int (%9 : $Builtin.Int64)         // user: %11
+  br bb4(%10 : $Int)                              // id: %11
+
+// %12                                            // user: %13
+bb4(%12 : $Int):                                  // Preds: bb3 bb2 bb1
+  return %12 : $Int                               // id: %13
+} // end sil function 'main.Fruits.rawValue.getter : Swift.Int'
+
+// protocol witness for static Equatable.== infix(_:_:) in conformance Fruits
+sil private [transparent] [thunk] @protocol witness for static Swift.Equatable.== infix(A, A) -> Swift.Bool in conformance main.Fruits : Swift.Equatable in main : $@convention(witness_method: Equatable) (@in_guaranteed Fruits, @in_guaranteed Fruits, @thick Fruits.Type) -> Bool {
+// %0                                             // user: %4
+// %1                                             // user: %4
+bb0(%0 : $*Fruits, %1 : $*Fruits, %2 : $@thick Fruits.Type):
+  // function_ref == infix<A>(_:_:)
+  %3 = function_ref @Swift.== infix<A where A: Swift.RawRepresentable, A.RawValue: Swift.Equatable>(A, A) -> Swift.Bool : $@convention(thin) <τ_0_0 where τ_0_0 : RawRepresentable, τ_0_0.RawValue : Equatable> (@in_guaranteed τ_0_0, @in_guaranteed τ_0_0) -> Bool // user: %4
+  %4 = apply %3<Fruits>(%0, %1) : $@convention(thin) <τ_0_0 where τ_0_0 : RawRepresentable, τ_0_0.RawValue : Equatable> (@in_guaranteed τ_0_0, @in_guaranteed τ_0_0) -> Bool // user: %5
+  return %4 : $Bool                               // id: %5
+} // end sil function 'protocol witness for static Swift.Equatable.== infix(A, A) -> Swift.Bool in conformance main.Fruits : Swift.Equatable in main'
+
+// == infix<A>(_:_:)
+sil @Swift.== infix<A where A: Swift.RawRepresentable, A.RawValue: Swift.Equatable>(A, A) -> Swift.Bool : $@convention(thin) <τ_0_0 where τ_0_0 : RawRepresentable, τ_0_0.RawValue : Equatable> (@in_guaranteed τ_0_0, @in_guaranteed τ_0_0) -> Bool
+
+// protocol witness for Hashable.hashValue.getter in conformance Fruits
+sil private [transparent] [thunk] @protocol witness for Swift.Hashable.hashValue.getter : Swift.Int in conformance main.Fruits : Swift.Hashable in main : $@convention(witness_method: Hashable) (@in_guaranteed Fruits) -> Int {
+// %0                                             // user: %2
+bb0(%0 : $*Fruits):
+  // function_ref RawRepresentable<>.hashValue.getter
+  %1 = function_ref @(extension in Swift):Swift.RawRepresentable< where A: Swift.Hashable, A.Swift.RawRepresentable.RawValue: Swift.Hashable>.hashValue.getter : Swift.Int : $@convention(method) <τ_0_0 where τ_0_0 : Hashable, τ_0_0 : RawRepresentable, τ_0_0.RawValue : Hashable> (@in_guaranteed τ_0_0) -> Int // user: %2
+  %2 = apply %1<Fruits>(%0) : $@convention(method) <τ_0_0 where τ_0_0 : Hashable, τ_0_0 : RawRepresentable, τ_0_0.RawValue : Hashable> (@in_guaranteed τ_0_0) -> Int // user: %3
+  return %2 : $Int                                // id: %3
+} // end sil function 'protocol witness for Swift.Hashable.hashValue.getter : Swift.Int in conformance main.Fruits : Swift.Hashable in main'
+
+// RawRepresentable<>.hashValue.getter
+sil @(extension in Swift):Swift.RawRepresentable< where A: Swift.Hashable, A.Swift.RawRepresentable.RawValue: Swift.Hashable>.hashValue.getter : Swift.Int : $@convention(method) <τ_0_0 where τ_0_0 : Hashable, τ_0_0 : RawRepresentable, τ_0_0.RawValue : Hashable> (@in_guaranteed τ_0_0) -> Int
+
+// protocol witness for Hashable.hash(into:) in conformance Fruits
+sil private [transparent] [thunk] @protocol witness for Swift.Hashable.hash(into: inout Swift.Hasher) -> () in conformance main.Fruits : Swift.Hashable in main : $@convention(witness_method: Hashable) (@inout Hasher, @in_guaranteed Fruits) -> () {
+// %0                                             // user: %3
+// %1                                             // user: %3
+bb0(%0 : $*Hasher, %1 : $*Fruits):
+  // function_ref RawRepresentable<>.hash(into:)
+  %2 = function_ref @(extension in Swift):Swift.RawRepresentable< where A: Swift.Hashable, A.Swift.RawRepresentable.RawValue: Swift.Hashable>.hash(into: inout Swift.Hasher) -> () : $@convention(method) <τ_0_0 where τ_0_0 : Hashable, τ_0_0 : RawRepresentable, τ_0_0.RawValue : Hashable> (@inout Hasher, @in_guaranteed τ_0_0) -> () // user: %3
+  %3 = apply %2<Fruits>(%0, %1) : $@convention(method) <τ_0_0 where τ_0_0 : Hashable, τ_0_0 : RawRepresentable, τ_0_0.RawValue : Hashable> (@inout Hasher, @in_guaranteed τ_0_0) -> ()
+  %4 = tuple ()                                   // user: %5
+  return %4 : $()                                 // id: %5
+} // end sil function 'protocol witness for Swift.Hashable.hash(into: inout Swift.Hasher) -> () in conformance main.Fruits : Swift.Hashable in main'
+
+// RawRepresentable<>.hash(into:)
+sil @(extension in Swift):Swift.RawRepresentable< where A: Swift.Hashable, A.Swift.RawRepresentable.RawValue: Swift.Hashable>.hash(into: inout Swift.Hasher) -> () : $@convention(method) <τ_0_0 where τ_0_0 : Hashable, τ_0_0 : RawRepresentable, τ_0_0.RawValue : Hashable> (@inout Hasher, @in_guaranteed τ_0_0) -> ()
+
+// protocol witness for Hashable._rawHashValue(seed:) in conformance Fruits
+sil private [transparent] [thunk] @protocol witness for Swift.Hashable._rawHashValue(seed: Swift.Int) -> Swift.Int in conformance main.Fruits : Swift.Hashable in main : $@convention(witness_method: Hashable) (Int, @in_guaranteed Fruits) -> Int {
+// %0                                             // user: %3
+// %1                                             // user: %3
+bb0(%0 : $Int, %1 : $*Fruits):
+  // function_ref RawRepresentable<>._rawHashValue(seed:)
+  %2 = function_ref @(extension in Swift):Swift.RawRepresentable< where A: Swift.Hashable, A.Swift.RawRepresentable.RawValue: Swift.Hashable>._rawHashValue(seed: Swift.Int) -> Swift.Int : $@convention(method) <τ_0_0 where τ_0_0 : Hashable, τ_0_0 : RawRepresentable, τ_0_0.RawValue : Hashable> (Int, @in_guaranteed τ_0_0) -> Int // user: %3
+  %3 = apply %2<Fruits>(%0, %1) : $@convention(method) <τ_0_0 where τ_0_0 : Hashable, τ_0_0 : RawRepresentable, τ_0_0.RawValue : Hashable> (Int, @in_guaranteed τ_0_0) -> Int // user: %4
+  return %3 : $Int                                // id: %4
+} // end sil function 'protocol witness for Swift.Hashable._rawHashValue(seed: Swift.Int) -> Swift.Int in conformance main.Fruits : Swift.Hashable in main'
+
+// RawRepresentable<>._rawHashValue(seed:)
+sil @(extension in Swift):Swift.RawRepresentable< where A: Swift.Hashable, A.Swift.RawRepresentable.RawValue: Swift.Hashable>._rawHashValue(seed: Swift.Int) -> Swift.Int : $@convention(method) <τ_0_0 where τ_0_0 : Hashable, τ_0_0 : RawRepresentable, τ_0_0.RawValue : Hashable> (Int, @in_guaranteed τ_0_0) -> Int
+
+// protocol witness for RawRepresentable.init(rawValue:) in conformance Fruits
+sil private [transparent] [thunk] @protocol witness for Swift.RawRepresentable.init(rawValue: A.RawValue) -> A? in conformance main.Fruits : Swift.RawRepresentable in main : $@convention(witness_method: RawRepresentable) (@in Int, @thick Fruits.Type) -> @out Optional<Fruits> {
+// %0                                             // user: %7
+// %1                                             // user: %3
+bb0(%0 : $*Optional<Fruits>, %1 : $*Int, %2 : $@thick Fruits.Type):
+  %3 = load %1 : $*Int                            // user: %6
+  %4 = metatype $@thin Fruits.Type                // user: %6
+  // function_ref Fruits.init(rawValue:)
+  %5 = function_ref @main.Fruits.init(rawValue: Swift.Int) -> main.Fruits? : $@convention(method) (Int, @thin Fruits.Type) -> Optional<Fruits> // user: %6
+  %6 = apply %5(%3, %4) : $@convention(method) (Int, @thin Fruits.Type) -> Optional<Fruits> // user: %7
+  store %6 to %0 : $*Optional<Fruits>             // id: %7
+  %8 = tuple ()                                   // user: %9
+  return %8 : $()                                 // id: %9
+} // end sil function 'protocol witness for Swift.RawRepresentable.init(rawValue: A.RawValue) -> A? in conformance main.Fruits : Swift.RawRepresentable in main'
+
+// protocol witness for RawRepresentable.rawValue.getter in conformance Fruits
+sil private [transparent] [thunk] @protocol witness for Swift.RawRepresentable.rawValue.getter : A.RawValue in conformance main.Fruits : Swift.RawRepresentable in main : $@convention(witness_method: RawRepresentable) (@in_guaranteed Fruits) -> @out Int {
+// %0                                             // user: %5
+// %1                                             // user: %2
+bb0(%0 : $*Int, %1 : $*Fruits):
+  %2 = load %1 : $*Fruits                         // user: %4
+  // function_ref Fruits.rawValue.getter
+  %3 = function_ref @main.Fruits.rawValue.getter : Swift.Int : $@convention(method) (Fruits) -> Int // user: %4
+  %4 = apply %3(%2) : $@convention(method) (Fruits) -> Int // user: %5
+  store %4 to %0 : $*Int                          // id: %5
+  %6 = tuple ()                                   // user: %7
+  return %6 : $()                                 // id: %7
+} // end sil function 'protocol witness for Swift.RawRepresentable.rawValue.getter : A.RawValue in conformance main.Fruits : Swift.RawRepresentable in main'
+
+// closure #1 in 
+sil private @closure #1 (Swift.UnsafePointer<main.Fruits>) -> () in main : $@convention(thin) (UnsafePointer<Fruits>) -> () {
+// %0 "$0"                                        // users: %9, %1
+bb0(%0 : $UnsafePointer<Fruits>):
+  debug_value %0 : $UnsafePointer<Fruits>, let, name "$0", argno 1 // id: %1
+  %2 = integer_literal $Builtin.Word, 1           // user: %4
+  // function_ref _allocateUninitializedArray<A>(_:)
+  %3 = function_ref @Swift._allocateUninitializedArray<A>(Builtin.Word) -> ([A], Builtin.RawPointer) : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // user: %4
+  %4 = apply %3<Any>(%2) : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // users: %6, %5
+  %5 = tuple_extract %4 : $(Array<Any>, Builtin.RawPointer), 0 // user: %11
+  %6 = tuple_extract %4 : $(Array<Any>, Builtin.RawPointer), 1 // user: %7
+  %7 = pointer_to_address %6 : $Builtin.RawPointer to [strict] $*Any // user: %8
+  %8 = init_existential_addr %7 : $*Any, $UnsafePointer<Fruits> // user: %9
+  store %0 to %8 : $*UnsafePointer<Fruits>        // id: %9
+  // function_ref _finalizeUninitializedArray<A>(_:)
+  %10 = function_ref @Swift._finalizeUninitializedArray<A>(__owned [A]) -> [A] : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // user: %11
+  %11 = apply %10<Any>(%5) : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // users: %20, %17
+  // function_ref default argument 1 of print(_:separator:terminator:)
+  %12 = function_ref @default argument 1 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> () : $@convention(thin) () -> @owned String // user: %13
+  %13 = apply %12() : $@convention(thin) () -> @owned String // users: %19, %17
+  // function_ref default argument 2 of print(_:separator:terminator:)
+  %14 = function_ref @default argument 2 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> () : $@convention(thin) () -> @owned String // user: %15
+  %15 = apply %14() : $@convention(thin) () -> @owned String // users: %18, %17
+  // function_ref print(_:separator:terminator:)
+  %16 = function_ref @Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> () : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> () // user: %17
+  %17 = apply %16(%11, %13, %15) : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> ()
+  release_value %15 : $String                     // id: %18
+  release_value %13 : $String                     // id: %19
+  release_value %11 : $Array<Any>                 // id: %20
+  %21 = tuple ()                                  // user: %22
+  return %21 : $()                                // id: %22
+} // end sil function 'closure #1 (Swift.UnsafePointer<main.Fruits>) -> () in main'
+
+// _allocateUninitializedArray<A>(_:)
+sil [always_inline] [_semantics "array.uninitialized_intrinsic"] @Swift._allocateUninitializedArray<A>(Builtin.Word) -> ([A], Builtin.RawPointer) : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer)
+
+// _finalizeUninitializedArray<A>(_:)
+sil shared_external [readnone] [_semantics "array.finalize_intrinsic"] @Swift._finalizeUninitializedArray<A>(__owned [A]) -> [A] : $@convention(thin) <Element> (@owned Array<Element>) -> @owned Array<Element> {
+// %0                                             // user: %2
+bb0(%0 : $Array<Element>):
+  %1 = alloc_stack $Array<Element>                // users: %6, %5, %4, %2
+  store %0 to %1 : $*Array<Element>               // id: %2
+  // function_ref Array._endMutation()
+  %3 = function_ref @Swift.Array._endMutation() -> () : $@convention(method) <τ_0_0> (@inout Array<τ_0_0>) -> () // user: %4
+  %4 = apply %3<Element>(%1) : $@convention(method) <τ_0_0> (@inout Array<τ_0_0>) -> ()
+  %5 = load %1 : $*Array<Element>                 // user: %7
+  dealloc_stack %1 : $*Array<Element>             // id: %6
+  return %5 : $Array<Element>                     // id: %7
+} // end sil function 'Swift._finalizeUninitializedArray<A>(__owned [A]) -> [A]'
+
+// default argument 1 of print(_:separator:terminator:)
+sil shared_external @default argument 1 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> () : $@convention(thin) () -> @owned String {
+bb0:
+  %0 = string_literal utf8 " "                    // user: %5
+  %1 = integer_literal $Builtin.Word, 1           // user: %5
+  %2 = integer_literal $Builtin.Int1, -1          // user: %5
+  %3 = metatype $@thin String.Type                // user: %5
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %4 = function_ref @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -> Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %5
+  %5 = apply %4(%0, %1, %2, %3) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %6
+  return %5 : $String                             // id: %6
+} // end sil function 'default argument 1 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> ()'
+
+// default argument 2 of print(_:separator:terminator:)
+sil shared_external @default argument 2 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> () : $@convention(thin) () -> @owned String {
+bb0:
+  %0 = string_literal utf8 "\n"                   // user: %5
+  %1 = integer_literal $Builtin.Word, 1           // user: %5
+  %2 = integer_literal $Builtin.Int1, -1          // user: %5
+  %3 = metatype $@thin String.Type                // user: %5
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %4 = function_ref @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -> Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %5
+  %5 = apply %4(%0, %1, %2, %3) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %6
+  return %5 : $String                             // id: %6
+} // end sil function 'default argument 2 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> ()'
+
+// print(_:separator:terminator:)
+sil @Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> () : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> ()
+
+// thunk for @callee_guaranteed (@unowned UnsafePointer<Fruits>) -> (@error @owned Error)
+sil shared [transparent] [reabstraction_thunk] @reabstraction thunk helper from @callee_guaranteed (@unowned Swift.UnsafePointer<main.Fruits>) -> (@error @owned Swift.Error) to @escaping @callee_guaranteed (@unowned Swift.UnsafePointer<main.Fruits>) -> (@out (), @error @owned Swift.Error) : $@convention(thin) (UnsafePointer<Fruits>, @noescape @callee_guaranteed (UnsafePointer<Fruits>) -> @error Error) -> (@out (), @error Error) {
+// %1                                             // user: %3
+// %2                                             // user: %3
+bb0(%0 : $*(), %1 : $UnsafePointer<Fruits>, %2 : $@noescape @callee_guaranteed (UnsafePointer<Fruits>) -> @error Error):
+  try_apply %2(%1) : $@noescape @callee_guaranteed (UnsafePointer<Fruits>) -> @error Error, normal bb1, error bb2 // id: %3
+
+bb1(%4 : $()):                                    // Preds: bb0
+  %5 = tuple ()                                   // user: %6
+  return %5 : $()                                 // id: %6
+
+// %7                                             // user: %8
+bb2(%7 : $Error):                                 // Preds: bb0
+  throw %7 : $Error                               // id: %8
+} // end sil function 'reabstraction thunk helper from @callee_guaranteed (@unowned Swift.UnsafePointer<main.Fruits>) -> (@error @owned Swift.Error) to @escaping @callee_guaranteed (@unowned Swift.UnsafePointer<main.Fruits>) -> (@out (), @error @owned Swift.Error)'
+
+// withUnsafePointer<A, B>(to:_:)
+sil @Swift.withUnsafePointer<A, B>(to: inout A, _: (Swift.UnsafePointer<A>) throws -> B) throws -> B : $@convention(thin) <τ_0_0, τ_0_1> (@inout τ_0_0, @noescape @callee_guaranteed @substituted <τ_0_0, τ_0_1> (UnsafePointer<τ_0_0>) -> (@out τ_0_1, @error Error) for <τ_0_0, τ_0_1>) -> (@out τ_0_1, @error Error)
+
+// String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+sil [always_inline] [readonly] [_semantics "string.makeUTF8"] @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -> Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String
+
+// protocol witness for static Equatable.== infix(_:_:) in conformance Int
+sil shared_external [transparent] [thunk] @protocol witness for static Swift.Equatable.== infix(A, A) -> Swift.Bool in conformance Swift.Int : Swift.Equatable in Swift : $@convention(witness_method: Equatable) (@in_guaranteed Int, @in_guaranteed Int, @thick Int.Type) -> Bool {
+// %0                                             // user: %3
+// %1                                             // user: %5
+bb0(%0 : $*Int, %1 : $*Int, %2 : $@thick Int.Type):
+  %3 = struct_element_addr %0 : $*Int, #Int._value // user: %4
+  %4 = load %3 : $*Builtin.Int64                  // user: %7
+  %5 = struct_element_addr %1 : $*Int, #Int._value // user: %6
+  %6 = load %5 : $*Builtin.Int64                  // user: %7
+  %7 = builtin "cmp_eq_Int64"(%4 : $Builtin.Int64, %6 : $Builtin.Int64) : $Builtin.Int1 // user: %8
+  %8 = struct $Bool (%7 : $Builtin.Int1)          // user: %9
+  return %8 : $Bool                               // id: %9
+} // end sil function 'protocol witness for static Swift.Equatable.== infix(A, A) -> Swift.Bool in conformance Swift.Int : Swift.Equatable in Swift'
+
+// Array._endMutation()
+sil shared_external [_semantics "array.end_mutation"] @Swift.Array._endMutation() -> () : $@convention(method) <Element> (@inout Array<Element>) -> () {
+// %0                                             // users: %9, %1
+bb0(%0 : $*Array<Element>):
+  %1 = struct_element_addr %0 : $*Array<Element>, #Array._buffer // user: %2
+  %2 = struct_element_addr %1 : $*_ArrayBuffer<Element>, #_ArrayBuffer._storage // user: %3
+  %3 = struct_element_addr %2 : $*_BridgeStorage<__ContiguousArrayStorageBase>, #_BridgeStorage.rawValue // user: %4
+  %4 = load %3 : $*Builtin.BridgeObject           // user: %5
+  %5 = end_cow_mutation %4 : $Builtin.BridgeObject // user: %6
+  %6 = struct $_BridgeStorage<__ContiguousArrayStorageBase> (%5 : $Builtin.BridgeObject) // user: %7
+  %7 = struct $_ArrayBuffer<Element> (%6 : $_BridgeStorage<__ContiguousArrayStorageBase>) // user: %8
+  %8 = struct $Array<Element> (%7 : $_ArrayBuffer<Element>) // user: %9
+  store %8 to %0 : $*Array<Element>               // id: %9
+  %10 = tuple ()                                  // user: %11
+  return %10 : $()                                // id: %11
+} // end sil function 'Swift.Array._endMutation() -> ()'
+
+sil_witness_table hidden Fruits: Equatable module main {
+  method #Equatable."==": <Self where Self : Equatable> (Self.Type) -> (Self, Self) -> Bool : @protocol witness for static Swift.Equatable.== infix(A, A) -> Swift.Bool in conformance main.Fruits : Swift.Equatable in main	// protocol witness for static Equatable.== infix(_:_:) in conformance Fruits
+}
+
+sil_witness_table hidden Fruits: Hashable module main {
+  base_protocol Equatable: Fruits: Equatable module main
+  method #Hashable.hashValue!getter: <Self where Self : Hashable> (Self) -> () -> Int : @protocol witness for Swift.Hashable.hashValue.getter : Swift.Int in conformance main.Fruits : Swift.Hashable in main	// protocol witness for Hashable.hashValue.getter in conformance Fruits
+  method #Hashable.hash: <Self where Self : Hashable> (Self) -> (inout Hasher) -> () : @protocol witness for Swift.Hashable.hash(into: inout Swift.Hasher) -> () in conformance main.Fruits : Swift.Hashable in main	// protocol witness for Hashable.hash(into:) in conformance Fruits
+  method #Hashable._rawHashValue: <Self where Self : Hashable> (Self) -> (Int) -> Int : @protocol witness for Swift.Hashable._rawHashValue(seed: Swift.Int) -> Swift.Int in conformance main.Fruits : Swift.Hashable in main	// protocol witness for Hashable._rawHashValue(seed:) in conformance Fruits
+}
+
+sil_witness_table hidden Fruits: RawRepresentable module main {
+  associated_type RawValue: Int
+  method #RawRepresentable.init!allocator: <Self where Self : RawRepresentable> (Self.Type) -> (Self.RawValue) -> Self? : @protocol witness for Swift.RawRepresentable.init(rawValue: A.RawValue) -> A? in conformance main.Fruits : Swift.RawRepresentable in main	// protocol witness for RawRepresentable.init(rawValue:) in conformance Fruits
+  method #RawRepresentable.rawValue!getter: <Self where Self : RawRepresentable> (Self) -> () -> Self.RawValue : @protocol witness for Swift.RawRepresentable.rawValue.getter : A.RawValue in conformance main.Fruits : Swift.RawRepresentable in main	// protocol witness for RawRepresentable.rawValue.getter in conformance Fruits
+}
+
+sil_witness_table public_external Int: Equatable module Swift {
+  method #Equatable."==": <Self where Self : Equatable> (Self.Type) -> (Self, Self) -> Bool : @protocol witness for static Swift.Equatable.== infix(A, A) -> Swift.Bool in conformance Swift.Int : Swift.Equatable in Swift	// protocol witness for static Equatable.== infix(_:_:) in conformance Int
+}
+
+
+
+// Mappings from '#fileID' to '#filePath':
+//   'main/main.swift' => 'main.swift'
+
+
