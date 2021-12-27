@@ -45,37 +45,64 @@ import Foundation
 //}
 //print("end")
 
-enum Fruits: Int {
-    case apple = 11
-    case banana = 24
-    case peach = 8
-    
-    
-    var rawValue: Int {
-        switch self {
-        case .apple:
-            return 11
-        case .banana:
-            return 24
-        case .peach:
-            return 9
-        }
-    }
-    
-    init?(rawValue: Int) {
-        if rawValue == 10 {
-            self = .apple
-        } else if rawValue == 24 {
-            self = .banana
-        } else if rawValue == 8 {
-            self = .peach
-        } else {
-            return nil
-        }
-    }
-    
+//enum Fruits: Int {
+//    case apple = 11
+//    case banana = 24
+//    case peach = 8
+//
+//
+//    var rawValue: Int {
+//        switch self {
+//        case .apple:
+//            return 11
+//        case .banana:
+//            return 24
+//        case .peach:
+//            return 9
+//        }
+//    }
+//
+//    init?(rawValue: Int) {
+//        if rawValue == 10 {
+//            self = .apple
+//        } else if rawValue == 24 {
+//            self = .banana
+//        } else if rawValue == 8 {
+//            self = .peach
+//        } else {
+//            return nil
+//        }
+//    }
+//
+//}
+//
+//let p = Fruits.peach.rawValue
+//print(p)
+//print("end")
+
+
+//MARK: - Test Codable
+
+struct Augus: Codable {
+    var name: String
+    var age: Int
 }
 
-let p = Fruits.peach.rawValue
-print(p)
-print("end")
+let jsonString = """
+{
+    "name" : "Augus",
+    "age" : 18,
+}
+"""
+
+let jsonData = jsonString.data(using: .utf8)
+let decoder = JSONDecoder()
+if let jsonData = jsonData,
+   let result = try? decoder.decode(Augus.self, from: jsonData) {
+    print(result)
+} else {
+    print("decode error")
+}
+
+print("decode end")
+
