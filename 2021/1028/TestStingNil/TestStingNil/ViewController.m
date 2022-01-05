@@ -9,6 +9,7 @@
 #import "SNPerson.h"
 #import "SNAppConfigABTest.h"
 #import <pthread.h>
+#import "SNSon.h"
 
 /// mutex0
 static pthread_mutex_t mutex_0 = PTHREAD_MUTEX_INITIALIZER;
@@ -33,8 +34,8 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
     // Do any additional setup after loading the view.
     self.view.backgroundColor = UIColor.linkColor;
 //    [self testStringNil];
-//    [self testCrash];
-    [self testPthreadRWLock];
+    [self testCrash];
+//    [self testPthreadRWLock];
     
 //    [self testGradientButton];
 }
@@ -97,29 +98,36 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
 //            [lock lock];
-            pthread_mutex_lock(&mutex_0);
+//            pthread_mutex_lock(&mutex_0);
             
-            SNAppConfigABTest *abTest = [SNPerson shared].configABTest;
-            if (abTest.abTestExpose.length > 0) {
-                [dict setValue:abTest.abTestExpose forKey:@"abtestExpose"];
+//            SNAppConfigABTest *abTest = [SNPerson shared].configABTest;
+//            if (abTest.abTestExpose.length > 0) {
+//                [dict setValue:abTest.abTestExpose forKey:@"abtestExpose"];
+           NSDictionary *dict1 = [self addAESEncryptParams];
+            NSLog(@"dict1--%@",dict1);
                 NSLog(@"read abtestExpose---%d",i);
-            }
+//            }
 //            [lock unlock];
-            pthread_mutex_unlock(&mutex_0);
+//            pthread_mutex_unlock(&mutex_0);
+            
+
 
 
             
         });
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 //            [lock lock];
-            pthread_mutex_lock(&mutex_1);
+//            pthread_mutex_lock(&mutex_1);
         
-            [[SNPerson shared] requestConfigAsync];
+//            [[SNPerson shared] requestConfigAsync];
+            
+            NSDictionary *dict1 = [self addAESEncryptParams];
+             NSLog(@"dict2--%@",dict1);
             NSLog(@"write abtestexpose --%d",i);
 
             
 //            [lock unlock];
-            pthread_mutex_unlock(&mutex_1);
+//            pthread_mutex_unlock(&mutex_1);
 
 
         });
@@ -130,6 +138,28 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
     // destory
 //    pthread_mutex_destroy(&pLock);
   
+}
+
+- (NSDictionary *)addAESEncryptParams {
+    
+    NSString *cid = [SNSon getCid];
+    NSString *nowTime = [NSString stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970]];
+    NSString *verifyToken = [NSString stringWithFormat:@"%@_%@", cid, nowTime];
+    NSString *plainText = [[NSString alloc] initWithFormat:@"cid=%@&verifytoken=%@&v=%@&p=%@", cid, verifyToken, [SNSon appVersion], @"iOS"];//明文
+    if (!cipherText) {
+//        cipherText = [[SNRedPacketManager sharedInstance] aesEncryptWithData:plainText];//密文
+    }
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:10];
+    [params setValue:verifyToken forKey:@"verifytoken"];
+    [params setValue:cipherText forKey:@"ciphertext"];
+//    [params setValue:[[SNRedPacketManager sharedInstance] getKeyVersion] forKey:@"keyv"];
+//    [params setValue:[[SNUserLocationManager sharedInstance] realLongitude] forKey:@"cdma_lng"];
+    [params setValue:@"" forKey:@"cdma_lng"];
+
+//    [params setValue:[[SNUserLocationManager sharedInstance] realLatitude] forKey:@"cdma_lat"];
+    [params setValue:@"" forKey:@"cdma_lat"];
+    return params;
 }
 
 - (void)testPthreadRWLock {

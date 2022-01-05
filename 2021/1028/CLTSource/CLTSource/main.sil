@@ -1,0 +1,1122 @@
+sil_stage canonical
+
+import Builtin
+import Swift
+import SwiftShims
+
+import Foundation
+
+struct Augus : Decodable & Encodable {
+  @_hasStorage var name: String { get set }
+  @_hasStorage var age: Int { get set }
+  enum CodingKeys : CodingKey {
+    case name
+    case age
+    @_implements(Equatable, ==(_:_:)) static func __derived_enum_equals(_ a: Augus.CodingKeys, _ b: Augus.CodingKeys) -> Bool
+    func hash(into hasher: inout Hasher)
+    init?(stringValue: String)
+    init?(intValue: Int)
+    var hashValue: Int { get }
+    var intValue: Int? { get }
+    var stringValue: String { get }
+  }
+  func encode(to encoder: Encoder) throws
+  init(from decoder: Decoder) throws
+  init(name: String, age: Int)
+}
+
+@_hasStorage @_hasInitialValue let jsonString: String { get }
+
+@_hasStorage @_hasInitialValue let jsonData: Data? { get }
+
+@_hasStorage @_hasInitialValue let decoder: JSONDecoder { get }
+
+// jsonString
+sil_global hidden [let] @main.jsonString : Swift.String : $String
+
+// jsonData
+sil_global hidden [let] @main.jsonData : Foundation.Data? : $Optional<Data>
+
+// decoder
+sil_global hidden [let] @main.decoder : Foundation.JSONDecoder : $JSONDecoder
+
+// main
+sil @main : $@convention(c) (Int32, UnsafeMutablePointer<Optional<UnsafeMutablePointer<Int8>>>) -> Int32 {
+bb0(%0 : $Int32, %1 : $UnsafeMutablePointer<Optional<UnsafeMutablePointer<Int8>>>):
+  alloc_global @main.jsonString : Swift.String           // id: %2
+  %3 = global_addr @main.jsonString : Swift.String : $*String // users: %13, %10
+  %4 = string_literal utf8 "{\n    \"name\" : \"Augus\",\n    \"age\" : 18,\n}" // user: %9
+  %5 = integer_literal $Builtin.Word, 41          // user: %9
+  %6 = integer_literal $Builtin.Int1, -1          // user: %9
+  %7 = metatype $@thin String.Type                // user: %9
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %8 = function_ref @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -> Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %9
+  %9 = apply %8(%4, %5, %6, %7) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %10
+  store %9 to %3 : $*String                       // id: %10
+  alloc_global @main.jsonData : Foundation.Data? // id: %11
+  %12 = global_addr @main.jsonData : Foundation.Data? : $*Optional<Data> // users: %34, %27
+  %13 = load %3 : $*String                        // user: %15
+  %14 = alloc_stack $String                       // users: %15, %26, %23
+  store %13 to %14 : $*String                     // id: %15
+  %16 = metatype $@thin String.Encoding.Type      // user: %19
+  %17 = alloc_stack $String.Encoding              // users: %25, %24, %23, %19
+  // function_ref static String.Encoding.utf8.getter
+  %18 = function_ref @static (extension in Foundation):Swift.String.Encoding.utf8.getter : (extension in Foundation):Swift.String.Encoding : $@convention(method) (@thin String.Encoding.Type) -> @out String.Encoding // user: %19
+  %19 = apply %18(%17, %16) : $@convention(method) (@thin String.Encoding.Type) -> @out String.Encoding
+  // function_ref default argument 1 of StringProtocol.data(using:allowLossyConversion:)
+  %20 = function_ref @default argument 1 of (extension in Foundation):Swift.StringProtocol.data(using: (extension in Foundation):Swift.String.Encoding, allowLossyConversion: Swift.Bool) -> Foundation.Data? : $@convention(thin) <τ_0_0 where τ_0_0 : StringProtocol> () -> Bool // user: %21
+  %21 = apply %20<String>() : $@convention(thin) <τ_0_0 where τ_0_0 : StringProtocol> () -> Bool // user: %23
+  // function_ref StringProtocol.data(using:allowLossyConversion:)
+  %22 = function_ref @(extension in Foundation):Swift.StringProtocol.data(using: (extension in Foundation):Swift.String.Encoding, allowLossyConversion: Swift.Bool) -> Foundation.Data? : $@convention(method) <τ_0_0 where τ_0_0 : StringProtocol> (@in_guaranteed String.Encoding, Bool, @in_guaranteed τ_0_0) -> @owned Optional<Data> // user: %23
+  %23 = apply %22<String>(%17, %21, %14) : $@convention(method) <τ_0_0 where τ_0_0 : StringProtocol> (@in_guaranteed String.Encoding, Bool, @in_guaranteed τ_0_0) -> @owned Optional<Data> // user: %27
+  destroy_addr %17 : $*String.Encoding            // id: %24
+  dealloc_stack %17 : $*String.Encoding           // id: %25
+  dealloc_stack %14 : $*String                    // id: %26
+  store %23 to %12 : $*Optional<Data>             // id: %27
+  alloc_global @main.decoder : Foundation.JSONDecoder // id: %28
+  %29 = global_addr @main.decoder : Foundation.JSONDecoder : $*JSONDecoder // users: %41, %33
+  %30 = metatype $@thick JSONDecoder.Type         // user: %32
+  // function_ref JSONDecoder.__allocating_init()
+  %31 = function_ref @Foundation.JSONDecoder.__allocating_init() -> Foundation.JSONDecoder : $@convention(method) (@thick JSONDecoder.Type) -> @owned JSONDecoder // user: %32
+  %32 = apply %31(%30) : $@convention(method) (@thick JSONDecoder.Type) -> @owned JSONDecoder // user: %33
+  store %32 to %29 : $*JSONDecoder                // id: %33
+  %34 = load %12 : $*Optional<Data>               // users: %36, %35
+  retain_value %34 : $Optional<Data>              // id: %35
+  switch_enum %34 : $Optional<Data>, case #Optional.some!enumelt: bb2, case #Optional.none!enumelt: bb1 // id: %36
+
+bb1:                                              // Preds: bb0
+  br bb7                                          // id: %37
+
+// %38                                            // users: %78, %53, %45, %39
+bb2(%38 : $Data):                                 // Preds: bb0
+  debug_value %38 : $Data, let, name "jsonData"   // id: %39
+  %40 = alloc_stack $Augus                        // users: %47, %49, %45, %135
+  %41 = load %29 : $*JSONDecoder                  // users: %44, %45
+  %42 = metatype $@thin Augus.Type
+  %43 = metatype $@thick Augus.Type               // user: %45
+  %44 = class_method %41 : $JSONDecoder, #JSONDecoder.decode : <T where T : Decodable> (JSONDecoder) -> (T.Type, Data) throws -> T, $@convention(method) <τ_0_0 where τ_0_0 : Decodable> (@thick τ_0_0.Type, @guaranteed Data, @guaranteed JSONDecoder) -> (@out τ_0_0, @error Error) // user: %45
+  try_apply %44<Augus>(%40, %43, %38, %41) : $@convention(method) <τ_0_0 where τ_0_0 : Decodable> (@thick τ_0_0.Type, @guaranteed Data, @guaranteed JSONDecoder) -> (@out τ_0_0, @error Error), normal bb3, error bb9 // id: %45
+
+bb3(%46 : $()):                                   // Preds: bb2
+  %47 = load %40 : $*Augus                        // user: %48
+  %48 = enum $Optional<Augus>, #Optional.some!enumelt, %47 : $Augus // user: %50
+  dealloc_stack %40 : $*Augus                     // id: %49
+  br bb4(%48 : $Optional<Augus>)                  // id: %50
+
+// %51                                            // user: %52
+bb4(%51 : $Optional<Augus>):                      // Preds: bb9 bb3
+  switch_enum %51 : $Optional<Augus>, case #Optional.some!enumelt: bb6, case #Optional.none!enumelt: bb5 // id: %52
+
+bb5:                                              // Preds: bb4
+  release_value %38 : $Data                       // id: %53
+  br bb7                                          // id: %54
+
+// %55                                            // users: %77, %65, %63, %56
+bb6(%55 : $Augus):                                // Preds: bb4
+  debug_value %55 : $Augus, let, name "result"    // id: %56
+  %57 = integer_literal $Builtin.Word, 1          // user: %59
+  // function_ref _allocateUninitializedArray<A>(_:)
+  %58 = function_ref @Swift._allocateUninitializedArray<A>(Builtin.Word) -> ([A], Builtin.RawPointer) : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // user: %59
+  %59 = apply %58<Any>(%57) : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // users: %61, %60
+  %60 = tuple_extract %59 : $(Array<Any>, Builtin.RawPointer), 0 // user: %67
+  %61 = tuple_extract %59 : $(Array<Any>, Builtin.RawPointer), 1 // user: %62
+  %62 = pointer_to_address %61 : $Builtin.RawPointer to [strict] $*Any // user: %64
+  retain_value %55 : $Augus                       // id: %63
+  %64 = init_existential_addr %62 : $*Any, $Augus // user: %65
+  store %55 to %64 : $*Augus                      // id: %65
+  // function_ref _finalizeUninitializedArray<A>(_:)
+  %66 = function_ref @Swift._finalizeUninitializedArray<A>(__owned [A]) -> [A] : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // user: %67
+  %67 = apply %66<Any>(%60) : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // users: %76, %73
+  // function_ref default argument 1 of print(_:separator:terminator:)
+  %68 = function_ref @default argument 1 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> () : $@convention(thin) () -> @owned String // user: %69
+  %69 = apply %68() : $@convention(thin) () -> @owned String // users: %75, %73
+  // function_ref default argument 2 of print(_:separator:terminator:)
+  %70 = function_ref @default argument 2 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> () : $@convention(thin) () -> @owned String // user: %71
+  %71 = apply %70() : $@convention(thin) () -> @owned String // users: %74, %73
+  // function_ref print(_:separator:terminator:)
+  %72 = function_ref @Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> () : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> () // user: %73
+  %73 = apply %72(%67, %69, %71) : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> ()
+  release_value %71 : $String                     // id: %74
+  release_value %69 : $String                     // id: %75
+  release_value %67 : $Array<Any>                 // id: %76
+  release_value %55 : $Augus                      // id: %77
+  release_value %38 : $Data                       // id: %78
+  br bb8                                          // id: %79
+
+bb7:                                              // Preds: bb5 bb1
+  %80 = integer_literal $Builtin.Word, 1          // user: %82
+  // function_ref _allocateUninitializedArray<A>(_:)
+  %81 = function_ref @Swift._allocateUninitializedArray<A>(Builtin.Word) -> ([A], Builtin.RawPointer) : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // user: %82
+  %82 = apply %81<Any>(%80) : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // users: %84, %83
+  %83 = tuple_extract %82 : $(Array<Any>, Builtin.RawPointer), 0 // user: %95
+  %84 = tuple_extract %82 : $(Array<Any>, Builtin.RawPointer), 1 // user: %85
+  %85 = pointer_to_address %84 : $Builtin.RawPointer to [strict] $*Any // user: %92
+  %86 = string_literal utf8 "decode error"        // user: %91
+  %87 = integer_literal $Builtin.Word, 12         // user: %91
+  %88 = integer_literal $Builtin.Int1, -1         // user: %91
+  %89 = metatype $@thin String.Type               // user: %91
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %90 = function_ref @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -> Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %91
+  %91 = apply %90(%86, %87, %88, %89) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %93
+  %92 = init_existential_addr %85 : $*Any, $String // user: %93
+  store %91 to %92 : $*String                     // id: %93
+  // function_ref _finalizeUninitializedArray<A>(_:)
+  %94 = function_ref @Swift._finalizeUninitializedArray<A>(__owned [A]) -> [A] : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // user: %95
+  %95 = apply %94<Any>(%83) : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // users: %104, %101
+  // function_ref default argument 1 of print(_:separator:terminator:)
+  %96 = function_ref @default argument 1 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> () : $@convention(thin) () -> @owned String // user: %97
+  %97 = apply %96() : $@convention(thin) () -> @owned String // users: %103, %101
+  // function_ref default argument 2 of print(_:separator:terminator:)
+  %98 = function_ref @default argument 2 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> () : $@convention(thin) () -> @owned String // user: %99
+  %99 = apply %98() : $@convention(thin) () -> @owned String // users: %102, %101
+  // function_ref print(_:separator:terminator:)
+  %100 = function_ref @Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> () : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> () // user: %101
+  %101 = apply %100(%95, %97, %99) : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> ()
+  release_value %99 : $String                     // id: %102
+  release_value %97 : $String                     // id: %103
+  release_value %95 : $Array<Any>                 // id: %104
+  br bb8                                          // id: %105
+
+bb8:                                              // Preds: bb7 bb6
+  %106 = integer_literal $Builtin.Word, 1         // user: %108
+  // function_ref _allocateUninitializedArray<A>(_:)
+  %107 = function_ref @Swift._allocateUninitializedArray<A>(Builtin.Word) -> ([A], Builtin.RawPointer) : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // user: %108
+  %108 = apply %107<Any>(%106) : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer) // users: %110, %109
+  %109 = tuple_extract %108 : $(Array<Any>, Builtin.RawPointer), 0 // user: %121
+  %110 = tuple_extract %108 : $(Array<Any>, Builtin.RawPointer), 1 // user: %111
+  %111 = pointer_to_address %110 : $Builtin.RawPointer to [strict] $*Any // user: %118
+  %112 = string_literal utf8 "decode end"         // user: %117
+  %113 = integer_literal $Builtin.Word, 10        // user: %117
+  %114 = integer_literal $Builtin.Int1, -1        // user: %117
+  %115 = metatype $@thin String.Type              // user: %117
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %116 = function_ref @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -> Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %117
+  %117 = apply %116(%112, %113, %114, %115) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %119
+  %118 = init_existential_addr %111 : $*Any, $String // user: %119
+  store %117 to %118 : $*String                   // id: %119
+  // function_ref _finalizeUninitializedArray<A>(_:)
+  %120 = function_ref @Swift._finalizeUninitializedArray<A>(__owned [A]) -> [A] : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // user: %121
+  %121 = apply %120<Any>(%109) : $@convention(thin) <τ_0_0> (@owned Array<τ_0_0>) -> @owned Array<τ_0_0> // users: %130, %127
+  // function_ref default argument 1 of print(_:separator:terminator:)
+  %122 = function_ref @default argument 1 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> () : $@convention(thin) () -> @owned String // user: %123
+  %123 = apply %122() : $@convention(thin) () -> @owned String // users: %129, %127
+  // function_ref default argument 2 of print(_:separator:terminator:)
+  %124 = function_ref @default argument 2 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> () : $@convention(thin) () -> @owned String // user: %125
+  %125 = apply %124() : $@convention(thin) () -> @owned String // users: %128, %127
+  // function_ref print(_:separator:terminator:)
+  %126 = function_ref @Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> () : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> () // user: %127
+  %127 = apply %126(%121, %123, %125) : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> ()
+  release_value %125 : $String                    // id: %128
+  release_value %123 : $String                    // id: %129
+  release_value %121 : $Array<Any>                // id: %130
+  %131 = integer_literal $Builtin.Int32, 0        // user: %132
+  %132 = struct $Int32 (%131 : $Builtin.Int32)    // user: %133
+  return %132 : $Int32                            // id: %133
+
+// %134                                           // user: %136
+bb9(%134 : $Error):                               // Preds: bb2
+  dealloc_stack %40 : $*Augus                     // id: %135
+  strong_release %134 : $Error                    // id: %136
+  %137 = enum $Optional<Augus>, #Optional.none!enumelt // user: %138
+  br bb4(%137 : $Optional<Augus>)                 // id: %138
+} // end sil function 'main'
+
+// Augus.name.getter
+sil hidden [transparent] @main.Augus.name.getter : Swift.String : $@convention(method) (@guaranteed Augus) -> @owned String {
+// %0 "self"                                      // users: %2, %1
+bb0(%0 : $Augus):
+  debug_value %0 : $Augus, let, name "self", argno 1 // id: %1
+  %2 = struct_extract %0 : $Augus, #Augus.name    // users: %4, %3
+  retain_value %2 : $String                       // id: %3
+  return %2 : $String                             // id: %4
+} // end sil function 'main.Augus.name.getter : Swift.String'
+
+// Augus.name.setter
+sil hidden [transparent] @main.Augus.name.setter : Swift.String : $@convention(method) (@owned String, @inout Augus) -> () {
+// %0 "value"                                     // users: %11, %8, %4, %2
+// %1 "self"                                      // users: %5, %3
+bb0(%0 : $String, %1 : $*Augus):
+  debug_value %0 : $String, let, name "value", argno 1 // id: %2
+  debug_value_addr %1 : $*Augus, var, name "self", argno 2 // id: %3
+  retain_value %0 : $String                       // id: %4
+  %5 = begin_access [modify] [static] %1 : $*Augus // users: %10, %6
+  %6 = struct_element_addr %5 : $*Augus, #Augus.name // users: %8, %7
+  %7 = load %6 : $*String                         // user: %9
+  store %0 to %6 : $*String                       // id: %8
+  release_value %7 : $String                      // id: %9
+  end_access %5 : $*Augus                         // id: %10
+  release_value %0 : $String                      // id: %11
+  %12 = tuple ()                                  // user: %13
+  return %12 : $()                                // id: %13
+} // end sil function 'main.Augus.name.setter : Swift.String'
+
+// Augus.name.modify
+sil hidden [transparent] @main.Augus.name.modify : Swift.String : $@yield_once @convention(method) (@inout Augus) -> @yields @inout String {
+// %0 "self"                                      // users: %2, %1
+bb0(%0 : $*Augus):
+  debug_value_addr %0 : $*Augus, var, name "self", argno 1 // id: %1
+  %2 = begin_access [modify] [static] %0 : $*Augus // users: %5, %8, %3
+  %3 = struct_element_addr %2 : $*Augus, #Augus.name // user: %4
+  yield %3 : $*String, resume bb1, unwind bb2     // id: %4
+
+bb1:                                              // Preds: bb0
+  end_access %2 : $*Augus                         // id: %5
+  %6 = tuple ()                                   // user: %7
+  return %6 : $()                                 // id: %7
+
+bb2:                                              // Preds: bb0
+  end_access %2 : $*Augus                         // id: %8
+  unwind                                          // id: %9
+} // end sil function 'main.Augus.name.modify : Swift.String'
+
+// Augus.age.getter
+sil hidden [transparent] @main.Augus.age.getter : Swift.Int : $@convention(method) (@guaranteed Augus) -> Int {
+// %0 "self"                                      // users: %2, %1
+bb0(%0 : $Augus):
+  debug_value %0 : $Augus, let, name "self", argno 1 // id: %1
+  %2 = struct_extract %0 : $Augus, #Augus.age     // user: %3
+  return %2 : $Int                                // id: %3
+} // end sil function 'main.Augus.age.getter : Swift.Int'
+
+// Augus.age.setter
+sil hidden [transparent] @main.Augus.age.setter : Swift.Int : $@convention(method) (Int, @inout Augus) -> () {
+// %0 "value"                                     // users: %6, %2
+// %1 "self"                                      // users: %4, %3
+bb0(%0 : $Int, %1 : $*Augus):
+  debug_value %0 : $Int, let, name "value", argno 1 // id: %2
+  debug_value_addr %1 : $*Augus, var, name "self", argno 2 // id: %3
+  %4 = begin_access [modify] [static] %1 : $*Augus // users: %7, %5
+  %5 = struct_element_addr %4 : $*Augus, #Augus.age // user: %6
+  store %0 to %5 : $*Int                          // id: %6
+  end_access %4 : $*Augus                         // id: %7
+  %8 = tuple ()                                   // user: %9
+  return %8 : $()                                 // id: %9
+} // end sil function 'main.Augus.age.setter : Swift.Int'
+
+// Augus.age.modify
+sil hidden [transparent] @main.Augus.age.modify : Swift.Int : $@yield_once @convention(method) (@inout Augus) -> @yields @inout Int {
+// %0 "self"                                      // users: %2, %1
+bb0(%0 : $*Augus):
+  debug_value_addr %0 : $*Augus, var, name "self", argno 1 // id: %1
+  %2 = begin_access [modify] [static] %0 : $*Augus // users: %5, %8, %3
+  %3 = struct_element_addr %2 : $*Augus, #Augus.age // user: %4
+  yield %3 : $*Int, resume bb1, unwind bb2        // id: %4
+
+bb1:                                              // Preds: bb0
+  end_access %2 : $*Augus                         // id: %5
+  %6 = tuple ()                                   // user: %7
+  return %6 : $()                                 // id: %7
+
+bb2:                                              // Preds: bb0
+  end_access %2 : $*Augus                         // id: %8
+  unwind                                          // id: %9
+} // end sil function 'main.Augus.age.modify : Swift.Int'
+
+// Augus.init(name:age:)
+sil hidden @main.Augus.init(name: Swift.String, age: Swift.Int) -> main.Augus : $@convention(method) (@owned String, Int, @thin Augus.Type) -> @owned Augus {
+// %0 "$implicit_value"                           // user: %3
+// %1 "$implicit_value"                           // user: %3
+// %2 "$metatype"
+bb0(%0 : $String, %1 : $Int, %2 : $@thin Augus.Type):
+  %3 = struct $Augus (%0 : $String, %1 : $Int)    // user: %4
+  return %3 : $Augus                              // id: %4
+} // end sil function 'main.Augus.init(name: Swift.String, age: Swift.Int) -> main.Augus'
+
+// static Augus.CodingKeys.__derived_enum_equals(_:_:)
+sil private @static main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC).__derived_enum_equals(main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC), main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC)) -> Swift.Bool : $@convention(method) (Augus.CodingKeys, Augus.CodingKeys, @thin Augus.CodingKeys.Type) -> Bool {
+// %0 "a"                                         // users: %7, %3
+// %1 "b"                                         // users: %21, %4
+// %2 "self"                                      // user: %5
+bb0(%0 : $Augus.CodingKeys, %1 : $Augus.CodingKeys, %2 : $@thin Augus.CodingKeys.Type):
+  debug_value %0 : $Augus.CodingKeys, let, name "a", argno 1 // id: %3
+  debug_value %1 : $Augus.CodingKeys, let, name "b", argno 2 // id: %4
+  debug_value %2 : $@thin Augus.CodingKeys.Type, let, name "self", argno 3 // id: %5
+  %6 = alloc_stack $Int, var, name "index_a"      // users: %34, %16, %10, %41
+  switch_enum %0 : $Augus.CodingKeys, case #Augus.CodingKeys.name!enumelt: bb1, case #Augus.CodingKeys.age!enumelt: bb2 // id: %7
+
+bb1:                                              // Preds: bb0
+  %8 = integer_literal $Builtin.Int64, 0          // user: %9
+  %9 = struct $Int (%8 : $Builtin.Int64)          // user: %11
+  %10 = begin_access [modify] [static] %6 : $*Int // users: %11, %12
+  store %9 to %10 : $*Int                         // id: %11
+  end_access %10 : $*Int                          // id: %12
+  br bb3                                          // id: %13
+
+bb2:                                              // Preds: bb0
+  %14 = integer_literal $Builtin.Int64, 1         // user: %15
+  %15 = struct $Int (%14 : $Builtin.Int64)        // user: %17
+  %16 = begin_access [modify] [static] %6 : $*Int // users: %17, %18
+  store %15 to %16 : $*Int                        // id: %17
+  end_access %16 : $*Int                          // id: %18
+  br bb3                                          // id: %19
+
+bb3:                                              // Preds: bb2 bb1
+  %20 = alloc_stack $Int, var, name "index_b"     // users: %35, %30, %24, %40
+  switch_enum %1 : $Augus.CodingKeys, case #Augus.CodingKeys.name!enumelt: bb4, case #Augus.CodingKeys.age!enumelt: bb5 // id: %21
+
+bb4:                                              // Preds: bb3
+  %22 = integer_literal $Builtin.Int64, 0         // user: %23
+  %23 = struct $Int (%22 : $Builtin.Int64)        // user: %25
+  %24 = begin_access [modify] [static] %20 : $*Int // users: %25, %26
+  store %23 to %24 : $*Int                        // id: %25
+  end_access %24 : $*Int                          // id: %26
+  br bb6                                          // id: %27
+
+bb5:                                              // Preds: bb3
+  %28 = integer_literal $Builtin.Int64, 1         // user: %29
+  %29 = struct $Int (%28 : $Builtin.Int64)        // user: %31
+  %30 = begin_access [modify] [static] %20 : $*Int // users: %31, %32
+  store %29 to %30 : $*Int                        // id: %31
+  end_access %30 : $*Int                          // id: %32
+  br bb6                                          // id: %33
+
+bb6:                                              // Preds: bb5 bb4
+  %34 = load %6 : $*Int                           // user: %36
+  %35 = load %20 : $*Int                          // user: %37
+  %36 = struct_extract %34 : $Int, #Int._value    // user: %38
+  %37 = struct_extract %35 : $Int, #Int._value    // user: %38
+  %38 = builtin "cmp_eq_Int64"(%36 : $Builtin.Int64, %37 : $Builtin.Int64) : $Builtin.Int1 // user: %39
+  %39 = struct $Bool (%38 : $Builtin.Int1)        // user: %42
+  dealloc_stack %20 : $*Int                       // id: %40
+  dealloc_stack %6 : $*Int                        // id: %41
+  return %39 : $Bool                              // id: %42
+} // end sil function 'static main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC).__derived_enum_equals(main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC), main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC)) -> Swift.Bool'
+
+// Augus.CodingKeys.hashValue.getter
+sil private @main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC).hashValue.getter : Swift.Int : $@convention(method) (Augus.CodingKeys) -> Int {
+// %0 "self"                                      // users: %3, %1
+bb0(%0 : $Augus.CodingKeys):
+  debug_value %0 : $Augus.CodingKeys, let, name "self", argno 1 // id: %1
+  %2 = alloc_stack $Augus.CodingKeys              // users: %3, %6, %5
+  store %0 to %2 : $*Augus.CodingKeys             // id: %3
+  // function_ref _hashValue<A>(for:)
+  %4 = function_ref @Swift._hashValue<A where A: Swift.Hashable>(for: A) -> Swift.Int : $@convention(thin) <τ_0_0 where τ_0_0 : Hashable> (@in_guaranteed τ_0_0) -> Int // user: %5
+  %5 = apply %4<Augus.CodingKeys>(%2) : $@convention(thin) <τ_0_0 where τ_0_0 : Hashable> (@in_guaranteed τ_0_0) -> Int // user: %7
+  dealloc_stack %2 : $*Augus.CodingKeys           // id: %6
+  return %5 : $Int                                // id: %7
+} // end sil function 'main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC).hashValue.getter : Swift.Int'
+
+// Augus.CodingKeys.hash(into:)
+sil private @main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC).hash(into: inout Swift.Hasher) -> () : $@convention(method) (@inout Hasher, Augus.CodingKeys) -> () {
+// %0 "hasher"                                    // users: %23, %2
+// %1 "self"                                      // users: %5, %3
+bb0(%0 : $*Hasher, %1 : $Augus.CodingKeys):
+  debug_value_addr %0 : $*Hasher, var, name "hasher", argno 1 // id: %2
+  debug_value %1 : $Augus.CodingKeys, let, name "self", argno 2 // id: %3
+  %4 = alloc_stack $Int, var, name "discriminator" // users: %18, %14, %8, %28
+  switch_enum %1 : $Augus.CodingKeys, case #Augus.CodingKeys.name!enumelt: bb1, case #Augus.CodingKeys.age!enumelt: bb2 // id: %5
+
+bb1:                                              // Preds: bb0
+  %6 = integer_literal $Builtin.Int64, 0          // user: %7
+  %7 = struct $Int (%6 : $Builtin.Int64)          // user: %9
+  %8 = begin_access [modify] [static] %4 : $*Int  // users: %9, %10
+  store %7 to %8 : $*Int                          // id: %9
+  end_access %8 : $*Int                           // id: %10
+  br bb3                                          // id: %11
+
+bb2:                                              // Preds: bb0
+  %12 = integer_literal $Builtin.Int64, 1         // user: %13
+  %13 = struct $Int (%12 : $Builtin.Int64)        // user: %15
+  %14 = begin_access [modify] [static] %4 : $*Int // users: %15, %16
+  store %13 to %14 : $*Int                        // id: %15
+  end_access %14 : $*Int                          // id: %16
+  br bb3                                          // id: %17
+
+bb3:                                              // Preds: bb2 bb1
+  %18 = begin_access [read] [static] %4 : $*Int   // users: %19, %20
+  %19 = load %18 : $*Int                          // user: %22
+  end_access %18 : $*Int                          // id: %20
+  %21 = alloc_stack $Int                          // users: %22, %27, %25
+  store %19 to %21 : $*Int                        // id: %22
+  %23 = begin_access [modify] [static] %0 : $*Hasher // users: %26, %25
+  // function_ref Hasher.combine<A>(_:)
+  %24 = function_ref @Swift.Hasher.combine<A where A: Swift.Hashable>(A) -> () : $@convention(method) <τ_0_0 where τ_0_0 : Hashable> (@in_guaranteed τ_0_0, @inout Hasher) -> () // user: %25
+  %25 = apply %24<Int>(%21, %23) : $@convention(method) <τ_0_0 where τ_0_0 : Hashable> (@in_guaranteed τ_0_0, @inout Hasher) -> ()
+  end_access %23 : $*Hasher                       // id: %26
+  dealloc_stack %21 : $*Int                       // id: %27
+  dealloc_stack %4 : $*Int                        // id: %28
+  %29 = tuple ()                                  // user: %30
+  return %29 : $()                                // id: %30
+} // end sil function 'main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC).hash(into: inout Swift.Hasher) -> ()'
+
+// Augus.CodingKeys.stringValue.getter
+sil private @main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC).stringValue.getter : Swift.String : $@convention(method) (Augus.CodingKeys) -> @owned String {
+// %0 "self"                                      // users: %2, %1
+bb0(%0 : $Augus.CodingKeys):
+  debug_value %0 : $Augus.CodingKeys, let, name "self", argno 1 // id: %1
+  switch_enum %0 : $Augus.CodingKeys, case #Augus.CodingKeys.name!enumelt: bb1, case #Augus.CodingKeys.age!enumelt: bb2 // id: %2
+
+bb1:                                              // Preds: bb0
+  %3 = string_literal utf8 "name"                 // user: %8
+  %4 = integer_literal $Builtin.Word, 4           // user: %8
+  %5 = integer_literal $Builtin.Int1, -1          // user: %8
+  %6 = metatype $@thin String.Type                // user: %8
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %7 = function_ref @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -> Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %8
+  %8 = apply %7(%3, %4, %5, %6) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %9
+  br bb3(%8 : $String)                            // id: %9
+
+bb2:                                              // Preds: bb0
+  %10 = string_literal utf8 "age"                 // user: %15
+  %11 = integer_literal $Builtin.Word, 3          // user: %15
+  %12 = integer_literal $Builtin.Int1, -1         // user: %15
+  %13 = metatype $@thin String.Type               // user: %15
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %14 = function_ref @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -> Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %15
+  %15 = apply %14(%10, %11, %12, %13) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %16
+  br bb3(%15 : $String)                           // id: %16
+
+// %17                                            // user: %18
+bb3(%17 : $String):                               // Preds: bb2 bb1
+  return %17 : $String                            // id: %18
+} // end sil function 'main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC).stringValue.getter : Swift.String'
+
+// Augus.CodingKeys.init(stringValue:)
+sil private @main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC).init(stringValue: Swift.String) -> main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC)? : $@convention(method) (@owned String, @thin Augus.CodingKeys.Type) -> Optional<Augus.CodingKeys> {
+// %0 "stringValue"                               // users: %62, %56, %55, %49, %39, %30, %29, %23, %13, %4, %3
+// %1 "$metatype"
+bb0(%0 : $String, %1 : $@thin Augus.CodingKeys.Type):
+  %2 = alloc_stack $Augus.CodingKeys, var, name "self" // users: %60, %51, %25, %63, %57
+  debug_value %0 : $String, let, name "stringValue", argno 1 // id: %3
+  retain_value %0 : $String                       // id: %4
+  %5 = string_literal utf8 "name"                 // user: %10
+  %6 = integer_literal $Builtin.Word, 4           // user: %10
+  %7 = integer_literal $Builtin.Int1, -1          // user: %10
+  %8 = metatype $@thin String.Type                // user: %10
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %9 = function_ref @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -> Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %10
+  %10 = apply %9(%5, %6, %7, %8) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // users: %20, %18, %17, %11
+  retain_value %10 : $String                      // id: %11
+  %12 = alloc_stack $String                       // users: %14, %13, %19
+  store %0 to %12 : $*String                      // id: %13
+  %14 = load %12 : $*String                       // user: %17
+  %15 = metatype $@thin String.Type               // user: %17
+  // function_ref static String.== infix(_:_:)
+  %16 = function_ref @static Swift.String.== infix(Swift.String, Swift.String) -> Swift.Bool : $@convention(method) (@guaranteed String, @guaranteed String, @thin String.Type) -> Bool // user: %17
+  %17 = apply %16(%10, %14, %15) : $@convention(method) (@guaranteed String, @guaranteed String, @thin String.Type) -> Bool // user: %21
+  release_value %10 : $String                     // id: %18
+  dealloc_stack %12 : $*String                    // id: %19
+  release_value %10 : $String                     // id: %20
+  %21 = struct_extract %17 : $Bool, #Bool._value  // user: %22
+  cond_br %21, bb1, bb2                           // id: %22
+
+bb1:                                              // Preds: bb0
+  release_value %0 : $String                      // id: %23
+  %24 = enum $Augus.CodingKeys, #Augus.CodingKeys.name!enumelt // user: %26
+  %25 = begin_access [modify] [static] %2 : $*Augus.CodingKeys // users: %26, %27
+  store %24 to %25 : $*Augus.CodingKeys           // id: %26
+  end_access %25 : $*Augus.CodingKeys             // id: %27
+  br bb5                                          // id: %28
+
+bb2:                                              // Preds: bb0
+  release_value %0 : $String                      // id: %29
+  retain_value %0 : $String                       // id: %30
+  %31 = string_literal utf8 "age"                 // user: %36
+  %32 = integer_literal $Builtin.Word, 3          // user: %36
+  %33 = integer_literal $Builtin.Int1, -1         // user: %36
+  %34 = metatype $@thin String.Type               // user: %36
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %35 = function_ref @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -> Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %36
+  %36 = apply %35(%31, %32, %33, %34) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // users: %46, %44, %43, %37
+  retain_value %36 : $String                      // id: %37
+  %38 = alloc_stack $String                       // users: %40, %39, %45
+  store %0 to %38 : $*String                      // id: %39
+  %40 = load %38 : $*String                       // user: %43
+  %41 = metatype $@thin String.Type               // user: %43
+  // function_ref static String.== infix(_:_:)
+  %42 = function_ref @static Swift.String.== infix(Swift.String, Swift.String) -> Swift.Bool : $@convention(method) (@guaranteed String, @guaranteed String, @thin String.Type) -> Bool // user: %43
+  %43 = apply %42(%36, %40, %41) : $@convention(method) (@guaranteed String, @guaranteed String, @thin String.Type) -> Bool // user: %47
+  release_value %36 : $String                     // id: %44
+  dealloc_stack %38 : $*String                    // id: %45
+  release_value %36 : $String                     // id: %46
+  %47 = struct_extract %43 : $Bool, #Bool._value  // user: %48
+  cond_br %47, bb3, bb4                           // id: %48
+
+bb3:                                              // Preds: bb2
+  release_value %0 : $String                      // id: %49
+  %50 = enum $Augus.CodingKeys, #Augus.CodingKeys.age!enumelt // user: %52
+  %51 = begin_access [modify] [static] %2 : $*Augus.CodingKeys // users: %52, %53
+  store %50 to %51 : $*Augus.CodingKeys           // id: %52
+  end_access %51 : $*Augus.CodingKeys             // id: %53
+  br bb5                                          // id: %54
+
+bb4:                                              // Preds: bb2
+  release_value %0 : $String                      // id: %55
+  release_value %0 : $String                      // id: %56
+  dealloc_stack %2 : $*Augus.CodingKeys           // id: %57
+  %58 = enum $Optional<Augus.CodingKeys>, #Optional.none!enumelt // user: %59
+  br bb6(%58 : $Optional<Augus.CodingKeys>)       // id: %59
+
+bb5:                                              // Preds: bb3 bb1
+  %60 = load %2 : $*Augus.CodingKeys              // user: %61
+  %61 = enum $Optional<Augus.CodingKeys>, #Optional.some!enumelt, %60 : $Augus.CodingKeys // user: %64
+  release_value %0 : $String                      // id: %62
+  dealloc_stack %2 : $*Augus.CodingKeys           // id: %63
+  br bb6(%61 : $Optional<Augus.CodingKeys>)       // id: %64
+
+// %65                                            // user: %66
+bb6(%65 : $Optional<Augus.CodingKeys>):           // Preds: bb5 bb4
+  return %65 : $Optional<Augus.CodingKeys>        // id: %66
+} // end sil function 'main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC).init(stringValue: Swift.String) -> main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC)?'
+
+// Augus.CodingKeys.intValue.getter
+sil private @main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC).intValue.getter : Swift.Int? : $@convention(method) (Augus.CodingKeys) -> Optional<Int> {
+// %0 "self"                                      // user: %1
+bb0(%0 : $Augus.CodingKeys):
+  debug_value %0 : $Augus.CodingKeys, let, name "self", argno 1 // id: %1
+  %2 = enum $Optional<Int>, #Optional.none!enumelt // user: %3
+  return %2 : $Optional<Int>                      // id: %3
+} // end sil function 'main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC).intValue.getter : Swift.Int?'
+
+// Augus.CodingKeys.init(intValue:)
+sil private @main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC).init(intValue: Swift.Int) -> main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC)? : $@convention(method) (Int, @thin Augus.CodingKeys.Type) -> Optional<Augus.CodingKeys> {
+// %0 "intValue"                                  // user: %3
+// %1 "$metatype"
+bb0(%0 : $Int, %1 : $@thin Augus.CodingKeys.Type):
+  %2 = alloc_stack $Augus.CodingKeys, let, name "self" // user: %4
+  debug_value %0 : $Int, let, name "intValue", argno 1 // id: %3
+  dealloc_stack %2 : $*Augus.CodingKeys           // id: %4
+  %5 = enum $Optional<Augus.CodingKeys>, #Optional.none!enumelt // user: %6
+  return %5 : $Optional<Augus.CodingKeys>         // id: %6
+} // end sil function 'main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC).init(intValue: Swift.Int) -> main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC)?'
+
+// protocol witness for static Equatable.== infix(_:_:) in conformance Augus.CodingKeys
+sil private [transparent] [thunk] @protocol witness for static Swift.Equatable.== infix(A, A) -> Swift.Bool in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.Equatable in main : $@convention(witness_method: Equatable) (@in_guaranteed Augus.CodingKeys, @in_guaranteed Augus.CodingKeys, @thick Augus.CodingKeys.Type) -> Bool {
+// %0                                             // user: %3
+// %1                                             // user: %4
+bb0(%0 : $*Augus.CodingKeys, %1 : $*Augus.CodingKeys, %2 : $@thick Augus.CodingKeys.Type):
+  %3 = load %0 : $*Augus.CodingKeys               // user: %7
+  %4 = load %1 : $*Augus.CodingKeys               // user: %7
+  %5 = metatype $@thin Augus.CodingKeys.Type      // user: %7
+  // function_ref static Augus.CodingKeys.__derived_enum_equals(_:_:)
+  %6 = function_ref @static main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC).__derived_enum_equals(main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC), main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC)) -> Swift.Bool : $@convention(method) (Augus.CodingKeys, Augus.CodingKeys, @thin Augus.CodingKeys.Type) -> Bool // user: %7
+  %7 = apply %6(%3, %4, %5) : $@convention(method) (Augus.CodingKeys, Augus.CodingKeys, @thin Augus.CodingKeys.Type) -> Bool // user: %8
+  return %7 : $Bool                               // id: %8
+} // end sil function 'protocol witness for static Swift.Equatable.== infix(A, A) -> Swift.Bool in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.Equatable in main'
+
+// protocol witness for Hashable.hashValue.getter in conformance Augus.CodingKeys
+sil private [transparent] [thunk] @protocol witness for Swift.Hashable.hashValue.getter : Swift.Int in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.Hashable in main : $@convention(witness_method: Hashable) (@in_guaranteed Augus.CodingKeys) -> Int {
+// %0                                             // user: %1
+bb0(%0 : $*Augus.CodingKeys):
+  %1 = load %0 : $*Augus.CodingKeys               // user: %3
+  // function_ref Augus.CodingKeys.hashValue.getter
+  %2 = function_ref @main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC).hashValue.getter : Swift.Int : $@convention(method) (Augus.CodingKeys) -> Int // user: %3
+  %3 = apply %2(%1) : $@convention(method) (Augus.CodingKeys) -> Int // user: %4
+  return %3 : $Int                                // id: %4
+} // end sil function 'protocol witness for Swift.Hashable.hashValue.getter : Swift.Int in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.Hashable in main'
+
+// protocol witness for Hashable.hash(into:) in conformance Augus.CodingKeys
+sil private [transparent] [thunk] @protocol witness for Swift.Hashable.hash(into: inout Swift.Hasher) -> () in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.Hashable in main : $@convention(witness_method: Hashable) (@inout Hasher, @in_guaranteed Augus.CodingKeys) -> () {
+// %0                                             // user: %4
+// %1                                             // user: %2
+bb0(%0 : $*Hasher, %1 : $*Augus.CodingKeys):
+  %2 = load %1 : $*Augus.CodingKeys               // user: %4
+  // function_ref Augus.CodingKeys.hash(into:)
+  %3 = function_ref @main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC).hash(into: inout Swift.Hasher) -> () : $@convention(method) (@inout Hasher, Augus.CodingKeys) -> () // user: %4
+  %4 = apply %3(%0, %2) : $@convention(method) (@inout Hasher, Augus.CodingKeys) -> ()
+  %5 = tuple ()                                   // user: %6
+  return %5 : $()                                 // id: %6
+} // end sil function 'protocol witness for Swift.Hashable.hash(into: inout Swift.Hasher) -> () in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.Hashable in main'
+
+// protocol witness for Hashable._rawHashValue(seed:) in conformance Augus.CodingKeys
+sil private [transparent] [thunk] [always_inline] @protocol witness for Swift.Hashable._rawHashValue(seed: Swift.Int) -> Swift.Int in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.Hashable in main : $@convention(witness_method: Hashable) (Int, @in_guaranteed Augus.CodingKeys) -> Int {
+// %0                                             // user: %3
+// %1                                             // user: %3
+bb0(%0 : $Int, %1 : $*Augus.CodingKeys):
+  // function_ref Hashable._rawHashValue(seed:)
+  %2 = function_ref @(extension in Swift):Swift.Hashable._rawHashValue(seed: Swift.Int) -> Swift.Int : $@convention(method) <τ_0_0 where τ_0_0 : Hashable> (Int, @in_guaranteed τ_0_0) -> Int // user: %3
+  %3 = apply %2<Augus.CodingKeys>(%0, %1) : $@convention(method) <τ_0_0 where τ_0_0 : Hashable> (Int, @in_guaranteed τ_0_0) -> Int // user: %4
+  return %3 : $Int                                // id: %4
+} // end sil function 'protocol witness for Swift.Hashable._rawHashValue(seed: Swift.Int) -> Swift.Int in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.Hashable in main'
+
+// Hashable._rawHashValue(seed:)
+sil [always_inline] @(extension in Swift):Swift.Hashable._rawHashValue(seed: Swift.Int) -> Swift.Int : $@convention(method) <τ_0_0 where τ_0_0 : Hashable> (Int, @in_guaranteed τ_0_0) -> Int
+
+// protocol witness for CodingKey.stringValue.getter in conformance Augus.CodingKeys
+sil private [transparent] [thunk] @protocol witness for Swift.CodingKey.stringValue.getter : Swift.String in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.CodingKey in main : $@convention(witness_method: CodingKey) (@in_guaranteed Augus.CodingKeys) -> @owned String {
+// %0                                             // user: %1
+bb0(%0 : $*Augus.CodingKeys):
+  %1 = load %0 : $*Augus.CodingKeys               // user: %3
+  // function_ref Augus.CodingKeys.stringValue.getter
+  %2 = function_ref @main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC).stringValue.getter : Swift.String : $@convention(method) (Augus.CodingKeys) -> @owned String // user: %3
+  %3 = apply %2(%1) : $@convention(method) (Augus.CodingKeys) -> @owned String // user: %4
+  return %3 : $String                             // id: %4
+} // end sil function 'protocol witness for Swift.CodingKey.stringValue.getter : Swift.String in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.CodingKey in main'
+
+// protocol witness for CodingKey.init(stringValue:) in conformance Augus.CodingKeys
+sil private [transparent] [thunk] @protocol witness for Swift.CodingKey.init(stringValue: Swift.String) -> A? in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.CodingKey in main : $@convention(witness_method: CodingKey) (@owned String, @thick Augus.CodingKeys.Type) -> @out Optional<Augus.CodingKeys> {
+// %0                                             // user: %6
+// %1                                             // user: %5
+bb0(%0 : $*Optional<Augus.CodingKeys>, %1 : $String, %2 : $@thick Augus.CodingKeys.Type):
+  %3 = metatype $@thin Augus.CodingKeys.Type      // user: %5
+  // function_ref Augus.CodingKeys.init(stringValue:)
+  %4 = function_ref @main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC).init(stringValue: Swift.String) -> main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC)? : $@convention(method) (@owned String, @thin Augus.CodingKeys.Type) -> Optional<Augus.CodingKeys> // user: %5
+  %5 = apply %4(%1, %3) : $@convention(method) (@owned String, @thin Augus.CodingKeys.Type) -> Optional<Augus.CodingKeys> // user: %6
+  store %5 to %0 : $*Optional<Augus.CodingKeys>   // id: %6
+  %7 = tuple ()                                   // user: %8
+  return %7 : $()                                 // id: %8
+} // end sil function 'protocol witness for Swift.CodingKey.init(stringValue: Swift.String) -> A? in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.CodingKey in main'
+
+// protocol witness for CodingKey.intValue.getter in conformance Augus.CodingKeys
+sil private [transparent] [thunk] @protocol witness for Swift.CodingKey.intValue.getter : Swift.Int? in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.CodingKey in main : $@convention(witness_method: CodingKey) (@in_guaranteed Augus.CodingKeys) -> Optional<Int> {
+// %0                                             // user: %1
+bb0(%0 : $*Augus.CodingKeys):
+  %1 = load %0 : $*Augus.CodingKeys               // user: %3
+  // function_ref Augus.CodingKeys.intValue.getter
+  %2 = function_ref @main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC).intValue.getter : Swift.Int? : $@convention(method) (Augus.CodingKeys) -> Optional<Int> // user: %3
+  %3 = apply %2(%1) : $@convention(method) (Augus.CodingKeys) -> Optional<Int> // user: %4
+  return %3 : $Optional<Int>                      // id: %4
+} // end sil function 'protocol witness for Swift.CodingKey.intValue.getter : Swift.Int? in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.CodingKey in main'
+
+// protocol witness for CodingKey.init(intValue:) in conformance Augus.CodingKeys
+sil private [transparent] [thunk] @protocol witness for Swift.CodingKey.init(intValue: Swift.Int) -> A? in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.CodingKey in main : $@convention(witness_method: CodingKey) (Int, @thick Augus.CodingKeys.Type) -> @out Optional<Augus.CodingKeys> {
+// %0                                             // user: %6
+// %1                                             // user: %5
+bb0(%0 : $*Optional<Augus.CodingKeys>, %1 : $Int, %2 : $@thick Augus.CodingKeys.Type):
+  %3 = metatype $@thin Augus.CodingKeys.Type      // user: %5
+  // function_ref Augus.CodingKeys.init(intValue:)
+  %4 = function_ref @main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC).init(intValue: Swift.Int) -> main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC)? : $@convention(method) (Int, @thin Augus.CodingKeys.Type) -> Optional<Augus.CodingKeys> // user: %5
+  %5 = apply %4(%1, %3) : $@convention(method) (Int, @thin Augus.CodingKeys.Type) -> Optional<Augus.CodingKeys> // user: %6
+  store %5 to %0 : $*Optional<Augus.CodingKeys>   // id: %6
+  %7 = tuple ()                                   // user: %8
+  return %7 : $()                                 // id: %8
+} // end sil function 'protocol witness for Swift.CodingKey.init(intValue: Swift.Int) -> A? in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.CodingKey in main'
+
+// protocol witness for CustomDebugStringConvertible.debugDescription.getter in conformance Augus.CodingKeys
+sil private [transparent] [thunk] @protocol witness for Swift.CustomDebugStringConvertible.debugDescription.getter : Swift.String in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.CustomDebugStringConvertible in main : $@convention(witness_method: CustomDebugStringConvertible) (@in_guaranteed Augus.CodingKeys) -> @owned String {
+// %0                                             // user: %2
+bb0(%0 : $*Augus.CodingKeys):
+  // function_ref CodingKey.debugDescription.getter
+  %1 = function_ref @(extension in Swift):Swift.CodingKey.debugDescription.getter : Swift.String : $@convention(method) <τ_0_0 where τ_0_0 : CodingKey> (@in_guaranteed τ_0_0) -> @owned String // user: %2
+  %2 = apply %1<Augus.CodingKeys>(%0) : $@convention(method) <τ_0_0 where τ_0_0 : CodingKey> (@in_guaranteed τ_0_0) -> @owned String // user: %3
+  return %2 : $String                             // id: %3
+} // end sil function 'protocol witness for Swift.CustomDebugStringConvertible.debugDescription.getter : Swift.String in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.CustomDebugStringConvertible in main'
+
+// CodingKey.debugDescription.getter
+sil @(extension in Swift):Swift.CodingKey.debugDescription.getter : Swift.String : $@convention(method) <τ_0_0 where τ_0_0 : CodingKey> (@in_guaranteed τ_0_0) -> @owned String
+
+// protocol witness for CustomStringConvertible.description.getter in conformance Augus.CodingKeys
+sil private [transparent] [thunk] @protocol witness for Swift.CustomStringConvertible.description.getter : Swift.String in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.CustomStringConvertible in main : $@convention(witness_method: CustomStringConvertible) (@in_guaranteed Augus.CodingKeys) -> @owned String {
+// %0                                             // user: %2
+bb0(%0 : $*Augus.CodingKeys):
+  // function_ref CodingKey.description.getter
+  %1 = function_ref @(extension in Swift):Swift.CodingKey.description.getter : Swift.String : $@convention(method) <τ_0_0 where τ_0_0 : CodingKey> (@in_guaranteed τ_0_0) -> @owned String // user: %2
+  %2 = apply %1<Augus.CodingKeys>(%0) : $@convention(method) <τ_0_0 where τ_0_0 : CodingKey> (@in_guaranteed τ_0_0) -> @owned String // user: %3
+  return %2 : $String                             // id: %3
+} // end sil function 'protocol witness for Swift.CustomStringConvertible.description.getter : Swift.String in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.CustomStringConvertible in main'
+
+// CodingKey.description.getter
+sil @(extension in Swift):Swift.CodingKey.description.getter : Swift.String : $@convention(method) <τ_0_0 where τ_0_0 : CodingKey> (@in_guaranteed τ_0_0) -> @owned String
+
+// Augus.init(from:)
+sil hidden @main.Augus.init(from: Swift.Decoder) throws -> main.Augus : $@convention(method) (@in Decoder, @thin Augus.Type) -> (@owned Augus, @error Error) {
+// %0 "decoder"                                   // users: %69, %49, %9, %6
+// %1 "$metatype"
+bb0(%0 : $*Decoder, %1 : $@thin Augus.Type):
+  %2 = alloc_stack $Builtin.Int2                  // users: %70, %27, %5, %78, %52
+  %3 = alloc_stack [dynamic_lifetime] $Augus, var, name "self" // users: %40, %24, %50, %73, %77, %51
+  %4 = integer_literal $Builtin.Int2, 0           // user: %5
+  store %4 to %2 : $*Builtin.Int2                 // id: %5
+  debug_value_addr %0 : $*Decoder, let, name "decoder", argno 1 // id: %6
+  debug_value undef : $Error, var, name "$error", argno 2 // id: %7
+  %8 = alloc_stack $KeyedDecodingContainer<Augus.CodingKeys>, let, name "container" // users: %45, %44, %37, %66, %65, %21, %60, %59, %13, %55
+  %9 = open_existential_addr immutable_access %0 : $*Decoder to $*@opened("B0CDA9CC-66F7-11EC-8DB4-1E00DB1E8F90") Decoder // users: %13, %13, %12
+  %10 = metatype $@thin Augus.CodingKeys.Type
+  %11 = metatype $@thick Augus.CodingKeys.Type    // user: %13
+  %12 = witness_method $@opened("B0CDA9CC-66F7-11EC-8DB4-1E00DB1E8F90") Decoder, #Decoder.container : <Self where Self : Decoder><Key where Key : CodingKey> (Self) -> (Key.Type) throws -> KeyedDecodingContainer<Key>, %9 : $*@opened("B0CDA9CC-66F7-11EC-8DB4-1E00DB1E8F90") Decoder : $@convention(witness_method: Decoder) <τ_0_0 where τ_0_0 : Decoder><τ_1_0 where τ_1_0 : CodingKey> (@thick τ_1_0.Type, @in_guaranteed τ_0_0) -> (@out KeyedDecodingContainer<τ_1_0>, @error Error) // type-defs: %9; user: %13
+  try_apply %12<@opened("B0CDA9CC-66F7-11EC-8DB4-1E00DB1E8F90") Decoder, Augus.CodingKeys>(%8, %11, %9) : $@convention(witness_method: Decoder) <τ_0_0 where τ_0_0 : Decoder><τ_1_0 where τ_1_0 : CodingKey> (@thick τ_1_0.Type, @in_guaranteed τ_0_0) -> (@out KeyedDecodingContainer<τ_1_0>, @error Error), normal bb1, error bb4 // type-defs: %9; id: %13
+
+bb1(%14 : $()):                                   // Preds: bb0
+  %15 = metatype $@thin String.Type               // user: %21
+  %16 = metatype $@thin Augus.CodingKeys.Type
+  %17 = enum $Augus.CodingKeys, #Augus.CodingKeys.name!enumelt // user: %19
+  %18 = alloc_stack $Augus.CodingKeys             // users: %19, %23, %21, %58
+  store %17 to %18 : $*Augus.CodingKeys           // id: %19
+  // function_ref KeyedDecodingContainer.decode(_:forKey:)
+  %20 = function_ref @Swift.KeyedDecodingContainer.decode(_: Swift.String.Type, forKey: A) throws -> Swift.String : $@convention(method) <τ_0_0 where τ_0_0 : CodingKey> (@thin String.Type, @in_guaranteed τ_0_0, @in_guaranteed KeyedDecodingContainer<τ_0_0>) -> (@owned String, @error Error) // user: %21
+  try_apply %20<Augus.CodingKeys>(%15, %18, %8) : $@convention(method) <τ_0_0 where τ_0_0 : CodingKey> (@thin String.Type, @in_guaranteed τ_0_0, @in_guaranteed KeyedDecodingContainer<τ_0_0>) -> (@owned String, @error Error), normal bb2, error bb5 // id: %21
+
+// %22                                            // users: %63, %48, %46, %29, %28
+bb2(%22 : $String):                               // Preds: bb1
+  dealloc_stack %18 : $*Augus.CodingKeys          // id: %23
+  %24 = begin_access [modify] [static] %3 : $*Augus // users: %30, %25
+  %25 = struct_element_addr %24 : $*Augus, #Augus.name // user: %29
+  %26 = integer_literal $Builtin.Int2, 1          // user: %27
+  store %26 to %2 : $*Builtin.Int2                // id: %27
+  retain_value %22 : $String                      // id: %28
+  store %22 to %25 : $*String                     // id: %29
+  end_access %24 : $*Augus                        // id: %30
+  %31 = metatype $@thin Int.Type                  // user: %37
+  %32 = metatype $@thin Augus.CodingKeys.Type
+  %33 = enum $Augus.CodingKeys, #Augus.CodingKeys.age!enumelt // user: %35
+  %34 = alloc_stack $Augus.CodingKeys             // users: %35, %39, %37, %64
+  store %33 to %34 : $*Augus.CodingKeys           // id: %35
+  // function_ref KeyedDecodingContainer.decode(_:forKey:)
+  %36 = function_ref @Swift.KeyedDecodingContainer.decode(_: Swift.Int.Type, forKey: A) throws -> Swift.Int : $@convention(method) <τ_0_0 where τ_0_0 : CodingKey> (@thin Int.Type, @in_guaranteed τ_0_0, @in_guaranteed KeyedDecodingContainer<τ_0_0>) -> (Int, @error Error) // user: %37
+  try_apply %36<Augus.CodingKeys>(%31, %34, %8) : $@convention(method) <τ_0_0 where τ_0_0 : CodingKey> (@thin Int.Type, @in_guaranteed τ_0_0, @in_guaranteed KeyedDecodingContainer<τ_0_0>) -> (Int, @error Error), normal bb3, error bb6 // id: %37
+
+// %38                                            // users: %42, %46
+bb3(%38 : $Int):                                  // Preds: bb2
+  dealloc_stack %34 : $*Augus.CodingKeys          // id: %39
+  %40 = begin_access [modify] [static] %3 : $*Augus // users: %43, %41
+  %41 = struct_element_addr %40 : $*Augus, #Augus.age // user: %42
+  store %38 to %41 : $*Int                        // id: %42
+  end_access %40 : $*Augus                        // id: %43
+  destroy_addr %8 : $*KeyedDecodingContainer<Augus.CodingKeys> // id: %44
+  dealloc_stack %8 : $*KeyedDecodingContainer<Augus.CodingKeys> // id: %45
+  %46 = struct $Augus (%22 : $String, %38 : $Int) // users: %53, %47
+  retain_value %46 : $Augus                       // id: %47
+  release_value %22 : $String                     // id: %48
+  destroy_addr %0 : $*Decoder                     // id: %49
+  destroy_addr %3 : $*Augus                       // id: %50
+  dealloc_stack %3 : $*Augus                      // id: %51
+  dealloc_stack %2 : $*Builtin.Int2               // id: %52
+  return %46 : $Augus                             // id: %53
+
+// %54                                            // user: %56
+bb4(%54 : $Error):                                // Preds: bb0
+  dealloc_stack %8 : $*KeyedDecodingContainer<Augus.CodingKeys> // id: %55
+  br bb7(%54 : $Error)                            // id: %56
+
+// %57                                            // user: %61
+bb5(%57 : $Error):                                // Preds: bb1
+  dealloc_stack %18 : $*Augus.CodingKeys          // id: %58
+  destroy_addr %8 : $*KeyedDecodingContainer<Augus.CodingKeys> // id: %59
+  dealloc_stack %8 : $*KeyedDecodingContainer<Augus.CodingKeys> // id: %60
+  br bb7(%57 : $Error)                            // id: %61
+
+// %62                                            // user: %67
+bb6(%62 : $Error):                                // Preds: bb2
+  release_value %22 : $String                     // id: %63
+  dealloc_stack %34 : $*Augus.CodingKeys          // id: %64
+  destroy_addr %8 : $*KeyedDecodingContainer<Augus.CodingKeys> // id: %65
+  dealloc_stack %8 : $*KeyedDecodingContainer<Augus.CodingKeys> // id: %66
+  br bb7(%62 : $Error)                            // id: %67
+
+// %68                                            // user: %79
+bb7(%68 : $Error):                                // Preds: bb6 bb5 bb4
+  destroy_addr %0 : $*Decoder                     // id: %69
+  %70 = load %2 : $*Builtin.Int2                  // user: %71
+  %71 = builtin "trunc_Int2_Int1"(%70 : $Builtin.Int2) : $Builtin.Int1 // user: %72
+  cond_br %71, bb8, bb9                           // id: %72
+
+bb8:                                              // Preds: bb7
+  %73 = struct_element_addr %3 : $*Augus, #Augus.name // user: %74
+  destroy_addr %73 : $*String                     // id: %74
+  br bb10                                         // id: %75
+
+bb9:                                              // Preds: bb7
+  br bb10                                         // id: %76
+
+bb10:                                             // Preds: bb9 bb8
+  dealloc_stack %3 : $*Augus                      // id: %77
+  dealloc_stack %2 : $*Builtin.Int2               // id: %78
+  throw %68 : $Error                              // id: %79
+} // end sil function 'main.Augus.init(from: Swift.Decoder) throws -> main.Augus'
+
+// KeyedDecodingContainer.decode(_:forKey:)
+sil @Swift.KeyedDecodingContainer.decode(_: Swift.String.Type, forKey: A) throws -> Swift.String : $@convention(method) <τ_0_0 where τ_0_0 : CodingKey> (@thin String.Type, @in_guaranteed τ_0_0, @in_guaranteed KeyedDecodingContainer<τ_0_0>) -> (@owned String, @error Error)
+
+// KeyedDecodingContainer.decode(_:forKey:)
+sil @Swift.KeyedDecodingContainer.decode(_: Swift.Int.Type, forKey: A) throws -> Swift.Int : $@convention(method) <τ_0_0 where τ_0_0 : CodingKey> (@thin Int.Type, @in_guaranteed τ_0_0, @in_guaranteed KeyedDecodingContainer<τ_0_0>) -> (Int, @error Error)
+
+// Augus.encode(to:)
+sil hidden @main.Augus.encode(to: Swift.Encoder) throws -> () : $@convention(method) (@in_guaranteed Encoder, @guaranteed Augus) -> @error Error {
+// %0 "encoder"                                   // users: %6, %2
+// %1 "self"                                      // users: %24, %11, %3
+bb0(%0 : $*Encoder, %1 : $Augus):
+  debug_value_addr %0 : $*Encoder, let, name "encoder", argno 1 // id: %2
+  debug_value %1 : $Augus, let, name "self", argno 2 // id: %3
+  debug_value undef : $Error, var, name "$error", argno 3 // id: %4
+  %5 = alloc_stack $KeyedEncodingContainer<Augus.CodingKeys>, var, name "container" // users: %36, %35, %50, %49, %44, %43, %10, %17, %29
+  %6 = open_existential_addr immutable_access %0 : $*Encoder to $*@opened("B0CDE270-66F7-11EC-8DB4-1E00DB1E8F90") Encoder // users: %10, %10, %9
+  %7 = metatype $@thin Augus.CodingKeys.Type
+  %8 = metatype $@thick Augus.CodingKeys.Type     // user: %10
+  %9 = witness_method $@opened("B0CDE270-66F7-11EC-8DB4-1E00DB1E8F90") Encoder, #Encoder.container : <Self where Self : Encoder><Key where Key : CodingKey> (Self) -> (Key.Type) -> KeyedEncodingContainer<Key>, %6 : $*@opened("B0CDE270-66F7-11EC-8DB4-1E00DB1E8F90") Encoder : $@convention(witness_method: Encoder) <τ_0_0 where τ_0_0 : Encoder><τ_1_0 where τ_1_0 : CodingKey> (@thick τ_1_0.Type, @in_guaranteed τ_0_0) -> @out KeyedEncodingContainer<τ_1_0> // type-defs: %6; user: %10
+  %10 = apply %9<@opened("B0CDE270-66F7-11EC-8DB4-1E00DB1E8F90") Encoder, Augus.CodingKeys>(%5, %8, %6) : $@convention(witness_method: Encoder) <τ_0_0 where τ_0_0 : Encoder><τ_1_0 where τ_1_0 : CodingKey> (@thick τ_1_0.Type, @in_guaranteed τ_0_0) -> @out KeyedEncodingContainer<τ_1_0> // type-defs: %6
+  %11 = struct_extract %1 : $Augus, #Augus.name   // users: %42, %23, %19, %12
+  retain_value %11 : $String                      // id: %12
+  %13 = metatype $@thin Augus.CodingKeys.Type
+  %14 = enum $Augus.CodingKeys, #Augus.CodingKeys.name!enumelt // user: %16
+  %15 = alloc_stack $Augus.CodingKeys             // users: %16, %22, %19, %41
+  store %14 to %15 : $*Augus.CodingKeys           // id: %16
+  %17 = begin_access [modify] [static] %5 : $*KeyedEncodingContainer<Augus.CodingKeys> // users: %21, %19, %40
+  // function_ref KeyedEncodingContainer.encode(_:forKey:)
+  %18 = function_ref @Swift.KeyedEncodingContainer.encode(_: Swift.String, forKey: A) throws -> () : $@convention(method) <τ_0_0 where τ_0_0 : CodingKey> (@guaranteed String, @in_guaranteed τ_0_0, @inout KeyedEncodingContainer<τ_0_0>) -> @error Error // user: %19
+  try_apply %18<Augus.CodingKeys>(%11, %15, %17) : $@convention(method) <τ_0_0 where τ_0_0 : CodingKey> (@guaranteed String, @in_guaranteed τ_0_0, @inout KeyedEncodingContainer<τ_0_0>) -> @error Error, normal bb1, error bb3 // id: %19
+
+bb1(%20 : $()):                                   // Preds: bb0
+  end_access %17 : $*KeyedEncodingContainer<Augus.CodingKeys> // id: %21
+  dealloc_stack %15 : $*Augus.CodingKeys          // id: %22
+  release_value %11 : $String                     // id: %23
+  %24 = struct_extract %1 : $Augus, #Augus.age    // user: %31
+  %25 = metatype $@thin Augus.CodingKeys.Type
+  %26 = enum $Augus.CodingKeys, #Augus.CodingKeys.age!enumelt // user: %28
+  %27 = alloc_stack $Augus.CodingKeys             // users: %28, %34, %31, %48
+  store %26 to %27 : $*Augus.CodingKeys           // id: %28
+  %29 = begin_access [modify] [static] %5 : $*KeyedEncodingContainer<Augus.CodingKeys> // users: %33, %31, %47
+  // function_ref KeyedEncodingContainer.encode(_:forKey:)
+  %30 = function_ref @Swift.KeyedEncodingContainer.encode(_: Swift.Int, forKey: A) throws -> () : $@convention(method) <τ_0_0 where τ_0_0 : CodingKey> (Int, @in_guaranteed τ_0_0, @inout KeyedEncodingContainer<τ_0_0>) -> @error Error // user: %31
+  try_apply %30<Augus.CodingKeys>(%24, %27, %29) : $@convention(method) <τ_0_0 where τ_0_0 : CodingKey> (Int, @in_guaranteed τ_0_0, @inout KeyedEncodingContainer<τ_0_0>) -> @error Error, normal bb2, error bb4 // id: %31
+
+bb2(%32 : $()):                                   // Preds: bb1
+  end_access %29 : $*KeyedEncodingContainer<Augus.CodingKeys> // id: %33
+  dealloc_stack %27 : $*Augus.CodingKeys          // id: %34
+  destroy_addr %5 : $*KeyedEncodingContainer<Augus.CodingKeys> // id: %35
+  dealloc_stack %5 : $*KeyedEncodingContainer<Augus.CodingKeys> // id: %36
+  %37 = tuple ()                                  // user: %38
+  return %37 : $()                                // id: %38
+
+// %39                                            // user: %45
+bb3(%39 : $Error):                                // Preds: bb0
+  end_access %17 : $*KeyedEncodingContainer<Augus.CodingKeys> // id: %40
+  dealloc_stack %15 : $*Augus.CodingKeys          // id: %41
+  release_value %11 : $String                     // id: %42
+  destroy_addr %5 : $*KeyedEncodingContainer<Augus.CodingKeys> // id: %43
+  dealloc_stack %5 : $*KeyedEncodingContainer<Augus.CodingKeys> // id: %44
+  br bb5(%39 : $Error)                            // id: %45
+
+// %46                                            // user: %51
+bb4(%46 : $Error):                                // Preds: bb1
+  end_access %29 : $*KeyedEncodingContainer<Augus.CodingKeys> // id: %47
+  dealloc_stack %27 : $*Augus.CodingKeys          // id: %48
+  destroy_addr %5 : $*KeyedEncodingContainer<Augus.CodingKeys> // id: %49
+  dealloc_stack %5 : $*KeyedEncodingContainer<Augus.CodingKeys> // id: %50
+  br bb5(%46 : $Error)                            // id: %51
+
+// %52                                            // user: %53
+bb5(%52 : $Error):                                // Preds: bb4 bb3
+  throw %52 : $Error                              // id: %53
+} // end sil function 'main.Augus.encode(to: Swift.Encoder) throws -> ()'
+
+// KeyedEncodingContainer.encode(_:forKey:)
+sil @Swift.KeyedEncodingContainer.encode(_: Swift.String, forKey: A) throws -> () : $@convention(method) <τ_0_0 where τ_0_0 : CodingKey> (@guaranteed String, @in_guaranteed τ_0_0, @inout KeyedEncodingContainer<τ_0_0>) -> @error Error
+
+// KeyedEncodingContainer.encode(_:forKey:)
+sil @Swift.KeyedEncodingContainer.encode(_: Swift.Int, forKey: A) throws -> () : $@convention(method) <τ_0_0 where τ_0_0 : CodingKey> (Int, @in_guaranteed τ_0_0, @inout KeyedEncodingContainer<τ_0_0>) -> @error Error
+
+// protocol witness for Decodable.init(from:) in conformance Augus
+sil private [transparent] [thunk] @protocol witness for Swift.Decodable.init(from: Swift.Decoder) throws -> A in conformance main.Augus : Swift.Decodable in main : $@convention(witness_method: Decodable) (@in Decoder, @thick Augus.Type) -> (@out Augus, @error Error) {
+// %0                                             // user: %7
+// %1                                             // user: %5
+bb0(%0 : $*Augus, %1 : $*Decoder, %2 : $@thick Augus.Type):
+  %3 = metatype $@thin Augus.Type                 // user: %5
+  // function_ref Augus.init(from:)
+  %4 = function_ref @main.Augus.init(from: Swift.Decoder) throws -> main.Augus : $@convention(method) (@in Decoder, @thin Augus.Type) -> (@owned Augus, @error Error) // user: %5
+  try_apply %4(%1, %3) : $@convention(method) (@in Decoder, @thin Augus.Type) -> (@owned Augus, @error Error), normal bb1, error bb2 // id: %5
+
+// %6                                             // user: %7
+bb1(%6 : $Augus):                                 // Preds: bb0
+  store %6 to %0 : $*Augus                        // id: %7
+  %8 = tuple ()                                   // user: %9
+  return %8 : $()                                 // id: %9
+
+// %10                                            // user: %11
+bb2(%10 : $Error):                                // Preds: bb0
+  throw %10 : $Error                              // id: %11
+} // end sil function 'protocol witness for Swift.Decodable.init(from: Swift.Decoder) throws -> A in conformance main.Augus : Swift.Decodable in main'
+
+// protocol witness for Encodable.encode(to:) in conformance Augus
+sil private [transparent] [thunk] @protocol witness for Swift.Encodable.encode(to: Swift.Encoder) throws -> () in conformance main.Augus : Swift.Encodable in main : $@convention(witness_method: Encodable) (@in_guaranteed Encoder, @in_guaranteed Augus) -> @error Error {
+// %0                                             // user: %4
+// %1                                             // user: %2
+bb0(%0 : $*Encoder, %1 : $*Augus):
+  %2 = load %1 : $*Augus                          // user: %4
+  // function_ref Augus.encode(to:)
+  %3 = function_ref @main.Augus.encode(to: Swift.Encoder) throws -> () : $@convention(method) (@in_guaranteed Encoder, @guaranteed Augus) -> @error Error // user: %4
+  try_apply %3(%0, %2) : $@convention(method) (@in_guaranteed Encoder, @guaranteed Augus) -> @error Error, normal bb1, error bb2 // id: %4
+
+bb1(%5 : $()):                                    // Preds: bb0
+  %6 = tuple ()                                   // user: %7
+  return %6 : $()                                 // id: %7
+
+// %8                                             // user: %9
+bb2(%8 : $Error):                                 // Preds: bb0
+  throw %8 : $Error                               // id: %9
+} // end sil function 'protocol witness for Swift.Encodable.encode(to: Swift.Encoder) throws -> () in conformance main.Augus : Swift.Encodable in main'
+
+// String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+sil [always_inline] [readonly] [_semantics "string.makeUTF8"] @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -> Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String
+
+// static String.Encoding.utf8.getter
+sil @static (extension in Foundation):Swift.String.Encoding.utf8.getter : (extension in Foundation):Swift.String.Encoding : $@convention(method) (@thin String.Encoding.Type) -> @out String.Encoding
+
+// default argument 1 of StringProtocol.data(using:allowLossyConversion:)
+sil shared_external @default argument 1 of (extension in Foundation):Swift.StringProtocol.data(using: (extension in Foundation):Swift.String.Encoding, allowLossyConversion: Swift.Bool) -> Foundation.Data? : $@convention(thin) <Self where Self : StringProtocol> () -> Bool {
+bb0:
+  %0 = integer_literal $Builtin.Int1, 0           // user: %1
+  %1 = struct $Bool (%0 : $Builtin.Int1)          // user: %2
+  return %1 : $Bool                               // id: %2
+} // end sil function 'default argument 1 of (extension in Foundation):Swift.StringProtocol.data(using: (extension in Foundation):Swift.String.Encoding, allowLossyConversion: Swift.Bool) -> Foundation.Data?'
+
+// StringProtocol.data(using:allowLossyConversion:)
+sil @(extension in Foundation):Swift.StringProtocol.data(using: (extension in Foundation):Swift.String.Encoding, allowLossyConversion: Swift.Bool) -> Foundation.Data? : $@convention(method) <τ_0_0 where τ_0_0 : StringProtocol> (@in_guaranteed String.Encoding, Bool, @in_guaranteed τ_0_0) -> @owned Optional<Data>
+
+// JSONDecoder.__allocating_init()
+sil @Foundation.JSONDecoder.__allocating_init() -> Foundation.JSONDecoder : $@convention(method) (@thick JSONDecoder.Type) -> @owned JSONDecoder
+
+// _allocateUninitializedArray<A>(_:)
+sil [always_inline] [_semantics "array.uninitialized_intrinsic"] @Swift._allocateUninitializedArray<A>(Builtin.Word) -> ([A], Builtin.RawPointer) : $@convention(thin) <τ_0_0> (Builtin.Word) -> (@owned Array<τ_0_0>, Builtin.RawPointer)
+
+// _finalizeUninitializedArray<A>(_:)
+sil shared_external [readnone] [_semantics "array.finalize_intrinsic"] @Swift._finalizeUninitializedArray<A>(__owned [A]) -> [A] : $@convention(thin) <Element> (@owned Array<Element>) -> @owned Array<Element> {
+// %0                                             // user: %2
+bb0(%0 : $Array<Element>):
+  %1 = alloc_stack $Array<Element>                // users: %6, %5, %4, %2
+  store %0 to %1 : $*Array<Element>               // id: %2
+  // function_ref Array._endMutation()
+  %3 = function_ref @Swift.Array._endMutation() -> () : $@convention(method) <τ_0_0> (@inout Array<τ_0_0>) -> () // user: %4
+  %4 = apply %3<Element>(%1) : $@convention(method) <τ_0_0> (@inout Array<τ_0_0>) -> ()
+  %5 = load %1 : $*Array<Element>                 // user: %7
+  dealloc_stack %1 : $*Array<Element>             // id: %6
+  return %5 : $Array<Element>                     // id: %7
+} // end sil function 'Swift._finalizeUninitializedArray<A>(__owned [A]) -> [A]'
+
+// default argument 1 of print(_:separator:terminator:)
+sil shared_external @default argument 1 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> () : $@convention(thin) () -> @owned String {
+bb0:
+  %0 = string_literal utf8 " "                    // user: %5
+  %1 = integer_literal $Builtin.Word, 1           // user: %5
+  %2 = integer_literal $Builtin.Int1, -1          // user: %5
+  %3 = metatype $@thin String.Type                // user: %5
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %4 = function_ref @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -> Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %5
+  %5 = apply %4(%0, %1, %2, %3) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %6
+  return %5 : $String                             // id: %6
+} // end sil function 'default argument 1 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> ()'
+
+// default argument 2 of print(_:separator:terminator:)
+sil shared_external @default argument 2 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> () : $@convention(thin) () -> @owned String {
+bb0:
+  %0 = string_literal utf8 "\n"                   // user: %5
+  %1 = integer_literal $Builtin.Word, 1           // user: %5
+  %2 = integer_literal $Builtin.Int1, -1          // user: %5
+  %3 = metatype $@thin String.Type                // user: %5
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %4 = function_ref @Swift.String.init(_builtinStringLiteral: Builtin.RawPointer, utf8CodeUnitCount: Builtin.Word, isASCII: Builtin.Int1) -> Swift.String : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %5
+  %5 = apply %4(%0, %1, %2, %3) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %6
+  return %5 : $String                             // id: %6
+} // end sil function 'default argument 2 of Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> ()'
+
+// print(_:separator:terminator:)
+sil @Swift.print(_: Any..., separator: Swift.String, terminator: Swift.String) -> () : $@convention(thin) (@guaranteed Array<Any>, @guaranteed String, @guaranteed String) -> ()
+
+// Int.init(_builtinIntegerLiteral:)
+sil public_external [transparent] @Swift.Int.init(_builtinIntegerLiteral: Builtin.IntLiteral) -> Swift.Int : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int {
+// %0                                             // user: %2
+bb0(%0 : $Builtin.IntLiteral, %1 : $@thin Int.Type):
+  %2 = builtin "s_to_s_checked_trunc_IntLiteral_Int64"(%0 : $Builtin.IntLiteral) : $(Builtin.Int64, Builtin.Int1) // user: %3
+  %3 = tuple_extract %2 : $(Builtin.Int64, Builtin.Int1), 0 // user: %4
+  %4 = struct $Int (%3 : $Builtin.Int64)          // user: %5
+  return %4 : $Int                                // id: %5
+} // end sil function 'Swift.Int.init(_builtinIntegerLiteral: Builtin.IntLiteral) -> Swift.Int'
+
+// static Int.== infix(_:_:)
+sil public_external [transparent] @static Swift.Int.== infix(Swift.Int, Swift.Int) -> Swift.Bool : $@convention(method) (Int, Int, @thin Int.Type) -> Bool {
+// %0                                             // user: %3
+// %1                                             // user: %4
+bb0(%0 : $Int, %1 : $Int, %2 : $@thin Int.Type):
+  %3 = struct_extract %0 : $Int, #Int._value      // user: %5
+  %4 = struct_extract %1 : $Int, #Int._value      // user: %5
+  %5 = builtin "cmp_eq_Int64"(%3 : $Builtin.Int64, %4 : $Builtin.Int64) : $Builtin.Int1 // user: %6
+  %6 = struct $Bool (%5 : $Builtin.Int1)          // user: %7
+  return %6 : $Bool                               // id: %7
+} // end sil function 'static Swift.Int.== infix(Swift.Int, Swift.Int) -> Swift.Bool'
+
+// _hashValue<A>(for:)
+sil [always_inline] @Swift._hashValue<A where A: Swift.Hashable>(for: A) -> Swift.Int : $@convention(thin) <τ_0_0 where τ_0_0 : Hashable> (@in_guaranteed τ_0_0) -> Int
+
+// Hasher.combine<A>(_:)
+sil [always_inline] @Swift.Hasher.combine<A where A: Swift.Hashable>(A) -> () : $@convention(method) <τ_0_0 where τ_0_0 : Hashable> (@in_guaranteed τ_0_0, @inout Hasher) -> ()
+
+// ~= infix<A>(_:_:)
+sil public_external [transparent] @Swift.~= infix<A where A: Swift.Equatable>(A, A) -> Swift.Bool : $@convention(thin) <T where T : Equatable> (@in_guaranteed T, @in_guaranteed T) -> Bool {
+// %0                                             // user: %4
+// %1                                             // user: %4
+bb0(%0 : $*T, %1 : $*T):
+  %2 = metatype $@thick T.Type                    // user: %4
+  %3 = witness_method $T, #Equatable."==" : <Self where Self : Equatable> (Self.Type) -> (Self, Self) -> Bool : $@convention(witness_method: Equatable) <τ_0_0 where τ_0_0 : Equatable> (@in_guaranteed τ_0_0, @in_guaranteed τ_0_0, @thick τ_0_0.Type) -> Bool // user: %4
+  %4 = apply %3<T>(%0, %1, %2) : $@convention(witness_method: Equatable) <τ_0_0 where τ_0_0 : Equatable> (@in_guaranteed τ_0_0, @in_guaranteed τ_0_0, @thick τ_0_0.Type) -> Bool // user: %5
+  return %4 : $Bool                               // id: %5
+} // end sil function 'Swift.~= infix<A where A: Swift.Equatable>(A, A) -> Swift.Bool'
+
+// protocol witness for static Equatable.== infix(_:_:) in conformance String
+sil shared_external [transparent] [thunk] [always_inline] @protocol witness for static Swift.Equatable.== infix(A, A) -> Swift.Bool in conformance Swift.String : Swift.Equatable in Swift : $@convention(witness_method: Equatable) (@in_guaranteed String, @in_guaranteed String, @thick String.Type) -> Bool {
+// %0                                             // user: %3
+// %1                                             // user: %4
+bb0(%0 : $*String, %1 : $*String, %2 : $@thick String.Type):
+  %3 = load %0 : $*String                         // user: %7
+  %4 = load %1 : $*String                         // user: %7
+  %5 = metatype $@thin String.Type                // user: %7
+  // function_ref static String.== infix(_:_:)
+  %6 = function_ref @static Swift.String.== infix(Swift.String, Swift.String) -> Swift.Bool : $@convention(method) (@guaranteed String, @guaranteed String, @thin String.Type) -> Bool // user: %7
+  %7 = apply %6(%3, %4, %5) : $@convention(method) (@guaranteed String, @guaranteed String, @thin String.Type) -> Bool // user: %8
+  return %7 : $Bool                               // id: %8
+} // end sil function 'protocol witness for static Swift.Equatable.== infix(A, A) -> Swift.Bool in conformance Swift.String : Swift.Equatable in Swift'
+
+// static String.== infix(_:_:)
+sil [always_inline] [readonly] [_semantics "string.equals"] @static Swift.String.== infix(Swift.String, Swift.String) -> Swift.Bool : $@convention(method) (@guaranteed String, @guaranteed String, @thin String.Type) -> Bool
+
+// Array._endMutation()
+sil shared_external [_semantics "array.end_mutation"] @Swift.Array._endMutation() -> () : $@convention(method) <Element> (@inout Array<Element>) -> () {
+// %0                                             // users: %9, %1
+bb0(%0 : $*Array<Element>):
+  %1 = struct_element_addr %0 : $*Array<Element>, #Array._buffer // user: %2
+  %2 = struct_element_addr %1 : $*_ArrayBuffer<Element>, #_ArrayBuffer._storage // user: %3
+  %3 = struct_element_addr %2 : $*_BridgeStorage<__ContiguousArrayStorageBase>, #_BridgeStorage.rawValue // user: %4
+  %4 = load %3 : $*Builtin.BridgeObject           // user: %5
+  %5 = end_cow_mutation %4 : $Builtin.BridgeObject // user: %6
+  %6 = struct $_BridgeStorage<__ContiguousArrayStorageBase> (%5 : $Builtin.BridgeObject) // user: %7
+  %7 = struct $_ArrayBuffer<Element> (%6 : $_BridgeStorage<__ContiguousArrayStorageBase>) // user: %8
+  %8 = struct $Array<Element> (%7 : $_ArrayBuffer<Element>) // user: %9
+  store %8 to %0 : $*Array<Element>               // id: %9
+  %10 = tuple ()                                  // user: %11
+  return %10 : $()                                // id: %11
+} // end sil function 'Swift.Array._endMutation() -> ()'
+
+sil_witness_table private Augus.CodingKeys: Equatable module main {
+  method #Equatable."==": <Self where Self : Equatable> (Self.Type) -> (Self, Self) -> Bool : @protocol witness for static Swift.Equatable.== infix(A, A) -> Swift.Bool in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.Equatable in main	// protocol witness for static Equatable.== infix(_:_:) in conformance Augus.CodingKeys
+}
+
+sil_witness_table private Augus.CodingKeys: Hashable module main {
+  base_protocol Equatable: Augus.CodingKeys: Equatable module main
+  method #Hashable.hashValue!getter: <Self where Self : Hashable> (Self) -> () -> Int : @protocol witness for Swift.Hashable.hashValue.getter : Swift.Int in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.Hashable in main	// protocol witness for Hashable.hashValue.getter in conformance Augus.CodingKeys
+  method #Hashable.hash: <Self where Self : Hashable> (Self) -> (inout Hasher) -> () : @protocol witness for Swift.Hashable.hash(into: inout Swift.Hasher) -> () in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.Hashable in main	// protocol witness for Hashable.hash(into:) in conformance Augus.CodingKeys
+  method #Hashable._rawHashValue: <Self where Self : Hashable> (Self) -> (Int) -> Int : @protocol witness for Swift.Hashable._rawHashValue(seed: Swift.Int) -> Swift.Int in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.Hashable in main	// protocol witness for Hashable._rawHashValue(seed:) in conformance Augus.CodingKeys
+}
+
+sil_witness_table private Augus.CodingKeys: CodingKey module main {
+  base_protocol CustomDebugStringConvertible: Augus.CodingKeys: CustomDebugStringConvertible module main
+  base_protocol CustomStringConvertible: Augus.CodingKeys: CustomStringConvertible module main
+  method #CodingKey.stringValue!getter: <Self where Self : CodingKey> (Self) -> () -> String : @protocol witness for Swift.CodingKey.stringValue.getter : Swift.String in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.CodingKey in main	// protocol witness for CodingKey.stringValue.getter in conformance Augus.CodingKeys
+  method #CodingKey.init!allocator: <Self where Self : CodingKey> (Self.Type) -> (String) -> Self? : @protocol witness for Swift.CodingKey.init(stringValue: Swift.String) -> A? in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.CodingKey in main	// protocol witness for CodingKey.init(stringValue:) in conformance Augus.CodingKeys
+  method #CodingKey.intValue!getter: <Self where Self : CodingKey> (Self) -> () -> Int? : @protocol witness for Swift.CodingKey.intValue.getter : Swift.Int? in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.CodingKey in main	// protocol witness for CodingKey.intValue.getter in conformance Augus.CodingKeys
+  method #CodingKey.init!allocator: <Self where Self : CodingKey> (Self.Type) -> (Int) -> Self? : @protocol witness for Swift.CodingKey.init(intValue: Swift.Int) -> A? in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.CodingKey in main	// protocol witness for CodingKey.init(intValue:) in conformance Augus.CodingKeys
+}
+
+sil_witness_table private Augus.CodingKeys: CustomDebugStringConvertible module main {
+  method #CustomDebugStringConvertible.debugDescription!getter: <Self where Self : CustomDebugStringConvertible> (Self) -> () -> String : @protocol witness for Swift.CustomDebugStringConvertible.debugDescription.getter : Swift.String in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.CustomDebugStringConvertible in main	// protocol witness for CustomDebugStringConvertible.debugDescription.getter in conformance Augus.CodingKeys
+}
+
+sil_witness_table private Augus.CodingKeys: CustomStringConvertible module main {
+  method #CustomStringConvertible.description!getter: <Self where Self : CustomStringConvertible> (Self) -> () -> String : @protocol witness for Swift.CustomStringConvertible.description.getter : Swift.String in conformance main.Augus.(CodingKeys in _12232F587A4C5CD8B1EEDF696793A4FC) : Swift.CustomStringConvertible in main	// protocol witness for CustomStringConvertible.description.getter in conformance Augus.CodingKeys
+}
+
+sil_witness_table hidden Augus: Decodable module main {
+  method #Decodable.init!allocator: <Self where Self : Decodable> (Self.Type) -> (Decoder) throws -> Self : @protocol witness for Swift.Decodable.init(from: Swift.Decoder) throws -> A in conformance main.Augus : Swift.Decodable in main	// protocol witness for Decodable.init(from:) in conformance Augus
+}
+
+sil_witness_table hidden Augus: Encodable module main {
+  method #Encodable.encode: <Self where Self : Encodable> (Self) -> (Encoder) throws -> () : @protocol witness for Swift.Encodable.encode(to: Swift.Encoder) throws -> () in conformance main.Augus : Swift.Encodable in main	// protocol witness for Encodable.encode(to:) in conformance Augus
+}
+
+sil_witness_table public_external String: Equatable module Swift {
+  method #Equatable."==": <Self where Self : Equatable> (Self.Type) -> (Self, Self) -> Bool : @protocol witness for static Swift.Equatable.== infix(A, A) -> Swift.Bool in conformance Swift.String : Swift.Equatable in Swift	// protocol witness for static Equatable.== infix(_:_:) in conformance String
+}
+
+
+
+// Mappings from '#fileID' to '#filePath':
+//   'main/main.swift' => 'main.swift'
+
+
