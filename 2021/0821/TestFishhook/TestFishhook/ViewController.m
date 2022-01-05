@@ -13,6 +13,7 @@
 
 #import "UIView+ShakeAnimation.h"
 #import "SNAugusPopView.h"
+#import "SNTitleLeftButton.h"
 
 @interface ViewController ()<SNAugusPopViewDelagate>
 
@@ -41,22 +42,37 @@
     
     
 //    self.view.backgroundColor = UIColor.linkColor;
-    UIView *redView = [[UIView alloc] init];
-    redView.backgroundColor = UIColor.redColor;
-    CGFloat x = (self.view.bounds.size.width - 100) * 0.5;
-    redView.frame = CGRectMake(x, 100, 100, 50);
-    
-    self.testView = redView;
-    [self.view addSubview:redView];
+//    UIView *redView = [[UIView alloc] init];
+//    redView.backgroundColor = UIColor.redColor;
+//    CGFloat x = (self.view.bounds.size.width - 100) * 0.5;
+//    redView.frame = CGRectMake(x, 100, 100, 50);
+//
+//    self.testView = redView;
+//    [self.view addSubview:redView];
     
     
 //    [self testAlphaAndBackgroundColor];
     
-    [self testAugusPopView];
+//    [self testAugusPopView];
     
 //    [self testGradientLayer];
     
+    
+    [self testLeftButton];
+    
 
+}
+
+- (void)testLeftButton {
+    
+    SNTitleLeftButton *button = [[SNTitleLeftButton alloc] init];
+    button.backgroundColor = UIColor.redColor;
+    [button setTitle:@"听新闻调研问卷" forState:UIControlStateNormal];
+    [button setTitleColor:UIColor.greenColor forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"icoland_sina_v5.png"] forState:UIControlStateNormal];
+    [button sizeToFit];
+    button.frame = CGRectMake(100, 100, 180, 50);
+    [self.view addSubview:button];
 }
 
 

@@ -19,6 +19,7 @@
 		27F26A5426D0A4250002E7BA /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = 27F26A5326D0A4250002E7BA /* fishhook.c */; };
 		B10F7ED02701A8A200C09FD0 /* UIView+ShakeAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = B10F7ECF2701A8A200C09FD0 /* UIView+ShakeAnimation.m */; };
 		B10F7ED92701DF1500C09FD0 /* SNAugusPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = B10F7ED82701DF1500C09FD0 /* SNAugusPopView.m */; };
+		B191584427854A5D00BA72DD /* SNTitleLeftButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B191584327854A5D00BA72DD /* SNTitleLeftButton.m */; };
 		B19442AB27032CB200086E23 /* icoland_sina_v51.png in Resources */ = {isa = PBXBuildFile; fileRef = B19442A927032CB200086E23 /* icoland_sina_v51.png */; };
 		B19442AC27032CB200086E23 /* icoland_sina_v5.png in Resources */ = {isa = PBXBuildFile; fileRef = B19442AA27032CB200086E23 /* icoland_sina_v5.png */; };
 /* End PBXBuildFile section */
@@ -65,6 +66,9 @@
 		B10F7ECF2701A8A200C09FD0 /* UIView+ShakeAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+ShakeAnimation.m"; sourceTree = "<group>"; };
 		B10F7ED72701DF1500C09FD0 /* SNAugusPopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNAugusPopView.h; sourceTree = "<group>"; };
 		B10F7ED82701DF1500C09FD0 /* SNAugusPopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNAugusPopView.m; sourceTree = "<group>"; };
+		B191583F27854A4000BA72DD /* TestFishhook-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestFishhook-Bridging-Header.h"; sourceTree = "<group>"; };
+		B191584227854A5D00BA72DD /* SNTitleLeftButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNTitleLeftButton.h; sourceTree = "<group>"; };
+		B191584327854A5D00BA72DD /* SNTitleLeftButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNTitleLeftButton.m; sourceTree = "<group>"; };
 		B19442A927032CB200086E23 /* icoland_sina_v51.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icoland_sina_v51.png; sourceTree = "<group>"; };
 		B19442AA27032CB200086E23 /* icoland_sina_v5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icoland_sina_v5.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,6 +129,8 @@
 				27F26A2126D09F3F0002E7BA /* SceneDelegate.m */,
 				27F26A2326D09F3F0002E7BA /* ViewController.h */,
 				27F26A2426D09F3F0002E7BA /* ViewController.m */,
+				B191584227854A5D00BA72DD /* SNTitleLeftButton.h */,
+				B191584327854A5D00BA72DD /* SNTitleLeftButton.m */,
 				B10F7ECE2701A8A200C09FD0 /* UIView+ShakeAnimation.h */,
 				B10F7ECF2701A8A200C09FD0 /* UIView+ShakeAnimation.m */,
 				B10F7ED72701DF1500C09FD0 /* SNAugusPopView.h */,
@@ -136,6 +142,7 @@
 				27F26A2B26D09F400002E7BA /* LaunchScreen.storyboard */,
 				27F26A2E26D09F400002E7BA /* Info.plist */,
 				27F26A2F26D09F400002E7BA /* main.m */,
+				B191583F27854A4000BA72DD /* TestFishhook-Bridging-Header.h */,
 			);
 			path = TestFishhook;
 			sourceTree = "<group>";
@@ -224,6 +231,7 @@
 				TargetAttributes = {
 					27F26A1926D09F3F0002E7BA = {
 						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1310;
 					};
 					27F26A3426D09F410002E7BA = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -289,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B191584427854A5D00BA72DD /* SNTitleLeftButton.m in Sources */,
 				27F26A2526D09F3F0002E7BA /* ViewController.m in Sources */,
 				27F26A5426D0A4250002E7BA /* fishhook.c in Sources */,
 				B10F7ED02701A8A200C09FD0 /* UIView+ShakeAnimation.m in Sources */,
@@ -467,6 +476,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z75EHQZQ54;
 				INFOPLIST_FILE = TestFishhook/Info.plist;
@@ -477,6 +487,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sohu..TestFishhook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TestFishhook/TestFishhook-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -486,6 +499,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z75EHQZQ54;
 				INFOPLIST_FILE = TestFishhook/Info.plist;
@@ -496,6 +510,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sohu..TestFishhook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TestFishhook/TestFishhook-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
