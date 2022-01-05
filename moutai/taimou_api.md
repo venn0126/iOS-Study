@@ -1,7 +1,7 @@
 # Moutai API
 
-## 1.Wechat
-### 1.0 auth2
+## Wechat
+### auth2
 > 向茅台服务发送auth2的token
 
 ```
@@ -48,7 +48,7 @@ curl -H 'Host: reserve.moutai.com.cn' -H 'Accept: text/html,application/xhtml+xm
 
 ```
 
-### 1.1 getOpenId
+###  getOpenId
 
 ```
 curl -H 'Host: reserve.moutai.com.cn' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: zh-cn' -H 'Cache-Control: no-cache' -H 'token: ' -H 'Origin: https://reserve.moutai.com.cn' -H 'User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 14_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.9(0x18000927) NetType/WIFI Language/zh_CN' -H 'Referer: https://reserve.moutai.com.cn/mconsumer/?a=1&token=011zqull2Fe3r74edrol2dDtY24zqulG' -H 'Content-Type: application/x-www-form-urlencoded;charset=UTF-8' --data-binary "token=011zqull2Fe3r74edrol2dDtY24zqulG" --compressed 'https://reserve.moutai.com.cn/api/rsv-server/anon/wechat/getOpneId'
@@ -62,8 +62,8 @@ Respone:
 
 
 
-## 2.Consumer
-### 2.0 checkUser
+## Consumer
+### checkUser
 ```
 curl -H 'Host: reserve.moutai.com.cn' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: zh-cn' -H 'Cache-Control: no-cache' -H 'token: ' -H 'Origin: https://reserve.moutai.com.cn' -H 'User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 14_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.9(0x18000927) NetType/WIFI Language/zh_CN' -H 'Referer: https://reserve.moutai.com.cn/mconsumer/?a=1&token=011zqull2Fe3r74edrol2dDtY24zqulG' -H 'Content-Type: application/x-www-form-urlencoded;charset=UTF-8' -H 'Cookie: lambo-sso-key_0_=011zqull2Fe3r74edrol2dDtY24zqulG#TufG1lVGWNpd6TKDPmF4+SzpKCR68NZIksTLh9DPKVk=' --data-binary "custId=******" --compressed 'https://reserve.moutai.com.cn/api/rsv-server/anon/consumer/checkUser'
 
@@ -71,7 +71,7 @@ Response：
 {"code":"000","message":"success","data":"用户已经存在"}
 ```
 
-### 2.1 getUser
+### getUser
 > 获取当前用户信息
 
 ```
@@ -82,7 +82,7 @@ Response：
 
 ```
 
-### 2.1 getShops
+### getShops
 > 获取可预约的店铺列表
 
 ```
@@ -94,8 +94,8 @@ Response：
 ```
 
 
-## 3.Register
-### 3.0 getSlideCode
+## Register
+### getSlideCode
 > 获取滑动验证code
 
 ```
@@ -106,7 +106,7 @@ Response:
 
 ```
 
-### 3.1 checkSlideCode
+### checkSlideCode
 > 验证滑动是否合法
 
 ```
@@ -119,9 +119,9 @@ Response:
 
 ```
 
-## 4.reserve
+## reserve
 
-### 4.0 checkReserve
+### checkReserve
 ```
 curl -H 'Host: reserve.moutai.com.cn' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: zh-cn' -H 'Cache-Control: no-cache' -H 'token: ' -H 'Origin: https://reserve.moutai.com.cn' -H 'User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 14_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.9(0x18000927) NetType/WIFI Language/zh_CN' -H 'Referer: https://reserve.moutai.com.cn/mconsumer/?a=1&token=011zqull2Fe3r74edrol2dDtY24zqulG' -H 'Content-Type: application/x-www-form-urlencoded;charset=UTF-8' -H 'Cookie: lambo-sso-key_0_=011zqull2Fe3r74edrol2dDtY24zqulG#TufG1lVGWNpd6TKDPmF4+SzpKCR68NZIksTLh9DPKVk=' --data-binary "custId=******" --compressed 'https://reserve.moutai.com.cn/api/rsv-server/anon/reserve/checkReserve'
 
@@ -130,7 +130,7 @@ Response:
 
 ```
 
-### 4.1 list
+### list
 ```
 curl -H 'Host: reserve.moutai.com.cn' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: zh-cn' -H 'Cache-Control: no-cache' -H 'token: ' -H 'Origin: https://reserve.moutai.com.cn' -H 'User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 14_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.9(0x18000927) NetType/WIFI Language/zh_CN' -H 'Referer: https://reserve.moutai.com.cn/mconsumer/?a=1&token=011zqull2Fe3r74edrol2dDtY24zqulG' -H 'Content-Type: application/x-www-form-urlencoded;charset=UTF-8' -H 'Cookie: lambo-sso-key_0_=011zqull2Fe3r74edrol2dDtY24zqulG#TufG1lVGWNpd6TKDPmF4+SzpKCR68NZIksTLh9DPKVk=' --data-binary "custId=******&offset=0&limit=1000" --compressed 'https://reserve.moutai.com.cn/api/rsv-server/anon/reserve/list'
 
@@ -138,7 +138,7 @@ Response:
 {"code":"000","message":"success","data":{"total":5,"rows":[{"note":null,"approvalDate":null,"approvalTime":null,"custName":"牛威","creaDate":"20210724100245","statuaValue":"待确认","lwId":"1418753488238534656","approvalTimeName":null,"clientIp":"219.142.184.8","custId":"******","tenantId":"MT_BJ","pickupDate":null,"pickupCode":null,"shopId":"MT_BJ1001","applyDate":"20210724","applyTime":"10:02:45","status":"10"},{"note":"抱歉，由于名额有限，您的预约未被系统抽中，请明天重新预约，感谢您的参与！","approvalDate":null,"approvalTime":null,"custName":"牛威","creaDate":"20210723090504","statuaValue":"未成功","lwId":"1418376583169134592","approvalTimeName":null,"clientIp":"123.126.70.234","custId":"******","tenantId":"MT_BJ","pickupDate":null,"pickupCode":null,"shopId":"MT_BJ1001","applyDate":"20210723","applyTime":"09:05:04","status":"90"},{"note":"抱歉，由于名额有限，您的预约未被系统抽中，请明天重新预约，感谢您的参与！","approvalDate":null,"approvalTime":null,"custName":"牛威","creaDate":"20210722090537","statuaValue":"未成功","lwId":"1418014335747612672","approvalTimeName":null,"clientIp":"123.126.70.234","custId":"******","tenantId":"MT_TJ","pickupDate":null,"pickupCode":null,"shopId":"MT_TJ1001","applyDate":"20210722","applyTime":"09:05:37","status":"90"},{"note":"抱歉，由于名额有限，您的预约未被系统抽中，请明天重新预约，感谢您的参与！","approvalDate":null,"approvalTime":null,"custName":"牛威","creaDate":"20210721092108","statuaValue":"未成功","lwId":"1417655850118275072","approvalTimeName":null,"clientIp":"123.126.70.234","custId":"******","tenantId":"MT_TJ","pickupDate":null,"pickupCode":null,"shopId":"MT_TJ1001","applyDate":"20210721","applyTime":"09:21:08","status":"90"},{"note":"抱歉，由于名额有限，您的预约未被系统抽中，请明天重新预约，感谢您的参与！","approvalDate":null,"approvalTime":null,"custName":"牛威","creaDate":"20210630073257","statuaValue":"未成功","lwId":"1410018481141063680","approvalTimeName":null,"clientIp":"221.222.21.147","custId":"******","tenantId":"MT_NXYC","pickupDate":null,"pickupCode":null,"shopId":"MT_NXYC1001","applyDate":"20210630","applyTime":"07:32:57","status":"90"}]}}
 ```
 
-### 4.2 detail
+### detail
 ```
 curl -H 'Host: reserve.moutai.com.cn' -H 'Accept: application/json, text/plain, */*' -H 'Accept-Language: zh-cn' -H 'Cache-Control: no-cache' -H 'token: ' -H 'Origin: https://reserve.moutai.com.cn' -H 'User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 14_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/8.0.9(0x18000927) NetType/WIFI Language/zh_CN' -H 'Referer: https://reserve.moutai.com.cn/mconsumer/?a=1&token=011zqull2Fe3r74edrol2dDtY24zqulG' -H 'Content-Type: application/x-www-form-urlencoded;charset=UTF-8' -H 'Cookie: lambo-sso-key_0_=011zqull2Fe3r74edrol2dDtY24zqulG#TufG1lVGWNpd6TKDPmF4+SzpKCR68NZIksTLh9DPKVk=' --data-binary "lwId=1418753488238534656&custId=******" --compressed 'https://reserve.moutai.com.cn/api/rsv-server/anon/reserve/detail'
 

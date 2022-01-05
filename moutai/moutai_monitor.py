@@ -30,7 +30,7 @@ def update_shopify_db(webhookLink,productLink):
 		working = False
 
 		# price_format = '¥{}'.format(price)
-		cookie = 'lambo-sso-key_0_={}'.format('001enGGa1oHjrB020KHa139Yhm4enGGu#TufG1lVGWNpd6TKDPmF4+SzpKCR68NZIksTLh9DPKVk=')
+		cookie = 'lambo-sso-key_0_={}'.format('091pPnFa1f3TpC03TBGa1gGvek2pPnFQ#TufG1lVGWNpd6TKDPmF4+SzpKCR68NZIksTLh9DPKVk=')
 		headers = {
 	        'Host': 'reserve.moutai.com.cn',
 		    'Accept': 'application/json, text/plain, */*',
@@ -148,9 +148,8 @@ def getCookies():
 
    	}
 	
-
 	url = 'https://reserve.moutai.com.cn/api/rsv-server/anon/wechat/getOpneId'
-	data = {'token' : '001enGGa1oHjrB020KHa139Yhm4enGGu'}
+	data = {'token' : '091kJm000ZWT4N1xIq200PzUIL0kJm08'}
 	session = requests.session()
 	resp = session.post(url = url, headers = headers,timeout = 30,data = data)
 	print(resp.cookies.get_dict())
