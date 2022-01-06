@@ -91,24 +91,51 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
     // 0.57
 //    static pthread_mutex_t pLock;
 //    pthread_mutex_init(&pLock,NULL);
+    NSMutableDictionary *dotGifParams = [NSMutableDictionary dictionary];
     
     NSTimeInterval begin = CACurrentMediaTime();
     
     for(int i = 0; i < 100000; i++) {
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 //            [lock lock];
-//            pthread_mutex_lock(&mutex_0);
+            pthread_mutex_lock(&mutex_0);
             
 //            SNAppConfigABTest *abTest = [SNPerson shared].configABTest;
 //            if (abTest.abTestExpose.length > 0) {
 //                [dict setValue:abTest.abTestExpose forKey:@"abtestExpose"];
-           NSDictionary *dict1 = [self addAESEncryptParams];
-            NSLog(@"dict1--%@",dict1);
-                NSLog(@"read abtestExpose---%d",i);
+//           NSDictionary *dict1 = [self addAESEncryptParams];
+//            NSLog(@"dict1--%@",dict1);
 //            }
+            
+//            NSTimeInterval interval = [[NSDate date] timeIntervalSince1970] * 1000;
+//            NSString *intervalString = [NSString stringWithFormat:@"%.0f", interval];
+//            if (!intervalString.length) {
+//                intervalString = @"";
+//            }
+//            [dotGifParams setValue:[SNSon timeString] forKey:@"t0"];
+            
+//            NSString *idfv = [SNSon deviceIDFV];//new param 2019.6.6
+//            if (!idfv.length) {
+//                idfv = @"";
+//            }
+//            [dotGifParams setValue:idfv forKey:@"ios_idfv0"];
+            
+//            NSString *version = [SNSon appVersion];
+//            if (!version.length) {
+//                version = @"other";
+//            }
+//            [dotGifParams setValue:version forKey:@"v0"];
+            
+            NSString *cid = [SNSon getCid];
+            NSString *nowTime = [NSString stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970]];
+            NSString *verifyToken = [NSString stringWithFormat:@"%@_%@", cid, nowTime];
+            [dotGifParams setValue:verifyToken forKey:@"v2"];
+            
+            NSLog(@"read abtestExpose---%d",i);
+
 //            [lock unlock];
-//            pthread_mutex_unlock(&mutex_0);
+            pthread_mutex_unlock(&mutex_0);
             
 
 
@@ -117,17 +144,39 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
         });
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 //            [lock lock];
-//            pthread_mutex_lock(&mutex_1);
+            pthread_mutex_lock(&mutex_1);
         
 //            [[SNPerson shared] requestConfigAsync];
             
-            NSDictionary *dict1 = [self addAESEncryptParams];
-             NSLog(@"dict2--%@",dict1);
+//            NSDictionary *dict1 = [self addAESEncryptParams];
+//             NSLog(@"dict2--%@",dict1);
+//            NSTimeInterval interval = [[NSDate date] timeIntervalSince1970] * 1000;
+//            NSString *intervalString = [NSString stringWithFormat:@"%.0f", interval];
+//            if (!intervalString.length) {
+//                intervalString = @"";
+//            }
+//            [dotGifParams setValue:[SNSon timeString] forKey:@"t1"];
+//            NSString *idfv = [SNSon deviceIDFV];//new param 2019.6.6
+//            if (!idfv.length) {
+//                idfv = @"";
+//            }
+//            [dotGifParams setValue:idfv forKey:@"ios_idfv1"];
+            
+//            NSString *version = [SNSon appVersion];
+//            if (!version.length) {
+//                version = @"other";
+//            }
+//            [dotGifParams setValue:version forKey:@"v1"];
+            
+            NSString *cid = [SNSon getCid];
+            NSString *nowTime = [NSString stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970]];
+            NSString *verifyToken = [NSString stringWithFormat:@"%@_%@", cid, nowTime];
+            [dotGifParams setValue:verifyToken forKey:@"v1"];
+
             NSLog(@"write abtestexpose --%d",i);
 
-            
 //            [lock unlock];
-//            pthread_mutex_unlock(&mutex_1);
+            pthread_mutex_unlock(&mutex_1);
 
 
         });

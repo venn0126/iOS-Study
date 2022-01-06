@@ -16,6 +16,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)getCid;
 
 + (NSString *)appVersion;
+
++ (NSString *)deviceIDFV;
+
++ (NSString *)timeString;
+
 @end
 
 NS_ASSUME_NONNULL_END
