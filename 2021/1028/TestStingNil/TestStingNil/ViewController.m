@@ -22,6 +22,7 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
 @property (nonatomic, strong) SNPerson *person;
 @property (nonatomic, copy) NSArray *dataArray;
 
+
 @end
 
 @implementation ViewController{
@@ -35,6 +36,7 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
     self.view.backgroundColor = UIColor.linkColor;
 //    [self testStringNil];
     [self testCrash];
+//    [self testCrash0];
 //    [self testPthreadRWLock];
     
 //    [self testGradientButton];
@@ -75,6 +77,84 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
 }
 
 
+
+- (void)notNoatmoicSetter {
+    
+    /**
+     
+     // setter
+     // not natomic
+     // threadA:  99
+     // threadB: 94
+     // threadA: 100
+     // threadB: 100 -> crash
+     
+     
+     
+     void objc_storeStrong(id *location, id obj)
+     {
+         id prev = *location;
+         if (obj == prev) {
+             return;
+         }
+         objc_retain(obj);
+         *location = obj;
+         objc_release(prev);
+     }
+     */
+}
+
+
+- (void)messageInstanceSentToDealloctatedCode {
+    
+    
+//    UILabel *le = [;]
+    
+    
+    // getter
+    // -[CFString release]: message sent to deallocated instance 0x600002aaf3c0
+    // Log("*** - [%s %s]: message sent to deallocated instance %p",)
+    
+    /**
+    
+    
+    // get instance class
+    Class cls = object_getClass(self);
+
+    // get instance class name
+    const char *clsName = class_getName(cls);
+
+    // get zombie pointer instance class name
+    const char *originalClsName = substring_from(clsName, 10);
+
+    // get call method name
+    const char *selectorName = sel_getName(_cmd);
+
+    // log error message
+    Log("*** - [%s %s]: message sent to deallocated instance %p",originalClsName,selectorName,self);
+
+    // kill
+    abort();
+     
+     */
+}
+
+- (void)testCrash0 {
+    
+    // error message: *** -[SNPerson release]: message sent to deallocated instance 0x600000eb3b70
+    for (int i = 0; i < 10000; i++)
+        {
+
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                self.person = [SNPerson new];
+            });
+           dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                self.person = [SNPerson new];
+            });
+        }
+}
+
+
 - (void)testCrash {
     
     // 0.55
@@ -99,7 +179,7 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 //            [lock lock];
-            pthread_mutex_lock(&mutex_0);
+//            pthread_mutex_lock(&mutex_0);
             
 //            SNAppConfigABTest *abTest = [SNPerson shared].configABTest;
 //            if (abTest.abTestExpose.length > 0) {
@@ -135,7 +215,7 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
             NSLog(@"read abtestExpose---%d",i);
 
 //            [lock unlock];
-            pthread_mutex_unlock(&mutex_0);
+//            pthread_mutex_unlock(&mutex_0);
             
 
 
@@ -144,7 +224,7 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
         });
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 //            [lock lock];
-            pthread_mutex_lock(&mutex_1);
+//            pthread_mutex_lock(&mutex_1);
         
 //            [[SNPerson shared] requestConfigAsync];
             
@@ -176,7 +256,7 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
             NSLog(@"write abtestexpose --%d",i);
 
 //            [lock unlock];
-            pthread_mutex_unlock(&mutex_1);
+//            pthread_mutex_unlock(&mutex_1);
 
 
         });
