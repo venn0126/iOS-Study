@@ -171,7 +171,7 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
     // 0.57
 //    static pthread_mutex_t pLock;
 //    pthread_mutex_init(&pLock,NULL);
-    NSMutableDictionary *dotGifParams = [NSMutableDictionary dictionary];
+//    NSMutableDictionary *dotGifParams = [NSMutableDictionary dictionary];
     
     NSTimeInterval begin = CACurrentMediaTime();
     
@@ -206,11 +206,16 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
 //                version = @"other";
 //            }
 //            [dotGifParams setValue:version forKey:@"v0"];
+            NSMutableDictionary *dotGifParams0 = [NSMutableDictionary dictionary];
+
+//            NSString *cid = [SNSon getCid];
             
-            NSString *cid = [SNSon getCid];
+
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            NSString *cid = [userDefaults objectForKey:@"clientId"];
             NSString *nowTime = [NSString stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970]];
             NSString *verifyToken = [NSString stringWithFormat:@"%@_%@", cid, nowTime];
-            [dotGifParams setValue:verifyToken forKey:@"v2"];
+            [dotGifParams0 setValue:verifyToken forKey:@"v2"];
             
             NSLog(@"read abtestExpose---%d",i);
 
@@ -247,11 +252,15 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
 //                version = @"other";
 //            }
 //            [dotGifParams setValue:version forKey:@"v1"];
-            
-            NSString *cid = [SNSon getCid];
+            NSMutableDictionary *dotGifParams1 = [NSMutableDictionary dictionary];
+
+//            NSString *cid = [SNSon getCid];
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            NSString *cid = [userDefaults objectForKey:@"clientId"];
+
             NSString *nowTime = [NSString stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970]];
             NSString *verifyToken = [NSString stringWithFormat:@"%@_%@", cid, nowTime];
-            [dotGifParams setValue:verifyToken forKey:@"v1"];
+            [dotGifParams1 setValue:verifyToken forKey:@"v1"];
 
             NSLog(@"write abtestexpose --%d",i);
 
