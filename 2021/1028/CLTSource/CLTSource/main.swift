@@ -215,68 +215,77 @@ import Foundation
 //    }
 //}
 
-protocol DefaultValue {
-    static var defaultValue: Self { get }
+//protocol DefaultValue {
+//    static var defaultValue: Self { get }
+//}
+//
+//extension String: DefaultValue {
+//    static let defaultValue: String = ""
+//}
+//
+//extension Int: DefaultValue {
+//    static let defaultValue: Int = 0
+//}
+//
+//typealias DefaultCodable = DefaultValue & Codable
+//
+//@propertyWrapper
+//struct Default<T: DefaultCodable> {
+//    var wrappedValue: T
+//}
+//
+//extension Default: Codable {
+//    init(from decoder: Decoder) throws {
+//        let container = try decoder.singleValueContainer()
+//        wrappedValue = (try? container.decode(T.self)) ?? T.defaultValue
+//    }
+//
+//    func encode(to encoder: Encoder) throws {
+//        var container = encoder.singleValueContainer()
+//        try container.encode(wrappedValue)
+//    }
+//}
+//
+//extension KeyedDecodingContainer {
+//
+//    func decode<T>(_ type: Default<T>.Type, forKey key: KeyedDecodingContainer<K>.Key) throws -> Default<T> where T: DefaultCodable {
+//        try decodeIfPresent(type, forKey: key) ?? Default(wrappedValue: T.defaultValue)
+//    }
+//}
+//
+//extension UnkeyedDecodingContainer {
+//    mutating func decode<T>(_ type: Default<T>.Type) throws -> Default<T> where T: DefaultCodable {
+//        try decodeIfPresent(type) ?? Default(wrappedValue: T.defaultValue)
+//    }
+//}
+//
+//struct Augus: Codable {
+//    @Default var name: String
+//    @Default var age: Int
+//}
+//
+//let jsonString = """
+//{
+//    "name" : "gao",
+//}
+//"""
+//
+//let jsonData = jsonString.data(using: .utf8)
+//let decoder = JSONDecoder()
+//if let jsonData = jsonData, let result = try? decoder.decode(Augus.self, from: jsonData) {
+//    print(result)
+//    print("name is \(result.name)")
+//    print("age is \(result.age)")
+//} else {
+//    print("decode data error")
+//}
+
+class Augus {
+    var age: Int = 17
+    var name: String = "Tian"
 }
 
-extension String: DefaultValue {
-    static let defaultValue: String = ""
-}
-
-extension Int: DefaultValue {
-    static let defaultValue: Int = 0
-}
-
-typealias DefaultCodable = DefaultValue & Codable
-
-@propertyWrapper
-struct Default<T: DefaultCodable> {
-    var wrappedValue: T
-}
-
-extension Default: Codable {
-    init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        wrappedValue = (try? container.decode(T.self)) ?? T.defaultValue
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        try container.encode(wrappedValue)
-    }
-}
-
-extension KeyedDecodingContainer {
-    
-    func decode<T>(_ type: Default<T>.Type, forKey key: KeyedDecodingContainer<K>.Key) throws -> Default<T> where T: DefaultCodable {
-        try decodeIfPresent(type, forKey: key) ?? Default(wrappedValue: T.defaultValue)
-    }
-}
-
-extension UnkeyedDecodingContainer {
-    mutating func decode<T>(_ type: Default<T>.Type) throws -> Default<T> where T: DefaultCodable {
-        try decodeIfPresent(type) ?? Default(wrappedValue: T.defaultValue)
-    }
-}
-
-struct Augus: Codable {
-    @Default var name: String
-    @Default var age: Int
-}
-
-let jsonString = """
-{
-    "name" : "gao",
-}
-"""
-
-let jsonData = jsonString.data(using: .utf8)
-let decoder = JSONDecoder()
-if let jsonData = jsonData, let result = try? decoder.decode(Augus.self, from: jsonData) {
-    print(result)
-    print("name is \(result.name)")
-    print("age is \(result.age)")
-} else {
-    print("decode data error")
-}
-
+var a = Augus()
+print("size of Augus class: \(class_getInstanceSize(Augus.self))")
+print("size of age: \(MemoryLayout.size(ofValue: a.age))")
+print("size of name: \(MemoryLayout.size(ofValue: a.name))")
