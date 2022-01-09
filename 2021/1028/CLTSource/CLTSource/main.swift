@@ -280,12 +280,29 @@ import Foundation
 //    print("decode data error")
 //}
 
+
+//MARK: - Class's Structure
+//class Augus {
+//    var age: Int = 17
+//    var name: String = "Tian"
+//}
+//
+//var a = Augus()
+//print("size of Augus class: \(class_getInstanceSize(Augus.self))")
+//print("size of age: \(MemoryLayout.size(ofValue: a.age))")
+//print("size of name: \(MemoryLayout.size(ofValue: a.name))")
+
+
+//MARK: - RefCounts Demo
+
 class Augus {
     var age: Int = 17
     var name: String = "Tian"
 }
 
 var a = Augus()
-print("size of Augus class: \(class_getInstanceSize(Augus.self))")
-print("size of age: \(MemoryLayout.size(ofValue: a.age))")
-print("size of name: \(MemoryLayout.size(ofValue: a.name))")
+var a1 = a
+unowned var a2 = a
+weak var a3 = a
+
+print("end")
