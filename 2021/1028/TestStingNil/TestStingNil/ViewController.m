@@ -10,6 +10,7 @@
 #import "SNAppConfigABTest.h"
 #import <pthread.h>
 #import "SNSon.h"
+#import "NSDictionary+Extend.h"
 
 /// mutex0
 static pthread_mutex_t mutex_0 = PTHREAD_MUTEX_INITIALIZER;
@@ -175,7 +176,7 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
     
     NSTimeInterval begin = CACurrentMediaTime();
     
-    for(int i = 0; i < 100000; i++) {
+    for(int i = 0; i < 1000000; i++) {
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 //            [lock lock];
@@ -206,16 +207,19 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
 //                version = @"other";
 //            }
 //            [dotGifParams setValue:version forKey:@"v0"];
-            NSMutableDictionary *dotGifParams0 = [NSMutableDictionary dictionary];
-
-//            NSString *cid = [SNSon getCid];
+//            NSMutableDictionary *dotGifParams0 = [NSMutableDictionary dictionary];
+//
+////            NSString *cid = [SNSon getCid];
+//
+//
+//            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//            NSString *cid = [userDefaults objectForKey:@"clientId"];
+//            NSString *nowTime = [NSString stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970]];
+//            NSString *verifyToken = [NSString stringWithFormat:@"%@_%@", cid, nowTime];
+//            [dotGifParams0 setValue:verifyToken forKey:@"v2"];
             
-
-            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-            NSString *cid = [userDefaults objectForKey:@"clientId"];
-            NSString *nowTime = [NSString stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970]];
-            NSString *verifyToken = [NSString stringWithFormat:@"%@_%@", cid, nowTime];
-            [dotGifParams0 setValue:verifyToken forKey:@"v2"];
+            NSString *resultString = [self starDotGifParamString];
+            NSLog(@"read --%@",resultString);
             
             NSLog(@"read abtestExpose---%d",i);
 
@@ -252,15 +256,18 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
 //                version = @"other";
 //            }
 //            [dotGifParams setValue:version forKey:@"v1"];
-            NSMutableDictionary *dotGifParams1 = [NSMutableDictionary dictionary];
-
-//            NSString *cid = [SNSon getCid];
-            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-            NSString *cid = [userDefaults objectForKey:@"clientId"];
-
-            NSString *nowTime = [NSString stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970]];
-            NSString *verifyToken = [NSString stringWithFormat:@"%@_%@", cid, nowTime];
-            [dotGifParams1 setValue:verifyToken forKey:@"v1"];
+//            NSMutableDictionary *dotGifParams1 = [NSMutableDictionary dictionary];
+//
+////            NSString *cid = [SNSon getCid];
+//            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//            NSString *cid = [userDefaults objectForKey:@"clientId"];
+//
+//            NSString *nowTime = [NSString stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970]];
+//            NSString *verifyToken = [NSString stringWithFormat:@"%@_%@", cid, nowTime];
+//            [dotGifParams1 setValue:verifyToken forKey:@"v1"];
+            
+            NSString *resultString = [self starDotGifParamString];
+            NSLog(@"write --%@",resultString);
 
             NSLog(@"write abtestexpose --%d",i);
 
@@ -298,6 +305,41 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
 //    [params setValue:[[SNUserLocationManager sharedInstance] realLatitude] forKey:@"cdma_lat"];
     [params setValue:@"" forKey:@"cdma_lat"];
     return params;
+}
+
+- (NSString *)starDotGifParamString {
+    
+    NSMutableDictionary *dotGifParams = [NSMutableDictionary dictionary];
+
+    
+    NSString *uid = [[NSUserDefaults standardUserDefaults] objectForKey:@"clientId"];
+    if (!uid.length) {
+        uid = @"";
+    }
+    NSString *cid = uid;
+    [dotGifParams setValue:cid forKey:@"c"];
+    
+    
+    //移动端系统平台
+    [dotGifParams setValue:@"ios" forKey:@"p"];
+    
+    
+    
+    //App版本号
+    NSString *version = [SNSon appVersion];
+    if (!version.length) {
+        version = @"other";
+    }
+    [dotGifParams setValue:version forKey:@"v"];
+    
+    
+    //abmode
+    [dotGifParams setValue:@"0" forKey:@"abmode"];
+    
+    [dotGifParams setValue:@"venn" forKey:@"Augus"];
+
+    
+    return [dotGifParams toUrlString];;
 }
 
 - (void)testPthreadRWLock {

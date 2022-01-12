@@ -17,6 +17,7 @@
 		B137F46C273D0F34009027AC /* TestStingNilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B137F46B273D0F34009027AC /* TestStingNilTests.m */; };
 		B137F476273D0F34009027AC /* TestStingNilUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B137F475273D0F34009027AC /* TestStingNilUITests.m */; };
 		B137F478273D0F34009027AC /* TestStingNilUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B137F477273D0F34009027AC /* TestStingNilUITestsLaunchTests.m */; };
+		B1568F4A278ECA2300D74E50 /* NSDictionary+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = B1568F49278ECA2300D74E50 /* NSDictionary+Extend.m */; };
 		B16DD3972740E36C00D78209 /* SNSon.m in Sources */ = {isa = PBXBuildFile; fileRef = B16DD3962740E36C00D78209 /* SNSon.m */; };
 		B16DD39A2740E4F600D78209 /* SNAppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B16DD3992740E4F600D78209 /* SNAppConfig.m */; };
 		B16DD39D2740E5DC00D78209 /* SNAppConfigABTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B16DD39C2740E5DC00D78209 /* SNAppConfigABTest.m */; };
@@ -58,6 +59,8 @@
 		B137F471273D0F34009027AC /* TestStingNilUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestStingNilUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B137F475273D0F34009027AC /* TestStingNilUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestStingNilUITests.m; sourceTree = "<group>"; };
 		B137F477273D0F34009027AC /* TestStingNilUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestStingNilUITestsLaunchTests.m; sourceTree = "<group>"; };
+		B1568F48278ECA2300D74E50 /* NSDictionary+Extend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Extend.h"; sourceTree = "<group>"; };
+		B1568F49278ECA2300D74E50 /* NSDictionary+Extend.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Extend.m"; sourceTree = "<group>"; };
 		B16DD3952740E36C00D78209 /* SNSon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNSon.h; sourceTree = "<group>"; };
 		B16DD3962740E36C00D78209 /* SNSon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNSon.m; sourceTree = "<group>"; };
 		B16DD3982740E4F600D78209 /* SNAppConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNAppConfig.h; sourceTree = "<group>"; };
@@ -130,6 +133,8 @@
 				B16DD3992740E4F600D78209 /* SNAppConfig.m */,
 				B16DD39B2740E5DC00D78209 /* SNAppConfigABTest.h */,
 				B16DD39C2740E5DC00D78209 /* SNAppConfigABTest.m */,
+				B1568F48278ECA2300D74E50 /* NSDictionary+Extend.h */,
+				B1568F49278ECA2300D74E50 /* NSDictionary+Extend.m */,
 				B137F458273D0F33009027AC /* Main.storyboard */,
 				B137F45B273D0F34009027AC /* Assets.xcassets */,
 				B137F45D273D0F34009027AC /* LaunchScreen.storyboard */,
@@ -286,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1568F4A278ECA2300D74E50 /* NSDictionary+Extend.m in Sources */,
 				B16DD39A2740E4F600D78209 /* SNAppConfig.m in Sources */,
 				B16DD39D2740E5DC00D78209 /* SNAppConfigABTest.m in Sources */,
 				B137F457273D0F33009027AC /* ViewController.m in Sources */,
