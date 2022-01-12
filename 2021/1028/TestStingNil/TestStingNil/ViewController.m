@@ -176,7 +176,7 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
     
     NSTimeInterval begin = CACurrentMediaTime();
     
-    for(int i = 0; i < 1000000; i++) {
+    for(int i = 0; i < 100000; i++) {
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 //            [lock lock];
