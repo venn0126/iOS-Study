@@ -218,8 +218,10 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
 //            NSString *verifyToken = [NSString stringWithFormat:@"%@_%@", cid, nowTime];
 //            [dotGifParams0 setValue:verifyToken forKey:@"v2"];
             
-            NSString *resultString = [self starDotGifParamString];
-            NSLog(@"read --%@",resultString);
+//            NSString *resultString = [self starDotGifParamString];
+//            NSLog(@"read --%@",resultString);
+            
+            [self testShouldUploadAgif:@"name=niu&age=17=height=167&v=1.2.1&t=4G"];
             
             NSLog(@"read abtestExpose---%d",i);
 
@@ -266,8 +268,9 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
 //            NSString *verifyToken = [NSString stringWithFormat:@"%@_%@", cid, nowTime];
 //            [dotGifParams1 setValue:verifyToken forKey:@"v1"];
             
-            NSString *resultString = [self starDotGifParamString];
-            NSLog(@"write --%@",resultString);
+//            NSString *resultString = [self starDotGifParamString];
+//            NSLog(@"write --%@",resultString);
+            [self testShouldUploadAgif:@"name=niu&age=17=height=167&v=1.2.1&t=4G"];
 
             NSLog(@"write abtestexpose --%d",i);
 
@@ -283,6 +286,28 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
     // destory
 //    pthread_mutex_destroy(&pLock);
   
+}
+
+- (void)testShouldUploadAgif:(NSString *)params {
+    
+    NSMutableDictionary* map = [[NSMutableDictionary alloc] initWithCapacity:0];
+    
+    NSArray* params_arr = [params componentsSeparatedByString:@"&"];
+    if (params_arr.count>0) {
+        for (int i=0; i<params_arr.count; i++) {
+            NSString* params_each = [params_arr objectAtIndex:i];
+            if (params_each.length>0) {
+                NSArray* keyValue_arr = [params_each componentsSeparatedByString:@"="];
+                if (keyValue_arr.count>1) {
+                    NSString* key = [keyValue_arr objectAtIndex:0];
+                    NSString* value = [keyValue_arr objectAtIndex:1];
+                    if (key && value) {
+                        [map setObject:value forKey:key];
+                    }
+                }
+            }
+        }
+    }
 }
 
 - (NSDictionary *)addAESEncryptParams {
