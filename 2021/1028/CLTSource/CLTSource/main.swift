@@ -295,14 +295,49 @@ import Foundation
 
 //MARK: - RefCounts Demo
 
-class Augus {
-    var age: Int = 17
-    var name: String = "Tian"
-}
+//class Augus {
+//    var age: Int = 17
+//    var name: String = "Tian"
+//}
+//
+//var a = Augus()
+//var a1 = a
+//unowned var a2 = a
+//weak var a3 = a
+//
+//print("end")
 
+
+class Augus {}
 var a = Augus()
-var a1 = a
-unowned var a2 = a
-weak var a3 = a
 
-print("end")
+var a4 = a
+var a5 = a
+var a6 = a
+
+unowned var a1 = a
+unowned var a2 = a
+unowned var a3 = a
+
+weak var a7 = a
+weak var a8 = a
+weak var a9 = a
+
+print("--- end ---")
+
+unowned var p10 = a
+unowned var p11 = a
+
+var p12 = a
+var p13 = a
+
+
+
+//SWIFT_ALWAYS_INLINE
+//RefCountBitsT(HeapObjectSideTableEntry* side)
+//  : bits((reinterpret_cast<BitsType>(side) >> Offsets::SideTableUnusedLowBits)
+//         | (BitsType(1) << Offsets::UseSlowRCShift)
+//         | (BitsType(1) << Offsets::SideTableMarkShift))
+//{
+//  assert(refcountIsInline);
+//}
