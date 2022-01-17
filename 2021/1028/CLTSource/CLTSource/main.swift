@@ -323,15 +323,13 @@ weak var a7 = a
 weak var a8 = a
 weak var a9 = a
 
-print("--- end ---")
-
 unowned var p10 = a
 unowned var p11 = a
 
 var p12 = a
 var p13 = a
 
-
+print("--- end ---")
 
 //SWIFT_ALWAYS_INLINE
 //RefCountBitsT(HeapObjectSideTableEntry* side)
