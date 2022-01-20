@@ -9,6 +9,18 @@
 
 @implementation SNAppConfigABTest
 
+- (instancetype)init {
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+    
+    NSDictionary *dict = @{@"_abTestExpose":@"TianTestExpose"};
+    [self updateWithDic:dict];
+    
+    return self;
+}
+
 - (void)updateWithDic:(NSDictionary *)dic {
     
     _abTestList = [dic objectForKey:@"_abTestList"];

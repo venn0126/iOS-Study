@@ -27,7 +27,7 @@
     static SNPerson *person = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        person = [[self alloc] init];
+        person = [[SNPerson alloc] init];
     });
     return person;
 }

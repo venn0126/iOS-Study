@@ -178,7 +178,7 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
     
     for(int i = 0; i < 100000; i++) {
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
 //            [lock lock];
 //            pthread_mutex_lock(&mutex_0);
             
@@ -221,8 +221,10 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
 //            NSString *resultString = [self starDotGifParamString];
 //            NSLog(@"read --%@",resultString);
             
-            [self testShouldUploadAgif:@"name=niu&age=17=height=167&v=1.2.1&t=4G"];
+//            [self testShouldUploadAgif:@"name=niu&age=17=height=167&v=1.2.1&t=4G"];
             
+            
+            [self starDotGifParamString];
             NSLog(@"read abtestExpose---%d",i);
 
 //            [lock unlock];
@@ -270,8 +272,8 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
             
 //            NSString *resultString = [self starDotGifParamString];
 //            NSLog(@"write --%@",resultString);
-            [self testShouldUploadAgif:@"name=niu&age=17=height=167&v=1.2.1&t=4G"];
-
+//            [self testShouldUploadAgif:@"name=niu&age=17=height=167&v=1.2.1&t=4G"];
+            [self starDotGifParamString];
             NSLog(@"write abtestexpose --%d",i);
 
 //            [lock unlock];
@@ -316,7 +318,7 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
     NSString *nowTime = [NSString stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970]];
     NSString *verifyToken = [NSString stringWithFormat:@"%@_%@", cid, nowTime];
     NSString *plainText = [[NSString alloc] initWithFormat:@"cid=%@&verifytoken=%@&v=%@&p=%@", cid, verifyToken, [SNSon appVersion], @"iOS"];//明文
-    if (!cipherText) {
+    if (!plainText) {
 //        cipherText = [[SNRedPacketManager sharedInstance] aesEncryptWithData:plainText];//密文
     }
     
@@ -344,6 +346,15 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
     NSString *cid = uid;
     [dotGifParams setValue:cid forKey:@"c"];
     
+    NSString *abTestExpose = [SNPerson.shared configABTest].abTestExpose;
+    if (abTestExpose.length > 0) {
+        [dotGifParams setValue:abTestExpose forKey:@"abResult"];
+    }
+    
+    SNAppConfigABTest *configABTest = [SNPerson.shared configABTest];
+    NSLog(@"config ab test address is %p",configABTest);
+
+    
     
     //移动端系统平台
     [dotGifParams setValue:@"ios" forKey:@"p"];
@@ -362,6 +373,8 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
     [dotGifParams setValue:@"0" forKey:@"abmode"];
     
     [dotGifParams setValue:@"venn" forKey:@"Augus"];
+    
+    
 
     
     return [dotGifParams toUrlString];;
