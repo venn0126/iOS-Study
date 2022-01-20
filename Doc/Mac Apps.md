@@ -15,23 +15,29 @@
 
 ## 娱乐类
 
+### 加速工具
+
 * [ClashX](https://github.com/yichengchen/clashX/releases)
+
+### 视频播放
+
+* [iina](https://iina.io/)
 
 ## 工具类
 
-### 截图工具
+### 截图
 
 * [shottr](https://shottr.cc/)
 
-### 录屏软件
+### 录屏
 
 * [Kap](https://getkap.co/)
 
-### 清理软件
+### 清理
 
 * [AppCleaner](https://freemacsoft.net/appcleaner/)
 
-### 监控软件
+### 监控
 
 * [iStat Menus](https://bjango.com/mac/istatmenus/)
 
