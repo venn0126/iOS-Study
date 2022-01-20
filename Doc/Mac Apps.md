@@ -15,7 +15,7 @@
 
 ## 娱乐类
 
-
+* [ClashX](https://github.com/yichengchen/clashX/releases)
 
 ## 工具类
 
@@ -42,6 +42,7 @@
 ## 网络类
 
 * [Paw](https://paw.cloud/)
+* [Charles](https://www.charlesproxy.com/)
 
 ### NTFS For Seagate
 
