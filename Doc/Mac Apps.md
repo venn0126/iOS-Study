@@ -1,4 +1,4 @@
-# Mac Apps记录
+# Mac Apps
 
 
 
