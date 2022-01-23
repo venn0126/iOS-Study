@@ -369,10 +369,19 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
     [dotGifParams setValue:version forKey:@"v"];
     
     
-    //abmode
-    [dotGifParams setValue:@"0" forKey:@"abmode"];
+    [dotGifParams setValue:nil forKey:@"123"];
     
-    [dotGifParams setValue:@"venn" forKey:@"Augus"];
+    [dotGifParams setValue:@"" forKey:@""];
+    
+    [dotGifParams setValue:@(1) forKey:@"1"];
+    
+//    [dotGifParams setValue:[NSNumber numberWithBool:YES] forKey:@"true"];
+//
+//    [dotGifParams setValue:[NSNumber numberWithDouble:0.12] forKey:@"double"];
+    
+    
+
+
     
     
 
