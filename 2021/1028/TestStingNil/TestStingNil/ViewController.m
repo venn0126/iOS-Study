@@ -26,21 +26,23 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
 
 @end
 
-@implementation ViewController{
-    
-    int _testA;
-}
+@implementation ViewController
+
+// 外部函数的声明
+int AugusTest(void);
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = UIColor.linkColor;
 //    [self testStringNil];
-    [self testCrash];
+//    [self testCrash];
 //    [self testCrash0];
 //    [self testPthreadRWLock];
     
-//    [self testGradientButton];
+    // 函数的调用
+    AugusTest();
+    NSLog(@"assembly finish");
 }
 
 

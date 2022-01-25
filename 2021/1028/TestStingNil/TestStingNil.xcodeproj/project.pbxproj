@@ -21,6 +21,7 @@
 		B16DD3972740E36C00D78209 /* SNSon.m in Sources */ = {isa = PBXBuildFile; fileRef = B16DD3962740E36C00D78209 /* SNSon.m */; };
 		B16DD39A2740E4F600D78209 /* SNAppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B16DD3992740E4F600D78209 /* SNAppConfig.m */; };
 		B16DD39D2740E5DC00D78209 /* SNAppConfigABTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B16DD39C2740E5DC00D78209 /* SNAppConfigABTest.m */; };
+		B1746448279FD69C00BBEDC1 /* 0125Asm.s in Sources */ = {isa = PBXBuildFile; fileRef = B1746447279FD69C00BBEDC1 /* 0125Asm.s */; };
 		B1C9679D273ECBA00046017A /* SNPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C9679C273ECBA00046017A /* SNPerson.m */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		B16DD3992740E4F600D78209 /* SNAppConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNAppConfig.m; sourceTree = "<group>"; };
 		B16DD39B2740E5DC00D78209 /* SNAppConfigABTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNAppConfigABTest.h; sourceTree = "<group>"; };
 		B16DD39C2740E5DC00D78209 /* SNAppConfigABTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNAppConfigABTest.m; sourceTree = "<group>"; };
+		B1746447279FD69C00BBEDC1 /* 0125Asm.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = 0125Asm.s; sourceTree = "<group>"; };
 		B1C9679B273ECBA00046017A /* SNPerson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNPerson.h; sourceTree = "<group>"; };
 		B1C9679C273ECBA00046017A /* SNPerson.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNPerson.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,6 +127,7 @@
 				B137F453273D0F33009027AC /* SceneDelegate.m */,
 				B137F455273D0F33009027AC /* ViewController.h */,
 				B137F456273D0F33009027AC /* ViewController.m */,
+				B1746447279FD69C00BBEDC1 /* 0125Asm.s */,
 				B1C9679B273ECBA00046017A /* SNPerson.h */,
 				B1C9679C273ECBA00046017A /* SNPerson.m */,
 				B16DD3952740E36C00D78209 /* SNSon.h */,
@@ -298,6 +301,7 @@
 				B1C9679D273ECBA00046017A /* SNPerson.m in Sources */,
 				B137F451273D0F33009027AC /* AppDelegate.m in Sources */,
 				B16DD3972740E36C00D78209 /* SNSon.m in Sources */,
+				B1746448279FD69C00BBEDC1 /* 0125Asm.s in Sources */,
 				B137F462273D0F34009027AC /* main.m in Sources */,
 				B137F454273D0F33009027AC /* SceneDelegate.m in Sources */,
 			);
