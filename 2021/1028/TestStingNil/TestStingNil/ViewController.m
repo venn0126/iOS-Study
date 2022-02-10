@@ -26,7 +26,10 @@ static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
 
 @end
 
-@implementation ViewController
+@implementation ViewController{
+    
+    dispatch_queue_t _serialQueue;
+}
 
 // 外部函数的声明
 int AugusTest(void);
@@ -41,8 +44,41 @@ int AugusTest(void);
 //    [self testPthreadRWLock];
     
     // 函数的调用
-    AugusTest();
-    NSLog(@"assembly finish");
+//    AugusTest();
+//    NSLog(@"assembly finish");
+    _serialQueue = dispatch_queue_create("com.augus.snapi",
+                                                         DISPATCH_QUEUE_SERIAL);
+    [self testSNAPICrash];
+}
+
+
+- (void)testSNAPICrash {
+    
+
+    for (int i = 0; i < 100000; i++) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+            
+            dispatch_sync(self->_serialQueue, ^{
+                
+                [self starDotGifParamString];
+                NSLog(@"read starDotGifParamString---%d",i);
+            });
+            
+            
+            
+        });
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+            dispatch_sync(self->_serialQueue, ^{
+                
+                [self starDotGifParamString];
+                NSLog(@"write starDotGifParamString---%d",i);
+                
+            });
+            
+        });
+    }
 }
 
 
