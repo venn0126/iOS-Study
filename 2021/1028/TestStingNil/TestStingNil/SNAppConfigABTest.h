@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSString *)appVersion;
 
++ (NSString *)augus_timeString;
+
 @end
 
 NS_ASSUME_NONNULL_END

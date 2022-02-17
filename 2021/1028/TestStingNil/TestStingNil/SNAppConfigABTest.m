@@ -54,4 +54,10 @@
     return appVersion;
 }
 
++ (NSString *)augus_timeString {
+    
+    NSTimeInterval interval = [[NSDate date] timeIntervalSince1970] * 1000;
+    return [NSString stringWithFormat:@"%.0f", interval];
+}
+
 @end

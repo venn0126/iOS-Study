@@ -39,16 +39,16 @@ int AugusTest(void);
     // Do any additional setup after loading the view.
     self.view.backgroundColor = UIColor.linkColor;
 //    [self testStringNil];
-//    [self testCrash];
+    [self testCrash];
 //    [self testCrash0];
 //    [self testPthreadRWLock];
     
     // 函数的调用
 //    AugusTest();
 //    NSLog(@"assembly finish");
-    _serialQueue = dispatch_queue_create("com.augus.snapi",
-                                                         DISPATCH_QUEUE_SERIAL);
-    [self testSNAPICrash];
+//    _serialQueue = dispatch_queue_create("com.augus.snapi",
+//                                                         DISPATCH_QUEUE_SERIAL);
+//    [self testSNAPICrash];
 }
 
 
@@ -417,9 +417,8 @@ int AugusTest(void);
 //
 //    [dotGifParams setValue:[NSNumber numberWithDouble:0.12] forKey:@"double"];
     
-    
-
-
+    NSString *timeStamp = [SNAppConfigABTest augus_timeString];
+    [dotGifParams setValue:timeStamp forKey:@"t"];
     
     
 
