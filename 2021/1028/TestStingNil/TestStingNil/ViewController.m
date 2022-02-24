@@ -39,7 +39,7 @@ int AugusTest(void);
     // Do any additional setup after loading the view.
     self.view.backgroundColor = UIColor.linkColor;
 //    [self testStringNil];
-    [self testCrash];
+//    [self testCrash];
 //    [self testCrash0];
 //    [self testPthreadRWLock];
     
@@ -49,6 +49,34 @@ int AugusTest(void);
 //    _serialQueue = dispatch_queue_create("com.augus.snapi",
 //                                                         DISPATCH_QUEUE_SERIAL);
 //    [self testSNAPICrash];
+    
+//    [self testAttributedStringInitCrash];
+//    [self testAttributedStringAddAttributeCrash];
+    [self testAttributedStringInitAttributesCrash];
+}
+
+- (void)testAttributedStringInitCrash
+{
+    NSString *nilStr = nil;
+    NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:nilStr];
+    NSLog(@"attributedStr is %@",attributedStr);
+}
+
+
+- (void)testAttributedStringAddAttributeCrash
+{
+    NSString *nonnullStr = @"str";
+    NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:nonnullStr];
+    
+    NSString *nilValue = nil;
+    [attributedStr addAttribute:NSAttachmentAttributeName value:nilValue range:NSMakeRange(0, 1)];
+}
+
+- (void)testAttributedStringInitAttributesCrash {
+    NSString *nilStr = nil;
+    NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:nilStr attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:15]}];
+    NSLog(@"attributedStr is %@",attributedStr);
+    
 }
 
 
