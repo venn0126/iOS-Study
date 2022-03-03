@@ -180,6 +180,12 @@ void kscrash_crashCallback(const KSCrashReportWriter *writer)
     if (issue.dataType == EMatrixIssueDataType_Data) {
         NSString *dataString = [[NSString alloc] initWithData:issue.issueData encoding:NSUTF8StringEncoding];
         textVC = [[TextViewController alloc] initWithString:dataString withTitle:currentTilte];
+        // 打断点获取json文件，需要在run-info-勾选debug executable
+        // oom 在release模式下才会生效，否则没有日志生成
+        // 崩溃和oom需要取消勾选debug executable
+        // 使用matrix脚本进行日志json文件的处理
+        // 卡顿：`python2.7 /xx/ks2apple.py -i /xx/input.json -o /xx/output.json`
+        // 耗电：`python xx/battery2apple.py /xx/intput.json /xx/output.json`
     } else {
         textVC = [[TextViewController alloc] initWithFilePath:issue.filePath withTitle:currentTilte];
     }
