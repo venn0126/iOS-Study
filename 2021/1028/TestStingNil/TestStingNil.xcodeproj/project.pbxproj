@@ -22,6 +22,7 @@
 		B16DD39A2740E4F600D78209 /* SNAppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B16DD3992740E4F600D78209 /* SNAppConfig.m */; };
 		B16DD39D2740E5DC00D78209 /* SNAppConfigABTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B16DD39C2740E5DC00D78209 /* SNAppConfigABTest.m */; };
 		B1746448279FD69C00BBEDC1 /* 0125Asm.s in Sources */ = {isa = PBXBuildFile; fileRef = B1746447279FD69C00BBEDC1 /* 0125Asm.s */; };
+		B17F701827D7442600E92630 /* UIDevice+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = B17F701727D7442600E92630 /* UIDevice+Helper.m */; };
 		B1C9679D273ECBA00046017A /* SNPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C9679C273ECBA00046017A /* SNPerson.m */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +70,8 @@
 		B16DD39B2740E5DC00D78209 /* SNAppConfigABTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNAppConfigABTest.h; sourceTree = "<group>"; };
 		B16DD39C2740E5DC00D78209 /* SNAppConfigABTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNAppConfigABTest.m; sourceTree = "<group>"; };
 		B1746447279FD69C00BBEDC1 /* 0125Asm.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = 0125Asm.s; sourceTree = "<group>"; };
+		B17F701627D7442600E92630 /* UIDevice+Helper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Helper.h"; sourceTree = "<group>"; };
+		B17F701727D7442600E92630 /* UIDevice+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Helper.m"; sourceTree = "<group>"; };
 		B1C9679B273ECBA00046017A /* SNPerson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNPerson.h; sourceTree = "<group>"; };
 		B1C9679C273ECBA00046017A /* SNPerson.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNPerson.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -138,6 +141,8 @@
 				B16DD39C2740E5DC00D78209 /* SNAppConfigABTest.m */,
 				B1568F48278ECA2300D74E50 /* NSDictionary+Extend.h */,
 				B1568F49278ECA2300D74E50 /* NSDictionary+Extend.m */,
+				B17F701627D7442600E92630 /* UIDevice+Helper.h */,
+				B17F701727D7442600E92630 /* UIDevice+Helper.m */,
 				B137F458273D0F33009027AC /* Main.storyboard */,
 				B137F45B273D0F34009027AC /* Assets.xcassets */,
 				B137F45D273D0F34009027AC /* LaunchScreen.storyboard */,
@@ -295,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1568F4A278ECA2300D74E50 /* NSDictionary+Extend.m in Sources */,
+				B17F701827D7442600E92630 /* UIDevice+Helper.m in Sources */,
 				B16DD39A2740E4F600D78209 /* SNAppConfig.m in Sources */,
 				B16DD39D2740E5DC00D78209 /* SNAppConfigABTest.m in Sources */,
 				B137F457273D0F33009027AC /* ViewController.m in Sources */,

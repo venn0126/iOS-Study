@@ -11,6 +11,7 @@
 #import <pthread.h>
 #import "SNSon.h"
 #import "NSDictionary+Extend.h"
+#import "UIDevice+Helper.h"
 
 /// mutex0
 static pthread_mutex_t mutex_0 = PTHREAD_MUTEX_INITIALIZER;
@@ -39,7 +40,7 @@ int AugusTest(void);
     // Do any additional setup after loading the view.
     self.view.backgroundColor = UIColor.linkColor;
 //    [self testStringNil];
-//    [self testCrash];
+    [self testCrash];
 //    [self testCrash0];
 //    [self testPthreadRWLock];
     
@@ -52,7 +53,7 @@ int AugusTest(void);
     
 //    [self testAttributedStringInitCrash];
 //    [self testAttributedStringAddAttributeCrash];
-    [self testAttributedStringInitAttributesCrash];
+//    [self testAttributedStringInitAttributesCrash];
 }
 
 - (void)testAttributedStringInitCrash
@@ -348,6 +349,13 @@ int AugusTest(void);
 
         });
         
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+           
+            [self starDotGifParamString];
+            NSLog(@"middle abtestexpose --%d",i);
+        });
+        
     }
     
     NSLog(@"all time is %.2f",CACurrentMediaTime() - begin);
@@ -449,6 +457,12 @@ int AugusTest(void);
     [dotGifParams setValue:timeStamp forKey:@"t"];
     
     
+    // IDFA
+    NSString *idfa = [UIDevice deviceIDFV];
+    if (idfa.length == 0) {
+        idfa = @"";
+    }
+    [dotGifParams setValue:idfa forKey:@"ios_idfa"];
 
     
     return [dotGifParams toUrlString];;
