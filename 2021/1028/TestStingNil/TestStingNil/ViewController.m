@@ -12,6 +12,7 @@
 #import "SNSon.h"
 #import "NSDictionary+Extend.h"
 #import "UIDevice+Helper.h"
+#import "TestLayouView.h"
 
 /// mutex0
 static pthread_mutex_t mutex_0 = PTHREAD_MUTEX_INITIALIZER;
@@ -40,7 +41,7 @@ int AugusTest(void);
     // Do any additional setup after loading the view.
     self.view.backgroundColor = UIColor.linkColor;
 //    [self testStringNil];
-    [self testCrash];
+//    [self testCrash];
 //    [self testCrash0];
 //    [self testPthreadRWLock];
     
@@ -54,6 +55,21 @@ int AugusTest(void);
 //    [self testAttributedStringInitCrash];
 //    [self testAttributedStringAddAttributeCrash];
 //    [self testAttributedStringInitAttributesCrash];
+    
+    
+    [self testLayoutSubviews];
+    
+}
+
+
+- (void)testLayoutSubviews {
+    
+    
+//    UIButton *button = [[UIButton alloc] init];
+//    [self.view addSubview:button];
+    
+    TestLayouView *testView = [[TestLayouView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    [self.view addSubview:testView];
 }
 
 - (void)testAttributedStringInitCrash
