@@ -57,8 +57,24 @@ int AugusTest(void);
 //    [self testAttributedStringInitAttributesCrash];
     
     
-    [self testLayoutSubviews];
+//    [self testLayoutSubviews];
     
+    [self testArrayNotLegal];
+    
+}
+
+- (void)testArrayNotLegal {
+    
+    NSArray *testNilArray = nil;
+    NSArray *testZeroArray = [[NSArray alloc] init];
+    
+    if (testNilArray.count == 0) {
+        NSLog(@"test nil arrry");
+    }
+    
+    if (!testZeroArray.count) {
+        NSLog(@"test zero array");
+    }
 }
 
 
@@ -68,7 +84,9 @@ int AugusTest(void);
 //    UIButton *button = [[UIButton alloc] init];
 //    [self.view addSubview:button];
     
-    TestLayouView *testView = [[TestLayouView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+//    TestLayouView *testView = [[TestLayouView alloc] initWithFrame:CGRectZero];
+    TestLayouView *testView = [[TestLayouView alloc] init];
+    testView.frame = CGRectMake(0, 0, 100, 100);
     [self.view addSubview:testView];
 }
 
