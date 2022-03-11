@@ -57,9 +57,9 @@ int AugusTest(void);
 //    [self testAttributedStringInitAttributesCrash];
     
     
-//    [self testLayoutSubviews];
+    [self testLayoutSubviews];
     
-    [self testArrayNotLegal];
+//    [self testArrayNotLegal];
     
 }
 
@@ -68,9 +68,13 @@ int AugusTest(void);
     NSArray *testNilArray = nil;
     NSArray *testZeroArray = [[NSArray alloc] init];
     
-    if (testNilArray.count == 0) {
-        NSLog(@"test nil arrry");
+    @synchronized (testNilArray) {
+        if (testNilArray.count == 0) {
+            NSLog(@"test nil arrry");
+        }
+        
     }
+    
     
     if (!testZeroArray.count) {
         NSLog(@"test zero array");

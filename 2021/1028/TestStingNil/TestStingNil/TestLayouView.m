@@ -46,23 +46,29 @@
     
     _testButton.frame = CGRectMake(25, 25, 50, 50);
     
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 
 
 //        self.frame = CGRectMake(0, 0, 100, 100);
-//        button.frame = CGRectMake(10, 20, 50, 50);
+//        _testButton.frame = CGRectMake(10, 20, 50, 50);
         
         
-//        [self addSubview:self->_testButton];
+        [self addSubview:self->_testButton];
 
-//    });
+    });
+    
+    
     
 }
 
 - (void)layoutSubviews {
-    NSLog(@"%s---%d",__func__,__LINE__);
     
 //    _testButton.frame =
+    NSLog(@"%s---%d",__func__,__LINE__);
+    
+//    for (int i = 0; i < 1000 ; i++) {
+//        _testButton.frame = CGRectMake(25, 25, 80, 80);
+//    }
 }
 
 @end
