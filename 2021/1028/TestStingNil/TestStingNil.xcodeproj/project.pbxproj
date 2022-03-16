@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B1362AAB27E178D400A43177 /* TestButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B1362AAA27E178D400A43177 /* TestButton.m */; };
 		B137F451273D0F33009027AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B137F450273D0F33009027AC /* AppDelegate.m */; };
 		B137F454273D0F33009027AC /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B137F453273D0F33009027AC /* SceneDelegate.m */; };
 		B137F457273D0F33009027AC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B137F456273D0F33009027AC /* ViewController.m */; };
@@ -45,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B1362AA927E178D400A43177 /* TestButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestButton.h; sourceTree = "<group>"; };
+		B1362AAA27E178D400A43177 /* TestButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestButton.m; sourceTree = "<group>"; };
 		B137F44C273D0F33009027AC /* TestStingNil.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestStingNil.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B137F44F273D0F33009027AC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B137F450273D0F33009027AC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -148,6 +151,8 @@
 				B17F701727D7442600E92630 /* UIDevice+Helper.m */,
 				B1F4B92327D8B35700907E23 /* TestLayouView.h */,
 				B1F4B92427D8B35700907E23 /* TestLayouView.m */,
+				B1362AA927E178D400A43177 /* TestButton.h */,
+				B1362AAA27E178D400A43177 /* TestButton.m */,
 				B137F458273D0F33009027AC /* Main.storyboard */,
 				B137F45B273D0F34009027AC /* Assets.xcassets */,
 				B137F45D273D0F34009027AC /* LaunchScreen.storyboard */,
@@ -314,6 +319,7 @@
 				B137F451273D0F33009027AC /* AppDelegate.m in Sources */,
 				B16DD3972740E36C00D78209 /* SNSon.m in Sources */,
 				B1746448279FD69C00BBEDC1 /* 0125Asm.s in Sources */,
+				B1362AAB27E178D400A43177 /* TestButton.m in Sources */,
 				B137F462273D0F34009027AC /* main.m in Sources */,
 				B137F454273D0F33009027AC /* SceneDelegate.m in Sources */,
 			);

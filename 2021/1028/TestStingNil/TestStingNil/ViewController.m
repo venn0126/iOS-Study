@@ -90,7 +90,8 @@ int AugusTest(void);
     
 //    TestLayouView *testView = [[TestLayouView alloc] initWithFrame:CGRectZero];
     TestLayouView *testView = [[TestLayouView alloc] init];
-    testView.frame = CGRectMake(0, 0, 100, 100);
+    // safe area 47
+    testView.frame = CGRectMake(0, 46, 100, 100);
     [self.view addSubview:testView];
 }
 
