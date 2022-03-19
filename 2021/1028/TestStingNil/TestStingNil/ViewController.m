@@ -18,12 +18,26 @@
 static pthread_mutex_t mutex_0 = PTHREAD_MUTEX_INITIALIZER;
 static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
 
+static NSString * const kTableViewCellAugus = @"UITableViewCellAugus";
 
-@interface ViewController ()
+
+@interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *array;
 @property (nonatomic, strong) SNPerson *person;
 @property (nonatomic, copy) NSArray *dataArray;
+@property (nonatomic, strong) UITableView *augusTableView;
+
+@property (nonatomic, copy) NSArray *historyDataArray;
+@property (nonatomic, copy) NSArray *hotWordsDataArray;
+@property (nonatomic, copy) NSArray *hotListDataArray;
+@property (nonatomic, strong) UIButton *clearHistoryButton;
+@property (nonatomic, strong) UIButton *clearHotWordsButton;
+@property (nonatomic, strong) UIButton *clearHotListButton;
+@property (nonatomic, assign) AugusCellType cellType;
+@property (nonatomic, assign) NSInteger allSection;
+
+
 
 
 @end
@@ -57,10 +71,280 @@ int AugusTest(void);
 //    [self testAttributedStringInitAttributesCrash];
     
     
-    [self testLayoutSubviews];
+//    [self testLayoutSubviews];
     
 //    [self testArrayNotLegal];
     
+    [self configureTableView];
+    
+}
+
+
+- (void)configureTableView {
+    
+    
+    
+    _historyDataArray = @[@"history"];
+    _hotWordsDataArray = @[@"hotWords"];
+    _hotListDataArray = @[@"hotList"];
+    
+    [self.augusTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kTableViewCellAugus];
+    
+    [self.view addSubview:self.augusTableView];
+    
+}
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
+    /**
+     
+     //声明定义枚举变量
+     MyOption option = MyOption1 | MyOption2;//0001 | 0010 = 0011,3
+
+     //检查是否包含某选型
+     if ( option & MyOption3 ){ //0011 & 0100 = 0000
+          //包含MyOption3
+     }else{
+          //不包含MyOption3
+     }
+
+     //增加选项:
+     option = option | MyOption4;//0011 | 1000 = 1011, 11
+     //减少选项
+     option = option & (~MyOption4);//1011 & (~1000) = 1011 & 0111 = 0011, 3
+     */
+    
+    // 1 2 3
+    
+    AugusCellType tempType = AugusCellTypeNone;
+    NSInteger section = 0;
+    
+    if (_historyDataArray.count) {
+        tempType |= AugusCellTypeHistory;
+        section += 1;
+    }
+    if (_hotWordsDataArray.count) {
+        tempType |= AugusCellTypeHotWords;
+        section += 1;
+
+    }
+    if (_hotListDataArray.count) {
+        tempType |= AugusCellTypeHotList;
+        section += 1;
+
+    }
+    
+    _cellType = tempType;
+    _allSection = section;
+    return section;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return _cellType == AugusCellTypeNone ? 0 : 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellAugus forIndexPath:indexPath];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kTableViewCellAugus];
+    }
+    
+    
+    if (_allSection == 1) {
+        if (_cellType & AugusCellTypeHistory) {
+            cell.textLabel.text = self.historyDataArray.firstObject;
+
+        } else if(_cellType & AugusCellTypeHotWords) {
+            cell.textLabel.text = self.hotWordsDataArray.firstObject;
+
+        }else if(_cellType & AugusCellTypeHotList) {
+            cell.textLabel.text = self.hotListDataArray.firstObject;
+
+        }
+    }
+    
+    
+    // 0 1 2,01,12,02
+    //
+    if (_allSection == 2) {
+        
+        // 01
+        if ((_cellType & AugusCellTypeHistory) && (_cellType & AugusCellTypeHotWords)) {
+            if (indexPath.section == 0) {
+                cell.textLabel.text = self.historyDataArray.firstObject;
+
+            } else {
+                cell.textLabel.text = self.hotWordsDataArray.firstObject;
+
+            }
+        }
+        
+        // 12
+        if ((_cellType & AugusCellTypeHotWords) && (_cellType & AugusCellTypeHotList)) {
+            if (indexPath.section == 0) {
+
+                cell.textLabel.text = self.hotWordsDataArray.firstObject;
+            } else {
+                cell.textLabel.text = self.hotListDataArray.firstObject;
+
+            }
+        }
+        
+        // 02
+        if ((_cellType & AugusCellTypeHistory) && (_cellType & AugusCellTypeHotList)) {
+            if (indexPath.section == 0) {
+
+                cell.textLabel.text = self.historyDataArray.firstObject;
+            } else {
+                cell.textLabel.text = self.hotListDataArray.firstObject;
+
+            }
+        }
+        
+        
+    }
+    
+    if (_allSection == 3) {
+        
+        if (indexPath.section == 0) {
+            cell.textLabel.text = self.historyDataArray.firstObject;
+
+        }
+        if(indexPath.section == 1) {
+            cell.textLabel.text = self.hotWordsDataArray.firstObject;
+
+        }
+        if(indexPath.section == 2) {
+            cell.textLabel.text = self.hotListDataArray.firstObject;
+
+        }
+    }
+    
+    return cell;
+}
+
+
+#pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return 60;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    
+    UIView *view = [[UIView alloc] init];
+    
+    // 1
+    // 2
+    // 3
+    
+    
+    
+    if (_allSection == 1) {
+        if (_cellType & AugusCellTypeHistory) {
+            view.backgroundColor = UIColor.yellowColor;
+            [view addSubview:self.clearHistoryButton];
+        } else if(_cellType & AugusCellTypeHotWords) {
+            view.backgroundColor = UIColor.lightGrayColor;
+            [view addSubview:self.clearHotWordsButton];
+        }else if(_cellType & AugusCellTypeHotList) {
+            view.backgroundColor = UIColor.blueColor;
+            [view addSubview:self.clearHotListButton];
+        }
+    }
+    
+    
+    // 0 1 2,01,12,02
+    //
+    if (_allSection == 2) {
+        
+        // 01
+        if ((_cellType & AugusCellTypeHistory) && (_cellType & AugusCellTypeHotWords)) {
+            if (section == 0) {
+                view.backgroundColor = UIColor.yellowColor;
+                [view addSubview:self.clearHistoryButton];
+            } else {
+                view.backgroundColor = UIColor.lightGrayColor;
+                [view addSubview:self.clearHotWordsButton];
+            }
+        }
+        
+        // 12
+        if ((_cellType & AugusCellTypeHotWords) && (_cellType & AugusCellTypeHotList)) {
+            if (section == 0) {
+
+                view.backgroundColor = UIColor.lightGrayColor;
+                [view addSubview:self.clearHotWordsButton];
+                
+            } else {
+                view.backgroundColor = UIColor.blueColor;
+                [view addSubview:self.clearHotListButton];
+            }
+        }
+        
+        // 02
+        if ((_cellType & AugusCellTypeHistory) && (_cellType & AugusCellTypeHotList)) {
+            if (section == 0) {
+
+                view.backgroundColor = UIColor.yellowColor;
+                [view addSubview:self.clearHistoryButton];
+                
+            } else {
+                view.backgroundColor = UIColor.blueColor;
+                [view addSubview:self.clearHotListButton];
+            }
+        }
+        
+        
+    }
+    
+    if (_allSection == 3) {
+        
+        if (section == 0) {
+            view.backgroundColor = UIColor.yellowColor;
+            [view addSubview:self.clearHistoryButton];
+        }
+        if(section == 1) {
+            view.backgroundColor = UIColor.lightGrayColor;
+            [view addSubview:self.clearHotWordsButton];
+        }
+        if(section == 2) {
+            view.backgroundColor = UIColor.blueColor;
+            [view addSubview:self.clearHotListButton];
+        }
+    }
+    
+
+    return view;
+}
+
+
+- (void)clearButtonAction:(UIButton *)sender {
+    
+    if (sender.tag == 1000) {
+        _historyDataArray = nil;
+    }
+    if (sender.tag == 1001) {
+        _hotWordsDataArray = nil;
+    }
+    if (sender.tag == 1002) {
+        _hotListDataArray = nil;
+    }
+    
+    [self.augusTableView reloadData];
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    
+    return 38;
 }
 
 - (void)testArrayNotLegal {
@@ -437,7 +721,7 @@ int AugusTest(void);
     
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:10];
     [params setValue:verifyToken forKey:@"verifytoken"];
-    [params setValue:cipherText forKey:@"ciphertext"];
+//    [params setValue:cipherText forKey:@"ciphertext"];
 //    [params setValue:[[SNRedPacketManager sharedInstance] getKeyVersion] forKey:@"keyv"];
 //    [params setValue:[[SNUserLocationManager sharedInstance] realLongitude] forKey:@"cdma_lng"];
     [params setValue:@"" forKey:@"cdma_lng"];
@@ -578,6 +862,79 @@ int AugusTest(void);
         _dataArray = @[@"Li",@"Tian",@"Xiong",@"Zhao",@"Xing",@"Wang",@"Yang",@"EnHao",@"Teng",@"Long",@"Xiao"];
     }
     return _dataArray;
+}
+
+- (UITableView *)augusTableView {
+    if (!_augusTableView) {
+        
+        _augusTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 100, UIScreen.mainScreen.bounds.size.width, 350) style:UITableViewStyleGrouped];
+        _augusTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _augusTableView.scrollEnabled = NO;
+        _augusTableView.delegate = self;
+        _augusTableView.dataSource = self;
+    }
+    return _augusTableView;
+}
+
+//- (NSArray *)historyDataArray {
+//
+//    if (!_historyDataArray) {
+//        _historyDataArray = @[@"history"];
+//    }
+//    return _historyDataArray;
+//}
+//
+//- (NSArray *)hotWordsDataArray {
+//
+//    if (!_hotWordsDataArray) {
+//        _hotWordsDataArray = @[@"hotWords"];
+//    }
+//    return _hotWordsDataArray;
+//}
+//
+//- (NSArray *)hotListDataArray {
+//
+//    if (!_hotListDataArray) {
+//        _hotListDataArray = @[@"hotList"];
+//    }
+//    return _hotListDataArray;
+//}
+
+- (UIButton *)clearHistoryButton {
+    if (!_clearHistoryButton) {
+        _clearHistoryButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _clearHistoryButton.backgroundColor = UIColor.greenColor;
+        _clearHistoryButton.tag = 1000;
+        [_clearHistoryButton setTitle:@"清除历史记录" forState:UIControlStateNormal];
+        [_clearHistoryButton addTarget:self action:@selector(clearButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        [_clearHistoryButton sizeToFit];
+    }
+    return _clearHistoryButton;
+}
+
+- (UIButton *)clearHotWordsButton {
+    if (!_clearHotWordsButton) {
+        _clearHotWordsButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _clearHotWordsButton.backgroundColor = UIColor.greenColor;
+        _clearHotWordsButton.tag = 1001;
+        [_clearHotWordsButton setTitle:@"清除热词记录" forState:UIControlStateNormal];
+        [_clearHotWordsButton addTarget:self action:@selector(clearButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        [_clearHotWordsButton sizeToFit];
+    }
+    return _clearHotWordsButton;
+}
+
+- (UIButton *)clearHotListButton {
+    if (!_clearHotListButton) {
+        _clearHotListButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _clearHotListButton.backgroundColor = UIColor.greenColor;
+//        _clearHotListButton.frame = CGRectMake(0, 0, 100, 100);
+        _clearHotListButton.tag = 1002;
+        [_clearHotListButton setTitle:@"清除热榜记录" forState:UIControlStateNormal];
+        [_clearHotListButton addTarget:self action:@selector(clearButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        [_clearHotListButton sizeToFit];
+    }
+    return _clearHotListButton;
 }
 
 @end
