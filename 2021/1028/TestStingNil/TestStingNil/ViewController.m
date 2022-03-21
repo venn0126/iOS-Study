@@ -71,11 +71,11 @@ int AugusTest(void);
 //    [self testAttributedStringInitAttributesCrash];
     
     
-//    [self testLayoutSubviews];
+    [self testLayoutSubviews];
     
 //    [self testArrayNotLegal];
     
-    [self configureTableView];
+//    [self configureTableView];
     
 }
 
@@ -375,7 +375,7 @@ int AugusTest(void);
 //    TestLayouView *testView = [[TestLayouView alloc] initWithFrame:CGRectZero];
     TestLayouView *testView = [[TestLayouView alloc] init];
     // safe area 47
-    testView.frame = CGRectMake(0, 46, 100, 100);
+    testView.frame = CGRectMake(0, 100, 100, 100);
     [self.view addSubview:testView];
 }
 

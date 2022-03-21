@@ -25,6 +25,7 @@
 		B1746448279FD69C00BBEDC1 /* 0125Asm.s in Sources */ = {isa = PBXBuildFile; fileRef = B1746447279FD69C00BBEDC1 /* 0125Asm.s */; };
 		B17F701827D7442600E92630 /* UIDevice+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = B17F701727D7442600E92630 /* UIDevice+Helper.m */; };
 		B1C9679D273ECBA00046017A /* SNPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C9679C273ECBA00046017A /* SNPerson.m */; };
+		B1D6453527E88BD00019BCF6 /* TestSubview.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D6453427E88BD00019BCF6 /* TestSubview.m */; };
 		B1F4B92527D8B35700907E23 /* TestLayouView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F4B92427D8B35700907E23 /* TestLayouView.m */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,8 @@
 		B17F701727D7442600E92630 /* UIDevice+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Helper.m"; sourceTree = "<group>"; };
 		B1C9679B273ECBA00046017A /* SNPerson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNPerson.h; sourceTree = "<group>"; };
 		B1C9679C273ECBA00046017A /* SNPerson.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNPerson.m; sourceTree = "<group>"; };
+		B1D6453327E88BD00019BCF6 /* TestSubview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestSubview.h; sourceTree = "<group>"; };
+		B1D6453427E88BD00019BCF6 /* TestSubview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestSubview.m; sourceTree = "<group>"; };
 		B1F4B92327D8B35700907E23 /* TestLayouView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestLayouView.h; sourceTree = "<group>"; };
 		B1F4B92427D8B35700907E23 /* TestLayouView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestLayouView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,6 +156,8 @@
 				B1F4B92427D8B35700907E23 /* TestLayouView.m */,
 				B1362AA927E178D400A43177 /* TestButton.h */,
 				B1362AAA27E178D400A43177 /* TestButton.m */,
+				B1D6453327E88BD00019BCF6 /* TestSubview.h */,
+				B1D6453427E88BD00019BCF6 /* TestSubview.m */,
 				B137F458273D0F33009027AC /* Main.storyboard */,
 				B137F45B273D0F34009027AC /* Assets.xcassets */,
 				B137F45D273D0F34009027AC /* LaunchScreen.storyboard */,
@@ -314,6 +319,7 @@
 				B16DD39A2740E4F600D78209 /* SNAppConfig.m in Sources */,
 				B1F4B92527D8B35700907E23 /* TestLayouView.m in Sources */,
 				B16DD39D2740E5DC00D78209 /* SNAppConfigABTest.m in Sources */,
+				B1D6453527E88BD00019BCF6 /* TestSubview.m in Sources */,
 				B137F457273D0F33009027AC /* ViewController.m in Sources */,
 				B1C9679D273ECBA00046017A /* SNPerson.m in Sources */,
 				B137F451273D0F33009027AC /* AppDelegate.m in Sources */,
