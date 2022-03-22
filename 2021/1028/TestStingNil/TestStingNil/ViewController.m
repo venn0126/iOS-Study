@@ -17,6 +17,7 @@
 /// mutex0
 static pthread_mutex_t mutex_0 = PTHREAD_MUTEX_INITIALIZER;
 static pthread_mutex_t mutex_1 = PTHREAD_MUTEX_INITIALIZER;
+static NSInteger kNetworkErrorRetryCount = 0;
 
 static NSString * const kTableViewCellAugus = @"UITableViewCellAugus";
 
@@ -36,6 +37,8 @@ static NSString * const kTableViewCellAugus = @"UITableViewCellAugus";
 @property (nonatomic, strong) UIButton *clearHotListButton;
 @property (nonatomic, assign) AugusCellType cellType;
 @property (nonatomic, assign) NSInteger allSection;
+@property (nonatomic, strong) UIButton *networkErrorButton;
+@property (nonatomic, copy) NSArray *networkErrorTitles;
 
 
 
@@ -71,14 +74,43 @@ int AugusTest(void);
 //    [self testAttributedStringInitAttributesCrash];
     
     
-    [self testLayoutSubviews];
+//    [self testLayoutSubviews];
     
-//    [self testArrayNotLegal];
+    [self testArrayNotLegal];
     
 //    [self configureTableView];
     
+//    [self testNetworkErrorRetry];
 }
 
+
+- (void)testNetworkErrorRetry {
+    
+    _networkErrorButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _networkErrorButton.frame = CGRectMake(100, 100, 100, 100);
+    [_networkErrorButton setTitle:@"Click Me" forState:UIControlStateNormal];
+    [_networkErrorButton addTarget:self action:@selector(testNetworkErrorRetry:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_networkErrorButton];
+}
+
+- (void)testNetworkErrorRetry:(UIButton *)sender {
+    
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+//        dispatch_async(dispatch_get_main_queue(), ^{
+            NSInteger index = arc4random() % self.networkErrorTitles.count;
+            NSString *title = self.networkErrorTitles[index];
+            if ([title isEqualToString:@"Click Me"]) {
+                kNetworkErrorRetryCount += 1;
+                NSLog(@"it is network error count %ld",kNetworkErrorRetryCount);
+            } else {
+                kNetworkErrorRetryCount = 0;
+                NSLog(@"it is network success count %ld",kNetworkErrorRetryCount);
+            }
+//        });
+//    });
+    
+}
 
 - (void)configureTableView {
     
@@ -935,6 +967,13 @@ int AugusTest(void);
         [_clearHotListButton sizeToFit];
     }
     return _clearHotListButton;
+}
+
+- (NSArray *)networkErrorTitles {
+    if (!_networkErrorTitles) {
+        _networkErrorTitles = @[@"Click Me",@"Click Her",@"Click Me"];
+    }
+    return _networkErrorTitles;
 }
 
 @end
