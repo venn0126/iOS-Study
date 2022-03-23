@@ -39,6 +39,7 @@ static NSString * const kTableViewCellAugus = @"UITableViewCellAugus";
 @property (nonatomic, assign) NSInteger allSection;
 @property (nonatomic, strong) UIButton *networkErrorButton;
 @property (nonatomic, copy) NSArray *networkErrorTitles;
+@property (nonatomic, strong) UITextField *augusTextField;
 
 
 
@@ -56,7 +57,7 @@ int AugusTest(void);
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = UIColor.linkColor;
+    self.view.backgroundColor = UIColor.whiteColor;
 //    [self testStringNil];
 //    [self testCrash];
 //    [self testCrash0];
@@ -76,11 +77,31 @@ int AugusTest(void);
     
 //    [self testLayoutSubviews];
     
-    [self testArrayNotLegal];
+//    [self testArrayNotLegal];
     
 //    [self configureTableView];
     
 //    [self testNetworkErrorRetry];
+    
+    [self testTextField];
+}
+
+
+- (void)testTextField {
+    
+    [self.view addSubview:self.augusTextField];
+    self.augusTextField.frame = CGRectMake(100, 100, 200,50);
+//    [self.augusTextField becomeFirstResponder];
+    
+//    self.augusTextField.inputView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
+    
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+//        self.augusTextField.inputView = nil;
+//        self.augusTextField.inputView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 375, 248)];
+    });
+    
 }
 
 
@@ -976,4 +997,11 @@ int AugusTest(void);
     return _networkErrorTitles;
 }
 
+- (UITextField *)augusTextField {
+    if (!_augusTextField) {
+        _augusTextField = [[UITextField alloc] init];
+        _augusTextField.backgroundColor = UIColor.greenColor;
+    }
+    return _augusTextField;
+}
 @end
