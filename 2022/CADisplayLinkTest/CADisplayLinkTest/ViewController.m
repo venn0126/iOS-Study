@@ -114,7 +114,7 @@ static CGFloat const kImageViewWidth = 100.0f;
 
 - (void)createNSTimerOfRunLoop {
     
-    _timer = [NSTimer timerWithTimeInterval:2 repeats:YES block:^(NSTimer * _Nonnull timer) {
+    _timer = [NSTimer timerWithTimeInterval:2 repeats:NO block:^(NSTimer * _Nonnull timer) {
        
         NSLog(@"timer run");
     }];
@@ -123,6 +123,7 @@ static CGFloat const kImageViewWidth = 100.0f;
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
         [runLoop addTimer:self->_timer forMode:NSRunLoopCommonModes];
+        [runLoop run];
     });
 }
 
@@ -130,7 +131,7 @@ static CGFloat const kImageViewWidth = 100.0f;
 - (void)createNSTimerOfRunLoopMode {
     
     
-    _timer = [NSTimer timerWithTimeInterval:2 repeats:YES block:^(NSTimer * _Nonnull timer) {
+    _timer = [NSTimer timerWithTimeInterval:2 repeats:NO block:^(NSTimer * _Nonnull timer) {
        
         NSLog(@"timer run");
     }];
@@ -141,6 +142,11 @@ static CGFloat const kImageViewWidth = 100.0f;
         [runLoop addTimer:self->_timer forMode:UITrackingRunLoopMode];
         [runLoop run];
     });
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    NSLog(@"_timer is %@",@([_timer isValid]));
 }
 
 @end
