@@ -30,9 +30,9 @@ static CGFloat const kImageViewWidth = 100.0f;
     _dynamicImageViewY = 0;
     [self createImageView];
     [self createAnimationButton];
-//    [self createDisplayLink];
+    [self createDisplayLink];
     
-    [self createNSTimerOfRunLoop];
+//    [self createNSTimerOfRunLoop];
     
 //    NSTimer *timer = [NSTimer timerWithTimeInterval:<#(NSTimeInterval)#> repeats:<#(BOOL)#> block:<#^(NSTimer * _Nonnull timer)block#>]
     
@@ -61,7 +61,7 @@ static CGFloat const kImageViewWidth = 100.0f;
 /// 创建定时器实例
 - (void)createDisplayLink {
     _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(startAnimation:)];
-    _displayLink.paused = YES;
+//    _displayLink.paused = YES;
     _displayLink.frameInterval = 2;
     NSLog(@"0--targetTimestamp:%f,timestamp:%f", _displayLink.targetTimestamp,_displayLink.timestamp);
 
@@ -109,6 +109,7 @@ static CGFloat const kImageViewWidth = 100.0f;
     }
 }
 
+/*
 
 #pragma mark - NSTimer
 
@@ -148,5 +149,5 @@ static CGFloat const kImageViewWidth = 100.0f;
     
     NSLog(@"_timer is %@",@([_timer isValid]));
 }
-
+ */
 @end
