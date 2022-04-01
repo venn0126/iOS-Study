@@ -71,6 +71,13 @@ static CGFloat const kImageViewWidth = 100.0f;
 
     
     
+    NSInteger currentFPS = (NSInteger)ceil(1.0 / _displayLink.duration);
+    if (@available(iOS 15.0, *)) {
+        _displayLink.preferredFrameRateRange = CAFrameRateRangeMake(10.0, currentFPS, 0.0);
+    } else {
+        // Fallback on earlier versions
+    }
+    
 }
 
 
