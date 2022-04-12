@@ -6,7 +6,7 @@
 //
 
 #import "ViewController.h"
-
+#import "UIColor+CustomColor.h"
 
 static CGFloat const kImageViewWidth = 100.0f;
 
@@ -26,17 +26,81 @@ static CGFloat const kImageViewWidth = 100.0f;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.view.backgroundColor = UIColor.lightGrayColor;
+//    self.view.backgroundColor = UIColor.whiteColor;
+    self.view.backgroundColor = UIColor.BG1;
     _dynamicImageViewY = 0;
-    [self createImageView];
-    [self createAnimationButton];
-    [self createDisplayLink];
+//    [self createImageView];
+//    [self createAnimationButton];
+//    [self createDisplayLink];
+    
+    
     
 //    [self createNSTimerOfRunLoop];
     
-//    NSTimer *timer = [NSTimer timerWithTimeInterval:<#(NSTimeInterval)#> repeats:<#(BOOL)#> block:<#^(NSTimer * _Nonnull timer)block#>]
+    [self testAssetsResources];
     
 }
+
+
+- (void)testAssetsResources {
+    
+    
+    [self.view addSubview:self.imageView];
+    self.imageView.frame = CGRectMake(100, 100, 200, 200);
+    CFTimeInterval startTime = CACurrentMediaTime();
+//    for (int i = 0; i < 10000; i++) {
+        self.imageView.image = [UIImage imageNamed:@"ico_kongbaifx_v5"];
+//    }
+    
+    NSLog(@"finish time is %.2f",CACurrentMediaTime() - startTime);
+    
+    /**
+     
+     typedef NS_ENUM(NSInteger, UIUserInterfaceStyle) {
+         UIUserInterfaceStyleUnspecified,
+         UIUserInterfaceStyleLight,
+         UIUserInterfaceStyleDark,
+     } API_AVAILABLE(tvos(10.0)) API_AVAILABLE(ios(12.0)) API_UNAVAILABLE(watchos);
+     */
+    
+    // get current  user interfacestyle
+    if (@available(iOS 12.0, *)) {
+        if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+            
+            // the style is dark
+            NSLog(@"UIUserInterfaceStyleDark");
+            
+        } else if(self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleLight){
+            // the style is light
+            NSLog(@"UIUserInterfaceStyleLight");
+
+        } else {
+            // the style is unspecified
+            NSLog(@"UIUserInterfaceStyleUnspecified");
+
+        }
+    } else {
+        // Fallback on earlier versions
+        NSLog(@"UIUserInterfaceStyleUnspecified<12");
+
+    }
+    
+        
+    // 在单个页面禁用深色模式
+//    if (@available(iOS 13.0, *)) {
+//        self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
+//    } else {
+//        // Fallback on earlier versions
+//    }
+//    
+//    // 在单个页面禁用浅色模式
+//    if (@available(iOS 13.0, *)) {
+//        self.overrideUserInterfaceStyle = UIUserInterfaceStyleDark;
+//    } else {
+//        // Fallback on earlier versions
+//    }
+}
+
 
 - (void)createAnimationButton {
     
@@ -157,4 +221,12 @@ static CGFloat const kImageViewWidth = 100.0f;
     NSLog(@"_timer is %@",@([_timer isValid]));
 }
  */
+
+
+- (UIImageView *)imageView {
+    if (!_imageView) {
+        _imageView = [[UIImageView alloc] init];
+    }
+    return _imageView;
+}
 @end

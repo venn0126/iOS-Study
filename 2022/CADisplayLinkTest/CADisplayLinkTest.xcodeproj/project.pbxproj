@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B1BA73A528056A1C000CB6B7 /* UIColor+CustomColor.m in Sources */ = {isa = PBXBuildFile; fileRef = B1BA73A428056A1C000CB6B7 /* UIColor+CustomColor.m */; };
 		B1F2F18627EEB7AD004578B6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F2F18527EEB7AD004578B6 /* AppDelegate.m */; };
 		B1F2F18927EEB7AD004578B6 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F2F18827EEB7AD004578B6 /* SceneDelegate.m */; };
 		B1F2F18C27EEB7AD004578B6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F2F18B27EEB7AD004578B6 /* ViewController.m */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B1BA73A328056A1C000CB6B7 /* UIColor+CustomColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColor.h"; sourceTree = "<group>"; };
+		B1BA73A428056A1C000CB6B7 /* UIColor+CustomColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColor.m"; sourceTree = "<group>"; };
 		B1F2F18127EEB7AD004578B6 /* CADisplayLinkTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CADisplayLinkTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1F2F18427EEB7AD004578B6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B1F2F18527EEB7AD004578B6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -110,6 +113,8 @@
 				B1F2F18827EEB7AD004578B6 /* SceneDelegate.m */,
 				B1F2F18A27EEB7AD004578B6 /* ViewController.h */,
 				B1F2F18B27EEB7AD004578B6 /* ViewController.m */,
+				B1BA73A328056A1C000CB6B7 /* UIColor+CustomColor.h */,
+				B1BA73A428056A1C000CB6B7 /* UIColor+CustomColor.m */,
 				B1F2F18D27EEB7AD004578B6 /* Main.storyboard */,
 				B1F2F19027EEB7AF004578B6 /* Assets.xcassets */,
 				B1F2F19227EEB7AF004578B6 /* LaunchScreen.storyboard */,
@@ -266,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1BA73A528056A1C000CB6B7 /* UIColor+CustomColor.m in Sources */,
 				B1F2F18C27EEB7AD004578B6 /* ViewController.m in Sources */,
 				B1F2F18627EEB7AD004578B6 /* AppDelegate.m in Sources */,
 				B1F2F19727EEB7AF004578B6 /* main.m in Sources */,
@@ -452,12 +458,12 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sohu.CADisplayLinkTest1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -480,12 +486,12 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sohu.CADisplayLinkTest1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
