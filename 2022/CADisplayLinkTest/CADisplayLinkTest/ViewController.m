@@ -39,7 +39,6 @@ static CGFloat const kImageViewWidth = 100.0f;
     
 //    [self testAssetsResources];
     
-
     
 }
 
@@ -50,6 +49,7 @@ static CGFloat const kImageViewWidth = 100.0f;
     NSString *testNull = @"";
     NSDictionary *dict = [[NSDictionary alloc] init];
     [self reportEgifPostReport:dict];
+    
 }
 
 
