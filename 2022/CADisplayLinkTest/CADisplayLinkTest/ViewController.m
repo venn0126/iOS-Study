@@ -37,8 +37,26 @@ static CGFloat const kImageViewWidth = 100.0f;
     
 //    [self createNSTimerOfRunLoop];
     
-    [self testAssetsResources];
+//    [self testAssetsResources];
     
+    NSString *testNil = nil;
+    NSString *testNull = @"";
+    NSDictionary *dict = [[NSDictionary alloc] init];
+    [self reportEgifPostReport:dict];
+    
+}
+
+
+- (void)reportEgifPostReport:(NSString *)report {
+    
+//    if (![report isKindOfClass:[NSString class]] || report.length == 0) {
+    if (report.length == 0 || ![report isKindOfClass:[NSString class]] ) {
+
+        NSLog(@"it is bad");
+        return;
+    }
+    
+    NSLog(@"it is ok");
 }
 
 
