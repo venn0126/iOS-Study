@@ -6,6 +6,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "UIColor+CustomColor.h"
 
 @interface CADisplayLinkTestTests : XCTestCase
 
@@ -31,6 +32,19 @@
     [self measureBlock:^{
         // Put the code you want to measure the time of here.
     }];
+}
+
+
+- (void)testUIColorExtension {
+    
+    // nil
+    id color = UIColor.BG1;
+    XCTAssertNotNil(color);
+    
+    // kind
+    XCTAssertTrue([color isKindOfClass:[UIColor class]]);
+    
+    NSLog(@"---%@ : %@",@(__func__),@(__LINE__));
 }
 
 @end
