@@ -7,6 +7,7 @@
 
 #import <XCTest/XCTest.h>
 #import "UIColor+CustomColor.h"
+#import "GTViewModel.h"
 
 @interface CADisplayLinkTestTests : XCTestCase
 
@@ -46,5 +47,22 @@
     
     NSLog(@"---%@ : %@",@(__func__),@(__LINE__));
 }
+
+
+- (void)testGTViewModel {
+    
+    GTViewModel *viewModel = [[GTViewModel alloc] init];
+    GTViewModel *viewModel1 = [[GTViewModel alloc] initWithObserverName:@""];
+//    GTViewModel *viewModel2 = [[GTViewModel alloc] initWithObserverName:nil];
+    
+    XCTAssertNotNil(viewModel);
+    XCTAssertNotNil(viewModel1);
+//    XCTAssertNotNil(viewModel2);
+
+
+
+}
+
+
 
 @end

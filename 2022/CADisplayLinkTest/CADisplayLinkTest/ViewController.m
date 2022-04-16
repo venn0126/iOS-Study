@@ -7,6 +7,8 @@
 
 #import "ViewController.h"
 #import "UIColor+CustomColor.h"
+#import "GTViewModel.h"
+#import "GTModel.h"
 
 static CGFloat const kImageViewWidth = 100.0f;
 
@@ -17,6 +19,12 @@ static CGFloat const kImageViewWidth = 100.0f;
 @property (nonatomic, assign) CGFloat dynamicImageViewY;
 @property (nonatomic, strong) UIButton *startButton;
 @property (nonatomic, strong) NSTimer *timer;
+
+
+@property (nonatomic, strong) UILabel *label1;
+@property (nonatomic, strong) UILabel *label2;
+@property (nonatomic, strong) UIButton *updateData;
+@property (nonatomic, strong) GTViewModel *viewModel;
 
 @end
 
@@ -39,6 +47,44 @@ static CGFloat const kImageViewWidth = 100.0f;
     
 //    [self testAssetsResources];
     
+    
+    [self testViewModelBase];
+    
+}
+
+
+- (void)testViewModelBase {
+    
+    [self.view addSubview:self.label1];
+    self.label1.frame = CGRectMake(100, 100, 100, 50);
+    
+    [self.view addSubview:self.label2];
+    self.label2.frame = CGRectMake(100, 150, 100, 50);
+    
+    [self.view addSubview:self.updateData];
+    self.updateData.frame = CGRectMake(100, 200, 100, 50);
+    
+    if (!_viewModel) {
+        
+        _viewModel = [[GTViewModel alloc] initWithObserverName:@"GTViewModel"];
+        [_viewModel loadData];
+        [_viewModel bindDataWithBlock:^(id  _Nullable result, NSError * _Nullable error) {
+            
+            if ([result isKindOfClass:[GTModel class]]) {
+                GTModel *model = (GTModel *)result;
+                self->_label1.text = model.newsTitle;
+            }
+        }];
+    }
+    
+    
+}
+
+- (void)updateDataAction:(UIButton *)sender {
+    
+    if (_viewModel) {
+        [_viewModel loadData];
+    }
     
 }
 
@@ -252,5 +298,37 @@ static CGFloat const kImageViewWidth = 100.0f;
         _imageView = [[UIImageView alloc] init];
     }
     return _imageView;
+}
+
+- (UILabel *)label1 {
+    
+    if (!_label1) {
+        _label1 = [[UILabel alloc] init];
+        _label1.textColor = UIColor.blueColor;
+        _label1.backgroundColor = UIColor.greenColor;
+        [_label1 sizeToFit];
+    }
+    return _label1;
+}
+
+- (UILabel *)label2 {
+    
+    if (!_label2) {
+        _label2 = [[UILabel alloc] init];
+        _label2.textColor = UIColor.redColor;
+        _label2.backgroundColor = UIColor.whiteColor;
+        [_label2 sizeToFit];
+    }
+    return _label2;
+}
+
+- (UIButton *)updateData {
+    if (!_updateData) {
+        _updateData = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_updateData setTitle:@"UpdateData" forState:UIControlStateNormal];
+        [_updateData setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
+        [_updateData addTarget:self action:@selector(updateDataAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _updateData;
 }
 @end
