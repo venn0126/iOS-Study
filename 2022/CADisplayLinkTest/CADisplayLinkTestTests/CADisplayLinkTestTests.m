@@ -8,6 +8,7 @@
 #import <XCTest/XCTest.h>
 #import "UIColor+CustomColor.h"
 #import "GTViewModel.h"
+#import "NSDateFormatter+Extension.h"
 
 @interface CADisplayLinkTestTests : XCTestCase
 
@@ -63,6 +64,38 @@
 
 }
 
+
+- (void)testNSDateFormatter {
+    
+    // kind
+    NSString *test0 = [NSDateFormatter toStringByDate:[NSData data] format:nil];
+    XCTAssertNil(test0);
+
+    NSString *test1 = [NSDateFormatter toStringByDate:[NSDate date] format:[NSData data]];
+    XCTAssertNotNil(test1);
+
+    // nil
+    NSString *test2 = [NSDateFormatter toStringByDate:nil format:nil];
+    XCTAssertNil(test2);
+
+    NSString *test3 = [NSDateFormatter toStringByDate:[NSDate date] format:nil];
+    XCTAssertNotNil(test3);
+    
+    NSString *test4 = [NSDateFormatter toStringByDate:[NSDate date] format:@""];
+    XCTAssertNotNil(test4);
+    
+    NSString *test5 = [NSDateFormatter toStringByDate:[NSDate date] format:@"123"];
+    XCTAssertNotNil(test5);
+    
+    NSString *test6 = [NSDateFormatter toStringByDate:[NSDate date] format:@"yyyy/MM/dd"];
+    XCTAssertNotNil(test6);
+    
+    NSString *test7 = [NSDateFormatter toStringByDate:nil format:@"yyyy-MM-dd"];
+    XCTAssertNil(test7);
+    
+
+    
+}
 
 
 @end

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B180B094280B12FF00357CCE /* GTViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B180B093280B12FF00357CCE /* GTViewModel.m */; };
 		B180B097280B14F200357CCE /* GTModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B180B096280B14F200357CCE /* GTModel.m */; };
+		B180B09A280D212900357CCE /* NSDateFormatter+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B180B099280D212900357CCE /* NSDateFormatter+Extension.m */; };
 		B1BA73A528056A1C000CB6B7 /* UIColor+CustomColor.m in Sources */ = {isa = PBXBuildFile; fileRef = B1BA73A428056A1C000CB6B7 /* UIColor+CustomColor.m */; };
 		B1F2F18627EEB7AD004578B6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F2F18527EEB7AD004578B6 /* AppDelegate.m */; };
 		B1F2F18927EEB7AD004578B6 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F2F18827EEB7AD004578B6 /* SceneDelegate.m */; };
@@ -44,6 +45,8 @@
 		B180B093280B12FF00357CCE /* GTViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTViewModel.m; sourceTree = "<group>"; };
 		B180B095280B14F200357CCE /* GTModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTModel.h; sourceTree = "<group>"; };
 		B180B096280B14F200357CCE /* GTModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTModel.m; sourceTree = "<group>"; };
+		B180B098280D212900357CCE /* NSDateFormatter+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+Extension.h"; sourceTree = "<group>"; };
+		B180B099280D212900357CCE /* NSDateFormatter+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+Extension.m"; sourceTree = "<group>"; };
 		B1BA73A328056A1C000CB6B7 /* UIColor+CustomColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColor.h"; sourceTree = "<group>"; };
 		B1BA73A428056A1C000CB6B7 /* UIColor+CustomColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColor.m"; sourceTree = "<group>"; };
 		B1F2F18127EEB7AD004578B6 /* CADisplayLinkTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CADisplayLinkTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +126,8 @@
 				B1BA73A428056A1C000CB6B7 /* UIColor+CustomColor.m */,
 				B180B092280B12FF00357CCE /* GTViewModel.h */,
 				B180B093280B12FF00357CCE /* GTViewModel.m */,
+				B180B098280D212900357CCE /* NSDateFormatter+Extension.h */,
+				B180B099280D212900357CCE /* NSDateFormatter+Extension.m */,
 				B180B095280B14F200357CCE /* GTModel.h */,
 				B180B096280B14F200357CCE /* GTModel.m */,
 				B1F2F18D27EEB7AD004578B6 /* Main.storyboard */,
@@ -282,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1BA73A528056A1C000CB6B7 /* UIColor+CustomColor.m in Sources */,
+				B180B09A280D212900357CCE /* NSDateFormatter+Extension.m in Sources */,
 				B180B097280B14F200357CCE /* GTModel.m in Sources */,
 				B180B094280B12FF00357CCE /* GTViewModel.m in Sources */,
 				B1F2F18C27EEB7AD004578B6 /* ViewController.m in Sources */,

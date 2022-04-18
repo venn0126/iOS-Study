@@ -9,6 +9,7 @@
 #import "UIColor+CustomColor.h"
 #import "GTViewModel.h"
 #import "GTModel.h"
+#import "NSDateFormatter+Extension.h"
 
 static CGFloat const kImageViewWidth = 100.0f;
 
@@ -57,14 +58,17 @@ static CGFloat const kImageViewWidth = 100.0f;
 
 - (void)testDateFormat {
         
-    NSDateFormatter *formatter = [NSDateFormatter new];
-    // 是否需要指定区域，否则默认是en_US
-    formatter.locale = [NSLocale localeWithLocaleIdentifier:@"zh_CN"];
-    [formatter setLocalizedDateFormatFromTemplate:@"jj:mm:ss"];
-    NSLog(@"%@: 'jj:mm' => '%@' ('%@')", formatter.locale.localeIdentifier, formatter.dateFormat, [formatter stringFromDate:[NSDate date]]);
-    formatter.dateFormat = [NSString stringWithFormat:@"yyyy-MM-dd %@",formatter.dateFormat];
-    NSLog(@"last result %@",[formatter stringFromDate:[NSDate date]]);
-
+//    NSDateFormatter *formatter = [NSDateFormatter new];
+//    // 是否需要指定区域，否则默认是en_US
+//    formatter.locale = [NSLocale localeWithLocaleIdentifier:@"zh_CN"];
+//    [formatter setLocalizedDateFormatFromTemplate:@"jj:mm:ss"];
+//    NSLog(@"%@: 'jj:mm' => '%@' ('%@')", formatter.locale.localeIdentifier, formatter.dateFormat, [formatter stringFromDate:[NSDate date]]);
+//    formatter.dateFormat = [NSString stringWithFormat:@"yyyy-MM-dd %@",formatter.dateFormat];
+//    NSLog(@"last result %@",[formatter stringFromDate:[NSDate date]]);
+    
+    NSString *test0 = [NSDateFormatter toStringByDate:[NSDate date] format:@"yyyy-MM-dd"];
+    NSLog(@"test 0 is %@",test0);
+    
 }
 
 
