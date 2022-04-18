@@ -51,9 +51,43 @@ static CGFloat const kImageViewWidth = 100.0f;
     
 //    [self testViewModelBase];
     
-    [self testDateFormat];
+//    [self testDateFormat];
+    
+    
+//    testSum(1, 2, 3, 4, 5, 6, 7, 8, 9);
+    
+    getTestStr(1, 2, 3, 4, 5, 6, 7);
     
 }
+
+int testSum(int a,int b, int c, int d, int e, int f, int g, int h ,int i) {
+    return a + b + c + d + e + f + g + h + i;
+}
+
+struct TestStr {
+    int a;
+    int b;
+    int c;
+    int d;
+    int e;
+    int f;
+    int g;
+};
+
+struct TestStr getTestStr(int a, int b, int c,int d ,int e, int f, int g) {
+    
+    struct TestStr testStr;
+    testStr.a = a;
+    testStr.b = b;
+    testStr.c = c;
+    testStr.d = d;
+    testStr.e = e;
+    testStr.f = f;
+    testStr.g = g;
+    return testStr;
+}
+
+
 
 
 - (void)testDateFormat {
