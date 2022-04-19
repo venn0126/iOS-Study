@@ -187,7 +187,23 @@ cond1(no)->sub(right)->op1
 
 
 
+
+
+## 数学公式
+
+$$
+\begin{matrix}
+1 & x & x^2 \\
+1 & y & y^2 \\
+1 & z & z^2 \\
+\end{matrix}
+$$
+
+
+
 ## 参考文档
 
 [flowchart.js](https://github.com/adrai/flowchart.js)
+
+[mathjax](https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference)
 
