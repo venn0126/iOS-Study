@@ -10,6 +10,7 @@
 #import "GTViewModel.h"
 #import "GTModel.h"
 #import "NSDateFormatter+Extension.h"
+#import <objc/runtime.h>
 
 static CGFloat const kImageViewWidth = 100.0f;
 
@@ -36,7 +37,7 @@ static CGFloat const kImageViewWidth = 100.0f;
     // Do any additional setup after loading the view.
     
 //    self.view.backgroundColor = UIColor.whiteColor;
-    self.view.backgroundColor = UIColor.BG1;
+    self.view.backgroundColor = UIColor.whiteColor;
     _dynamicImageViewY = 0;
 //    [self createImageView];
 //    [self createAnimationButton];
@@ -56,8 +57,22 @@ static CGFloat const kImageViewWidth = 100.0f;
     
 //    testSum(1, 2, 3, 4, 5, 6, 7, 8, 9);
     
-    getTestStr(1, 2, 3, 4, 5, 6, 7);
+//    getTestStr(1, 2, 3, 4, 5, 6, 7);
+
+    [self doNotImportH];
+}
+
+
+- (void)doNotImportH {
     
+    id cls = objc_getClass("UIColor");
+    [cls performSelector:NSSelectorFromString(@"BG1") withObject:nil];
+    NSLog(@"cls %@",cls);
+    
+    
+    NSArray *testArray = @[@1,@2,@5];
+    id max = [testArray valueForKeyPath:@"@max.self"];
+    NSLog(@"max is %@",max);
 }
 
 int testSum(int a,int b, int c, int d, int e, int f, int g, int h ,int i) {
