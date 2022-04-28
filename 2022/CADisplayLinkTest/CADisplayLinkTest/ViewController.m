@@ -12,6 +12,13 @@
 #import "NSDateFormatter+Extension.h"
 #import <objc/runtime.h>
 
+
+typedef NS_OPTIONS(NSUInteger, SNASANetworkType) {
+    SNASANetworkTypeToken            = 1 << 0,   // iOS 14.3+,get token request
+    SNASANetworkTypeAdService        = 1 << 1,   // ad service framework get attribution data request
+    SNASANetworkTypeiAd              = 1 << 2    // iad framework get attribution data request
+};
+
 static CGFloat const kImageViewWidth = 100.0f;
 
 @interface ViewController ()
@@ -27,6 +34,13 @@ static CGFloat const kImageViewWidth = 100.0f;
 @property (nonatomic, strong) UILabel *label2;
 @property (nonatomic, strong) UIButton *updateData;
 @property (nonatomic, strong) GTViewModel *viewModel;
+
+@property (nonatomic, strong) NSTimer *retryTimer;
+@property (nonatomic, copy) NSDictionary *dataModel;
+@property (nonatomic, assign) NSInteger tokenNetworkErrorRetryIndex;
+@property (nonatomic, assign) NSInteger adServiceNetworkErrorRetryIndex;
+@property (nonatomic, assign) NSInteger iAdNetworkErrorRetryIndex;
+
 
 @end
 
@@ -59,9 +73,65 @@ static CGFloat const kImageViewWidth = 100.0f;
     
 //    getTestStr(1, 2, 3, 4, 5, 6, 7);
 
-    [self doNotImportH];
+//    [self doNotImportH];
+    
+    [self testASAAttributionData:SNASANetworkTypeToken];
 }
 
+
+- (void)testASAAttributionData:(SNASANetworkType)type {
+    
+    NSInteger temp = 0;
+    switch (type) {
+        case SNASANetworkTypeToken:{
+            temp = _tokenNetworkErrorRetryIndex;
+            _tokenNetworkErrorRetryIndex++;
+        }break;
+        case SNASANetworkTypeAdService:{
+            temp = _adServiceNetworkErrorRetryIndex;
+            _adServiceNetworkErrorRetryIndex++;
+        }break;
+        case SNASANetworkTypeiAd:{
+            temp = _iAdNetworkErrorRetryIndex;
+            _iAdNetworkErrorRetryIndex++;
+        }
+        break;
+    }
+    
+    [self testNetworkRetry:temp];
+    
+    
+}
+
+- (void)testNetworkRetry:(NSInteger)index {
+    
+
+    NSNumber *tokenNumber = [NSNumber numberWithInteger:index];
+    NSTimeInterval timeInterval = (NSTimeInterval)[[self.dataModel objectForKey:tokenNumber] doubleValue];
+    NSLog(@"first time interval is %f -- %ld",timeInterval, _tokenNetworkErrorRetryIndex);
+    if (!timeInterval) {
+        timeInterval = 10.0;
+    }
+    NSLog(@"second time interval is %f -- %ld",timeInterval, _tokenNetworkErrorRetryIndex);
+
+    if (_retryTimer) {
+        [self stopRetryTimer];
+    }
+    _retryTimer = [NSTimer scheduledTimerWithTimeInterval:timeInterval repeats:NO block:^(NSTimer * _Nonnull timer) {
+        [self testASAAttributionData:SNASANetworkTypeToken];
+        self->_tokenNetworkErrorRetryIndex++;
+    }];
+    
+}
+
+
+- (void)stopRetryTimer {
+    
+    if (_retryTimer) {
+        [_retryTimer invalidate];
+        _retryTimer = nil;
+    }
+}
 
 - (void)doNotImportH {
     
@@ -398,5 +468,16 @@ struct TestStr getTestStr(int a, int b, int c,int d ,int e, int f, int g) {
         [_updateData addTarget:self action:@selector(updateDataAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _updateData;
+}
+
+- (NSDictionary *)dataModel {
+    if (!_dataModel) {
+        _dataModel = @{@0 : @2,
+                       @1 : @4,
+                       @2 : @6,
+                       @3 : @8,
+                       @4 : @10,};
+    }
+    return _dataModel;
 }
 @end
