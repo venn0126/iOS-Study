@@ -21,6 +21,8 @@ typedef NS_OPTIONS(NSUInteger, SNASANetworkType) {
 
 static CGFloat const kImageViewWidth = 100.0f;
 
+typedef void(^grayImageCompletion)(id result);
+
 @interface ViewController ()
 
 @property (nonatomic, strong) CADisplayLink *displayLink;
@@ -75,8 +77,39 @@ static CGFloat const kImageViewWidth = 100.0f;
 
 //    [self doNotImportH];
     
-    [self testASAAttributionData:SNASANetworkTypeToken];
+//    [self testASAAttributionData:SNASANetworkTypeToken];
+    
+    
+    [self testGrayModel];
+    
 }
+
+
+- (void)testGrayModel {
+    [self.view addSubview:self.imageView];
+    self.imageView.frame = CGRectMake(100, 100, 100, 100);
+    self.imageView.image = [UIImage imageNamed:@"ico_file1_v5"];
+    UIImage *orginImage = [UIImage imageNamed:@"ico_sfile6_v5"];
+    
+//    for (int i = 0; i < 100000; i++) {
+//        UIImage *greyImage = [self grayImageFromOriginalImage:orginImage];
+//        if (i == 0) {
+//            self.imageView.image = greyImage;
+//        }
+//        NSLog(@"wyy touch begin len %d %p",i,greyImage);
+//    }
+    
+    
+    CIImage *ciImage = [CIImage imageWithCGImage:orginImage.CGImage];
+    for (int i = 0; i < 100000; i++) {
+        UIImage *greyImage = [self imageFromCIImage:ciImage scale:2.0 orientation:UIImageOrientationUp];
+        if (i == 0) {
+            self.imageView.image = greyImage;
+        }
+        NSLog(@"augus touch begin len %d %p",i,greyImage);
+    }
+}
+
 
 
 - (void)testASAAttributionData:(SNASANetworkType)type {
@@ -102,6 +135,113 @@ static CGFloat const kImageViewWidth = 100.0f;
     
     
 }
+
+- (UIImage *)grayImageFromOriginalImage:(UIImage *)image {
+    
+        
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+       
+        
+        const int RED =1;
+        const int GREEN =2;
+        const int BLUE =3;
+        
+        // Create image rectangle with current image width/height
+        CGRect imageRect = CGRectMake(0,0, image.size.width* image.scale, image.size.height* image.scale);
+        
+        int width = imageRect.size.width;
+        int height = imageRect.size.height;
+        
+        // the pixels will be painted to this array
+        uint32_t *pixels = (uint32_t*) malloc(width * height *sizeof(uint32_t));
+        
+        // clear the pixels so any transparency is preserved
+        memset(pixels,0, width * height *sizeof(uint32_t));
+        
+        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+        
+        // create a context with RGBA pixels
+        CGContextRef context = CGBitmapContextCreate(pixels, width, height,8, width *sizeof(uint32_t), colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedLast);
+        
+        // paint the bitmap to our context which will fill in the pixels array
+        CGContextDrawImage(context,CGRectMake(0,0, width, height), [image CGImage]);
+        
+        for(int y = 0; y < height; y++) {
+            for(int x = 0; x < width; x++) {
+                uint8_t *rgbaPixel = (uint8_t*) &pixels[y * width + x];
+                
+                // convert to grayscale using recommended method: http://en.wikipedia.org/wiki/Grayscale#Converting_color_to_grayscale
+                uint32_t gray = 0.3 * rgbaPixel[RED] +0.59 * rgbaPixel[GREEN] +0.11 * rgbaPixel[BLUE];
+                
+                // set the pixels to gray
+                rgbaPixel[RED] = gray;
+                rgbaPixel[GREEN] = gray;
+                rgbaPixel[BLUE] = gray;
+            }
+        }
+        
+        // create a new CGImageRef from our context with the modified pixels
+        CGImageRef imageRef = CGBitmapContextCreateImage(context);
+        
+        // we're done with the context, color space, and pixels
+        CGContextRelease(context);
+        CGColorSpaceRelease(colorSpace);
+        free(pixels);
+        
+        // make a new UIImage to return
+        UIImage *resultUIImage = [UIImage imageWithCGImage:imageRef scale:image.scale orientation:UIImageOrientationUp];
+        
+        // we're done with image now too
+        CGImageRelease(imageRef);
+            
+    return  resultUIImage;
+    
+}
+
+
+static const size_t kComponentsPerPixel = 4;
+static const size_t kBitsPerComponent = sizeof(unsigned char) * 8;
+static void releasePixels(void *info, const void *data, size_t size)
+{
+    free((void*)data);
+}
+- (UIImage *)imageFromCIImage:(CIImage *)img scale:(CGFloat)scale orientation:(UIImageOrientation)orientation
+{
+    int width = (int)img.extent.size.width;
+    int height = (int)img.extent.size.height;
+   
+    long memsize = sizeof(unsigned char) * width * height * kComponentsPerPixel;
+    unsigned char *rawData = malloc(memsize);
+   
+    CIContext *context = [CIContext contextWithOptions:@{kCIContextUseSoftwareRenderer: @NO}];
+   
+    CGColorSpaceRef rgb = CGColorSpaceCreateDeviceRGB();
+//    CGColorSpaceRef rgb = CGColorSpaceCreateDeviceGray();
+   
+    [context render:img toBitmap:rawData rowBytes:width*kComponentsPerPixel bounds:img.extent format:kCIFormatRGBA8 colorSpace:rgb];
+   
+    CGDataProviderRef provider = CGDataProviderCreateWithData(nil, rawData, memsize, releasePixels);
+   
+    CGImageRef imageFromContext = CGImageCreate(width,
+                                                height,
+                                                kBitsPerComponent,
+                                                kBitsPerComponent * kComponentsPerPixel,
+                                                width*kComponentsPerPixel,
+                                                rgb,
+                                                kCGBitmapByteOrderDefault | kCGImageAlphaLast,
+                                                provider,
+                                                NULL,
+                                                false,
+                                                kCGRenderingIntentDefault);
+    UIImage *outImage = [UIImage imageWithCGImage:imageFromContext scale:scale orientation:orientation];
+   
+    CGImageRelease(imageFromContext);
+    CGDataProviderRelease(provider);
+    CGColorSpaceRelease(rgb);
+   
+    return outImage;
+}
+
 
 - (void)testNetworkRetry:(NSInteger)index {
     
