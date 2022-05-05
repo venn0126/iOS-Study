@@ -13,6 +13,8 @@
 #import <objc/runtime.h>
 
 
+void AugusCPSR(void);
+
 typedef NS_OPTIONS(NSUInteger, SNASANetworkType) {
     SNASANetworkTypeToken            = 1 << 0,   // iOS 14.3+,get token request
     SNASANetworkTypeAdService        = 1 << 1,   // ad service framework get attribution data request
@@ -80,9 +82,38 @@ typedef void(^grayImageCompletion)(id result);
 //    [self testASAAttributionData:SNASANetworkTypeToken];
     
     
-    [self testGrayModel];
+//    [self testGrayModel];
+    
+//    AugusCPSR();
+    
+//    augusFunc();
+    
+    [self testCPSR];
     
 }
+
+
+- (void)testCPSR {
+    
+    NSInteger a = 3;
+    NSInteger b = 4;
+    if (a-b) {
+        NSLog(@"it is is true");
+    }
+    
+    
+}
+
+
+void augusFunc(){
+    asm(
+        "mov w0, #-0x2\n"
+        "adds w0, w0, #0x1\n"
+        "adds w0, w0, #0x1\n"
+        "subs w0, w0, #0x1\n"
+        );
+}
+
 
 
 - (void)testGrayModel {
@@ -105,6 +136,7 @@ typedef void(^grayImageCompletion)(id result);
         UIImage *greyImage = [self imageFromCIImage:ciImage scale:2.0 orientation:UIImageOrientationUp];
         if (i == 0) {
             self.imageView.image = greyImage;
+            
         }
         NSLog(@"augus touch begin len %d %p",i,greyImage);
     }
