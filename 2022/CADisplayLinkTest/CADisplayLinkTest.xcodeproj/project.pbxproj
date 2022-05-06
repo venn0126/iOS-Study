@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B16ED4592824FFF900B4A5C2 /* SNGradientLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ED4582824FFF900B4A5C2 /* SNGradientLabel.m */; };
 		B180B094280B12FF00357CCE /* GTViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B180B093280B12FF00357CCE /* GTViewModel.m */; };
 		B180B097280B14F200357CCE /* GTModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B180B096280B14F200357CCE /* GTModel.m */; };
 		B180B09A280D212900357CCE /* NSDateFormatter+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B180B099280D212900357CCE /* NSDateFormatter+Extension.m */; };
@@ -42,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B16ED4572824FFF900B4A5C2 /* SNGradientLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNGradientLabel.h; sourceTree = "<group>"; };
+		B16ED4582824FFF900B4A5C2 /* SNGradientLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNGradientLabel.m; sourceTree = "<group>"; };
 		B180B092280B12FF00357CCE /* GTViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTViewModel.h; sourceTree = "<group>"; };
 		B180B093280B12FF00357CCE /* GTViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTViewModel.m; sourceTree = "<group>"; };
 		B180B095280B14F200357CCE /* GTModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTModel.h; sourceTree = "<group>"; };
@@ -128,6 +131,8 @@
 				B1BA73A428056A1C000CB6B7 /* UIColor+CustomColor.m */,
 				B180B092280B12FF00357CCE /* GTViewModel.h */,
 				B180B093280B12FF00357CCE /* GTViewModel.m */,
+				B16ED4572824FFF900B4A5C2 /* SNGradientLabel.h */,
+				B16ED4582824FFF900B4A5C2 /* SNGradientLabel.m */,
 				B180B098280D212900357CCE /* NSDateFormatter+Extension.h */,
 				B180B099280D212900357CCE /* NSDateFormatter+Extension.m */,
 				B180B095280B14F200357CCE /* GTModel.h */,
@@ -290,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1BA73A528056A1C000CB6B7 /* UIColor+CustomColor.m in Sources */,
+				B16ED4592824FFF900B4A5C2 /* SNGradientLabel.m in Sources */,
 				B180B09A280D212900357CCE /* NSDateFormatter+Extension.m in Sources */,
 				B180B097280B14F200357CCE /* GTModel.m in Sources */,
 				B180B094280B12FF00357CCE /* GTViewModel.m in Sources */,

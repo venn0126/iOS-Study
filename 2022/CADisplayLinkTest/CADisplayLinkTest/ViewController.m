@@ -11,6 +11,7 @@
 #import "GTModel.h"
 #import "NSDateFormatter+Extension.h"
 #import <objc/runtime.h>
+#import "SNGradientLabel.h"
 
 
 void AugusCPSR(void);
@@ -88,8 +89,36 @@ typedef void(^grayImageCompletion)(id result);
     
 //    augusFunc();
     
-    [self testCPSR];
+//    [self testCPSR];
     
+    
+    [self testLabelAddGradientLayer];
+}
+
+
+- (void)testLabelAddGradientLayer {
+    
+    SNGradientLabel *label = [[SNGradientLabel alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+    label.textColor = UIColor.whiteColor;
+    [self.view addSubview:label];
+    
+    label.text = @"sssssss";
+    
+    
+    
+    for (int i = 0; i < 1000000; i++) {
+        
+        label.highColor = UIColor.yellowColor;
+        label.lowColor = UIColor.blueColor;
+        
+        label.startPoint = CGPointMake(0, 1);
+        label.endPoint = CGPointMake(1, 0);
+        NSLog(@"---%d",i);
+    }
+    
+
+
+
 }
 
 
