@@ -12,6 +12,7 @@
 #import "NSDateFormatter+Extension.h"
 #import <objc/runtime.h>
 #import "SNGradientLabel.h"
+#import "SNTableViewCell.h"
 
 
 void AugusCPSR(void);
@@ -23,10 +24,11 @@ typedef NS_OPTIONS(NSUInteger, SNASANetworkType) {
 };
 
 static CGFloat const kImageViewWidth = 100.0f;
+static NSString * const kTableViewCellId = @"kTableViewCellId";
 
 typedef void(^grayImageCompletion)(id result);
 
-@interface ViewController ()
+@interface ViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) CADisplayLink *displayLink;
 @property (nonatomic, strong) UIImageView *imageView;
@@ -45,6 +47,7 @@ typedef void(^grayImageCompletion)(id result);
 @property (nonatomic, assign) NSInteger tokenNetworkErrorRetryIndex;
 @property (nonatomic, assign) NSInteger adServiceNetworkErrorRetryIndex;
 @property (nonatomic, assign) NSInteger iAdNetworkErrorRetryIndex;
+@property (nonatomic, strong) UITableView *subTableView;
 
 
 @end
@@ -92,7 +95,52 @@ typedef void(^grayImageCompletion)(id result);
 //    [self testCPSR];
     
     
-    [self testLabelAddGradientLayer];
+//    [self testLabelAddGradientLayer];
+    
+    [self testSubTableViewOfHorizontal];
+}
+
+
+- (void)testSubTableViewOfHorizontal {
+    
+    [self.view addSubview:self.subTableView];
+    [self.subTableView registerClass:[SNTableViewCell class] forCellReuseIdentifier:kTableViewCellId];
+}
+
+
+#pragma mark - UITableViewDataSouce
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return 3;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    SNTableViewCell *cell = [[SNTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kTableViewCellId];
+    cell.backgroundColor = [self randomColor];
+    return cell;
+}
+
+
+- (UIColor *)randomColor {
+    
+    CGFloat red = arc4random() % 256 / 256.0;
+    CGFloat green = arc4random() % 256 / 256.0;
+    CGFloat blue = arc4random() % 256 / 256.0;
+    UIColor *color = [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
+    NSLog(@"%@", color);
+    
+ 
+    return color;
+}
+
+
+#pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return UIScreen.mainScreen.bounds.size.width - 80;
 }
 
 
@@ -680,5 +728,25 @@ struct TestStr getTestStr(int a, int b, int c,int d ,int e, int f, int g) {
                        @4 : @10,};
     }
     return _dataModel;
+}
+
+- (UITableView *)subTableView {
+    if (!_subTableView) {
+        // width -> height; heigt -> width
+        _subTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 200, 100, self.view.bounds.size.width) style:UITableViewStylePlain];
+        _subTableView.showsVerticalScrollIndicator = NO;
+        _subTableView.showsHorizontalScrollIndicator = NO;
+        _subTableView.backgroundColor = UIColor.clearColor;
+        _subTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _subTableView.delegate = self;
+        _subTableView.dataSource = self;
+        _subTableView.backgroundColor = UIColor.greenColor;
+        _subTableView.pagingEnabled = YES;
+//        _subTableView.bounces = NO;
+        _subTableView.transform = CGAffineTransformMakeRotation(-M_PI_2);
+        _subTableView.center = CGPointMake(self.view.frame.size.width / 2, 200);
+
+    }
+    return _subTableView;
 }
 @end
