@@ -45,7 +45,7 @@
 
 -(void)setFrame:(CGRect)frame
 {
-    frame.origin.x = 10;//这里间距为10，可以根据自己的情况调整
+    frame.origin.x = 2.5;//这里间距为10，可以根据自己的情况调整
     frame.size.width -= 2 * frame.origin.x;
     frame.size.height -= 2 * frame.origin.x;
     [super setFrame:frame];

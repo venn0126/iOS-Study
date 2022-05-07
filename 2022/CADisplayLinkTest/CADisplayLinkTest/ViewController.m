@@ -48,6 +48,7 @@ typedef void(^grayImageCompletion)(id result);
 @property (nonatomic, assign) NSInteger adServiceNetworkErrorRetryIndex;
 @property (nonatomic, assign) NSInteger iAdNetworkErrorRetryIndex;
 @property (nonatomic, strong) UITableView *subTableView;
+@property (nonatomic, strong) UIView *footerView;
 
 
 @end
@@ -104,7 +105,7 @@ typedef void(^grayImageCompletion)(id result);
 - (void)testSubTableViewOfHorizontal {
     
     [self.view addSubview:self.subTableView];
-    [self.subTableView registerClass:[SNTableViewCell class] forCellReuseIdentifier:kTableViewCellId];
+    [self.view addSubview:self.footerView];
 }
 
 
@@ -116,9 +117,13 @@ typedef void(^grayImageCompletion)(id result);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    SNTableViewCell *cell = [[SNTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kTableViewCellId];
-    cell.backgroundColor = [self randomColor];
+    
+    SNTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kTableViewCellId];
+    if (!cell) {
+        cell = [[SNTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kTableViewCellId];
+    }
+    
+    
     return cell;
 }
 
@@ -142,6 +147,51 @@ typedef void(^grayImageCompletion)(id result);
     
     return UIScreen.mainScreen.bounds.size.width - 80;
 }
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+
+}
+
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+//    NSUInteger index = [_people indexOfObject:person];
+//     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+     if ([self.subTableView.indexPathsForVisibleRows containsObject:indexPath]) {
+       [self.subTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                             withRowAnimation:UITableViewRowAnimationFade];
+
+         NSLog(@"in indexpath.row %ld",(long)indexPath.row);
+         if (indexPath.row == 2) {// visible cell
+             self.footerView.hidden = NO;
+         } else {
+             self.footerView.hidden = YES;
+         }
+     }
+//    NSIndexPath *indexPathTwo = [NSIndexPath indexPathForRow:2 inSection:0];
+//    CGRect cellRect = [self.subTableView rectForRowAtIndexPath:indexPathTwo];
+//    BOOL completelyVisible = CGRectContainsRect(self.subTableView.bounds, cellRect);
+//    if (completelyVisible) {
+//        self.footerView.hidden = NO;
+//    } else {
+//        self.footerView.hidden = YES;
+//    }
+    
+}
+
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+//    return 70;
+//}
+//
+//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+//
+//    UIView *footerView = [[UIView alloc] init];
+//    footerView.backgroundColor = UIColor.redColor;
+//    return footerView;
+//}
 
 
 - (void)testLabelAddGradientLayer {
@@ -733,7 +783,7 @@ struct TestStr getTestStr(int a, int b, int c,int d ,int e, int f, int g) {
 - (UITableView *)subTableView {
     if (!_subTableView) {
         // width -> height; heigt -> width
-        _subTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 200, 100, self.view.bounds.size.width) style:UITableViewStylePlain];
+        _subTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 200, 100, self.view.bounds.size.width - 100) style:UITableViewStylePlain];
         _subTableView.showsVerticalScrollIndicator = NO;
         _subTableView.showsHorizontalScrollIndicator = NO;
         _subTableView.backgroundColor = UIColor.clearColor;
@@ -742,11 +792,21 @@ struct TestStr getTestStr(int a, int b, int c,int d ,int e, int f, int g) {
         _subTableView.dataSource = self;
         _subTableView.backgroundColor = UIColor.greenColor;
         _subTableView.pagingEnabled = YES;
-//        _subTableView.bounces = NO;
         _subTableView.transform = CGAffineTransformMakeRotation(-M_PI_2);
         _subTableView.center = CGPointMake(self.view.frame.size.width / 2, 200);
 
     }
     return _subTableView;
 }
+
+
+- (UIView *)footerView {
+    if (!_footerView) {
+        _footerView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.subTableView.frame), self.subTableView.frame.origin.y, 70, self.subTableView.frame.size.height)];
+        _footerView.backgroundColor = UIColor.redColor;
+        _footerView.hidden = YES;
+    }
+    return _footerView;
+}
+
 @end
