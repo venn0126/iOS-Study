@@ -149,27 +149,21 @@ typedef void(^grayImageCompletion)(id result);
 }
 
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
-
-}
-
-
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     
 //    NSUInteger index = [_people indexOfObject:person];
 //     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-     if ([self.subTableView.indexPathsForVisibleRows containsObject:indexPath]) {
-       [self.subTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-                             withRowAnimation:UITableViewRowAnimationFade];
-
-         NSLog(@"in indexpath.row %ld",(long)indexPath.row);
-         if (indexPath.row == 2) {// visible cell
-             self.footerView.hidden = NO;
-         } else {
-             self.footerView.hidden = YES;
-         }
-     }
+//     if ([self.subTableView.indexPathsForVisibleRows containsObject:indexPath]) {
+//       [self.subTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+//                             withRowAnimation:UITableViewRowAnimationFade];
+//
+//         NSLog(@"in indexpath.row %ld",(long)indexPath.row);
+//         if (indexPath.row == 2) {// visible cell
+//             self.footerView.hidden = NO;
+//         } else {
+//             self.footerView.hidden = YES;
+//         }
+//     }
 //    NSIndexPath *indexPathTwo = [NSIndexPath indexPathForRow:2 inSection:0];
 //    CGRect cellRect = [self.subTableView rectForRowAtIndexPath:indexPathTwo];
 //    BOOL completelyVisible = CGRectContainsRect(self.subTableView.bounds, cellRect);
@@ -783,7 +777,7 @@ struct TestStr getTestStr(int a, int b, int c,int d ,int e, int f, int g) {
 - (UITableView *)subTableView {
     if (!_subTableView) {
         // width -> height; heigt -> width
-        _subTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 200, 100, self.view.bounds.size.width - 100) style:UITableViewStylePlain];
+        _subTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 200, 100, self.view.bounds.size.width) style:UITableViewStylePlain];
         _subTableView.showsVerticalScrollIndicator = NO;
         _subTableView.showsHorizontalScrollIndicator = NO;
         _subTableView.backgroundColor = UIColor.clearColor;
@@ -794,6 +788,7 @@ struct TestStr getTestStr(int a, int b, int c,int d ,int e, int f, int g) {
         _subTableView.pagingEnabled = YES;
         _subTableView.transform = CGAffineTransformMakeRotation(-M_PI_2);
         _subTableView.center = CGPointMake(self.view.frame.size.width / 2, 200);
+        _subTableView.estimatedSectionFooterHeight = 70.f;
 
     }
     return _subTableView;
