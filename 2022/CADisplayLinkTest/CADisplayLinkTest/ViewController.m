@@ -25,6 +25,7 @@ typedef NS_OPTIONS(NSUInteger, SNASANetworkType) {
 
 static CGFloat const kImageViewWidth = 100.0f;
 static NSString * const kTableViewCellId = @"kTableViewCellId";
+static NSString * const kSNCurrentTime = @"kSNCurrentTime";
 
 typedef void(^grayImageCompletion)(id result);
 
@@ -49,6 +50,7 @@ typedef void(^grayImageCompletion)(id result);
 @property (nonatomic, assign) NSInteger iAdNetworkErrorRetryIndex;
 @property (nonatomic, strong) UITableView *subTableView;
 @property (nonatomic, strong) UIView *footerView;
+@property (nonatomic, assign) CFTimeInterval currentTime;
 
 
 @end
@@ -98,7 +100,34 @@ typedef void(^grayImageCompletion)(id result);
     
 //    [self testLabelAddGradientLayer];
     
-    [self testSubTableViewOfHorizontal];
+//    [self testSubTableViewOfHorizontal];
+    
+    _currentTime = CACurrentMediaTime();
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setFloat:_currentTime forKey:kSNCurrentTime];
+
+    
+    
+}
+
+- (void)testSystemChange {
+    
+
+
+    CFTimeInterval recordTime = [[NSUserDefaults standardUserDefaults] floatForKey:kSNCurrentTime];
+    if (recordTime - CACurrentMediaTime() > 60 * 10) {
+        NSLog(@"it is bigger ---%f----%f",recordTime,CACurrentMediaTime());
+    } else {
+        NSLog(@"it is small ---%f----%f",recordTime,CACurrentMediaTime());
+
+    }
+    
+    
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    [self testSystemChange];
 }
 
 
