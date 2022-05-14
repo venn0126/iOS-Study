@@ -102,14 +102,20 @@ typedef void(^grayImageCompletion)(id result);
     
 //    [self testSubTableViewOfHorizontal];
     
-    _currentTime = CACurrentMediaTime();
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setFloat:_currentTime forKey:kSNCurrentTime];
+
+    [self saveCurrentTimeInCache];
 
     
     
 }
 
+
+- (void)saveCurrentTimeInCache {
+    
+    _currentTime = CACurrentMediaTime();
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setFloat:_currentTime forKey:kSNCurrentTime];
+}
 - (void)testSystemChange {
     
 
