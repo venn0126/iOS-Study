@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B1331FD02826C36900A4E76F /* SNTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B1331FCF2826C36900A4E76F /* SNTableViewCell.m */; };
 		B16ED4592824FFF900B4A5C2 /* SNGradientLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ED4582824FFF900B4A5C2 /* SNGradientLabel.m */; };
+		B1726E52283D36BD00B27507 /* GaoTianView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1726E51283D36BD00B27507 /* GaoTianView.m */; };
 		B180B094280B12FF00357CCE /* GTViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B180B093280B12FF00357CCE /* GTViewModel.m */; };
 		B180B097280B14F200357CCE /* GTModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B180B096280B14F200357CCE /* GTModel.m */; };
 		B180B09A280D212900357CCE /* NSDateFormatter+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B180B099280D212900357CCE /* NSDateFormatter+Extension.m */; };
@@ -48,6 +49,8 @@
 		B1331FCF2826C36900A4E76F /* SNTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNTableViewCell.m; sourceTree = "<group>"; };
 		B16ED4572824FFF900B4A5C2 /* SNGradientLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNGradientLabel.h; sourceTree = "<group>"; };
 		B16ED4582824FFF900B4A5C2 /* SNGradientLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNGradientLabel.m; sourceTree = "<group>"; };
+		B1726E50283D36BD00B27507 /* GaoTianView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GaoTianView.h; sourceTree = "<group>"; };
+		B1726E51283D36BD00B27507 /* GaoTianView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GaoTianView.m; sourceTree = "<group>"; };
 		B180B092280B12FF00357CCE /* GTViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTViewModel.h; sourceTree = "<group>"; };
 		B180B093280B12FF00357CCE /* GTViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTViewModel.m; sourceTree = "<group>"; };
 		B180B095280B14F200357CCE /* GTModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTModel.h; sourceTree = "<group>"; };
@@ -142,6 +145,8 @@
 				B1331FCF2826C36900A4E76F /* SNTableViewCell.m */,
 				B180B095280B14F200357CCE /* GTModel.h */,
 				B180B096280B14F200357CCE /* GTModel.m */,
+				B1726E50283D36BD00B27507 /* GaoTianView.h */,
+				B1726E51283D36BD00B27507 /* GaoTianView.m */,
 				B1E7F550281BE85300DC3FE1 /* 0429.s */,
 				B1F2F18D27EEB7AD004578B6 /* Main.storyboard */,
 				B1F2F19027EEB7AF004578B6 /* Assets.xcassets */,
@@ -232,7 +237,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastUpgradeCheck = 1310;
+				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					B1F2F18027EEB7AD004578B6 = {
 						CreatedOnToolsVersion = 13.1;
@@ -305,6 +310,7 @@
 				B180B09A280D212900357CCE /* NSDateFormatter+Extension.m in Sources */,
 				B180B097280B14F200357CCE /* GTModel.m in Sources */,
 				B180B094280B12FF00357CCE /* GTViewModel.m in Sources */,
+				B1726E52283D36BD00B27507 /* GaoTianView.m in Sources */,
 				B1F2F18C27EEB7AD004578B6 /* ViewController.m in Sources */,
 				B1F2F18627EEB7AD004578B6 /* AppDelegate.m in Sources */,
 				B1F2F19727EEB7AF004578B6 /* main.m in Sources */,

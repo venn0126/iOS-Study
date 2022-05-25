@@ -17,4 +17,13 @@
 }
 */
 
+
+- (void)tiantianLog {
+    
+    
+    char * cString = "it is a c string";
+    NSString *ocString = @"it is a oc string";
+    NSLog(@"tian tian is my wife");
+}
+
 @end

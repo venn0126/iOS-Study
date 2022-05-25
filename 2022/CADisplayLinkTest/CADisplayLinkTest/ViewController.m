@@ -57,6 +57,12 @@ typedef void(^grayImageCompletion)(id result);
 
 @implementation ViewController
 
+
++ (void)load {
+    
+    NSLog(@"augus load");
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -103,10 +109,20 @@ typedef void(^grayImageCompletion)(id result);
 //    [self testSubTableViewOfHorizontal];
     
 
-    [self saveCurrentTimeInCache];
+//    [self saveCurrentTimeInCache];
+    
+   NSInteger c =  [self addValueA:1 valueB:3];
+    NSLog(@"c is %ld",c);
 
     
     
+}
+
+
+- (NSInteger)addValueA:(NSInteger)a valueB:(NSInteger)b {
+    
+    NSInteger c = a + b;
+    return c;
 }
 
 
