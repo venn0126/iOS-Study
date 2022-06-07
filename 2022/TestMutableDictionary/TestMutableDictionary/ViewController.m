@@ -17,7 +17,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self testMutableDictionary:nil];
+//    [self testMutableDictionary:nil];
+    [self testLocationNofFound];
+}
+
+
+- (void)testLocationNofFound {
+    
+    
+    NSString *testString = @"media.html?";
+    if ([testString rangeOfString:@"media"].location != NSNotFound) {
+        NSLog(@"it is found");
+    } else {
+        NSLog(@"it is not found");
+    }
 }
 
 
