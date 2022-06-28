@@ -272,7 +272,7 @@ void kscrash_crashCallback(const KSCrashReportWriter *writer)
 - (NSDictionary * _Nullable )filterMainStackInfo:(NSString *)originString {
     
     // originString 157630 / 1024 / 1024 = 150kb 左右
-    // 对主线程进行截取 堆栈信息
+    // 对崩溃线程进行截取 堆栈信息
     // 只截取index ： 0，就是主线程的堆栈信息即可
     if (!originString || originString.length <= 0) {
         return nil;
