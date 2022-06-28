@@ -412,7 +412,7 @@ void kscrash_crashCallback(const KSCrashReportWriter *writer)
         NSLog(@"parseData----%@",parseData);
         id res = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error: &error];
         if (error) {
-            NSLog(@"NSJSONSerialization have error-%@",error);
+            NSLog(@"NSJSONSerialization have error-%@---%@",error, res);
             return;
         }
         
