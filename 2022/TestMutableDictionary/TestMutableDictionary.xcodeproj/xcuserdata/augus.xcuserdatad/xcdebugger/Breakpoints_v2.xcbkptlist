@@ -14,8 +14,8 @@
             filePath = "TestMutableDictionary/ViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "-testMutableDictionary:"
             landmarkType = "7">
          </BreakpointContent>

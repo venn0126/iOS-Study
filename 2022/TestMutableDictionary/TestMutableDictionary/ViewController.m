@@ -18,7 +18,22 @@
     // Do any additional setup after loading the view.
     
 //    [self testMutableDictionary:nil];
-    [self testLocationNofFound];
+//    [self testLocationNofFound];
+    [self testStringNil];
+}
+
+
+- (void)testStringNil {
+    
+    NSString *tempStr = @"1233";
+    tempStr = nil;
+    tempStr = @"";
+    if (tempStr.length == 0) {
+        NSLog(@"temp str is 1233");
+    } else {
+        NSLog(@"temp str is nil");
+
+    }
 }
 
 
