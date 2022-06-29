@@ -13,13 +13,29 @@
 
 @implementation ViewController
 
+NSInteger baseNumber = 12;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
 //    [self testMutableDictionary:nil];
 //    [self testLocationNofFound];
-    [self testStringNil];
+//    [self testStringNil];
+    
+//    [self compareNumberA:3 toNumberB:4];
+//    func(1, 2);
+    [self testConditionStatementA:3 withB:4];
+    
+}
+
+
+- (void)testConditionStatementA:(NSInteger)a withB:(NSInteger)b {
+    if (a > b) {
+        baseNumber = a;
+    } else {
+        baseNumber = b;
+    }
 }
 
 
