@@ -9,4 +9,11 @@
 #define augusArm_h
 
 
+void augusTest(void);
+int augusAdd(int a, int b);
+int augusSub(int a, int b);
+
+void augusCompare(void);
+void augusCompareInCondition(void);
+
 #endif /* augusArm_h */

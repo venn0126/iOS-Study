@@ -6,12 +6,24 @@
 //
 
 #import "ViewController.h"
+//#import "augusArm.h"
 
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
+
+// 内部声明
+void augusTest(void);
+int augusAdd(int a, int b);
+int augusSub(int a, int b);
+
+void augusCompare(void);
+void augusCompareInCondition(void);
+
+void augusLDR(void);
+void augusSTR(void);
 
 NSInteger baseNumber = 12;
 
@@ -25,8 +37,43 @@ NSInteger baseNumber = 12;
     
 //    [self compareNumberA:3 toNumberB:4];
 //    func(1, 2);
-    [self testConditionStatementA:3 withB:4];
+//    [self testConditionStatementA:3 withB:4];
+//    testArmCommand();
     
+    [self testArmFunc];
+    
+}
+
+
+
+- (void)testArmFunc {
+    
+    
+//    NSLog(@"begin study arm64");
+//    augusTest();
+//    NSLog(@"add is %d",augusAdd(1, 23));
+//    NSLog(@"sub is %d",augusSub(5, 10));
+//    augusCompare();
+//    augusCompareInCondition();
+    
+    // if else 反汇编
+//    int a = 5;
+//    int b = 2;
+//    if (a > b) {
+//        printf("a > b");
+//    } else {
+//        NSLog(@"a <= b");
+//    }
+    
+    int a = 9;
+//    augusLDR();
+    augusSTR();
+}
+
+
+int testArmCommand(void) {
+    NSLog(@"%d %d %d %d %d",1, 2, 3, 4, 5);
+    return 6;
 }
 
 
