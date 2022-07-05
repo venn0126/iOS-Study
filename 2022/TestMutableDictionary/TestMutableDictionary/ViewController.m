@@ -37,11 +37,110 @@ NSInteger baseNumber = 12;
     
 //    [self compareNumberA:3 toNumberB:4];
 //    func(1, 2);
-//    [self testConditionStatementA:3 withB:4];
+//    [self testConditionStatementA:6 withB:4];
 //    testArmCommand();
+//    [self testArmFunc];
+//    [self testArmDoWhile];
+//    [self testArmWhile];
+//    [self testArmFor];
+//    [self testSwitchWayOne:2];
+    [self testSwitchWayTwo:6];
+    NSLog(@"view did load end");
     
-    [self testArmFunc];
     
+}
+
+
+- (void)testSwitchWayOne:(NSInteger)one {
+    
+    switch (one) {
+        case 1:
+            NSLog(@"111");
+            break;
+        case 2:
+            NSLog(@"222");
+            break;
+        case 3:
+            NSLog(@"333");
+            break;
+            
+        default:
+            NSLog(@"default one");
+            break;
+    }
+    
+//    switch (one) {
+//        case 1:
+//            NSLog(@"111");
+//            break;
+//        case 10:
+//            NSLog(@"10");
+//            break;
+//        case 100:
+//            NSLog(@"100");
+//            break;
+//        case 1000:
+//            NSLog(@"1000");
+//            break;
+//        default:
+//            NSLog(@"default one");
+//            break;
+//    }
+}
+
+
+- (void)testSwitchWayTwo:(NSInteger)two {
+    
+    switch (two) {
+          case 1:
+              NSLog(@"1");
+              break;
+          case 4:
+              NSLog(@"4");
+              break;
+          case 3:
+              NSLog(@"3");
+              break;
+          case 6:
+              NSLog(@"6");
+              break;
+          default:
+              NSLog(@"default one");
+              break;
+      }
+    
+}
+
+
+- (void)testArmFor {
+    
+    NSInteger sum = 0;
+    for (NSInteger i = 0; i < 100; i++) {
+        sum += i;
+    }
+}
+
+
+- (void)testArmWhile {
+    
+    NSInteger sum = 0;
+    NSInteger i = 0;
+    while (i < 100) {
+        sum += 1;
+        i++;
+    }
+}
+
+
+
+- (void)testArmDoWhile {
+    
+    NSInteger sum = 0;
+    NSInteger i = 0;
+    do {
+        sum += 1;
+        i++;
+    } while (i < 100);
 }
 
 
@@ -65,7 +164,7 @@ NSInteger baseNumber = 12;
 //        NSLog(@"a <= b");
 //    }
     
-    int a = 9;
+//    int a = 9;
 //    augusLDR();
     augusSTR();
 }
