@@ -10,6 +10,9 @@
 
 @interface ViewController ()
 
+@property (nonatomic, strong) UIImageView *showImageOne;
+@property (nonatomic, strong) UIImageView *showImageTwo;
+
 @end
 
 @implementation ViewController
@@ -44,12 +47,83 @@ NSInteger baseNumber = 12;
 //    [self testArmWhile];
 //    [self testArmFor];
 //    [self testSwitchWayOne:2];
-    [self testSwitchWayTwo:6];
+//    [self testSwitchWayTwo:6];
+    self.view.backgroundColor = UIColor.whiteColor;
+    [self testAssetsDifferentVersions];
     NSLog(@"view did load end");
     
     
 }
 
+
+- (void)testAssetsDifferentVersions {
+    [self.view addSubview:self.showImageOne];
+    [self.view addSubview:self.showImageTwo];
+
+    if (@available(iOS 13.0, *)) {
+        self.showImageOne.image = [UIImage imageNamed:@"Image0"];
+        self.showImageTwo.image = [UIImage imageNamed:@"Image1"];
+
+    } else {
+        self.showImageOne.image = [UIImage imageNamed:@"ico_kongbaifx_v5"];
+
+        self.showImageTwo.image = [self imageWithName:@"night_ico_file3_v5.png"];
+
+
+    }
+    
+    
+    
+    // get current  user interfacestyle
+//    if (@available(iOS 12.0, *)) {
+//        if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+//
+//            // the style is dark
+//            NSLog(@"UIUserInterfaceStyleDark");
+//
+//        } else if(self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleLight){
+//            // the style is light
+//            NSLog(@"UIUserInterfaceStyleLight");
+//
+//        } else {
+//            // the style is unspecified
+//            NSLog(@"UIUserInterfaceStyleUnspecified");
+//
+//        }
+//    } else {
+//        // Fallback on earlier versions
+//        NSLog(@"UIUserInterfaceStyleUnspecified<12");
+//
+//    }
+    
+        
+    // 在单个页面禁用深色模式
+//    if (@available(iOS 13.0, *)) {
+//        self.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
+//    } else {
+//        // Fallback on earlier versions
+//    }
+//
+//    // 在单个页面禁用浅色模式
+//    if (@available(iOS 13.0, *)) {
+//        self.overrideUserInterfaceStyle = UIUserInterfaceStyleDark;
+//    } else {
+//        // Fallback on earlier versions
+//    }
+    
+}
+
+
+- (UIImage *)imageWithName:(NSString *)name {
+    static NSBundle *resourceBundle = nil;
+    if (!resourceBundle) {
+        NSBundle *mainBundle = [NSBundle bundleForClass:[self class]];
+        NSString *resourcePath = [mainBundle pathForResource:@"Profile1" ofType:@"bundle"];
+        resourceBundle = [NSBundle bundleWithPath:resourcePath] ?: mainBundle;
+    }
+    UIImage *image = [UIImage imageNamed:name inBundle:resourceBundle compatibleWithTraitCollection:nil];
+    return image;
+}
 
 - (void)testSwitchWayOne:(NSInteger)one {
     
@@ -252,6 +326,26 @@ int testArmCommand(void) {
      NSString* str = [NSString stringWithFormat:@"%ld",int_ran];//按整数那 不支持0开头的
      return str;
  }
+
+
+#pragma mark - Lazy Load
+
+- (UIImageView *)showImageOne {
+    if (!_showImageOne) {
+        _showImageOne = [[UIImageView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+//        _showImageOne.backgroundColor = UIColor.redColor;
+    }
+    return _showImageOne;
+}
+
+
+- (UIImageView *)showImageTwo {
+    if (!_showImageTwo) {
+        _showImageTwo = [[UIImageView alloc] initWithFrame:CGRectMake(100, 300, 100, 100)];
+//        _showImageOne.backgroundColor = UIColor.greenColor;
+    }
+    return _showImageTwo;
+}
 
 
 @end
