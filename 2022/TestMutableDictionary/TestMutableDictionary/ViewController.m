@@ -48,9 +48,9 @@ NSInteger baseNumber = 12;
 //    [self testArmFor];
 //    [self testSwitchWayOne:2];
 //    [self testSwitchWayTwo:6];
-    self.view.backgroundColor = UIColor.whiteColor;
-    [self testAssetsDifferentVersions];
-    NSLog(@"view did load end");
+//    self.view.backgroundColor = UIColor.whiteColor;
+//    [self testAssetsDifferentVersions];
+//    NSLog(@"view did load end");
     
     
 }
