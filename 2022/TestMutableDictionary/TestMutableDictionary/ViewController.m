@@ -52,6 +52,51 @@ NSInteger baseNumber = 12;
 //    [self testAssetsDifferentVersions];
 //    NSLog(@"view did load end");
     
+//    [self testEncryptWays];
+}
+
+
+- (void)testEncryptWays {
+    
+    /**
+     typedef NS_OPTIONS(NSUInteger, NSDataBase64EncodingOptions) {
+     // Use zero or one of the following to control the maximum line length after which a line ending is inserted. No line endings are inserted by default.
+     
+     // 每64个字符插入\r或\n
+     NSDataBase64Encoding64CharacterLineLength = 1UL << 0,
+     // 每76个字符插入\r或\n，标准中有要求是76个字符要换行，不过具体还是自己定
+     NSDataBase64Encoding76CharacterLineLength = 1UL << 1,
+     
+     // Use zero or more of the following to specify which kind of line ending is inserted. The default line ending is CR LF.
+     
+     // 插入字符为\r
+     NSDataBase64EncodingEndLineWithCarriageReturn = 1UL << 4,
+     // 插入字符为\n
+     NSDataBase64EncodingEndLineWithLineFeed = 1UL << 5,
+     
+     } API_AVAILABLE(macos(10.9), ios(7.0), watchos(2.0), tvos(9.0));
+     */
+    // TODO: Base64 encodings
+    // string to base64 encoding
+    NSString *testStr = @"123";
+    NSData *testData = [testStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *base64Str = [testData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+    NSLog(@"string to base64---%@",base64Str);
+    
+    // base64 to string
+    NSData *testData1 = [[NSData alloc] initWithBase64EncodedString:base64Str options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    NSString *testStr1 = [[NSString alloc] initWithData:testData1 encoding:NSUTF8StringEncoding];
+    NSLog(@"base64 to string---%@",testStr1);
+    
+    
+    // TODO: Hash func
+    
+    
+    
+    
+    
+    
+    
     
 }
 
