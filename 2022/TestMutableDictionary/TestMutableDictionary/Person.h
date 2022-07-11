@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// Person's factory initilzation method
 + (instancetype)augusPerson;
 
++ (void)say:(NSString*)text callback:(void(^)(NSString *text,int x, NSString *y, double z, BOOL m))callback;
+
 @end
 
 NS_ASSUME_NONNULL_END

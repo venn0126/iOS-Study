@@ -13,4 +13,9 @@
     return [[Person alloc] init];
 }
 
++ (void)say:(NSString *)text callback:(void (^)(NSString * _Nonnull, int, NSString * _Nonnull, double, BOOL))callback {
+    
+    NSLog(@"%@ %@",@(__func__), @(__LINE__));
+}
+
 @end

@@ -7,6 +7,7 @@
 
 #import "ViewController.h"
 //#import "augusArm.h"
+#import "Person.h"
 
 @interface ViewController ()
 
@@ -53,6 +54,70 @@ NSInteger baseNumber = 12;
 //    NSLog(@"view did load end");
     
 //    [self testEncryptWays];
+    
+//    [self testArrayCrash];
+    
+//    NSLog(@"start");
+//
+//    [Person say:@"nihao" callback:^(NSString * _Nonnull text, int x, NSString * _Nonnull y, double z, BOOL m) {
+//       
+//        NSLog(@"end");
+//    }];
+    
+}
+
+
+- (void)testArrayCrash {
+    
+    
+    
+    /*
+     *** -[__NSArrayM removeObjectsInRange:]: range {5, 1} extends beyond bounds [0 .. 2]
+     数字5是removeObjectAtIndex的下标，[0 .. 2]是数组里有从0到2一共3个元素。
+    解决：判断删除的index是否小于当前数组的count
+     if (array.count > index) {
+        [array removeObjectAtIndex:index];
+     }
+     */
+//    NSMutableArray *array = [NSMutableArray array];
+//    [array addObject:@" "];
+//    [array addObject:@" "];
+//    [array addObject:@" "];
+//    [array removeObjectAtIndex:5];
+    
+    
+    /*
+     *** Collection <__NSArrayM: 0x600001ad2a00> was mutated while being enumerated.
+     用for in 进行遍历其间如果修改了数组（增加或删除元素）会引起闪退
+     
+     解决办法：
+     for (NSString *str in array.copy) {
+         NSLog(@"%@",str);
+     }
+     for (int i = 0; i < array.count; i++) {
+      NSLog(@"%@",array[i]);
+      }
+     [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+      NSLog(@"%@",obj);
+      }];
+    
+     */
+    NSMutableArray *array = [NSMutableArray array];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        for (int i = 0; i < 1000; i++) {
+            [array addObject:@"1"];
+            NSLog(@"%d",i);
+        }
+    });
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        for (int i = 0; i < 100; i++) {
+            for (NSString *str in array) {
+                NSLog(@"%@",str);
+            }
+
+        }
+    });
+    
 }
 
 
