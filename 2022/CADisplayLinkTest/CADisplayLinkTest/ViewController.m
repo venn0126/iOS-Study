@@ -72,7 +72,7 @@ typedef void(^grayImageCompletion)(id result);
     _dynamicImageViewY = 0;
 //    [self createImageView];
 //    [self createAnimationButton];
-//    [self createDisplayLink];
+    [self createDisplayLink];
     
     
     
@@ -111,8 +111,8 @@ typedef void(^grayImageCompletion)(id result);
 
 //    [self saveCurrentTimeInCache];
     
-   NSInteger c =  [self addValueA:1 valueB:3];
-    NSLog(@"c is %ld",c);
+//   NSInteger c =  [self addValueA:1 valueB:3];
+//    NSLog(@"c is %ld",c);
 
     
     
@@ -682,7 +682,7 @@ struct TestStr getTestStr(int a, int b, int c,int d ,int e, int f, int g) {
     NSLog(@"0--targetTimestamp:%f,timestamp:%f", _displayLink.targetTimestamp,_displayLink.timestamp);
 
     [_displayLink  addToRunLoop:[NSRunLoop currentRunLoop]
-                      forMode:NSRunLoopCommonModes];
+                      forMode:NSDefaultRunLoopMode];
     NSLog(@"1--targetTimestamp:%f,timestamp:%f", _displayLink.targetTimestamp,_displayLink.timestamp);
 
     
