@@ -40,6 +40,7 @@ static NSString * const kTableViewCellAugus = @"UITableViewCellAugus";
 @property (nonatomic, strong) UIButton *networkErrorButton;
 @property (nonatomic, copy) NSArray *networkErrorTitles;
 @property (nonatomic, strong) UITextField *augusTextField;
+@property (nonatomic, strong) UILabel *augusLabel;
 
 
 
@@ -75,7 +76,7 @@ int AugusTest(void);
 //    [self testAttributedStringInitAttributesCrash];
     
     
-//    [self testLayoutSubviews];
+    [self testLayoutSubviews];
     
 //    [self testArrayNotLegal];
     
@@ -83,23 +84,27 @@ int AugusTest(void);
     
 //    [self testNetworkErrorRetry];
     
-    [self testTextField];
+//    [self testTextField];
 }
 
 
 - (void)testTextField {
     
     [self.view addSubview:self.augusTextField];
-    self.augusTextField.frame = CGRectMake(100, 100, 200,50);
+    self.augusLabel = [[UILabel alloc] init];
+    self.augusLabel.frame = CGRectMake(100, 100, 200,50);
+    self.augusLabel.text = @"sohu is best";
+    [self.view addSubview:self.augusLabel];
 //    [self.augusTextField becomeFirstResponder];
     
 //    self.augusTextField.inputView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
     
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(10 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
 //        self.augusTextField.inputView = nil;
 //        self.augusTextField.inputView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 375, 248)];
+        self.augusLabel.text = @"xxxx";
     });
     
 }

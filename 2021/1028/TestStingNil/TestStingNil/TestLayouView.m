@@ -8,12 +8,14 @@
 #import "TestLayouView.h"
 #import "TestButton.h"
 #import "TestSubview.h"
+#import "TestSubVieww.h"
 
 
 @interface TestLayouView ()
 
 @property (nonatomic, strong) TestButton *testButton;
 @property (nonatomic, strong) TestSubview *testSubview;
+@property (nonatomic, strong) TestSubVieww *subVieww;
 
 @end
 
@@ -56,7 +58,16 @@
     [self addSubview:_testSubview];
     
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    
+//    _subVieww = [[TestSubVieww alloc] init];
+//    _subVieww.backgroundColor = UIColor.yellowColor;
+//    _subVieww.frame = CGRectMake(25, 50, 50, 50);
+//    [self addSubview:_subVieww];
+    
+    
+    
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 
 
         // self= 0 100 100 100
@@ -69,7 +80,7 @@
 //        self.frame = CGRectMake(50, 100, 100, 100);
                 
         // update target size,size.width,size.height, call target layoutsubviews
-        self.frame = CGRectMake(0, 100, 10, 10);
+//        self.frame = CGRectMake(0, 100, 10, 10);
         
         // update target frame and same frame no call
 //        self.frame = CGRectMake(0, 100, 100, 100);
@@ -86,6 +97,8 @@
 
         // target addSubview:subview call target layoutsubviews -> subview layoutsubviews
 //        [self addSubview:self->_testSubview];
+        
+        self->_subVieww.frame = CGRectMake(35, 50, 60, 50);
 
     });
     
