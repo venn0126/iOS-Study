@@ -8,11 +8,13 @@
 #import "ViewController.h"
 //#import "augusArm.h"
 #import "Person.h"
+#import "TestTransformCG.h"
 
 @interface ViewController ()
 
 @property (nonatomic, strong) UIImageView *showImageOne;
 @property (nonatomic, strong) UIImageView *showImageTwo;
+@property (nonatomic, strong) UIButton *weChatButton;
 
 @end
 
@@ -64,6 +66,49 @@ NSInteger baseNumber = 12;
 //        NSLog(@"end");
 //    }];
     
+    [self testWeChatAnimation];
+//    [self testCoreTextFrame];
+    
+    
+}
+
+
+- (void)testCoreTextFrame {
+    
+    TestTransformCG *transform = [[TestTransformCG alloc] initWithFrame:CGRectMake(40, 100, 300, 200)];
+    [self.view addSubview:transform];
+}
+
+
+- (void)testWeChatAnimation {
+    
+    [self.view addSubview:self.weChatButton];
+//    self.weChatButton.transform = CGAffineTransformMakeScale(0.01,0.01);
+
+//    [UIView animateWithDuration:1.0 animations:^{
+//        self.weChatButton.transform = CGAffineTransformMakeScale(1.0,1.0);
+//        self->_weChatButton.frame = CGRectMake(80, 100, 88, 72);
+//    } completion:^(BOOL finished) {
+//        [self scaleAnimationForView:self.weChatButton];
+//
+//    }];
+    
+    [self scaleAnimationForView:self.weChatButton];
+//
+}
+
+- (void)scaleAnimationForView:(UIView *)targetView {
+    
+    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
+    animation.values = @[@1.f, @1.3f, @0.8, @1.f];
+    animation.keyTimes = @[@0.f, @0.4f, @0.7, @1.f];
+    animation.duration = 0.5;
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    animation.removedOnCompletion = NO;
+    animation.repeatCount = 2;
+    animation.fillMode = kCAFillModeForwards;
+
+    [targetView.layer addAnimation:animation forKey:nil];
 }
 
 
@@ -457,5 +502,15 @@ int testArmCommand(void) {
     return _showImageTwo;
 }
 
+
+- (UIButton *)weChatButton {
+    if (!_weChatButton) {
+        _weChatButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _weChatButton.frame = CGRectMake(100, 100, 88, 72);
+        [_weChatButton setImage:[UIImage imageNamed:@"icotcshare_wx_v5"] forState:UIControlStateNormal];
+//        _weChatButton.hidden = YES;
+    }
+    return _weChatButton;
+}
 
 @end
