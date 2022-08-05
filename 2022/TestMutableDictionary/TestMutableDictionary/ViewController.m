@@ -9,12 +9,17 @@
 //#import "augusArm.h"
 #import "Person.h"
 #import "TestTransformCG.h"
+#import "SNAugusFadeImageView.h"
 
 @interface ViewController ()
 
 @property (nonatomic, strong) UIImageView *showImageOne;
 @property (nonatomic, strong) UIImageView *showImageTwo;
 @property (nonatomic, strong) UIButton *weChatButton;
+@property (nonatomic, copy) NSString *tian;
+@property (nonatomic, strong) SNAugusFadeImageView *fadeImageView;
+
+
 
 @end
 
@@ -66,9 +71,83 @@ NSInteger baseNumber = 12;
 //        NSLog(@"end");
 //    }];
     
-    [self testWeChatAnimation];
+//    [self testWeChatAnimation];
 //    [self testCoreTextFrame];
     
+
+//    [self gradientAnimation];
+    
+    self.view.backgroundColor = UIColor.whiteColor;
+    
+    [self testFadeImageView];
+    
+}
+
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    if (!self.fadeImageView.isAnimationing) {
+        [self.fadeImageView startAnimation];
+    } else {
+        [self.fadeImageView stopAnimation];
+    }
+
+}
+
+- (void)testFadeImageView {
+    
+    self.fadeImageView = [[SNAugusFadeImageView alloc] initWithFrame:CGRectMake(0, 0, 174, 42)];
+    self.fadeImageView.center = self.view.center;
+    [self.view addSubview:self.fadeImageView];
+    
+}
+
+- (void)gradientAnimation {
+    
+    self.view.backgroundColor = UIColor.darkGrayColor;
+        
+
+    UIView *maskView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 174, 42)];
+    [self.view addSubview:maskView];
+    maskView.center = self.view.center;
+    
+    
+    self.showImageOne.image = [UIImage imageNamed:@"sohu_loading_1"];
+    self.showImageOne.frame = CGRectMake(0, 0, 174, 42);
+    [maskView addSubview:self.showImageOne];
+    
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    /**
+     日间：
+     字色#dadada，渐变色#c4c4c4（高斯模糊2.8PX，不透明度80%）
+     夜间：
+     字色#343434，渐变色#454545（高斯模糊2.8PX，不透明度80%）
+     
+     */
+    // 设置渐变色
+    gradient.colors = @[(id)(UIColor.orangeColor.CGColor),(id)UIColor.redColor.CGColor,(id)UIColor.blackColor.CGColor];
+    // 设置影响的位置
+    gradient.locations = @[@0, @0, @0.25];
+    
+    // 横向渐变
+    gradient.startPoint = CGPointMake(0, 0.5);
+    gradient.endPoint = CGPointMake(1, 0.5);
+    
+    // 设置渐变尺寸
+    gradient.frame = self.showImageOne.bounds;
+    [maskView.layer insertSublayer:gradient atIndex:0];
+    
+    // 添加移动动画
+    CABasicAnimation *gradientAnimation = [CABasicAnimation animationWithKeyPath:@"locations"];
+    gradientAnimation.fromValue = @[@0, @0, @0.2];
+    gradientAnimation.toValue = @[@0.8, @1, @1];
+    gradientAnimation.duration = 10.0;
+    
+    //
+    gradientAnimation.repeatCount = MAXFLOAT;
+    [gradient addAnimation:gradientAnimation forKey:nil];
+    
+    maskView.maskView = self.showImageOne;
     
 }
 
@@ -512,5 +591,6 @@ int testArmCommand(void) {
     }
     return _weChatButton;
 }
+
 
 @end

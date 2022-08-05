@@ -14,10 +14,12 @@
 /// @param viewFrame 第一张图片所在View的frame（获取压缩比用
 /// @param imgArray 子图片数组
 /// @param frameArray 子图片坐标数组
-+ (UIImage *)composeImageOnMainImage:(UIImage *)mainImage
-                  mainImageViewFrame:(CGRect)viewFrame
-                       subImageArray:(NSArray *)imgArray
-                  subImageFrameArray:(NSArray *)frameArray;
+//+ (UIImage *)composeImageOnMainImage:(UIImage *)mainImage
+//                  mainImageViewFrame:(CGRect)viewFrame
+//                       subImageArray:(NSArray *)imgArray
+//                  subImageFrameArray:(NSArray *)frameArray;
+
+@property (nonatomic, copy) NSString *augusName;
 
 
 @end

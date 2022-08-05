@@ -18,6 +18,7 @@
 		B11F6ED128450971001914CD /* TestMutableDictionaryUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B11F6ED028450971001914CD /* TestMutableDictionaryUITests.m */; };
 		B11F6ED328450971001914CD /* TestMutableDictionaryUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B11F6ED228450971001914CD /* TestMutableDictionaryUITestsLaunchTests.m */; };
 		B11F6EE128450982001914CD /* NSMutableDictionary+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = B11F6EDF28450982001914CD /* NSMutableDictionary+Safe.m */; };
+		B192D350289D5FB60023628C /* SNAugusFadeImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B192D34F289D5FB60023628C /* SNAugusFadeImageView.m */; };
 		B1BA68722876B39600EAFB4E /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = B1BA68712876B39600EAFB4E /* Person.m */; };
 		B1EB6EB0286EA4B80043A976 /* augusArm.s in Sources */ = {isa = PBXBuildFile; fileRef = B1EB6EAF286EA4B80043A976 /* augusArm.s */; };
 		B1FB3D32288AA072000A8B9F /* TestTransformCG.m in Sources */ = {isa = PBXBuildFile; fileRef = B1FB3D31288AA072000A8B9F /* TestTransformCG.m */; };
@@ -60,6 +61,8 @@
 		B11F6ED228450971001914CD /* TestMutableDictionaryUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestMutableDictionaryUITestsLaunchTests.m; sourceTree = "<group>"; };
 		B11F6EDF28450982001914CD /* NSMutableDictionary+Safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+Safe.m"; sourceTree = "<group>"; };
 		B11F6EE028450982001914CD /* NSMutableDictionary+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+Safe.h"; sourceTree = "<group>"; };
+		B192D34E289D5FB60023628C /* SNAugusFadeImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNAugusFadeImageView.h; sourceTree = "<group>"; };
+		B192D34F289D5FB60023628C /* SNAugusFadeImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNAugusFadeImageView.m; sourceTree = "<group>"; };
 		B1BA68702876B39600EAFB4E /* Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		B1BA68712876B39600EAFB4E /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		B1EB6EAF286EA4B80043A976 /* augusArm.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = augusArm.s; sourceTree = "<group>"; };
@@ -126,6 +129,8 @@
 				B11F6EDF28450982001914CD /* NSMutableDictionary+Safe.m */,
 				B1FB3D30288AA072000A8B9F /* TestTransformCG.h */,
 				B1FB3D31288AA072000A8B9F /* TestTransformCG.m */,
+				B192D34E289D5FB60023628C /* SNAugusFadeImageView.h */,
+				B192D34F289D5FB60023628C /* SNAugusFadeImageView.m */,
 				B1BA68702876B39600EAFB4E /* Person.h */,
 				B1BA68712876B39600EAFB4E /* Person.m */,
 				B1EB6EB1286EA4EE0043A976 /* augusArm.h */,
@@ -292,6 +297,7 @@
 				B1BA68722876B39600EAFB4E /* Person.m in Sources */,
 				B11F6EAC28450970001914CD /* AppDelegate.m in Sources */,
 				B11F6EBD28450971001914CD /* main.m in Sources */,
+				B192D350289D5FB60023628C /* SNAugusFadeImageView.m in Sources */,
 				B11F6EAF28450970001914CD /* SceneDelegate.m in Sources */,
 				B11F6EE128450982001914CD /* NSMutableDictionary+Safe.m in Sources */,
 			);
