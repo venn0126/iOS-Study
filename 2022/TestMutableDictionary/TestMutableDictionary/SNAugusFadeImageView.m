@@ -8,17 +8,26 @@
 #import "SNAugusFadeImageView.h"
 
 
-static NSTimeInterval const kAugusFadeAnimationDuration = 2.0;
+#define DEGREES_TO_RADIANS(x) (M_PI * (x) / 180.0)
+
+static NSTimeInterval const kAugusFadeAnimationDuration = 1.6;
+static CGFloat const kAugusMoveLayerWidth = 20.0;
 static NSString * const kAugusFadeAnimationDefaultImageName = @"sohu_loading_1";
 static NSString * const kAugusFadeAnimationLayerKey = @"kAugusFadeAnimationLayerKey";
+
+//static NSString * const kAugusFadeAnimationDefaultImageName = @"night_sohu_loading_1";
+
 
 
 @interface SNAugusFadeImageView ()
 
+/// 需要渲染的背景图
 @property (nonatomic, strong) UIImageView *showImageView;
 
-@property (nonatomic, strong) CAGradientLayer *gradientLayer;
+/// 游标图层
+@property (nonatomic, strong) CAShapeLayer *moveLayer;
 
+/// 是否正在动画的标识符
 @property (nonatomic, assign) BOOL isAnimationing;
 
 @end
@@ -32,7 +41,9 @@ static NSString * const kAugusFadeAnimationLayerKey = @"kAugusFadeAnimationLayer
     }
     
     
-//    self.backgroundColor = UIColor.darkGrayColor;
+    self.backgroundColor = [UIColor colorNamed:@"fadeDA"];
+//    self.backgroundColor = [UIColor colorNamed:@"fade34"];
+
     
     _animationDuration = kAugusFadeAnimationDuration;
     _imageName = kAugusFadeAnimationDefaultImageName;
@@ -50,14 +61,10 @@ static NSString * const kAugusFadeAnimationLayerKey = @"kAugusFadeAnimationLayer
 
 - (void)setupSubviews {
     
-    [self addSubview:self.showImageView];
-    
+    // 设置当前承载视图的遮挡视图
+    self.maskView = self.showImageView;
+
 }
-
-
-#pragma mark - Private Methods
-
-
 
 #pragma mark - Public Methods
 
@@ -67,19 +74,25 @@ static NSString * const kAugusFadeAnimationLayerKey = @"kAugusFadeAnimationLayer
         return;
     }
     
-    if (![self.layer.sublayers containsObject:self.gradientLayer]) {
-        [self.layer insertSublayer:self.gradientLayer atIndex:0];
+    
+    if (![self.layer.sublayers containsObject:self.moveLayer]) {
+        [self.layer insertSublayer:self.moveLayer atIndex:0];
     }
-    self.gradientLayer.hidden = NO;
+    self.moveLayer.hidden = NO;
 
     // 移动动画
-    CABasicAnimation *gradientAnimation = [CABasicAnimation animationWithKeyPath:@"locations"];
-    gradientAnimation.fromValue = @[@0, @0, @0];
-    gradientAnimation.toValue = @[@0.8, @1, @1];
+    CABasicAnimation *gradientAnimation = [CABasicAnimation animationWithKeyPath:@"position.x"];
+    gradientAnimation.fromValue = @(-kAugusMoveLayerWidth);
+
+    gradientAnimation.toValue = @(self.showImageView.bounds.size.width + kAugusMoveLayerWidth);
+    
+    // 动画完成后不删除动画
+    gradientAnimation.removedOnCompletion = NO;
     gradientAnimation.duration = _animationDuration;
+    gradientAnimation.fillMode = kCAMediaTimingFunctionEaseInEaseOut;
     gradientAnimation.repeatCount = MAXFLOAT;
-    [self.gradientLayer addAnimation:gradientAnimation forKey:kAugusFadeAnimationLayerKey];
-    self.maskView = self.showImageView;
+    [self.moveLayer addAnimation:gradientAnimation forKey:kAugusFadeAnimationLayerKey];
+    
     self.isAnimationing = YES;
 }
 
@@ -89,11 +102,22 @@ static NSString * const kAugusFadeAnimationLayerKey = @"kAugusFadeAnimationLayer
     if (!self.isAnimationing) {
         return;
     }
-    [self.gradientLayer removeAnimationForKey:kAugusFadeAnimationLayerKey];
-    self.gradientLayer.hidden = YES;
+    [self.moveLayer removeAnimationForKey:kAugusFadeAnimationLayerKey];
+    self.moveLayer.hidden = YES;
     self.isAnimationing = NO;
 }
 
+
+#pragma mark - Setter
+
+- (void)setImageName:(NSString *)imageName {
+    _imageName = imageName;
+}
+
+
+- (void)setAnimationDuration:(NSTimeInterval)animationDuration {
+    _animationDuration = animationDuration;
+}
 
 
 #pragma mark - Lazy Load
@@ -108,35 +132,26 @@ static NSString * const kAugusFadeAnimationLayerKey = @"kAugusFadeAnimationLayer
 }
 
 
-- (CAGradientLayer *)gradientLayer {
-    if (!_gradientLayer) {
+- (CAShapeLayer *)moveLayer {
+    if (!_moveLayer) {
         
-        _gradientLayer = [CAGradientLayer layer];
-        /**
-         日间：
-         字色#dadada，渐变色#c4c4c4（高斯模糊2.8PX，不透明度80%）
-         夜间：
-         字色#343434，渐变色#454545（高斯模糊2.8PX，不透明度80%）
-         
-         */
-        // 设置渐变色
+        UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, kAugusMoveLayerWidth, self.showImageView.frame.size.height)];
         
-        
-        UIColor *color1 = [UIColor colorNamed:@"fadeColor0"];
-        UIColor *color2 = [UIColor colorNamed:@"fadeColor1"];
-        _gradientLayer.colors = @[(id)(color1.CGColor),(id)(color1.CGColor),(id)color2.CGColor];
-        // 设置影响的位置
-        _gradientLayer.locations = @[@0, @0, @0.25];
-        
-        // 横向渐变
-        _gradientLayer.startPoint = CGPointMake(0, 0.5);
-        _gradientLayer.endPoint = CGPointMake(1, 0.5);
-        
-        // 设置渐变尺寸
-        _gradientLayer.frame = self.showImageView.bounds;
-//        [self.layer insertSublayer:_gradientLayer atIndex:0];
+        // 创建带形状的图层
+        _moveLayer = [CAShapeLayer layer];
+        _moveLayer.frame = CGRectMake(0, 0, kAugusMoveLayerWidth, self.showImageView.frame.size.height);
+        _moveLayer.fillColor = [UIColor colorNamed:@"fadeC4"].CGColor;
+//        _moveLayer.fillColor = [UIColor colorNamed:@"fade45"].CGColor;
+
+//        _moveLayer.fillColor = [UIColor greenColor].CGColor;
+
+        _moveLayer.path = bezierPath.CGPath;
+        // 当x,y,z值为0时,代表在该轴方向上不进行旋转,当值为1时,代表在该轴方向上进行逆时针旋转,当值为-1时,代表在该轴方向上进行顺时针旋转
+        _moveLayer.transform = CATransform3DMakeRotation(DEGREES_TO_RADIANS(40), 0, 0, 1);
+        _moveLayer.opacity = 0.7;
+        _moveLayer.masksToBounds = YES;
     }
-    return _gradientLayer;
+    return _moveLayer;
 }
 
 

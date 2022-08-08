@@ -11,6 +11,8 @@
 #import "TestTransformCG.h"
 #import "SNAugusFadeImageView.h"
 
+#define DEGREES_TO_RADIANS(x) (M_PI * (x) / 180.0)
+
 @interface ViewController ()
 
 @property (nonatomic, strong) UIImageView *showImageOne;
@@ -77,9 +79,39 @@ NSInteger baseNumber = 12;
 
 //    [self gradientAnimation];
     
-    self.view.backgroundColor = UIColor.whiteColor;
+//    self.view.backgroundColor = UIColor.blackColor;
     
     [self testFadeImageView];
+//    [self testRadiusCircle];
+    
+}
+
+
+- (void)testRadiusCircle {
+    
+    
+    UIView *backGroundView = [[UIView alloc] init];
+    backGroundView.backgroundColor = UIColor.greenColor;
+    backGroundView.frame = CGRectMake(100, 100, 100, 60);
+    [self.view addSubview:backGroundView];
+    
+    UIBezierPath *bezierPath = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, 20, 50)];
+    
+    
+    CAShapeLayer *moveLayer = [CAShapeLayer layer];
+    moveLayer.path = bezierPath.CGPath;
+    moveLayer.fillColor = UIColor.redColor.CGColor;
+    // CATransform3DRotate
+//    self.demoImageView.layer.transform = CATransform3DRotate(transform, M_PI*0.25, 1, 0, 0);
+    moveLayer.frame = backGroundView.bounds;
+
+    
+    moveLayer.transform = CATransform3DMakeRotation(40.0 / 180.0 * M_PI, 0.0, 0.0, 1.0);
+
+//        moveLayer.transform = CATransform3DMakeRotation(DEGREES_TO_RADIANS(40), 1, 0, 0);
+
+    
+    [backGroundView.layer addSublayer:moveLayer];
     
 }
 

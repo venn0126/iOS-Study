@@ -9,6 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// 正文页加载的动画对象
 @interface SNAugusFadeImageView : UIView
 
 /// 需要展示的图片的名字
