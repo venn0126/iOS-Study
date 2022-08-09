@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 需要展示的图片的名字
 @property (nonatomic, copy) NSString *imageName;
 
+/// 游标视图的宽度
+@property (nonatomic, assign) CGFloat moveLayerWidth;
+
 /// 完成一次动画的时间
 @property (nonatomic, assign) NSTimeInterval animationDuration;
 

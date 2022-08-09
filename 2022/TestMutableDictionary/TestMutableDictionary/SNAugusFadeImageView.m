@@ -12,10 +12,10 @@
 
 static NSTimeInterval const kAugusFadeAnimationDuration = 1.6;
 static CGFloat const kAugusMoveLayerWidth = 20.0;
-static NSString * const kAugusFadeAnimationDefaultImageName = @"sohu_loading_1";
+//static NSString * const kAugusFadeAnimationDefaultImageName = @"sohu_loading_1";
 static NSString * const kAugusFadeAnimationLayerKey = @"kAugusFadeAnimationLayerKey";
 
-//static NSString * const kAugusFadeAnimationDefaultImageName = @"night_sohu_loading_1";
+static NSString * const kAugusFadeAnimationDefaultImageName = @"night_sohu_loading_1";
 
 
 
@@ -41,12 +41,13 @@ static NSString * const kAugusFadeAnimationLayerKey = @"kAugusFadeAnimationLayer
     }
     
     
-    self.backgroundColor = [UIColor colorNamed:@"fadeDA"];
-//    self.backgroundColor = [UIColor colorNamed:@"fade34"];
+//    self.backgroundColor = [UIColor colorNamed:@"fadeDA"];
+    self.backgroundColor = [UIColor colorNamed:@"fade34"];
 
     
     _animationDuration = kAugusFadeAnimationDuration;
     _imageName = kAugusFadeAnimationDefaultImageName;
+    _moveLayerWidth = kAugusMoveLayerWidth;
     _isAnimationing = NO;
     
     
@@ -112,11 +113,17 @@ static NSString * const kAugusFadeAnimationLayerKey = @"kAugusFadeAnimationLayer
 
 - (void)setImageName:(NSString *)imageName {
     _imageName = imageName;
+    self.showImageView.image = [UIImage imageNamed:imageName];
 }
 
 
 - (void)setAnimationDuration:(NSTimeInterval)animationDuration {
     _animationDuration = animationDuration;
+}
+
+
+- (void)setMoveLayerWidth:(CGFloat)moveLayerWidth {
+    _moveLayerWidth = moveLayerWidth;
 }
 
 

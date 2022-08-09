@@ -79,39 +79,10 @@ NSInteger baseNumber = 12;
 
 //    [self gradientAnimation];
     
-//    self.view.backgroundColor = UIColor.blackColor;
+//    self.view.backgroundColor = UIColor.whiteColor;
     
     [self testFadeImageView];
 //    [self testRadiusCircle];
-    
-}
-
-
-- (void)testRadiusCircle {
-    
-    
-    UIView *backGroundView = [[UIView alloc] init];
-    backGroundView.backgroundColor = UIColor.greenColor;
-    backGroundView.frame = CGRectMake(100, 100, 100, 60);
-    [self.view addSubview:backGroundView];
-    
-    UIBezierPath *bezierPath = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, 20, 50)];
-    
-    
-    CAShapeLayer *moveLayer = [CAShapeLayer layer];
-    moveLayer.path = bezierPath.CGPath;
-    moveLayer.fillColor = UIColor.redColor.CGColor;
-    // CATransform3DRotate
-//    self.demoImageView.layer.transform = CATransform3DRotate(transform, M_PI*0.25, 1, 0, 0);
-    moveLayer.frame = backGroundView.bounds;
-
-    
-    moveLayer.transform = CATransform3DMakeRotation(40.0 / 180.0 * M_PI, 0.0, 0.0, 1.0);
-
-//        moveLayer.transform = CATransform3DMakeRotation(DEGREES_TO_RADIANS(40), 1, 0, 0);
-
-    
-    [backGroundView.layer addSublayer:moveLayer];
     
 }
 
@@ -129,6 +100,7 @@ NSInteger baseNumber = 12;
 - (void)testFadeImageView {
     
     self.fadeImageView = [[SNAugusFadeImageView alloc] initWithFrame:CGRectMake(0, 0, 174, 42)];
+//    self.fadeImageView.imageName = @"night_sohu_loading_1";
     self.fadeImageView.center = self.view.center;
     [self.view addSubview:self.fadeImageView];
     
