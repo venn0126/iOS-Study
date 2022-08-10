@@ -81,9 +81,33 @@ NSInteger baseNumber = 12;
     
 //    self.view.backgroundColor = UIColor.whiteColor;
     
-    [self testFadeImageView];
+//    [self testFadeImageView];
 //    [self testRadiusCircle];
+    self.view.backgroundColor = UIColor.whiteColor;
+}
+
+
+
+
+
+- (void)printAllFonts {
     
+    NSArray *familyNames = [UIFont familyNames];
+    NSMutableArray *fontsArray = [NSMutableArray array];
+    
+    for (int i = 0; i < familyNames.count; i++) {
+        NSString *familyName = familyNames[i];
+        NSArray *fontNames = [UIFont fontNamesForFamilyName:familyName];
+        if (fontNames) {
+            NSDictionary *dict = @{
+                @"familyName" : familyName,
+                @"fontNames" : fontNames,
+            };
+            [fontsArray addObject:dict];
+        }
+    }
+    
+    NSLog(@"fontsArray is %@",fontsArray);
 }
 
 
@@ -94,6 +118,8 @@ NSInteger baseNumber = 12;
     } else {
         [self.fadeImageView stopAnimation];
     }
+    
+    [self.view endEditing:YES];
 
 }
 
