@@ -1,0 +1,784 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B17EA1FE28A4E5F40094AE0C /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1ADC63928A4A28B000BFBA9 /* Intents.framework */; };
+		B17EA20228A4E5F40094AE0C /* IntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B17EA20128A4E5F40094AE0C /* IntentHandler.m */; };
+		B17EA20628A4E5F40094AE0C /* AugusShortcuts.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B17EA1FD28A4E5F40094AE0C /* AugusShortcuts.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B17EA20B28A4E6090094AE0C /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B17EA20A28A4E6090094AE0C /* Intents.intentdefinition */; };
+		B17EA21128A4FC1D0094AE0C /* HotListHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B17EA21028A4FC1D0094AE0C /* HotListHandler.m */; };
+		B17EA21228A4FDAD0094AE0C /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B17EA20A28A4E6090094AE0C /* Intents.intentdefinition */; };
+		B1ADC5FF28A4A1AF000BFBA9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1ADC5FE28A4A1AF000BFBA9 /* AppDelegate.m */; };
+		B1ADC60228A4A1AF000BFBA9 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1ADC60128A4A1AF000BFBA9 /* SceneDelegate.m */; };
+		B1ADC60528A4A1AF000BFBA9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1ADC60428A4A1AF000BFBA9 /* ViewController.m */; };
+		B1ADC60828A4A1AF000BFBA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1ADC60628A4A1AF000BFBA9 /* Main.storyboard */; };
+		B1ADC60A28A4A1B0000BFBA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1ADC60928A4A1B0000BFBA9 /* Assets.xcassets */; };
+		B1ADC60D28A4A1B0000BFBA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1ADC60B28A4A1B0000BFBA9 /* LaunchScreen.storyboard */; };
+		B1ADC61028A4A1B0000BFBA9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B1ADC60F28A4A1B0000BFBA9 /* main.m */; };
+		B1ADC61A28A4A1B0000BFBA9 /* TestSiriDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1ADC61928A4A1B0000BFBA9 /* TestSiriDemoTests.m */; };
+		B1ADC62428A4A1B0000BFBA9 /* TestSiriDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1ADC62328A4A1B0000BFBA9 /* TestSiriDemoUITests.m */; };
+		B1ADC62628A4A1B0000BFBA9 /* TestSiriDemoUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1ADC62528A4A1B0000BFBA9 /* TestSiriDemoUITestsLaunchTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B17EA20428A4E5F40094AE0C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1ADC5F228A4A1AF000BFBA9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B17EA1FC28A4E5F40094AE0C;
+			remoteInfo = AugusShortcuts;
+		};
+		B1ADC61628A4A1B0000BFBA9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1ADC5F228A4A1AF000BFBA9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B1ADC5F928A4A1AF000BFBA9;
+			remoteInfo = TestSiriDemo;
+		};
+		B1ADC62028A4A1B0000BFBA9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1ADC5F228A4A1AF000BFBA9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B1ADC5F928A4A1AF000BFBA9;
+			remoteInfo = TestSiriDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B1ADC65B28A4A28B000BFBA9 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B17EA20628A4E5F40094AE0C /* AugusShortcuts.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B17EA1FD28A4E5F40094AE0C /* AugusShortcuts.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AugusShortcuts.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B17EA20028A4E5F40094AE0C /* IntentHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntentHandler.h; sourceTree = "<group>"; };
+		B17EA20128A4E5F40094AE0C /* IntentHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntentHandler.m; sourceTree = "<group>"; };
+		B17EA20328A4E5F40094AE0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B17EA20A28A4E6090094AE0C /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
+		B17EA20F28A4FC1D0094AE0C /* HotListHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HotListHandler.h; sourceTree = "<group>"; };
+		B17EA21028A4FC1D0094AE0C /* HotListHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotListHandler.m; sourceTree = "<group>"; };
+		B17EA21328A5157C0094AE0C /* AugusShortcuts.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = AugusShortcuts.entitlements; sourceTree = "<group>"; };
+		B1ADC5FA28A4A1AF000BFBA9 /* TestSiriDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestSiriDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1ADC5FD28A4A1AF000BFBA9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B1ADC5FE28A4A1AF000BFBA9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B1ADC60028A4A1AF000BFBA9 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		B1ADC60128A4A1AF000BFBA9 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		B1ADC60328A4A1AF000BFBA9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		B1ADC60428A4A1AF000BFBA9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B1ADC60728A4A1AF000BFBA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B1ADC60928A4A1B0000BFBA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B1ADC60C28A4A1B0000BFBA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B1ADC60E28A4A1B0000BFBA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1ADC60F28A4A1B0000BFBA9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B1ADC61528A4A1B0000BFBA9 /* TestSiriDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestSiriDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1ADC61928A4A1B0000BFBA9 /* TestSiriDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestSiriDemoTests.m; sourceTree = "<group>"; };
+		B1ADC61F28A4A1B0000BFBA9 /* TestSiriDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestSiriDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1ADC62328A4A1B0000BFBA9 /* TestSiriDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestSiriDemoUITests.m; sourceTree = "<group>"; };
+		B1ADC62528A4A1B0000BFBA9 /* TestSiriDemoUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestSiriDemoUITestsLaunchTests.m; sourceTree = "<group>"; };
+		B1ADC63228A4A1BA000BFBA9 /* TestSiriDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TestSiriDemo.entitlements; sourceTree = "<group>"; };
+		B1ADC63928A4A28B000BFBA9 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B17EA1FA28A4E5F40094AE0C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B17EA1FE28A4E5F40094AE0C /* Intents.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1ADC5F728A4A1AF000BFBA9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1ADC61228A4A1B0000BFBA9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1ADC61C28A4A1B0000BFBA9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B17EA1FF28A4E5F40094AE0C /* AugusShortcuts */ = {
+			isa = PBXGroup;
+			children = (
+				B17EA21328A5157C0094AE0C /* AugusShortcuts.entitlements */,
+				B17EA20028A4E5F40094AE0C /* IntentHandler.h */,
+				B17EA20128A4E5F40094AE0C /* IntentHandler.m */,
+				B17EA20F28A4FC1D0094AE0C /* HotListHandler.h */,
+				B17EA21028A4FC1D0094AE0C /* HotListHandler.m */,
+				B17EA20A28A4E6090094AE0C /* Intents.intentdefinition */,
+				B17EA20328A4E5F40094AE0C /* Info.plist */,
+			);
+			path = AugusShortcuts;
+			sourceTree = "<group>";
+		};
+		B1ADC5F128A4A1AF000BFBA9 = {
+			isa = PBXGroup;
+			children = (
+				B1ADC5FC28A4A1AF000BFBA9 /* TestSiriDemo */,
+				B1ADC61828A4A1B0000BFBA9 /* TestSiriDemoTests */,
+				B1ADC62228A4A1B0000BFBA9 /* TestSiriDemoUITests */,
+				B17EA1FF28A4E5F40094AE0C /* AugusShortcuts */,
+				B1ADC63828A4A28B000BFBA9 /* Frameworks */,
+				B1ADC5FB28A4A1AF000BFBA9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B1ADC5FB28A4A1AF000BFBA9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B1ADC5FA28A4A1AF000BFBA9 /* TestSiriDemo.app */,
+				B1ADC61528A4A1B0000BFBA9 /* TestSiriDemoTests.xctest */,
+				B1ADC61F28A4A1B0000BFBA9 /* TestSiriDemoUITests.xctest */,
+				B17EA1FD28A4E5F40094AE0C /* AugusShortcuts.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B1ADC5FC28A4A1AF000BFBA9 /* TestSiriDemo */ = {
+			isa = PBXGroup;
+			children = (
+				B1ADC63228A4A1BA000BFBA9 /* TestSiriDemo.entitlements */,
+				B1ADC5FD28A4A1AF000BFBA9 /* AppDelegate.h */,
+				B1ADC5FE28A4A1AF000BFBA9 /* AppDelegate.m */,
+				B1ADC60028A4A1AF000BFBA9 /* SceneDelegate.h */,
+				B1ADC60128A4A1AF000BFBA9 /* SceneDelegate.m */,
+				B1ADC60328A4A1AF000BFBA9 /* ViewController.h */,
+				B1ADC60428A4A1AF000BFBA9 /* ViewController.m */,
+				B1ADC60628A4A1AF000BFBA9 /* Main.storyboard */,
+				B1ADC60928A4A1B0000BFBA9 /* Assets.xcassets */,
+				B1ADC60B28A4A1B0000BFBA9 /* LaunchScreen.storyboard */,
+				B1ADC60E28A4A1B0000BFBA9 /* Info.plist */,
+				B1ADC60F28A4A1B0000BFBA9 /* main.m */,
+			);
+			path = TestSiriDemo;
+			sourceTree = "<group>";
+		};
+		B1ADC61828A4A1B0000BFBA9 /* TestSiriDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				B1ADC61928A4A1B0000BFBA9 /* TestSiriDemoTests.m */,
+			);
+			path = TestSiriDemoTests;
+			sourceTree = "<group>";
+		};
+		B1ADC62228A4A1B0000BFBA9 /* TestSiriDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B1ADC62328A4A1B0000BFBA9 /* TestSiriDemoUITests.m */,
+				B1ADC62528A4A1B0000BFBA9 /* TestSiriDemoUITestsLaunchTests.m */,
+			);
+			path = TestSiriDemoUITests;
+			sourceTree = "<group>";
+		};
+		B1ADC63828A4A28B000BFBA9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B1ADC63928A4A28B000BFBA9 /* Intents.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B17EA1FC28A4E5F40094AE0C /* AugusShortcuts */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B17EA20728A4E5F40094AE0C /* Build configuration list for PBXNativeTarget "AugusShortcuts" */;
+			buildPhases = (
+				B17EA1F928A4E5F40094AE0C /* Sources */,
+				B17EA1FA28A4E5F40094AE0C /* Frameworks */,
+				B17EA1FB28A4E5F40094AE0C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AugusShortcuts;
+			productName = AugusShortcuts;
+			productReference = B17EA1FD28A4E5F40094AE0C /* AugusShortcuts.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		B1ADC5F928A4A1AF000BFBA9 /* TestSiriDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1ADC62928A4A1B0000BFBA9 /* Build configuration list for PBXNativeTarget "TestSiriDemo" */;
+			buildPhases = (
+				B1ADC5F628A4A1AF000BFBA9 /* Sources */,
+				B1ADC5F728A4A1AF000BFBA9 /* Frameworks */,
+				B1ADC5F828A4A1AF000BFBA9 /* Resources */,
+				B1ADC65B28A4A28B000BFBA9 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B17EA20528A4E5F40094AE0C /* PBXTargetDependency */,
+			);
+			name = TestSiriDemo;
+			productName = TestSiriDemo;
+			productReference = B1ADC5FA28A4A1AF000BFBA9 /* TestSiriDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B1ADC61428A4A1B0000BFBA9 /* TestSiriDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1ADC62C28A4A1B0000BFBA9 /* Build configuration list for PBXNativeTarget "TestSiriDemoTests" */;
+			buildPhases = (
+				B1ADC61128A4A1B0000BFBA9 /* Sources */,
+				B1ADC61228A4A1B0000BFBA9 /* Frameworks */,
+				B1ADC61328A4A1B0000BFBA9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B1ADC61728A4A1B0000BFBA9 /* PBXTargetDependency */,
+			);
+			name = TestSiriDemoTests;
+			productName = TestSiriDemoTests;
+			productReference = B1ADC61528A4A1B0000BFBA9 /* TestSiriDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B1ADC61E28A4A1B0000BFBA9 /* TestSiriDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1ADC62F28A4A1B0000BFBA9 /* Build configuration list for PBXNativeTarget "TestSiriDemoUITests" */;
+			buildPhases = (
+				B1ADC61B28A4A1B0000BFBA9 /* Sources */,
+				B1ADC61C28A4A1B0000BFBA9 /* Frameworks */,
+				B1ADC61D28A4A1B0000BFBA9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B1ADC62128A4A1B0000BFBA9 /* PBXTargetDependency */,
+			);
+			name = TestSiriDemoUITests;
+			productName = TestSiriDemoUITests;
+			productReference = B1ADC61F28A4A1B0000BFBA9 /* TestSiriDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B1ADC5F228A4A1AF000BFBA9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					B17EA1FC28A4E5F40094AE0C = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					B1ADC5F928A4A1AF000BFBA9 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					B1ADC61428A4A1B0000BFBA9 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = B1ADC5F928A4A1AF000BFBA9;
+					};
+					B1ADC61E28A4A1B0000BFBA9 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = B1ADC5F928A4A1AF000BFBA9;
+					};
+				};
+			};
+			buildConfigurationList = B1ADC5F528A4A1AF000BFBA9 /* Build configuration list for PBXProject "TestSiriDemo" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B1ADC5F128A4A1AF000BFBA9;
+			productRefGroup = B1ADC5FB28A4A1AF000BFBA9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B1ADC5F928A4A1AF000BFBA9 /* TestSiriDemo */,
+				B1ADC61428A4A1B0000BFBA9 /* TestSiriDemoTests */,
+				B1ADC61E28A4A1B0000BFBA9 /* TestSiriDemoUITests */,
+				B17EA1FC28A4E5F40094AE0C /* AugusShortcuts */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B17EA1FB28A4E5F40094AE0C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1ADC5F828A4A1AF000BFBA9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1ADC60D28A4A1B0000BFBA9 /* LaunchScreen.storyboard in Resources */,
+				B1ADC60A28A4A1B0000BFBA9 /* Assets.xcassets in Resources */,
+				B1ADC60828A4A1AF000BFBA9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1ADC61328A4A1B0000BFBA9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1ADC61D28A4A1B0000BFBA9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B17EA1F928A4E5F40094AE0C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B17EA20B28A4E6090094AE0C /* Intents.intentdefinition in Sources */,
+				B17EA20228A4E5F40094AE0C /* IntentHandler.m in Sources */,
+				B17EA21128A4FC1D0094AE0C /* HotListHandler.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1ADC5F628A4A1AF000BFBA9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B17EA21228A4FDAD0094AE0C /* Intents.intentdefinition in Sources */,
+				B1ADC60528A4A1AF000BFBA9 /* ViewController.m in Sources */,
+				B1ADC5FF28A4A1AF000BFBA9 /* AppDelegate.m in Sources */,
+				B1ADC61028A4A1B0000BFBA9 /* main.m in Sources */,
+				B1ADC60228A4A1AF000BFBA9 /* SceneDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1ADC61128A4A1B0000BFBA9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1ADC61A28A4A1B0000BFBA9 /* TestSiriDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1ADC61B28A4A1B0000BFBA9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1ADC62628A4A1B0000BFBA9 /* TestSiriDemoUITestsLaunchTests.m in Sources */,
+				B1ADC62428A4A1B0000BFBA9 /* TestSiriDemoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B17EA20528A4E5F40094AE0C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B17EA1FC28A4E5F40094AE0C /* AugusShortcuts */;
+			targetProxy = B17EA20428A4E5F40094AE0C /* PBXContainerItemProxy */;
+		};
+		B1ADC61728A4A1B0000BFBA9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B1ADC5F928A4A1AF000BFBA9 /* TestSiriDemo */;
+			targetProxy = B1ADC61628A4A1B0000BFBA9 /* PBXContainerItemProxy */;
+		};
+		B1ADC62128A4A1B0000BFBA9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B1ADC5F928A4A1AF000BFBA9 /* TestSiriDemo */;
+			targetProxy = B1ADC62028A4A1B0000BFBA9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B1ADC60628A4A1AF000BFBA9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B1ADC60728A4A1AF000BFBA9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B1ADC60B28A4A1B0000BFBA9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B1ADC60C28A4A1B0000BFBA9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B17EA20828A4E5F40094AE0C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = AugusShortcuts/AugusShortcuts.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AQDKUEE5C2;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AugusShortcuts/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AugusShortcuts;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sohu.TestSiriDemo.AugusShortcuts;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B17EA20928A4E5F40094AE0C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = AugusShortcuts/AugusShortcuts.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AQDKUEE5C2;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AugusShortcuts/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AugusShortcuts;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sohu.TestSiriDemo.AugusShortcuts;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B1ADC62728A4A1B0000BFBA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B1ADC62828A4A1B0000BFBA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B1ADC62A28A4A1B0000BFBA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TestSiriDemo/TestSiriDemo.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AQDKUEE5C2;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TestSiriDemo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "测试捷径扩展";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sohu.TestSiriDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B1ADC62B28A4A1B0000BFBA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TestSiriDemo/TestSiriDemo.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AQDKUEE5C2;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TestSiriDemo/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "测试捷径扩展";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sohu.TestSiriDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B1ADC62D28A4A1B0000BFBA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AQDKUEE5C2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sohu.TestSiriDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestSiriDemo.app/TestSiriDemo";
+			};
+			name = Debug;
+		};
+		B1ADC62E28A4A1B0000BFBA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AQDKUEE5C2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sohu.TestSiriDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestSiriDemo.app/TestSiriDemo";
+			};
+			name = Release;
+		};
+		B1ADC63028A4A1B0000BFBA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AQDKUEE5C2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sohu.TestSiriDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TestSiriDemo;
+			};
+			name = Debug;
+		};
+		B1ADC63128A4A1B0000BFBA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AQDKUEE5C2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sohu.TestSiriDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TestSiriDemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B17EA20728A4E5F40094AE0C /* Build configuration list for PBXNativeTarget "AugusShortcuts" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B17EA20828A4E5F40094AE0C /* Debug */,
+				B17EA20928A4E5F40094AE0C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1ADC5F528A4A1AF000BFBA9 /* Build configuration list for PBXProject "TestSiriDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1ADC62728A4A1B0000BFBA9 /* Debug */,
+				B1ADC62828A4A1B0000BFBA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1ADC62928A4A1B0000BFBA9 /* Build configuration list for PBXNativeTarget "TestSiriDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1ADC62A28A4A1B0000BFBA9 /* Debug */,
+				B1ADC62B28A4A1B0000BFBA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1ADC62C28A4A1B0000BFBA9 /* Build configuration list for PBXNativeTarget "TestSiriDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1ADC62D28A4A1B0000BFBA9 /* Debug */,
+				B1ADC62E28A4A1B0000BFBA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1ADC62F28A4A1B0000BFBA9 /* Build configuration list for PBXNativeTarget "TestSiriDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1ADC63028A4A1B0000BFBA9 /* Debug */,
+				B1ADC63128A4A1B0000BFBA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B1ADC5F228A4A1AF000BFBA9 /* Project object */;
+}
