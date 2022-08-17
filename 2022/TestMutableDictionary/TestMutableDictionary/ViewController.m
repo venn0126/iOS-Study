@@ -84,6 +84,71 @@ NSInteger baseNumber = 12;
 //    [self testFadeImageView];
 //    [self testRadiusCircle];
     self.view.backgroundColor = UIColor.whiteColor;
+//    [self testUpdateAnchorPointChangeFrame];
+    
+    [self testTextFieldClearButtonBackground];
+}
+
+
+- (void)testTextFieldClearButtonBackground {
+    
+    
+    UITextField *testField = [[UITextField alloc] init];
+    testField.borderStyle = UITextBorderStyleLine;
+    testField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    UIButton *clearButton = [testField valueForKey:@"_clearButton"];
+    // 自定义clearButton 有风险 在不同的iOS版本中
+    if (clearButton && [clearButton isKindOfClass:[UIButton class]]) {
+        [clearButton setImage:[UIImage imageNamed:@"icochannel_close_v5"] forState:UIControlStateNormal];
+        //[clearButton setImage:[UIImage imageNamed:@"icochannel_closepress_v5"] forState:UIControlStateHighlighted];
+    }
+    testField.frame = CGRectMake(100, 100, 100, 30);
+    
+    [self.view addSubview:testField];
+    
+    
+    
+}
+
+
+
+- (void)testUpdateAnchorPointChangeFrame {
+    
+    UIView *redView = [[UIView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+    redView.backgroundColor = UIColor.redColor;
+    [self.view addSubview:redView];
+    
+    
+    UIView *greeenView = [[UIView alloc] initWithFrame:CGRectMake(50, 300, 100, 100)];
+    greeenView.backgroundColor = UIColor.greenColor;
+    [self.view addSubview:greeenView];
+    
+    
+    UIView *yellowView = [[UIView alloc] initWithFrame:CGRectMake(50, 300, 50, 50)];
+    yellowView.backgroundColor = UIColor.yellowColor;
+    [self.view addSubview:yellowView];
+    
+    
+    [self fixFrameForView:greeenView anchorPoint:CGPointMake(0.9, 0.8)];
+    
+    
+}
+
+
+- (void)fixFrameForView:(UIView *)aView anchorPoint:(CGPoint)anchorPoint {
+    
+    CGPoint oldOrigin = aView.frame.origin;
+    aView.layer.anchorPoint = anchorPoint;
+    CGPoint newOrigin = aView.frame.origin;
+    
+    CGPoint transition;
+    transition.x = newOrigin.x - oldOrigin.x;
+    transition.y = newOrigin.y - oldOrigin.y;
+    aView.center = CGPointMake(aView.center.x - transition.x, aView.center.y - transition.y);
+    
+//    aView.frame.origin = CGPointMake(aView.center.x - transition.x, aView.center.y - transition.y);
+    
+//    aView.frame = CGRectMake(aView.center.x - transition.x, aView.center.y - transition.y, aView.frame.size.width, aView.frame.size.height);
 }
 
 
