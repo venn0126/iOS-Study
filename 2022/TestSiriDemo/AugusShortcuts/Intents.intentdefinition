@@ -147,12 +147,28 @@
 				<key>INIntentResponseCodes</key>
 				<array>
 					<dict>
+						<key>INIntentResponseCodeConciseFormatString</key>
+						<string>打开成功</string>
+						<key>INIntentResponseCodeConciseFormatStringID</key>
+						<string>R2Wets</string>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>打开成功</string>
+						<key>INIntentResponseCodeFormatStringID</key>
+						<string>m8s7Sm</string>
 						<key>INIntentResponseCodeName</key>
 						<string>success</string>
 						<key>INIntentResponseCodeSuccess</key>
 						<true/>
 					</dict>
 					<dict>
+						<key>INIntentResponseCodeConciseFormatString</key>
+						<string>打开失败</string>
+						<key>INIntentResponseCodeConciseFormatStringID</key>
+						<string>Fyi2fC</string>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>打开失败</string>
+						<key>INIntentResponseCodeFormatStringID</key>
+						<string>HQ2a7L</string>
 						<key>INIntentResponseCodeName</key>
 						<string>failure</string>
 					</dict>
@@ -173,9 +189,11 @@
 			<key>INIntentConfigurable</key>
 			<true/>
 			<key>INIntentDescription</key>
-			<string>搜狐新闻真人播报</string>
+			<string>搜狐新闻打开真人播报</string>
 			<key>INIntentDescriptionID</key>
 			<string>b1zTXI</string>
+			<key>INIntentLastParameterTag</key>
+			<integer>1</integer>
 			<key>INIntentManagedParameterCombinations</key>
 			<dict>
 				<key></key>
@@ -188,6 +206,78 @@
 			</dict>
 			<key>INIntentName</key>
 			<string>Broadcast</string>
+			<key>INIntentParameterCombinations</key>
+			<dict>
+				<key></key>
+				<dict>
+					<key>INIntentParameterCombinationIsLinked</key>
+					<true/>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+				</dict>
+			</dict>
+			<key>INIntentResponse</key>
+			<dict>
+				<key>INIntentResponseCodes</key>
+				<array>
+					<dict>
+						<key>INIntentResponseCodeConciseFormatString</key>
+						<string>打开成功</string>
+						<key>INIntentResponseCodeConciseFormatStringID</key>
+						<string>RIfSZ1</string>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>打开成功</string>
+						<key>INIntentResponseCodeFormatStringID</key>
+						<string>YSOTTX</string>
+						<key>INIntentResponseCodeName</key>
+						<string>success</string>
+						<key>INIntentResponseCodeSuccess</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>INIntentResponseCodeConciseFormatString</key>
+						<string>打开失败</string>
+						<key>INIntentResponseCodeConciseFormatStringID</key>
+						<string>Q9jPje</string>
+						<key>INIntentResponseCodeFormatString</key>
+						<string>打开失败</string>
+						<key>INIntentResponseCodeFormatStringID</key>
+						<string>FbJbcT</string>
+						<key>INIntentResponseCodeName</key>
+						<string>failure</string>
+					</dict>
+				</array>
+			</dict>
+			<key>INIntentTitle</key>
+			<string>搜狐新闻打开真人播报</string>
+			<key>INIntentTitleID</key>
+			<string>Ou1RLN</string>
+			<key>INIntentType</key>
+			<string>Custom</string>
+			<key>INIntentVerb</key>
+			<string>Do</string>
+		</dict>
+		<dict>
+			<key>INIntentCategory</key>
+			<string>generic</string>
+			<key>INIntentConfigurable</key>
+			<true/>
+			<key>INIntentDescription</key>
+			<string>打开搜狐app体育频道</string>
+			<key>INIntentDescriptionID</key>
+			<string>0eFtFU</string>
+			<key>INIntentManagedParameterCombinations</key>
+			<dict>
+				<key></key>
+				<dict>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationUpdatesLinked</key>
+					<true/>
+				</dict>
+			</dict>
+			<key>INIntentName</key>
+			<string>SNSport</string>
 			<key>INIntentParameterCombinations</key>
 			<dict>
 				<key></key>
@@ -215,13 +305,355 @@
 				</array>
 			</dict>
 			<key>INIntentTitle</key>
-			<string>真人播报</string>
+			<string>搜狐体育</string>
 			<key>INIntentTitleID</key>
-			<string>Ou1RLN</string>
+			<string>oV3m6O</string>
 			<key>INIntentType</key>
 			<string>Custom</string>
 			<key>INIntentVerb</key>
 			<string>Do</string>
+		</dict>
+		<dict>
+			<key>INIntentCategory</key>
+			<string>system</string>
+			<key>INIntentClassName</key>
+			<string>INPlayMediaIntent</string>
+			<key>INIntentClassPrefix</key>
+			<string>IN</string>
+			<key>INIntentCustomizable</key>
+			<true/>
+			<key>INIntentDescription</key>
+			<string>搜狐消息在某个频道播放新闻</string>
+			<key>INIntentDescriptionID</key>
+			<string>LdrEPN</string>
+			<key>INIntentDomain</key>
+			<string>Media</string>
+			<key>INIntentInput</key>
+			<string>mediaItems</string>
+			<key>INIntentKeyParameter</key>
+			<string>mediaItems</string>
+			<key>INIntentLastParameterTag</key>
+			<integer>17</integer>
+			<key>INIntentName</key>
+			<string>PlayMedia</string>
+			<key>INIntentParameterCombinations</key>
+			<dict>
+				<key></key>
+				<dict>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Play</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>f3d3kn</string>
+				</dict>
+				<key>mediaContainer</key>
+				<dict>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Play ${mediaContainer}</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>YYfsKp</string>
+				</dict>
+				<key>mediaContainer,mediaItems,resumePlayback</key>
+				<dict>
+					<key>INIntentParameterCombinationSubtitle</key>
+					<string>${mediaItems}</string>
+					<key>INIntentParameterCombinationSubtitleID</key>
+					<string>vUAqfM</string>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Resume ${mediaContainer}</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>o6CuZu</string>
+				</dict>
+				<key>mediaContainer,playShuffled</key>
+				<dict>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Shuffle ${mediaContainer}</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>nAv25k</string>
+				</dict>
+				<key>mediaContainer,resumePlayback</key>
+				<dict>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Resume ${mediaContainer}</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>sLPQxZ</string>
+				</dict>
+				<key>mediaItems</key>
+				<dict>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Play ${mediaItems}</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>KcCcQu</string>
+				</dict>
+				<key>mediaItems,mediaContainer</key>
+				<dict>
+					<key>INIntentParameterCombinationSubtitle</key>
+					<string>${mediaItems}</string>
+					<key>INIntentParameterCombinationSubtitleID</key>
+					<string>ApUiZd</string>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Play ${mediaContainer}</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>WEjMGd</string>
+				</dict>
+				<key>mediaItems,resumePlayback</key>
+				<dict>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Resume ${mediaItems}</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>mIvv3D</string>
+				</dict>
+				<key>playShuffled,mediaContainer,mediaItems</key>
+				<dict>
+					<key>INIntentParameterCombinationSubtitle</key>
+					<string>${mediaItems}</string>
+					<key>INIntentParameterCombinationSubtitleID</key>
+					<string>5oBQUn</string>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Shuffle ${mediaContainer}</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>nNozW1</string>
+				</dict>
+				<key>playShuffled,mediaContainer,resumePlayback</key>
+				<dict>
+					<key>INIntentParameterCombinationIsPrimary</key>
+					<true/>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Resume ${mediaContainer}</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>H25xHi</string>
+				</dict>
+				<key>playShuffled,mediaItems</key>
+				<dict>
+					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
+					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>Shuffle ${mediaItems}</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>MbU5ep</string>
+				</dict>
+			</dict>
+			<key>INIntentParameters</key>
+			<array>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>Items</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>cfJexL</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>1</integer>
+					<key>INIntentParameterName</key>
+					<string>mediaItems</string>
+					<key>INIntentParameterObjectType</key>
+					<string>MediaItem</string>
+					<key>INIntentParameterObjectTypeNamespace</key>
+					<string>System</string>
+					<key>INIntentParameterSupportsMultipleValues</key>
+					<true/>
+					<key>INIntentParameterSupportsResolution</key>
+					<true/>
+					<key>INIntentParameterTag</key>
+					<integer>1</integer>
+					<key>INIntentParameterType</key>
+					<string>Object</string>
+				</dict>
+				<dict>
+					<key>INIntentParameterDisplayName</key>
+					<string>Container</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>xdnqvn</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>2</integer>
+					<key>INIntentParameterName</key>
+					<string>mediaContainer</string>
+					<key>INIntentParameterObjectType</key>
+					<string>MediaItem</string>
+					<key>INIntentParameterObjectTypeNamespace</key>
+					<string>System</string>
+					<key>INIntentParameterTag</key>
+					<integer>2</integer>
+					<key>INIntentParameterType</key>
+					<string>Object</string>
+				</dict>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>Shuffled</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>WktFNa</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>3</integer>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataFalseDisplayName</key>
+						<string>not shuffled</string>
+						<key>INIntentParameterMetadataFalseDisplayNameID</key>
+						<string>mCAocc</string>
+						<key>INIntentParameterMetadataTrueDisplayName</key>
+						<string>shuffled</string>
+						<key>INIntentParameterMetadataTrueDisplayNameID</key>
+						<string>QqdHiR</string>
+					</dict>
+					<key>INIntentParameterName</key>
+					<string>playShuffled</string>
+					<key>INIntentParameterSupportsResolution</key>
+					<true/>
+					<key>INIntentParameterTag</key>
+					<integer>3</integer>
+					<key>INIntentParameterType</key>
+					<string>Boolean</string>
+				</dict>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterCustomDisambiguation</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>Repeat Mode</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>ErAaNp</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>4</integer>
+					<key>INIntentParameterEnumType</key>
+					<string>PlaybackRepeatMode</string>
+					<key>INIntentParameterEnumTypeNamespace</key>
+					<string>System</string>
+					<key>INIntentParameterName</key>
+					<string>playbackRepeatMode</string>
+					<key>INIntentParameterSupportsResolution</key>
+					<true/>
+					<key>INIntentParameterTag</key>
+					<integer>4</integer>
+					<key>INIntentParameterType</key>
+					<string>Integer</string>
+				</dict>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>Resume</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>rvNMpm</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>5</integer>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataFalseDisplayName</key>
+						<string>don't resume</string>
+						<key>INIntentParameterMetadataFalseDisplayNameID</key>
+						<string>Pk1Fkx</string>
+						<key>INIntentParameterMetadataTrueDisplayName</key>
+						<string>resume</string>
+						<key>INIntentParameterMetadataTrueDisplayNameID</key>
+						<string>No0K9w</string>
+					</dict>
+					<key>INIntentParameterName</key>
+					<string>resumePlayback</string>
+					<key>INIntentParameterSupportsResolution</key>
+					<true/>
+					<key>INIntentParameterTag</key>
+					<integer>5</integer>
+					<key>INIntentParameterType</key>
+					<string>Boolean</string>
+				</dict>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterCustomDisambiguation</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>Queue Location</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>cV2HLF</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>6</integer>
+					<key>INIntentParameterEnumType</key>
+					<string>PlaybackQueueLocation</string>
+					<key>INIntentParameterEnumTypeNamespace</key>
+					<string>System</string>
+					<key>INIntentParameterName</key>
+					<string>playbackQueueLocation</string>
+					<key>INIntentParameterSupportsResolution</key>
+					<true/>
+					<key>INIntentParameterTag</key>
+					<integer>6</integer>
+					<key>INIntentParameterType</key>
+					<string>Integer</string>
+				</dict>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>Playback Speed</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>RvX3Zd</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>7</integer>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataMaximumValue</key>
+						<real>1</real>
+						<key>INIntentParameterMetadataSupportsNegativeNumbers</key>
+						<string>YES</string>
+						<key>INIntentParameterMetadataType</key>
+						<string>Field</string>
+					</dict>
+					<key>INIntentParameterName</key>
+					<string>playbackSpeed</string>
+					<key>INIntentParameterSupportsResolution</key>
+					<true/>
+					<key>INIntentParameterTag</key>
+					<integer>7</integer>
+					<key>INIntentParameterType</key>
+					<string>Decimal</string>
+				</dict>
+				<dict>
+					<key>INIntentParameterDisplayName</key>
+					<string>Media Search</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>1uT6VF</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>8</integer>
+					<key>INIntentParameterName</key>
+					<string>mediaSearch</string>
+					<key>INIntentParameterObjectType</key>
+					<string>MediaSearch</string>
+					<key>INIntentParameterObjectTypeNamespace</key>
+					<string>System</string>
+					<key>INIntentParameterTag</key>
+					<integer>8</integer>
+					<key>INIntentParameterType</key>
+					<string>Object</string>
+				</dict>
+			</array>
+			<key>INIntentTitle</key>
+			<string>播放新闻</string>
+			<key>INIntentTitleID</key>
+			<string>G3J6fP</string>
+			<key>INIntentType</key>
+			<string>System</string>
 		</dict>
 	</array>
 	<key>INTypes</key>

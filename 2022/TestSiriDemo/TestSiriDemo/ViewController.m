@@ -9,6 +9,7 @@
 #import "HotListIntent.h"
 #import "Intents/Intents.h"
 #import <IntentsUI/IntentsUI.h>
+//#import "SNPlayNewsIntent.h"
 
 @interface ViewController ()<INUIAddVoiceShortcutViewControllerDelegate, INUIEditVoiceShortcutViewControllerDelegate>
 
@@ -24,30 +25,108 @@
     
     self.view.backgroundColor = UIColor.whiteColor;
     
-    // 查看是否有权限进行操作
-    [INPreferences requestSiriAuthorization:^(INSiriAuthorizationStatus status) {
-        switch (status) {
-            case INSiriAuthorizationStatusNotDetermined:
-                //
-                NSLog(@"用户尚未对该应用程序作出选择。");
-                break;
-            case INSiriAuthorizationStatusRestricted:
-                NSLog(@"此应用程序无权使用Siri服务");
-                break;
-            case INSiriAuthorizationStatusDenied:
-                NSLog(@"用户已明确拒绝此应用程序的授权");
-                break;
-            case INSiriAuthorizationStatusAuthorized:
-                NSLog(@"用户可以使用此应用程序的授权");
-                break;
-            default:
-                break;
-        }
-        
-    }];
-    
-    
     [self.view addSubview:self.addShortCutsButton];
+    
+//    [self donatedUserActivity];
+    
+    [self donateIntents];
+}
+
+
+- (void)donatedUserActivity {
+    
+    NSUserActivity* userActivity = [[NSUserActivity alloc] initWithActivityType:@"SNSportIntent"];
+    userActivity.title = [NSString stringWithFormat:@"我要打开%@", @"体育频道"];
+    userActivity.suggestedInvocationPhrase = @"我要打开体育频道";
+    userActivity.eligibleForPrediction = YES;
+    userActivity.requiredUserInfoKeys = [NSSet setWithArray:userActivity.userInfo.allKeys];
+    self.userActivity = userActivity; // Calls becomeCurrent/resignCurrent for us...
+    [self.userActivity resignCurrent];
+
+}
+
+- (void)donateIntents {
+    
+//    INStartWorkoutIntent *intent = [[INStartWorkoutIntent alloc] init];
+//    intent.suggestedInvocationPhrase = @"测试打开财经新闻频道";
+//
+//
+//    INInteraction *interaction = [[INInteraction alloc] initWithIntent:intent response:nil];
+    
+//    [INInteraction deleteInteractionsWithGroupIdentifier:@"SNSportsIntent" completion:^(NSError * _Nullable error) {
+//
+//        if (error) {
+//            NSLog(@"我要打开体育新闻 捐赠删除失败");
+//            return;
+//        }
+//        NSLog(@"我要打开体育新闻 捐赠删除成功");
+//
+//    }];
+    
+//    [interaction donateInteractionWithCompletion:^(NSError * _Nullable error) {
+//
+//        if (error) {
+//            NSLog(@"测试打开财经新闻 捐赠失败");
+//            return;
+//        }
+//        NSLog(@"测试财经新闻 捐赠成功");
+//    }];
+    
+    
+//    INPlayMediaIntent *playIntent = [[INPlayMediaIntent alloc] init];
+//    playIntent.suggestedInvocationPhrase = @"搜狐消息播放热门视频";
+//
+//    INInteraction *interaction = [[INInteraction alloc] initWithIntent:playIntent response:nil];
+//    if (interaction) {
+//        [interaction donateInteractionWithCompletion:^(NSError * _Nullable error) {
+//            if (error) {
+//                 NSLog(@"测试捷径搜索 捐赠失败");
+//                 return;
+//             }
+//             NSLog(@"测试捷径搜索 捐赠成功");
+//        }];
+//    }
+    
+    
+    NSArray *playChannelNames = @[@"今日新闻",@"真人播报",@"热榜"];
+    NSString *url = nil;
+    NSString *title = @"今月心闻";
+    
+    NSString *item = nil;
+    NSString *channelName = nil;
+    BOOL isEnd = NO;
+    
+    for (int i = 0; i < title.length; i++) {
+        if (isEnd) {
+            break;
+        }
+        isEnd = NO;
+        item = [title substringWithRange:NSMakeRange(i, 1)];
+        NSLog(@"内侧 %@",item);
+        for (int i = 0; i < playChannelNames.count; i++) {
+            NSLog(@"外侧 %ld",(long)i);
+            channelName = playChannelNames[i];
+            if ([channelName rangeOfString:item].location != NSNotFound) {
+                if (i == 0) {
+                    url = @"0";
+                } else if(i == 1) {
+                    url = @"1";
+                }else {
+                    url = @"2";
+                }
+                isEnd = YES;
+                break;
+            }
+        }
+    }
+    
+    NSLog(@"url %@",url);
+}
+
+
+- (void)updateUserActivityState:(NSUserActivity *)activity {
+    
+//    [activity addUserInfoEntriesFromDictionary:nil];
 }
 
 

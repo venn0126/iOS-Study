@@ -6,6 +6,9 @@
 //
 
 #import "AppDelegate.h"
+#import "SNAugusSiriHandler.h"
+
+
 
 @interface AppDelegate ()
 
@@ -16,7 +19,43 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    
+    
+    [SNAugusSiriHandler askUserSiriPermissions];
+    
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler {
+    
+    if ([userActivity.activityType isEqualToString:@"INPlayMediaIntent"]) {
+        NSLog(@"0开始处理播放音频");
+        return YES;
+    }
+    
+    
+    return NO;
+}
+
+- (void)application:(UIApplication *)application didFailToContinueUserActivityWithType:(NSString *)userActivityType error:(NSError *)error {
+    
+    NSLog(@"%@---%@",@(__func__),error);
+}
+
+
+//- (id)application:(UIApplication *)application handlerForIntent:(INIntent *)intent {
+//    INPlayMediaIntent *playIntent = [[INPlayMediaIntent alloc] init];
+//    playIntent.suggestedInvocationPhrase = @"测试捷径搜索三十而已";
+//
+//    return playIntent;
+//}
+
+
+- (void)application:(UIApplication *)application handleIntent:(INIntent *)intent completionHandler:(void (^)(INIntentResponse * _Nonnull))completionHandler {
+    
+    NSLog(@"2开始处理播放音频");
+
 }
 
 

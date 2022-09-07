@@ -22,22 +22,12 @@
 - (void)scene:(UIScene *)scene continueUserActivity:(NSUserActivity *)userActivity {
     
     NSLog(@"continueUserActivity --%@",userActivity.activityType);
-
-}
-
-
-- (void)scene:(UIScene *)scene restoreInteractionStateWithUserActivity:(NSUserActivity *)stateRestorationActivity {
+    if ([userActivity.activityType isEqualToString:@"INPlayMediaIntent"]) {
+        // 容错处理
+        NSLog(@"开始播放处理---%@",userActivity.userInfo[@"title"]);
+    }
     
-    NSLog(@"restoreInteractionStateWithUserActivity--%@",stateRestorationActivity.activityType);
 }
-
-
-- (void)scene:(UIScene *)scene didUpdateUserActivity:(NSUserActivity *)userActivity {
-    
-    NSLog(@"didUpdateUserActivity---%@",userActivity.activityType);
-
-}
-
 
 
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {

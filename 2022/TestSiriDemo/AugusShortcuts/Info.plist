@@ -14,9 +14,15 @@
 			<array>
 				<string>BroadcastIntent</string>
 				<string>HotListIntent</string>
+				<string>INPlayMediaIntent</string>
 				<string>INSearchForMessagesIntent</string>
 				<string>INSendMessageIntent</string>
 				<string>INSetMessageAttributeIntent</string>
+				<string>SNSportIntent</string>
+			</array>
+			<key>SupportedMediaCategories</key>
+			<array>
+				<string>INMediaCategoryGeneral</string>
 			</array>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>

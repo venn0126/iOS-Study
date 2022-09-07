@@ -17,7 +17,9 @@
 // "<myApp> John saying hello"
 // "Search for messages in <myApp>"
 
-@interface IntentHandler () <INSendMessageIntentHandling, INSearchForMessagesIntentHandling, INSetMessageAttributeIntentHandling>
+
+// INPlayMediaIntentHandling
+@interface IntentHandler () <INSendMessageIntentHandling, INSearchForMessagesIntentHandling, INSetMessageAttributeIntentHandling, INPlayMediaIntentHandling>
 
 @end
 
@@ -27,9 +29,16 @@
     // This is the default implementation.  If you want different objects to handle different intents,
     // you can override this and return the handler you want for that particular intent.
     
-    if ([intent isKindOfClass:[HotListIntent class]]) {
-        return [HotListHandler new];
-    }
+    NSLog(@"%@---%@---%@",@(__func__),@(__LINE__),NSStringFromClass([intent class]));
+
+//    if ([intent isKindOfClass:[HotListIntent class]]) {
+//        return [HotListHandler new];
+//    } else if([intent isKindOfClass:[INStartWorkoutIntent class]]) {
+//        return [INStartWorkoutIntent new];
+//    }else
+//    if([intent isKindOfClass:[INPlayMediaIntent class]]) {
+//        return [SNPlayMediaIntentHandler new];
+//    }
     
     return self;
 }
@@ -122,5 +131,51 @@
     completion(response);
 }
 
+
+
+#pragma mark - INPlayMediaIntentHandling
+
+- (void)resolveMediaItemsForPlayMedia:(INPlayMediaIntent *)intent withCompletion:(void (^)(NSArray<INPlayMediaMediaItemResolutionResult *> * _Nonnull))completion {
+    
+    NSLog(@"%@---%@---%@",@(__func__),@(__LINE__), intent.mediaSearch.mediaName);
+    
+    NSString *title = nil;
+    if (intent.mediaSearch) {
+        title = intent.mediaSearch.mediaName;
+    }
+
+    // 描述媒体类型
+    INMediaItem *item = [[INMediaItem alloc] initWithIdentifier:nil title:title type:INMediaItemTypeNews artwork:nil];
+ 
+    // 媒体项目类型的解析结果
+    INMediaItemResolutionResult *mediaResult = [INMediaItemResolutionResult successWithResolvedMediaItem:item];
+    NSMutableArray *mutableArray = [NSMutableArray array];
+    
+    INPlayMediaMediaItemResolutionResult *playResult = [[INPlayMediaMediaItemResolutionResult alloc] initWithMediaItemResolutionResult:mediaResult];
+    [mutableArray addObject:playResult];
+    
+    completion(mutableArray);
+}
+
+
+- (void)handlePlayMedia:(INPlayMediaIntent *)intent completion:(void (^)(INPlayMediaIntentResponse * _Nonnull))completion {
+    
+    
+    NSLog(@"%@---%@",@(__func__),@(__LINE__));
+    NSUserActivity *userActivity = [[NSUserActivity alloc] initWithActivityType:NSStringFromClass([INPlayMediaIntent class])];
+    INMediaItem *item = [intent.mediaItems firstObject];
+    
+    // 容错处理
+    // 如果等于则是，是别错误则默认打开，某个要闻频道
+    if (item.title.length > 0) {
+        userActivity.userInfo = @{@"title":item.title,@"source":@"siri"};
+    } else {
+        userActivity.userInfo = @{@"title":@"真人播报",@"source":@"siri"};
+    }
+    
+    // media intent的回应
+    INPlayMediaIntentResponse *response = [[INPlayMediaIntentResponse alloc] initWithCode:INPlayMediaIntentResponseCodeContinueInApp userActivity:userActivity];
+    completion(response);
+}
 
 @end
