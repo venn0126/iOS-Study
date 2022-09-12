@@ -88,39 +88,39 @@
 //    }
     
     
-    NSArray *playChannelNames = @[@"今日新闻",@"真人播报",@"热榜"];
-    NSString *url = nil;
-    NSString *title = @"今月心闻";
-    
-    NSString *item = nil;
-    NSString *channelName = nil;
-    BOOL isEnd = NO;
-    
-    for (int i = 0; i < title.length; i++) {
-        if (isEnd) {
-            break;
-        }
-        isEnd = NO;
-        item = [title substringWithRange:NSMakeRange(i, 1)];
-        NSLog(@"内侧 %@",item);
-        for (int i = 0; i < playChannelNames.count; i++) {
-            NSLog(@"外侧 %ld",(long)i);
-            channelName = playChannelNames[i];
-            if ([channelName rangeOfString:item].location != NSNotFound) {
-                if (i == 0) {
-                    url = @"0";
-                } else if(i == 1) {
-                    url = @"1";
-                }else {
-                    url = @"2";
-                }
-                isEnd = YES;
-                break;
-            }
-        }
-    }
-    
-    NSLog(@"url %@",url);
+//    NSArray *playChannelNames = @[@"今日新闻",@"真人播报",@"热榜"];
+//    NSString *url = nil;
+//    NSString *title = @"今月心闻";
+//
+//    NSString *item = nil;
+//    NSString *channelName = nil;
+//    BOOL isEnd = NO;
+//
+//    for (int i = 0; i < title.length; i++) {
+//        if (isEnd) {
+//            break;
+//        }
+//        isEnd = NO;
+//        item = [title substringWithRange:NSMakeRange(i, 1)];
+//        NSLog(@"内侧 %@",item);
+//        for (int i = 0; i < playChannelNames.count; i++) {
+//            NSLog(@"外侧 %ld",(long)i);
+//            channelName = playChannelNames[i];
+//            if ([channelName rangeOfString:item].location != NSNotFound) {
+//                if (i == 0) {
+//                    url = @"0";
+//                } else if(i == 1) {
+//                    url = @"1";
+//                }else {
+//                    url = @"2";
+//                }
+//                isEnd = YES;
+//                break;
+//            }
+//        }
+//    }
+//
+//    NSLog(@"url %@",url);
 }
 
 

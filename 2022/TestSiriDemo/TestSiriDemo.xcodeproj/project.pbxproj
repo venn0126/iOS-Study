@@ -457,9 +457,9 @@
 				DEVELOPMENT_TEAM = AQDKUEE5C2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AugusShortcuts/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "搜狐消息";
+				INFOPLIST_KEY_CFBundleDisplayName = AugusShortcuts;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -470,7 +470,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -483,9 +483,9 @@
 				DEVELOPMENT_TEAM = AQDKUEE5C2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AugusShortcuts/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "搜狐消息";
+				INFOPLIST_KEY_CFBundleDisplayName = AugusShortcuts;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -496,7 +496,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
