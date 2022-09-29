@@ -7,7 +7,6 @@
 		<string>BroadcastIntent</string>
 		<string>HotListIntent</string>
 		<string>INPlayMediaIntent</string>
-		<string>SNSportIntent</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

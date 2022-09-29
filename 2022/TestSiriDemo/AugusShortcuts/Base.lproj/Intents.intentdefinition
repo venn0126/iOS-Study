@@ -9,11 +9,11 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>DqripP</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>21E258</string>
+	<string>21G115</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
-	<string>13F100</string>
+	<string>14A309</string>
 	<key>INIntentDefinitionToolsVersion</key>
-	<string>13.4.1</string>
+	<string>14.0</string>
 	<key>INIntents</key>
 	<array>
 		<dict>
@@ -22,7 +22,7 @@
 			<key>INIntentConfigurable</key>
 			<true/>
 			<key>INIntentDescription</key>
-			<string>快速打开搜狐新闻热榜</string>
+			<string>open hot list</string>
 			<key>INIntentDescriptionID</key>
 			<string>u33fHQ</string>
 			<key>INIntentInput</key>
@@ -36,7 +36,7 @@
 					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
 					<true/>
 					<key>INIntentParameterCombinationTitle</key>
-					<string>输入值 ${inputValue}存储key ${storeKey}</string>
+					<string>input ${inputValue}store key ${storeKey}</string>
 					<key>INIntentParameterCombinationTitleID</key>
 					<string>IcT2Zp</string>
 					<key>INIntentParameterCombinationUpdatesLinked</key>
@@ -52,13 +52,13 @@
 					<key>INIntentParameterCombinationIsPrimary</key>
 					<true/>
 					<key>INIntentParameterCombinationSubtitle</key>
-					<string>输入一个命令打开搜狐热榜</string>
+					<string>input a code open hot list</string>
 					<key>INIntentParameterCombinationSubtitleID</key>
 					<string>Gfyz4e</string>
 					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
 					<true/>
 					<key>INIntentParameterCombinationTitle</key>
-					<string>输入值 ${inputValue}存储key ${storeKey}</string>
+					<string>input ${inputValue}store key ${storeKey}</string>
 					<key>INIntentParameterCombinationTitleID</key>
 					<string>WTPQJ5</string>
 				</dict>
@@ -147,28 +147,12 @@
 				<key>INIntentResponseCodes</key>
 				<array>
 					<dict>
-						<key>INIntentResponseCodeConciseFormatString</key>
-						<string>打开成功</string>
-						<key>INIntentResponseCodeConciseFormatStringID</key>
-						<string>R2Wets</string>
-						<key>INIntentResponseCodeFormatString</key>
-						<string>打开成功</string>
-						<key>INIntentResponseCodeFormatStringID</key>
-						<string>m8s7Sm</string>
 						<key>INIntentResponseCodeName</key>
 						<string>success</string>
 						<key>INIntentResponseCodeSuccess</key>
 						<true/>
 					</dict>
 					<dict>
-						<key>INIntentResponseCodeConciseFormatString</key>
-						<string>打开失败</string>
-						<key>INIntentResponseCodeConciseFormatStringID</key>
-						<string>Fyi2fC</string>
-						<key>INIntentResponseCodeFormatString</key>
-						<string>打开失败</string>
-						<key>INIntentResponseCodeFormatStringID</key>
-						<string>HQ2a7L</string>
 						<key>INIntentResponseCodeName</key>
 						<string>failure</string>
 					</dict>
@@ -189,7 +173,7 @@
 			<key>INIntentConfigurable</key>
 			<true/>
 			<key>INIntentDescription</key>
-			<string>搜狐新闻打开真人播报</string>
+			<string>sohu open broadcast</string>
 			<key>INIntentDescriptionID</key>
 			<string>b1zTXI</string>
 			<key>INIntentLastParameterTag</key>
@@ -200,6 +184,10 @@
 				<dict>
 					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
 					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>sohu open broadcast</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>ty68xY</string>
 					<key>INIntentParameterCombinationUpdatesLinked</key>
 					<true/>
 				</dict>
@@ -214,6 +202,10 @@
 					<true/>
 					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
 					<true/>
+					<key>INIntentParameterCombinationTitle</key>
+					<string>sohu open broadcast</string>
+					<key>INIntentParameterCombinationTitleID</key>
+					<string>J6c9pA</string>
 				</dict>
 			</dict>
 			<key>INIntentResponse</key>
@@ -221,93 +213,21 @@
 				<key>INIntentResponseCodes</key>
 				<array>
 					<dict>
-						<key>INIntentResponseCodeConciseFormatString</key>
-						<string>打开成功</string>
-						<key>INIntentResponseCodeConciseFormatStringID</key>
-						<string>RIfSZ1</string>
-						<key>INIntentResponseCodeFormatString</key>
-						<string>打开成功</string>
-						<key>INIntentResponseCodeFormatStringID</key>
-						<string>YSOTTX</string>
 						<key>INIntentResponseCodeName</key>
 						<string>success</string>
 						<key>INIntentResponseCodeSuccess</key>
 						<true/>
 					</dict>
 					<dict>
-						<key>INIntentResponseCodeConciseFormatString</key>
-						<string>打开失败</string>
-						<key>INIntentResponseCodeConciseFormatStringID</key>
-						<string>Q9jPje</string>
-						<key>INIntentResponseCodeFormatString</key>
-						<string>打开失败</string>
-						<key>INIntentResponseCodeFormatStringID</key>
-						<string>FbJbcT</string>
 						<key>INIntentResponseCodeName</key>
 						<string>failure</string>
 					</dict>
 				</array>
 			</dict>
 			<key>INIntentTitle</key>
-			<string>搜狐新闻打开真人播报</string>
+			<string>Broadcast</string>
 			<key>INIntentTitleID</key>
 			<string>Ou1RLN</string>
-			<key>INIntentType</key>
-			<string>Custom</string>
-			<key>INIntentVerb</key>
-			<string>Do</string>
-		</dict>
-		<dict>
-			<key>INIntentCategory</key>
-			<string>generic</string>
-			<key>INIntentConfigurable</key>
-			<true/>
-			<key>INIntentDescription</key>
-			<string>打开搜狐app体育频道</string>
-			<key>INIntentDescriptionID</key>
-			<string>0eFtFU</string>
-			<key>INIntentManagedParameterCombinations</key>
-			<dict>
-				<key></key>
-				<dict>
-					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
-					<true/>
-					<key>INIntentParameterCombinationUpdatesLinked</key>
-					<true/>
-				</dict>
-			</dict>
-			<key>INIntentName</key>
-			<string>SNSport</string>
-			<key>INIntentParameterCombinations</key>
-			<dict>
-				<key></key>
-				<dict>
-					<key>INIntentParameterCombinationIsPrimary</key>
-					<true/>
-					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
-					<true/>
-				</dict>
-			</dict>
-			<key>INIntentResponse</key>
-			<dict>
-				<key>INIntentResponseCodes</key>
-				<array>
-					<dict>
-						<key>INIntentResponseCodeName</key>
-						<string>success</string>
-						<key>INIntentResponseCodeSuccess</key>
-						<true/>
-					</dict>
-					<dict>
-						<key>INIntentResponseCodeName</key>
-						<string>failure</string>
-					</dict>
-				</array>
-			</dict>
-			<key>INIntentTitle</key>
-			<string>搜狐体育</string>
-			<key>INIntentTitleID</key>
-			<string>oV3m6O</string>
 			<key>INIntentType</key>
 			<string>Custom</string>
 			<key>INIntentVerb</key>
@@ -323,7 +243,7 @@
 			<key>INIntentCustomizable</key>
 			<true/>
 			<key>INIntentDescription</key>
-			<string>搜狐消息在某个频道播放新闻</string>
+			<string>sohu news play news</string>
 			<key>INIntentDescriptionID</key>
 			<string>LdrEPN</string>
 			<key>INIntentDomain</key>
@@ -649,7 +569,7 @@
 				</dict>
 			</array>
 			<key>INIntentTitle</key>
-			<string>播放新闻</string>
+			<string>Play News</string>
 			<key>INIntentTitleID</key>
 			<string>G3J6fP</string>
 			<key>INIntentType</key>

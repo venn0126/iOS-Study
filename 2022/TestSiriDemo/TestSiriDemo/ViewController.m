@@ -11,9 +11,11 @@
 #import <IntentsUI/IntentsUI.h>
 //#import "SNPlayNewsIntent.h"
 
-@interface ViewController ()<INUIAddVoiceShortcutViewControllerDelegate, INUIEditVoiceShortcutViewControllerDelegate>
+@interface ViewController ()<INUIAddVoiceShortcutViewControllerDelegate, INUIEditVoiceShortcutViewControllerDelegate, INUIAddVoiceShortcutButtonDelegate>
 
 @property (nonatomic, strong) UIButton *addShortCutsButton;
+
+@property (nonatomic, strong) INUIAddVoiceShortcutButton *addVoiceButton;
 
 @end
 
@@ -30,7 +32,24 @@
 //    [self donatedUserActivity];
     
     [self donateIntents];
+    
+    self.addVoiceButton.frame = CGRectMake(200, 200, 100, 50);
+    [self.view addSubview:self.addVoiceButton];
 }
+
+
+//- (INUIAddVoiceShortcutButton *)addToSiriBtn  API_AVAILABLE(ios(12.0)){
+//if (!_addToSiriBtn) {
+//_addToSiriBtn = [[INUIAddVoiceShortcutButton alloc] initWithStyle:INUIAddVoiceShortcutButtonStyleBlack];
+//INIntent *intentItem = XXX;
+//INShortcut *shortCut = [[INShortcut alloc] initWithIntent:intentItem];
+//_addToSiriBtn.delegate = self;
+//_addToSiriBtn.translatesAutoresizingMaskIntoConstraints = NO;
+//[_addToSiriBtn setShortcut:shortCut];
+//}
+//
+//return _addToSiriBtn;
+//}
 
 
 - (void)donatedUserActivity {
@@ -73,19 +92,19 @@
 //    }];
     
     
-//    INPlayMediaIntent *playIntent = [[INPlayMediaIntent alloc] init];
-//    playIntent.suggestedInvocationPhrase = @"搜狐消息播放热门视频";
-//
-//    INInteraction *interaction = [[INInteraction alloc] initWithIntent:playIntent response:nil];
-//    if (interaction) {
-//        [interaction donateInteractionWithCompletion:^(NSError * _Nullable error) {
-//            if (error) {
-//                 NSLog(@"测试捷径搜索 捐赠失败");
-//                 return;
-//             }
-//             NSLog(@"测试捷径搜索 捐赠成功");
-//        }];
-//    }
+    INPlayMediaIntent *playIntent = [[INPlayMediaIntent alloc] init];
+    playIntent.suggestedInvocationPhrase = @"搜狐消息播放热门视频";
+
+    INInteraction *interaction = [[INInteraction alloc] initWithIntent:playIntent response:nil];
+    if (interaction) {
+        [interaction donateInteractionWithCompletion:^(NSError * _Nullable error) {
+            if (error) {
+                 NSLog(@"测试捷径搜索 捐赠失败");
+                 return;
+             }
+             NSLog(@"测试捷径搜索 捐赠成功");
+        }];
+    }
     
     
 //    NSArray *playChannelNames = @[@"今日新闻",@"真人播报",@"热榜"];
@@ -231,6 +250,21 @@
 }
 
 
+#pragma mark - INUIAddVoiceShortcutButtonDelegate
+
+- (void)presentAddVoiceShortcutViewController:(INUIAddVoiceShortcutViewController *)addVoiceShortcutViewController forAddVoiceShortcutButton:(INUIAddVoiceShortcutButton *)addVoiceShortcutButton {
+    
+    NSLog(@"%@---%@",@(__func__),@(__LINE__));
+}
+
+
+- (void)presentEditVoiceShortcutViewController:(INUIEditVoiceShortcutViewController *)editVoiceShortcutViewController forAddVoiceShortcutButton:(INUIAddVoiceShortcutButton *)addVoiceShortcutButton {
+    
+    NSLog(@"%@---%@",@(__func__),@(__LINE__));
+
+}
+
+
 #pragma mark - INUIAddVoiceShortcutViewControllerDelegate
 
 
@@ -282,6 +316,18 @@
         [_addShortCutsButton sizeToFit];
     }
     return _addShortCutsButton;
+}
+
+- (INUIAddVoiceShortcutButton *)addVoiceButton {
+    if(!_addVoiceButton) {
+        _addVoiceButton = [[INUIAddVoiceShortcutButton alloc] initWithStyle:INUIAddVoiceShortcutButtonStyleBlack];
+        INPlayMediaIntent *playIntent = [[INPlayMediaIntent alloc] init];
+        INShortcut *shortcut = [[INShortcut alloc] initWithIntent:playIntent];
+        _addVoiceButton.delegate = self;
+        _addVoiceButton.translatesAutoresizingMaskIntoConstraints = NO;
+        [_addVoiceButton setShortcut:shortcut];
+    }
+    return _addVoiceButton;
 }
 
 @end

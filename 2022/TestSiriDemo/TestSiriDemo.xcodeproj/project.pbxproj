@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B161134628E57F8C00DAD3E9 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B161134928E57F8C00DAD3E9 /* Intents.intentdefinition */; };
+		B161134728E57F8C00DAD3E9 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B161134928E57F8C00DAD3E9 /* Intents.intentdefinition */; };
 		B17EA1FE28A4E5F40094AE0C /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1ADC63928A4A28B000BFBA9 /* Intents.framework */; };
 		B17EA20228A4E5F40094AE0C /* IntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B17EA20128A4E5F40094AE0C /* IntentHandler.m */; };
 		B17EA20628A4E5F40094AE0C /* AugusShortcuts.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B17EA1FD28A4E5F40094AE0C /* AugusShortcuts.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B17EA20B28A4E6090094AE0C /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B17EA20A28A4E6090094AE0C /* Intents.intentdefinition */; };
 		B17EA21128A4FC1D0094AE0C /* HotListHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B17EA21028A4FC1D0094AE0C /* HotListHandler.m */; };
-		B17EA21228A4FDAD0094AE0C /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B17EA20A28A4E6090094AE0C /* Intents.intentdefinition */; };
 		B19CD87828C5986E00EE2F59 /* SNAugusSiriHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B19CD87728C5986E00EE2F59 /* SNAugusSiriHandler.m */; };
 		B1ADC5FF28A4A1AF000BFBA9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1ADC5FE28A4A1AF000BFBA9 /* AppDelegate.m */; };
 		B1ADC60228A4A1AF000BFBA9 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1ADC60128A4A1AF000BFBA9 /* SceneDelegate.m */; };
@@ -65,11 +65,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B161134828E57F8C00DAD3E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = Base; path = Base.lproj/Intents.intentdefinition; sourceTree = "<group>"; };
+		B161135628E5814C00DAD3E9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		B161135728E5814C00DAD3E9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		B161135C28E5819500DAD3E9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Intents.strings"; sourceTree = "<group>"; };
 		B17EA1FD28A4E5F40094AE0C /* AugusShortcuts.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AugusShortcuts.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		B17EA20028A4E5F40094AE0C /* IntentHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntentHandler.h; sourceTree = "<group>"; };
 		B17EA20128A4E5F40094AE0C /* IntentHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntentHandler.m; sourceTree = "<group>"; };
 		B17EA20328A4E5F40094AE0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B17EA20A28A4E6090094AE0C /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
 		B17EA20F28A4FC1D0094AE0C /* HotListHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HotListHandler.h; sourceTree = "<group>"; };
 		B17EA21028A4FC1D0094AE0C /* HotListHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotListHandler.m; sourceTree = "<group>"; };
 		B17EA21328A5157C0094AE0C /* AugusShortcuts.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = AugusShortcuts.entitlements; sourceTree = "<group>"; };
@@ -137,7 +140,7 @@
 				B17EA20128A4E5F40094AE0C /* IntentHandler.m */,
 				B17EA20F28A4FC1D0094AE0C /* HotListHandler.h */,
 				B17EA21028A4FC1D0094AE0C /* HotListHandler.m */,
-				B17EA20A28A4E6090094AE0C /* Intents.intentdefinition */,
+				B161134928E57F8C00DAD3E9 /* Intents.intentdefinition */,
 				B17EA20328A4E5F40094AE0C /* Info.plist */,
 			);
 			path = AugusShortcuts;
@@ -319,6 +322,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = B1ADC5F128A4A1AF000BFBA9;
 			productRefGroup = B1ADC5FB28A4A1AF000BFBA9 /* Products */;
@@ -372,7 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B17EA20B28A4E6090094AE0C /* Intents.intentdefinition in Sources */,
+				B161134728E57F8C00DAD3E9 /* Intents.intentdefinition in Sources */,
 				B17EA20228A4E5F40094AE0C /* IntentHandler.m in Sources */,
 				B17EA21128A4FC1D0094AE0C /* HotListHandler.m in Sources */,
 			);
@@ -382,7 +386,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B17EA21228A4FDAD0094AE0C /* Intents.intentdefinition in Sources */,
+				B161134628E57F8C00DAD3E9 /* Intents.intentdefinition in Sources */,
 				B1ADC60528A4A1AF000BFBA9 /* ViewController.m in Sources */,
 				B19CD87828C5986E00EE2F59 /* SNAugusSiriHandler.m in Sources */,
 				B1ADC5FF28A4A1AF000BFBA9 /* AppDelegate.m in Sources */,
@@ -429,10 +433,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		B161134928E57F8C00DAD3E9 /* Intents.intentdefinition */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B161134828E57F8C00DAD3E9 /* Base */,
+				B161135C28E5819500DAD3E9 /* zh-Hans */,
+			);
+			name = Intents.intentdefinition;
+			sourceTree = "<group>";
+		};
 		B1ADC60628A4A1AF000BFBA9 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B1ADC60728A4A1AF000BFBA9 /* Base */,
+				B161135628E5814C00DAD3E9 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -441,6 +455,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B1ADC60C28A4A1B0000BFBA9 /* Base */,
+				B161135728E5814C00DAD3E9 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -459,7 +474,7 @@
 				INFOPLIST_FILE = AugusShortcuts/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = AugusShortcuts;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -485,7 +500,7 @@
 				INFOPLIST_FILE = AugusShortcuts/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = AugusShortcuts;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -504,6 +519,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -562,6 +578,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
