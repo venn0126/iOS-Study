@@ -58,7 +58,9 @@
 //    [self testGradientLayer];
     
     
-    [self testLeftButton];
+//    [self testLeftButton];
+    
+    [self testFishHook];
     
 
 }
@@ -417,6 +419,45 @@
 - (void)testFishHook {
     
     
+    /**
+     
+     0x0000000102a78000：image list中第一个元素，mach-o文件地址
+     0x10000C10C：mach-o-view打开的TestFishhook的的可执行文件的NSLog的偏移地址（offset）
+     
+
+     (lldb) memory read 0x0000000102a78000+0x14020
+     0x102a8c020: 0c 41 a8 02 01 00 00 00 1c 43 a8 02 01 00 00 00  .A.......C......
+     0x102a8c030: 00 88 bc 91 01 00 00 00 a8 57 18 93 01 00 00 00  .........W......
+     2022-10-25 23:20:52.943034+0800 TestFishhook[59436:4802538] hhhh
+     (lldb) memory read 0x0000000102a78000+0x14020
+     0x102a8c020: 80 49 bd 91 01 00 00 00 1c 43 a8 02 01 00 00 00  .I.......C......
+     0x102a8c030: 00 88 bc 91 01 00 00 00 a8 57 18 93 01 00 00 00  .........W......
+     (lldb) dis -s 0x0191bd4980
+     Foundation`NSLog:
+         0x191bd4980 <+0>:  sub    sp, sp, #0x20             ; =0x20
+         0x191bd4984 <+4>:  stp    x29, x30, [sp, #0x10]
+         0x191bd4988 <+8>:  add    x29, sp, #0x10            ; =0x10
+         0x191bd498c <+12>: adrp   x8, 334535
+         0x191bd4990 <+16>: ldr    x8, [x8, #0xd08]
+         0x191bd4994 <+20>: ldr    x8, [x8]
+         0x191bd4998 <+24>: str    x8, [sp, #0x8]
+         0x191bd499c <+28>: add    x8, x29, #0x10            ; =0x10
+     (lldb) memory read 0x0000000102a78000+0x14020
+     0x102a8c020: 4c fb a7 02 01 00 00 00 1c 43 a8 02 01 00 00 00  L........C......
+     0x102a8c030: 00 88 bc 91 01 00 00 00 a8 57 18 93 01 00 00 00  .........W......
+     (lldb) dis -s 0x0102a7fb4c
+     TestFishhook`nwLog:
+         0x102a7fb4c <+0>:  stp    x20, x19, [sp, #-0x20]!
+         0x102a7fb50 <+4>:  stp    x29, x30, [sp, #0x10]
+         0x102a7fb54 <+8>:  add    x29, sp, #0x10            ; =0x10
+         0x102a7fb58 <+12>: nop
+         0x102a7fb5c <+16>: ldr    x1, #0xfaf4               ; "stringByAppendingString:"
+         0x102a7fb60 <+20>: adr    x2, #0x8a28               ; @" [rebinding log...]"
+         0x102a7fb64 <+24>: nop
+         0x102a7fb68 <+28>: bl     0x102a84034               ; symbol stub for: objc_msgSend
+     2022-10-25 23:22:00.661540+0800 TestFishhook[59436:4802538] hook finish [rebinding log...]
+     */
+    
     NSLog(@"hhhh");
 
     
@@ -440,6 +481,7 @@
     // int rebind_symbols(struct rebinding rebindings[], size_t rebindings_nel)
     //
     rebind_symbols(rebs, 1);
+    NSLog(@"hook finish");
     
     
     
@@ -448,7 +490,7 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
-//    NSLog(@"touch begin screen");
+    NSLog(@"touch begin screen");
 //    [self.testLabel shakeTimes:4 speed:0.05 range:2 shakeDirection:SNAugusDirectionHorizontal];
     
     

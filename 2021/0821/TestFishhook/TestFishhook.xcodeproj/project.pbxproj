@@ -478,14 +478,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Z75EHQZQ54;
+				DEVELOPMENT_TEAM = 5HBHMF4A5F;
 				INFOPLIST_FILE = TestFishhook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sohu..TestFishhook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sohu..TestFishhook0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TestFishhook/TestFishhook-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -501,14 +501,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Z75EHQZQ54;
+				DEVELOPMENT_TEAM = 5HBHMF4A5F;
 				INFOPLIST_FILE = TestFishhook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sohu..TestFishhook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sohu..TestFishhook0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TestFishhook/TestFishhook-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
