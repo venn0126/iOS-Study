@@ -15,6 +15,8 @@
 #import "SNAugusPopView.h"
 #import "SNTitleLeftButton.h"
 
+#import "MyPtrace.h"
+
 @interface ViewController ()<SNAugusPopViewDelagate>
 
 @property (nonatomic, strong) UIView *testView;
@@ -60,7 +62,9 @@
     
 //    [self testLeftButton];
     
-    [self testFishHook];
+//    [self testFishHook];
+    
+    [self testFishHook2];
     
 
 }
@@ -487,6 +491,85 @@
     
     self.view.backgroundColor = UIColor.linkColor;
 }
+
+
+- (void)testFishHook2 {
+    
+ 
+    
+    // 定义rebinding结构体来声明要做的事
+    struct rebinding augusPtraceStruct;
+    // 需要hook的方法
+    augusPtraceStruct.name = "ptrace";
+    // 需要保存的函数的指针名
+    augusPtraceStruct.replaced = (void *)&ptrace_pointer;
+    
+    // 新的实现函数
+    augusPtraceStruct.replacement = ptrace_augus;
+    
+    
+    // 替换函数所需要的数组
+    struct rebinding rebs[] = {augusPtraceStruct};
+    
+    rebind_symbols(rebs, 1);
+    
+    
+    // 如果是调试模式则被杀掉
+    // arg1: ptrace要做的事情
+    // arg2: 要操作的进程id
+    // arg3/arg4: 取决于第一个参数
+//    ptrace(PT_DENY_ATTACH, 0, 0, 0);
+    
+    
+    // 防止fishhook被攻击替换
+    // 不生成符号表
+    
+    // 获取到libsystem_kernel动态库的指针
+    // 先进行符号断点，找到调用的动态库libsystem_kernel.dylib
+    // 再使用bt命令，找到调用堆栈
+    // 然后使用image list，找到设备上动态库的位置，/usr/lib/system/libsystem_kernel.dylib
+    void * kernelHandle = dlopen("/usr/lib/system/libsystem_kernel.dylib", RTLD_LAZY);
+    
+    
+    // 定义一个指针接受查找函数的指针
+    
+    int (*ptrace_p1)(int _request, pid_t _pid, caddr_t _addr, int _data);
+
+    // 根据句柄在库中查找方法ptrace
+    ptrace_p1 = dlsym(kernelHandle, "ptrace");
+    
+    // 调用ptrace，而且不生成符号表
+    ptrace_p1(PT_DENY_ATTACH, 0, 0, 0);
+    
+    
+    
+    NSLog(@"ptrace is ending");
+    
+    
+}
+
+
+/// hook ptrace函数
+/// 第一个需要一个指针存放ptrace函数的地址
+/// 第二个需要一个新的函数来实现自己的需求
+///
+
+
+// 存放ptrace函数的指针
+int (*ptrace_pointer)(int _request, pid_t _pid, caddr_t _addr, int _data);
+
+// 新的ptrace函数
+int ptrace_augus(int _request, pid_t _pid, caddr_t _addr, int _data) {
+    
+    if(_request != PT_DENY_ATTACH) {
+        return ptrace(_request, _pid, _addr, _data);
+    }
+    
+    // 代表什么都不做
+    return 0;
+}
+
+
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
