@@ -21,12 +21,12 @@
 
 		var head = "/System/Library"
 		var foot = "Frameworks/" + name + ".framework"
-		var bundle = [NSBundle bundleWithPath:head + foot] || [NSBundle bundlePath:head + "Private" + foot];
+		var bundle = [NSBundle bundleWithPath:head + foot] || [NSBundle bundleWithPath:head + "Private" + foot];
 		[bundle load];
 		return bundle;
 	};
 
-	// kew windows
+	// kew window
 	GTKeyWin = function() {
 		return UIApp.keyWindow;
 	};
@@ -188,7 +188,7 @@
 		var x = {};
 		for(var i in *obj) {
 			try {
-				var = value = (*obj)[i];
+				var value = (*obj)[i];
 				if(reg && !reg.test(i) && reg.test(value)) continue;
 				x[i] = value;
 
