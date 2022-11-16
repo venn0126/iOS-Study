@@ -18,8 +18,7 @@
 
 	// 加载系统动态库
 	GTLoadFramework = function(name) {
-
-		var head = "/System/Library"
+		var head = "/System/Library/"
 		var foot = "Frameworks/" + name + ".framework"
 		var bundle = [NSBundle bundleWithPath:head + foot] || [NSBundle bundleWithPath:head + "Private" + foot];
 		[bundle load];
@@ -42,7 +41,7 @@
 			return _GTFrontVc(vc.presentedViewController);
 		} else if([vc isKindOfClass:[UITabBarController class]]){
 			return _GTFrontVc(vc.selectedViewController);
-		} else if([vc isKindOfClass:[UINavgationController class]]) {
+		} else if([vc isKindOfClass:[UINavigationController class]]) {
 			return _GTFrontVc(vc.visibleViewController);
 		} else {
 			var count = vc.childViewControllers.count;
@@ -75,11 +74,11 @@
 	// 获取按钮绑定的所有touchUpInside事件的方法名
 	GTButtonTouchUpEvents = function (button) {
 		var events = [];
-		var allTargets = button.allTargets().allObjects();
-		var count = allTargets.count;
+		var allObjects = button.allTargets.allObjects;
+		var count = allObjects.count;
 		for (var i = count - 1; i >= 0; i--) {
-			if(button != allTargets[i]) {
-				var event = [button actionsForTarget:allTargets[i] forControlEvent:UIControlEventTouchUpInside];
+			if(button != allObjects[i]) {
+				var event = [button actionsForTarget:allObjects[i] forControlEvent:UIControlEventTouchUpInside];
 				events.push(event);
 			}
 		}
