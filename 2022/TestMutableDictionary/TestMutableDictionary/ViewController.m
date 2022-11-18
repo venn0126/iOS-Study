@@ -11,6 +11,18 @@
 #import "TestTransformCG.h"
 #import "SNAugusFadeImageView.h"
 
+
+#import "DTCoreTextConstants.h"
+#import "NSAttributedString+HTML.h"
+
+
+
+typedef NS_ENUM(NSInteger,SNHTMLToStringType) {
+    SNHTMLToStringTypeFoundation = 0,
+    SNHTMLToStringTypeDT = 1,
+    SNHTMLToStringTypeCount,
+};
+
 #define DEGREES_TO_RADIANS(x) (M_PI * (x) / 180.0)
 
 @interface ViewController ()
@@ -20,6 +32,9 @@
 @property (nonatomic, strong) UIButton *weChatButton;
 @property (nonatomic, copy) NSString *tian;
 @property (nonatomic, strong) SNAugusFadeImageView *fadeImageView;
+
+/// 测试DT html to attributed string
+@property (nonatomic, strong) UILabel *dtShowLabel;
 
 
 
@@ -44,49 +59,151 @@ NSInteger baseNumber = 12;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-//    [self testMutableDictionary:nil];
-//    [self testLocationNofFound];
-//    [self testStringNil];
+    //    [self testMutableDictionary:nil];
+    //    [self testLocationNofFound];
+    //    [self testStringNil];
     
-//    [self compareNumberA:3 toNumberB:4];
-//    func(1, 2);
-//    [self testConditionStatementA:6 withB:4];
-//    testArmCommand();
-//    [self testArmFunc];
-//    [self testArmDoWhile];
-//    [self testArmWhile];
-//    [self testArmFor];
-//    [self testSwitchWayOne:2];
-//    [self testSwitchWayTwo:6];
-//    self.view.backgroundColor = UIColor.whiteColor;
-//    [self testAssetsDifferentVersions];
-//    NSLog(@"view did load end");
+    //    [self compareNumberA:3 toNumberB:4];
+    //    func(1, 2);
+    //    [self testConditionStatementA:6 withB:4];
+    //    testArmCommand();
+    //    [self testArmFunc];
+    //    [self testArmDoWhile];
+    //    [self testArmWhile];
+    //    [self testArmFor];
+    //    [self testSwitchWayOne:2];
+    //    [self testSwitchWayTwo:6];
+    //    self.view.backgroundColor = UIColor.whiteColor;
+    //    [self testAssetsDifferentVersions];
+    //    NSLog(@"view did load end");
     
-//    [self testEncryptWays];
+    //    [self testEncryptWays];
     
-//    [self testArrayCrash];
+    //    [self testArrayCrash];
     
-//    NSLog(@"start");
-//
-//    [Person say:@"nihao" callback:^(NSString * _Nonnull text, int x, NSString * _Nonnull y, double z, BOOL m) {
-//       
-//        NSLog(@"end");
-//    }];
+    //    NSLog(@"start");
+    //
+    //    [Person say:@"nihao" callback:^(NSString * _Nonnull text, int x, NSString * _Nonnull y, double z, BOOL m) {
+    //
+    //        NSLog(@"end");
+    //    }];
     
-//    [self testWeChatAnimation];
-//    [self testCoreTextFrame];
+    //    [self testWeChatAnimation];
+    //    [self testCoreTextFrame];
     
-
-//    [self gradientAnimation];
     
-//    self.view.backgroundColor = UIColor.whiteColor;
+    //    [self gradientAnimation];
     
-//    [self testFadeImageView];
-//    [self testRadiusCircle];
+    //    self.view.backgroundColor = UIColor.whiteColor;
+    
+    //    [self testFadeImageView];
+    //    [self testRadiusCircle];
     self.view.backgroundColor = UIColor.whiteColor;
-//    [self testUpdateAnchorPointChangeFrame];
+    //    [self testUpdateAnchorPointChangeFrame];
     
-    [self testTextFieldClearButtonBackground];
+    //    [self testTextFieldClearButtonBackground];
+    
+    [self  testSomeHtmlToAttributed];
+    
+}
+
+
+- (void)testSomeHtmlToAttributed {
+    
+    int buttonCount = 5;
+    for (int i = 0; i < buttonCount; i++) {
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.frame = CGRectMake(0, 0, 200, 50);
+        button.center = CGPointMake(self.view.frame.size.width / 2, i * 60 + 160);
+        button.tag = pow(10, i + 3);
+        [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [button setTitle:[NSString stringWithFormat:@"run (%d)",(int)button.tag] forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(tap:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:button];
+    }
+}
+
+
+- (void)tap:(UIButton *)sender {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self test:(int)sender.tag];
+    });
+}
+
+NSTimeInterval TimeCosts[SNHTMLToStringTypeCount] = {0};
+int TimeCount = 0;
+
+- (void)test:(int)count {
+    
+    NSString *html = @"【<b>贵阳一女子花万元减肥结果</b>一斤没瘦 女子：希望退一部分钱】贵阳的蒋女士去年花钱到<b>一家减肥机构减肥，本想着花点钱</b>就能收获匀称的身材。可一年多过去，一站在镜子面前，蒋女士就<b>只剩垂头丧气</b>";
+    NSData *data = [html dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSTimeInterval begin, end;
+    TimeCount += count;
+    
+    {
+//        begin = CACurrentMediaTime();
+//        for (int i = 0; i < count; i++) {
+//            NSDictionary *options = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute : @(NSUTF8StringEncoding)};
+//            NSAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithData:data options:options documentAttributes:nil error:nil];
+//
+//        }
+//        end = CACurrentMediaTime();
+//        TimeCosts[SNHTMLToStringTypeFoundation] += end - begin;
+//        printf("Foundation time:               %8.2f ms\n", (end - begin) * 1000);
+
+        
+    }
+    
+    {
+        begin = CACurrentMediaTime();
+        for (int i = 0; i < count; i++) {
+            NSDictionary *options = @{
+                DTUseiOS6Attributes:@YES, // 这个属性设置为NO就会崩溃 `-[__NSCFType hyphenationFactor]: unrecognized selector sent to instance`
+                DTIgnoreInlineStylesOption:@YES,
+                DTDefaultLinkDecoration:@NO,
+                DTDefaultLinkColor:[UIColor blueColor],
+                DTLinkHighlightColorAttribute:[UIColor redColor],
+                DTDefaultFontSize:@15,
+                DTDefaultFontFamily:@"Helvetica Neue",
+                DTDefaultFontName:@"HelveticaNeue-Light"
+            };
+
+            NSAttributedString *attrString = [[NSAttributedString alloc] initWithHTMLData:data options:options documentAttributes:nil];
+
+        }
+        end = CACurrentMediaTime();
+        TimeCosts[SNHTMLToStringTypeDT] += end - begin;
+        printf("DT time:               %8.2f ms\n", (end - begin) * 1000);
+
+        
+    }
+    
+}
+
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    NSString *html = @"【<b>贵阳一女子花万元减肥结果</b>一斤没瘦 女子：希望退一部分钱】贵阳的蒋女士去年花钱到一家减肥机构减肥，本想着花点钱就能收获匀称的身材。可一年多过去，一站在镜子面前，蒋女士就只剩垂头丧气";
+    NSData *data = [html dataUsingEncoding:NSUTF8StringEncoding];
+
+    // 此方法崩溃，禁止使用
+    NSDictionary *options = @{
+        DTUseiOS6Attributes:@YES, // 这个属性设置为NO就会崩溃 `-[__NSCFType hyphenationFactor]: unrecognized selector sent to instance`
+        DTIgnoreInlineStylesOption:@YES,
+        DTDefaultLinkDecoration:@NO,
+        DTDefaultLinkColor:[UIColor blueColor],
+        DTLinkHighlightColorAttribute:[UIColor redColor],
+        DTDefaultFontSize:@15,
+        DTDefaultFontFamily:@"Helvetica Neue",
+        DTDefaultFontName:@"HelveticaNeue-Light"
+    };
+
+    NSAttributedString *attrString = [[NSAttributedString alloc] initWithHTMLData:data options:options documentAttributes:nil];
+    NSLog(@"%@", attrString);
+    
+    
+    self.dtShowLabel.attributedText = attrString;
 }
 
 
@@ -176,17 +293,17 @@ NSInteger baseNumber = 12;
 }
 
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    
-    if (!self.fadeImageView.isAnimationing) {
-        [self.fadeImageView startAnimation];
-    } else {
-        [self.fadeImageView stopAnimation];
-    }
-    
-    [self.view endEditing:YES];
-
-}
+//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//
+//    if (!self.fadeImageView.isAnimationing) {
+//        [self.fadeImageView startAnimation];
+//    } else {
+//        [self.fadeImageView stopAnimation];
+//    }
+//
+//    [self.view endEditing:YES];
+//
+//}
 
 - (void)testFadeImageView {
     
@@ -686,6 +803,5 @@ int testArmCommand(void) {
     }
     return _weChatButton;
 }
-
 
 @end
