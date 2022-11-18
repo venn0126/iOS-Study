@@ -50,6 +50,9 @@
 #import "YYDispatchQueuePool.h"
 
 
+#import <DTCoreText/DTCoreText.h>
+
+
 
 static const NSString *YSPlayerItemStatusContext;
 NSString * const AppViewControllerRefreshNotificationName = @"AppViewControllerRefreshNotificationName";
@@ -69,6 +72,9 @@ NSString * const AppViewControllerRefreshNotificationName = @"AppViewControllerR
 
 
 @property (nonatomic, copy) NSString *target;
+
+/// 测试DT html to attributed string
+@property (nonatomic, strong) UILabel *dtShowLabel;
 
 
 
@@ -185,12 +191,46 @@ static SNDispatchQueuePool *kDispatchPool;
     
 //    [self testDict];
     
-    [self testSNDispatchPool];
+//    [self testSNDispatchPool];
     
     
     
+    [self testHTMLStringToAttributedString];
+    
+}
 
+
+- (void)testHTMLStringToAttributedString {
     
+    [self.view addSubview:self.dtShowLabel];
+
+    NSString *html = @"【<b>贵阳一女子花万元减肥结果</b>一斤没瘦 女子：希望退一部分钱】贵阳的蒋女士去年花钱到一家减肥机构减肥，本想着花点钱就能收获匀称的身材。可一年多过去，一站在镜子面前，蒋女士就只剩垂头丧气";
+    NSData *data = [html dataUsingEncoding:NSUTF8StringEncoding];
+
+    // 此方法崩溃，禁止使用
+    NSDictionary *options = @{
+        DTUseiOS6Attributes:@YES, // 这个属性设置为NO就会崩溃 `-[__NSCFType hyphenationFactor]: unrecognized selector sent to instance`
+        DTIgnoreInlineStylesOption:@YES,
+        DTDefaultLinkDecoration:@NO,
+        DTDefaultLinkColor:[UIColor blueColor],
+        DTLinkHighlightColorAttribute:[UIColor redColor],
+        DTDefaultFontSize:@15,
+        DTDefaultFontFamily:@"Helvetica Neue",
+        DTDefaultFontName:@"HelveticaNeue-Light"
+    };
+
+    NSAttributedString *attrString = [[NSAttributedString alloc] initWithHTMLData:data options:options documentAttributes:nil];
+    NSLog(@"%@", attrString);
+    
+    
+    self.dtShowLabel.attributedText = attrString;
+        
+    
+    /**
+     
+     TODO: 单线程计算； 多线程计算；是否崩溃
+     
+     */
 }
 
 static int testUpdateCArrayItem(int arr[],int idx) {
@@ -1983,6 +2023,13 @@ bool test_and_set(bool *target) {
 }
 
 
-
+- (UILabel *)dtShowLabel {
+    if(!_dtShowLabel) {
+        _dtShowLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 200, self.view.frame.size.width, 400)];
+        _dtShowLabel.backgroundColor = UIColor.greenColor;
+        _dtShowLabel.textColor = UIColor.redColor;
+    }
+    return _dtShowLabel;
+}
 
 @end

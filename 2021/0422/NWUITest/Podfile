@@ -7,6 +7,7 @@ target 'NWUITest' do
 
   # Pods for NWUITest
   pod 'Masonry'
+  pod 'DTCoreText'
 
   target 'NWUITestTests' do
     inherit! :search_paths

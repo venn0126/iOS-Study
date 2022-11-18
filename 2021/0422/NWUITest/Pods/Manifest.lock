@@ -1,16 +1,38 @@
 PODS:
+  - DTCoreText (1.6.27):
+    - DTCoreText/Core (= 1.6.27)
+    - DTFoundation/Core (~> 1.7.5)
+    - DTFoundation/DTAnimatedGIF (~> 1.7.5)
+    - DTFoundation/DTHTMLParser (~> 1.7.5)
+    - DTFoundation/UIKit (~> 1.7.5)
+  - DTCoreText/Core (1.6.27):
+    - DTFoundation/Core (~> 1.7.5)
+    - DTFoundation/DTAnimatedGIF (~> 1.7.5)
+    - DTFoundation/DTHTMLParser (~> 1.7.5)
+    - DTFoundation/UIKit (~> 1.7.5)
+  - DTFoundation/Core (1.7.18)
+  - DTFoundation/DTAnimatedGIF (1.7.18)
+  - DTFoundation/DTHTMLParser (1.7.18):
+    - DTFoundation/Core
+  - DTFoundation/UIKit (1.7.18):
+    - DTFoundation/Core
   - Masonry (1.1.0)
 
 DEPENDENCIES:
+  - DTCoreText
   - Masonry
 
 SPEC REPOS:
   trunk:
+    - DTCoreText
+    - DTFoundation
     - Masonry
 
 SPEC CHECKSUMS:
+  DTCoreText: ac297b565abd3b12390d33cd6e076d875f0c0a5e
+  DTFoundation: a53f8cda2489208cbc71c648be177f902ee17536
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
 
-PODFILE CHECKSUM: d00c0e08c1f78d776cfdfbcc8d7bf9a7764c7088
+PODFILE CHECKSUM: fabcd979d944c7ac09003863afaf34f506808227
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3

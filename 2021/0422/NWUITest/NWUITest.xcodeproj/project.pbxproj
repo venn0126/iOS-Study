@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -402,6 +402,7 @@
 				27749CEF26311A5A00EA6402 /* Resources */,
 				27FFD2F42667DE30009C67E4 /* Embed Frameworks */,
 				2761B0A2269DF99600BB83FC /* Embed Watch Content */,
+				5C331D88FD804E50AEA990A4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -439,6 +440,7 @@
 				27749D1326311A5C00EA6402 /* Sources */,
 				27749D1426311A5C00EA6402 /* Frameworks */,
 				27749D1526311A5C00EA6402 /* Resources */,
+				1E25129CC92E82BF8AAEC511 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -527,6 +529,40 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1E25129CC92E82BF8AAEC511 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NWUITest-NWUITestUITests/Pods-NWUITest-NWUITestUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NWUITest-NWUITestUITests/Pods-NWUITest-NWUITestUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NWUITest-NWUITestUITests/Pods-NWUITest-NWUITestUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5C331D88FD804E50AEA990A4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NWUITest/Pods-NWUITest-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NWUITest/Pods-NWUITest-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NWUITest/Pods-NWUITest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7D1AB7746F6A2F728C4D9E18 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -803,7 +839,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2.1.0;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = L6A5VFP4PR;
+				DEVELOPMENT_TEAM = AQDKUEE5C2;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -816,7 +852,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Co.-Ltd...NWUITest";
+				PRODUCT_BUNDLE_IDENTIFIER = "Co.-Ltd...NWUITest0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -831,7 +867,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2.1.0;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = L6A5VFP4PR;
+				DEVELOPMENT_TEAM = AQDKUEE5C2;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -844,7 +880,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Co.-Ltd...NWUITest";
+				PRODUCT_BUNDLE_IDENTIFIER = "Co.-Ltd...NWUITest0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
