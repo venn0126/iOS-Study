@@ -141,7 +141,7 @@ int TimeCount = 0;
     NSTimeInterval begin, end;
     TimeCount += count;
     
-    {
+//    {
 //        begin = CACurrentMediaTime();
 //        for (int i = 0; i < count; i++) {
 //            NSDictionary *options = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute : @(NSUTF8StringEncoding)};
@@ -150,10 +150,10 @@ int TimeCount = 0;
 //        }
 //        end = CACurrentMediaTime();
 //        TimeCosts[SNHTMLToStringTypeFoundation] += end - begin;
-//        printf("Foundation time:               %8.2f ms\n", (end - begin) * 1000);
-
-        
-    }
+//        printf("run %d Foundation time:               %.2f ms\n", count, (end - begin) * 1000);
+//
+//
+//    }
     
     {
         begin = CACurrentMediaTime();
@@ -174,9 +174,9 @@ int TimeCount = 0;
         }
         end = CACurrentMediaTime();
         TimeCosts[SNHTMLToStringTypeDT] += end - begin;
-        printf("DT time:               %8.2f ms\n", (end - begin) * 1000);
+        printf("run %d DT time:               %.2f ms\n", count,(end - begin) * 1000);
 
-        
+
     }
     
 }
