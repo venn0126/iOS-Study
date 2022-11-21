@@ -141,7 +141,7 @@ int TimeCount = 0;
     NSTimeInterval begin, end;
     TimeCount += count;
     
-//    {
+    {
 //        begin = CACurrentMediaTime();
 //        for (int i = 0; i < count; i++) {
 //            NSDictionary *options = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute : @(NSUTF8StringEncoding)};
@@ -149,32 +149,8 @@ int TimeCount = 0;
 //
 //        }
 //        end = CACurrentMediaTime();
-//        TimeCosts[SNHTMLToStringTypeFoundation] += end - begin;
-//        printf("run %d Foundation time:               %.2f ms\n", count, (end - begin) * 1000);
-//
-//
-//    }
-    
-    {
-        begin = CACurrentMediaTime();
-        for (int i = 0; i < count; i++) {
-            NSDictionary *options = @{
-                DTUseiOS6Attributes:@YES, // 这个属性设置为NO就会崩溃 `-[__NSCFType hyphenationFactor]: unrecognized selector sent to instance`
-                DTIgnoreInlineStylesOption:@YES,
-                DTDefaultLinkDecoration:@NO,
-                DTDefaultLinkColor:[UIColor blueColor],
-                DTLinkHighlightColorAttribute:[UIColor redColor],
-                DTDefaultFontSize:@15,
-                DTDefaultFontFamily:@"Helvetica Neue",
-                DTDefaultFontName:@"HelveticaNeue-Light"
-            };
-
-            NSAttributedString *attrString = [[NSAttributedString alloc] initWithHTMLData:data options:options documentAttributes:nil];
-
-        }
-        end = CACurrentMediaTime();
-        TimeCosts[SNHTMLToStringTypeDT] += end - begin;
-        printf("run %d DT time:               %.2f ms\n", count,(end - begin) * 1000);
+//        TimeCosts[SNHTMLToStringTypeDT] += end - begin;
+//        printf("run %d DT time:               %.2f ms\n", count,(end - begin) * 1000);
 
 
     }
