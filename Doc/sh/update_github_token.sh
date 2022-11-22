@@ -14,7 +14,7 @@ if [ -z $input_file ]; then
 fi
 echo $input_file
 
-# 如果是为了更新github的开发者token，需要传入字符串格式为https://${token}@
+# 更新github的开发者token，需要传入字符串格式为https://${token}@
 # 格式化字符串
 head="https://"
 token=$input_token
