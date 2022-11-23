@@ -103,7 +103,22 @@ NSInteger baseNumber = 12;
     
     //    [self testTextFieldClearButtonBackground];
     
-    [self  testSomeHtmlToAttributed];
+//    [self  testSomeHtmlToAttributed];
+    [self testWhitespaceCharacterSet];
+    
+}
+
+
+- (void)testWhitespaceCharacterSet {
+    
+    NSArray<NSString *> *strs = @[@"    a b c&",@"a&b &",@" abc ",@"#abc "];
+    NSMutableArray *tempArray = [NSMutableArray array];
+    for (int i = 0; i < strs.count; i++) {
+        NSString *temp = [strs[i] stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceCharacterSet];
+        [tempArray addObject:temp];
+    }
+    
+    NSLog(@"temp array %@",tempArray);
     
 }
 
