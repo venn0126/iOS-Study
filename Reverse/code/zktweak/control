@@ -1,5 +1,5 @@
-Package: com.sohu.tweakdemo
-Name: TweakDemo
+Package: com.gt.zktweak
+Name: zktweak
 Version: 0.0.1
 Architecture: iphoneos-arm
 Description: An awesome MobileSubstrate tweak!

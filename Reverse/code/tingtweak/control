@@ -1,10 +1,9 @@
-Package: com.sohu.tweakdemo
-Name: TweakDemo
+Package: com.gt.tingtweak
+Name: tingtweak
+Version: 0.0.1
 Architecture: iphoneos-arm
 Description: An awesome MobileSubstrate tweak!
 Maintainer: Augus
 Author: Augus
 Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000)
-Version: 0.0.1-4+debug
-Installed-Size: 216
