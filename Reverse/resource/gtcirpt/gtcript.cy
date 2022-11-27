@@ -60,10 +60,10 @@
 		return _GTFrontVc(UIApp.keyWindow.rootViewController)
 	};
 
-	// 递归打印UIViewController view的层级结构
-	GTVcSubviews = function(vc) {
+	// 递归打印controller的层级结构
+	GTChildVcs = function(vc) {
 		if(![vc isKindOfClass:[UIViewController class]]) throw new Error(invaldParamStr);
-		return vc.view.recursiveDescription().toString();
+		return [vc _printHierarchy].toString();
 	};
 
 	// 递归打印最上层UIViewController view的层级结构
