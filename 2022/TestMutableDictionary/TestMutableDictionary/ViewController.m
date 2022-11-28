@@ -175,26 +175,37 @@ int TimeCount = 0;
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
-    NSString *html = @"【<b>贵阳一女子花万元减肥结果</b>一斤没瘦 女子：希望退一部分钱】贵阳的蒋女士去年花钱到一家减肥机构减肥，本想着花点钱就能收获匀称的身材。可一年多过去，一站在镜子面前，蒋女士就只剩垂头丧气";
-    NSData *data = [html dataUsingEncoding:NSUTF8StringEncoding];
-
-    // 此方法崩溃，禁止使用
-    NSDictionary *options = @{
-        DTUseiOS6Attributes:@YES, // 这个属性设置为NO就会崩溃 `-[__NSCFType hyphenationFactor]: unrecognized selector sent to instance`
-        DTIgnoreInlineStylesOption:@YES,
-        DTDefaultLinkDecoration:@NO,
-        DTDefaultLinkColor:[UIColor blueColor],
-        DTLinkHighlightColorAttribute:[UIColor redColor],
-        DTDefaultFontSize:@15,
-        DTDefaultFontFamily:@"Helvetica Neue",
-        DTDefaultFontName:@"HelveticaNeue-Light"
-    };
-
-    NSAttributedString *attrString = [[NSAttributedString alloc] initWithHTMLData:data options:options documentAttributes:nil];
-    NSLog(@"%@", attrString);
+//    NSString *html = @"【<b>贵阳一女子花万元减肥结果</b>一斤没瘦 女子：希望退一部分钱】贵阳的蒋女士去年花钱到一家减肥机构减肥，本想着花点钱就能收获匀称的身材。可一年多过去，一站在镜子面前，蒋女士就只剩垂头丧气";
+//    NSData *data = [html dataUsingEncoding:NSUTF8StringEncoding];
+//
+//    // 此方法崩溃，禁止使用
+//    NSDictionary *options = @{
+//        DTUseiOS6Attributes:@YES, // 这个属性设置为NO就会崩溃 `-[__NSCFType hyphenationFactor]: unrecognized selector sent to instance`
+//        DTIgnoreInlineStylesOption:@YES,
+//        DTDefaultLinkDecoration:@NO,
+//        DTDefaultLinkColor:[UIColor blueColor],
+//        DTLinkHighlightColorAttribute:[UIColor redColor],
+//        DTDefaultFontSize:@15,
+//        DTDefaultFontFamily:@"Helvetica Neue",
+//        DTDefaultFontName:@"HelveticaNeue-Light"
+//    };
+//
+//    NSAttributedString *attrString = [[NSAttributedString alloc] initWithHTMLData:data options:options documentAttributes:nil];
+//    NSLog(@"%@", attrString);
+//
+//
+//    self.dtShowLabel.attributedText = attrString;
     
+    [self testTweakClick];
+}
+
+
+- (void)testTweakClick {
     
-    self.dtShowLabel.attributedText = attrString;
+    UISwitch *s = [[UISwitch alloc] init];
+    s.center = CGPointMake(100, 100);
+    s.on = YES;
+    [self.view addSubview:s];
 }
 
 
