@@ -2,7 +2,7 @@
 
 #define GTAutoCellOn @"gt_autoCellOn"
 #define GTUserDefaults [NSUserDefaults standardUserDefaults]
-#define GTFile(fileName) @"/Library/PreferenceLoader/Preferences/GTWeChat/" #fileName
+#define GTFile(fileName) @"/Library/Caches/GTWeChat/" #fileName
 
 %hook FindFriendEntryViewController
 
