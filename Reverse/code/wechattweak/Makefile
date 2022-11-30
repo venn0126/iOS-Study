@@ -6,7 +6,7 @@ include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = wechattweak
 
-wechattweak_FILES = Tweak.x
+wechattweak_FILES = src/Tweak.x src/Model/GTPerson.m
 wechattweak_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/tweak.mk

@@ -1,4 +1,7 @@
-#import "FindFriendEntryViewController.h"
+#import "Header/FindFriendEntryViewController.h"
+
+// 导入的该文件时应该与当前Tweak.m属于同一级目录
+#import "Model/GTPerson.h"
 
 #define GTAutoCellOn @"gt_autoCellOn"
 #define GTUserDefaults [NSUserDefaults standardUserDefaults]
@@ -80,6 +83,10 @@
 	if([indexPath row] == 1) {// 退出微信的逻辑
         abort();
     }
+
+    GTPerson *p = [[GTPerson alloc] init];
+    p.name = @"gao tian";
+    NSLog(@"The p name is %@",p.name);
 
 }
 
