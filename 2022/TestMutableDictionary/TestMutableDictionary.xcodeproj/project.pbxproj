@@ -19,6 +19,8 @@
 		B11F6ED328450971001914CD /* TestMutableDictionaryUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B11F6ED228450971001914CD /* TestMutableDictionaryUITestsLaunchTests.m */; };
 		B11F6EE128450982001914CD /* NSMutableDictionary+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = B11F6EDF28450982001914CD /* NSMutableDictionary+Safe.m */; };
 		B192D350289D5FB60023628C /* SNAugusFadeImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B192D34F289D5FB60023628C /* SNAugusFadeImageView.m */; };
+		B1A2E8422935DEAA007E2050 /* GTPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A2E8412935DEAA007E2050 /* GTPerson.m */; };
+		B1A2E84A29374399007E2050 /* GTWidgetCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A2E84929374399007E2050 /* GTWidgetCenter.swift */; };
 		B1BA68722876B39600EAFB4E /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = B1BA68712876B39600EAFB4E /* Person.m */; };
 		B1E84202292B4FA6009C1B19 /* DTTextBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E841A3292B4FA5009C1B19 /* DTTextBlock.m */; };
 		B1E84203292B4FA6009C1B19 /* DTTextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E841A4292B4FA5009C1B19 /* DTTextAttachment.m */; };
@@ -111,6 +113,10 @@
 		B11F6EE028450982001914CD /* NSMutableDictionary+Safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+Safe.h"; sourceTree = "<group>"; };
 		B192D34E289D5FB60023628C /* SNAugusFadeImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNAugusFadeImageView.h; sourceTree = "<group>"; };
 		B192D34F289D5FB60023628C /* SNAugusFadeImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNAugusFadeImageView.m; sourceTree = "<group>"; };
+		B1A2E8402935DEAA007E2050 /* GTPerson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTPerson.h; sourceTree = "<group>"; };
+		B1A2E8412935DEAA007E2050 /* GTPerson.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTPerson.m; sourceTree = "<group>"; };
+		B1A2E84829374398007E2050 /* TestMutableDictionary-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestMutableDictionary-Bridging-Header.h"; sourceTree = "<group>"; };
+		B1A2E84929374399007E2050 /* GTWidgetCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTWidgetCenter.swift; sourceTree = "<group>"; };
 		B1BA68702876B39600EAFB4E /* Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		B1BA68712876B39600EAFB4E /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		B1E841A1292B4FA5009C1B19 /* DTCoreTextConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTCoreTextConstants.h; sourceTree = "<group>"; };
@@ -276,9 +282,12 @@
 				B1FB3D31288AA072000A8B9F /* TestTransformCG.m */,
 				B192D34E289D5FB60023628C /* SNAugusFadeImageView.h */,
 				B192D34F289D5FB60023628C /* SNAugusFadeImageView.m */,
+				B1A2E84929374399007E2050 /* GTWidgetCenter.swift */,
 				B1E841A0292B4FA5009C1B19 /* DTCoreTextPartOfHTML */,
 				B1BA68702876B39600EAFB4E /* Person.h */,
 				B1BA68712876B39600EAFB4E /* Person.m */,
+				B1A2E8402935DEAA007E2050 /* GTPerson.h */,
+				B1A2E8412935DEAA007E2050 /* GTPerson.m */,
 				B1EB6EB1286EA4EE0043A976 /* augusArm.h */,
 				B1EB6EAF286EA4B80043A976 /* augusArm.s */,
 				B11F6EB328450970001914CD /* Main.storyboard */,
@@ -286,6 +295,7 @@
 				B11F6EB828450971001914CD /* LaunchScreen.storyboard */,
 				B11F6EBB28450971001914CD /* Info.plist */,
 				B11F6EBC28450971001914CD /* main.m */,
+				B1A2E84829374398007E2050 /* TestMutableDictionary-Bridging-Header.h */,
 			);
 			path = TestMutableDictionary;
 			sourceTree = "<group>";
@@ -478,6 +488,7 @@
 				TargetAttributes = {
 					B11F6EA628450970001914CD = {
 						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1400;
 					};
 					B11F6EC128450971001914CD = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -560,6 +571,7 @@
 				B1E84225292B4FA6009C1B19 /* NSNumber+RomanNumerals.m in Sources */,
 				B11F6EB228450970001914CD /* ViewController.m in Sources */,
 				B1E84207292B4FA6009C1B19 /* NSString+DTURLEncoding.m in Sources */,
+				B1A2E8422935DEAA007E2050 /* GTPerson.m in Sources */,
 				B1E84215292B4FA6009C1B19 /* NSDictionary+DTCoreText.m in Sources */,
 				B1E84222292B4FA6009C1B19 /* DTCoreTextFunctions.m in Sources */,
 				B1E8421A292B4FA6009C1B19 /* DTDictationPlaceholderTextAttachment.m in Sources */,
@@ -578,6 +590,7 @@
 				B1E84231292B4FA6009C1B19 /* NSString+Paragraphs.m in Sources */,
 				B11F6EAC28450970001914CD /* AppDelegate.m in Sources */,
 				B1E84220292B4FA6009C1B19 /* NSScanner+HTML.m in Sources */,
+				B1A2E84A29374399007E2050 /* GTWidgetCenter.swift in Sources */,
 				B1E8422C292B4FA6009C1B19 /* DTStylesheetHTMLElement.m in Sources */,
 				B1E84213292B4FA6009C1B19 /* DTHTMLParserTextNode.m in Sources */,
 				B1E84226292B4FA6009C1B19 /* DTCSSStylesheet.m in Sources */,
@@ -770,6 +783,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AQDKUEE5C2;
@@ -780,7 +794,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -789,6 +803,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sohu.TestMutableDictionary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "TestMutableDictionary/TestMutableDictionary-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -798,6 +815,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AQDKUEE5C2;
@@ -808,7 +826,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -817,6 +835,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sohu.TestMutableDictionary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "TestMutableDictionary/TestMutableDictionary-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -824,6 +844,7 @@
 		B11F6EDA28450971001914CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -842,6 +863,7 @@
 		B11F6EDB28450971001914CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -860,6 +882,7 @@
 		B11F6EDD28450971001914CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AQDKUEE5C2;
@@ -876,6 +899,7 @@
 		B11F6EDE28450971001914CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AQDKUEE5C2;
