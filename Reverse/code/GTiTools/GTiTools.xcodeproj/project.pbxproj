@@ -136,6 +136,7 @@
 				B1E060BE293845E400F339E7 /* Sources */,
 				B1E060BF293845E400F339E7 /* Frameworks */,
 				B1E060C0293845E400F339E7 /* Resources */,
+				B1CDF2A2293A692B005F69EB /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -190,6 +191,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B1CDF2A2293A692B005F69EB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# 编译就直接执行make命令\nmake\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B1E060BE293845E400F339E7 /* Sources */ = {

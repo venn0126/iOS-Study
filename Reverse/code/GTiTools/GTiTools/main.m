@@ -44,6 +44,9 @@ void list_app(GTApp *app, int index);
 void list_apps(GTListAppsType type, NSString *regex);
 void init_colors(void);
 
+/// arg[0]:是当前可执行文件的路径
+/// argc：argcount参数个数
+/// argv[]：存放参数的数组
 
 int main(int argc, char * argv[]) {
     @autoreleasepool {
@@ -60,9 +63,6 @@ int main(int argc, char * argv[]) {
             print_usage();
             return 0;
         }
-        
-        // arg[0]:是当前可执行文件的路径
-        
         
         const char *firstArg = argv[1];
         if (firstArg[0] == '-' && firstArg[1] == 'l') {
