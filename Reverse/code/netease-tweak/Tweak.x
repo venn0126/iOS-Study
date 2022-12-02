@@ -91,10 +91,33 @@
 %end
 
 
+
+// 新增方法的声明，为了解决编译报错信息为
+// error: receiver type 'NTESNBChannelSlideViewCell' for instance message is a forward declaration
+@interface NTESNBChannelSlideViewCell
+
+- (void)theNewMethod;
+
+@end
+
+
 // 频道顶部右上角的小红点图标
 %hook NTESNBChannelSlideViewCell
 
+// 为了声明是新增方法
+%new
+- (void)theNewMethod {
+
+	NSLog(@"theNewMethod0");
+	NSLog(@"theNewMethod1");
+	NSLog(@"theNewMethod2");	
+}
+
+
+// 这个是为hook的类添加新方法
 - (UIImageView *)spot {
+
+	[self theNewMethod];
 	return nil;
 }
 
@@ -102,18 +125,35 @@
 
 
 // 去除控制器中的view
-%hook NHHomeMixViewController
+// %hook NHHomeMixViewController
 
-- (void)viewWillAppear:(_Bool)arg1 
-{
-	%orig;
-	// 添加之后，显示之前进行移除操作
-	[[self refreshView] removeFromSuperview];
-	[self setRefreshView:nil];
+// - (void)viewWillAppear:(_Bool)arg1 
+// {
+// 	%orig;
+// 	// 添加之后，显示之前进行移除操作
+// 	[[self refreshView] removeFromSuperview];
+// 	[self setRefreshView:nil];
 
+// }
+
+// %end
+
+
+// 加载动态库时调用这个方法，做一些初始化操作
+%ctor {
+
+	NSLog(@"---------------ctor---------------");
 }
 
-%end
+
+// 程序结束的时候调用这个方法，做一些收尾操作
+%dtor {
+
+	NSLog(@"---------------dtor---------------");
+}
+
+
+
 
 
 
