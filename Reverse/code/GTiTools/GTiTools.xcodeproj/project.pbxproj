@@ -7,16 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B1E060C7293845E400F339E7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E060C6293845E400F339E7 /* AppDelegate.m */; };
-		B1E060CA293845E400F339E7 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E060C9293845E400F339E7 /* SceneDelegate.m */; };
-		B1E060CD293845E400F339E7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E060CC293845E400F339E7 /* ViewController.m */; };
 		B1E060D0293845E400F339E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1E060CE293845E400F339E7 /* Main.storyboard */; };
 		B1E060D2293845E500F339E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1E060D1293845E500F339E7 /* Assets.xcassets */; };
 		B1E060D5293845E500F339E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1E060D3293845E500F339E7 /* LaunchScreen.storyboard */; };
 		B1E060D8293845E500F339E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E060D7293845E500F339E7 /* main.m */; };
-		B1E060E2293845E500F339E7 /* GTiToolsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E060E1293845E500F339E7 /* GTiToolsTests.m */; };
-		B1E060EC293845E600F339E7 /* GTiToolsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E060EB293845E600F339E7 /* GTiToolsUITests.m */; };
-		B1E060EE293845E600F339E7 /* GTiToolsUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E060ED293845E600F339E7 /* GTiToolsUITestsLaunchTests.m */; };
 		B1E061042938485D00F339E7 /* GTPrintTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E061032938485D00F339E7 /* GTPrintTool.m */; };
 		B1E061072938496300F339E7 /* GTAppTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E061062938496300F339E7 /* GTAppTool.m */; };
 		B1E0610A29384A2000F339E7 /* NSFileHandle+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E0610929384A2000F339E7 /* NSFileHandle+Extension.m */; };
@@ -24,41 +18,13 @@
 		B1E0611029384A9E00F339E7 /* GTMachO.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E0610F29384A9E00F339E7 /* GTMachO.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		B1E060DE293845E500F339E7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B1E060BA293845E400F339E7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B1E060C1293845E400F339E7;
-			remoteInfo = GTiTools;
-		};
-		B1E060E8293845E600F339E7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B1E060BA293845E400F339E7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B1E060C1293845E400F339E7;
-			remoteInfo = GTiTools;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		B1E060C2293845E400F339E7 /* GTiTools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTiTools.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1E060C5293845E400F339E7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		B1E060C6293845E400F339E7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B1E060C8293845E400F339E7 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		B1E060C9293845E400F339E7 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		B1E060CB293845E400F339E7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		B1E060CC293845E400F339E7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		B1E060CF293845E400F339E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B1E060D1293845E500F339E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1E060D4293845E500F339E7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1E060D6293845E500F339E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1E060D7293845E500F339E7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B1E060DD293845E500F339E7 /* GTiToolsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GTiToolsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1E060E1293845E500F339E7 /* GTiToolsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTiToolsTests.m; sourceTree = "<group>"; };
-		B1E060E7293845E600F339E7 /* GTiToolsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GTiToolsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1E060EB293845E600F339E7 /* GTiToolsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTiToolsUITests.m; sourceTree = "<group>"; };
-		B1E060ED293845E600F339E7 /* GTiToolsUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTiToolsUITestsLaunchTests.m; sourceTree = "<group>"; };
 		B1E060FB2938478500F339E7 /* LSApplicationProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSApplicationProxy.h; sourceTree = "<group>"; };
 		B1E060FC2938478500F339E7 /* FBBundleInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBBundleInfo.h; sourceTree = "<group>"; };
 		B1E060FD2938478500F339E7 /* LSApplicationWorkspace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSApplicationWorkspace.h; sourceTree = "<group>"; };
@@ -83,20 +49,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B1E060DA293845E500F339E7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B1E060E4293845E600F339E7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -104,8 +56,6 @@
 			isa = PBXGroup;
 			children = (
 				B1E060C4293845E400F339E7 /* GTiTools */,
-				B1E060E0293845E500F339E7 /* GTiToolsTests */,
-				B1E060EA293845E600F339E7 /* GTiToolsUITests */,
 				B1E060C3293845E400F339E7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -114,8 +64,6 @@
 			isa = PBXGroup;
 			children = (
 				B1E060C2293845E400F339E7 /* GTiTools.app */,
-				B1E060DD293845E500F339E7 /* GTiToolsTests.xctest */,
-				B1E060E7293845E600F339E7 /* GTiToolsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -127,12 +75,6 @@
 				B1E060FF293847CB00F339E7 /* Model */,
 				B1E06101293847CB00F339E7 /* Tool */,
 				B1E060FA2938478500F339E7 /* SystemHeader */,
-				B1E060C5293845E400F339E7 /* AppDelegate.h */,
-				B1E060C6293845E400F339E7 /* AppDelegate.m */,
-				B1E060C8293845E400F339E7 /* SceneDelegate.h */,
-				B1E060C9293845E400F339E7 /* SceneDelegate.m */,
-				B1E060CB293845E400F339E7 /* ViewController.h */,
-				B1E060CC293845E400F339E7 /* ViewController.m */,
 				B1E060CE293845E400F339E7 /* Main.storyboard */,
 				B1E060D1293845E500F339E7 /* Assets.xcassets */,
 				B1E060D3293845E500F339E7 /* LaunchScreen.storyboard */,
@@ -140,23 +82,6 @@
 				B1E060D7293845E500F339E7 /* main.m */,
 			);
 			path = GTiTools;
-			sourceTree = "<group>";
-		};
-		B1E060E0293845E500F339E7 /* GTiToolsTests */ = {
-			isa = PBXGroup;
-			children = (
-				B1E060E1293845E500F339E7 /* GTiToolsTests.m */,
-			);
-			path = GTiToolsTests;
-			sourceTree = "<group>";
-		};
-		B1E060EA293845E600F339E7 /* GTiToolsUITests */ = {
-			isa = PBXGroup;
-			children = (
-				B1E060EB293845E600F339E7 /* GTiToolsUITests.m */,
-				B1E060ED293845E600F339E7 /* GTiToolsUITestsLaunchTests.m */,
-			);
-			path = GTiToolsUITests;
 			sourceTree = "<group>";
 		};
 		B1E060FA2938478500F339E7 /* SystemHeader */ = {
@@ -221,42 +146,6 @@
 			productReference = B1E060C2293845E400F339E7 /* GTiTools.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B1E060DC293845E500F339E7 /* GTiToolsTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B1E060F4293845E600F339E7 /* Build configuration list for PBXNativeTarget "GTiToolsTests" */;
-			buildPhases = (
-				B1E060D9293845E500F339E7 /* Sources */,
-				B1E060DA293845E500F339E7 /* Frameworks */,
-				B1E060DB293845E500F339E7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B1E060DF293845E500F339E7 /* PBXTargetDependency */,
-			);
-			name = GTiToolsTests;
-			productName = GTiToolsTests;
-			productReference = B1E060DD293845E500F339E7 /* GTiToolsTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		B1E060E6293845E600F339E7 /* GTiToolsUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B1E060F7293845E600F339E7 /* Build configuration list for PBXNativeTarget "GTiToolsUITests" */;
-			buildPhases = (
-				B1E060E3293845E600F339E7 /* Sources */,
-				B1E060E4293845E600F339E7 /* Frameworks */,
-				B1E060E5293845E600F339E7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B1E060E9293845E600F339E7 /* PBXTargetDependency */,
-			);
-			name = GTiToolsUITests;
-			productName = GTiToolsUITests;
-			productReference = B1E060E7293845E600F339E7 /* GTiToolsUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -268,14 +157,6 @@
 				TargetAttributes = {
 					B1E060C1293845E400F339E7 = {
 						CreatedOnToolsVersion = 14.0;
-					};
-					B1E060DC293845E500F339E7 = {
-						CreatedOnToolsVersion = 14.0;
-						TestTargetID = B1E060C1293845E400F339E7;
-					};
-					B1E060E6293845E600F339E7 = {
-						CreatedOnToolsVersion = 14.0;
-						TestTargetID = B1E060C1293845E400F339E7;
 					};
 				};
 			};
@@ -293,8 +174,6 @@
 			projectRoot = "";
 			targets = (
 				B1E060C1293845E400F339E7 /* GTiTools */,
-				B1E060DC293845E500F339E7 /* GTiToolsTests */,
-				B1E060E6293845E600F339E7 /* GTiToolsUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -310,20 +189,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B1E060DB293845E500F339E7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B1E060E5293845E600F339E7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -332,48 +197,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1E061072938496300F339E7 /* GTAppTool.m in Sources */,
-				B1E060CD293845E400F339E7 /* ViewController.m in Sources */,
-				B1E060C7293845E400F339E7 /* AppDelegate.m in Sources */,
 				B1E061042938485D00F339E7 /* GTPrintTool.m in Sources */,
 				B1E060D8293845E500F339E7 /* main.m in Sources */,
-				B1E060CA293845E400F339E7 /* SceneDelegate.m in Sources */,
 				B1E0610D29384A8E00F339E7 /* GTApp.m in Sources */,
 				B1E0610A29384A2000F339E7 /* NSFileHandle+Extension.m in Sources */,
 				B1E0611029384A9E00F339E7 /* GTMachO.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B1E060D9293845E500F339E7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B1E060E2293845E500F339E7 /* GTiToolsTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B1E060E3293845E600F339E7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B1E060EC293845E600F339E7 /* GTiToolsUITests.m in Sources */,
-				B1E060EE293845E600F339E7 /* GTiToolsUITestsLaunchTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		B1E060DF293845E500F339E7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B1E060C1293845E400F339E7 /* GTiTools */;
-			targetProxy = B1E060DE293845E500F339E7 /* PBXContainerItemProxy */;
-		};
-		B1E060E9293845E600F339E7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B1E060C1293845E400F339E7 /* GTiTools */;
-			targetProxy = B1E060E8293845E600F339E7 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B1E060CE293845E400F339E7 /* Main.storyboard */ = {
@@ -561,74 +393,6 @@
 			};
 			name = Release;
 		};
-		B1E060F5293845E600F339E7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AQDKUEE5C2;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gt.GTiToolsTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GTiTools.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GTiTools";
-			};
-			name = Debug;
-		};
-		B1E060F6293845E600F339E7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AQDKUEE5C2;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gt.GTiToolsTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GTiTools.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GTiTools";
-			};
-			name = Release;
-		};
-		B1E060F8293845E600F339E7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AQDKUEE5C2;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gt.GTiToolsUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = GTiTools;
-			};
-			name = Debug;
-		};
-		B1E060F9293845E600F339E7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AQDKUEE5C2;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gt.GTiToolsUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = GTiTools;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -646,24 +410,6 @@
 			buildConfigurations = (
 				B1E060F2293845E600F339E7 /* Debug */,
 				B1E060F3293845E600F339E7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B1E060F4293845E600F339E7 /* Build configuration list for PBXNativeTarget "GTiToolsTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B1E060F5293845E600F339E7 /* Debug */,
-				B1E060F6293845E600F339E7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B1E060F7293845E600F339E7 /* Build configuration list for PBXNativeTarget "GTiToolsUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B1E060F8293845E600F339E7 /* Debug */,
-				B1E060F9293845E600F339E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -46,12 +46,8 @@ void init_colors(void);
 
 
 int main(int argc, char * argv[]) {
-    NSString * appDelegateClassName;
     @autoreleasepool {
         // Setup code that might create autoreleased objects goes here.
-//        appDelegateClassName = NSStringFromClass([AppDelegate class]);
-        
-        
         init_colors();
         
         BOOL gt_ios8 = ([[[UIDevice currentDevice] systemVersion] compare:@"8" options:NSNumericSearch] != NSOrderedAscending);
@@ -64,6 +60,9 @@ int main(int argc, char * argv[]) {
             print_usage();
             return 0;
         }
+        
+        // arg[0]:是当前可执行文件的路径
+        
         
         const char *firstArg = argv[1];
         if (firstArg[0] == '-' && firstArg[1] == 'l') {
