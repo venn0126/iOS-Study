@@ -32,7 +32,7 @@
 |     `SymbolicatorX`      |            符号化            |     [下载地址](https://github.com/Yueoaix/SymbolicatorX)     |
 |         `XMind`          |            流程图            |      [下载地址](https://xclient.info/s/xmind-zen.html)       |
 |         `Netler`         |         网络情况监控         |        [下载地址](https://xclient.info/s/netler.html)        |
-|                          |                              |                                                              |
+|           `UE`           |       十六进制编辑工具       |  [下载地址](https://xclient.info/s/ultraedit.html#versions)  |
 |                          |                              |                                                              |
 |                          |                              |                                                              |
 |                          |                              |                                                              |
