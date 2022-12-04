@@ -37,10 +37,17 @@ typedef NS_ENUM(NSInteger,SNHTMLToStringType) {
 @property (nonatomic, strong) UILabel *dtShowLabel;
 
 
+@property (nonatomic, assign) NSInteger age;
+
+
 
 @end
 
 @implementation ViewController
+
+
+NSInteger a = 10;
+NSInteger b = 20;
 
 // 内部声明
 void augusTest(void);
@@ -104,7 +111,23 @@ NSInteger baseNumber = 12;
     //    [self testTextFieldClearButtonBackground];
     
 //    [self  testSomeHtmlToAttributed];
-    [self testWhitespaceCharacterSet];
+//    [self testWhitespaceCharacterSet];
+    
+    
+    NSObject *obj = [[NSObject alloc] init];
+    NSInteger age = 25;
+    
+    NSLog(@"global var a=%p,age=%p, %p %p",
+          &a, // 数据段
+          &age, // 函数栈空间
+          obj,// 堆空间
+          &obj);// 函数栈空间
+    
+    
+    //
+    obj = NULL; // NULL指针，其实就是指向pagezero
+    
+    
     
 }
 
@@ -196,7 +219,33 @@ int TimeCount = 0;
 //
 //    self.dtShowLabel.attributedText = attrString;
     
-    [self testTweakClick];
+//    [self testTweakClick];
+    
+    self.age = 18;
+    
+    NSArray *testArray = @[@1,@2,@3];
+//    id tempRes = testArray[4];
+    
+    
+    [self testLLDBThread];
+}
+
+
+- (void)testLLDBThread {
+    
+    NSLog(@"1111111");
+    NSLog(@"222222");
+    NSLog(@"3333333");
+    NSLog(@"4444444");
+    testAdd();
+}
+
+
+void testAdd(void) {
+    
+    int a = 10;
+    int b = 20;
+    NSLog(@"test add --- %d", a + b);
 }
 
 
