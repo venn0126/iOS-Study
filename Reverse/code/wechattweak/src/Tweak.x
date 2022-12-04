@@ -6,6 +6,7 @@
 #define GTAutoCellOn @"gt_autoCellOn"
 #define GTUserDefaults [NSUserDefaults standardUserDefaults]
 #define GTFile(fileName) @"/Library/Caches/GTWeChat/" #fileName
+#define kGTCellHeight 44.0
 
 %hook FindFriendEntryViewController
 
@@ -67,7 +68,7 @@
 		return %orig;
 	}
 
-	return 44.0;
+	return kGTCellHeight;
 
 }
 
