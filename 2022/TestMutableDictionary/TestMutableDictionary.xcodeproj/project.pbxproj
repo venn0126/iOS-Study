@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B10B3B912944C90A00E4D15A /* TestArm64.c in Sources */ = {isa = PBXBuildFile; fileRef = B10B3B902944C90A00E4D15A /* TestArm64.c */; };
+		B10B3B932944C98800E4D15A /* TestArm64.s in Sources */ = {isa = PBXBuildFile; fileRef = B10B3B922944C98800E4D15A /* TestArm64.s */; };
 		B11F6EAC28450970001914CD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B11F6EAB28450970001914CD /* AppDelegate.m */; };
 		B11F6EAF28450970001914CD /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B11F6EAE28450970001914CD /* SceneDelegate.m */; };
 		B11F6EB228450970001914CD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B11F6EB128450970001914CD /* ViewController.m */; };
@@ -92,6 +94,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B10B3B8F2944C90A00E4D15A /* TestArm64.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestArm64.h; sourceTree = "<group>"; };
+		B10B3B902944C90A00E4D15A /* TestArm64.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = TestArm64.c; sourceTree = "<group>"; };
+		B10B3B922944C98800E4D15A /* TestArm64.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; path = TestArm64.s; sourceTree = "<group>"; };
 		B11F6EA728450970001914CD /* TestMutableDictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestMutableDictionary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B11F6EAA28450970001914CD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B11F6EAB28450970001914CD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -288,6 +293,9 @@
 				B1BA68712876B39600EAFB4E /* Person.m */,
 				B1A2E8402935DEAA007E2050 /* GTPerson.h */,
 				B1A2E8412935DEAA007E2050 /* GTPerson.m */,
+				B10B3B8F2944C90A00E4D15A /* TestArm64.h */,
+				B10B3B902944C90A00E4D15A /* TestArm64.c */,
+				B10B3B922944C98800E4D15A /* TestArm64.s */,
 				B1EB6EB1286EA4EE0043A976 /* augusArm.h */,
 				B1EB6EAF286EA4B80043A976 /* augusArm.s */,
 				B11F6EB328450970001914CD /* Main.storyboard */,
@@ -571,6 +579,7 @@
 				B1E84225292B4FA6009C1B19 /* NSNumber+RomanNumerals.m in Sources */,
 				B11F6EB228450970001914CD /* ViewController.m in Sources */,
 				B1E84207292B4FA6009C1B19 /* NSString+DTURLEncoding.m in Sources */,
+				B10B3B932944C98800E4D15A /* TestArm64.s in Sources */,
 				B1A2E8422935DEAA007E2050 /* GTPerson.m in Sources */,
 				B1E84215292B4FA6009C1B19 /* NSDictionary+DTCoreText.m in Sources */,
 				B1E84222292B4FA6009C1B19 /* DTCoreTextFunctions.m in Sources */,
@@ -591,6 +600,7 @@
 				B11F6EAC28450970001914CD /* AppDelegate.m in Sources */,
 				B1E84220292B4FA6009C1B19 /* NSScanner+HTML.m in Sources */,
 				B1A2E84A29374399007E2050 /* GTWidgetCenter.swift in Sources */,
+				B10B3B912944C90A00E4D15A /* TestArm64.c in Sources */,
 				B1E8422C292B4FA6009C1B19 /* DTStylesheetHTMLElement.m in Sources */,
 				B1E84213292B4FA6009C1B19 /* DTHTMLParserTextNode.m in Sources */,
 				B1E84226292B4FA6009C1B19 /* DTCSSStylesheet.m in Sources */,
