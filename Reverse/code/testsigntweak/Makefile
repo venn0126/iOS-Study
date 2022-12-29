@@ -4,9 +4,9 @@ INSTALL_TARGET_PROCESSES = SpringBoard
 
 include $(THEOS)/makefiles/common.mk
 
-TWEAK_NAME = test-tweak
+TWEAK_NAME = testsigntweak
 
-test-tweak_FILES = Tweak.x
-test-tweak_CFLAGS = -fobjc-arc
+testsigntweak_FILES = Tweak.x
+testsigntweak_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/tweak.mk

@@ -1,5 +1,5 @@
-Package: com.gt.test-tweak
-Name: test-tweak
+Package: com.gt.test-sign-tweak
+Name: test-sign-tweak
 Version: 0.0.1
 Architecture: iphoneos-arm
 Description: An awesome MobileSubstrate tweak!
