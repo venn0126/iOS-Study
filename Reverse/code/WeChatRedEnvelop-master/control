@@ -1,0 +1,9 @@
+Package: com.swiftyper.wechatredenvelop
+Name: WeChatRedEnvelop
+Depends: mobilesubstrate
+Version: 2.0.0
+Architecture: iphoneos-arm
+Description: 微信抢红包插件
+Maintainer: 请叫我小锅
+Author: 请叫我小锅
+Section: Tweaks
