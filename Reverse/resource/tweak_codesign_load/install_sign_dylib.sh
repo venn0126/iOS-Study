@@ -1,18 +1,25 @@
 #!/bin/bash
+####################
+#Description:
+	# 将embedded.mobileprovision、xxx-tweak.dylib、CydiaSubstrate和libsubstitute.0.dylib放入到和xxx.app文件同一路径下即可
+	# 下载并配置第三方库`insert_dylib` 
+	# 执行sh install_sign_dylib.sh即可自动完成重签名、插入动态库和修改动态库加载路径操作
+	# 根本不同的提示信息进行相应的修正
 
-# 首先将embedded.mobileprovision放入到和xxx.app文件同一路径
-# 再将xxx-tweak.dylib、CydiaSubstrate和libsubstitute.0.dylib放入到.app/Frameworks/路径
-# 赋予权限，chmod +x install_sign_dylib.sh
-# 执行sh install_sign_dylib.sh即可自动完成重签名操作
+#Author:augus
+#Version:1.0
+#CreateTime:2023-01-04 17:51:46
+####################
+
 
 # 主路径，TODO: 需要修改这里
 my_path="/Users/augus/Desktop/reSignApp/ZK/Payload/"
 
 # 可执行文件名，TODO: 需要修改这里
-executable_file_name="ZKTools"
+executable_file_name="xxx"
 
 # tweak动态库 TODO: 需要修改这里
-tweak_dylib_name="zktweak.dylib"
+tweak_dylib_name="xxx.dylib"
 
 # CydiaSubstrate动态库
 cydiaSubstrate_name="CydiaSubstrate"
@@ -38,9 +45,9 @@ old_libsubstitute_0_dylib_path="/usr/lib/"
 # PlugIns
 plugIns_path="PlugIns"
 
-# sign number
+# 本机的证书ID，TODO: 需要修改这里
 # from `security find-identity -v -p codesigning`
-sign_number="B1B4B69A92436CDEF7788F024CC45129537347D5"
+sign_number="xxx"
 
 
 
@@ -127,8 +134,8 @@ otool -L $executable_file_name
 cd $frame_works_path
 
 # tweak xxx.dylib操作
-# install_name_
-# /Library/Frameworks/CydiaSubstrate.framework/CydiaSubstrate
+# 对依赖的CydiaSubstrate进行加载路径修改
+# install_name_tool -change /Library/Frameworks/CydiaSubstrate.framework/CydiaSubstrate @loader_path/CydiaSubstrate testsigntweak.dylib
 temp_log_name_0="temp0.log"
 otool -L $tweak_dylib_name | grep $old_cydia_substrate_path$cydiaSubstrate_name > $temp_log_name_0
 temp_file_read_result_0=`cat $temp_log_name_0`
@@ -140,7 +147,6 @@ if [ -z "$temp_file_read_result_0" ]; then
    	echo "动态库 $cydiaSubstrate_name 文件不包含被 $tweak_dylib_name 加载路径，或已经修改完成"
    	otool -L $tweak_dylib_name
 else
-	# install_name_tool -change /Library/Frameworks/CydiaSubstrate.framework/CydiaSubstrate @loader_path/CydiaSubstrate testsigntweak.dylib
 	install_name_tool -change $old_cydia_substrate_path$cydiaSubstrate_name $loader_path$cydiaSubstrate_name $tweak_dylib_name
 fi
 

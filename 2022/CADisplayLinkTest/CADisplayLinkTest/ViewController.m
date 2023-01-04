@@ -709,6 +709,15 @@ struct TestStr getTestStr(int a, int b, int c,int d ,int e, int f, int g) {
     
     self.imageView.frame = CGRectMake(0, _dynamicImageViewY, kImageViewWidth, kImageViewWidth);
     
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"提示" message:@"这是一个弹窗" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:nil];
+        [alertVC addAction:action];
+        [self presentViewController:alertVC animated:NO completion:nil];
+    });
+    
 }
 
 
