@@ -10,7 +10,7 @@ include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = zktweak
 
-zktweak_FILES = Tweak.x
+zktweak_FILES = $(wildcard src/*.m) src/Tweak.x
 zktweak_CFLAGS = -fobjc-arc
 
 include $(THEOS_MAKE_PATH)/tweak.mk

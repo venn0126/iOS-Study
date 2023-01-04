@@ -10,6 +10,5 @@
 
 @interface GDTMaskViewController : UIViewController
 
-- (void)dismissViewControllerAnimated: (BOOL)flag completion: (void (^ __nullable)(void))completion;
 
 @end
