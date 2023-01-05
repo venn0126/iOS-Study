@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GDTMaskViewController.h"
 
-@interface GTHomeAdClearController : GDTMaskViewController
+@interface GTHomeAdClearController : UIViewController
 
 @property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, assign) BOOL blankViewClickable;
