@@ -2,6 +2,7 @@
 ####################
 #Description:
 	# 将embedded.mobileprovision、xxx-tweak.dylib、CydiaSubstrate和libsubstitute.0.dylib放入到和xxx.app文件同一路径下即可
+	# 配置脚本中需要自定义的参数，（TODO:需求修改这里）
 	# 下载并配置第三方库`insert_dylib` 
 	# 执行sh install_sign_dylib.sh即可自动完成重签名、插入动态库和修改动态库加载路径操作
 	# 根本不同的提示信息进行相应的修正
@@ -93,7 +94,7 @@ do
 	fi
 
 	# 不覆盖已经已经存在的同名文件
-	cp -n ${my_dylibs[i]} $frame_works_path
+	cp ${my_dylibs[i]} $frame_works_path
 	valid_dylib_count=`expr $valid_dylib_count + 1`
 
 done

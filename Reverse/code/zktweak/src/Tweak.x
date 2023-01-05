@@ -35,7 +35,7 @@
 
 - (id)init {
 	GTHomeAdClearController *vc = [[GTHomeAdClearController alloc] init];
-	NSLog(@"Tian is my wife init");
+	NSLog(@"Tian is my wife init augus");
 	return (GDTMaskViewController *)vc;
 }
 
