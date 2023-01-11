@@ -29,7 +29,7 @@
 |       `MachOView`        |      machOView文件查看       |               [下载地址](https://iterm2.com/)                |
 |          `Paw`           |           网络接口           |                [下载地址](https://paw.cloud/)                |
 |      `Sublime Text`      |           文本编辑           |     [下载地址](https://xclient.info/s/sublime-text.html)     |
-|     `SymbolicatorX`      |            符号化            |     [下载地址](https://github.com/Yueoaix/SymbolicatorX)     |
+|     `SymbolicatorX`      |        崩溃文件符号化        |     [下载地址](https://github.com/Yueoaix/SymbolicatorX)     |
 |         `XMind`          |            流程图            |      [下载地址](https://xclient.info/s/xmind-zen.html)       |
 |         `Netler`         |         网络情况监控         |        [下载地址](https://xclient.info/s/netler.html)        |
 |           `UE`           |       十六进制编辑工具       |  [下载地址](https://xclient.info/s/ultraedit.html#versions)  |
