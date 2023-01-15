@@ -1,3 +1,0 @@
-jsonpath
-bs4
-discord_webhook

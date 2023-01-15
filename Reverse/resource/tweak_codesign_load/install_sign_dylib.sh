@@ -14,13 +14,13 @@
 
 
 # 主路径，TODO: 需要修改这里
-my_path="/Users/augus/Desktop/reSignApp/ZK/Payload/"
+my_path="/Users/augus/Desktop/reSignApp/moutai/Payload/"
 
 # 可执行文件名，TODO: 需要修改这里
-executable_file_name="xxx"
+executable_file_name="moutai-mall"
 
 # tweak动态库 TODO: 需要修改这里
-tweak_dylib_name="xxx.dylib"
+tweak_dylib_name="moutai-tweak.dylib"
 
 # CydiaSubstrate动态库
 cydiaSubstrate_name="CydiaSubstrate"
@@ -48,7 +48,7 @@ plugIns_path="PlugIns"
 
 # 本机的证书ID，TODO: 需要修改这里
 # from `security find-identity -v -p codesigning`
-sign_number="xxx"
+sign_number="B1B4B69A92436CDEF7788F024CC45129537347D5"
 
 
 

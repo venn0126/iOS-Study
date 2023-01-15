@@ -35,6 +35,6 @@
 |           `UE`           |       十六进制编辑工具       |  [下载地址](https://xclient.info/s/ultraedit.html#versions)  |
 |     `iOS App Signer`     |     iOS App重签名GUI工具     | [下载地址](https://github.com/DanTheMan827/ios-app-signer/releases) |
 |      `insert_dylib`      |        动态库注入工具        |      [下载地址](https://github.com/tyilo/insert_dylib)       |
-|                          |                              |                                                              |
+|     `dsc_extractor`      |         动态库提取器         | [下载地址](https://github.com/apple-oss-distributions/dyld/tags) |
 |                          |                              |                                                              |
 

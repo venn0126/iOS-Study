@@ -9,6 +9,8 @@
 #import <objc/runtime.h>
 #import "NSObject+Test.h"
 #import "GTClassInfo.h"
+#import "GTObserver.h"
+#import "GTPerosn.h"
 
 
 
@@ -125,12 +127,28 @@ int main(int argc, const char * argv[]) {
 //        NSLog(@"%p---%p---%p",stu,stuCls,stuMetaCls);
         
         
-        gt_objc_class *stuClass = (__bridge gt_objc_class *)[GTStudent class];
-        class_rw_t *stuClassData = stuClass->data();
+//        gt_objc_class *stuClass = (__bridge gt_objc_class *)[GTStudent class];
+//        class_rw_t *stuClassData = stuClass->data();
+//
+//        class_rw_t *stuMetaClassData = stuClass->metaClass()->data();
+//
+//        NSLog(@"this is a end");
         
-        class_rw_t *stuMetaClassData = stuClass->metaClass()->data();
         
-        NSLog(@"this is a end");
+        // KVC
+        
+        GTPerosn *person1 = [[GTPerosn alloc] init];
+        
+        GTObserver *observer = [[GTObserver alloc] init];
+        
+        [person1 addObserver:observer forKeyPath:@"age" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];
+        
+        
+        [person1 setValue:@10 forKey:@"age"];
+        
+        NSLog(@"is end");
+        
+        
 
         
     }

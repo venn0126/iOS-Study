@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B172B2FF29719A8900058841 /* GTPerosn.m in Sources */ = {isa = PBXBuildFile; fileRef = B172B2FE29719A8900058841 /* GTPerosn.m */; };
+		B172B30229719AD700058841 /* GTObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = B172B30129719AD700058841 /* GTObserver.m */; };
 		B1832856296D5BDD0061D827 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = B1832855296D5BDD0061D827 /* main.mm */; };
 		B183285E296DB3DF0061D827 /* NSObject+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = B183285D296DB3DF0061D827 /* NSObject+Test.m */; };
 /* End PBXBuildFile section */
@@ -24,6 +26,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B172B2FD29719A8900058841 /* GTPerosn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTPerosn.h; sourceTree = "<group>"; };
+		B172B2FE29719A8900058841 /* GTPerosn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTPerosn.m; sourceTree = "<group>"; };
+		B172B30029719AD700058841 /* GTObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTObserver.h; sourceTree = "<group>"; };
+		B172B30129719AD700058841 /* GTObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTObserver.m; sourceTree = "<group>"; };
 		B1832852296D5BDD0061D827 /* TestObjc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TestObjc; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1832855296D5BDD0061D827 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		B183285C296DB3DF0061D827 /* NSObject+Test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Test.h"; sourceTree = "<group>"; };
@@ -65,6 +71,10 @@
 				B183285C296DB3DF0061D827 /* NSObject+Test.h */,
 				B183285D296DB3DF0061D827 /* NSObject+Test.m */,
 				B183285F296DC8B30061D827 /* GTClassInfo.h */,
+				B172B2FD29719A8900058841 /* GTPerosn.h */,
+				B172B2FE29719A8900058841 /* GTPerosn.m */,
+				B172B30029719AD700058841 /* GTObserver.h */,
+				B172B30129719AD700058841 /* GTObserver.m */,
 			);
 			path = TestObjc;
 			sourceTree = "<group>";
@@ -128,6 +138,8 @@
 			files = (
 				B1832856296D5BDD0061D827 /* main.mm in Sources */,
 				B183285E296DB3DF0061D827 /* NSObject+Test.m in Sources */,
+				B172B30229719AD700058841 /* GTObserver.m in Sources */,
+				B172B2FF29719A8900058841 /* GTPerosn.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
