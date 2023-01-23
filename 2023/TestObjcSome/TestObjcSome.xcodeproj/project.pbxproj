@@ -15,6 +15,7 @@
 		B172B2F129717B8D00058841 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B172B2EF29717B8D00058841 /* LaunchScreen.storyboard */; };
 		B172B2F429717B8D00058841 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B172B2F329717B8D00058841 /* main.m */; };
 		B172B2FC29717BBE00058841 /* GTPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = B172B2FB29717BBE00058841 /* GTPerson.m */; };
+		B172B305297C154700058841 /* GTPerson+Test.m in Sources */ = {isa = PBXBuildFile; fileRef = B172B304297C154700058841 /* GTPerson+Test.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,8 @@
 		B172B2F329717B8D00058841 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B172B2FA29717BBE00058841 /* GTPerson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTPerson.h; sourceTree = "<group>"; };
 		B172B2FB29717BBE00058841 /* GTPerson.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTPerson.m; sourceTree = "<group>"; };
+		B172B303297C154700058841 /* GTPerson+Test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GTPerson+Test.h"; sourceTree = "<group>"; };
+		B172B304297C154700058841 /* GTPerson+Test.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "GTPerson+Test.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +75,8 @@
 				B172B2E829717B8C00058841 /* ViewController.m */,
 				B172B2FA29717BBE00058841 /* GTPerson.h */,
 				B172B2FB29717BBE00058841 /* GTPerson.m */,
+				B172B303297C154700058841 /* GTPerson+Test.h */,
+				B172B304297C154700058841 /* GTPerson+Test.m */,
 				B172B2EA29717B8C00058841 /* Main.storyboard */,
 				B172B2ED29717B8D00058841 /* Assets.xcassets */,
 				B172B2EF29717B8D00058841 /* LaunchScreen.storyboard */,
@@ -154,6 +159,7 @@
 				B172B2E929717B8C00058841 /* ViewController.m in Sources */,
 				B172B2FC29717BBE00058841 /* GTPerson.m in Sources */,
 				B172B2E329717B8C00058841 /* AppDelegate.m in Sources */,
+				B172B305297C154700058841 /* GTPerson+Test.m in Sources */,
 				B172B2F429717B8D00058841 /* main.m in Sources */,
 				B172B2E629717B8C00058841 /* SceneDelegate.m in Sources */,
 			);

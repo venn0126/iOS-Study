@@ -9,4 +9,16 @@
 
 @implementation GTPerosn
 
+
+- (void)test {
+    
+    
+    void (^block)(void) = ^{
+        
+        NSLog(@"it is a block %@",self);
+    };
+    
+    block();
+}
+
 @end

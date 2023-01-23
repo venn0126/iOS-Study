@@ -35,6 +35,7 @@
 		B183285C296DB3DF0061D827 /* NSObject+Test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Test.h"; sourceTree = "<group>"; };
 		B183285D296DB3DF0061D827 /* NSObject+Test.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Test.m"; sourceTree = "<group>"; };
 		B183285F296DC8B30061D827 /* GTClassInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTClassInfo.h; sourceTree = "<group>"; };
+		B1F2DDC2297CFED9001ACC1A /* main_block.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main_block.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				B1832855296D5BDD0061D827 /* main.mm */,
+				B1F2DDC2297CFED9001ACC1A /* main_block.cpp */,
 				B183285C296DB3DF0061D827 /* NSObject+Test.h */,
 				B183285D296DB3DF0061D827 /* NSObject+Test.m */,
 				B183285F296DC8B30061D827 /* GTClassInfo.h */,
@@ -258,6 +260,7 @@
 		B183285A296D5BDD0061D827 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AQDKUEE5C2;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -268,6 +271,7 @@
 		B183285B296D5BDD0061D827 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AQDKUEE5C2;
 				ENABLE_HARDENED_RUNTIME = YES;

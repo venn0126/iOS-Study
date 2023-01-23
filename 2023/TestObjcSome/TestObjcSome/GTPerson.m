@@ -9,8 +9,18 @@
 
 @implementation GTPerson
 
-//- (void)setAge:(NSInteger)age {
-//    _age = age;
-//}
+- (void)setAge:(NSInteger)age {
+    _age = age;
+}
+
+- (NSInteger)age {
+    return _age;
+}
+
+
+- (void)dealloc {
+    
+    NSLog(@"GTPerson is dealloc");
+}
 
 @end

@@ -72,11 +72,97 @@
 //    Class superclass;
 //};
 
+//
+//void (^augusBlock)(void);
+//
+//void test(void) {
+//
+//    int a = 10; // 值传递
+//    static int b = 5; // 指针传递
+//
+//    augusBlock = ^{
+//
+//        NSLog(@"age is %d height is %d",a, b);
+//    };
+//
+//    a = 20;
+//    b = 10;
+//
+//}
+
+
+int age = 10;
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
 //        NSLog(@"Hello, World!");
+//
+//        test();
+//        augusBlock();
         
+        
+        
+        int a = 2;
+        NSLog(@"数据 全局%p",&age);
+        NSLog(@"局部变量 %p",&a);
+        NSLog(@"堆 %p",[[NSObject alloc] init]);
+        NSLog(@"unknown %p", [GTPerosn class]);
+        
+        
+        
+        
+        // stack block
+        
+//        int age = 10;
+//        void (^block)(void) = ^{
+//
+//            NSLog(@"age is %d",age);
+//        };
+//
+//        NSLog(@"block class is %@",[block class]);
+//
+//        NSLog(@"block copy class is %@ %lu",[[block copy] class],(unsigned long)[[block copy] retainCount]);
+//
+//
+//
+//        NSLog(@"%lu %@",[^{
+//            NSLog(@"it is block2 %d", age);
+//        } retainCount],[^{
+//                        NSLog(@"it is block2 %d", age);
+//                    } class]);
+//
+//        NSLog(@"%lu %@",[[^{
+//            NSLog(@"it is block2 %d", age);
+//        } copy] retainCount], [[^{
+//            NSLog(@"it is block2 %d", age);
+//        } copy] class]);
+        
+
+        
+        
+//
+//        void (^block0)(void) = ^{
+//            NSLog(@"it is block0");
+//        };
+//
+//        int age = 10;
+//        void (^block1)(void) = ^{
+//            NSLog(@"it is age %d",age);
+//
+//        };
+//
+//        NSLog(@"%@ %@ %@",[block0 class],[block1 class],[^{
+//            NSLog(@"it is block2 %d", age);
+//        } class]);
+//
+//
+//        NSLog(@"%@",[block0 class]);
+//
+//        NSLog(@"%@",[[block0 class] superclass]);
+//
+//        NSLog(@"%@",[[[block0 class] superclass] superclass]);
+
     
     
 //        NSObject *obj = [[NSObject alloc] init];
@@ -137,17 +223,25 @@ int main(int argc, const char * argv[]) {
         
         // KVC
         
-        GTPerosn *person1 = [[GTPerosn alloc] init];
+//        GTPerosn *person1 = [[GTPerosn alloc] init];
+//
+//        GTObserver *observer = [[GTObserver alloc] init];
+//
+//        [person1 addObserver:observer forKeyPath:@"age" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];
+//
+//
+//        [person1 setValue:@10 forKey:@"age"];
+//
+//        NSLog(@"is end");
         
-        GTObserver *observer = [[GTObserver alloc] init];
-        
-        [person1 addObserver:observer forKeyPath:@"age" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:NULL];
-        
-        
-        [person1 setValue:@10 forKey:@"age"];
-        
-        NSLog(@"is end");
-        
+//
+//        void(^block)(void) = ^{
+//
+//            NSLog(@"tian is my wife");
+//        };
+//
+//        block();
+//
         
 
         
