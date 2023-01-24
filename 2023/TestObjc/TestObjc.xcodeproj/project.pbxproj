@@ -260,7 +260,7 @@
 		B183285A296D5BDD0061D827 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AQDKUEE5C2;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -271,7 +271,7 @@
 		B183285B296D5BDD0061D827 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AQDKUEE5C2;
 				ENABLE_HARDENED_RUNTIME = YES;

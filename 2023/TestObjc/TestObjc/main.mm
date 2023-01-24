@@ -90,8 +90,7 @@
 //
 //}
 
-
-int age = 10;
+typedef void (^GTBlock)(void);
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -102,12 +101,51 @@ int main(int argc, const char * argv[]) {
 //        augusBlock();
         
         
+        GTPerosn *person = [[GTPerosn alloc] init];
+        person.weight = 10;
         
-        int a = 2;
-        NSLog(@"数据 全局%p",&age);
-        NSLog(@"局部变量 %p",&a);
-        NSLog(@"堆 %p",[[NSObject alloc] init]);
-        NSLog(@"unknown %p", [GTPerosn class]);
+        
+        // __weak:不会产生强引用，指向的对象销毁时，会自动让指针设置为nil
+        // __unsafe__unretained:不安全的，不会产生强引用，不安全，指向对象销毁时，指针内存地址不变，被引用的弱对象内存地址回收以后不会置为nil，如果再去访问回收的内存会变为野指针
+        
+        // 推荐这种写法， 因为不用在意对象类型
+        __weak typeof(person)weakPerson = person;
+        //
+        __weak GTPerosn *weak1Person = person;
+        person.block = ^{
+            NSLog(@"person age is %d",weakPerson.weight);
+        };
+        
+        NSLog(@"1111");
+
+        
+        
+//        // block修改外部变量
+////        int a = 2;
+//        static int a = 2;
+//        GTBlock block = ^{
+//            // 报错Variable is not assignable (missing __block type specifier)
+//            // 为什么？
+//            // 首先是两个不同的栈空间，无法修改
+//            // 修改:将int a = 2;修改为static int a = 2;这样修改为就变为指针传递
+//            // 执行这个打印的时候会把block传递进来，拿到这个block就可以获取到该变量的指针，拿到指针就可以修改
+//            // 这样修改完成之后就一直存在内存中
+//            // 如果还是希望是临时变量如何处理？__block
+//            a = 5;
+//
+//            NSLog(@"age is %d", a);
+//        };
+//
+//        block();
+        
+        
+        
+        
+//        int a = 2;
+//        NSLog(@"数据 全局%p",&age);
+//        NSLog(@"局部变量 %p",&a);
+//        NSLog(@"堆 %p",[[NSObject alloc] init]);
+//        NSLog(@"unknown %p", [GTPerosn class]);
         
         
         

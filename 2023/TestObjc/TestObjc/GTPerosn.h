@@ -7,6 +7,9 @@
 
 #import <Foundation/Foundation.h>
 
+
+typedef void (^AugusBlock)(void);
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface GTPerosn : NSObject {
@@ -18,6 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
     int age;
     int isAge;
 }
+
+@property (nonatomic, copy) AugusBlock block;
+@property (nonatomic, assign) int weight;
 
 @end
 
