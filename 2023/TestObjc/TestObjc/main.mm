@@ -100,26 +100,43 @@ int main(int argc, const char * argv[]) {
 //        test();
 //        augusBlock();
         
-        
         GTPerosn *person = [[GTPerosn alloc] init];
-        person.weight = 10;
+        person.thin = NO;
+        person.rich = NO;
+        person.handsome = NO;
+        NSLog(@"thin is %d rich is %d handsome is %d",person.isThin,person.isRich,person.isHandsome);
         
         
-        // __weak:不会产生强引用，指向的对象销毁时，会自动让指针设置为nil
-        // __unsafe__unretained:不安全的，不会产生强引用，不安全，指向对象销毁时，指针内存地址不变，被引用的弱对象内存地址回收以后不会置为nil，如果再去访问回收的内存会变为野指针
-        
-        // 推荐这种写法， 因为不用在意对象类型
-        __weak typeof(person)weakPerson = person;
-        //
-        __weak GTPerosn *weak1Person = person;
-        person.block = ^{
-            NSLog(@"person age is %d",weakPerson.weight);
-        };
-        
-        NSLog(@"1111");
 
         
+
         
+    }
+    return 0;
+}
+
+
+void testBlock(void) {
+    
+    GTPerosn *person = [[GTPerosn alloc] init];
+    person.weight = 10;
+    
+    
+    // __weak:不会产生强引用，指向的对象销毁时，会自动让指针设置为nil
+    // __unsafe__unretained:不安全的，不会产生强引用，不安全，指向对象销毁时，指针内存地址不变，被引用的弱对象内存地址回收以后不会置为nil，如果再去访问回收的内存会变为野指针
+    
+    // 推荐这种写法， 因为不用在意对象类型
+    __weak typeof(person)weakPerson = person;
+    //
+//    __weak GTPerosn *weak1Person = person;
+    person.block = ^{
+        NSLog(@"person age is %d",weakPerson.weight);
+    };
+    
+    NSLog(@"1111");
+
+    
+    
 //        // block修改外部变量
 ////        int a = 2;
 //        static int a = 2;
@@ -137,21 +154,21 @@ int main(int argc, const char * argv[]) {
 //        };
 //
 //        block();
-        
-        
-        
-        
+    
+    
+    
+    
 //        int a = 2;
 //        NSLog(@"数据 全局%p",&age);
 //        NSLog(@"局部变量 %p",&a);
 //        NSLog(@"堆 %p",[[NSObject alloc] init]);
 //        NSLog(@"unknown %p", [GTPerosn class]);
-        
-        
-        
-        
-        // stack block
-        
+    
+    
+    
+    
+    // stack block
+    
 //        int age = 10;
 //        void (^block)(void) = ^{
 //
@@ -175,10 +192,10 @@ int main(int argc, const char * argv[]) {
 //        } copy] retainCount], [[^{
 //            NSLog(@"it is block2 %d", age);
 //        } copy] class]);
-        
+    
 
-        
-        
+    
+    
 //
 //        void (^block0)(void) = ^{
 //            NSLog(@"it is block0");
@@ -201,36 +218,36 @@ int main(int argc, const char * argv[]) {
 //
 //        NSLog(@"%@",[[[block0 class] superclass] superclass]);
 
-    
-    
+
+
 //        NSObject *obj = [[NSObject alloc] init];
 //        NSLog(@"it is a obj %@",obj);
-        
+    
 //        NSLog(@"GTStudent class is %p",[GTStudent class]);
 //        NSLog(@"NSObject class is %p",[NSObject class]);
 //
 //
 //        [GTStudent test];
 //        [NSObject test];
-        
-        
-        // instance->isa:0x0100000100008119
-        
-        // class:0x0000000100008118
-        
-        // class = instance->isa & ISA_MASK &
-        
-        /*
-         
-            if __x86_64__
-                ISA_MASK = 0x007ffffffffffff8ULL
-            elif __arm64__
-                ISA_MASK = 0x0000000ffffffff8ULL
-            }
-         
-         */
-        
-        
+    
+    
+    // instance->isa:0x0100000100008119
+    
+    // class:0x0000000100008118
+    
+    // class = instance->isa & ISA_MASK &
+    
+    /*
+     
+        if __x86_64__
+            ISA_MASK = 0x007ffffffffffff8ULL
+        elif __arm64__
+            ISA_MASK = 0x0000000ffffffff8ULL
+        }
+     
+     */
+    
+    
 //        struct gt_objc_class *stuClass = (__bridge struct gt_objc_class *)([GTStudent class]);
 //        struct gt_objc_class *objClass = (__bridge struct gt_objc_class *)([NSObject class]);
 //
@@ -249,18 +266,18 @@ int main(int argc, const char * argv[]) {
 //
 //
 //        NSLog(@"%p---%p---%p",stu,stuCls,stuMetaCls);
-        
-        
+    
+    
 //        gt_objc_class *stuClass = (__bridge gt_objc_class *)[GTStudent class];
 //        class_rw_t *stuClassData = stuClass->data();
 //
 //        class_rw_t *stuMetaClassData = stuClass->metaClass()->data();
 //
 //        NSLog(@"this is a end");
-        
-        
-        // KVC
-        
+    
+    
+    // KVC
+    
 //        GTPerosn *person1 = [[GTPerosn alloc] init];
 //
 //        GTObserver *observer = [[GTObserver alloc] init];
@@ -271,7 +288,7 @@ int main(int argc, const char * argv[]) {
 //        [person1 setValue:@10 forKey:@"age"];
 //
 //        NSLog(@"is end");
-        
+    
 //
 //        void(^block)(void) = ^{
 //
@@ -280,9 +297,4 @@ int main(int argc, const char * argv[]) {
 //
 //        block();
 //
-        
-
-        
-    }
-    return 0;
 }
