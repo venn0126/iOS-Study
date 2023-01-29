@@ -1,0 +1,796 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B16929E629861A2100FE1952 /* MDConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = B16929E529861A2100FE1952 /* MDConfig.plist */; };
+		B16929F029861A2100FE1952 /* libGTWeChatDylib.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = B16929EF29861A2100FE1952 /* libGTWeChatDylib.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		B16929F529861A2100FE1952 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B16929F429861A2100FE1952 /* JavaScriptCore.framework */; };
+		B16929F729861A2100FE1952 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B16929F629861A2100FE1952 /* Foundation.framework */; };
+		B16929F929861A2100FE1952 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B16929F829861A2100FE1952 /* UIKit.framework */; };
+		B16929FE29861A2100FE1952 /* GTWeChatDylib.mm in Sources */ = {isa = PBXBuildFile; fileRef = B16929FD29861A2100FE1952 /* GTWeChatDylib.mm */; };
+		B1692A0129861A2100FE1952 /* MDConfigManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B1692A0029861A2100FE1952 /* MDConfigManager.h */; };
+		B1692A0329861A2100FE1952 /* MDConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B1692A0229861A2100FE1952 /* MDConfigManager.m */; };
+		B1692A0529861A2100FE1952 /* MDCycriptManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B1692A0429861A2100FE1952 /* MDCycriptManager.h */; };
+		B1692A0729861A2100FE1952 /* MDCycriptManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B1692A0629861A2100FE1952 /* MDCycriptManager.m */; };
+		B1692A0929861A2100FE1952 /* MDMethodTrace.h in Headers */ = {isa = PBXBuildFile; fileRef = B1692A0829861A2100FE1952 /* MDMethodTrace.h */; };
+		B1692A0B29861A2100FE1952 /* MDMethodTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = B1692A0A29861A2100FE1952 /* MDMethodTrace.m */; };
+		B1692A0E29861A2100FE1952 /* a1a2-selectortramps-arm.s in Sources */ = {isa = PBXBuildFile; fileRef = B1692A0D29861A2100FE1952 /* a1a2-selectortramps-arm.s */; };
+		B1692A1029861A2100FE1952 /* a1a2-selectortramps-arm64.s in Sources */ = {isa = PBXBuildFile; fileRef = B1692A0F29861A2100FE1952 /* a1a2-selectortramps-arm64.s */; };
+		B1692A1229861A2100FE1952 /* a1a2-selectortramps-i386.s in Sources */ = {isa = PBXBuildFile; fileRef = B1692A1129861A2100FE1952 /* a1a2-selectortramps-i386.s */; };
+		B1692A1429861A2100FE1952 /* a1a2-selectortramps-x86_64.s in Sources */ = {isa = PBXBuildFile; fileRef = B1692A1329861A2100FE1952 /* a1a2-selectortramps-x86_64.s */; };
+		B1692A1629861A2100FE1952 /* a2a3-selectortramps-arm.s in Sources */ = {isa = PBXBuildFile; fileRef = B1692A1529861A2100FE1952 /* a2a3-selectortramps-arm.s */; };
+		B1692A1829861A2100FE1952 /* a2a3-selectortramps-i386.s in Sources */ = {isa = PBXBuildFile; fileRef = B1692A1729861A2100FE1952 /* a2a3-selectortramps-i386.s */; };
+		B1692A1A29861A2100FE1952 /* a2a3-selectortramps-x86_64.s in Sources */ = {isa = PBXBuildFile; fileRef = B1692A1929861A2100FE1952 /* a2a3-selectortramps-x86_64.s */; };
+		B1692A1C29861A2100FE1952 /* OCMethodTrace.h in Headers */ = {isa = PBXBuildFile; fileRef = B1692A1B29861A2100FE1952 /* OCMethodTrace.h */; };
+		B1692A1E29861A2100FE1952 /* OCMethodTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = B1692A1D29861A2100FE1952 /* OCMethodTrace.m */; };
+		B1692A2029861A2100FE1952 /* OCSelectorTrampolines.h in Headers */ = {isa = PBXBuildFile; fileRef = B1692A1F29861A2100FE1952 /* OCSelectorTrampolines.h */; };
+		B1692A2229861A2100FE1952 /* OCSelectorTrampolines.mm in Sources */ = {isa = PBXBuildFile; fileRef = B1692A2129861A2100FE1952 /* OCSelectorTrampolines.mm */; };
+		B1692A2629861A2100FE1952 /* LLDBTools.h in Headers */ = {isa = PBXBuildFile; fileRef = B1692A2529861A2100FE1952 /* LLDBTools.h */; };
+		B1692A2829861A2100FE1952 /* LLDBTools.mm in Sources */ = {isa = PBXBuildFile; fileRef = B1692A2729861A2100FE1952 /* LLDBTools.mm */; };
+		B1692A2D29861A2100FE1952 /* AntiAntiDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = B1692A2C29861A2100FE1952 /* AntiAntiDebug.m */; };
+		B1692A3029861A2100FE1952 /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = B1692A2F29861A2100FE1952 /* fishhook.c */; };
+		B1692A3229861A2100FE1952 /* fishhook.h in Headers */ = {isa = PBXBuildFile; fileRef = B1692A3129861A2100FE1952 /* fishhook.h */; };
+		B1692A3429861A2100FE1952 /* GTWeChatDylib.h in Headers */ = {isa = PBXBuildFile; fileRef = B1692A3329861A2100FE1952 /* GTWeChatDylib.h */; };
+		B1692A3629861A2100FE1952 /* GTWeChatDylib.m in Sources */ = {isa = PBXBuildFile; fileRef = B1692A3529861A2100FE1952 /* GTWeChatDylib.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B16929F129861A2100FE1952 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B16929D329861A2100FE1952 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B16929EE29861A2100FE1952;
+			remoteInfo = GTWeChatDylib;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B16929DB29861A2100FE1952 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B16929F029861A2100FE1952 /* libGTWeChatDylib.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B16929DE29861A2100FE1952 /* GTWeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTWeChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B16929E129861A2100FE1952 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		B16929E329861A2100FE1952 /* quick-resign.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "quick-resign.sh"; sourceTree = "<group>"; };
+		B16929E529861A2100FE1952 /* MDConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = MDConfig.plist; sourceTree = "<group>"; };
+		B16929E829861A2100FE1952 /* put ipa or app here */ = {isa = PBXFileReference; lastKnownFileType = text; path = "put ipa or app here"; sourceTree = "<group>"; };
+		B16929E929861A2100FE1952 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B16929EF29861A2100FE1952 /* libGTWeChatDylib.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libGTWeChatDylib.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		B16929F429861A2100FE1952 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		B16929F629861A2100FE1952 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B16929F829861A2100FE1952 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B16929FC29861A2100FE1952 /* GTWeChatDylib.xm */ = {isa = PBXFileReference; lastKnownFileType = text; path = GTWeChatDylib.xm; sourceTree = "<group>"; };
+		B16929FD29861A2100FE1952 /* GTWeChatDylib.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = GTWeChatDylib.mm; sourceTree = "<group>"; };
+		B1692A0029861A2100FE1952 /* MDConfigManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDConfigManager.h; sourceTree = "<group>"; };
+		B1692A0229861A2100FE1952 /* MDConfigManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDConfigManager.m; sourceTree = "<group>"; };
+		B1692A0429861A2100FE1952 /* MDCycriptManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDCycriptManager.h; sourceTree = "<group>"; };
+		B1692A0629861A2100FE1952 /* MDCycriptManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDCycriptManager.m; sourceTree = "<group>"; };
+		B1692A0829861A2100FE1952 /* MDMethodTrace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDMethodTrace.h; sourceTree = "<group>"; };
+		B1692A0A29861A2100FE1952 /* MDMethodTrace.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDMethodTrace.m; sourceTree = "<group>"; };
+		B1692A0D29861A2100FE1952 /* a1a2-selectortramps-arm.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = "a1a2-selectortramps-arm.s"; sourceTree = "<group>"; };
+		B1692A0F29861A2100FE1952 /* a1a2-selectortramps-arm64.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = "a1a2-selectortramps-arm64.s"; sourceTree = "<group>"; };
+		B1692A1129861A2100FE1952 /* a1a2-selectortramps-i386.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = "a1a2-selectortramps-i386.s"; sourceTree = "<group>"; };
+		B1692A1329861A2100FE1952 /* a1a2-selectortramps-x86_64.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = "a1a2-selectortramps-x86_64.s"; sourceTree = "<group>"; };
+		B1692A1529861A2100FE1952 /* a2a3-selectortramps-arm.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = "a2a3-selectortramps-arm.s"; sourceTree = "<group>"; };
+		B1692A1729861A2100FE1952 /* a2a3-selectortramps-i386.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = "a2a3-selectortramps-i386.s"; sourceTree = "<group>"; };
+		B1692A1929861A2100FE1952 /* a2a3-selectortramps-x86_64.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = "a2a3-selectortramps-x86_64.s"; sourceTree = "<group>"; };
+		B1692A1B29861A2100FE1952 /* OCMethodTrace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCMethodTrace.h; sourceTree = "<group>"; };
+		B1692A1D29861A2100FE1952 /* OCMethodTrace.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCMethodTrace.m; sourceTree = "<group>"; };
+		B1692A1F29861A2100FE1952 /* OCSelectorTrampolines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCSelectorTrampolines.h; sourceTree = "<group>"; };
+		B1692A2129861A2100FE1952 /* OCSelectorTrampolines.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = OCSelectorTrampolines.mm; sourceTree = "<group>"; };
+		B1692A2329861A2100FE1952 /* selectortramps.mac */ = {isa = PBXFileReference; lastKnownFileType = text; path = selectortramps.mac; sourceTree = "<group>"; };
+		B1692A2529861A2100FE1952 /* LLDBTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLDBTools.h; sourceTree = "<group>"; };
+		B1692A2729861A2100FE1952 /* LLDBTools.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = LLDBTools.mm; sourceTree = "<group>"; };
+		B1692A2A29861A2100FE1952 /* GTWeChatDylib-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GTWeChatDylib-Prefix.pch"; path = "../GTWeChatDylib-Prefix.pch"; sourceTree = "<group>"; };
+		B1692A2C29861A2100FE1952 /* AntiAntiDebug.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AntiAntiDebug.m; sourceTree = "<group>"; };
+		B1692A2F29861A2100FE1952 /* fishhook.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fishhook.c; sourceTree = "<group>"; };
+		B1692A3129861A2100FE1952 /* fishhook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fishhook.h; sourceTree = "<group>"; };
+		B1692A3329861A2100FE1952 /* GTWeChatDylib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTWeChatDylib.h; sourceTree = "<group>"; };
+		B1692A3529861A2100FE1952 /* GTWeChatDylib.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTWeChatDylib.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B16929D829861A2100FE1952 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B16929EC29861A2100FE1952 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B16929F529861A2100FE1952 /* JavaScriptCore.framework in Frameworks */,
+				B16929F929861A2100FE1952 /* UIKit.framework in Frameworks */,
+				B16929F729861A2100FE1952 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B16929D229861A2100FE1952 = {
+			isa = PBXGroup;
+			children = (
+				B16929E029861A2100FE1952 /* GTWeChat */,
+				B16929FA29861A2100FE1952 /* GTWeChatDylib */,
+				B16929F329861A2100FE1952 /* Frameworks */,
+				B16929DF29861A2100FE1952 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B16929DF29861A2100FE1952 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B16929DE29861A2100FE1952 /* GTWeChat.app */,
+				B16929EF29861A2100FE1952 /* libGTWeChatDylib.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B16929E029861A2100FE1952 /* GTWeChat */ = {
+			isa = PBXGroup;
+			children = (
+				B16929E129861A2100FE1952 /* icon.png */,
+				B16929E929861A2100FE1952 /* Info.plist */,
+				B16929E229861A2100FE1952 /* Scripts */,
+				B16929E429861A2100FE1952 /* Config */,
+				B16929E729861A2100FE1952 /* TargetApp */,
+			);
+			path = GTWeChat;
+			sourceTree = "<group>";
+		};
+		B16929E229861A2100FE1952 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				B16929E329861A2100FE1952 /* quick-resign.sh */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
+		B16929E429861A2100FE1952 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				B16929E529861A2100FE1952 /* MDConfig.plist */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		B16929E729861A2100FE1952 /* TargetApp */ = {
+			isa = PBXGroup;
+			children = (
+				B16929E829861A2100FE1952 /* put ipa or app here */,
+			);
+			path = TargetApp;
+			sourceTree = "<group>";
+		};
+		B16929F329861A2100FE1952 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B16929F429861A2100FE1952 /* JavaScriptCore.framework */,
+				B16929F629861A2100FE1952 /* Foundation.framework */,
+				B16929F829861A2100FE1952 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B16929FA29861A2100FE1952 /* GTWeChatDylib */ = {
+			isa = PBXGroup;
+			children = (
+				B1692A3329861A2100FE1952 /* GTWeChatDylib.h */,
+				B1692A3529861A2100FE1952 /* GTWeChatDylib.m */,
+				B16929FB29861A2100FE1952 /* Logos */,
+				B16929FF29861A2100FE1952 /* Config */,
+				B1692A0C29861A2100FE1952 /* Trace */,
+				B1692A2429861A2100FE1952 /* Tools */,
+				B1692A2B29861A2100FE1952 /* AntiAntiDebug */,
+				B1692A2E29861A2100FE1952 /* fishhook */,
+				B1692A2929861A2100FE1952 /* Supporting Files */,
+			);
+			path = GTWeChatDylib;
+			sourceTree = "<group>";
+		};
+		B16929FB29861A2100FE1952 /* Logos */ = {
+			isa = PBXGroup;
+			children = (
+				B16929FC29861A2100FE1952 /* GTWeChatDylib.xm */,
+				B16929FD29861A2100FE1952 /* GTWeChatDylib.mm */,
+			);
+			path = Logos;
+			sourceTree = "<group>";
+		};
+		B16929FF29861A2100FE1952 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				B1692A0029861A2100FE1952 /* MDConfigManager.h */,
+				B1692A0229861A2100FE1952 /* MDConfigManager.m */,
+				B1692A0429861A2100FE1952 /* MDCycriptManager.h */,
+				B1692A0629861A2100FE1952 /* MDCycriptManager.m */,
+				B1692A0829861A2100FE1952 /* MDMethodTrace.h */,
+				B1692A0A29861A2100FE1952 /* MDMethodTrace.m */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		B1692A0C29861A2100FE1952 /* Trace */ = {
+			isa = PBXGroup;
+			children = (
+				B1692A0D29861A2100FE1952 /* a1a2-selectortramps-arm.s */,
+				B1692A0F29861A2100FE1952 /* a1a2-selectortramps-arm64.s */,
+				B1692A1129861A2100FE1952 /* a1a2-selectortramps-i386.s */,
+				B1692A1329861A2100FE1952 /* a1a2-selectortramps-x86_64.s */,
+				B1692A1529861A2100FE1952 /* a2a3-selectortramps-arm.s */,
+				B1692A1729861A2100FE1952 /* a2a3-selectortramps-i386.s */,
+				B1692A1929861A2100FE1952 /* a2a3-selectortramps-x86_64.s */,
+				B1692A1B29861A2100FE1952 /* OCMethodTrace.h */,
+				B1692A1D29861A2100FE1952 /* OCMethodTrace.m */,
+				B1692A1F29861A2100FE1952 /* OCSelectorTrampolines.h */,
+				B1692A2129861A2100FE1952 /* OCSelectorTrampolines.mm */,
+				B1692A2329861A2100FE1952 /* selectortramps.mac */,
+			);
+			path = Trace;
+			sourceTree = "<group>";
+		};
+		B1692A2429861A2100FE1952 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				B1692A2529861A2100FE1952 /* LLDBTools.h */,
+				B1692A2729861A2100FE1952 /* LLDBTools.mm */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		B1692A2929861A2100FE1952 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B1692A2A29861A2100FE1952 /* GTWeChatDylib-Prefix.pch */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B1692A2B29861A2100FE1952 /* AntiAntiDebug */ = {
+			isa = PBXGroup;
+			children = (
+				B1692A2C29861A2100FE1952 /* AntiAntiDebug.m */,
+			);
+			path = AntiAntiDebug;
+			sourceTree = "<group>";
+		};
+		B1692A2E29861A2100FE1952 /* fishhook */ = {
+			isa = PBXGroup;
+			children = (
+				B1692A2F29861A2100FE1952 /* fishhook.c */,
+				B1692A3129861A2100FE1952 /* fishhook.h */,
+			);
+			path = fishhook;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B16929ED29861A2100FE1952 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1692A3429861A2100FE1952 /* GTWeChatDylib.h in Headers */,
+				B1692A0529861A2100FE1952 /* MDCycriptManager.h in Headers */,
+				B1692A0929861A2100FE1952 /* MDMethodTrace.h in Headers */,
+				B1692A3229861A2100FE1952 /* fishhook.h in Headers */,
+				B1692A2629861A2100FE1952 /* LLDBTools.h in Headers */,
+				B1692A0129861A2100FE1952 /* MDConfigManager.h in Headers */,
+				B1692A2029861A2100FE1952 /* OCSelectorTrampolines.h in Headers */,
+				B1692A1C29861A2100FE1952 /* OCMethodTrace.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		B16929DD29861A2100FE1952 /* GTWeChat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1692A3C29861A2100FE1952 /* Build configuration list for PBXNativeTarget "GTWeChat" */;
+			buildPhases = (
+				B16929D729861A2100FE1952 /* Sources */,
+				B16929D829861A2100FE1952 /* Frameworks */,
+				B16929D929861A2100FE1952 /* ShellScript */,
+				B16929DA29861A2100FE1952 /* Resources */,
+				B16929DB29861A2100FE1952 /* CopyFiles */,
+				B16929DC29861A2100FE1952 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B16929F229861A2100FE1952 /* PBXTargetDependency */,
+			);
+			name = GTWeChat;
+			productName = GTWeChat;
+			productReference = B16929DE29861A2100FE1952 /* GTWeChat.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B16929EE29861A2100FE1952 /* GTWeChatDylib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1692A3929861A2100FE1952 /* Build configuration list for PBXNativeTarget "GTWeChatDylib" */;
+			buildPhases = (
+				B16929EA29861A2100FE1952 /* ShellScript */,
+				B16929EB29861A2100FE1952 /* Sources */,
+				B16929EC29861A2100FE1952 /* Frameworks */,
+				B16929ED29861A2100FE1952 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GTWeChatDylib;
+			productName = GTWeChatDylib;
+			productReference = B16929EF29861A2100FE1952 /* libGTWeChatDylib.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B16929D329861A2100FE1952 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					B16929DD29861A2100FE1952 = {
+						CreatedOnToolsVersion = 14.0;
+					};
+					B16929EE29861A2100FE1952 = {
+						CreatedOnToolsVersion = 14.0;
+					};
+				};
+			};
+			buildConfigurationList = B16929D629861A2100FE1952 /* Build configuration list for PBXProject "GTWeChat" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B16929D229861A2100FE1952;
+			productRefGroup = B16929DF29861A2100FE1952 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B16929DD29861A2100FE1952 /* GTWeChat */,
+				B16929EE29861A2100FE1952 /* GTWeChatDylib */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B16929DA29861A2100FE1952 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B16929E629861A2100FE1952 /* MDConfig.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B16929D929861A2100FE1952 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = /opt/MonkeyDev/Tools/pack.sh;
+		};
+		B16929DC29861A2100FE1952 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/opt/MonkeyDev/Tools/pack.sh codesign";
+		};
+		B16929EA29861A2100FE1952 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/opt/MonkeyDev/bin/md --xcbp-logos";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B16929D729861A2100FE1952 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B16929EB29861A2100FE1952 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1692A0729861A2100FE1952 /* MDCycriptManager.m in Sources */,
+				B1692A1029861A2100FE1952 /* a1a2-selectortramps-arm64.s in Sources */,
+				B1692A0E29861A2100FE1952 /* a1a2-selectortramps-arm.s in Sources */,
+				B1692A1429861A2100FE1952 /* a1a2-selectortramps-x86_64.s in Sources */,
+				B1692A1E29861A2100FE1952 /* OCMethodTrace.m in Sources */,
+				B1692A0329861A2100FE1952 /* MDConfigManager.m in Sources */,
+				B1692A3029861A2100FE1952 /* fishhook.c in Sources */,
+				B1692A2D29861A2100FE1952 /* AntiAntiDebug.m in Sources */,
+				B1692A3629861A2100FE1952 /* GTWeChatDylib.m in Sources */,
+				B1692A2229861A2100FE1952 /* OCSelectorTrampolines.mm in Sources */,
+				B1692A1229861A2100FE1952 /* a1a2-selectortramps-i386.s in Sources */,
+				B1692A1829861A2100FE1952 /* a2a3-selectortramps-i386.s in Sources */,
+				B1692A1629861A2100FE1952 /* a2a3-selectortramps-arm.s in Sources */,
+				B16929FE29861A2100FE1952 /* GTWeChatDylib.mm in Sources */,
+				B1692A2829861A2100FE1952 /* LLDBTools.mm in Sources */,
+				B1692A1A29861A2100FE1952 /* a2a3-selectortramps-x86_64.s in Sources */,
+				B1692A0B29861A2100FE1952 /* MDMethodTrace.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B16929F229861A2100FE1952 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B16929EE29861A2100FE1952 /* GTWeChatDylib */;
+			targetProxy = B16929F129861A2100FE1952 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B1692A3729861A2100FE1952 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B1692A3829861A2100FE1952 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B1692A3A29861A2100FE1952 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AQDKUEE5C2;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				ENABLE_BITCODE = NO;
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
+				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(MonkeyDevPath)/Frameworks/**",
+					"$(MonkeyDevPath)/Librarys/**",
+					"$(MonkeyDevTheosPath)/vendor/lib",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GTWeChatDylib/GTWeChatDylib-Prefix.pch";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(MonkeyDevPath)/include",
+					"$(MonkeyDevTheosPath)/vendor/include/**",
+				);
+				INSTALL_PATH = "@executable_path/Frameworks/libGTWeChatDylib.dylib";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(MonkeyDevPath)/Frameworks",
+					"$(MonkeyDevTheosPath)/vendor/lib/**",
+				);
+				MonkeyDevPath = /opt/MonkeyDev;
+				MonkeyDevTheosPath = /opt/theos;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-DTHEOS_INSTANCE_NAME=\"\\\"GTWeChatDylib\\\"\"",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-weak_library",
+					"/usr/lib/libc++.dylib",
+					"-weak_library",
+					"/usr/lib/libstdc++.dylib",
+					"-weak_library",
+					"$(MonkeyDevPath)/Frameworks/libsubstrate.dylib",
+					"-lcycript",
+					"-framework",
+					RevealServer,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = NO;
+			};
+			name = Debug;
+		};
+		B1692A3B29861A2100FE1952 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = AQDKUEE5C2;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				ENABLE_BITCODE = NO;
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
+				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(MonkeyDevPath)/Frameworks/**",
+					"$(MonkeyDevPath)/Librarys/**",
+					"$(MonkeyDevTheosPath)/vendor/lib",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GTWeChatDylib/GTWeChatDylib-Prefix.pch";
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(MonkeyDevPath)/include",
+					"$(MonkeyDevTheosPath)/vendor/include/**",
+				);
+				INSTALL_PATH = "@executable_path/Frameworks/libGTWeChatDylib.dylib";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(MonkeyDevPath)/Frameworks",
+					"$(MonkeyDevTheosPath)/vendor/lib/**",
+				);
+				MonkeyDevPath = /opt/MonkeyDev;
+				MonkeyDevTheosPath = /opt/theos;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-DTHEOS_INSTANCE_NAME=\"\\\"GTWeChatDylib\\\"\"",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-weak_library",
+					"/usr/lib/libc++.dylib",
+					"-weak_library",
+					"/usr/lib/libstdc++.dylib",
+					"-weak_library",
+					"$(MonkeyDevPath)/Frameworks/libsubstrate.dylib",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B1692A3D29861A2100FE1952 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AQDKUEE5C2;
+				ENABLE_BITCODE = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				MONKEYDEV_ADD_SUBSTRATE = YES;
+				MONKEYDEV_CLASS_DUMP = NO;
+				MONKEYDEV_DEFAULT_BUNDLEID = NO;
+				MONKEYDEV_INSERT_DYLIB = YES;
+				MONKEYDEV_RESTORE_SYMBOL = NO;
+				MONKEYDEV_TARGET_APP = Optional;
+				PODS_CONFIGURATION_BUILD_DIR = "$BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				PODS_ROOT = "${SRCROOT}/Pods";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gt.GTWeChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B1692A3E29861A2100FE1952 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AQDKUEE5C2;
+				ENABLE_BITCODE = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				MONKEYDEV_ADD_SUBSTRATE = YES;
+				MONKEYDEV_CLASS_DUMP = NO;
+				MONKEYDEV_DEFAULT_BUNDLEID = NO;
+				MONKEYDEV_INSERT_DYLIB = YES;
+				MONKEYDEV_RESTORE_SYMBOL = NO;
+				MONKEYDEV_TARGET_APP = Optional;
+				PODS_CONFIGURATION_BUILD_DIR = "$BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				PODS_ROOT = "${SRCROOT}/Pods";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gt.GTWeChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B16929D629861A2100FE1952 /* Build configuration list for PBXProject "GTWeChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1692A3729861A2100FE1952 /* Debug */,
+				B1692A3829861A2100FE1952 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1692A3929861A2100FE1952 /* Build configuration list for PBXNativeTarget "GTWeChatDylib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1692A3A29861A2100FE1952 /* Debug */,
+				B1692A3B29861A2100FE1952 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1692A3C29861A2100FE1952 /* Build configuration list for PBXNativeTarget "GTWeChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1692A3D29861A2100FE1952 /* Debug */,
+				B1692A3E29861A2100FE1952 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B16929D329861A2100FE1952 /* Project object */;
+}
