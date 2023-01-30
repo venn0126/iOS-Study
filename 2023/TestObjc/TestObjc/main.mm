@@ -110,11 +110,11 @@ int main(int argc, const char * argv[]) {
         
         
         cache_t cache = personCls->cache;
-        bucket_t buckets = cache._buckets;
-        for (int i = 0; i <= cache._mask; i++) {
-            bucket_t bucket = buckets[i];
-            NSLog(@"%s %p",bucket._key, bucket._imp);
-        }
+//        bucket_t buckets = cache._buckets;
+//        for (int i = 0; i <= cache._mask; i++) {
+//            bucket_t bucket = buckets[i];
+//            NSLog(@"%s %p",bucket._key, bucket._imp);
+//        }
         
         NSLog(@"it is end");
         

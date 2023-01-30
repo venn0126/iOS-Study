@@ -24,6 +24,29 @@ typedef uint16_t mask_t;
 #endif
 typedef uintptr_t cache_key_t;
 
+
+#if __arm__ || __x86_64__ || __i386__
+
+#define CACHE_END_MARKER 1
+static inline mask_t cache_next(mask_t i, mask_t mask) {
+    return (i+1) & mask;
+}
+
+#elif __arm64__
+
+#define CACHE_END_MARKER 0
+
+static inline mask_t cache_next(mask_t i, mask_t mask) {
+    return i ? (i-1) & mask;
+}
+
+#else
+
+#error unknown architecture
+
+#endif
+
+
 struct bucket_t {
     cache_key_t _key;
     IMP _imp;
@@ -33,6 +56,18 @@ struct cache_t {
     bucket_t *_buckets;
     mask_t _mask;
     mask_t _occupied;
+    
+    IMP imp(SEL selector) {
+        
+        mask_t begin = _mask & (long long)selector;
+        mask_t i = begin;
+        do {
+            if(_buckets[i]._key == 0 || _buckets[i]._key == (long long)selector) {
+                return _buckets[i]._imp;
+            }
+        } while((i = cache_next(i, _mask)) != begin);
+        return NULL;
+    }
 };
 
 struct entsize_list_tt {
