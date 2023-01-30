@@ -21,12 +21,12 @@
 |          `Fork`          |        Git桌面客户端         |              [下载地址](https://git-fork.com/)               |
 |        `Go2Shell`        |    使用终端快速打开某路径    |          [下载地址](https://zipzapmac.com/go2shell)          |
 | `Hopper Disassembler v4` |            反编译            |                         [下载地址]()                         |
-|          `ida`           |            发编译            |                         [下载地址]()                         |
+|          `ida`           |            反编译            |                         [下载地址]()                         |
 |         `Typora`         | 一款 Markdown 编辑器和阅读器 |   [下载地址](https://xclient.info/s/typora.html#versions)    |
 |      `iStat Menus`       |           系统监控           | [下载地址](https://xclient.info/s/istat-menus-for-mac.html)  |
 |         `iTerm`          |             终端             |               [下载地址](https://iterm2.com/)                |
 |         `Knuff`          |       手动发送push通知       | [App Store](https://apps.apple.com/us/app/knuff/id993435856) |
-|       `MachOView`        |      machOView文件查看       |               [下载地址](https://iterm2.com/)                |
+|       `MachOView`        |      machOView文件查看       |     [下载地址](https://github.com/fangshufeng/MachOView)     |
 |          `Paw`           |           网络接口           |                [下载地址](https://paw.cloud/)                |
 |      `Sublime Text`      |           文本编辑           |     [下载地址](https://xclient.info/s/sublime-text.html)     |
 |     `SymbolicatorX`      |        崩溃文件符号化        |     [下载地址](https://github.com/Yueoaix/SymbolicatorX)     |
@@ -36,5 +36,6 @@
 |     `iOS App Signer`     |     iOS App重签名GUI工具     | [下载地址](https://github.com/DanTheMan827/ios-app-signer/releases) |
 |      `insert_dylib`      |        动态库注入工具        |      [下载地址](https://github.com/tyilo/insert_dylib)       |
 |     `dsc_extractor`      |         动态库提取器         | [下载地址](https://github.com/apple-oss-distributions/dyld/tags) |
-|        `Impactor`        |       跨平台重签名工具       |          [下载地址](http://www.cydiaimpactor.com/)           |
+|     `restore-symbol`     | iOS/MacOS平台符号表恢复工具  |  [下载地址](https://github.com/tobefuturer/restore-symbol)   |
+|       `class-dump`       |     二进制文件头文件恢复     |       [下载地址](https://github.com/nygard/class-dump)       |
 

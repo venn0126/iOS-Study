@@ -1,0 +1,796 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B1F4C6CD2987BC7E002C17AA /* MDConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = B1F4C6CC2987BC7E002C17AA /* MDConfig.plist */; };
+		B1F4C6D72987BC7E002C17AA /* libGTSnapchatDylib.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = B1F4C6D62987BC7E002C17AA /* libGTSnapchatDylib.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		B1F4C6DC2987BC7E002C17AA /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F4C6DB2987BC7E002C17AA /* JavaScriptCore.framework */; };
+		B1F4C6DE2987BC7E002C17AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F4C6DD2987BC7E002C17AA /* Foundation.framework */; };
+		B1F4C6E02987BC7E002C17AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F4C6DF2987BC7E002C17AA /* UIKit.framework */; };
+		B1F4C6E52987BC7E002C17AA /* GTSnapchatDylib.mm in Sources */ = {isa = PBXBuildFile; fileRef = B1F4C6E42987BC7E002C17AA /* GTSnapchatDylib.mm */; };
+		B1F4C6E82987BC7E002C17AA /* MDConfigManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B1F4C6E72987BC7E002C17AA /* MDConfigManager.h */; };
+		B1F4C6EA2987BC7E002C17AA /* MDConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F4C6E92987BC7E002C17AA /* MDConfigManager.m */; };
+		B1F4C6EC2987BC7E002C17AA /* MDCycriptManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B1F4C6EB2987BC7E002C17AA /* MDCycriptManager.h */; };
+		B1F4C6EE2987BC7E002C17AA /* MDCycriptManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F4C6ED2987BC7E002C17AA /* MDCycriptManager.m */; };
+		B1F4C6F02987BC7E002C17AA /* MDMethodTrace.h in Headers */ = {isa = PBXBuildFile; fileRef = B1F4C6EF2987BC7E002C17AA /* MDMethodTrace.h */; };
+		B1F4C6F22987BC7E002C17AA /* MDMethodTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F4C6F12987BC7E002C17AA /* MDMethodTrace.m */; };
+		B1F4C6F52987BC7E002C17AA /* a1a2-selectortramps-arm.s in Sources */ = {isa = PBXBuildFile; fileRef = B1F4C6F42987BC7E002C17AA /* a1a2-selectortramps-arm.s */; };
+		B1F4C6F72987BC7E002C17AA /* a1a2-selectortramps-arm64.s in Sources */ = {isa = PBXBuildFile; fileRef = B1F4C6F62987BC7E002C17AA /* a1a2-selectortramps-arm64.s */; };
+		B1F4C6F92987BC7E002C17AA /* a1a2-selectortramps-i386.s in Sources */ = {isa = PBXBuildFile; fileRef = B1F4C6F82987BC7E002C17AA /* a1a2-selectortramps-i386.s */; };
+		B1F4C6FB2987BC7E002C17AA /* a1a2-selectortramps-x86_64.s in Sources */ = {isa = PBXBuildFile; fileRef = B1F4C6FA2987BC7E002C17AA /* a1a2-selectortramps-x86_64.s */; };
+		B1F4C6FD2987BC7E002C17AA /* a2a3-selectortramps-arm.s in Sources */ = {isa = PBXBuildFile; fileRef = B1F4C6FC2987BC7E002C17AA /* a2a3-selectortramps-arm.s */; };
+		B1F4C6FF2987BC7E002C17AA /* a2a3-selectortramps-i386.s in Sources */ = {isa = PBXBuildFile; fileRef = B1F4C6FE2987BC7E002C17AA /* a2a3-selectortramps-i386.s */; };
+		B1F4C7012987BC7E002C17AA /* a2a3-selectortramps-x86_64.s in Sources */ = {isa = PBXBuildFile; fileRef = B1F4C7002987BC7E002C17AA /* a2a3-selectortramps-x86_64.s */; };
+		B1F4C7032987BC7E002C17AA /* OCMethodTrace.h in Headers */ = {isa = PBXBuildFile; fileRef = B1F4C7022987BC7E002C17AA /* OCMethodTrace.h */; };
+		B1F4C7052987BC7E002C17AA /* OCMethodTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F4C7042987BC7E002C17AA /* OCMethodTrace.m */; };
+		B1F4C7072987BC7E002C17AA /* OCSelectorTrampolines.h in Headers */ = {isa = PBXBuildFile; fileRef = B1F4C7062987BC7E002C17AA /* OCSelectorTrampolines.h */; };
+		B1F4C7092987BC7E002C17AA /* OCSelectorTrampolines.mm in Sources */ = {isa = PBXBuildFile; fileRef = B1F4C7082987BC7E002C17AA /* OCSelectorTrampolines.mm */; };
+		B1F4C70D2987BC7E002C17AA /* LLDBTools.h in Headers */ = {isa = PBXBuildFile; fileRef = B1F4C70C2987BC7E002C17AA /* LLDBTools.h */; };
+		B1F4C70F2987BC7E002C17AA /* LLDBTools.mm in Sources */ = {isa = PBXBuildFile; fileRef = B1F4C70E2987BC7E002C17AA /* LLDBTools.mm */; };
+		B1F4C7142987BC7E002C17AA /* AntiAntiDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F4C7132987BC7E002C17AA /* AntiAntiDebug.m */; };
+		B1F4C7172987BC7E002C17AA /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = B1F4C7162987BC7E002C17AA /* fishhook.c */; };
+		B1F4C7192987BC7E002C17AA /* fishhook.h in Headers */ = {isa = PBXBuildFile; fileRef = B1F4C7182987BC7E002C17AA /* fishhook.h */; };
+		B1F4C71B2987BC7E002C17AA /* GTSnapchatDylib.h in Headers */ = {isa = PBXBuildFile; fileRef = B1F4C71A2987BC7E002C17AA /* GTSnapchatDylib.h */; };
+		B1F4C71D2987BC7E002C17AA /* GTSnapchatDylib.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F4C71C2987BC7E002C17AA /* GTSnapchatDylib.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B1F4C6D82987BC7E002C17AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1F4C6BA2987BC7E002C17AA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B1F4C6D52987BC7E002C17AA;
+			remoteInfo = GTSnapchatDylib;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B1F4C6C22987BC7E002C17AA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B1F4C6D72987BC7E002C17AA /* libGTSnapchatDylib.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B1F4C6C52987BC7E002C17AA /* GTSnapchat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTSnapchat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1F4C6C82987BC7E002C17AA /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		B1F4C6CA2987BC7E002C17AA /* quick-resign.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "quick-resign.sh"; sourceTree = "<group>"; };
+		B1F4C6CC2987BC7E002C17AA /* MDConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = MDConfig.plist; sourceTree = "<group>"; };
+		B1F4C6CF2987BC7E002C17AA /* put ipa or app here */ = {isa = PBXFileReference; lastKnownFileType = text; path = "put ipa or app here"; sourceTree = "<group>"; };
+		B1F4C6D02987BC7E002C17AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1F4C6D62987BC7E002C17AA /* libGTSnapchatDylib.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libGTSnapchatDylib.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1F4C6DB2987BC7E002C17AA /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		B1F4C6DD2987BC7E002C17AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B1F4C6DF2987BC7E002C17AA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B1F4C6E32987BC7E002C17AA /* GTSnapchatDylib.xm */ = {isa = PBXFileReference; lastKnownFileType = text; path = GTSnapchatDylib.xm; sourceTree = "<group>"; };
+		B1F4C6E42987BC7E002C17AA /* GTSnapchatDylib.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = GTSnapchatDylib.mm; sourceTree = "<group>"; };
+		B1F4C6E72987BC7E002C17AA /* MDConfigManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDConfigManager.h; sourceTree = "<group>"; };
+		B1F4C6E92987BC7E002C17AA /* MDConfigManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDConfigManager.m; sourceTree = "<group>"; };
+		B1F4C6EB2987BC7E002C17AA /* MDCycriptManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDCycriptManager.h; sourceTree = "<group>"; };
+		B1F4C6ED2987BC7E002C17AA /* MDCycriptManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDCycriptManager.m; sourceTree = "<group>"; };
+		B1F4C6EF2987BC7E002C17AA /* MDMethodTrace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDMethodTrace.h; sourceTree = "<group>"; };
+		B1F4C6F12987BC7E002C17AA /* MDMethodTrace.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MDMethodTrace.m; sourceTree = "<group>"; };
+		B1F4C6F42987BC7E002C17AA /* a1a2-selectortramps-arm.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = "a1a2-selectortramps-arm.s"; sourceTree = "<group>"; };
+		B1F4C6F62987BC7E002C17AA /* a1a2-selectortramps-arm64.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = "a1a2-selectortramps-arm64.s"; sourceTree = "<group>"; };
+		B1F4C6F82987BC7E002C17AA /* a1a2-selectortramps-i386.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = "a1a2-selectortramps-i386.s"; sourceTree = "<group>"; };
+		B1F4C6FA2987BC7E002C17AA /* a1a2-selectortramps-x86_64.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = "a1a2-selectortramps-x86_64.s"; sourceTree = "<group>"; };
+		B1F4C6FC2987BC7E002C17AA /* a2a3-selectortramps-arm.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = "a2a3-selectortramps-arm.s"; sourceTree = "<group>"; };
+		B1F4C6FE2987BC7E002C17AA /* a2a3-selectortramps-i386.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = "a2a3-selectortramps-i386.s"; sourceTree = "<group>"; };
+		B1F4C7002987BC7E002C17AA /* a2a3-selectortramps-x86_64.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = "a2a3-selectortramps-x86_64.s"; sourceTree = "<group>"; };
+		B1F4C7022987BC7E002C17AA /* OCMethodTrace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCMethodTrace.h; sourceTree = "<group>"; };
+		B1F4C7042987BC7E002C17AA /* OCMethodTrace.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OCMethodTrace.m; sourceTree = "<group>"; };
+		B1F4C7062987BC7E002C17AA /* OCSelectorTrampolines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OCSelectorTrampolines.h; sourceTree = "<group>"; };
+		B1F4C7082987BC7E002C17AA /* OCSelectorTrampolines.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = OCSelectorTrampolines.mm; sourceTree = "<group>"; };
+		B1F4C70A2987BC7E002C17AA /* selectortramps.mac */ = {isa = PBXFileReference; lastKnownFileType = text; path = selectortramps.mac; sourceTree = "<group>"; };
+		B1F4C70C2987BC7E002C17AA /* LLDBTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LLDBTools.h; sourceTree = "<group>"; };
+		B1F4C70E2987BC7E002C17AA /* LLDBTools.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = LLDBTools.mm; sourceTree = "<group>"; };
+		B1F4C7112987BC7E002C17AA /* GTSnapchatDylib-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GTSnapchatDylib-Prefix.pch"; path = "../GTSnapchatDylib-Prefix.pch"; sourceTree = "<group>"; };
+		B1F4C7132987BC7E002C17AA /* AntiAntiDebug.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AntiAntiDebug.m; sourceTree = "<group>"; };
+		B1F4C7162987BC7E002C17AA /* fishhook.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = fishhook.c; sourceTree = "<group>"; };
+		B1F4C7182987BC7E002C17AA /* fishhook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fishhook.h; sourceTree = "<group>"; };
+		B1F4C71A2987BC7E002C17AA /* GTSnapchatDylib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTSnapchatDylib.h; sourceTree = "<group>"; };
+		B1F4C71C2987BC7E002C17AA /* GTSnapchatDylib.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTSnapchatDylib.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B1F4C6BF2987BC7E002C17AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1F4C6D32987BC7E002C17AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1F4C6DC2987BC7E002C17AA /* JavaScriptCore.framework in Frameworks */,
+				B1F4C6E02987BC7E002C17AA /* UIKit.framework in Frameworks */,
+				B1F4C6DE2987BC7E002C17AA /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B1F4C6B92987BC7E002C17AA = {
+			isa = PBXGroup;
+			children = (
+				B1F4C6C72987BC7E002C17AA /* GTSnapchat */,
+				B1F4C6E12987BC7E002C17AA /* GTSnapchatDylib */,
+				B1F4C6DA2987BC7E002C17AA /* Frameworks */,
+				B1F4C6C62987BC7E002C17AA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B1F4C6C62987BC7E002C17AA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B1F4C6C52987BC7E002C17AA /* GTSnapchat.app */,
+				B1F4C6D62987BC7E002C17AA /* libGTSnapchatDylib.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B1F4C6C72987BC7E002C17AA /* GTSnapchat */ = {
+			isa = PBXGroup;
+			children = (
+				B1F4C6C82987BC7E002C17AA /* icon.png */,
+				B1F4C6D02987BC7E002C17AA /* Info.plist */,
+				B1F4C6C92987BC7E002C17AA /* Scripts */,
+				B1F4C6CB2987BC7E002C17AA /* Config */,
+				B1F4C6CE2987BC7E002C17AA /* TargetApp */,
+			);
+			path = GTSnapchat;
+			sourceTree = "<group>";
+		};
+		B1F4C6C92987BC7E002C17AA /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				B1F4C6CA2987BC7E002C17AA /* quick-resign.sh */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
+		B1F4C6CB2987BC7E002C17AA /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				B1F4C6CC2987BC7E002C17AA /* MDConfig.plist */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		B1F4C6CE2987BC7E002C17AA /* TargetApp */ = {
+			isa = PBXGroup;
+			children = (
+				B1F4C6CF2987BC7E002C17AA /* put ipa or app here */,
+			);
+			path = TargetApp;
+			sourceTree = "<group>";
+		};
+		B1F4C6DA2987BC7E002C17AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B1F4C6DB2987BC7E002C17AA /* JavaScriptCore.framework */,
+				B1F4C6DD2987BC7E002C17AA /* Foundation.framework */,
+				B1F4C6DF2987BC7E002C17AA /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B1F4C6E12987BC7E002C17AA /* GTSnapchatDylib */ = {
+			isa = PBXGroup;
+			children = (
+				B1F4C71A2987BC7E002C17AA /* GTSnapchatDylib.h */,
+				B1F4C71C2987BC7E002C17AA /* GTSnapchatDylib.m */,
+				B1F4C6E22987BC7E002C17AA /* Logos */,
+				B1F4C6E62987BC7E002C17AA /* Config */,
+				B1F4C6F32987BC7E002C17AA /* Trace */,
+				B1F4C70B2987BC7E002C17AA /* Tools */,
+				B1F4C7122987BC7E002C17AA /* AntiAntiDebug */,
+				B1F4C7152987BC7E002C17AA /* fishhook */,
+				B1F4C7102987BC7E002C17AA /* Supporting Files */,
+			);
+			path = GTSnapchatDylib;
+			sourceTree = "<group>";
+		};
+		B1F4C6E22987BC7E002C17AA /* Logos */ = {
+			isa = PBXGroup;
+			children = (
+				B1F4C6E32987BC7E002C17AA /* GTSnapchatDylib.xm */,
+				B1F4C6E42987BC7E002C17AA /* GTSnapchatDylib.mm */,
+			);
+			path = Logos;
+			sourceTree = "<group>";
+		};
+		B1F4C6E62987BC7E002C17AA /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				B1F4C6E72987BC7E002C17AA /* MDConfigManager.h */,
+				B1F4C6E92987BC7E002C17AA /* MDConfigManager.m */,
+				B1F4C6EB2987BC7E002C17AA /* MDCycriptManager.h */,
+				B1F4C6ED2987BC7E002C17AA /* MDCycriptManager.m */,
+				B1F4C6EF2987BC7E002C17AA /* MDMethodTrace.h */,
+				B1F4C6F12987BC7E002C17AA /* MDMethodTrace.m */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		B1F4C6F32987BC7E002C17AA /* Trace */ = {
+			isa = PBXGroup;
+			children = (
+				B1F4C6F42987BC7E002C17AA /* a1a2-selectortramps-arm.s */,
+				B1F4C6F62987BC7E002C17AA /* a1a2-selectortramps-arm64.s */,
+				B1F4C6F82987BC7E002C17AA /* a1a2-selectortramps-i386.s */,
+				B1F4C6FA2987BC7E002C17AA /* a1a2-selectortramps-x86_64.s */,
+				B1F4C6FC2987BC7E002C17AA /* a2a3-selectortramps-arm.s */,
+				B1F4C6FE2987BC7E002C17AA /* a2a3-selectortramps-i386.s */,
+				B1F4C7002987BC7E002C17AA /* a2a3-selectortramps-x86_64.s */,
+				B1F4C7022987BC7E002C17AA /* OCMethodTrace.h */,
+				B1F4C7042987BC7E002C17AA /* OCMethodTrace.m */,
+				B1F4C7062987BC7E002C17AA /* OCSelectorTrampolines.h */,
+				B1F4C7082987BC7E002C17AA /* OCSelectorTrampolines.mm */,
+				B1F4C70A2987BC7E002C17AA /* selectortramps.mac */,
+			);
+			path = Trace;
+			sourceTree = "<group>";
+		};
+		B1F4C70B2987BC7E002C17AA /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				B1F4C70C2987BC7E002C17AA /* LLDBTools.h */,
+				B1F4C70E2987BC7E002C17AA /* LLDBTools.mm */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		B1F4C7102987BC7E002C17AA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B1F4C7112987BC7E002C17AA /* GTSnapchatDylib-Prefix.pch */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B1F4C7122987BC7E002C17AA /* AntiAntiDebug */ = {
+			isa = PBXGroup;
+			children = (
+				B1F4C7132987BC7E002C17AA /* AntiAntiDebug.m */,
+			);
+			path = AntiAntiDebug;
+			sourceTree = "<group>";
+		};
+		B1F4C7152987BC7E002C17AA /* fishhook */ = {
+			isa = PBXGroup;
+			children = (
+				B1F4C7162987BC7E002C17AA /* fishhook.c */,
+				B1F4C7182987BC7E002C17AA /* fishhook.h */,
+			);
+			path = fishhook;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B1F4C6D42987BC7E002C17AA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1F4C71B2987BC7E002C17AA /* GTSnapchatDylib.h in Headers */,
+				B1F4C6EC2987BC7E002C17AA /* MDCycriptManager.h in Headers */,
+				B1F4C6F02987BC7E002C17AA /* MDMethodTrace.h in Headers */,
+				B1F4C7192987BC7E002C17AA /* fishhook.h in Headers */,
+				B1F4C70D2987BC7E002C17AA /* LLDBTools.h in Headers */,
+				B1F4C6E82987BC7E002C17AA /* MDConfigManager.h in Headers */,
+				B1F4C7072987BC7E002C17AA /* OCSelectorTrampolines.h in Headers */,
+				B1F4C7032987BC7E002C17AA /* OCMethodTrace.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		B1F4C6C42987BC7E002C17AA /* GTSnapchat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1F4C7232987BC7E002C17AA /* Build configuration list for PBXNativeTarget "GTSnapchat" */;
+			buildPhases = (
+				B1F4C6BE2987BC7E002C17AA /* Sources */,
+				B1F4C6BF2987BC7E002C17AA /* Frameworks */,
+				B1F4C6C02987BC7E002C17AA /* ShellScript */,
+				B1F4C6C12987BC7E002C17AA /* Resources */,
+				B1F4C6C22987BC7E002C17AA /* CopyFiles */,
+				B1F4C6C32987BC7E002C17AA /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B1F4C6D92987BC7E002C17AA /* PBXTargetDependency */,
+			);
+			name = GTSnapchat;
+			productName = GTSnapchat;
+			productReference = B1F4C6C52987BC7E002C17AA /* GTSnapchat.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B1F4C6D52987BC7E002C17AA /* GTSnapchatDylib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1F4C7202987BC7E002C17AA /* Build configuration list for PBXNativeTarget "GTSnapchatDylib" */;
+			buildPhases = (
+				B1F4C6D12987BC7E002C17AA /* ShellScript */,
+				B1F4C6D22987BC7E002C17AA /* Sources */,
+				B1F4C6D32987BC7E002C17AA /* Frameworks */,
+				B1F4C6D42987BC7E002C17AA /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GTSnapchatDylib;
+			productName = GTSnapchatDylib;
+			productReference = B1F4C6D62987BC7E002C17AA /* libGTSnapchatDylib.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B1F4C6BA2987BC7E002C17AA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					B1F4C6C42987BC7E002C17AA = {
+						CreatedOnToolsVersion = 14.0;
+					};
+					B1F4C6D52987BC7E002C17AA = {
+						CreatedOnToolsVersion = 14.0;
+					};
+				};
+			};
+			buildConfigurationList = B1F4C6BD2987BC7E002C17AA /* Build configuration list for PBXProject "GTSnapchat" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B1F4C6B92987BC7E002C17AA;
+			productRefGroup = B1F4C6C62987BC7E002C17AA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B1F4C6C42987BC7E002C17AA /* GTSnapchat */,
+				B1F4C6D52987BC7E002C17AA /* GTSnapchatDylib */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B1F4C6C12987BC7E002C17AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1F4C6CD2987BC7E002C17AA /* MDConfig.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B1F4C6C02987BC7E002C17AA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = /opt/MonkeyDev/Tools/pack.sh;
+		};
+		B1F4C6C32987BC7E002C17AA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/opt/MonkeyDev/Tools/pack.sh codesign";
+		};
+		B1F4C6D12987BC7E002C17AA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/opt/MonkeyDev/bin/md --xcbp-logos";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B1F4C6BE2987BC7E002C17AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1F4C6D22987BC7E002C17AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1F4C6EE2987BC7E002C17AA /* MDCycriptManager.m in Sources */,
+				B1F4C6F72987BC7E002C17AA /* a1a2-selectortramps-arm64.s in Sources */,
+				B1F4C6F52987BC7E002C17AA /* a1a2-selectortramps-arm.s in Sources */,
+				B1F4C6FB2987BC7E002C17AA /* a1a2-selectortramps-x86_64.s in Sources */,
+				B1F4C7052987BC7E002C17AA /* OCMethodTrace.m in Sources */,
+				B1F4C6EA2987BC7E002C17AA /* MDConfigManager.m in Sources */,
+				B1F4C7172987BC7E002C17AA /* fishhook.c in Sources */,
+				B1F4C7142987BC7E002C17AA /* AntiAntiDebug.m in Sources */,
+				B1F4C7092987BC7E002C17AA /* OCSelectorTrampolines.mm in Sources */,
+				B1F4C6F92987BC7E002C17AA /* a1a2-selectortramps-i386.s in Sources */,
+				B1F4C6FF2987BC7E002C17AA /* a2a3-selectortramps-i386.s in Sources */,
+				B1F4C6FD2987BC7E002C17AA /* a2a3-selectortramps-arm.s in Sources */,
+				B1F4C6E52987BC7E002C17AA /* GTSnapchatDylib.mm in Sources */,
+				B1F4C70F2987BC7E002C17AA /* LLDBTools.mm in Sources */,
+				B1F4C7012987BC7E002C17AA /* a2a3-selectortramps-x86_64.s in Sources */,
+				B1F4C6F22987BC7E002C17AA /* MDMethodTrace.m in Sources */,
+				B1F4C71D2987BC7E002C17AA /* GTSnapchatDylib.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B1F4C6D92987BC7E002C17AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B1F4C6D52987BC7E002C17AA /* GTSnapchatDylib */;
+			targetProxy = B1F4C6D82987BC7E002C17AA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B1F4C71E2987BC7E002C17AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B1F4C71F2987BC7E002C17AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B1F4C7212987BC7E002C17AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AQDKUEE5C2;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				ENABLE_BITCODE = NO;
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
+				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(MonkeyDevPath)/Frameworks/**",
+					"$(MonkeyDevPath)/Librarys/**",
+					"$(MonkeyDevTheosPath)/vendor/lib",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GTSnapchatDylib/GTSnapchatDylib-Prefix.pch";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(MonkeyDevPath)/include",
+					"$(MonkeyDevTheosPath)/vendor/include/**",
+				);
+				INSTALL_PATH = "@executable_path/Frameworks/libGTSnapchatDylib.dylib";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(MonkeyDevPath)/Frameworks",
+					"$(MonkeyDevTheosPath)/vendor/lib/**",
+				);
+				MonkeyDevPath = /opt/MonkeyDev;
+				MonkeyDevTheosPath = /opt/theos;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-DTHEOS_INSTANCE_NAME=\"\\\"GTSnapchatDylib\\\"\"",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-weak_library",
+					"/usr/lib/libc++.dylib",
+					"-weak_library",
+					"/usr/lib/libstdc++.dylib",
+					"-weak_library",
+					"$(MonkeyDevPath)/Frameworks/libsubstrate.dylib",
+					"-lcycript",
+					"-framework",
+					RevealServer,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = NO;
+			};
+			name = Debug;
+		};
+		B1F4C7222987BC7E002C17AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = AQDKUEE5C2;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				ENABLE_BITCODE = NO;
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
+				EXECUTABLE_PREFIX = lib;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(MonkeyDevPath)/Frameworks/**",
+					"$(MonkeyDevPath)/Librarys/**",
+					"$(MonkeyDevTheosPath)/vendor/lib",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GTSnapchatDylib/GTSnapchatDylib-Prefix.pch";
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(MonkeyDevPath)/include",
+					"$(MonkeyDevTheosPath)/vendor/include/**",
+				);
+				INSTALL_PATH = "@executable_path/Frameworks/libGTSnapchatDylib.dylib";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(MonkeyDevPath)/Frameworks",
+					"$(MonkeyDevTheosPath)/vendor/lib/**",
+				);
+				MonkeyDevPath = /opt/MonkeyDev;
+				MonkeyDevTheosPath = /opt/theos;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-DTHEOS_INSTANCE_NAME=\"\\\"GTSnapchatDylib\\\"\"",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-weak_library",
+					"/usr/lib/libc++.dylib",
+					"-weak_library",
+					"/usr/lib/libstdc++.dylib",
+					"-weak_library",
+					"$(MonkeyDevPath)/Frameworks/libsubstrate.dylib",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B1F4C7242987BC7E002C17AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AQDKUEE5C2;
+				ENABLE_BITCODE = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				MONKEYDEV_ADD_SUBSTRATE = YES;
+				MONKEYDEV_CLASS_DUMP = NO;
+				MONKEYDEV_DEFAULT_BUNDLEID = NO;
+				MONKEYDEV_INSERT_DYLIB = YES;
+				MONKEYDEV_RESTORE_SYMBOL = NO;
+				MONKEYDEV_TARGET_APP = Optional;
+				PODS_CONFIGURATION_BUILD_DIR = "$BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				PODS_ROOT = "${SRCROOT}/Pods";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gt.GTSnapchat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B1F4C7252987BC7E002C17AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AQDKUEE5C2;
+				ENABLE_BITCODE = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				MONKEYDEV_ADD_SUBSTRATE = YES;
+				MONKEYDEV_CLASS_DUMP = NO;
+				MONKEYDEV_DEFAULT_BUNDLEID = NO;
+				MONKEYDEV_INSERT_DYLIB = YES;
+				MONKEYDEV_RESTORE_SYMBOL = NO;
+				MONKEYDEV_TARGET_APP = Optional;
+				PODS_CONFIGURATION_BUILD_DIR = "$BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
+				PODS_ROOT = "${SRCROOT}/Pods";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gt.GTSnapchat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B1F4C6BD2987BC7E002C17AA /* Build configuration list for PBXProject "GTSnapchat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1F4C71E2987BC7E002C17AA /* Debug */,
+				B1F4C71F2987BC7E002C17AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1F4C7202987BC7E002C17AA /* Build configuration list for PBXNativeTarget "GTSnapchatDylib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1F4C7212987BC7E002C17AA /* Debug */,
+				B1F4C7222987BC7E002C17AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1F4C7232987BC7E002C17AA /* Build configuration list for PBXNativeTarget "GTSnapchat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1F4C7242987BC7E002C17AA /* Debug */,
+				B1F4C7252987BC7E002C17AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B1F4C6BA2987BC7E002C17AA /* Project object */;
+}
