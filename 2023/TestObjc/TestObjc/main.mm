@@ -100,19 +100,39 @@ int main(int argc, const char * argv[]) {
 //        test();
 //        augusBlock();
         
+     
+        
         GTPerosn *person = [[GTPerosn alloc] init];
-        person.thin = NO;
-        person.rich = NO;
-        person.handsome = NO;
-        NSLog(@"thin is %d rich is %d handsome is %d",person.isThin,person.isRich,person.isHandsome);
+        gt_objc_class *personCls = (__bridge gt_objc_class *)[GTPerosn class];
         
         
-
+        [person personTest];
+        
+        
+        cache_t cache = personCls->cache;
+        bucket_t buckets = cache._buckets;
+        for (int i = 0; i <= cache._mask; i++) {
+            bucket_t bucket = buckets[i];
+            NSLog(@"%s %p",bucket._key, bucket._imp);
+        }
+        
+        NSLog(@"it is end");
         
 
         
     }
     return 0;
+}
+
+
+void test0(void) {
+    
+    GTPerosn *person = [[GTPerosn alloc] init];
+    person.thin = NO;
+    person.rich = NO;
+    person.handsome = NO;
+    NSLog(@"thin is %d rich is %d handsome is %d",person.isThin,person.isRich,person.isHandsome);
+    
 }
 
 

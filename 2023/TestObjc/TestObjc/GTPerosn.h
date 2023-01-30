@@ -39,6 +39,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setHandsome:(BOOL)handsome;
 - (void)setThin:(BOOL)thin;
 
+- (void)personTest;
+
 
 
 
