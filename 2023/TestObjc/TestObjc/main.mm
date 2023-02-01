@@ -100,21 +100,22 @@ int main(int argc, const char * argv[]) {
 //        test();
 //        augusBlock();
         
-     
-        
+             
         GTPerosn *person = [[GTPerosn alloc] init];
         gt_objc_class *personCls = (__bridge gt_objc_class *)[GTPerosn class];
         
-        
         [person personTest];
-        
+  
         
         cache_t cache = personCls->cache;
-//        bucket_t buckets = cache._buckets;
-//        for (int i = 0; i <= cache._mask; i++) {
-//            bucket_t bucket = buckets[i];
-//            NSLog(@"%s %p",bucket._key, bucket._imp);
-//        }
+        bucket_t *buckets = cache._buckets;
+//        bucket_t bucket = buckets[(long long)@selector(personTest) & cache._mask];
+       
+        
+        for (int i = 0; i <= cache._mask; i++) {
+            bucket_t bucket = buckets[i];
+            NSLog(@"%s %p",bucket._key, bucket._imp);
+        }
         
         NSLog(@"it is end");
         

@@ -37,7 +37,7 @@ static inline mask_t cache_next(mask_t i, mask_t mask) {
 #define CACHE_END_MARKER 0
 
 static inline mask_t cache_next(mask_t i, mask_t mask) {
-    return i ? (i-1) & mask;
+    return i ? (i-1) : mask;
 }
 
 #else
