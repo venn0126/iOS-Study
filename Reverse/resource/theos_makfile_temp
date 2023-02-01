@@ -1,0 +1,108 @@
+export THEOS=/opt/theos/
+ export SDKVERSION=5.1
+ export THEOS_DEVICE_IP=10.0.2.3
+ #192.168.1.157
+ #10.0.2.2
+ export CURRENT_VERSION = 1104
+ 
+ include theos/makefiles/common.mk
+ 
+ TWEAK_NAME = service
+ 
+ RESOURCE_DIR = Resources
+ 
+ DEBUG = 1
+ 
+ #SUBPROJECTS=servicePreferences
+ 
+ #编译单元
+ #
+ #
+ 
+ 
+ #编译 ----------------------------ASIHTTPRequest--------------------
+ service_FILES += ASIHTTPRequest/ASIAuthenticationDialog.m
+ service_FILES += ASIHTTPRequest/ASIDownloadCache.m
+ service_FILES += ASIHTTPRequest/ASIFormDataRequest.m
+ service_FILES += ASIHTTPRequest/ASIHTTPRequest.m
+ service_FILES += ASIHTTPRequest/ASIInputStream.m
+ service_FILES += ASIHTTPRequest/ASINetworkQueue.m
+ service_FILES += ASIHTTPRequest/Reachability.m
+ 
+ #编译 ----------------------------Encoder---------------------------
+ service_FILES += Encoder/CrypHelper.m
+ service_FILES += Encoder/GTMBase64.m
+ service_FILES += Encoder/NSData+Base64.m
+ service_FILES += Encoder/NSString+MD5Addition.m
+ service_FILES += Encoder/UIDevice+IdentifierAddition.m
+ 
+ #编译 ----------------------------TBXML-----------------------------
+ service_FILES += TBXML/NSDataAdditions.m
+ service_FILES += TBXML/TBXML.m
+ 
+ #编译 ----------------------------Regex-----------------------------
+ service_FILES += Regex/RegexKitLite.m
+ 
+ #编译 ----------------------------Constant--------------------------
+ service_FILES += Constant/Constant.m
+ service_FILES += Constant/UserDefaults.m
+ 
+ #编译 ----------------------------SOAP-----------------------------
+ service_FILES += SOAP/Head.m
+ service_FILES += SOAP/Body.m
+ 
+ #编译 ----------------------------MsgService-----------------------------
+ service_FILES += MsgService/MsgService.m
+ service_FILES += MsgService/MessageInfo.m
+ service_FILES += MsgService/Msgs/NetBrain.m
+ service_FILES += MsgService/Msgs/KeepAliveReturnMsg.m
+ service_FILES += MsgService/Msgs/DevBindReturnMsg.m
+ service_FILES += MsgService/Msgs/FamilyPhoneMsg.m
+ service_FILES += MsgService/Msgs/LocationMsg.m
+ 
+ #编译 ----------------------------ParseXML-----------------------------
+ service_FILES += ParseXML/ParseXML.m
+ 
+ 
+ #编译 ----------------------------Command---------------------------------
+ service_FILES += Command/TxtwCommand.m
+ 
+ #编译 ----------------------------BaiduMap---------------------------------
+ service_FILES += BaiduMap/MapPointAnnotion.m
+ 
+ #编译 ----------------------------service-----------------------------
+ service_FILES += service/service.mm
+ service_FILES += Tweak.xm
+ 
+ 
+ #连接单元
+ #
+ #连接 ----------------------------framework--------------------------
+ service_FRAMEWORKS = Foundation UIKit QuartzCore Foundation CoreFoundation CoreGraphics  MobileCoreServices
+ service_FRAMEWORKS += SystemConfiguration  CFNetwork CoreTelephony CoreLocation MapKit
+ 
+ 
+ #连接 ----------------------------dylib------------------------------
+ service_LDFLAGS = -lxml2 -lz -licucore -lgcc -lgcc_eh -lstdc++ 
+ service_LDFLAGS += -L./BaiduMap/inc -R./BaiduMap/inc/ -lbaidumapapi
+ 
+ #编译器 ----------------------------------------------------------
+ #service_CFLAGS += -std=c99 
+ #service_CFLAGS += -all_load
+ 
+ #资源文件 ----------------------------------------------------------
+ internal-package::
+    ifneq ($(wildcard $(RESOURCE_DIR)/*.png), )
+     mkdir -p $(THEOS_STAGING_DIR)/Library/PreferenceLoader/Preferences/$(TWEAK_NAME)
+     cp $(RESOURCE_DIR)/*.png $(THEOS_STAGING_DIR)/Library/PreferenceLoader/Preferences/$(TWEAK_NAME)/
+    endif
+    ifneq ($(wildcard $(RESOURCE_DIR)/*.lproj), )
+     mkdir -p $(THEOS_STAGING_DIR)/Library/PreferenceLoader/Preferences/$(TWEAK_NAME)
+     rsync -avC $(RESOURCE_DIR)/*.lproj $(THEOS_STAGING_DIR)/Library/PreferenceLoader/Preferences/$(TWEAK_NAME)
+    endif
+    ifneq ($(wildcard $(RESOURCE_DIR)/$(TWEAK_NAME).plist), )
+     mkdir -p $(THEOS_STAGING_DIR)/Library/PreferenceLoader/Preferences/$(TWEAK_NAME)
+     cp $(RESOURCE_DIR)/$(TWEAK_NAME).plist $(THEOS_STAGING_DIR)/Library/PreferenceLoader/Preferences/$(TWEAK_NAME)
+    endif
+ 
+ include $(THEOS_MAKE_PATH)/tweak.mk
