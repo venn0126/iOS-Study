@@ -12,12 +12,21 @@
 
 
 #import "GTFileTools.h"
+#import "GTFloatButton.h"
+
+#import "LYCache.h"
+#import "GTCache.h"
+
 
 
 #define GTOneTapLoginPlistFile [NSString stringWithFormat:@"%@/gt_oneTapLogin.plist", [GTFileTools gt_DocumentPath]]
 
+#define GTScreenWidth [UIApplication sharedApplication].keyWindow.bounds.size.width
+#define GTScreenHeight [UIApplication sharedApplication].keyWindow.bounds.size.height
 
-@interface ViewController ()
+
+
+@interface ViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) GTPerson *person1;
 @property (nonatomic, strong) GTPerson *person2;
@@ -26,6 +35,10 @@
 @property (nonatomic, strong) NSMutableArray *tokenArray;
 @property (nonatomic, strong) NSMutableDictionary *tokenDictionary;
 
+
+@property (nonatomic, strong) UICollectionView *augusCollectionView;
+@property (nonatomic, strong) UICollectionViewFlowLayout *augusFlowLayout;
+@property (nonatomic, strong) NSCache *augusCache;
 
 @end
 
@@ -39,6 +52,8 @@ struct gt_objc_class {
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
     
     
     
@@ -78,11 +93,176 @@ struct gt_objc_class {
 //    [self printMethodNameOfClass:object_getClass(self.person1)];
     
     
-    [self testFileToos];
+//    [self testFileToos];
+//    self.view.backgroundColor = UIColor.lightGrayColor;
+    
+//    [self.view addSubview:self.augusCollectionView];
+//    [self.augusCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"UICollectionViewCell"];
+
+//    self.title = @"ssss";
+//    self.view.backgroundColor = UIColor.greenColor;
+//    [self setupFloatButton];
+//
+//    [self performSelector:@selector(setupFloatButton)];
+    
+    
+    void (^block)(NSNumber *, NSError *) = ^(NSNumber *arg1, NSError *error){
+        
+        NSLog(@"arg 1 %@",arg1);
+        
+    };
+    block(@(1), nil);
+    
+    
+    void(^block1)(long long) = ^(long long arg1) {
+        
+        NSLog(@"arg 1 %lld",arg1);
+    };
+    
+    
+    block1(12.0);
+    NSLog(@"it is end");
+    
+    UIFont *font = [UIFont systemFontOfSize:17];
+    
+    
+//    NSLog(@"func encoder %@",@encode(block->_isa));
+    
+    [self _fetchConversationIdAndMetadataForSnapchatter:2 completion:^(BOOL re, NSString *conversationId, id SCMetaData) {
+                
+        
+    }];
+    
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+       
+        
+        
+    });
+    
     
 
     
+    
 }
+
+// [#0x11b8395c0 _fetchConversationIdAndMetadataForSnapchatter:#0x285cb77b0 completion:^(_Bool isSuccess, NSString *conversationId, id data) { NSLog(@"success %@ conversationId %@",@(isSuccess),conversationId); }]
+
+
+- (void)_fetchConversationIdAndMetadataForSnapchatter:(int)chatter completion:(void(^)(BOOL, NSString *, id))completion {
+    
+    
+    
+    
+}
+
+- (void)setupFloatButton {
+    
+    
+//    GTFloatButtonContent *btn = [GTFloatButtonContent alloc] 
+    
+    //最普通的显示
+//    [GTFloatButton show];
+//
+//    //是否显示截图当天的日期
+//    [[GTFloatButton sharedBtn] setBuildShowDate:YES];
+//
+//    NSDictionary *envMap = @{
+//                             @"测试":@"testapi.miniLV.com",
+//                             @"开发":@"devapi.miniLV.com",
+//                             @"生产":@"api.miniLV.com"
+//                             };
+//
+//    [GTFloatButton showDebugModeWithType:GTAssistiveTypeNone];
+//
+//#ifdef DEBUG
+//    //如果要实现MNFloatBtn 的切换环境功能，必须这样设置
+//    #define kAddress [[NSUserDefaults standardUserDefaults]objectForKey:@"MNBaseUrl"]
+//#else
+//    //正式环境地址
+//    #define kAddress @"api.miniLV.com"
+//#endif
+//
+//    NSString *baseUrl = @"www.sohu.com";
+//    [GTFloatButton setEnvironmentMap:envMap currentEnv:baseUrl];
+//
+//    [GTFloatButton sharedBtn].btnClick = ^(UIButton *sender) {
+//
+//        NSLog(@"开始转发");
+//    };
+//
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:@"一键添加" forState:UIControlStateNormal];
+    button.titleLabel.textColor = UIColor.blackColor;
+    button.frame = CGRectMake(GTScreenWidth - 50, 24, 0, 0);
+    [button sizeToFit];
+    [button addTarget:self action:@selector(seupGTAcceptOrAddButton) forControlEvents:UIControlEventTouchUpInside];
+    button.backgroundColor = UIColor.greenColor;
+    button.layer.cornerRadius = 5.0;
+    [self.view addSubview:button];
+    
+    /*
+     
+     -[<SCAddFriendsComposerViewController: 0x1101f3a00> initWithNonSnapchattersDataFetcher:<SCLazy: 0x2803763a0> blockedSnapchattersDataFetcher:<SCLazy: 0x280376340> snapchattersDataFetcher:<SCLazy: 0x280376300> snapchattersDataMutator:<SCLazy: 0x2803762a0> snapchattersDataTracker:<SCLazy: 0x2803757a0> snapchattersDataSearcher:<SCLazy: 0x280376400> searchSuggestionStore:<SCLazy: 0x2807291c0> snapchattersFriendscoreCoordinator:<SCLazy: 0x280376320> snapchatterPublicInfoFetcher:<SCLazy: 0x280376460> friendmojiPresenter:<SCLazy: 0x280361000> viewedIncomingFriendsTracker:<SCLazy: 0x280375820> permissionInfoProvider:<SCLazy: 0x280370920> placement:2 currentPageTracker:<SCCurrentPageTracker: 0x282002800> seenAndAddEventLogger:<SCAddFriendsQuickAddLoggerImpl: 0x28370c000> addFriendsWorkflowDelegate:<SCOpenAddFriendsCardActionHandler: 0x280e74180> addFriendsRecentlyActionPageScopeExposer:<SCScopeContainer: 0x282692f40> composerRuntimeProvider:<SCLazy: 0x28032a520> composerPeopleBridgeContactServices:<SCComposerPeopleBridgeContactServices: 0x280728440> networkingClient:<SCComposerNetworkingClient: 0x280374140> composerPeopleUserInfoProvider:<SCComposerPeopleUserInfoProvider: 0x2823c7480> hiddenSuggestionCoordinator:<SCLazy: 0x280376200> hideSuggestionLogger:<SCLazy: 0x280729be0> circumstanceEngine:<SCCircumstanceEngine: 0x282719560> userPreferences:<SCDocPreferences: 0x2828021b0> bitmojiAvatarIdProvider:<SCLazy: 0x2803417c0> phoneNumberProvider:<SCLazy: 0x280341860> snapshotsOperaCurrentItemUpdate:<SCBehaviorSubject: 0x280e43bd0> usersInFriendCells:<SCBehaviorSubject: 0x280e43720> composerChatEligibilityProvider:<SCLazy: 0x28 suggestedFriendStoringFactory:<decode: missing data> activeStoryFetcher:<decode: missing data> performerProvider:<decode: missing data> clearBadgeFlagInViewDidDisappearEnabled:<decode: missing data> composerBlizzardLogger:<decode: missing data>]
+     */
+    
+    [self addFriendWithRequest:nil completion:^(BOOL isAdded, NSArray *arary) {
+            
+    }];
+    
+
+    GTPerson *person = [[GTPerson alloc] init];
+    person.name = @"133";
+    
+    [[GTCache shareInstance] gt_setObject:person forKey:@"123"];
+        
+    
+//    GTPerson *p = [cache objectForKey:@"123"];
+//    NSLog(@"p name %@",p.name);
+    
+}
+
+- (void)addFriendWithRequest:(id)arg1 completion:(void (^)(BOOL, NSArray *))arg2 {
+    
+    
+}
+
+- (void)seupGTAcceptOrAddButton {
+    
+    
+}
+
+
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 4;
+}
+
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"UICollectionViewCell" forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor redColor];
+    return cell;
+}
+
+
+#pragma mark - UICollectionViewDelegateFlowLayout
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.row == 0) {
+        return CGSizeMake(100, 100);
+    } else if(indexPath.row == 2) {
+        return CGSizeMake(50, 100);
+    }
+    return CGSizeMake(100, 200);
+}
+
 
 - (void)testCFDictionaryStore {
     
@@ -128,28 +308,37 @@ struct gt_objc_class {
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
+//    NSData *data = [[LYCache shareInstance] ly_readForKey:@"123"];
+//    GTPerson *p = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+    
+    GTPerson *p = [[GTCache shareInstance] gt_objectForKey:@"123"];
+    
+//    GTPerson *p = [self.augusCache objectForKey:@"123"];
+    NSLog(@"p name %@",p.name);
+    
     
     // 追加数据
-    NSString *userId = [NSString stringWithFormat:@"%u", arc4random() % 10000000];
-    NSString *token = @"eyJraWQiOiJzbmFwLXNlc3Npb24tcmVmcmVzaC10b2tlbi1hMTI4Z2NtLjAiLCJ0eXAiOiJKV1QiLCJlbmMiOiJBMTI4R0NNIiwiYWxnIjoiZGlyIn0..ek1Ra-0MhMxZ0jmS.LUDosXWzAIf6bSqNkBi5sCGUORumsfqlbOLu5VewImzS3pkjUAkedJsq0EXH9b2zWnw9O2TosNU4lASm5SYLwefxR9tZAIht3cX0gpdJ1S3Ce-cRKgU_rZJq6NkspnzGcmEiO3jpXjRlR0-SqsWt5dlasSTPNZcvUAamejN60ZIbGxhOr8CAj9ohtWM.7DCVJvLKGDRx2jf6xmzTyw";
-    
-    NSMutableDictionary *hasStoreDict = [NSMutableDictionary dictionaryWithContentsOfFile:GTOneTapLoginPlistFile];
-    NSLog(@"已经存储了 %ld个 %@",hasStoreDict.count, hasStoreDict);
-    
-    [hasStoreDict setValue:token forKey:userId];
-    
-    BOOL isSeek = [hasStoreDict writeToFile:GTOneTapLoginPlistFile atomically:YES];
-    if (isSeek) {
-        NSLog(@"数据追加成功");
-    } else {
-        NSLog(@"数据追加失败");
-    }
-    
-    
-    // 删除数据
-    if(!token && token.length > 0) {
-        [hasStoreDict removeObjectForKey:@"1"];
-    }
+//    NSString *userId = [NSString stringWithFormat:@"%u", arc4random() % 10000000];
+//    NSString *token = @"eyJraWQiOiJzbmFwLXNlc3Npb24tcmVmcmVzaC10b2tlbi1hMTI4Z2NtLjAiLCJ0eXAiOiJKV1QiLCJlbmMiOiJBMTI4R0NNIiwiYWxnIjoiZGlyIn0..ek1Ra-0MhMxZ0jmS.LUDosXWzAIf6bSqNkBi5sCGUORumsfqlbOLu5VewImzS3pkjUAkedJsq0EXH9b2zWnw9O2TosNU4lASm5SYLwefxR9tZAIht3cX0gpdJ1S3Ce-cRKgU_rZJq6NkspnzGcmEiO3jpXjRlR0-SqsWt5dlasSTPNZcvUAamejN60ZIbGxhOr8CAj9ohtWM.7DCVJvLKGDRx2jf6xmzTyw";
+//
+//    NSMutableDictionary *hasStoreDict = [NSMutableDictionary dictionaryWithContentsOfFile:GTOneTapLoginPlistFile];
+//    NSLog(@"已经存储了 %ld个 %@",hasStoreDict.count, hasStoreDict);
+//
+//    [hasStoreDict setValue:token forKey:userId];
+//
+//    BOOL isSeek = [hasStoreDict writeToFile:GTOneTapLoginPlistFile atomically:YES];
+//    if (isSeek) {
+//        NSLog(@"数据追加成功");
+//    } else {
+//        NSLog(@"数据追加失败");
+//    }
+//
+//
+//    // 删除数据
+//    if(!token && token.length > 0) {
+//        [hasStoreDict removeObjectForKey:@"1"];
+//    }
 
     
     
@@ -233,5 +422,44 @@ struct gt_objc_class {
     return _tokenArray;
 }
 
+- (UICollectionView *)augusCollectionView {
+    
+    if(!_augusCollectionView) {
+        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+//        CGFloat itemW = 100;
+//        CGFloat itemH = 50;
+        
+        layout = [[UICollectionViewFlowLayout alloc] init];
+        layout.itemSize = CGSizeMake(50, 200);
+        layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        layout.minimumLineSpacing = 1.0;
+        layout.minimumInteritemSpacing = 5.0;
+        
+
+        
+        _augusCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 100, self.view.bounds.size.width, 200) collectionViewLayout:layout];
+        _augusCollectionView.dataSource = self;
+        _augusCollectionView.delegate = self;
+        
+        _augusCollectionView.pagingEnabled = YES;
+        _augusCollectionView.backgroundColor = UIColor.greenColor;
+        _augusCollectionView.showsHorizontalScrollIndicator = NO;
+        
+    }
+    return _augusCollectionView;
+    
+  
+}
+
+
+- (NSCache *)augusCache {
+    if(!_augusCache) {
+        _augusCache = [[NSCache alloc] init];
+        _augusCache.countLimit = 300; // 限制个数，默认是0，无限空间
+        _augusCache.totalCostLimit = 5*1024*1024; // 设置大小设置，默认是0，无限空间
+        _augusCache.name = @"cache1";
+    }
+    return _augusCache;
+}
 
 @end
