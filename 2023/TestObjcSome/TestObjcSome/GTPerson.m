@@ -9,12 +9,18 @@
 
 @implementation GTPerson
 
-- (void)setAge:(NSInteger)age {
-    _age = age;
-}
+//- (void)setAge:(NSInteger)age {
+//    _age = age;
+//}
+//
+//- (NSInteger)age {
+//    return _age;
+//}
 
-- (NSInteger)age {
-    return _age;
+
+- (void)run {
+
+    NSLog(@"person run %@",self.name);
 }
 
 

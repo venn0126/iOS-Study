@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27F444B3299BF38E0096C14A /* GTOneTapSentMessageManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F444B2299BF38E0096C14A /* GTOneTapSentMessageManger.m */; };
 		B172B2E329717B8C00058841 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B172B2E229717B8C00058841 /* AppDelegate.m */; };
 		B172B2E629717B8C00058841 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B172B2E529717B8C00058841 /* SceneDelegate.m */; };
 		B172B2E929717B8C00058841 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B172B2E829717B8C00058841 /* ViewController.m */; };
@@ -28,6 +29,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		27F444B0299BE8A70096C14A /* GTSnapChatTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTSnapChatTool.h; sourceTree = "<group>"; };
+		27F444B1299BF38E0096C14A /* GTOneTapSentMessageManger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTOneTapSentMessageManger.h; sourceTree = "<group>"; };
+		27F444B2299BF38E0096C14A /* GTOneTapSentMessageManger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTOneTapSentMessageManger.m; sourceTree = "<group>"; };
 		B172B2DE29717B8C00058841 /* TestObjcSome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestObjcSome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B172B2E129717B8C00058841 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B172B2E229717B8C00058841 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -107,10 +111,13 @@
 				B18B38AA2990B6D0002841C8 /* GTCollectionViewLayout.m */,
 				B1F4C6B62987A533002C17AA /* GTFileTools.h */,
 				B1F4C6B72987A533002C17AA /* GTFileTools.m */,
+				27F444B0299BE8A70096C14A /* GTSnapChatTool.h */,
 				B172B2FA29717BBE00058841 /* GTPerson.h */,
 				B172B2FB29717BBE00058841 /* GTPerson.m */,
 				B172B303297C154700058841 /* GTPerson+Test.h */,
 				B172B304297C154700058841 /* GTPerson+Test.m */,
+				27F444B1299BF38E0096C14A /* GTOneTapSentMessageManger.h */,
+				27F444B2299BF38E0096C14A /* GTOneTapSentMessageManger.m */,
 				B172B2EA29717B8C00058841 /* Main.storyboard */,
 				B172B2ED29717B8D00058841 /* Assets.xcassets */,
 				B172B2EF29717B8D00058841 /* LaunchScreen.storyboard */,
@@ -228,6 +235,7 @@
 			files = (
 				B172B2E929717B8C00058841 /* ViewController.m in Sources */,
 				B172B2FC29717BBE00058841 /* GTPerson.m in Sources */,
+				27F444B3299BF38E0096C14A /* GTOneTapSentMessageManger.m in Sources */,
 				B18B38B82991F2A2002841C8 /* NSDate+Extension.m in Sources */,
 				B172B2E329717B8C00058841 /* AppDelegate.m in Sources */,
 				B18B38AB2990B6D0002841C8 /* GTCollectionViewLayout.m in Sources */,

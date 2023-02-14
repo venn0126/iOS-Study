@@ -50,10 +50,67 @@ struct gt_objc_class {
 };
 
 - (void)viewDidLoad {
+
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     
+    
+//    NSString *test = @"123";
+    
+    NSObject *obj1 = [[NSObject alloc] init];
+
+    /*
+     
+     * 为什么会执行run方法
+        * 首先cls是一个类对象，而obj存储了cls的内存地址，所以objc--->cls，也就相当于是对象的isa指针指向了类对象
+        * 因为指针占用了8个字节，而且GTPerson的类实现是
+     GTPerson_IMP {
+        isa
+        _name
+     }
+     在这里不管是哪个指针，因为充当了isa的指针角色，也就是间接实现了objc的消息传递机制，所以会执行GTPerson中的对象方法
+     
+     * 为什么会打印123 或者obj1
+        * 根据上面的类的实现结构体，可以知道， 如果去寻找成员变量，会去找isa的下一个存储单元，因为也是一个NSString *指针
+        * 所以最终会去取下一个从高-低地址的内存存储单元，举例：
+      long long a = 4; // 0x24
+      long long b = 5;//  0x16
+      long long c = 6; // 0x8
+     所以先声明的变量，被存储在了栈空间的高地址，我们的寻址是从高到低进行获取，所以会打印123 或者obj1，都是存储了8个字节的单位；
+     
+     
+     * 为什么会打印viewController对象
+     因为[super viewDidLoad];
+     这句话的本质就是
+     
+     struct abc {
+        self;
+        [UIViewController class];
+        
+     }
+     objc_msgSendSuper(
+        abc,
+        @selector(viewDidLoad)
+     )
+     
+     根据上面的寻址方式，因为结构体的结构原因，所以self.name调用get方法，跳过8个字节，最终会拿到self，
+     因为self是先于[UIViewController class];定义，先定义，地址先高，从高到低进行存储，读取也是
+     所以最终会打印self，也就是ViewController对象
+     
+     
+     */
+    id cls = [GTPerson class];
+    
+    void *obj = &cls;
+    
+    [(__bridge id)obj run];
+
+    
+}
+
+
+- (void)test0000 {
     
     
     
@@ -132,6 +189,7 @@ struct gt_objc_class {
                 
         
     }];
+
     
     
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -139,11 +197,6 @@ struct gt_objc_class {
         
         
     });
-    
-    
-
-    
-    
 }
 
 // [#0x11b8395c0 _fetchConversationIdAndMetadataForSnapchatter:#0x285cb77b0 completion:^(_Bool isSuccess, NSString *conversationId, id data) { NSLog(@"success %@ conversationId %@",@(isSuccess),conversationId); }]

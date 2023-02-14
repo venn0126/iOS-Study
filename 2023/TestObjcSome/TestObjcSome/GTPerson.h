@@ -9,13 +9,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GTPerson : NSObject{
-    
-    @public
-    NSInteger _age;
-}
+@interface GTPerson : NSObject
+//{
+//    
+//    @public
+//    NSInteger _age;
+//}
 
 //@property (nonatomic, assign) NSInteger age;
+@property (nonatomic, copy) NSString *name;
+
 
 @end
 
