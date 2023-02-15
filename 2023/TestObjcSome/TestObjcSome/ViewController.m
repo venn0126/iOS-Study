@@ -26,7 +26,7 @@
 
 
 
-@interface ViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface ViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) GTPerson *person1;
 @property (nonatomic, strong) GTPerson *person2;
@@ -39,6 +39,10 @@
 @property (nonatomic, strong) UICollectionView *augusCollectionView;
 @property (nonatomic, strong) UICollectionViewFlowLayout *augusFlowLayout;
 @property (nonatomic, strong) NSCache *augusCache;
+
+
+@property (nonatomic, strong) UITableView *augusTableView;
+@property (nonatomic, copy) NSArray *augusTableViewSource;
 
 @end
 
@@ -161,6 +165,61 @@ struct gt_objc_class {
 //    [self setupFloatButton];
 //
 //    [self performSelector:@selector(setupFloatButton)];
+    
+//    [self addTableVIew];
+    
+
+    
+    
+    
+}
+
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+//    [self.augusTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:13 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+}
+
+
+#pragma mark -  Setup UI
+
+// [#0x11b8395c0 _fetchConversationIdAndMetadataForSnapchatter:#0x285cb77b0 completion:^(_Bool isSuccess, NSString *conversationId, id data) { NSLog(@"success %@ conversationId %@",@(isSuccess),conversationId); }]
+
+
+
+- (void)addTableVIew {
+    
+    [self.view addSubview:self.augusTableView];
+    [self.augusTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"kUITableViewCell"];
+}
+
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return  1;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.augusTableViewSource.count;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"kUITableViewCell"];
+    if(!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"kUITableViewCell"];
+    }
+    
+    cell.textLabel.text = self.augusTableViewSource[indexPath.row];
+    
+    return cell;
+}
+
+- (void)_fetchConversationIdAndMetadataForSnapchatter:(int)chatter completion:(void(^)(BOOL, NSString *, id))completion {
     
     
     void (^block)(NSNumber *, NSError *) = ^(NSNumber *arg1, NSError *error){
@@ -513,6 +572,25 @@ struct gt_objc_class {
         _augusCache.name = @"cache1";
     }
     return _augusCache;
+}
+
+
+- (UITableView *)augusTableView {
+    if(!_augusTableView) {
+        
+        _augusTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        _augusTableView.dataSource = self;
+        _augusTableView.delegate = self;
+        _augusTableView.backgroundColor = UIColor.greenColor;
+    }
+    return _augusTableView;
+}
+
+- (NSArray *)augusTableViewSource {
+    if(!_augusTableViewSource) {
+        _augusTableViewSource = [NSArray arrayWithObjects:@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13", nil];
+    }
+    return _augusTableViewSource;
 }
 
 @end

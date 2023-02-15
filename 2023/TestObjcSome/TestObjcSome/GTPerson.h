@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *name;
 
 
+@property (nonatomic, assign) BOOL isStronger;
+
 @end
 
 NS_ASSUME_NONNULL_END
