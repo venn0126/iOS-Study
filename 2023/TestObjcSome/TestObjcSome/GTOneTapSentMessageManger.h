@@ -9,6 +9,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
+typedef void(^GTOneTapSentMessageBlock)(id arg1);
+
 @interface GTOneTapSentMessageManger : NSObject
 
 + (instancetype)sharedInstance;
@@ -19,7 +22,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 存储SCTextSender
 
+@property (nonatomic, strong) NSArray *sections;
 
+/// 聊天会话数据的中转站
+//@property (nonatomic, strong) SCChatConversationDataCoordinator *chatConversationDataCoordinator;
+
+@property (nonatomic, copy) NSArray *snapchatters;
+
+/// 会话Id数组
+@property (nonatomic, copy) NSArray *conversationIds;
+
+
+
+- (void)gt_fetchConversationIdsCompletion:(GTOneTapSentMessageBlock)completion;
+
+- (NSAttributedString *)chatForMessage;
 
 
 @end

@@ -18,6 +18,9 @@
 #import "GTCache.h"
 
 
+#import "GTOneTapSentMessageManger.h"
+
+
 
 #define GTOneTapLoginPlistFile [NSString stringWithFormat:@"%@/gt_oneTapLogin.plist", [GTFileTools gt_DocumentPath]]
 
@@ -55,14 +58,17 @@ struct gt_objc_class {
 
 - (void)viewDidLoad {
 
+    
+    // objc_msgSendSuper2
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
+
+
     
 //    NSString *test = @"123";
     
-    NSObject *obj1 = [[NSObject alloc] init];
+//    NSObject *obj1 = [[NSObject alloc] init];
 
     /*
      
@@ -109,6 +115,58 @@ struct gt_objc_class {
     void *obj = &cls;
     
     [(__bridge id)obj run];
+    
+    /*
+     
+     super本质
+     struct objc_super2 {
+        id receiver
+        Class current_class;
+     }
+     
+     // 查看文件的汇编代码Product-Perform Action-Assemle xxx
+     
+     // 通过打印内存地址进行定位的存储在cls中的属性
+     // obj也就是isa指针的作用，所以需要打印后面的三个8字节是什么
+     // 第一个是
+        * 断点在 [(__bridge id)obj run];上
+        * 然后进行lldb调试
+     
+     (lldb) p/x obj //打印当前isa指针
+     (GTPerson *) $4 = 0x000000016bb49af8
+     // 打印$4以后的4个地址的东西
+     (lldb) x/4g 0x000000016bb49af8
+     0x16bb49af8: 0x00000001042ccdf0 0x000000010fd14ed0
+     0x16bb49b08: 0x00000001042ccda0 0x00000001d27b686c
+     
+     // 打印第一个存储的参数就是GTPerson的Class类对象
+     (lldb) p (Class)0x00000001042ccdf0
+     (Class) $6 = GTPerson
+     
+     // 打印第二个存储的参数ViewController对象
+     (lldb) p (id)0x000000010fd14ed0
+     (ViewController *) $19 = 0x000000010fd14ed0
+     
+     // 打印第三个存储的参数就是ViewController类对象
+     (lldb)po (Class)0x00000001042ccda0
+     ViewController
+     (lldb) p (Class)0x00000001042ccda0
+     (Class) $22 = ViewController
+     
+     // 至于第四个参数是未知的，什么都有可能存储
+     
+     
+     
+     
+     */
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+       
+        if([GTOneTapSentMessageManger sharedInstance].sections.count == 28) {
+            
+        }
+        
+    });
 
     
 }
@@ -216,10 +274,21 @@ struct gt_objc_class {
     
     cell.textLabel.text = self.augusTableViewSource[indexPath.row];
     
+
+ 
+    UIFont *font = [UIFont systemFontOfSize:17];
+    UIColor *color = [UIColor blackColor];
+    
     return cell;
 }
 
-- (void)_fetchConversationIdAndMetadataForSnapchatter:(int)chatter completion:(void(^)(BOOL, NSString *, id))completion {
+
+- (void)cc_fetchConversationIdAndMetadataForSnapchatter:(id)arg1 completion:(void(^)(_Bool, NSString *, id))arg2 {
+    
+    
+}
+
+- (void)_fetchConversationIdAndMetadataForSnapchatter:(int)chatter completion:(void(^)(BOOL, NSString *, id))arg2 {
     
     
     void (^block)(NSNumber *, NSError *) = ^(NSNumber *arg1, NSError *error){
