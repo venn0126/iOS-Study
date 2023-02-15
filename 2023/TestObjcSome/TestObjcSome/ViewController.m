@@ -261,13 +261,6 @@ struct gt_objc_class {
 // [#0x11b8395c0 _fetchConversationIdAndMetadataForSnapchatter:#0x285cb77b0 completion:^(_Bool isSuccess, NSString *conversationId, id data) { NSLog(@"success %@ conversationId %@",@(isSuccess),conversationId); }]
 
 
-- (void)_fetchConversationIdAndMetadataForSnapchatter:(int)chatter completion:(void(^)(BOOL, NSString *, id))completion {
-    
-    
-    
-    
-}
-
 - (void)setupFloatButton {
     
     
