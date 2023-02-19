@@ -22,6 +22,7 @@
 #import "GTThread.h"
 
 #import "GTSecondController.h"
+#import "GTThirdController.h"
 
 
 
@@ -87,7 +88,7 @@ struct gt_objc_class {
     
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setTitle:@"一键添加" forState:UIControlStateNormal];
+    [button setTitle:@"jump second" forState:UIControlStateNormal];
     button.titleLabel.textColor = UIColor.blackColor;
     button.frame = CGRectMake(100, 200, 100, 50);
     [button sizeToFit];
@@ -96,12 +97,30 @@ struct gt_objc_class {
     button.layer.cornerRadius = 5.0;
     [self.view addSubview:button];
     
+    
+    UIButton *button1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button1 setTitle:@"jump third" forState:UIControlStateNormal];
+    button1.titleLabel.textColor = UIColor.blackColor;
+    button1.frame = CGRectMake(100, 300, 100, 50);
+    [button1 sizeToFit];
+    [button1 addTarget:self action:@selector(addButtonThirdAction) forControlEvents:UIControlEventTouchUpInside];
+    button1.backgroundColor = UIColor.greenColor;
+    button1.layer.cornerRadius = 5.0;
+    [self.view addSubview:button1];
+    
 }
 
 
 - (void)addButtonAction {
     
     GTSecondController *vc = [[GTSecondController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
+- (void)addButtonThirdAction {
+    
+    GTThirdController *vc = [[GTThirdController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

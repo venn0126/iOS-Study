@@ -57,10 +57,12 @@ NSInteger currentIndex = 0;
        
         NSLog(@"---- begin thread ---- %@", [NSThread currentThread]);
         
-//        [[NSRunLoop currentRunLoop] addPort:[[NSPort alloc] init] forMode:NSDefaultRunLoopMode];
+        [[NSRunLoop currentRunLoop] addPort:[[NSPort alloc] init] forMode:NSDefaultRunLoopMode];
         // 这个方法一旦执行，线程会永久存在内存中无法停止，除非进程结束
 //        [[NSRunLoop currentRunLoop] run];
-        while (!weakSelf.isSending) {
+        
+        while (weakSelf && !weakSelf.isSending) {
+            NSLog(@"augus weakself ---%@",weakSelf);
             [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
         }
         NSLog(@"---- end thread --- %@", [NSThread currentThread]);
@@ -71,38 +73,20 @@ NSInteger currentIndex = 0;
     
 }
 
-- (void)seupGTTimer {
-    
-    NSLog(@"seupGTTimer");
-    self.gtTimer = [NSTimer timerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
-        
-        NSLog(@"time done %ld",currentIndex);
-//        if(currentIndex > 50) {
-//            [self.gtTimer invalidate];
-//            self.gtTimer = nil;
-//        }
-        currentIndex++;
-        
-    }];
-    
-    NSLog(@"current thread is %@ add timer",[NSThread currentThread]);
-    [[NSRunLoop currentRunLoop] addTimer:_gtTimer forMode:NSDefaultRunLoopMode];
-    
+
+- (void)testTheadTask {
+    NSLog(@"testTheadTask-----%@",[NSThread currentThread]);
 }
 
 
 - (void)stopThreadAction {
     NSLog(@"%s",__func__);
-    [self performSelector:@selector(stopThead) onThread:self.augusThread withObject:nil waitUntilDone:NO];
-
-}
-
-
-- (void)stopTimer {
     
-    [self.gtTimer invalidate];
-    self.gtTimer = nil;
-    
+    // waitUntilDone:NO，不等待子线程的方法，才执行下面的方法，同时执行
+    // waitUntilDone:YES，等待子线程的方法结束，才执行下面的方法
+    if(!self.augusThread) return;
+    [self performSelector:@selector(stopThead) onThread:self.augusThread withObject:nil waitUntilDone:YES];
+
 }
 
 
@@ -110,15 +94,17 @@ NSInteger currentIndex = 0;
     
     self.isSending = YES;
     CFRunLoopStop(CFRunLoopGetCurrent());
-    [self stopTimer];
     
-    NSLog(@"%s %@ %@",__func__,[NSThread currentThread],self.gtTimer);
+    NSLog(@"%s %@ %@",__func__,[NSThread currentThread],self.augusThread);
+    self.augusThread = nil;
 }
 
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
-    [self performSelector:@selector(seupGTTimer) onThread:self.augusThread withObject:nil waitUntilDone:NO];
+    
+    if(!self.augusThread) return;
+    [self performSelector:@selector(testTheadTask) onThread:self.augusThread withObject:nil waitUntilDone:NO];
 
 }
 
@@ -126,7 +112,7 @@ NSInteger currentIndex = 0;
 - (void)dealloc {
     
     NSLog(@"%s", __func__);
-//    self.augusThread = nil;
+    [self stopThreadAction];
 }
 
 

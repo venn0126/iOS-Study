@@ -11,6 +11,8 @@
 		B145B196299F22660085D7B2 /* GTAugusView.m in Sources */ = {isa = PBXBuildFile; fileRef = B145B195299F22660085D7B2 /* GTAugusView.m */; };
 		B145B199299FC51F0085D7B2 /* GTThread.m in Sources */ = {isa = PBXBuildFile; fileRef = B145B198299FC51F0085D7B2 /* GTThread.m */; };
 		B145B19C299FCBB40085D7B2 /* GTSecondController.m in Sources */ = {isa = PBXBuildFile; fileRef = B145B19B299FCBB40085D7B2 /* GTSecondController.m */; };
+		B145B19F29A280010085D7B2 /* GTControllableThead.m in Sources */ = {isa = PBXBuildFile; fileRef = B145B19E29A280010085D7B2 /* GTControllableThead.m */; };
+		B145B1A229A28D8F0085D7B2 /* GTThirdController.m in Sources */ = {isa = PBXBuildFile; fileRef = B145B1A129A28D8F0085D7B2 /* GTThirdController.m */; };
 		B172B2E329717B8C00058841 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B172B2E229717B8C00058841 /* AppDelegate.m */; };
 		B172B2E629717B8C00058841 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B172B2E529717B8C00058841 /* SceneDelegate.m */; };
 		B172B2E929717B8C00058841 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B172B2E829717B8C00058841 /* ViewController.m */; };
@@ -41,6 +43,10 @@
 		B145B198299FC51F0085D7B2 /* GTThread.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTThread.m; sourceTree = "<group>"; };
 		B145B19A299FCBB40085D7B2 /* GTSecondController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTSecondController.h; sourceTree = "<group>"; };
 		B145B19B299FCBB40085D7B2 /* GTSecondController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTSecondController.m; sourceTree = "<group>"; };
+		B145B19D29A280010085D7B2 /* GTControllableThead.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTControllableThead.h; sourceTree = "<group>"; };
+		B145B19E29A280010085D7B2 /* GTControllableThead.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTControllableThead.m; sourceTree = "<group>"; };
+		B145B1A029A28D8F0085D7B2 /* GTThirdController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTThirdController.h; sourceTree = "<group>"; };
+		B145B1A129A28D8F0085D7B2 /* GTThirdController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTThirdController.m; sourceTree = "<group>"; };
 		B172B2DE29717B8C00058841 /* TestObjcSome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestObjcSome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B172B2E129717B8C00058841 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B172B2E229717B8C00058841 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -118,8 +124,12 @@
 				B172B2E829717B8C00058841 /* ViewController.m */,
 				B145B19A299FCBB40085D7B2 /* GTSecondController.h */,
 				B145B19B299FCBB40085D7B2 /* GTSecondController.m */,
+				B145B1A029A28D8F0085D7B2 /* GTThirdController.h */,
+				B145B1A129A28D8F0085D7B2 /* GTThirdController.m */,
 				B145B197299FC51F0085D7B2 /* GTThread.h */,
 				B145B198299FC51F0085D7B2 /* GTThread.m */,
+				B145B19D29A280010085D7B2 /* GTControllableThead.h */,
+				B145B19E29A280010085D7B2 /* GTControllableThead.m */,
 				B18B38A92990B6D0002841C8 /* GTCollectionViewLayout.h */,
 				B18B38AA2990B6D0002841C8 /* GTCollectionViewLayout.m */,
 				B145B194299F22660085D7B2 /* GTAugusView.h */,
@@ -256,7 +266,9 @@
 				B172B2E329717B8C00058841 /* AppDelegate.m in Sources */,
 				B145B19C299FCBB40085D7B2 /* GTSecondController.m in Sources */,
 				B18B38AB2990B6D0002841C8 /* GTCollectionViewLayout.m in Sources */,
+				B145B1A229A28D8F0085D7B2 /* GTThirdController.m in Sources */,
 				B172B305297C154700058841 /* GTPerson+Test.m in Sources */,
+				B145B19F29A280010085D7B2 /* GTControllableThead.m in Sources */,
 				B172B2F429717B8D00058841 /* main.m in Sources */,
 				B18B38C729923842002841C8 /* LYCache.m in Sources */,
 				B18B38B22991F182002841C8 /* GTFloatButton.m in Sources */,

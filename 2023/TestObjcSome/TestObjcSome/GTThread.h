@@ -11,6 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GTThread : NSThread
 
+
 @end
 
 NS_ASSUME_NONNULL_END
