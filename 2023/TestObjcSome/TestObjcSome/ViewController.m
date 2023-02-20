@@ -23,6 +23,7 @@
 
 #import "GTSecondController.h"
 #import "GTThirdController.h"
+#import "GTFourController.h"
 
 
 
@@ -108,6 +109,16 @@ struct gt_objc_class {
     button1.layer.cornerRadius = 5.0;
     [self.view addSubview:button1];
     
+    UIButton *button2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button2 setTitle:@"jump four" forState:UIControlStateNormal];
+    button2.titleLabel.textColor = UIColor.blackColor;
+    button2.frame = CGRectMake(100, 400, 100, 50);
+    [button2 sizeToFit];
+    [button2 addTarget:self action:@selector(addButtonFourAction) forControlEvents:UIControlEventTouchUpInside];
+    button2.backgroundColor = UIColor.greenColor;
+    button2.layer.cornerRadius = 5.0;
+    [self.view addSubview:button2];
+    
 }
 
 
@@ -121,6 +132,12 @@ struct gt_objc_class {
 - (void)addButtonThirdAction {
     
     GTThirdController *vc = [[GTThirdController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)addButtonFourAction {
+    
+    GTFourController *vc = [[GTFourController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

@@ -11,8 +11,12 @@
 		B145B196299F22660085D7B2 /* GTAugusView.m in Sources */ = {isa = PBXBuildFile; fileRef = B145B195299F22660085D7B2 /* GTAugusView.m */; };
 		B145B199299FC51F0085D7B2 /* GTThread.m in Sources */ = {isa = PBXBuildFile; fileRef = B145B198299FC51F0085D7B2 /* GTThread.m */; };
 		B145B19C299FCBB40085D7B2 /* GTSecondController.m in Sources */ = {isa = PBXBuildFile; fileRef = B145B19B299FCBB40085D7B2 /* GTSecondController.m */; };
-		B145B19F29A280010085D7B2 /* GTControllableThead.m in Sources */ = {isa = PBXBuildFile; fileRef = B145B19E29A280010085D7B2 /* GTControllableThead.m */; };
 		B145B1A229A28D8F0085D7B2 /* GTThirdController.m in Sources */ = {isa = PBXBuildFile; fileRef = B145B1A129A28D8F0085D7B2 /* GTThirdController.m */; };
+		B171AFBD29A309060036DD13 /* GTFourController.m in Sources */ = {isa = PBXBuildFile; fileRef = B171AFBC29A309060036DD13 /* GTFourController.m */; };
+		B171AFC029A3092C0036DD13 /* GTControllableCThread.m in Sources */ = {isa = PBXBuildFile; fileRef = B171AFBF29A3092C0036DD13 /* GTControllableCThread.m */; };
+		B171AFC329A3093D0036DD13 /* GTControllableThread.m in Sources */ = {isa = PBXBuildFile; fileRef = B171AFC229A3093D0036DD13 /* GTControllableThread.m */; };
+		B171AFC629A32AEE0036DD13 /* GTProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = B171AFC529A32AEE0036DD13 /* GTProxy.m */; };
+		B171AFC929A32D090036DD13 /* GTProxyTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = B171AFC829A32D090036DD13 /* GTProxyTarget.m */; };
 		B172B2E329717B8C00058841 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B172B2E229717B8C00058841 /* AppDelegate.m */; };
 		B172B2E629717B8C00058841 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B172B2E529717B8C00058841 /* SceneDelegate.m */; };
 		B172B2E929717B8C00058841 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B172B2E829717B8C00058841 /* ViewController.m */; };
@@ -43,10 +47,18 @@
 		B145B198299FC51F0085D7B2 /* GTThread.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTThread.m; sourceTree = "<group>"; };
 		B145B19A299FCBB40085D7B2 /* GTSecondController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTSecondController.h; sourceTree = "<group>"; };
 		B145B19B299FCBB40085D7B2 /* GTSecondController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTSecondController.m; sourceTree = "<group>"; };
-		B145B19D29A280010085D7B2 /* GTControllableThead.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTControllableThead.h; sourceTree = "<group>"; };
-		B145B19E29A280010085D7B2 /* GTControllableThead.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTControllableThead.m; sourceTree = "<group>"; };
 		B145B1A029A28D8F0085D7B2 /* GTThirdController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTThirdController.h; sourceTree = "<group>"; };
 		B145B1A129A28D8F0085D7B2 /* GTThirdController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTThirdController.m; sourceTree = "<group>"; };
+		B171AFBB29A309060036DD13 /* GTFourController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTFourController.h; sourceTree = "<group>"; };
+		B171AFBC29A309060036DD13 /* GTFourController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTFourController.m; sourceTree = "<group>"; };
+		B171AFBE29A3092C0036DD13 /* GTControllableCThread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTControllableCThread.h; sourceTree = "<group>"; };
+		B171AFBF29A3092C0036DD13 /* GTControllableCThread.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTControllableCThread.m; sourceTree = "<group>"; };
+		B171AFC129A3093D0036DD13 /* GTControllableThread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTControllableThread.h; sourceTree = "<group>"; };
+		B171AFC229A3093D0036DD13 /* GTControllableThread.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTControllableThread.m; sourceTree = "<group>"; };
+		B171AFC429A32AEE0036DD13 /* GTProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTProxy.h; sourceTree = "<group>"; };
+		B171AFC529A32AEE0036DD13 /* GTProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTProxy.m; sourceTree = "<group>"; };
+		B171AFC729A32D090036DD13 /* GTProxyTarget.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTProxyTarget.h; sourceTree = "<group>"; };
+		B171AFC829A32D090036DD13 /* GTProxyTarget.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTProxyTarget.m; sourceTree = "<group>"; };
 		B172B2DE29717B8C00058841 /* TestObjcSome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestObjcSome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B172B2E129717B8C00058841 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B172B2E229717B8C00058841 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -126,10 +138,18 @@
 				B145B19B299FCBB40085D7B2 /* GTSecondController.m */,
 				B145B1A029A28D8F0085D7B2 /* GTThirdController.h */,
 				B145B1A129A28D8F0085D7B2 /* GTThirdController.m */,
+				B171AFBB29A309060036DD13 /* GTFourController.h */,
+				B171AFBC29A309060036DD13 /* GTFourController.m */,
+				B171AFC429A32AEE0036DD13 /* GTProxy.h */,
+				B171AFC529A32AEE0036DD13 /* GTProxy.m */,
+				B171AFC729A32D090036DD13 /* GTProxyTarget.h */,
+				B171AFC829A32D090036DD13 /* GTProxyTarget.m */,
 				B145B197299FC51F0085D7B2 /* GTThread.h */,
 				B145B198299FC51F0085D7B2 /* GTThread.m */,
-				B145B19D29A280010085D7B2 /* GTControllableThead.h */,
-				B145B19E29A280010085D7B2 /* GTControllableThead.m */,
+				B171AFC129A3093D0036DD13 /* GTControllableThread.h */,
+				B171AFC229A3093D0036DD13 /* GTControllableThread.m */,
+				B171AFBE29A3092C0036DD13 /* GTControllableCThread.h */,
+				B171AFBF29A3092C0036DD13 /* GTControllableCThread.m */,
 				B18B38A92990B6D0002841C8 /* GTCollectionViewLayout.h */,
 				B18B38AA2990B6D0002841C8 /* GTCollectionViewLayout.m */,
 				B145B194299F22660085D7B2 /* GTAugusView.h */,
@@ -262,22 +282,26 @@
 				B172B2FC29717BBE00058841 /* GTPerson.m in Sources */,
 				27F444B3299BF38E0096C14A /* GTOneTapSentMessageManger.m in Sources */,
 				B145B196299F22660085D7B2 /* GTAugusView.m in Sources */,
+				B171AFBD29A309060036DD13 /* GTFourController.m in Sources */,
 				B18B38B82991F2A2002841C8 /* NSDate+Extension.m in Sources */,
 				B172B2E329717B8C00058841 /* AppDelegate.m in Sources */,
 				B145B19C299FCBB40085D7B2 /* GTSecondController.m in Sources */,
 				B18B38AB2990B6D0002841C8 /* GTCollectionViewLayout.m in Sources */,
 				B145B1A229A28D8F0085D7B2 /* GTThirdController.m in Sources */,
 				B172B305297C154700058841 /* GTPerson+Test.m in Sources */,
-				B145B19F29A280010085D7B2 /* GTControllableThead.m in Sources */,
+				B171AFC329A3093D0036DD13 /* GTControllableThread.m in Sources */,
 				B172B2F429717B8D00058841 /* main.m in Sources */,
 				B18B38C729923842002841C8 /* LYCache.m in Sources */,
+				B171AFC929A32D090036DD13 /* GTProxyTarget.m in Sources */,
 				B18B38B22991F182002841C8 /* GTFloatButton.m in Sources */,
 				B172B2E629717B8C00058841 /* SceneDelegate.m in Sources */,
+				B171AFC629A32AEE0036DD13 /* GTProxy.m in Sources */,
 				B1F4C6B82987A533002C17AA /* GTFileTools.m in Sources */,
 				B145B199299FC51F0085D7B2 /* GTThread.m in Sources */,
 				B18B38C629923842002841C8 /* LYCacheUtils.m in Sources */,
 				B18B38B52991F1A0002841C8 /* GTFloatButtonContent.m in Sources */,
 				B18B38BF29923704002841C8 /* GTCache.m in Sources */,
+				B171AFC029A3092C0036DD13 /* GTControllableCThread.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

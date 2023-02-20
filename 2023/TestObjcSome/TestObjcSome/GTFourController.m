@@ -1,30 +1,53 @@
 //
-//  GTThirdController.m
+//  GTFourController.m
 //  TestObjcSome
 //
 //  Created by Augus on 2023/2/20.
 //
 
-#import "GTThirdController.h"
-#import "GTControllableThread.h"
+#import "GTFourController.h"
+#import "GTControllableCThread.h"
+#import "GTProxy.h"
+#import "GTProxyTarget.h"
 
-@interface GTThirdController ()
+@interface GTFourController ()
 
-@property (nonatomic, strong) GTControllableThread *augusThread;
+@property (nonatomic, strong) GTControllableCThread *augusThread;
+
+@property (nonatomic, strong) NSTimer *augusTimer;
+@property (nonatomic, strong) CADisplayLink *augusDisplayLink;
 
 @end
 
-@implementation GTThirdController
+@implementation GTFourController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    self.title = @"Third";
+    self.title = @"Four";
     self.view.backgroundColor = UIColor.whiteColor;
+//    [self testNotMainThead];
     
     
-    [self testNotMainThead];
+    self.augusTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:[GTProxyTarget proxyWithTarget:self] selector:@selector(testTimer) userInfo:nil repeats:YES];
+    
+//    self.augusDisplayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(testLink)];
+//    [self.augusDisplayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+   
+}
+
+
+- (void)testTimer {
+    
+    NSLog(@"%s",__func__);
+    
+}
+
+
+- (void)testLink {
+    
+    NSLog(@"%s",__func__);
+
 }
 
 
@@ -42,28 +65,26 @@
     [self.view addSubview:button];
     
     
-    self.augusThread = [[GTControllableThread alloc] init];
+    self.augusThread = [[GTControllableCThread alloc] init];
 
 }
 
 
 - (void)stopThreadAction {
-    [self.augusThread gt_stopThead];
+    [self.augusThread gt_cstopThead];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
-    [self.augusThread gt_executeTask:^{
+    [self.augusThread gt_cexecuteTask:^{
         NSLog(@"testTask %@",[NSThread currentThread]);
     }];
 }
 
 - (void)dealloc {
     NSLog(@"%s",__func__);
-    [self stopThreadAction];
+//    [self stopThreadAction];
 }
-
-
 
 /*
 #pragma mark - Navigation

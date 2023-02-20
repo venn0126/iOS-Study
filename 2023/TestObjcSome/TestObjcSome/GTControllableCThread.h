@@ -1,5 +1,5 @@
 //
-//  GTControllableThead.h
+//  GTControllableCThread.h
 //  TestObjcSome
 //
 //  Created by Augus on 2023/2/20.
@@ -9,14 +9,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GTControllableThead : NSObject
+@interface GTControllableCThread : NSObject
 
 /// 停止当前开启的子线程
-- (void)gt_stopThead;
+- (void)gt_cstopThead;
 
 
 /// 在当前子线程执行任务
-- (void)gt_executeTask:(void(^)(void))task;
+- (void)gt_cexecuteTask:(void(^)(void))task;
 
 @end
 

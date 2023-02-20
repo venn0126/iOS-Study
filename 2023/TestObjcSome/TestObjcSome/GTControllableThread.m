@@ -1,12 +1,11 @@
 //
-//  GTControllableThead.m
+//  GTControllableThread.m
 //  TestObjcSome
 //
 //  Created by Augus on 2023/2/20.
 //
 
-#import "GTControllableThead.h"
-
+#import "GTControllableThread.h"
 
 @interface GTInnerThead : NSThread
 
@@ -21,7 +20,7 @@
 
 @end
 
-@interface GTControllableThead ()
+@interface GTControllableThread ()
 
 /// 内部的子线程
 @property (nonatomic, strong) GTInnerThead *innerThead;
@@ -29,9 +28,10 @@
 /// 是否已经停止
 @property (nonatomic, assign) BOOL isStoped;
 
+
 @end
 
-@implementation GTControllableThead
+@implementation GTControllableThread
 
 - (instancetype)init {
     self = [super init];
@@ -95,4 +95,5 @@
     NSLog(@"%s",__func__);
     [self gt_stopThead];
 }
+
 @end
