@@ -64,7 +64,9 @@
     
 //    [self testFishHook];
     
-    [self testFishHook2];
+//    [self testFishHook2];
+    
+    [self testFishHook3];
     
 
 }
@@ -466,18 +468,21 @@
 
     
     // rebinding struct
+    // 定义个结构体数组，存放最终的方法
     struct rebinding nslog;
     
     // Need rebinding string of C
+    // 需要替换方法名字
     nslog.name = "NSLog";
     
     // Make system function for point to symbol,rebinding custom function in runtime
+    // 自定义实现的方法指针
     nslog.replacement = nwLog;
     
     // Make system function real memory address assgin custom's function pointer
     nslog.replaced = (void*)&sys_nslog;
     
-    //
+    // 把需要替换的方法放入数组
     struct rebinding rebs[1] = {nslog};
     
     // args1 rebindings[] : storage struct of rebinding array
@@ -568,6 +573,39 @@ int ptrace_augus(int _request, pid_t _pid, caddr_t _addr, int _data) {
     // 代表什么都不做
     return 0;
 }
+
+
+
+
+- (void)testFishHook3 {
+    
+    
+    
+    // fishhook只允许hook系统的函数，自定义函数无法hook
+    
+    
+//    struct rebinding fqVerify;
+//    fqVerify.name = "FQ_verify";
+//    fqVerify.replacement = GT_verify;
+//    fqVerify.replaced = (void *)&FQ_verify;
+//
+//    struct rebinding rebs[1] = {fqVerify};
+//    rebind_symbols(rebs, 1);
+    
+    
+//    FQ_verify(@"tian is my wife", 2);
+    
+    
+}
+
+//void FQ_verify(NSString *arg1, int arg2);
+//void GT_verify(NSString *arg1, int arg2) {
+//
+//
+//    NSLog(@"gao %@ - %d",arg1, arg2);
+//    FQ_verify(arg1, arg2);
+//}
+
 
 
 
