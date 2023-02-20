@@ -33,10 +33,9 @@ typedef void(^GTOneTapSentMessageBlock)(id arg1);
 @property (nonatomic, copy) NSArray *conversationIds;
 
 
+- (void)gt_startTimerWithTimeInterval:(NSTimeInterval)interval block:(void (NS_SWIFT_SENDABLE ^)(NSTimer *timer))block;
 
-- (void)gt_fetchConversationIdsCompletion:(GTOneTapSentMessageBlock)completion;
-
-- (NSAttributedString *)chatForMessage;
+- (void)gt_stopTimer;
 
 
 @end

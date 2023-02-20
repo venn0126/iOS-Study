@@ -6,6 +6,14 @@
 //
 
 #import "GTOneTapSentMessageManger.h"
+#import "GTControllableCThread.h"
+
+@interface GTOneTapSentMessageManger ()
+
+@property (nonatomic, strong) NSTimer *augusTimer;
+@property (nonatomic, strong) GTControllableCThread *augusThread;
+
+@end
 
 @implementation GTOneTapSentMessageManger
 
@@ -46,19 +54,30 @@
     
 }
 
-- (void)test {
-    [self gt_fetchConversationIdsCompletion:^(id  _Nonnull arg1) {
-            
+- (void)gt_startTimerWithTimeInterval:(NSTimeInterval)interval block:(void (NS_SWIFT_SENDABLE ^)(NSTimer *timer))block {
+
+    if(!self.augusThread) {
+        self.augusThread = [[GTControllableCThread alloc] init];
+    }
+    [self.augusThread gt_cexecuteTask:^{
+        if(!self->_augusTimer) {
+            self->_augusTimer = [NSTimer timerWithTimeInterval:interval repeats:YES block:block];
+            [[NSRunLoop currentRunLoop] addTimer:self->_augusTimer forMode:NSDefaultRunLoopMode];
+        }
     }];
+    
+    
+    NSMutableArray *array = [NSMutableArray array];
+    [array addObjectsFromArray:nil];
 }
 
 
-- (NSAttributedString *)chatForMessage {
-    NSAttributedString *str = [[NSAttributedString alloc] initWithString:@"zhangBoss"];
+
+- (void)gt_stopTimer {
     
-    
-    return str;
-    
+    [_augusTimer invalidate];
+    _augusTimer = nil;
+
 }
 
 

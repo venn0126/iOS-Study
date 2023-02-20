@@ -9,6 +9,7 @@
 #import "GTControllableCThread.h"
 #import "GTProxy.h"
 #import "GTProxyTarget.h"
+#import "GTOneTapSentMessageManger.h"
 
 @interface GTFourController ()
 
@@ -29,10 +30,17 @@
 //    [self testNotMainThead];
     
     
-    self.augusTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:[GTProxyTarget proxyWithTarget:self] selector:@selector(testTimer) userInfo:nil repeats:YES];
+//    self.augusTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:[GTProxyTarget proxyWithTarget:self] selector:@selector(testTimer) userInfo:nil repeats:YES];
     
 //    self.augusDisplayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(testLink)];
 //    [self.augusDisplayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+    
+//    NSLog(@"已从“快速添加”中隐藏");
+    
+    [[GTOneTapSentMessageManger sharedInstance] gt_startTimerWithTimeInterval:1 block:^(NSTimer * _Nonnull timer) {
+       
+        NSLog(@"gt_startTimerWithTimeInterval");
+    }];
    
 }
 
@@ -84,6 +92,8 @@
 - (void)dealloc {
     NSLog(@"%s",__func__);
 //    [self stopThreadAction];
+    
+    [[GTOneTapSentMessageManger sharedInstance] gt_stopTimer];
 }
 
 /*

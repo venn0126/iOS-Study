@@ -10,7 +10,7 @@
 @implementation GTProxyTarget
 
 + (instancetype)proxyWithTarget:(id)target {
-    GTProxyTarget *proxy = [GTProxyTarget alloc]; 
+    GTProxyTarget *proxy = [GTProxyTarget alloc];
     proxy.target = target;
     return proxy;
 }

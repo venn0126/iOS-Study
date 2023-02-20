@@ -26,9 +26,6 @@
 /// 内部的子线程
 @property (nonatomic, strong) GTInnerCThead *innerThead;
 
-/// 是否已经停止
-//@property (nonatomic, assign) BOOL isStoped;
-
 @end
 
 @implementation GTControllableCThread
@@ -37,18 +34,8 @@
     self = [super init];
     if(!self) return nil;
     
-//    _isStoped = NO;
-    
-//    __weak typeof(self)weakself = self;
     _innerThead = [[GTInnerCThead alloc] initWithBlock:^{
         
-//        [[NSRunLoop currentRunLoop] addPort:[[NSPort alloc] init] forMode:NSDefaultRunLoopMode];
-//        while (!self.isStoped) {
-//            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
-            
-        NSLog(@"--- begin c thread ---");
-
-            
             // 创建runloop的source的上下文
             CFRunLoopSourceContext context = {0};
             
@@ -66,11 +53,6 @@
             // Boolean returnAfterSourceHandled:false>>>代表执行完source后，就退出runloop
             // Boolean returnAfterSourceHandled:true>>>代表执行完source后，不退出runloop
             CFRunLoopRunInMode(kCFRunLoopDefaultMode, 1.0e10, false);
-        
-        
-        NSLog(@"--- end c thread ---");
-            
-//        }
     }];
     
     [_innerThead start];
@@ -110,7 +92,6 @@
 
 - (void)gt_cinnerStopThread {
     
-//    self.isStoped = YES;
     CFRunLoopStop(CFRunLoopGetCurrent());
     self.innerThead = nil;
 }
