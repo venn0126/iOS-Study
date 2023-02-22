@@ -31,7 +31,7 @@ typedef enum : NSUInteger {
 /// 获取Library路径
 + (NSString *)gt_LibraryPath;
 
-/// 获取Library路径
+/// 获取临时路径
 + (NSString *)gt_TempPath;
 
 /// 文件是否存在

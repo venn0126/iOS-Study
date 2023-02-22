@@ -34,6 +34,7 @@
 		B18B38BF29923704002841C8 /* GTCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B18B38BE29923704002841C8 /* GTCache.m */; };
 		B18B38C629923842002841C8 /* LYCacheUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B18B38C129923842002841C8 /* LYCacheUtils.m */; };
 		B18B38C729923842002841C8 /* LYCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B18B38C229923842002841C8 /* LYCache.m */; };
+		B1EE2E6A29A4CEA4006F6E33 /* zty_login_token.plist in Resources */ = {isa = PBXBuildFile; fileRef = B1EE2E6929A4CEA4006F6E33 /* zty_login_token.plist */; };
 		B1F4C6B82987A533002C17AA /* GTFileTools.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F4C6B72987A533002C17AA /* GTFileTools.m */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,7 @@
 		B18B38C329923842002841C8 /* LYCacheDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYCacheDefine.h; sourceTree = "<group>"; };
 		B18B38C429923842002841C8 /* LYCacheUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYCacheUtils.h; sourceTree = "<group>"; };
 		B18B38C529923842002841C8 /* LYCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYCache.h; sourceTree = "<group>"; };
+		B1EE2E6929A4CEA4006F6E33 /* zty_login_token.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = zty_login_token.plist; sourceTree = "<group>"; };
 		B1F4C6B62987A533002C17AA /* GTFileTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTFileTools.h; sourceTree = "<group>"; };
 		B1F4C6B72987A533002C17AA /* GTFileTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTFileTools.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,6 +163,7 @@
 				B172B2FB29717BBE00058841 /* GTPerson.m */,
 				B172B303297C154700058841 /* GTPerson+Test.h */,
 				B172B304297C154700058841 /* GTPerson+Test.m */,
+				B1EE2E6929A4CEA4006F6E33 /* zty_login_token.plist */,
 				27F444B1299BF38E0096C14A /* GTOneTapSentMessageManger.h */,
 				27F444B2299BF38E0096C14A /* GTOneTapSentMessageManger.m */,
 				B172B2EA29717B8C00058841 /* Main.storyboard */,
@@ -267,6 +270,7 @@
 				B172B2F129717B8D00058841 /* LaunchScreen.storyboard in Resources */,
 				B18B38BA2991F712002841C8 /* GTFloatButton.bundle in Resources */,
 				B172B2EE29717B8D00058841 /* Assets.xcassets in Resources */,
+				B1EE2E6A29A4CEA4006F6E33 /* zty_login_token.plist in Resources */,
 				B172B2EC29717B8C00058841 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
