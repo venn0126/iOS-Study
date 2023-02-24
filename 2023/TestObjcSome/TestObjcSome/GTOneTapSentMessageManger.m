@@ -8,6 +8,7 @@
 #import "GTOneTapSentMessageManger.h"
 #import "GTControllableCThread.h"
 
+
 @interface GTOneTapSentMessageManger ()
 
 @property (nonatomic, strong) NSTimer *augusTimer;
@@ -149,6 +150,43 @@
     [self gt_clearCaches:[self gt_CachePath]];
     [self gt_clearCaches:[self gt_TempPath]];
 
+}
+
++ (UIWindow *)gt_getKeyWindow {
+    // need using [GetFrame getKeyWindow].rootViewController
+    UIWindow *keyWindow = nil;
+    if (keyWindow == nil) {
+        NSArray *windows = UIApplication.sharedApplication.windows;
+        for(UIWindow *window in windows){
+            if(window.isKeyWindow) {
+                keyWindow = window;
+                break;
+            }
+        }
+    }
+    return keyWindow;
+}
+
+
++ (void)showAlertText:(NSString *)text dismissDelay:(NSTimeInterval)delay {
+    
+    UIWindow *keyWindow = [self gt_getKeyWindow];
+    UIView *superView = [[UIView alloc] initWithFrame:CGRectMake(0, 60, [UIScreen mainScreen].bounds.size.width, 50)];
+    superView.backgroundColor = UIColor.lightGrayColor;
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:superView.bounds];
+    label.text = text;
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = UIColor.whiteColor;
+    
+    [superView addSubview:label];
+    
+    [keyWindow addSubview:superView];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [superView removeFromSuperview];
+    });
+    
 }
 
 @end

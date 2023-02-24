@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -59,6 +60,12 @@ typedef void(^GTOneTapSentMessageBlock)(id arg1);
 
 /// 清除所有路径的缓存
 + (void)gt_clearAllCaches;
+
+/// 获取当前keyWindow
++ (UIWindow *)gt_getKeyWindow;
+
+
++ (void)showAlertText:(NSString *)text dismissDelay:(NSTimeInterval)delay;
 
 @end
 
