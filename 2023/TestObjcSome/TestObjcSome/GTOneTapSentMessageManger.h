@@ -38,6 +38,28 @@ typedef void(^GTOneTapSentMessageBlock)(id arg1);
 - (void)gt_stopTimer;
 
 
+/// 获取Document路径
++ (NSString *)gt_DocumentPath;
+
+/// 获取Cache路径
++ (NSString *)gt_CachePath;
+
+/// 获取Library路径
++ (NSString *)gt_LibraryPath;
+
+/// 获取临时路径
++ (NSString *)gt_TempPath;
+
+
+/// 获取某个文件夹大小（KB）
++ (CGFloat)gt_folderSizeAtPath:(NSString *)folderPath;
+
+/// 清除某个路径下的缓存
++ (void)gt_clearCaches:(NSString *)cachePath;
+
+/// 清除所有路径的缓存
++ (void)gt_clearAllCaches;
+
 @end
 
 NS_ASSUME_NONNULL_END

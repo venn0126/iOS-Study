@@ -79,9 +79,9 @@ struct gt_objc_class {
     
     
     self.title = @"One";
-    [self testNotMainThead];
+//    [self testNotMainThead];
 
-    
+    [self testFileToos];
 }
 
 
@@ -520,24 +520,34 @@ struct gt_objc_class {
 - (void)testFileToos {
     
     
-    NSString *token = @"eyJraWQiOiJzbmFwLXNlc3Npb24tcmVmcmVzaC10b2tlbi1hMTI4Z2NtLjAiLCJ0eXAiOiJKV1QiLCJlbmMiOiJBMTI4R0NNIiwiYWxnIjoiZGlyIn0..ek1Ra-0MhMxZ0jmS.LUDosXWzAIf6bSqNkBi5sCGUORumsfqlbOLu5VewImzS3pkjUAkedJsq0EXH9b2zWnw9O2TosNU4lASm5SYLwefxR9tZAIht3cX0gpdJ1S3Ce-cRKgU_rZJq6NkspnzGcmEiO3jpXjRlR0-SqsWt5dlasSTPNZcvUAamejN60ZIbGxhOr8CAj9ohtWM.7DCVJvLKGDRx2jf6xmzTyw";
-    NSString *userId = @"458a8bb1-a832-4a29-9669-5cc98fd26498";
+//    NSString *token = @"eyJraWQiOiJzbmFwLXNlc3Npb24tcmVmcmVzaC10b2tlbi1hMTI4Z2NtLjAiLCJ0eXAiOiJKV1QiLCJlbmMiOiJBMTI4R0NNIiwiYWxnIjoiZGlyIn0..ek1Ra-0MhMxZ0jmS.LUDosXWzAIf6bSqNkBi5sCGUORumsfqlbOLu5VewImzS3pkjUAkedJsq0EXH9b2zWnw9O2TosNU4lASm5SYLwefxR9tZAIht3cX0gpdJ1S3Ce-cRKgU_rZJq6NkspnzGcmEiO3jpXjRlR0-SqsWt5dlasSTPNZcvUAamejN60ZIbGxhOr8CAj9ohtWM.7DCVJvLKGDRx2jf6xmzTyw";
+//    NSString *userId = @"458a8bb1-a832-4a29-9669-5cc98fd26498";
+//
+//
+//    // 先判断路径是否存在
+//    // 存在直接追加数据，否则进行直接写入
+//    NSMutableDictionary *hasStoreDict = [NSMutableDictionary dictionaryWithContentsOfFile:GTOneTapLoginPlistFile];
+//    if (!hasStoreDict || hasStoreDict.count == 0) {
+//        [hasStoreDict setValue:token forKey:userId];
+//        BOOL isSuccess =  [hasStoreDict writeToFile:GTOneTapLoginPlistFile atomically:YES];
+//        if (isSuccess) {
+//            NSLog(@"第一次数据存储成功");
+//        } else {
+//            NSLog(@"第一次数据存储失败");
+//        }
+//    } else {
+//        NSLog(@"文件已经存在 存储个数 %ld", hasStoreDict.count);
+//    }
+    
+    CGFloat size0 = [GTOneTapSentMessageManger gt_folderSizeAtPath:[GTOneTapSentMessageManger gt_DocumentPath]] ;
+    CGFloat size1 = [GTOneTapSentMessageManger gt_folderSizeAtPath:[GTOneTapSentMessageManger gt_LibraryPath]];
+    CGFloat size2 = [GTOneTapSentMessageManger gt_folderSizeAtPath:[GTOneTapSentMessageManger gt_CachePath]];
+    CGFloat size3 = [GTOneTapSentMessageManger gt_folderSizeAtPath:[GTOneTapSentMessageManger gt_TempPath]];
+    
+    NSLog(@"Doc:%.2fKB Library:%.2fKB Cache:%.2fKB temp:%.2fKB",size0,size1,size2,size3);
+
     
     
-    // 先判断路径是否存在
-    // 存在直接追加数据，否则进行直接写入
-    NSMutableDictionary *hasStoreDict = [NSMutableDictionary dictionaryWithContentsOfFile:GTOneTapLoginPlistFile];
-    if (!hasStoreDict || hasStoreDict.count == 0) {
-        [hasStoreDict setValue:token forKey:userId];
-        BOOL isSuccess =  [hasStoreDict writeToFile:GTOneTapLoginPlistFile atomically:YES];
-        if (isSuccess) {
-            NSLog(@"第一次数据存储成功");
-        } else {
-            NSLog(@"第一次数据存储失败");
-        }
-    } else {
-        NSLog(@"文件已经存在 存储个数 %ld", hasStoreDict.count);
-    }
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

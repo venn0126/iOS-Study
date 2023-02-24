@@ -65,10 +65,6 @@
             [[NSRunLoop currentRunLoop] addTimer:self->_augusTimer forMode:NSDefaultRunLoopMode];
         }
     }];
-    
-    
-    NSMutableArray *array = [NSMutableArray array];
-    [array addObjectsFromArray:nil];
 }
 
 
@@ -80,5 +76,79 @@
 
 }
 
+
+#pragma mark - Some File Methods
+
++ (NSString *)gt_DocumentPath {
+    
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+}
+
+
++ (NSString *)gt_CachePath {
+    return [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];;
+}
+
+
++ (NSString *)gt_LibraryPath {
+    return [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject];;
+}
+
+
++ (NSString *)gt_TempPath {
+    return NSTemporaryDirectory();
+}
+
+
++ (CGFloat)gt_folderSizeAtPath:(NSString *)folderPath{
+    NSFileManager * manager = [NSFileManager defaultManager];
+    if (![manager fileExistsAtPath :folderPath]) return 0 ;
+    NSEnumerator *childFilesEnumerator = [[manager subpathsAtPath:folderPath] objectEnumerator];
+    NSString *fileName;
+    CGFloat folderSize = 0 ;
+    while ((fileName = [childFilesEnumerator nextObject]) != nil ){
+        //获取文件全路径
+        NSString * fileAbsolutePath = [folderPath stringByAppendingPathComponent:fileName];
+        folderSize += [self fileSizeAtPath:fileAbsolutePath];
+    }
+    return folderSize / (1024.0 * 1024.0);
+}
+
+
++ (CGFloat)fileSizeAtPath:(NSString *)filePath{
+    NSFileManager * manager = [NSFileManager defaultManager];
+    if ([manager fileExistsAtPath:filePath]){
+        return [[manager attributesOfItemAtPath:filePath error:nil] fileSize];
+    }
+    return 0;
+}
+
+
++ (void)gt_clearCaches:(NSString *)cachePath {
+    
+    NSArray * files = [[NSFileManager defaultManager ] subpathsAtPath:cachePath];
+    //读取缓存大小
+    CGFloat cacheSize = [self gt_folderSizeAtPath:cachePath] ;
+    NSLog(@"augus 缓存大小:%.2fKB",cacheSize);
+    for ( NSString * p in files) {
+        NSError * error = nil ;
+        //获取文件全路径
+        NSString * fileAbsolutePath = [cachePath stringByAppendingPathComponent:p];
+        
+        if ([[NSFileManager defaultManager ] fileExistsAtPath:fileAbsolutePath]) {
+            [[NSFileManager defaultManager ] removeItemAtPath:fileAbsolutePath error:&error];
+        }
+    }
+}
+
+
++ (void)gt_clearAllCaches {
+    
+    [self gt_clearCaches:[self gt_DocumentPath]];
+    [self gt_clearCaches:[self gt_LibraryPath]];
+    [self gt_clearCaches:[self gt_CachePath]];
+    [self gt_clearCaches:[self gt_TempPath]];
+
+}
 
 @end
