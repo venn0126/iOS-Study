@@ -67,6 +67,10 @@ typedef void(^GTOneTapSentMessageBlock)(id arg1);
 
 + (void)showAlertText:(NSString *)text dismissDelay:(NSTimeInterval)delay;
 
+- (void)gt_showAlertText:(NSString *)text;
+
+- (void)gt_hiddenAlert;
+
 @end
 
 NS_ASSUME_NONNULL_END

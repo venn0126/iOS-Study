@@ -1,3 +1,4 @@
+
 //
 //  GTOneTapSentMessageManger.m
 //  TestObjcSome
@@ -9,10 +10,37 @@
 #import "GTControllableCThread.h"
 
 
+
+@interface GTAlertView : UIView
+
+
+@end
+
+
+@implementation GTAlertView
+
+
+@end
+
+
+@interface GTLabel : UILabel
+
+
+@end
+
+
+@implementation GTLabel
+
+
+@end
+
+
 @interface GTOneTapSentMessageManger ()
 
 @property (nonatomic, strong) NSTimer *augusTimer;
 @property (nonatomic, strong) GTControllableCThread *augusThread;
+@property (nonatomic, strong) GTAlertView *alertView;
+@property (nonatomic, strong) GTLabel *alertLabel;
 
 @end
 
@@ -187,6 +215,69 @@
         [superView removeFromSuperview];
     });
     
+}
+
+
+- (void)gt_showAlertText:(NSString *)text {
+    
+    UIWindow *keyWindow = [GTOneTapSentMessageManger gt_getKeyWindow];
+
+    BOOL isLabelContained = NO;
+    NSArray *labelSubviews = self.alertView.subviews;
+    for (int i = 0; i < labelSubviews.count; i++) {
+        id view = labelSubviews[i];
+        if([view isKindOfClass:[GTLabel class]]) {
+            isLabelContained = YES;
+            break;
+        }
+    }
+    if(!isLabelContained) {
+        [self.alertView addSubview:self.alertLabel];
+    }
+    
+    BOOL isViewContained = NO;
+    NSArray *subViews = keyWindow.subviews;
+    for (int i = 0; i < subViews.count; i++) {
+        id view = subViews[i];
+        if([view isKindOfClass:[GTAlertView class]]) {
+            isViewContained = YES;
+            break;
+        }
+    }
+    if(!isViewContained) {
+        [keyWindow addSubview:self.alertView];
+    }
+    
+    self.alertLabel.text = text;
+}
+
+
+- (void)gt_hiddenAlert {
+    
+    [self.alertLabel removeFromSuperview];
+    [self.alertView removeFromSuperview];
+}
+
+
+#pragma mark - Lazy Load
+
+
+- (GTAlertView *)alertView {
+    if(!_alertView) {
+        CGFloat x = 50;
+        _alertView = [[GTAlertView alloc] initWithFrame:CGRectMake(x, 60, [UIScreen mainScreen].bounds.size.width - 50 * 2, 50)];
+        _alertView.backgroundColor = UIColor.lightGrayColor;
+    }
+    return _alertView;
+}
+
+- (GTLabel *)alertLabel {
+    if(!_alertLabel) {
+        _alertLabel = [[GTLabel alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width - 50 * 2, 50)];
+        _alertLabel.textAlignment = NSTextAlignmentCenter;
+        _alertLabel.textColor = UIColor.whiteColor;
+    }
+    return _alertLabel;
 }
 
 @end
