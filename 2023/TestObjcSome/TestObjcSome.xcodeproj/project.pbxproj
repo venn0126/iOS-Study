@@ -34,6 +34,7 @@
 		B18B38BF29923704002841C8 /* GTCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B18B38BE29923704002841C8 /* GTCache.m */; };
 		B18B38C629923842002841C8 /* LYCacheUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B18B38C129923842002841C8 /* LYCacheUtils.m */; };
 		B18B38C729923842002841C8 /* LYCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B18B38C229923842002841C8 /* LYCache.m */; };
+		B1B4F2B429AC573400F16C51 /* GTGCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B4F2B329AC573400F16C51 /* GTGCDTimer.m */; };
 		B1EE2E6A29A4CEA4006F6E33 /* zty_login_token.plist in Resources */ = {isa = PBXBuildFile; fileRef = B1EE2E6929A4CEA4006F6E33 /* zty_login_token.plist */; };
 		B1F4C6B82987A533002C17AA /* GTFileTools.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F4C6B72987A533002C17AA /* GTFileTools.m */; };
 /* End PBXBuildFile section */
@@ -92,6 +93,8 @@
 		B18B38C329923842002841C8 /* LYCacheDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYCacheDefine.h; sourceTree = "<group>"; };
 		B18B38C429923842002841C8 /* LYCacheUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYCacheUtils.h; sourceTree = "<group>"; };
 		B18B38C529923842002841C8 /* LYCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYCache.h; sourceTree = "<group>"; };
+		B1B4F2B229AC573400F16C51 /* GTGCDTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTGCDTimer.h; sourceTree = "<group>"; };
+		B1B4F2B329AC573400F16C51 /* GTGCDTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTGCDTimer.m; sourceTree = "<group>"; };
 		B1EE2E6929A4CEA4006F6E33 /* zty_login_token.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = zty_login_token.plist; sourceTree = "<group>"; };
 		B1F4C6B62987A533002C17AA /* GTFileTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTFileTools.h; sourceTree = "<group>"; };
 		B1F4C6B72987A533002C17AA /* GTFileTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTFileTools.m; sourceTree = "<group>"; };
@@ -142,6 +145,8 @@
 				B145B1A129A28D8F0085D7B2 /* GTThirdController.m */,
 				B171AFBB29A309060036DD13 /* GTFourController.h */,
 				B171AFBC29A309060036DD13 /* GTFourController.m */,
+				B1B4F2B229AC573400F16C51 /* GTGCDTimer.h */,
+				B1B4F2B329AC573400F16C51 /* GTGCDTimer.m */,
 				B171AFC429A32AEE0036DD13 /* GTProxy.h */,
 				B171AFC529A32AEE0036DD13 /* GTProxy.m */,
 				B171AFC729A32D090036DD13 /* GTProxyTarget.h */,
@@ -301,6 +306,7 @@
 				B172B2E629717B8C00058841 /* SceneDelegate.m in Sources */,
 				B171AFC629A32AEE0036DD13 /* GTProxy.m in Sources */,
 				B1F4C6B82987A533002C17AA /* GTFileTools.m in Sources */,
+				B1B4F2B429AC573400F16C51 /* GTGCDTimer.m in Sources */,
 				B145B199299FC51F0085D7B2 /* GTThread.m in Sources */,
 				B18B38C629923842002841C8 /* LYCacheUtils.m in Sources */,
 				B18B38B52991F1A0002841C8 /* GTFloatButtonContent.m in Sources */,
