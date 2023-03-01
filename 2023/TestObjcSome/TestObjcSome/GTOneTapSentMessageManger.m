@@ -220,42 +220,51 @@
 
 - (void)gt_showAlertText:(NSString *)text {
     
-    UIWindow *keyWindow = [GTOneTapSentMessageManger gt_getKeyWindow];
-
-    BOOL isLabelContained = NO;
-    NSArray *labelSubviews = self.alertView.subviews;
-    for (int i = 0; i < labelSubviews.count; i++) {
-        id view = labelSubviews[i];
-        if([view isKindOfClass:[GTLabel class]]) {
-            isLabelContained = YES;
-            break;
-        }
-    }
-    if(!isLabelContained) {
-        [self.alertView addSubview:self.alertLabel];
-    }
     
-    BOOL isViewContained = NO;
-    NSArray *subViews = keyWindow.subviews;
-    for (int i = 0; i < subViews.count; i++) {
-        id view = subViews[i];
-        if([view isKindOfClass:[GTAlertView class]]) {
-            isViewContained = YES;
-            break;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        
+        UIWindow *keyWindow = [GTOneTapSentMessageManger gt_getKeyWindow];
+        
+        BOOL isLabelContained = NO;
+        NSArray *labelSubviews = self.alertView.subviews;
+        for (int i = 0; i < labelSubviews.count; i++) {
+            id view = labelSubviews[i];
+            if([view isKindOfClass:[GTLabel class]]) {
+                isLabelContained = YES;
+                break;
+            }
         }
-    }
-    if(!isViewContained) {
-        [keyWindow addSubview:self.alertView];
-    }
-    
-    self.alertLabel.text = text;
+        if(!isLabelContained) {
+            [self.alertView addSubview:self.alertLabel];
+        }
+        
+        BOOL isViewContained = NO;
+        NSArray *subViews = keyWindow.subviews;
+        for (int i = 0; i < subViews.count; i++) {
+            id view = subViews[i];
+            if([view isKindOfClass:[GTAlertView class]]) {
+                isViewContained = YES;
+                break;
+            }
+        }
+        if(!isViewContained) {
+            [keyWindow addSubview:self.alertView];
+        }
+        
+        self.alertLabel.text = text;
+        
+    });
 }
 
 
 - (void)gt_hiddenAlert {
     
-    [self.alertLabel removeFromSuperview];
-    [self.alertView removeFromSuperview];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.alertLabel removeFromSuperview];
+        [self.alertView removeFromSuperview];
+    });
+    
 }
 
 
