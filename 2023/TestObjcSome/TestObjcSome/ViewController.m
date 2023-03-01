@@ -25,6 +25,8 @@
 #import "GTThirdController.h"
 #import "GTFourController.h"
 
+#import "GTGCDTimer.h"
+
 
 
 #define GTOneTapLoginPlistFile [NSString stringWithFormat:@"%@/gt_oneTapLogin.plist", [GTFileTools gt_DocumentPath]]
@@ -56,6 +58,8 @@
 @property (nonatomic, strong) GTThread *augusThread;
 @property (nonatomic, strong) NSTimer *gtTimer;
 @property (nonatomic, assign) BOOL isSending;
+@property (nonatomic, assign) NSInteger timerCount;
+@property (nonatomic, copy) NSString *taskName;
 
 @end
 
@@ -81,7 +85,72 @@ struct gt_objc_class {
     self.title = @"One";
 //    [self testNotMainThead];
 
-    [self testFileToos];
+//    [self testFileToos];
+
+    
+    
+    
+    
+    
+ 
+    
+    
+    
+}
+
+
+- (void)testGTTimer {
+    
+    
+    _timerCount = 0;
+
+//    self.taskName = [GTGCDTimer gt_executeTask:^{
+//        if(self->_timerCount >= 5) {
+//            NSLog(@"it is end");
+//            [[GTOneTapSentMessageManger sharedInstance] gt_hiddenAlert];
+////            [[GTOneTapSentMessageManger sharedInstance] gt_stopTimer];
+//            [GTGCDTimer gt_cancelTask:self.taskName];
+//            return;
+//        }
+//
+//
+//        NSLog(@"send add fridend request %ld",(long)self->_timerCount);
+//        self->_timerCount++;
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            NSLog(@"show message %ld",(long)self->_timerCount);
+//
+//            NSString *formatStr = [NSString stringWithFormat:@"has send %ld",(long)self->_timerCount];
+//            [[GTOneTapSentMessageManger sharedInstance] gt_showAlertText:formatStr];
+//        });
+//
+//
+//    } start:2 interval:50/1000.0 repeats:YES async:YES];
+    
+    
+    [[GTOneTapSentMessageManger sharedInstance] gt_startTimerWithTimeInterval:10.0 / 1000.0 block:^(NSTimer * _Nonnull timer) {
+       
+        if(self->_timerCount >= 5) {
+            NSLog(@"it is end");
+            [[GTOneTapSentMessageManger sharedInstance] gt_hiddenAlert];
+            [[GTOneTapSentMessageManger sharedInstance] gt_stopTimer];
+            return;
+        }
+        
+        
+        NSLog(@"send add fridend request %ld",(long)self->_timerCount);
+        self->_timerCount++;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"show message %ld",(long)self->_timerCount);
+
+            NSString *formatStr = [NSString stringWithFormat:@"has send %ld",(long)self->_timerCount];
+            [[GTOneTapSentMessageManger sharedInstance] gt_showAlertText:formatStr];
+        });
+
+        
+    }];
+    
+    
+    
 }
 
 
@@ -551,6 +620,8 @@ struct gt_objc_class {
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    [self testGTTimer];
     
 //    NSData *data = [[LYCache shareInstance] ly_readForKey:@"123"];
 //    GTPerson *p = [NSKeyedUnarchiver unarchiveObjectWithData:data];
