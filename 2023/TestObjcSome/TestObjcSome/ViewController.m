@@ -32,6 +32,7 @@
 //#import <Photos/Photos.h>
 #import <PhotosUI/PhotosUI.h>
 #import <UniformTypeIdentifiers/UniformTypeIdentifiers.h>
+#import <AVFoundation/AVFoundation.h>
 
 
 
@@ -109,35 +110,23 @@ struct gt_objc_class {
 
 - (void)testPHPickerController {
     
-//    if (@available(iOS 14, *)) {
-//
-//        PHPickerConfiguration *config = [[PHPickerConfiguration alloc] init];
-//        config.selectionLimit = 1;
-//        config.filter = [PHPickerFilter videosFilter];
-//        config.preferredAssetRepresentationMode = PHPickerConfigurationAssetRepresentationModeCurrent;
-//
-//
-//        PHPickerViewController *pickerViewController = [[PHPickerViewController alloc] initWithConfiguration:config];
-//        pickerViewController.delegate = self;
-//        [self presentViewController:pickerViewController animated:YES completion:nil];
-//
-//    } else {
-//
-//
-//    }
-    
-    
-    NSString *path = @"file:///var/mobile/Library/Caches/temp.mov";
-//    NSString *path = @"/var/mobile/Library/Caches/temp.mov";
-//    NSURL *url = [NSURL URLWithString:path];
-    NSURL *url = [NSURL fileURLWithPath:path];
-    AVAsset *asset = [AVAsset assetWithURL:url];
-    NSError *readerError;
-    AVAssetReader *reader = [AVAssetReader assetReaderWithAsset:asset error:&readerError];
-    NSLog(@"reader %@---error %@",reader,readerError);
-    
-    
-    
+    if (@available(iOS 14, *)) {
+
+        PHPickerConfiguration *config = [[PHPickerConfiguration alloc] init];
+        config.selectionLimit = 1;
+        config.filter = [PHPickerFilter videosFilter];
+        config.preferredAssetRepresentationMode = PHPickerConfigurationAssetRepresentationModeCurrent;
+
+
+        PHPickerViewController *pickerViewController = [[PHPickerViewController alloc] initWithConfiguration:config];
+        pickerViewController.delegate = self;
+        [self presentViewController:pickerViewController animated:YES completion:nil];
+
+    } else {
+
+
+    }
+
 }
 
 
@@ -146,42 +135,36 @@ struct gt_objc_class {
     NSLog(@"didFinishPicking:%@", results);
     PHPickerResult *result = results.firstObject;
     NSItemProvider *provider = result.itemProvider;
-//    [provider loadFileRepresentationForTypeIdentifier:UTTypeMovie.identifier completionHandler:^(NSURL * _Nullable url, NSError * _Nullable error) {
-//
-//        NSLog(@"UTTypeMovie url %@",url);
-////        NSString *selectFile = url.absoluteString;
-//
-//    }];
-//
-//    [provider loadInPlaceFileRepresentationForTypeIdentifier:UTTypeMovie.identifier completionHandler:^(NSURL * _Nullable url, BOOL isInPlace, NSError * _Nullable error) {
-//
-//        NSLog(@"loadInPlaceFileRepresentationForTypeIdentifier url %@ %@",url,@(isInPlace));
-//
-//    }];
-    
-    
-    if ([provider hasItemConformingToTypeIdentifier:UTTypeMovie.identifier]) {
+    [provider loadFileRepresentationForTypeIdentifier:@"public.movie" completionHandler:^(NSURL * _Nullable url, NSError * _Nullable error) {
         
-        [provider loadItemForTypeIdentifier:UTTypeMovie.identifier options:nil completionHandler:^(__kindof id<NSSecureCoding>  _Nullable item, NSError * _Null_unspecified error) {
+        // copy or move
+//        NSString *g_tempFile = [[GTFileTools gt_DocumentPath] stringByAppendingPathComponent:@"temp.mov"];
+        NSString *g_tempFile = @"/Library/Caches/temp.mov";
+        NSURL *toURL = [NSURL fileURLWithPath:g_tempFile];
+        NSLog(@"augus g_tempFile %@",g_tempFile);
+        NSFileManager *g_fileManager = [NSFileManager defaultManager];
+        
+        
+        if ([g_fileManager fileExistsAtPath:g_tempFile]) [g_fileManager removeItemAtPath:g_tempFile error:nil];
+        
+//        dispatch_async(dispatch_get_main_queue(), ^{
            
-            // 视频本地URL
-            NSURL *url = (NSURL *)item;
-            NSString *path = [url.absoluteString stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
-            NSLog(@"augus url string %@",url.absoluteString);
-            
-            
-            NSMutableString *string = [[NSMutableString alloc] initWithString:path];
-            if ([path hasPrefix:@"file://"]) { // 通过前缀来判断是文件
-                // 去除前缀：/private/var/mobile/Containers/Data/Application/83643509-E90E-40A6-92EA-47A44B40CBBF/Documents/Inbox/jfkdfj123a.pdf
-                [string replaceOccurrencesOfString:@"file://" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, path.length)];
+            NSError *copyError;
+            if([g_fileManager copyItemAtURL:url toURL:toURL error:&copyError]) {
+                [g_fileManager createDirectoryAtPath:[NSString stringWithFormat:@"%@.new", g_tempFile] withIntermediateDirectories:YES attributes:nil error:nil];
+                NSLog(@"augus 应用成功");
+                sleep(1);
+                [g_fileManager removeItemAtPath:[NSString stringWithFormat:@"%@.new", g_tempFile] error:nil];
+                
+                [self playVideoURL:toURL];
+                
+            } else {
+                NSLog(@"augus 应用失败 %@",copyError);
             }
             
-//            AVAsset *asset = [AVAsset assetWithURL:<#(nonnull NSURL *)#>]
-//            AVAssetReader *reader = [AVAssetReader assetReaderWithAsset:<#(nonnull AVAsset *)#> error:<#(NSError * _Nullable __autoreleasing * _Nullable)#>]
-            
-            
-        }];
-    }
+//        });
+        
+    }];
     
    
     
@@ -189,6 +172,33 @@ struct gt_objc_class {
     
 }
 
+
+
+- (void)playVideoURL:(NSURL *)videoURL {
+    
+//    AVPlayer *player = [AVPlayer playerWithURL:videoURL];
+//    AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
+//    playerLayer.frame = self.view.bounds;
+//    [self.view.layer addSublayer:playerLayer];
+//    [player play];
+    
+    
+//    AVAsset *asset = [AVAsset assetWithURL: [NSURL URLWithString:[NSString stringWithFormat:@"file://%@", g_tempFile]]];
+    
+    AVAsset *asset = [AVAsset assetWithURL:videoURL];
+    NSError *readerError;
+    AVAssetReader *reader = [AVAssetReader assetReaderWithAsset:asset error:&readerError];
+    NSLog(@"reader %@---error %@",reader,readerError);
+
+}
+
+
+- (NSString *)getFirstApplicationDirectory {
+    
+//    NSArray *files = [fm subpathsAtPath: [self dataFilePath] ];
+    
+    return nil;
+}
 
 
 - (void)testGTTimer {
