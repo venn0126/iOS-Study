@@ -29,6 +29,12 @@
 
 
 
+//#import <Photos/Photos.h>
+#import <PhotosUI/PhotosUI.h>
+#import <UniformTypeIdentifiers/UniformTypeIdentifiers.h>
+
+
+
 #define GTOneTapLoginPlistFile [NSString stringWithFormat:@"%@/gt_oneTapLogin.plist", [GTFileTools gt_DocumentPath]]
 
 #define GTScreenWidth [UIApplication sharedApplication].keyWindow.bounds.size.width
@@ -36,7 +42,7 @@
 
 
 
-@interface ViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITableViewDataSource, UITableViewDelegate>
+@interface ViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITableViewDataSource, UITableViewDelegate, PHPickerViewControllerDelegate>
 
 @property (nonatomic, strong) GTPerson *person1;
 @property (nonatomic, strong) GTPerson *person2;
@@ -90,6 +96,8 @@ struct gt_objc_class {
     
     
     
+
+    
     
     
  
@@ -97,6 +105,90 @@ struct gt_objc_class {
     
     
 }
+
+
+- (void)testPHPickerController {
+    
+//    if (@available(iOS 14, *)) {
+//
+//        PHPickerConfiguration *config = [[PHPickerConfiguration alloc] init];
+//        config.selectionLimit = 1;
+//        config.filter = [PHPickerFilter videosFilter];
+//        config.preferredAssetRepresentationMode = PHPickerConfigurationAssetRepresentationModeCurrent;
+//
+//
+//        PHPickerViewController *pickerViewController = [[PHPickerViewController alloc] initWithConfiguration:config];
+//        pickerViewController.delegate = self;
+//        [self presentViewController:pickerViewController animated:YES completion:nil];
+//
+//    } else {
+//
+//
+//    }
+    
+    
+    NSString *path = @"file:///var/mobile/Library/Caches/temp.mov";
+//    NSString *path = @"/var/mobile/Library/Caches/temp.mov";
+//    NSURL *url = [NSURL URLWithString:path];
+    NSURL *url = [NSURL fileURLWithPath:path];
+    AVAsset *asset = [AVAsset assetWithURL:url];
+    NSError *readerError;
+    AVAssetReader *reader = [AVAssetReader assetReaderWithAsset:asset error:&readerError];
+    NSLog(@"reader %@---error %@",reader,readerError);
+    
+    
+    
+}
+
+
+- (void)picker:(PHPickerViewController *)picker didFinishPicking:(NSArray<PHPickerResult *> *)results API_AVAILABLE(ios(14)){
+    
+    NSLog(@"didFinishPicking:%@", results);
+    PHPickerResult *result = results.firstObject;
+    NSItemProvider *provider = result.itemProvider;
+//    [provider loadFileRepresentationForTypeIdentifier:UTTypeMovie.identifier completionHandler:^(NSURL * _Nullable url, NSError * _Nullable error) {
+//
+//        NSLog(@"UTTypeMovie url %@",url);
+////        NSString *selectFile = url.absoluteString;
+//
+//    }];
+//
+//    [provider loadInPlaceFileRepresentationForTypeIdentifier:UTTypeMovie.identifier completionHandler:^(NSURL * _Nullable url, BOOL isInPlace, NSError * _Nullable error) {
+//
+//        NSLog(@"loadInPlaceFileRepresentationForTypeIdentifier url %@ %@",url,@(isInPlace));
+//
+//    }];
+    
+    
+    if ([provider hasItemConformingToTypeIdentifier:UTTypeMovie.identifier]) {
+        
+        [provider loadItemForTypeIdentifier:UTTypeMovie.identifier options:nil completionHandler:^(__kindof id<NSSecureCoding>  _Nullable item, NSError * _Null_unspecified error) {
+           
+            // 视频本地URL
+            NSURL *url = (NSURL *)item;
+            NSString *path = [url.absoluteString stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+            NSLog(@"augus url string %@",url.absoluteString);
+            
+            
+            NSMutableString *string = [[NSMutableString alloc] initWithString:path];
+            if ([path hasPrefix:@"file://"]) { // 通过前缀来判断是文件
+                // 去除前缀：/private/var/mobile/Containers/Data/Application/83643509-E90E-40A6-92EA-47A44B40CBBF/Documents/Inbox/jfkdfj123a.pdf
+                [string replaceOccurrencesOfString:@"file://" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, path.length)];
+            }
+            
+//            AVAsset *asset = [AVAsset assetWithURL:<#(nonnull NSURL *)#>]
+//            AVAssetReader *reader = [AVAssetReader assetReaderWithAsset:<#(nonnull AVAsset *)#> error:<#(NSError * _Nullable __autoreleasing * _Nullable)#>]
+            
+            
+        }];
+    }
+    
+   
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
 
 
 - (void)testGTTimer {
@@ -621,7 +713,9 @@ struct gt_objc_class {
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
-    [self testGTTimer];
+//    [self testGTTimer];
+    
+    [self testPHPickerController];
     
 //    NSData *data = [[LYCache shareInstance] ly_readForKey:@"123"];
 //    GTPerson *p = [NSKeyedUnarchiver unarchiveObjectWithData:data];
