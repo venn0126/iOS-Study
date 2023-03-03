@@ -36,6 +36,10 @@
 
 
 
+
+
+
+
 #define GTOneTapLoginPlistFile [NSString stringWithFormat:@"%@/gt_oneTapLogin.plist", [GTFileTools gt_DocumentPath]]
 
 #define GTScreenWidth [UIApplication sharedApplication].keyWindow.bounds.size.width
@@ -73,6 +77,8 @@
 @implementation ViewController
 
 
+
+
 struct gt_objc_class {
     Class isa;
 };
@@ -96,14 +102,25 @@ struct gt_objc_class {
 
     
     
-    
+}
 
+
+- (void)testNSArrayMInsertObjectAtIndex {
     
-    
-    
- 
-    
-    
+    //    NSMutableArray *tempArray = nil;
+    //    NSMutableArray *tempArray = [NSMutableArray array];
+    //    [tempArray insertObject:@"augus" atIndex:0];
+    //
+        
+    //    NSMutableArray *tempArray0 = [NSMutableArray array];
+    //    [tempArray0 insertObject:@"augus1111" atIndex:10];
+    //
+    //
+        NSMutableArray *tempArray1 = [NSMutableArray arrayWithObjects:@"1",@"2", nil];
+        [tempArray1 insertObject:@"2" atIndex:2];
+        
+        
+        NSLog(@"augus end %@",tempArray1);
     
 }
 
@@ -139,13 +156,20 @@ struct gt_objc_class {
         
         // copy or move
 //        NSString *g_tempFile = [[GTFileTools gt_DocumentPath] stringByAppendingPathComponent:@"temp.mov"];
-        NSString *g_tempFile = @"/Library/Caches/temp.mov";
+        NSString *g_tempFile = @"/var/mobile/Library/Caches/temp.mov";
         NSURL *toURL = [NSURL fileURLWithPath:g_tempFile];
         NSLog(@"augus g_tempFile %@",g_tempFile);
         NSFileManager *g_fileManager = [NSFileManager defaultManager];
         
         
-        if ([g_fileManager fileExistsAtPath:g_tempFile]) [g_fileManager removeItemAtPath:g_tempFile error:nil];
+        if ([g_fileManager fileExistsAtPath:g_tempFile]) {
+            NSError *removeError;
+            BOOL isRemove = [g_fileManager removeItemAtPath:g_tempFile error:&removeError];
+            NSLog(@"augus remove %@ %@",@(isRemove),removeError);
+        } else {
+            NSLog(@"fileExistsAtPath error");
+        }
+            
         
 //        dispatch_async(dispatch_get_main_queue(), ^{
            
@@ -623,7 +647,7 @@ struct gt_objc_class {
     GTPerson *person = [[GTPerson alloc] init];
     person.name = @"133";
     
-    [[GTCache shareInstance] gt_setObject:person forKey:@"123"];
+//    [[GTCache shareInstance] gt_setObject:person forKey:@"123"];
         
     
 //    GTPerson *p = [cache objectForKey:@"123"];
