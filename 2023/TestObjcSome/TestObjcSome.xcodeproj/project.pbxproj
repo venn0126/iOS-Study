@@ -35,6 +35,7 @@
 		B18B38C629923842002841C8 /* LYCacheUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B18B38C129923842002841C8 /* LYCacheUtils.m */; };
 		B18B38C729923842002841C8 /* LYCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B18B38C229923842002841C8 /* LYCache.m */; };
 		B1B4F2B429AC573400F16C51 /* GTGCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B4F2B329AC573400F16C51 /* GTGCDTimer.m */; };
+		B1BB6DC829B44DBE00AD18C6 /* TZAssetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B1BB6DC729B44DBE00AD18C6 /* TZAssetModel.m */; };
 		B1C1EE8429B1946000CBF55C /* NSArray+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C1EE8329B1946000CBF55C /* NSArray+Safe.m */; };
 		B1EE2E6A29A4CEA4006F6E33 /* zty_login_token.plist in Resources */ = {isa = PBXBuildFile; fileRef = B1EE2E6929A4CEA4006F6E33 /* zty_login_token.plist */; };
 		B1F4C6B82987A533002C17AA /* GTFileTools.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F4C6B72987A533002C17AA /* GTFileTools.m */; };
@@ -96,6 +97,8 @@
 		B18B38C529923842002841C8 /* LYCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYCache.h; sourceTree = "<group>"; };
 		B1B4F2B229AC573400F16C51 /* GTGCDTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTGCDTimer.h; sourceTree = "<group>"; };
 		B1B4F2B329AC573400F16C51 /* GTGCDTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTGCDTimer.m; sourceTree = "<group>"; };
+		B1BB6DC629B44DBE00AD18C6 /* TZAssetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TZAssetModel.h; sourceTree = "<group>"; };
+		B1BB6DC729B44DBE00AD18C6 /* TZAssetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TZAssetModel.m; sourceTree = "<group>"; };
 		B1C1EE8229B1946000CBF55C /* NSArray+Safe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+Safe.h"; sourceTree = "<group>"; };
 		B1C1EE8329B1946000CBF55C /* NSArray+Safe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Safe.m"; sourceTree = "<group>"; };
 		B1EE2E6929A4CEA4006F6E33 /* zty_login_token.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = zty_login_token.plist; sourceTree = "<group>"; };
@@ -142,6 +145,8 @@
 				B172B2E529717B8C00058841 /* SceneDelegate.m */,
 				B172B2E729717B8C00058841 /* ViewController.h */,
 				B172B2E829717B8C00058841 /* ViewController.m */,
+				B1BB6DC629B44DBE00AD18C6 /* TZAssetModel.h */,
+				B1BB6DC729B44DBE00AD18C6 /* TZAssetModel.m */,
 				B1C1EE8229B1946000CBF55C /* NSArray+Safe.h */,
 				B1C1EE8329B1946000CBF55C /* NSArray+Safe.m */,
 				B145B19A299FCBB40085D7B2 /* GTSecondController.h */,
@@ -307,6 +312,7 @@
 				B171AFC329A3093D0036DD13 /* GTControllableThread.m in Sources */,
 				B172B2F429717B8D00058841 /* main.m in Sources */,
 				B18B38C729923842002841C8 /* LYCache.m in Sources */,
+				B1BB6DC829B44DBE00AD18C6 /* TZAssetModel.m in Sources */,
 				B171AFC929A32D090036DD13 /* GTProxyTarget.m in Sources */,
 				B18B38B22991F182002841C8 /* GTFloatButton.m in Sources */,
 				B172B2E629717B8C00058841 /* SceneDelegate.m in Sources */,
@@ -463,6 +469,7 @@
 				DEVELOPMENT_TEAM = AQDKUEE5C2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TestObjcSome/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "access your photo library";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -491,6 +498,7 @@
 				DEVELOPMENT_TEAM = AQDKUEE5C2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TestObjcSome/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "access your photo library";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

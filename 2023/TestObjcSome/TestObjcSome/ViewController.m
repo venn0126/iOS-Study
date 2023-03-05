@@ -35,10 +35,14 @@
 #import <AVFoundation/AVFoundation.h>
 
 
+//
+#import <Photos/Photos.h>
 
 
 
 
+#define GTUserDefaults [NSUserDefaults standardUserDefaults]
+#define kGTSelectFileURLDataKey @"kGTSelectFileURLDataKey"
 
 #define GTOneTapLoginPlistFile [NSString stringWithFormat:@"%@/gt_oneTapLogin.plist", [GTFileTools gt_DocumentPath]]
 
@@ -47,7 +51,7 @@
 
 
 
-@interface ViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITableViewDataSource, UITableViewDelegate, PHPickerViewControllerDelegate>
+@interface ViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITableViewDataSource, UITableViewDelegate, PHPickerViewControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (nonatomic, strong) GTPerson *person1;
 @property (nonatomic, strong) GTPerson *person2;
@@ -71,6 +75,9 @@
 @property (nonatomic, assign) BOOL isSending;
 @property (nonatomic, assign) NSInteger timerCount;
 @property (nonatomic, copy) NSString *taskName;
+@property (nonatomic, copy) NSString *gtVideoPath;
+
+@property (nonatomic, strong) NSURL *gtSelectedFileURL;
 
 @end
 
@@ -96,10 +103,11 @@ struct gt_objc_class {
     
     
     self.title = @"One";
-//    [self testNotMainThead];
+//    [self testNotMainThead];t
 
 //    [self testFileToos];
 
+//    [self testPHPickerController];
     
     
 }
@@ -122,6 +130,226 @@ struct gt_objc_class {
         
         NSLog(@"augus end %@",tempArray1);
     
+}
+
+
+/// 获取相册中的所有视频
+- (void)testPhotos {
+    
+//    NSMutableArray *videoArray = [NSMutableArray array];
+//    PHFetchOptions *option = [[PHFetchOptions alloc] init];
+//    option.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
+//    PHFetchResult *result = [PHAsset fetchAssetsWithMediaType:PHAssetMediaTypeVideo options:option];
+//
+//    [result enumerateObjectsUsingBlock:^(PHAsset *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        //这个obj即PHAsset对象,判断 obj 的类型，如果是 video，就添加到自定义的数组中记录
+//        if (obj.mediaType == PHAssetMediaTypeVideo) {
+//            //              [videoArray addObject:obj];
+//            PHAsset *asset = obj;
+//            [self requestVideo:asset compeletion:^(AVAsset *avasset) {
+//
+//
+//
+//            }];
+//
+//        }
+//    }];
+//
+    
+    
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    picker.mediaTypes = [NSArray arrayWithObjects:@"public.movie",/* @"public.image",*/ nil];
+    picker.videoQuality = UIImagePickerControllerQualityTypeHigh;
+    if (@available(iOS 11.0, *)) picker.videoExportPreset = AVAssetExportPresetMediumQuality;
+    picker.allowsEditing = YES;
+    picker.delegate = self;
+    [self presentViewController:picker animated:YES completion:nil];
+    [self gt_setAttributesPath];
+
+
+}
+
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey,id> *)info {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+//    NSURL *url = [info objectForKey:@"UIImagePickerControllerReferenceURL"];
+//    PHFetchResult *fetchResult = [PHAsset fetchAssetsWithALAssetURLs:@[url] options:nil];
+//    PHFetchResult *fetchResult = [PHAsset fetchAssetsWithMediaType:PHAssetMediaTypeVideo options:nil];
+//    PHAsset *asset = fetchResult.firstObject;
+//    PHAsset *asset = [info objectForKey:UIImagePickerControllerPHAsset];
+//    [self requestVideo:asset];
+//    [self playVideoURL:url];
+    
+//    [self requestVideoOutputPathWithAsset:asset presetName:nil timeRange:kCMTimeRangeZero success:^(NSString *outputPath) {
+//
+//        NSLog(@"augus export outputpath %@",outputPath);
+//
+//    } failure:^(NSString *errorMessage, NSError *error) {
+//
+//        NSLog(@"augus export error %@ %@",errorMessage, error);
+//    }];
+    
+    
+    [self gt_setAttributesPath];
+    
+    NSString *g_tempFile = @"/var/mobile/Library/Caches/temp999.mp4";
+    NSFileManager *g_fileManager = [NSFileManager defaultManager];
+    NSURL *selectFileURL = info[UIImagePickerControllerMediaURL];
+    NSLog(@"augus selectfile %@",selectFileURL);
+    
+    NSArray *tempArray = @[selectFileURL];
+    NSData *tempData = [NSKeyedArchiver archivedDataWithRootObject:tempArray];
+    [GTUserDefaults setValue:tempData forKey:kGTSelectFileURLDataKey];
+    
+    if ([g_fileManager fileExistsAtPath:g_tempFile]) [g_fileManager removeItemAtPath:g_tempFile error:nil];
+
+    // if ([g_fileManager copyItemAtPath:selectFile toPath:g_tempFile error:nil]) {
+    NSURL *toURL = [NSURL fileURLWithPath:g_tempFile];
+    if([g_fileManager copyItemAtURL:selectFileURL toURL:toURL error:nil]) {
+        NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
+        [attributes setValue:[NSNumber numberWithShort:0777] forKey:NSFilePosixPermissions];
+        [attributes setValue:NSFileProtectionNone forKey:NSFileProtectionKey];
+        [g_fileManager createDirectoryAtPath:[NSString stringWithFormat:@"%@.new", g_tempFile] withIntermediateDirectories:YES attributes:attributes error:nil];
+        // result = @"应用成功!";
+        NSLog(@"augus 应用成功");
+        sleep(1);
+        [g_fileManager removeItemAtPath:[NSString stringWithFormat:@"%@.new", g_tempFile] error:nil];
+        
+        
+        [self playVideoURL:selectFileURL];
+    } else {
+         NSLog(@"augus 应用失败");
+    }
+    
+}
+
+
+- (AVMutableComposition *)resetComposition:(AVAsset *)avAsset {
+    
+    
+    AVMutableComposition *mainComposition = [[AVMutableComposition alloc] init];
+    AVMutableCompositionTrack *compositionVideoTrack = [mainComposition addMutableTrackWithMediaType:AVMediaTypeVideo
+                                                                                    preferredTrackID:kCMPersistentTrackID_Invalid];
+    
+    int timeScale = 100000;
+    Float64 seconds = CMTimeGetSeconds([avAsset duration]) - 0.001;
+    NSUInteger videoDurationI = (NSUInteger) (seconds * timeScale);
+    CMTime videoDuration = CMTimeMake(videoDurationI, timeScale);
+    CMTimeRange videoTimeRange = CMTimeRangeMake(kCMTimeZero, videoDuration);
+    
+    NSArray<AVAssetTrack *> *videoTracks = [avAsset tracksWithMediaType:AVMediaTypeVideo];
+    AVAssetTrack *videoTrack = [videoTracks objectAtIndex:0];
+    
+    [compositionVideoTrack insertTimeRange:videoTimeRange
+                                   ofTrack:videoTrack
+                                    atTime:kCMTimeZero
+                                     error:nil];
+    
+    return mainComposition;
+    
+    
+
+}
+
+
+- (void)requestVideoOutputPathWithAsset:(PHAsset *)asset presetName:(NSString *)presetName timeRange:(CMTimeRange)timeRange success:(void (^)(NSString *outputPath))success failure:(void (^)(NSString *errorMessage, NSError *error))failure {
+    if (!presetName) {
+        presetName = AVAssetExportPresetMediumQuality;
+    }
+    [[PHImageManager defaultManager] requestExportSessionForVideo:asset options:[self getVideoRequestOptions] exportPreset:presetName resultHandler:^(AVAssetExportSession *_Nullable exportSession, NSDictionary *_Nullable info) {
+        
+        
+        
+        NSString *outputPath = [self getVideoOutputPath];
+        exportSession.outputURL = [NSURL fileURLWithPath:outputPath];
+        exportSession.shouldOptimizeForNetworkUse = NO;
+        exportSession.outputFileType = AVFileTypeMPEG4;
+        if (!CMTimeRangeEqual(timeRange, kCMTimeRangeZero)) {
+            exportSession.timeRange = timeRange;
+        }
+        [exportSession exportAsynchronouslyWithCompletionHandler:^{
+            [self handleVideoExportResult:exportSession outputPath:outputPath success:success failure:failure];
+        }];
+    }];
+    
+    
+    
+        
+//    [[[PHCachingImageManager alloc] init] requestAVAssetForVideo:asset options:[self getVideoRequestOptions] resultHandler:^(AVAsset * _Nullable asset, AVAudioMix * _Nullable audioMix, NSDictionary * _Nullable info) {
+//
+//
+//        AVAsset *avasset = [self resetComposition:asset];
+//        NSString *presentName = [AVAssetExportSession exportPresetsCompatibleWithAsset:avasset].firstObject;
+//
+//        AVAssetExportSession *exportSession = [[AVAssetExportSession alloc] initWithAsset:avasset presetName:presentName];
+//        NSString *outputPath = [self getVideoOutputPath];
+//        exportSession.outputURL = [NSURL fileURLWithPath:outputPath];
+//        exportSession.shouldOptimizeForNetworkUse = NO;
+//        exportSession.outputFileType = AVFileTypeMPEG4;
+//        [exportSession exportAsynchronouslyWithCompletionHandler:^{
+//            [self handleVideoExportResult:exportSession outputPath:outputPath success:success failure:failure];
+//        }];
+//
+//    }];
+    
+}
+
+- (PHVideoRequestOptions *)getVideoRequestOptions {
+    PHVideoRequestOptions* options = [[PHVideoRequestOptions alloc] init];
+    options.deliveryMode = PHVideoRequestOptionsDeliveryModeAutomatic;
+    options.networkAccessAllowed = YES;
+    return options;
+}
+
+- (NSString *)getVideoOutputPath {
+//    NSDateFormatter *formater = [[NSDateFormatter alloc] init];
+//    [formater setDateFormat:@"yyyy-MM-dd-HH-mm-ss-SSS"];
+//    NSString *outputPath = [NSHomeDirectory() stringByAppendingFormat:@"/tmp/video-%@-%d.mp4", [formater stringFromDate:[NSDate date]], arc4random_uniform(10000000)];
+//    NSString *outputPath = [NSHomeDirectory() stringByAppendingString:@"/tmp/temp000.mp4"];
+//    NSString *outputPath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"temp111.mp4"];
+    NSString *outputPath = @"/var/mobile/Library/Caches/temp222.mp4";
+
+    return outputPath;
+}
+
+
+- (void)handleVideoExportResult:(AVAssetExportSession *)session outputPath:(NSString *)outputPath success:(void (^)(NSString *outputPath))success failure:(void (^)(NSString *errorMessage, NSError *error))failure {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        switch (session.status) {
+            case AVAssetExportSessionStatusUnknown: {
+                NSLog(@"AVAssetExportSessionStatusUnknown");
+            }  break;
+            case AVAssetExportSessionStatusWaiting: {
+                NSLog(@"AVAssetExportSessionStatusWaiting");
+            }  break;
+            case AVAssetExportSessionStatusExporting: {
+                NSLog(@"AVAssetExportSessionStatusExporting");
+            }  break;
+            case AVAssetExportSessionStatusCompleted: {
+                NSLog(@"AVAssetExportSessionStatusCompleted");
+                if (success) {
+                    success(outputPath);
+                }
+            }  break;
+            case AVAssetExportSessionStatusFailed: {
+                NSLog(@"AVAssetExportSessionStatusFailed");
+                if (failure) {
+                    failure(@"视频导出失败", session.error);
+                }
+            }  break;
+            case AVAssetExportSessionStatusCancelled: {
+                NSLog(@"AVAssetExportSessionStatusCancelled");
+                if (failure) {
+                    failure(@"导出任务已被取消", nil);
+                }
+            }  break;
+            default: break;
+        }
+    });
 }
 
 
@@ -152,41 +380,85 @@ struct gt_objc_class {
     NSLog(@"didFinishPicking:%@", results);
     PHPickerResult *result = results.firstObject;
     NSItemProvider *provider = result.itemProvider;
+    
+//    [[PHImageManager defaultManager] requestAVAssetForVideo:asset options:options resultHandler:^(AVAsset* avasset, AVAudioMix* audioMix, NSDictionary* info){
+
+//        [self performSelector:@selector(startExportVideoWithVideoAsset:) onThread:self.uploadThread withObject:avasset waitUntilDone:YES];·
+    
+//    }];
+    
     [provider loadFileRepresentationForTypeIdentifier:@"public.movie" completionHandler:^(NSURL * _Nullable url, NSError * _Nullable error) {
         
         // copy or move
-//        NSString *g_tempFile = [[GTFileTools gt_DocumentPath] stringByAppendingPathComponent:@"temp.mov"];
-        NSString *g_tempFile = @"/var/mobile/Library/Caches/temp.mov";
-        NSURL *toURL = [NSURL fileURLWithPath:g_tempFile];
-        NSLog(@"augus g_tempFile %@",g_tempFile);
-        NSFileManager *g_fileManager = [NSFileManager defaultManager];
+//        NSString *g_tempFile = [[GTFileTools gt_DocumentPath] stringByAppendingPathComponent:@"temp333.mov"]; //✅
+//        NSFileManager *g_fileManager = [NSFileManager defaultManager];
         
+//        NSString *g_tempFile = @"/private/var/mobile/Library/Caches/temp.mov"; // ❎
+        //  NSString *g_tempFile = @"/var/mobile/Library/Caches/temp.mov"; // ❎
+
         
-        if ([g_fileManager fileExistsAtPath:g_tempFile]) {
-            NSError *removeError;
-            BOOL isRemove = [g_fileManager removeItemAtPath:g_tempFile error:&removeError];
-            NSLog(@"augus remove %@ %@",@(isRemove),removeError);
-        } else {
-            NSLog(@"fileExistsAtPath error");
-        }
-            
+//        NSString *g_tempDirectoryPath = @"/private/var/mobile/Library/Caches";
+//
+//        // 设置文件夹的权限归属
+//        NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
+//        [attributes setValue:[NSNumber numberWithShort:0777] forKey:NSFilePosixPermissions];
+        /*
+         extern NSString* const NSFileProtectionNone;
+
+         extern NSString* const NSFileProtectionComplete;
+
+         extern NSString* const NSFileProtectionCompleteUnlessOpen;
+
+         extern NSString* const NSFileProtectionCompleteUntilFirstUserAuthentication;
+
+
+         NSFileProtectionNone：文件没有设置任何保护，随时可以读写。
+
+         NSFileProtectionComplete：最完备等级的保护，文件以加密形式写在磁盘中，当设备（iPhone/iPad）在Locked(锁屏，还是带密码的那种)状态或者booting（正在开机）时无法读写。
+
+         NSFileProtectionCompleteUnlessOpen：也是加密写在磁盘中，区别与上一个的事，文件在锁屏状态下可以被创建，但是不能关闭文件，一旦关了它，在解锁之前你是不可以做任何操作的。解锁之后，你可以正常操作文件，即使这个时候用户再次锁上设备。虽然没有被写入或读取，这里在创建或打开文件时也有一点小小的性能损失。更缓和的策略是在设备未锁住时将文件属性设为NSFileProtectionComplete。
+
+         NSFileProtectionCompleteUntilFirstUserAuthentication：文件以加密形式存储在磁盘上，未开启机器时是不可以存取的，在用户第一次解锁设备之后（理解为开机后第一次解锁），你的app可以使用这个文件即使用户锁屏了也没关系。
+
+         
+         */
+//        [attributes setValue:NSFileProtectionNone forKey:NSFileProtectionKey];
         
-//        dispatch_async(dispatch_get_main_queue(), ^{
-           
-            NSError *copyError;
-            if([g_fileManager copyItemAtURL:url toURL:toURL error:&copyError]) {
-                [g_fileManager createDirectoryAtPath:[NSString stringWithFormat:@"%@.new", g_tempFile] withIntermediateDirectories:YES attributes:nil error:nil];
-                NSLog(@"augus 应用成功");
-                sleep(1);
-                [g_fileManager removeItemAtPath:[NSString stringWithFormat:@"%@.new", g_tempFile] error:nil];
-                
-                [self playVideoURL:toURL];
-                
-            } else {
-                NSLog(@"augus 应用失败 %@",copyError);
-            }
+//        NSError *attributesError;
+//        BOOL isAttributes = [g_fileManager setAttributes:attributes ofItemAtPath:g_tempDirectoryPath error:&attributesError];
+//        NSLog(@"setAttributes %d %@",isAttributes,attributesError);
+        
+//        NSURL *toURL = [[NSURL fileURLWithPath:g_tempFile] URLByResolvingSymlinksInPath];
+//        NSLog(@"augus g_tempFile %@",g_tempFile);
+//
+//        if ([g_fileManager fileExistsAtPath:g_tempFile]) {
+//            NSError *removeError;
+//            BOOL isRemove = [g_fileManager removeItemAtPath:g_tempFile error:&removeError];
+//            NSLog(@"augus remove %@ %@",@(isRemove),removeError);
+//        } else {
+//            NSLog(@"fileExistsAtPath error");
+//        }
+//
+//
+////        dispatch_async(dispatch_get_main_queue(), ^{
+//
+//            NSError *copyError;
+//            if([g_fileManager copyItemAtURL:url toURL:toURL error:&copyError]) {
+//                [g_fileManager createDirectoryAtPath:[NSString stringWithFormat:@"%@.new", g_tempFile] withIntermediateDirectories:YES attributes:nil error:nil];
+//                NSLog(@"augus 应用成功");
+//                sleep(1);
+//                [g_fileManager removeItemAtPath:[NSString stringWithFormat:@"%@.new", g_tempFile] error:nil];
+//
+//                [self playVideoURL:toURL];
+//
+//            } else {
+//                NSLog(@"augus 应用失败 %@",copyError);
+//            }
             
 //        });
+        
+        
+        [self playVideoURL:url];
         
     }];
     
@@ -196,6 +468,40 @@ struct gt_objc_class {
     
 }
 
+
+/// 遍历某个文件夹下的子目录更改权限
+- (void)gt_setAttributesPath {
+    
+    
+    NSString *path = @"/var/mobile/Library/Caches";
+    NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
+    [attributes setValue:[NSNumber numberWithShort:0777] forKey:NSFilePosixPermissions];
+    [attributes setValue:NSFileProtectionNone forKey:NSFileProtectionKey];
+
+
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+//    NSArray *subPaths = [fileManager subpathsAtPath:path];
+//    for (NSString *aPath in subPaths) {
+//        BOOL isDirectory;
+//        [fileManager fileExistsAtPath:aPath isDirectory:&isDirectory];
+//        if (isDirectory) {
+//            // Change the permissions on the directory here
+//            NSError *error = nil;
+//            [fileManager setAttributes:attributes ofItemAtPath:aPath error:&error];
+//            if (error) {
+//                // Handle the error
+//            }
+//        }
+//    }
+    
+    
+    
+    
+    NSError *attributesError;
+    BOOL isAttributes = [fileManager setAttributes:attributes ofItemAtPath:path error:&attributesError];
+    NSLog(@"setAttributes %d %@",isAttributes,attributesError);
+    
+}
 
 
 - (void)playVideoURL:(NSURL *)videoURL {
@@ -209,10 +515,76 @@ struct gt_objc_class {
     
 //    AVAsset *asset = [AVAsset assetWithURL: [NSURL URLWithString:[NSString stringWithFormat:@"file://%@", g_tempFile]]];
     
-    AVAsset *asset = [AVAsset assetWithURL:videoURL];
+
+
+//    AVAsset *asset = [AVAsset assetWithURL:videoURL];
+
+        
+    
+    NSData *tempData = [GTUserDefaults objectForKey:kGTSelectFileURLDataKey];
+    NSArray *tempArray = [NSKeyedUnarchiver unarchiveObjectWithData:tempData];
+    NSURL *tempURL = tempArray.firstObject;
+    if(tempURL) {
+        videoURL = tempURL;
+    }
+    
+    // file:///private/var/mobile/Containers/Data/PluginKitPlugin/28527D9F-C454-4B9B-B9D1-56ACD94560FE/tmp/trim.EA4B3463-B112-4327-9F83-5557EE1486DE.MOV
+    //
+    NSLog(@"video url %@",videoURL);
+    AVURLAsset *asset = [AVURLAsset assetWithURL:videoURL];
+    if(!asset) {
+        NSLog(@"augus asset is nil");
+        return;
+    }
+
+
+    
     NSError *readerError;
-    AVAssetReader *reader = [AVAssetReader assetReaderWithAsset:asset error:&readerError];
+//    AVAssetReader *reader = [AVAssetReader assetReaderWithAsset:asset error:&readerError];
+    AVAssetReader *reader = [[AVAssetReader alloc] initWithAsset:asset error:&readerError];
     NSLog(@"reader %@---error %@",reader,readerError);
+    
+    /*
+     /var/mobile/Containers/Data/Application/A27537BB-3818-42E0-BB80-997CBB8671CC/Documents/
+     drwxr-xr-x 3 mobile mobile  96 Mar  3 18:00 Documents/
+     
+     NSFileCreationDate = "2023-03-02 08:58:14 +0000";
+     NSFileExtensionHidden = 0;
+     NSFileGroupOwnerAccountID = 501;
+     NSFileGroupOwnerAccountName = mobile;
+     NSFileModificationDate = "2023-03-03 10:00:05 +0000";
+     NSFileOwnerAccountID = 501;
+     NSFileOwnerAccountName = mobile;
+     NSFilePosixPermissions = 493;
+     NSFileReferenceCount = 3;
+     NSFileSize = 96;
+     NSFileSystemFileNumber = 474390;
+     NSFileSystemNumber = 16777219;
+     NSFileType = NSFileTypeDirectory;
+     
+     
+     ///////////////////
+     
+     /var/mobile/Library/Caches/
+     drwx------  76 mobile mobile          2432 Mar  3 17:58 Caches/
+     
+     
+     NSFileCreationDate = "2022-03-09 05:16:20 +0000";
+     NSFileExtensionHidden = 0;
+     NSFileGroupOwnerAccountID = 501;
+     NSFileGroupOwnerAccountName = mobile;
+     NSFileModificationDate = "2023-03-03 09:58:57 +0000";
+     NSFileOwnerAccountID = 501;
+     NSFileOwnerAccountName = mobile;
+     NSFilePosixPermissions = 448;
+     NSFileProtectionKey = NSFileProtectionNone;
+     NSFileReferenceCount = 76;
+     NSFileSize = 2432;
+     NSFileSystemFileNumber = 73;
+     NSFileSystemNumber = 16777219;
+     NSFileType = NSFileTypeDirectory;
+     
+     */
 
 }
 
@@ -498,6 +870,21 @@ struct gt_objc_class {
 }
 
 
+- (void)testPHImageManger {
+    
+    
+    PHVideoRequestOptions* options = [[PHVideoRequestOptions alloc] init];
+    options.version = PHVideoRequestOptionsVersionCurrent;
+    options.deliveryMode = PHVideoRequestOptionsDeliveryModeAutomatic;
+    options.networkAccessAllowed = YES;
+    
+//    [[PHImageManager defaultManager] requestAVAssetForVideo:asset options:options resultHandler:^(AVAsset* avasset, AVAudioMix* audioMix, NSDictionary* info){
+//
+//        [self performSelector:@selector(startExportVideoWithVideoAsset:) onThread:self.uploadThread withObject:avasset waitUntilDone:YES];
+//    }];
+}
+
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
@@ -747,9 +1134,12 @@ struct gt_objc_class {
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
+    [self testPhotos];
+    
 //    [self testGTTimer];
     
-    [self testPHPickerController];
+//    [self testPHPickerController];
+    
     
 //    NSData *data = [[LYCache shareInstance] ly_readForKey:@"123"];
 //    GTPerson *p = [NSKeyedUnarchiver unarchiveObjectWithData:data];
