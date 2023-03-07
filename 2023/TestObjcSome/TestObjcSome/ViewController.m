@@ -194,7 +194,7 @@ struct gt_objc_class {
 //    }];
     
     
-    [self gt_setAttributesPath];
+//    [self gt_setAttributesPath];
     
     NSString *g_tempFile = @"/var/mobile/Library/Caches/temp999.mp4";
     NSFileManager *g_fileManager = [NSFileManager defaultManager];
@@ -210,17 +210,17 @@ struct gt_objc_class {
     // if ([g_fileManager copyItemAtPath:selectFile toPath:g_tempFile error:nil]) {
     NSURL *toURL = [NSURL fileURLWithPath:g_tempFile];
     if([g_fileManager copyItemAtURL:selectFileURL toURL:toURL error:nil]) {
-        NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
-        [attributes setValue:[NSNumber numberWithShort:0777] forKey:NSFilePosixPermissions];
-        [attributes setValue:NSFileProtectionNone forKey:NSFileProtectionKey];
-        [g_fileManager createDirectoryAtPath:[NSString stringWithFormat:@"%@.new", g_tempFile] withIntermediateDirectories:YES attributes:attributes error:nil];
+//        NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
+//        [attributes setValue:[NSNumber numberWithShort:0777] forKey:NSFilePosixPermissions];
+//        [attributes setValue:NSFileProtectionNone forKey:NSFileProtectionKey];
+//        [g_fileManager createDirectoryAtPath:[NSString stringWithFormat:@"%@.new", g_tempFile] withIntermediateDirectories:YES attributes:attributes error:nil];
         // result = @"应用成功!";
         NSLog(@"augus 应用成功");
         sleep(1);
         [g_fileManager removeItemAtPath:[NSString stringWithFormat:@"%@.new", g_tempFile] error:nil];
         
         
-        [self playVideoURL:selectFileURL];
+        [self playVideoURL:toURL];
     } else {
          NSLog(@"augus 应用失败");
     }
@@ -521,15 +521,16 @@ struct gt_objc_class {
 
         
     
-    NSData *tempData = [GTUserDefaults objectForKey:kGTSelectFileURLDataKey];
-    NSArray *tempArray = [NSKeyedUnarchiver unarchiveObjectWithData:tempData];
-    NSURL *tempURL = tempArray.firstObject;
-    if(tempURL) {
-        videoURL = tempURL;
-    }
+//    NSData *tempData = [GTUserDefaults objectForKey:kGTSelectFileURLDataKey];
+//    NSArray *tempArray = [NSKeyedUnarchiver unarchiveObjectWithData:tempData];
+//    NSURL *tempURL = tempArray.firstObject;
+//    if(tempURL) {
+//        videoURL = tempURL;
+//    }
     
     // file:///private/var/mobile/Containers/Data/PluginKitPlugin/28527D9F-C454-4B9B-B9D1-56ACD94560FE/tmp/trim.EA4B3463-B112-4327-9F83-5557EE1486DE.MOV
-    //
+    
+    
     NSLog(@"video url %@",videoURL);
     AVURLAsset *asset = [AVURLAsset assetWithURL:videoURL];
     if(!asset) {
@@ -540,9 +541,10 @@ struct gt_objc_class {
 
     
     NSError *readerError;
-//    AVAssetReader *reader = [AVAssetReader assetReaderWithAsset:asset error:&readerError];
-    AVAssetReader *reader = [[AVAssetReader alloc] initWithAsset:asset error:&readerError];
+    AVAssetReader *reader = [AVAssetReader assetReaderWithAsset:asset error:&readerError];
+//    AVAssetReader *reader = [[AVAssetReader alloc] initWithAsset:asset error:&readerError];
     NSLog(@"reader %@---error %@",reader,readerError);
+    
     
     /*
      /var/mobile/Containers/Data/Application/A27537BB-3818-42E0-BB80-997CBB8671CC/Documents/
