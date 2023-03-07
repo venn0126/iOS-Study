@@ -46,8 +46,8 @@
 
 #define GTOneTapLoginPlistFile [NSString stringWithFormat:@"%@/gt_oneTapLogin.plist", [GTFileTools gt_DocumentPath]]
 
-#define GTScreenWidth [UIApplication sharedApplication].keyWindow.bounds.size.width
-#define GTScreenHeight [UIApplication sharedApplication].keyWindow.bounds.size.height
+#define GTScreenWidth  [UIScreen mainScreen].bounds.size.width
+#define GTScreenHeight  [UIScreen mainScreen].bounds.size.height
 
 
 
@@ -114,6 +114,20 @@ struct gt_objc_class {
 
 
 - (void)testNSArrayMInsertObjectAtIndex {
+    
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setTitle:@"一键登录" forState:UIControlStateNormal];
+    button.titleLabel.textColor = UIColor.whiteColor;
+    button.titleLabel.font = [UIFont systemFontOfSize:25];
+    button.titleLabel.font = [UIFont boldSystemFontOfSize:25];
+    
+    CGFloat height = 80.0;
+    CGFloat y = GTScreenHeight - 3 * height;
+    button.frame = CGRectMake(0, y, GTScreenWidth, height);
+    [button addTarget:self action:@selector(addButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    button.backgroundColor = UIColor.greenColor;
+    [self.view addSubview:button];
     
     //    NSMutableArray *tempArray = nil;
     //    NSMutableArray *tempArray = [NSMutableArray array];
