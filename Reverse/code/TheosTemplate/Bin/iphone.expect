@@ -1,0 +1,28 @@
+
+## expect - 自动交互脚本
+## demo:
+##     http://xstarcd.github.io/wiki/shell/expect.html
+
+
+set PASSWD  "Gaotian"
+
+# spawn是expect内部命令，开启ssh连接
+spawn make install
+
+# 判断上次输出结果里是否包含“password:”的字符串，如果有则立即返回，否则就等待一段时间(timeout)后返回
+expect "*Password"
+
+# 发送内容ispass(密码、命令等)
+send "$PASSWD\r"
+
+# 发送内容给用户
+# send_user "$argv0 [lrange $argv 0 2]\n"
+# send_user "It's OK\r"
+
+expect "*#"
+send "echo\r"
+# 执行完成后保持交互状态，控制权交给控制台(手工操作)。否则会完成后会退出。
+# interact
+# sleep 10
+# send "exit\r"
+exit

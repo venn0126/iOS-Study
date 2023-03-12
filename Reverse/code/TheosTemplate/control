@@ -1,0 +1,11 @@
+Package: com.__Author__.theostemplate
+Name: theostemplate
+Depends: mobilesubstrate
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: __Author__
+Author: __Author__
+Section: Tweaks
+Icon: file:///Library/AppSupport/Resource/Imgs/icon.png
+

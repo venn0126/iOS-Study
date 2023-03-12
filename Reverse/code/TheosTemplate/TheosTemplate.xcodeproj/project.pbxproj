@@ -1,0 +1,368 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C5E60A0F2855780F002293EE /* NewClass.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E60A0E2855780F002293EE /* NewClass.m */; };
+		C5E60A102855780F002293EE /* NewClass.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = C5E60A0D2855780F002293EE /* NewClass.h */; };
+		C5E60A2028557BAC002293EE /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = C5E60A1C28557BAC002293EE /* Makefile */; };
+		C5E60A24285582D6002293EE /* Tweak.xi in Sources */ = {isa = PBXBuildFile; fileRef = C5E60A1F28557BAC002293EE /* Tweak.xi */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C5E60A082855780F002293EE /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				C5E60A102855780F002293EE /* NewClass.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		C5E60A0A2855780F002293EE /* libTheosTemplate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTheosTemplate.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5E60A0D2855780F002293EE /* NewClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewClass.h; sourceTree = "<group>"; };
+		C5E60A0E2855780F002293EE /* NewClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewClass.m; sourceTree = "<group>"; };
+		C5E60A1C28557BAC002293EE /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		C5E60A1E28557BAC002293EE /* control */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = control; sourceTree = "<group>"; };
+		C5E60A1F28557BAC002293EE /* Tweak.xi */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = Tweak.xi; sourceTree = "<group>"; };
+		C5E60A2128557C2E002293EE /* xctheos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = xctheos.h; sourceTree = "<group>"; };
+		C5E60A2728559F02002293EE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C5E60A2A2855B1A5002293EE /* make.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = make.sh; sourceTree = "<group>"; };
+		C5E60A2E2855F741002293EE /* iphone.expect */ = {isa = PBXFileReference; explicitFileType = text.script; path = iphone.expect; sourceTree = "<group>"; };
+		C5EB8953293F48B600D6C0F9 /* TheosTemplate.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = TheosTemplate.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C5E60A072855780F002293EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C5E60A012855780F002293EE = {
+			isa = PBXGroup;
+			children = (
+				C5E60A1F28557BAC002293EE /* Tweak.xi */,
+				C5E60A292855B18F002293EE /* Bin */,
+				C5E60A1628557AB6002293EE /* Config */,
+				C5E60A0C2855780F002293EE /* OCClass */,
+				C5E60A0B2855780F002293EE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C5E60A0B2855780F002293EE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C5E60A0A2855780F002293EE /* libTheosTemplate.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C5E60A0C2855780F002293EE /* OCClass */ = {
+			isa = PBXGroup;
+			children = (
+				C5E60A2628558772002293EE /* Classes */,
+				C5E60A252855866B002293EE /* Headers */,
+			);
+			path = OCClass;
+			sourceTree = "<group>";
+		};
+		C5E60A1628557AB6002293EE /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				C5EB8953293F48B600D6C0F9 /* TheosTemplate.plist */,
+				C5E60A1E28557BAC002293EE /* control */,
+				C5E60A1C28557BAC002293EE /* Makefile */,
+				C5E60A2728559F02002293EE /* README.md */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
+		C5E60A252855866B002293EE /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				C5E60A2128557C2E002293EE /* xctheos.h */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		C5E60A2628558772002293EE /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C5E60A0D2855780F002293EE /* NewClass.h */,
+				C5E60A0E2855780F002293EE /* NewClass.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		C5E60A292855B18F002293EE /* Bin */ = {
+			isa = PBXGroup;
+			children = (
+				C5E60A2E2855F741002293EE /* iphone.expect */,
+				C5E60A2A2855B1A5002293EE /* make.sh */,
+			);
+			path = Bin;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C5E60A092855780F002293EE /* TheosTemplate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C5E60A132855780F002293EE /* Build configuration list for PBXNativeTarget "TheosTemplate" */;
+			buildPhases = (
+				C5E60A062855780F002293EE /* Sources */,
+				C5E60A072855780F002293EE /* Frameworks */,
+				C5E60A082855780F002293EE /* CopyFiles */,
+				B1F8D71B29BDA5E400B6A92A /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TheosTemplate;
+			productName = TheosTemplate;
+			productReference = C5E60A0A2855780F002293EE /* libTheosTemplate.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C5E60A022855780F002293EE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					C5E60A092855780F002293EE = {
+						CreatedOnToolsVersion = 14.0;
+					};
+				};
+			};
+			buildConfigurationList = C5E60A052855780F002293EE /* Build configuration list for PBXProject "TheosTemplate" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C5E60A012855780F002293EE;
+			productRefGroup = C5E60A0B2855780F002293EE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C5E60A092855780F002293EE /* TheosTemplate */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B1F8D71B29BDA5E400B6A92A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#sh \"$SRCROOT\"/Bin/make.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C5E60A062855780F002293EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5E60A24285582D6002293EE /* Tweak.xi in Sources */,
+				C5E60A2028557BAC002293EE /* Makefile in Sources */,
+				C5E60A0F2855780F002293EE /* NewClass.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C5E60A112855780F002293EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C5E60A122855780F002293EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C5E60A142855780F002293EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"XcodeTheos=1",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C5E60A152855780F002293EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C5E60A052855780F002293EE /* Build configuration list for PBXProject "TheosTemplate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C5E60A112855780F002293EE /* Debug */,
+				C5E60A122855780F002293EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C5E60A132855780F002293EE /* Build configuration list for PBXNativeTarget "TheosTemplate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C5E60A142855780F002293EE /* Debug */,
+				C5E60A152855780F002293EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C5E60A022855780F002293EE /* Project object */;
+}
