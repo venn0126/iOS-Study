@@ -5,7 +5,7 @@
 	# 配置脚本中需要自定义的参数，（TODO:需求修改这里）
 	# 下载并配置第三方库`insert_dylib` 
 	# 执行sh install_sign_dylib.sh即可自动完成重签名、插入动态库和修改动态库加载路径操作
-	# 根本不同的提示信息进行相应的修正
+	# 根据不同的提示信息进行相应的修正
 
 #Author:augus
 #Version:1.0
@@ -25,8 +25,9 @@ tweak_dylib_name="moutai-tweak.dylib"
 # CydiaSubstrate动态库
 cydiaSubstrate_name="CydiaSubstrate"
 
-# libsubstitute.0.dylib动态库
-lib_substitute0_name="libsubstitute.0.dylib"
+# libsubstitute.0.dylib动态库，CydiaSubstrate所依赖的动态库，不同的越狱可能不同
+# libsubstitute.dylib
+lib_substitute0_name="libsubstrate.dylib"
 
 # @executable_path
 executable_path="@executable_path/"
