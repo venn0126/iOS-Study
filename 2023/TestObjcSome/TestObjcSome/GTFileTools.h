@@ -53,6 +53,9 @@ typedef enum : NSUInteger {
 + (BOOL)gt_writeToFilePath:(NSString *)filePath contents:(NSData *)contents;
 
 
++ (NSString *)createFilePathForRootPath:(NSString *)rootPath directoryName:(NSString *)directoryName;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

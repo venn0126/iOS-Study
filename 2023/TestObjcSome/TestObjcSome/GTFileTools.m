@@ -31,6 +31,19 @@
 }
 
 
++ (NSString *)createFilePathForRootPath:(NSString *)rootPath directoryName:(NSString *)directoryName {
+    
+    if(!directoryName || !rootPath) return nil;
+    
+    NSString *directryPath  = [rootPath stringByAppendingPathComponent:directoryName];
+    if (![self gt_fileIsExist:directryPath]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:directryPath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    
+    return directryPath;
+}
+
+
 + (NSString *)gt_rootPath:(GTFileStoreType)type {
     
     switch (type) {
