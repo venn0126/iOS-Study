@@ -103,7 +103,7 @@ struct gt_objc_class {
     
     
     self.title = @"One";
-//    [self testNotMainThead];t
+    [self testNotMainThead];
 
 //    [self testFileToos];
 

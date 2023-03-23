@@ -8,6 +8,7 @@
 #import "NSObject+SNSafeKVO.h"
 #import <objc/runtime.h>
 
+/// 监听者的代理
 @interface SNObserverProxy : NSObject {
     __weak id _observer;
     __weak id _observeredObj;
@@ -15,6 +16,11 @@
     dispatch_semaphore_t _semaphoreForKeyPath;
 }
 
+
+/// 构造便利方法
+/// - Parameters:
+///   - obj: 监听者
+///   - observeredObj: 被监听者
 - (instancetype)initWithObserver:(id)obj observeredObj:(id)observeredObj;
 
 - (void)proxy_addKeyPath:(NSString *)keyPath
@@ -27,8 +33,12 @@
 
 @end
 
+/// 被监听者的释放监听者
 @interface SNObserveredDeallocListener : NSObject
 
+
+/// 构造便利方法
+/// - Parameter obj: 被监听者
 - (instancetype)initWithObserveredObject:(id)obj;
 - (void)addProxy:(SNObserverProxy *)proxy;
 
