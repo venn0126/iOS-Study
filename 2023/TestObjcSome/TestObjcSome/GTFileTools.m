@@ -112,11 +112,7 @@
         return NO;
     }
     
-    // 如果是plist文件，则进行判断结构
-    if([filePath containsString:@".plist"]) {
-        
-        
-    }else if (contents.bytes > 0) {
+    if(contents.bytes > 0) {
         NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:filePath];
         [fileHandle seekToEndOfFile];
         [fileHandle writeData:contents];
