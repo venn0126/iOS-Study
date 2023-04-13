@@ -109,6 +109,73 @@ struct gt_objc_class {
 
 //    [self testPHPickerController];
     
+    [self testSevenMoutaiResponseData];
+}
+/*
+ 
+ // 读取本地JSON文件
+ + (NSDictionary *)readLocalFileWithName:(NSString *)name {
+     // 获取文件路径
+     NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@"json"];
+     // 将文件数据化
+     NSData *data = [[NSData alloc] initWithContentsOfFile:path];
+     // 对数据进行JSON格式化并返回字典形式
+     return [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+ }
+ */
+
+
+- (void)testSevenMoutaiResponseData {
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"moutai" ofType:@"json"];
+    // 将文件数据化
+    NSData *data = [[NSData alloc] initWithContentsOfFile:path];
+    // 对数据进行JSON格式化并返回字典形式
+    NSError *error = nil;
+    id dict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    
+//    NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//    NSLog(@"response string %@",responseString);
+    
+    
+    if(error) {
+        NSLog(@"augus error %@",error);
+        return;
+    }
+    
+    NSLog(@"augus dict %@",dict);
+    NSDictionary *dataDict = dict[@"data"];
+    NSArray *floorsArray = dataDict[@"floors"];
+    NSMutableArray *tempMutableFloorsArray = [NSMutableArray array];
+    for (int i = 0 ; i < floorsArray.count; i++) {
+        NSDictionary *tempFloorDict = floorsArray[i];
+        NSMutableDictionary *tempMutableFloorDict = [NSMutableDictionary dictionaryWithDictionary:tempFloorDict];
+        id canBuy = tempFloorDict[@"canBuy"];
+        if(canBuy) {
+            [tempMutableFloorDict setValue:[NSNumber numberWithBool:YES] forKey:@"canBuy"];
+        }
+        [tempMutableFloorsArray addObject:[tempMutableFloorDict copy]];
+    }
+    
+    NSArray *tempFloorsArray = [tempMutableFloorsArray copy];
+    
+    NSMutableDictionary *tempDataDict = [NSMutableDictionary dictionaryWithDictionary:dataDict];
+    [tempDataDict setValue:tempFloorsArray forKey:@"floors"];
+    
+    NSMutableDictionary *tempDict = [NSMutableDictionary dictionaryWithDictionary:dict];
+    [tempDict setValue:tempDataDict forKey:@"data"];
+    
+    NSError *tempError = nil;
+    NSData *tempData= [NSJSONSerialization dataWithJSONObject:[tempDict copy] options:NSJSONWritingPrettyPrinted error:&tempError];
+    if(tempError) {
+        NSLog(@"augus temp data error %@",tempError);
+        return;
+    }
+    
+    NSLog(@"augus tempdata len %ld",tempData.length);
+    
+    NSInteger currentTimeStamp = (NSInteger)[[NSDate dateWithTimeIntervalSinceNow:0] timeIntervalSince1970];
+    
+    
     
 }
 

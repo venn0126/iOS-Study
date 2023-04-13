@@ -37,6 +37,7 @@
 		B1B4F2B429AC573400F16C51 /* GTGCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B4F2B329AC573400F16C51 /* GTGCDTimer.m */; };
 		B1C1EE8429B1946000CBF55C /* NSArray+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C1EE8329B1946000CBF55C /* NSArray+Safe.m */; };
 		B1DAE85329CAA4A500A53962 /* NSObject+SNSafeKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = B1DAE85229CAA4A500A53962 /* NSObject+SNSafeKVO.m */; };
+		B1E0DC0029E6B59000D65831 /* moutai.json in Resources */ = {isa = PBXBuildFile; fileRef = B1E0DBFF29E6B59000D65831 /* moutai.json */; };
 		B1EE2E6A29A4CEA4006F6E33 /* zty_login_token.plist in Resources */ = {isa = PBXBuildFile; fileRef = B1EE2E6929A4CEA4006F6E33 /* zty_login_token.plist */; };
 		B1F4C6B82987A533002C17AA /* GTFileTools.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F4C6B72987A533002C17AA /* GTFileTools.m */; };
 		B1F8D71F29BE152700B6A92A /* GTBlockDescription.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F8D71E29BE152700B6A92A /* GTBlockDescription.m */; };
@@ -105,6 +106,7 @@
 		B1C1EE8329B1946000CBF55C /* NSArray+Safe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Safe.m"; sourceTree = "<group>"; };
 		B1DAE85129CAA4A500A53962 /* NSObject+SNSafeKVO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+SNSafeKVO.h"; sourceTree = "<group>"; };
 		B1DAE85229CAA4A500A53962 /* NSObject+SNSafeKVO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SNSafeKVO.m"; sourceTree = "<group>"; };
+		B1E0DBFF29E6B59000D65831 /* moutai.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = moutai.json; sourceTree = "<group>"; };
 		B1EE2E6929A4CEA4006F6E33 /* zty_login_token.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = zty_login_token.plist; sourceTree = "<group>"; };
 		B1F4C6B62987A533002C17AA /* GTFileTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTFileTools.h; sourceTree = "<group>"; };
 		B1F4C6B72987A533002C17AA /* GTFileTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTFileTools.m; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				B1EE2E6929A4CEA4006F6E33 /* zty_login_token.plist */,
 				27F444B1299BF38E0096C14A /* GTOneTapSentMessageManger.h */,
 				27F444B2299BF38E0096C14A /* GTOneTapSentMessageManger.m */,
+				B1E0DBFF29E6B59000D65831 /* moutai.json */,
 				B172B2EA29717B8C00058841 /* Main.storyboard */,
 				B172B2ED29717B8D00058841 /* Assets.xcassets */,
 				B172B2EF29717B8D00058841 /* LaunchScreen.storyboard */,
@@ -314,6 +317,7 @@
 				B18B38BA2991F712002841C8 /* GTFloatButton.bundle in Resources */,
 				B172B2EE29717B8D00058841 /* Assets.xcassets in Resources */,
 				B1EE2E6A29A4CEA4006F6E33 /* zty_login_token.plist in Resources */,
+				B1E0DC0029E6B59000D65831 /* moutai.json in Resources */,
 				B172B2EC29717B8C00058841 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
