@@ -109,8 +109,40 @@ struct gt_objc_class {
 
 //    [self testPHPickerController];
     
-    [self testSevenMoutaiResponseData];
+//    [self testSevenMoutaiResponseData];
+    
+    [self foundExtraProperties];
+    
+    [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@""];
+//    [NSUserDefaults standardUserDefaults] objectForKey:<#(nonnull NSString *)#>
+    NSString *str = @"";
+    if([str isEqualToString:@"1"]) {
+        
+    }
 }
+
+
+- (void)foundExtraProperties {
+    
+    unsigned int count = 0;
+    
+    Ivar *ivars = class_copyIvarList([UITextField class], &count);
+    
+    for(int i = 0; i < count; i++){
+        
+        Ivar ivar = ivars[i];
+        
+        //获取所有属性
+        const char *property = ivar_getName(ivar);
+        NSLog(@"私有变量 %@", [[NSString alloc] initWithCString:property encoding:NSUTF8StringEncoding]);
+        
+    }
+    
+    free(ivars);
+    ivars = NULL;
+  
+}
+
 /*
  
  // 读取本地JSON文件
