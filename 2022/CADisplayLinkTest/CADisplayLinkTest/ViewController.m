@@ -72,13 +72,13 @@ typedef void(^grayImageCompletion)(id result);
     _dynamicImageViewY = 0;
 //    [self createImageView];
 //    [self createAnimationButton];
-    [self createDisplayLink];
+//    [self createDisplayLink];
     
     
     
 //    [self createNSTimerOfRunLoop];
     
-//    [self testAssetsResources];
+    [self testAssetsResources];
     
     
 //    [self testViewModelBase];
@@ -291,7 +291,7 @@ void augusFunc(){
 - (void)testGrayModel {
     [self.view addSubview:self.imageView];
     self.imageView.frame = CGRectMake(100, 100, 100, 100);
-    self.imageView.image = [UIImage imageNamed:@"ico_file1_v5"];
+//    self.imageView.image = [UIImage imageNamed:@"ico_file1_v5"];
     UIImage *orginImage = [UIImage imageNamed:@"ico_sfile6_v5"];
     
 //    for (int i = 0; i < 100000; i++) {
@@ -307,7 +307,7 @@ void augusFunc(){
     for (int i = 0; i < 100000; i++) {
         UIImage *greyImage = [self imageFromCIImage:ciImage scale:2.0 orientation:UIImageOrientationUp];
         if (i == 0) {
-            self.imageView.image = greyImage;
+//            self.imageView.image = greyImage;
             
         }
         NSLog(@"augus touch begin len %d %p",i,greyImage);
@@ -601,8 +601,11 @@ struct TestStr getTestStr(int a, int b, int c,int d ,int e, int f, int g) {
     self.imageView.frame = CGRectMake(100, 100, 200, 200);
     CFTimeInterval startTime = CACurrentMediaTime();
 //    for (int i = 0; i < 10000; i++) {
-        self.imageView.image = [UIImage imageNamed:@"ico_kongbaifx_v5"];
+    
+//        self.imageView.image = [UIImage imageNamed:@"ico_kongbaifx_v5"];
 //    }
+    
+
     
     NSLog(@"finish time is %.2f",CACurrentMediaTime() - startTime);
     
@@ -625,12 +628,22 @@ struct TestStr getTestStr(int a, int b, int c,int d ,int e, int f, int g) {
         } else if(self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleLight){
             // the style is light
             NSLog(@"UIUserInterfaceStyleLight");
+            UIImage *testImage = [UIImage imageNamed:@"ico_xinjianda_v5" inBundle:[NSBundle mainBundle] compatibleWithTraitCollection:[UITraitCollection traitCollectionWithUserInterfaceStyle:UIUserInterfaceStyleDark]];
+            self.imageView.image = testImage;
 
         } else {
             // the style is unspecified
             NSLog(@"UIUserInterfaceStyleUnspecified");
 
         }
+        
+        
+        self.label1 = [[UILabel alloc] init];
+        self.label1.frame = CGRectMake(100, 50, 200, 50);
+        UIColor *textColor = [UIColor colorNamed:@"BG1" inBundle:[NSBundle mainBundle] compatibleWithTraitCollection:[UITraitCollection traitCollectionWithUserInterfaceStyle:UIUserInterfaceStyleDark]];
+        self.label1.textColor = textColor;
+        self.label1.text = @"这是测试颜色";
+        [self.view addSubview:self.label1];
     } else {
         // Fallback on earlier versions
         NSLog(@"UIUserInterfaceStyleUnspecified<12");
@@ -646,11 +659,13 @@ struct TestStr getTestStr(int a, int b, int c,int d ,int e, int f, int g) {
 //    }
 //    
 //    // 在单个页面禁用浅色模式
-//    if (@available(iOS 13.0, *)) {
-//        self.overrideUserInterfaceStyle = UIUserInterfaceStyleDark;
-//    } else {
-//        // Fallback on earlier versions
-//    }
+    if (@available(iOS 13.0, *)) {
+        self.overrideUserInterfaceStyle = UIUserInterfaceStyleDark;
+        self.imageView.image = [UIImage imageNamed:@"ico_xinjianda_v5"];
+        self.label1.textColor = [UIColor colorNamed:@"BG1" inBundle:[NSBundle mainBundle] compatibleWithTraitCollection:[UITraitCollection traitCollectionWithUserInterfaceStyle:UIUserInterfaceStyleLight]];
+    } else {
+        // Fallback on earlier versions
+    }
 }
 
 
