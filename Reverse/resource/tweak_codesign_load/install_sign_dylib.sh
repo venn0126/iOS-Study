@@ -14,13 +14,13 @@
 
 
 # 主路径，TODO: 需要修改这里
-my_path="/Users/augus/Desktop/reSignApp/moutai/Payload/"
+my_path="/Users/augus/Desktop/cracker_app/wechat/djs/Payload/"
 
 # 可执行文件名，TODO: 需要修改这里
-executable_file_name="moutai-mall"
+executable_file_name="WeChat"
 
 # tweak动态库 TODO: 需要修改这里
-tweak_dylib_name="moutai-tweak.dylib"
+tweak_dylib_name="gtwcvast-tweak.dylib"
 
 # CydiaSubstrate动态库
 cydiaSubstrate_name="CydiaSubstrate"
