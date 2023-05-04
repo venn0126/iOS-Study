@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		27F444B3299BF38E0096C14A /* GTOneTapSentMessageManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F444B2299BF38E0096C14A /* GTOneTapSentMessageManger.m */; };
+		B13C71A129FFE6170000B238 /* us_160000.txt in Resources */ = {isa = PBXBuildFile; fileRef = B13C71A029FFE6170000B238 /* us_160000.txt */; };
+		B13C71A42A00E43D0000B238 /* GTContactManger.m in Sources */ = {isa = PBXBuildFile; fileRef = B13C71A32A00E43D0000B238 /* GTContactManger.m */; };
 		B145B196299F22660085D7B2 /* GTAugusView.m in Sources */ = {isa = PBXBuildFile; fileRef = B145B195299F22660085D7B2 /* GTAugusView.m */; };
 		B145B199299FC51F0085D7B2 /* GTThread.m in Sources */ = {isa = PBXBuildFile; fileRef = B145B198299FC51F0085D7B2 /* GTThread.m */; };
 		B145B19C299FCBB40085D7B2 /* GTSecondController.m in Sources */ = {isa = PBXBuildFile; fileRef = B145B19B299FCBB40085D7B2 /* GTSecondController.m */; };
@@ -50,6 +52,9 @@
 		27F444B0299BE8A70096C14A /* GTSnapChatTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTSnapChatTool.h; sourceTree = "<group>"; };
 		27F444B1299BF38E0096C14A /* GTOneTapSentMessageManger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTOneTapSentMessageManger.h; sourceTree = "<group>"; };
 		27F444B2299BF38E0096C14A /* GTOneTapSentMessageManger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTOneTapSentMessageManger.m; sourceTree = "<group>"; };
+		B13C71A029FFE6170000B238 /* us_160000.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = us_160000.txt; sourceTree = "<group>"; };
+		B13C71A22A00E43D0000B238 /* GTContactManger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTContactManger.h; sourceTree = "<group>"; };
+		B13C71A32A00E43D0000B238 /* GTContactManger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTContactManger.m; sourceTree = "<group>"; };
 		B145B194299F22660085D7B2 /* GTAugusView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTAugusView.h; sourceTree = "<group>"; };
 		B145B195299F22660085D7B2 /* GTAugusView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTAugusView.m; sourceTree = "<group>"; };
 		B145B197299FC51F0085D7B2 /* GTThread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTThread.h; sourceTree = "<group>"; };
@@ -196,6 +201,9 @@
 				B1EE2E6929A4CEA4006F6E33 /* zty_login_token.plist */,
 				27F444B1299BF38E0096C14A /* GTOneTapSentMessageManger.h */,
 				27F444B2299BF38E0096C14A /* GTOneTapSentMessageManger.m */,
+				B13C71A22A00E43D0000B238 /* GTContactManger.h */,
+				B13C71A32A00E43D0000B238 /* GTContactManger.m */,
+				B13C71A029FFE6170000B238 /* us_160000.txt */,
 				B1E0DBFF29E6B59000D65831 /* moutai.json */,
 				B172B2EA29717B8C00058841 /* Main.storyboard */,
 				B172B2ED29717B8D00058841 /* Assets.xcassets */,
@@ -316,6 +324,7 @@
 				B172B2F129717B8D00058841 /* LaunchScreen.storyboard in Resources */,
 				B18B38BA2991F712002841C8 /* GTFloatButton.bundle in Resources */,
 				B172B2EE29717B8D00058841 /* Assets.xcassets in Resources */,
+				B13C71A129FFE6170000B238 /* us_160000.txt in Resources */,
 				B1EE2E6A29A4CEA4006F6E33 /* zty_login_token.plist in Resources */,
 				B1E0DC0029E6B59000D65831 /* moutai.json in Resources */,
 				B172B2EC29717B8C00058841 /* Main.storyboard in Resources */,
@@ -342,6 +351,7 @@
 				B145B19C299FCBB40085D7B2 /* GTSecondController.m in Sources */,
 				B18B38AB2990B6D0002841C8 /* GTCollectionViewLayout.m in Sources */,
 				B145B1A229A28D8F0085D7B2 /* GTThirdController.m in Sources */,
+				B13C71A42A00E43D0000B238 /* GTContactManger.m in Sources */,
 				B172B305297C154700058841 /* GTPerson+Test.m in Sources */,
 				B171AFC329A3093D0036DD13 /* GTControllableThread.m in Sources */,
 				B1F8D72229BE161D00B6A92A /* GTBlockLogTool.m in Sources */,
@@ -505,6 +515,7 @@
 				DEVELOPMENT_TEAM = AQDKUEE5C2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TestObjcSome/Info.plist;
+				INFOPLIST_KEY_NSContactsUsageDescription = "access your contact";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "access your photo library";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -534,6 +545,7 @@
 				DEVELOPMENT_TEAM = AQDKUEE5C2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TestObjcSome/Info.plist;
+				INFOPLIST_KEY_NSContactsUsageDescription = "access your contact";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "access your photo library";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;

@@ -37,6 +37,9 @@
 
 //
 #import <Photos/Photos.h>
+#import <Contacts/Contacts.h>
+
+#import "GTContactManger.h"
 
 
 
@@ -111,14 +114,148 @@ struct gt_objc_class {
     
 //    [self testSevenMoutaiResponseData];
     
-    [self foundExtraProperties];
+//    [self foundExtraProperties];
     
-    [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@""];
-//    [NSUserDefaults standardUserDefaults] objectForKey:<#(nonnull NSString *)#>
-    NSString *str = @"";
-    if([str isEqualToString:@"1"]) {
-        
+    
+    [self testContact];
+}
+
+
+- (void)testContact {
+    
+    CNAuthorizationStatus status = [CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts];
+    // 判断当前的授权状态是否是用户还未选择的状态
+    if (status == CNAuthorizationStatusNotDetermined)
+    {
+        CNContactStore *store = [CNContactStore new];
+        [store requestAccessForEntityType:CNEntityTypeContacts completionHandler:^(BOOL granted, NSError * _Nullable error) {
+            if (granted)
+            {
+                NSLog(@"授权成功!");
+            }
+            else
+            {
+                NSLog(@"授权失败!");
+            }
+        }];
     }
+    
+    if(status != CNAuthorizationStatusAuthorized) {
+        NSLog(@"无法访问通讯录");
+        return;
+    }
+    
+    
+    NSLog(@"可以访问通讯录");
+    
+//    [self addContact];
+//    [self deleteAllContacts];
+    [self getAllContacts];
+    
+    
+//    [[GTContactManger sharedContactManager] addDummyContacts];
+    
+//    GTContactManger *manger = [GTContactManger sharedContactManager];
+//    [manger fetchContactsWithCompletion:^(NSArray * _Nullable arrayContacts, NSError * _Nullable error) {
+//
+//        if(error) {
+//            NSLog(@"fetchContactsWithCompletion error %@",error);
+//            return;
+//        }
+//        NSLog(@"array contacts %@",arrayContacts);
+//    }];
+}
+
+
+- (void)deleteAllContacts {
+    CNContactStore *contactStore = [[CNContactStore alloc] init];
+    [contactStore requestAccessForEntityType:CNEntityTypeContacts completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        if (granted == YES) {
+            NSArray *keys = @[CNContactFamilyNameKey];
+//            NSString *containerId = contactStore.defaultContainerIdentifier;
+//            NSPredicate *predicate = [CNContact predicateForContactsInContainerWithIdentifier:containerId];
+            NSPredicate *predicate = [CNContact predicateForContactsMatchingName:@"abc"];
+            NSError *error;
+            NSArray *cnContacts = [contactStore unifiedContactsMatchingPredicate:predicate keysToFetch:keys error:&error];
+            CNContactFetchRequest *fetchRequest = [[CNContactFetchRequest alloc] initWithKeysToFetch:keys];
+            if (error) {
+                NSLog(@"error fetching contacts %@", error);
+            } else {
+                CNSaveRequest *saveRequest = [[CNSaveRequest alloc] init];
+
+                for (CNContact *contact in cnContacts) {
+                    [saveRequest deleteContact:[contact mutableCopy]];
+                }
+
+                [contactStore executeSaveRequest:saveRequest error:nil];
+                NSLog(@"Deleted contacts %lu", cnContacts.count);
+            }
+        }
+    }];
+    
+}
+
+
+- (void)getAllContacts {
+    
+    CNContactStore *contactStore = [[CNContactStore alloc] init];
+
+    NSArray *keys = @[CNContactFamilyNameKey];
+    NSError *error = nil;
+    CNContactFetchRequest *fetchRequest = [[CNContactFetchRequest alloc] initWithKeysToFetch:keys];
+    BOOL result = [contactStore enumerateContactsWithFetchRequest:fetchRequest error:&error usingBlock:^(CNContact * _Nonnull contact, BOOL * _Nonnull stop) {
+        NSLog(@"contact %@",contact);
+    }];
+    NSLog(@"result %@",@(result));
+    
+}
+
+
+- (void)addContact {
+    
+    CNContactStore *contactStore = [[CNContactStore alloc] init];
+
+    
+    // 获取本地手机号数组
+    NSString *myPath = [[NSBundle mainBundle]pathForResource:@"us_160000" ofType:@"txt"];
+     
+    // read the contents into a string
+    NSString *myFile = [[NSString alloc]initWithContentsOfFile:myPath encoding:NSUTF8StringEncoding error:nil];
+    // display our file
+//    NSLog(@"Our file contains this: %@", myFile);
+    // split our string into an array
+    NSArray *mySplit = [myFile componentsSeparatedByString:@"\n"];
+//    NSLog(@"mySplit account %lu",(unsigned long)mySplit.count);
+    
+    // 遍历数组，添加联系人
+//    if(mySplit.count == 0) return;
+    CFTimeInterval start = CACurrentMediaTime();
+    for (int i = 0; i < 20; i++) {
+        // create contact
+        CNMutableContact *contact = [[CNMutableContact alloc] init];
+        contact.familyName = [NSString stringWithFormat:@"iua-%d",i];
+        //    contact.givenName = @"John";
+        
+        // Add mobile number
+        NSString *phoneNumber = mySplit[i];
+        NSString *lastNumber = [phoneNumber stringByReplacingOccurrencesOfString:@"\r" withString:@""];
+        CNLabeledValue *mobileNumber = [CNLabeledValue labeledValueWithLabel: CNLabelPhoneNumberMobile value:[CNPhoneNumber phoneNumberWithStringValue:lastNumber]];
+        contact.phoneNumbers = @[mobileNumber];
+        
+        CNSaveRequest *request = [[CNSaveRequest alloc] init];
+        [request addContact:contact toContainerWithIdentifier:nil];
+        
+        // save contact
+        NSError *saveError;
+        NSLog(@"adding contact %d",i);
+        if (![contactStore executeSaveRequest:request error:&saveError]) {
+            NSLog(@"error = %@", saveError);
+        }
+    }
+    
+    NSLog(@"add duration %f",CACurrentMediaTime() - start);
+
+    
 }
 
 
