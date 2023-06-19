@@ -14,13 +14,13 @@
 
 
 # 主路径，TODO: 需要修改这里
-my_path="/Users/augus/Desktop/cracker_app/wechat/djs/Payload/"
+my_path="/Users/augus/Desktop/cracker_app/wechat/guan_plugin/debug_ipa/Payload/"
 
 # 可执行文件名，TODO: 需要修改这里
 executable_file_name="WeChat"
 
 # tweak动态库 TODO: 需要修改这里
-tweak_dylib_name="gtwcvast-tweak.dylib"
+tweak_dylib_name="guan-wechat-tweak.dylib"
 
 # CydiaSubstrate动态库
 cydiaSubstrate_name="CydiaSubstrate"
@@ -49,7 +49,8 @@ plugIns_path="PlugIns"
 
 # 本机的证书ID，TODO: 需要修改这里
 # from `security find-identity -v -p codesigning`
-sign_number="B1B4B69A92436CDEF7788F024CC45129537347D5"
+# china mobile = 8A05A842ABE95DDC231CDAB3497E0B56EA4A07C1
+sign_number="8A05A842ABE95DDC231CDAB3497E0B56EA4A07C1"
 
 
 
