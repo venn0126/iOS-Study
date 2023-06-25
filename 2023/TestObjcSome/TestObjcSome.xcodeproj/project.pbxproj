@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2752B35F2A4893FE002726C4 /* GuanFloatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2752B35E2A4893FE002726C4 /* GuanFloatView.m */; };
 		27F444B3299BF38E0096C14A /* GTOneTapSentMessageManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F444B2299BF38E0096C14A /* GTOneTapSentMessageManger.m */; };
 		B13C71A129FFE6170000B238 /* us_160000.txt in Resources */ = {isa = PBXBuildFile; fileRef = B13C71A029FFE6170000B238 /* us_160000.txt */; };
 		B13C71A42A00E43D0000B238 /* GTContactManger.m in Sources */ = {isa = PBXBuildFile; fileRef = B13C71A32A00E43D0000B238 /* GTContactManger.m */; };
@@ -49,6 +50,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2752B35D2A4893FE002726C4 /* GuanFloatView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuanFloatView.h; sourceTree = "<group>"; };
+		2752B35E2A4893FE002726C4 /* GuanFloatView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuanFloatView.m; sourceTree = "<group>"; };
 		27F444B0299BE8A70096C14A /* GTSnapChatTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTSnapChatTool.h; sourceTree = "<group>"; };
 		27F444B1299BF38E0096C14A /* GTOneTapSentMessageManger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTOneTapSentMessageManger.h; sourceTree = "<group>"; };
 		27F444B2299BF38E0096C14A /* GTOneTapSentMessageManger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTOneTapSentMessageManger.m; sourceTree = "<group>"; };
@@ -167,6 +170,8 @@
 				B172B2E829717B8C00058841 /* ViewController.m */,
 				B1C1EE8229B1946000CBF55C /* NSArray+Safe.h */,
 				B1C1EE8329B1946000CBF55C /* NSArray+Safe.m */,
+				2752B35D2A4893FE002726C4 /* GuanFloatView.h */,
+				2752B35E2A4893FE002726C4 /* GuanFloatView.m */,
 				B145B19A299FCBB40085D7B2 /* GTSecondController.h */,
 				B145B19B299FCBB40085D7B2 /* GTSecondController.m */,
 				B145B1A029A28D8F0085D7B2 /* GTThirdController.h */,
@@ -351,6 +356,7 @@
 				B145B19C299FCBB40085D7B2 /* GTSecondController.m in Sources */,
 				B18B38AB2990B6D0002841C8 /* GTCollectionViewLayout.m in Sources */,
 				B145B1A229A28D8F0085D7B2 /* GTThirdController.m in Sources */,
+				2752B35F2A4893FE002726C4 /* GuanFloatView.m in Sources */,
 				B13C71A42A00E43D0000B238 /* GTContactManger.m in Sources */,
 				B172B305297C154700058841 /* GTPerson+Test.m in Sources */,
 				B171AFC329A3093D0036DD13 /* GTControllableThread.m in Sources */,

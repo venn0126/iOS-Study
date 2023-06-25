@@ -40,6 +40,7 @@
 #import <Contacts/Contacts.h>
 
 #import "GTContactManger.h"
+#import "GuanFloatView.h"
 
 
 
@@ -81,6 +82,9 @@
 @property (nonatomic, copy) NSString *gtVideoPath;
 
 @property (nonatomic, strong) NSURL *gtSelectedFileURL;
+@property (nonatomic, strong) GuanFloatView *floatView;
+
+
 
 @end
 
@@ -106,7 +110,8 @@ struct gt_objc_class {
     
     
     self.title = @"One";
-    [self testNotMainThead];
+    self.view.backgroundColor = UIColor.greenColor;
+//    [self testNotMainThead];
 
 //    [self testFileToos];
 
@@ -117,7 +122,20 @@ struct gt_objc_class {
 //    [self foundExtraProperties];
     
     
-    [self testContact];
+//    [self testContact];
+    [self testFloatView];
+}
+
+
+- (void)testFloatView {
+    
+    self.floatView = [[GuanFloatView alloc] initWithFrame:CGRectMake(0, 0, 50.0, 50.0)];
+    [self.floatView setImageWithName:@"guan_calculator"];
+    self.floatView.stayMode = GuanFloatViewStayModeLeftAndRight;
+    [self.floatView setTapActionWithBlock:^{
+        NSLog(@"跳转到邀请好友界面");
+    }];
+    [self.view addSubview:self.floatView];
 }
 
 
@@ -1386,7 +1404,7 @@ struct gt_objc_class {
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
-    [self testPhotos];
+//    [self testPhotos];
     
 //    [self testGTTimer];
     
