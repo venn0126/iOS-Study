@@ -136,6 +136,7 @@ struct gt_objc_class {
         NSLog(@"跳转到邀请好友界面");
     }];
     [self.view addSubview:self.floatView];
+
 }
 
 
