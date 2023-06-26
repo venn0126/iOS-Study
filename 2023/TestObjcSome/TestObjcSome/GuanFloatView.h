@@ -55,6 +55,9 @@ typedef NS_ENUM(NSInteger, GuanFloatViewStayMode) {
 /// 设置当前浮动图片的透明度
 - (void)setCurrentAlpha:(CGFloat)stayAlpha;
 
+/// 内容视图的是否展示
+- (void)contentViewShowChange;
+
 @end
 
 NS_ASSUME_NONNULL_END

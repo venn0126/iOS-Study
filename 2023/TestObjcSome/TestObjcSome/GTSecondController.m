@@ -11,6 +11,7 @@
 #import "GTPerson.h"
 #import "NSObject+SNSafeKVO.h"
 #import "GTAugusView.h"
+#import "SNCalcuateView.h"
 
 
 @interface GTSecondController ()
@@ -26,20 +27,38 @@
 
 @implementation GTSecondController
 
+/// 状态栏高度
+CGFloat SNStatusBarHeight(void) {
+    static CGFloat statusBarHeight;
+    if (statusBarHeight <= 0) {
+        if (@available(iOS 13.0, *)) {
+            UIStatusBarManager *statusBarManager = [UIApplication sharedApplication].windows.firstObject.windowScene.statusBarManager;
+            statusBarHeight = statusBarManager.statusBarFrame.size.height;
+        } else {
+            statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
+        }
+    }
+    
+    return statusBarHeight;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     
     // 初始化相关参数
-    self.title = @"Second";
-    self.view.backgroundColor = UIColor.whiteColor;
+    self.title = @"计算器";
+    self.view.backgroundColor = [UIColor colorWithRed:244.0/255.0 green:185/255.0 blue:193/255.0 alpha:1];
     self.isStoped = NO;
     
     
-    [self testControllableThead];
+//    [self testControllableThead];
     
-    [self testSafeKVO];
+//    [self testSafeKVO];
+    
+    SNCalcuateView *calcuateView = [[SNCalcuateView alloc] initWithFrame:CGRectMake(0, SNStatusBarHeight()+44, self.view.frame.size.width, 0)];
+    [self.view addSubview:calcuateView];
 }
 
 

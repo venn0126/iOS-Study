@@ -7,11 +7,14 @@
 
 #import "GuanFloatView.h"
 #import <objc/runtime.h>
+#import "SNCalcuateView.h"
 
 #define NavBarBottom 64
 #define TabBarHeight 49
 #define kScreenWidth  [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
+#define kSmallViewWidth 50.0
+#define kBigViewHeight 350.0
 
 static char kActionHandlerTapBlockKey;
 static char kActionHandlerTapGestureKey;
@@ -19,6 +22,9 @@ static char kActionHandlerTapGestureKey;
 
 @interface GuanFloatView ()<UIGestureRecognizerDelegate>
 
+@property (nonatomic, strong) UIView *contentView;
+@property (nonatomic, strong) UIButton *closeContentButton;
+@property (nonatomic, strong) SNCalcuateView *calculateView;
 
 @end
 
@@ -131,6 +137,30 @@ CGFloat distanceBetweenPoints (CGPoint first, CGPoint second) {
     swipe.direction = UISwipeGestureRecognizerDirectionRight | UISwipeGestureRecognizerDirectionLeft;
     swipe.delegate = self;
     [self addGestureRecognizer:swipe];
+}
+
+
+- (void)setupSubviews {
+    
+    [self addSubview:self.contentView];
+    [self.contentView addSubview:self.calculateView];
+    [self.contentView addSubview:self.closeContentButton];
+}
+
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+//    if(_contentView.hidden) {
+//        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, kSmallViewWidth, kSmallViewWidth);
+//    } else {
+//        self.frame = CGRectMake(0, 200, kScreenWidth, kBigViewHeight);
+//    }
+//
+//    self.contentView.frame = self.bounds;
+//    self.calculateView.frame = self.contentView.frame;
+//    self.closeContentButton.frame = CGRectMake(self.contentView.frame.size.width - kSmallViewWidth, 0, kSmallViewWidth, kSmallViewWidth);
+    
 }
 
 #pragma mark - 根据 stayModel 来移动悬浮图片
@@ -252,6 +282,13 @@ CGFloat distanceBetweenPoints (CGPoint first, CGPoint second) {
     self.alpha = stayAlpha;
 }
 
+
+- (void)contentViewShowChange {
+    self.contentView.hidden = !self.contentView.hidden;
+    [self setNeedsLayout];
+    
+}
+
 #pragma mark -  设置简单的轻点 block事件
 - (void)setTapActionWithBlock:(void (^)(void))block
 {
@@ -306,4 +343,32 @@ CGFloat distanceBetweenPoints (CGPoint first, CGPoint second) {
 }
 
 
+#pragma mark - Lazy Load
+
+- (UIView *)contentView {
+    if(!_contentView) {
+        _contentView = [[UIView alloc] init];
+        _contentView.backgroundColor = [UIColor colorWithRed:151.0/255.0 green:204.0/255.0 blue:232.0/255.0 alpha:1];
+        _contentView.hidden = YES;
+        _contentView.userInteractionEnabled = NO;
+    }
+    return _contentView;
+}
+
+- (UIButton *)closeContentButton {
+    if(!_closeContentButton) {
+        _closeContentButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_closeContentButton setTitle:@"X" forState:UIControlStateNormal];
+        [_closeContentButton addTarget:self action:@selector(contentViewShowChange) forControlEvents:UIControlEventTouchUpInside];
+        _closeContentButton.backgroundColor = UIColor.redColor;
+    }
+    return _closeContentButton;
+}
+
+- (SNCalcuateView *)calculateView {
+    if(!_calculateView) {
+        _calculateView = [[SNCalcuateView alloc] init];
+    }
+    return _calculateView;
+}
 @end

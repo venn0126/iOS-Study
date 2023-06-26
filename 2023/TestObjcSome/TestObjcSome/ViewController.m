@@ -110,8 +110,8 @@ struct gt_objc_class {
     
     
     self.title = @"One";
-    self.view.backgroundColor = UIColor.greenColor;
-//    [self testNotMainThead];
+    self.view.backgroundColor = UIColor.whiteColor;
+    [self testNotMainThead];
 
 //    [self testFileToos];
 
@@ -123,7 +123,10 @@ struct gt_objc_class {
     
     
 //    [self testContact];
+    
+    [self testNSArrayMInsertObjectAtIndex];
     [self testFloatView];
+    
 }
 
 
@@ -132,11 +135,53 @@ struct gt_objc_class {
     self.floatView = [[GuanFloatView alloc] initWithFrame:CGRectMake(0, 0, 50.0, 50.0)];
     [self.floatView setImageWithName:@"guan_calculator"];
     self.floatView.stayMode = GuanFloatViewStayModeLeftAndRight;
+    __weak typeof(self)weakSelf = self;
     [self.floatView setTapActionWithBlock:^{
-        NSLog(@"跳转到邀请好友界面");
+        NSLog(@"跳转到计算器界面");
+//        [weakSelf.floatView contentViewShowChange];
+        [weakSelf addButtonAction];
     }];
-    [self.view addSubview:self.floatView];
+    
+    // 获取当前window
+    
+//    [self.view addSubview:self.floatView];
+    [[self keyWindow] addSubview:self.floatView];
 
+}
+
+
+- (UIWindow *)keyWindow {
+    
+    NSArray *windows = [UIApplication sharedApplication].windows;
+    return windows.firstObject;
+}
+
+- (UIViewController *)currentViewController
+{
+    UIViewController *resultVC;
+    resultVC = [self topViewController:[[self keyWindow] rootViewController]];
+    while (resultVC.presentedViewController)
+    {
+        resultVC = [self topViewController:resultVC.presentedViewController];
+    }
+    return resultVC;
+}
+
+- (UIViewController *)topViewController:(UIViewController *)vc
+{
+    if ([vc isKindOfClass:[UINavigationController class]])
+    {
+        return [self topViewController:[(UINavigationController *)vc topViewController]];
+    }
+    else if ([vc isKindOfClass:[UITabBarController class]])
+    {
+        return [self topViewController:[(UITabBarController *)vc selectedViewController]];
+    }
+    else
+    {
+        return vc;
+    }
+    return nil;
 }
 
 
@@ -393,11 +438,11 @@ struct gt_objc_class {
     //    [tempArray0 insertObject:@"augus1111" atIndex:10];
     //
     //
-        NSMutableArray *tempArray1 = [NSMutableArray arrayWithObjects:@"1",@"2", nil];
-        [tempArray1 insertObject:@"2" atIndex:2];
-        
-        
-        NSLog(@"augus end %@",tempArray1);
+//        NSMutableArray *tempArray1 = [NSMutableArray arrayWithObjects:@"1",@"2", nil];
+//        [tempArray1 insertObject:@"2" atIndex:2];
+//
+//
+//        NSLog(@"augus end %@",tempArray1);
     
 }
 
@@ -961,6 +1006,14 @@ struct gt_objc_class {
 
 
 - (void)addButtonAction {
+    
+    // if current vc is calcuator return;
+    id currentvc = [self currentViewController];
+    if([currentvc isKindOfClass:[GTSecondController class]]) {
+        NSLog(@"current has stay calcuator vc");
+        return;
+    }
+    
     
     GTSecondController *vc = [[GTSecondController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];

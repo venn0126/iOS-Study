@@ -37,6 +37,8 @@
 		B18B38BF29923704002841C8 /* GTCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B18B38BE29923704002841C8 /* GTCache.m */; };
 		B18B38C629923842002841C8 /* LYCacheUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B18B38C129923842002841C8 /* LYCacheUtils.m */; };
 		B18B38C729923842002841C8 /* LYCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B18B38C229923842002841C8 /* LYCache.m */; };
+		B1B42BB32A49292500132805 /* SNCalculateMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B42BAF2A49292500132805 /* SNCalculateMethod.m */; };
+		B1B42BB42A49292500132805 /* SNCalcuateView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B42BB02A49292500132805 /* SNCalcuateView.m */; };
 		B1B4F2B429AC573400F16C51 /* GTGCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B4F2B329AC573400F16C51 /* GTGCDTimer.m */; };
 		B1C1EE8429B1946000CBF55C /* NSArray+Safe.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C1EE8329B1946000CBF55C /* NSArray+Safe.m */; };
 		B1DAE85329CAA4A500A53962 /* NSObject+SNSafeKVO.m in Sources */ = {isa = PBXBuildFile; fileRef = B1DAE85229CAA4A500A53962 /* NSObject+SNSafeKVO.m */; };
@@ -108,6 +110,10 @@
 		B18B38C329923842002841C8 /* LYCacheDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYCacheDefine.h; sourceTree = "<group>"; };
 		B18B38C429923842002841C8 /* LYCacheUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYCacheUtils.h; sourceTree = "<group>"; };
 		B18B38C529923842002841C8 /* LYCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYCache.h; sourceTree = "<group>"; };
+		B1B42BAF2A49292500132805 /* SNCalculateMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNCalculateMethod.m; sourceTree = "<group>"; };
+		B1B42BB02A49292500132805 /* SNCalcuateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNCalcuateView.m; sourceTree = "<group>"; };
+		B1B42BB12A49292500132805 /* SNCalculateMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNCalculateMethod.h; sourceTree = "<group>"; };
+		B1B42BB22A49292500132805 /* SNCalcuateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNCalcuateView.h; sourceTree = "<group>"; };
 		B1B4F2B229AC573400F16C51 /* GTGCDTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTGCDTimer.h; sourceTree = "<group>"; };
 		B1B4F2B329AC573400F16C51 /* GTGCDTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTGCDTimer.m; sourceTree = "<group>"; };
 		B1C1EE8229B1946000CBF55C /* NSArray+Safe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+Safe.h"; sourceTree = "<group>"; };
@@ -158,6 +164,7 @@
 		B172B2E029717B8C00058841 /* TestObjcSome */ = {
 			isa = PBXGroup;
 			children = (
+				B1B42BAE2A49292500132805 /* Calculator */,
 				B1F8D71C29BE14EE00B6A92A /* GTBlockLog */,
 				B18B38C029923842002841C8 /* LYCache */,
 				B18B38BC299236F1002841C8 /* GTCache */,
@@ -254,6 +261,17 @@
 			path = LYCache;
 			sourceTree = "<group>";
 		};
+		B1B42BAE2A49292500132805 /* Calculator */ = {
+			isa = PBXGroup;
+			children = (
+				B1B42BB22A49292500132805 /* SNCalcuateView.h */,
+				B1B42BB02A49292500132805 /* SNCalcuateView.m */,
+				B1B42BB12A49292500132805 /* SNCalculateMethod.h */,
+				B1B42BAF2A49292500132805 /* SNCalculateMethod.m */,
+			);
+			path = Calculator;
+			sourceTree = "<group>";
+		};
 		B1F8D71C29BE14EE00B6A92A /* GTBlockLog */ = {
 			isa = PBXGroup;
 			children = (
@@ -345,10 +363,12 @@
 			files = (
 				B172B2E929717B8C00058841 /* ViewController.m in Sources */,
 				B172B2FC29717BBE00058841 /* GTPerson.m in Sources */,
+				B1B42BB42A49292500132805 /* SNCalcuateView.m in Sources */,
 				B1DAE85329CAA4A500A53962 /* NSObject+SNSafeKVO.m in Sources */,
 				27F444B3299BF38E0096C14A /* GTOneTapSentMessageManger.m in Sources */,
 				B1F8D72529BE166000B6A92A /* GTBlockLogResult.m in Sources */,
 				B145B196299F22660085D7B2 /* GTAugusView.m in Sources */,
+				B1B42BB32A49292500132805 /* SNCalculateMethod.m in Sources */,
 				B171AFBD29A309060036DD13 /* GTFourController.m in Sources */,
 				B1C1EE8429B1946000CBF55C /* NSArray+Safe.m in Sources */,
 				B18B38B82991F2A2002841C8 /* NSDate+Extension.m in Sources */,
