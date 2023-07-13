@@ -25,6 +25,7 @@ static char kActionHandlerTapGestureKey;
 @property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) UIButton *closeContentButton;
 @property (nonatomic, strong) SNCalcuateView *calculateView;
+@property (nonatomic, strong) UILabel *titleLabel;
 
 @end
 
@@ -48,6 +49,11 @@ CGFloat distanceBetweenPoints (CGPoint first, CGPoint second) {
         self.stayEdgeDistance = 5;
         self.stayAnimateTime = 0.3;
         [self initStayLocation];
+        
+        [self addSubview:self.titleLabel];
+        self.backgroundColor = [UIColor colorWithRed:151.0/255.0 green:204.0/255.0 blue:232.0/255.0 alpha:1];
+        self.layer.cornerRadius = frame.size.width * 0.5;
+        self.layer.masksToBounds = YES;
     }
     return self;
 }
@@ -150,6 +156,8 @@ CGFloat distanceBetweenPoints (CGPoint first, CGPoint second) {
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    
+    self.titleLabel.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
     
 //    if(_contentView.hidden) {
 //        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, kSmallViewWidth, kSmallViewWidth);
@@ -344,6 +352,16 @@ CGFloat distanceBetweenPoints (CGPoint first, CGPoint second) {
 
 
 #pragma mark - Lazy Load
+
+- (UILabel *)titleLabel {
+    if(!_titleLabel) {
+        _titleLabel = [[UILabel alloc] init];
+        _titleLabel.text = @"计算器";
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.font = [UIFont systemFontOfSize:14.0];
+    }
+    return _titleLabel;
+}
 
 - (UIView *)contentView {
     if(!_contentView) {

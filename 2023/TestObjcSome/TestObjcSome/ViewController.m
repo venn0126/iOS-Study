@@ -133,7 +133,7 @@ struct gt_objc_class {
 - (void)testFloatView {
     
     self.floatView = [[GuanFloatView alloc] initWithFrame:CGRectMake(0, 0, 50.0, 50.0)];
-    [self.floatView setImageWithName:@"guan_calculator"];
+//    [self.floatView setImageWithName:@"guan_calculator"];
     self.floatView.stayMode = GuanFloatViewStayModeLeftAndRight;
     __weak typeof(self)weakSelf = self;
     [self.floatView setTapActionWithBlock:^{
