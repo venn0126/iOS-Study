@@ -581,17 +581,7 @@ static NSData *base64_decode(NSString *str){
                                    outbuf,
                                    &outlen
                                    );
-            /*
-             OSStatus SecKeyRawSign(
-                                    SecKeyRef           key,
-                                    SecPadding          padding,
-                                    const uint8_t       *dataToSign,
-                                    size_t              dataToSignLen,
-                                    uint8_t             *sig,
-                                    size_t              *sigLen)
-             */
-            
-//            status = SecKeyCreateSignature(<#SecKeyRef  _Nonnull key#>, <#SecKeyAlgorithm  _Nonnull algorithm#>, <#CFDataRef  _Nonnull dataToSign#>, <#CFErrorRef  _Nullable * _Nullable error#>)
+
         } else {
             status = SecKeyEncrypt(keyRef,
                                    kSecPaddingPKCS1,
@@ -600,8 +590,6 @@ static NSData *base64_decode(NSString *str){
                                    outbuf,
                                    &outlen
                                    );
-            // SecKeyCreateEncryptedData
-//            SecKeyCreateEncryptedData(keyRef, <#SecKeyAlgorithm  _Nonnull algorithm#>, <#CFDataRef  _Nonnull plaintext#>, <#CFErrorRef  _Nullable * _Nullable error#>)
         }
         if (status != 0) {
             NSLog(@"SecKeyEncrypt fail. Error Code: %d", status);
