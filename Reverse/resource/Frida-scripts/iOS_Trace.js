@@ -201,7 +201,7 @@ function printArg(desc, arg) {
 // ----------------------usage examples---------------------------
 if (ObjC.available) {
 
-    // trace("*[* *md5*]"); //trace("*[* *MD5*]");
+    trace("*[* *md5*]"); //trace("*[* *MD5*]");
     // trace("*[* *Encode*]");
     // trace("*[* setObject:forKey:]");
     // trace("+[* *des*:]");
@@ -209,7 +209,7 @@ if (ObjC.available) {
     // trace("*[* *Sign*:*]");
     // trace("*[* *base64*:*]");
     // trace("*[* *Encrypt*:*]");
-    trace("-[NSMutableURLRequest setValue:forHTTPHeaderField:]");
+    // trace("-[NSMutableURLRequest setValue:forHTTPHeaderField:]");
 
 
 } else {

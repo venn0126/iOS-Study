@@ -62,17 +62,17 @@ function bin2string(array){
 Interceptor.attach(Module.findExportByName('libcommonCrypto.dylib', 'CCCrypt'), {
     onEnter: function (args) {
         // Save the arguments
-        this.operation   = args[0]
-        this.CCAlgorithm = args[1]
-        this.CCOptions   = args[2]
-        this.keyBytes    = args[3]
-        this.keyLength   = args[4]
-        this.ivBuffer    = args[5]
-        this.inBuffer    = args[6]
-        this.inLength    = args[7]
-        this.outBuffer   = args[8]
-        this.outLength   = args[9]
-        this.outCountPtr = args[10]
+        this.operation   = args[0] // kCCEncrypt or kCCDecrypt
+        this.CCAlgorithm = args[1] // 可选值：kCCAlgorithmAES128、kCCAlgorithmDES、kCCAlgorithm3DES 等加密算法
+        this.CCOptions   = args[2] //选项，如 kCCOptionPKCS7Padding
+        this.keyBytes    = args[3] // 加密密钥
+        this.keyLength   = args[4] // 密钥长度
+        this.ivBuffer    = args[5] // 初始化向量
+        this.inBuffer    = args[6] // 输入数据
+        this.inLength    = args[7] // 输入数据长度
+        this.outBuffer   = args[8] // 输出缓冲区
+        this.outLength   = args[9] // 输出缓冲区大小
+        this.outCountPtr = args[10] // 输出缓冲区实际写入大小
         console.log("[+] --------------------------------------------------------------");
         // 不要在onLeave回溯堆栈，会产生误报！
         console.log('\tACCURATE Backtrace:\n\t' + Thread.backtrace(this.context,Backtracer.ACCURATE).map(DebugSymbol.fromAddress).join('\n\t'));
