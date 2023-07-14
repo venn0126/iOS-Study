@@ -1,0 +1,33 @@
+{
+    "cSpell.words": [
+        "appinfo",
+        "binarycookies",
+        "frida",
+        "fridump",
+        "hexbyte",
+        "hexbytescan",
+        "hexbytescanner",
+        "ideviceinstaller",
+        "libimobiledevice",
+        "logcat",
+        "lowlevel",
+        "noobpk",
+        "nslog",
+        "nsuserdefaults",
+        "pentest",
+        "psutil",
+        "touchid"
+    ],
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        ".",
+        "-p",
+        "*_test.py"
+    ],
+    "python.testing.pytestEnabled": true,
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestArgs": [
+        "."
+    ]
+}
