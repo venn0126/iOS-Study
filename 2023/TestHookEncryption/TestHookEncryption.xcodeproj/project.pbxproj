@@ -16,6 +16,7 @@
 		B131C5FC2A60E33A0099AB19 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C5FB2A60E33A0099AB19 /* main.m */; };
 		B131C6042A60E7B80099AB19 /* GuanEncryptionManger.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C6032A60E7B80099AB19 /* GuanEncryptionManger.m */; };
 		B131C6072A612FBC0099AB19 /* GuanRSAMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C6062A612FBC0099AB19 /* GuanRSAMgr.m */; };
+		B131C67D2A64022C0099AB19 /* GTClassDump.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B131C67C2A64022C0099AB19 /* GTClassDump.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		B131C6032A60E7B80099AB19 /* GuanEncryptionManger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuanEncryptionManger.m; sourceTree = "<group>"; };
 		B131C6052A612FBC0099AB19 /* GuanRSAMgr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuanRSAMgr.h; sourceTree = "<group>"; };
 		B131C6062A612FBC0099AB19 /* GuanRSAMgr.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuanRSAMgr.m; sourceTree = "<group>"; };
+		B131C67C2A64022C0099AB19 /* GTClassDump.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GTClassDump.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B131C67D2A64022C0099AB19 /* GTClassDump.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +70,7 @@
 		B131C5E82A60E3380099AB19 /* TestHookEncryption */ = {
 			isa = PBXGroup;
 			children = (
+				B131C67C2A64022C0099AB19 /* GTClassDump.framework */,
 				B131C5E92A60E3380099AB19 /* AppDelegate.h */,
 				B131C5EA2A60E3380099AB19 /* AppDelegate.m */,
 				B131C5EC2A60E3380099AB19 /* SceneDelegate.h */,
@@ -305,6 +309,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AQDKUEE5C2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TestHookEncryption",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TestHookEncryption/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -315,6 +323,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TestHookEncryption/ClassDump",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gt.TestHookEncryption;
@@ -332,6 +344,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AQDKUEE5C2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TestHookEncryption",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TestHookEncryption/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -342,6 +358,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TestHookEncryption/ClassDump",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gt.TestHookEncryption;

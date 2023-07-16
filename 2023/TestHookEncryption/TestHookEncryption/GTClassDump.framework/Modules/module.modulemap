@@ -1,0 +1,6 @@
+framework module GTClassDump {
+  umbrella header "GTClassDump.h"
+
+  export *
+  module * { export * }
+}

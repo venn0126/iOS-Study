@@ -1,0 +1,515 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B131C61B2A63F3AD0099AB19 /* GTClassDump.h in Headers */ = {isa = PBXBuildFile; fileRef = B131C61A2A63F3AD0099AB19 /* GTClassDump.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B131C6272A63F4490099AB19 /* GTUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = B131C6252A63F4490099AB19 /* GTUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B131C6282A63F4490099AB19 /* GTUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C6262A63F4490099AB19 /* GTUtilities.m */; };
+		B131C62B2A63F4910099AB19 /* GTTypeParser.h in Headers */ = {isa = PBXBuildFile; fileRef = B131C6292A63F4910099AB19 /* GTTypeParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B131C62C2A63F4910099AB19 /* GTTypeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C62A2A63F4910099AB19 /* GTTypeParser.m */; };
+		B131C62F2A63F50F0099AB19 /* GTSemanticString.h in Headers */ = {isa = PBXBuildFile; fileRef = B131C62D2A63F50F0099AB19 /* GTSemanticString.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B131C6302A63F50F0099AB19 /* GTSemanticString.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C62E2A63F50F0099AB19 /* GTSemanticString.m */; };
+		B131C6332A63F5A90099AB19 /* GTVariableModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B131C6312A63F5A90099AB19 /* GTVariableModel.h */; };
+		B131C6342A63F5A90099AB19 /* GTVariableModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C6322A63F5A90099AB19 /* GTVariableModel.m */; };
+		B131C6372A63F5E30099AB19 /* GTParseType.h in Headers */ = {isa = PBXBuildFile; fileRef = B131C6352A63F5E30099AB19 /* GTParseType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B131C6382A63F5E30099AB19 /* GTParseType.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C6362A63F5E30099AB19 /* GTParseType.m */; };
+		B131C63F2A63F6AE0099AB19 /* GTPrimitiveType.h in Headers */ = {isa = PBXBuildFile; fileRef = B131C63D2A63F6AE0099AB19 /* GTPrimitiveType.h */; };
+		B131C6402A63F6AE0099AB19 /* GTPrimitiveType.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C63E2A63F6AE0099AB19 /* GTPrimitiveType.m */; };
+		B131C6432A63F7130099AB19 /* GTObjectType.h in Headers */ = {isa = PBXBuildFile; fileRef = B131C6412A63F7130099AB19 /* GTObjectType.h */; };
+		B131C6442A63F7130099AB19 /* GTObjectType.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C6422A63F7130099AB19 /* GTObjectType.m */; };
+		B131C6472A63F73F0099AB19 /* GTBlockType.h in Headers */ = {isa = PBXBuildFile; fileRef = B131C6452A63F73F0099AB19 /* GTBlockType.h */; };
+		B131C6482A63F73F0099AB19 /* GTBlockType.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C6462A63F73F0099AB19 /* GTBlockType.m */; };
+		B131C64B2A63F7770099AB19 /* GTRecordType.h in Headers */ = {isa = PBXBuildFile; fileRef = B131C6492A63F7770099AB19 /* GTRecordType.h */; };
+		B131C64C2A63F7770099AB19 /* GTRecordType.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C64A2A63F7770099AB19 /* GTRecordType.m */; };
+		B131C64F2A63F7C40099AB19 /* GTPointerType.h in Headers */ = {isa = PBXBuildFile; fileRef = B131C64D2A63F7C40099AB19 /* GTPointerType.h */; };
+		B131C6502A63F7C40099AB19 /* GTPointerType.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C64E2A63F7C40099AB19 /* GTPointerType.m */; };
+		B131C6532A63F7EA0099AB19 /* GTArrayType.h in Headers */ = {isa = PBXBuildFile; fileRef = B131C6512A63F7EA0099AB19 /* GTArrayType.h */; };
+		B131C6542A63F7EA0099AB19 /* GTArrayType.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C6522A63F7EA0099AB19 /* GTArrayType.m */; };
+		B131C6572A63F8140099AB19 /* GTBitFieldType.h in Headers */ = {isa = PBXBuildFile; fileRef = B131C6552A63F8140099AB19 /* GTBitFieldType.h */; };
+		B131C6582A63F8140099AB19 /* GTBitFieldType.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C6562A63F8140099AB19 /* GTBitFieldType.m */; };
+		B131C6632A63F8D90099AB19 /* GTMethodModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B131C6612A63F8D90099AB19 /* GTMethodModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B131C6642A63F8D90099AB19 /* GTMethodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C6622A63F8D90099AB19 /* GTMethodModel.m */; };
+		B131C6672A63F92E0099AB19 /* GTPropertyAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = B131C6652A63F92E0099AB19 /* GTPropertyAttribute.h */; };
+		B131C6682A63F92E0099AB19 /* GTPropertyAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C6662A63F92E0099AB19 /* GTPropertyAttribute.m */; };
+		B131C66B2A63F94F0099AB19 /* GTProtocolModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B131C6692A63F94F0099AB19 /* GTProtocolModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B131C66C2A63F94F0099AB19 /* GTProtocolModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C66A2A63F94F0099AB19 /* GTProtocolModel.m */; };
+		B131C66F2A63FA990099AB19 /* GTPropertyModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B131C66D2A63FA990099AB19 /* GTPropertyModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B131C6702A63FA990099AB19 /* GTPropertyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C66E2A63FA990099AB19 /* GTPropertyModel.m */; };
+		B131C6762A6400C60099AB19 /* GTIvarModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B131C6742A6400C60099AB19 /* GTIvarModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B131C6772A6400C60099AB19 /* GTIvarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C6752A6400C60099AB19 /* GTIvarModel.m */; };
+		B131C67A2A64013A0099AB19 /* GTClassModel.h in Headers */ = {isa = PBXBuildFile; fileRef = B131C6782A64013A0099AB19 /* GTClassModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B131C67B2A64013A0099AB19 /* GTClassModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C6792A64013A0099AB19 /* GTClassModel.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B131C6172A63F3AD0099AB19 /* GTClassDump.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GTClassDump.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B131C61A2A63F3AD0099AB19 /* GTClassDump.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTClassDump.h; sourceTree = "<group>"; };
+		B131C6252A63F4490099AB19 /* GTUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTUtilities.h; sourceTree = "<group>"; };
+		B131C6262A63F4490099AB19 /* GTUtilities.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTUtilities.m; sourceTree = "<group>"; };
+		B131C6292A63F4910099AB19 /* GTTypeParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTTypeParser.h; sourceTree = "<group>"; };
+		B131C62A2A63F4910099AB19 /* GTTypeParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTTypeParser.m; sourceTree = "<group>"; };
+		B131C62D2A63F50F0099AB19 /* GTSemanticString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTSemanticString.h; sourceTree = "<group>"; };
+		B131C62E2A63F50F0099AB19 /* GTSemanticString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTSemanticString.m; sourceTree = "<group>"; };
+		B131C6312A63F5A90099AB19 /* GTVariableModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTVariableModel.h; sourceTree = "<group>"; };
+		B131C6322A63F5A90099AB19 /* GTVariableModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTVariableModel.m; sourceTree = "<group>"; };
+		B131C6352A63F5E30099AB19 /* GTParseType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTParseType.h; sourceTree = "<group>"; };
+		B131C6362A63F5E30099AB19 /* GTParseType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTParseType.m; sourceTree = "<group>"; };
+		B131C63D2A63F6AE0099AB19 /* GTPrimitiveType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTPrimitiveType.h; sourceTree = "<group>"; };
+		B131C63E2A63F6AE0099AB19 /* GTPrimitiveType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTPrimitiveType.m; sourceTree = "<group>"; };
+		B131C6412A63F7130099AB19 /* GTObjectType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTObjectType.h; sourceTree = "<group>"; };
+		B131C6422A63F7130099AB19 /* GTObjectType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTObjectType.m; sourceTree = "<group>"; };
+		B131C6452A63F73F0099AB19 /* GTBlockType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTBlockType.h; sourceTree = "<group>"; };
+		B131C6462A63F73F0099AB19 /* GTBlockType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTBlockType.m; sourceTree = "<group>"; };
+		B131C6492A63F7770099AB19 /* GTRecordType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTRecordType.h; sourceTree = "<group>"; };
+		B131C64A2A63F7770099AB19 /* GTRecordType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTRecordType.m; sourceTree = "<group>"; };
+		B131C64D2A63F7C40099AB19 /* GTPointerType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTPointerType.h; sourceTree = "<group>"; };
+		B131C64E2A63F7C40099AB19 /* GTPointerType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTPointerType.m; sourceTree = "<group>"; };
+		B131C6512A63F7EA0099AB19 /* GTArrayType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTArrayType.h; sourceTree = "<group>"; };
+		B131C6522A63F7EA0099AB19 /* GTArrayType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTArrayType.m; sourceTree = "<group>"; };
+		B131C6552A63F8140099AB19 /* GTBitFieldType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTBitFieldType.h; sourceTree = "<group>"; };
+		B131C6562A63F8140099AB19 /* GTBitFieldType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTBitFieldType.m; sourceTree = "<group>"; };
+		B131C6612A63F8D90099AB19 /* GTMethodModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTMethodModel.h; sourceTree = "<group>"; };
+		B131C6622A63F8D90099AB19 /* GTMethodModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTMethodModel.m; sourceTree = "<group>"; };
+		B131C6652A63F92E0099AB19 /* GTPropertyAttribute.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTPropertyAttribute.h; sourceTree = "<group>"; };
+		B131C6662A63F92E0099AB19 /* GTPropertyAttribute.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTPropertyAttribute.m; sourceTree = "<group>"; };
+		B131C6692A63F94F0099AB19 /* GTProtocolModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTProtocolModel.h; sourceTree = "<group>"; };
+		B131C66A2A63F94F0099AB19 /* GTProtocolModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTProtocolModel.m; sourceTree = "<group>"; };
+		B131C66D2A63FA990099AB19 /* GTPropertyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTPropertyModel.h; sourceTree = "<group>"; };
+		B131C66E2A63FA990099AB19 /* GTPropertyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTPropertyModel.m; sourceTree = "<group>"; };
+		B131C6742A6400C60099AB19 /* GTIvarModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTIvarModel.h; sourceTree = "<group>"; };
+		B131C6752A6400C60099AB19 /* GTIvarModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTIvarModel.m; sourceTree = "<group>"; };
+		B131C6782A64013A0099AB19 /* GTClassModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTClassModel.h; sourceTree = "<group>"; };
+		B131C6792A64013A0099AB19 /* GTClassModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTClassModel.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B131C6142A63F3AD0099AB19 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B131C60D2A63F3AD0099AB19 = {
+			isa = PBXGroup;
+			children = (
+				B131C6192A63F3AD0099AB19 /* GTClassDump */,
+				B131C6182A63F3AD0099AB19 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B131C6182A63F3AD0099AB19 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B131C6172A63F3AD0099AB19 /* GTClassDump.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B131C6192A63F3AD0099AB19 /* GTClassDump */ = {
+			isa = PBXGroup;
+			children = (
+				B131C61A2A63F3AD0099AB19 /* GTClassDump.h */,
+				B131C62D2A63F50F0099AB19 /* GTSemanticString.h */,
+				B131C62E2A63F50F0099AB19 /* GTSemanticString.m */,
+				B131C6312A63F5A90099AB19 /* GTVariableModel.h */,
+				B131C6322A63F5A90099AB19 /* GTVariableModel.m */,
+				B131C6212A63F41E0099AB19 /* Models */,
+				B131C6242A63F41E0099AB19 /* Services */,
+			);
+			path = GTClassDump;
+			sourceTree = "<group>";
+		};
+		B131C6212A63F41E0099AB19 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B131C6222A63F41E0099AB19 /* Reflections */,
+				B131C6232A63F41E0099AB19 /* ParseTypes */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B131C6222A63F41E0099AB19 /* Reflections */ = {
+			isa = PBXGroup;
+			children = (
+				B131C6742A6400C60099AB19 /* GTIvarModel.h */,
+				B131C6752A6400C60099AB19 /* GTIvarModel.m */,
+				B131C6612A63F8D90099AB19 /* GTMethodModel.h */,
+				B131C6622A63F8D90099AB19 /* GTMethodModel.m */,
+				B131C6652A63F92E0099AB19 /* GTPropertyAttribute.h */,
+				B131C6662A63F92E0099AB19 /* GTPropertyAttribute.m */,
+				B131C6692A63F94F0099AB19 /* GTProtocolModel.h */,
+				B131C66A2A63F94F0099AB19 /* GTProtocolModel.m */,
+				B131C66D2A63FA990099AB19 /* GTPropertyModel.h */,
+				B131C66E2A63FA990099AB19 /* GTPropertyModel.m */,
+				B131C6782A64013A0099AB19 /* GTClassModel.h */,
+				B131C6792A64013A0099AB19 /* GTClassModel.m */,
+			);
+			path = Reflections;
+			sourceTree = "<group>";
+		};
+		B131C6232A63F41E0099AB19 /* ParseTypes */ = {
+			isa = PBXGroup;
+			children = (
+				B131C6352A63F5E30099AB19 /* GTParseType.h */,
+				B131C6362A63F5E30099AB19 /* GTParseType.m */,
+				B131C63D2A63F6AE0099AB19 /* GTPrimitiveType.h */,
+				B131C63E2A63F6AE0099AB19 /* GTPrimitiveType.m */,
+				B131C6412A63F7130099AB19 /* GTObjectType.h */,
+				B131C6422A63F7130099AB19 /* GTObjectType.m */,
+				B131C6452A63F73F0099AB19 /* GTBlockType.h */,
+				B131C6462A63F73F0099AB19 /* GTBlockType.m */,
+				B131C6492A63F7770099AB19 /* GTRecordType.h */,
+				B131C64A2A63F7770099AB19 /* GTRecordType.m */,
+				B131C64D2A63F7C40099AB19 /* GTPointerType.h */,
+				B131C64E2A63F7C40099AB19 /* GTPointerType.m */,
+				B131C6512A63F7EA0099AB19 /* GTArrayType.h */,
+				B131C6522A63F7EA0099AB19 /* GTArrayType.m */,
+				B131C6552A63F8140099AB19 /* GTBitFieldType.h */,
+				B131C6562A63F8140099AB19 /* GTBitFieldType.m */,
+			);
+			path = ParseTypes;
+			sourceTree = "<group>";
+		};
+		B131C6242A63F41E0099AB19 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B131C6252A63F4490099AB19 /* GTUtilities.h */,
+				B131C6262A63F4490099AB19 /* GTUtilities.m */,
+				B131C6292A63F4910099AB19 /* GTTypeParser.h */,
+				B131C62A2A63F4910099AB19 /* GTTypeParser.m */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B131C6122A63F3AD0099AB19 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B131C6432A63F7130099AB19 /* GTObjectType.h in Headers */,
+				B131C67A2A64013A0099AB19 /* GTClassModel.h in Headers */,
+				B131C6272A63F4490099AB19 /* GTUtilities.h in Headers */,
+				B131C66B2A63F94F0099AB19 /* GTProtocolModel.h in Headers */,
+				B131C6762A6400C60099AB19 /* GTIvarModel.h in Headers */,
+				B131C6372A63F5E30099AB19 /* GTParseType.h in Headers */,
+				B131C62F2A63F50F0099AB19 /* GTSemanticString.h in Headers */,
+				B131C63F2A63F6AE0099AB19 /* GTPrimitiveType.h in Headers */,
+				B131C6632A63F8D90099AB19 /* GTMethodModel.h in Headers */,
+				B131C64F2A63F7C40099AB19 /* GTPointerType.h in Headers */,
+				B131C62B2A63F4910099AB19 /* GTTypeParser.h in Headers */,
+				B131C6672A63F92E0099AB19 /* GTPropertyAttribute.h in Headers */,
+				B131C6332A63F5A90099AB19 /* GTVariableModel.h in Headers */,
+				B131C6532A63F7EA0099AB19 /* GTArrayType.h in Headers */,
+				B131C64B2A63F7770099AB19 /* GTRecordType.h in Headers */,
+				B131C6472A63F73F0099AB19 /* GTBlockType.h in Headers */,
+				B131C6572A63F8140099AB19 /* GTBitFieldType.h in Headers */,
+				B131C66F2A63FA990099AB19 /* GTPropertyModel.h in Headers */,
+				B131C61B2A63F3AD0099AB19 /* GTClassDump.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		B131C6162A63F3AD0099AB19 /* GTClassDump */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B131C61E2A63F3AD0099AB19 /* Build configuration list for PBXNativeTarget "GTClassDump" */;
+			buildPhases = (
+				B131C6122A63F3AD0099AB19 /* Headers */,
+				B131C6132A63F3AD0099AB19 /* Sources */,
+				B131C6142A63F3AD0099AB19 /* Frameworks */,
+				B131C6152A63F3AD0099AB19 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GTClassDump;
+			productName = GTClassDump;
+			productReference = B131C6172A63F3AD0099AB19 /* GTClassDump.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B131C60E2A63F3AD0099AB19 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				CLASSPREFIX = GT;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					B131C6162A63F3AD0099AB19 = {
+						CreatedOnToolsVersion = 14.0;
+					};
+				};
+			};
+			buildConfigurationList = B131C6112A63F3AD0099AB19 /* Build configuration list for PBXProject "GTClassDump" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B131C60D2A63F3AD0099AB19;
+			productRefGroup = B131C6182A63F3AD0099AB19 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B131C6162A63F3AD0099AB19 /* GTClassDump */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B131C6152A63F3AD0099AB19 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B131C6132A63F3AD0099AB19 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B131C6482A63F73F0099AB19 /* GTBlockType.m in Sources */,
+				B131C6702A63FA990099AB19 /* GTPropertyModel.m in Sources */,
+				B131C6772A6400C60099AB19 /* GTIvarModel.m in Sources */,
+				B131C6542A63F7EA0099AB19 /* GTArrayType.m in Sources */,
+				B131C6302A63F50F0099AB19 /* GTSemanticString.m in Sources */,
+				B131C6282A63F4490099AB19 /* GTUtilities.m in Sources */,
+				B131C6682A63F92E0099AB19 /* GTPropertyAttribute.m in Sources */,
+				B131C6402A63F6AE0099AB19 /* GTPrimitiveType.m in Sources */,
+				B131C66C2A63F94F0099AB19 /* GTProtocolModel.m in Sources */,
+				B131C6502A63F7C40099AB19 /* GTPointerType.m in Sources */,
+				B131C64C2A63F7770099AB19 /* GTRecordType.m in Sources */,
+				B131C6582A63F8140099AB19 /* GTBitFieldType.m in Sources */,
+				B131C6342A63F5A90099AB19 /* GTVariableModel.m in Sources */,
+				B131C67B2A64013A0099AB19 /* GTClassModel.m in Sources */,
+				B131C62C2A63F4910099AB19 /* GTTypeParser.m in Sources */,
+				B131C6642A63F8D90099AB19 /* GTMethodModel.m in Sources */,
+				B131C6382A63F5E30099AB19 /* GTParseType.m in Sources */,
+				B131C6442A63F7130099AB19 /* GTObjectType.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		B131C61C2A63F3AD0099AB19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B131C61D2A63F3AD0099AB19 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B131C61F2A63F3AD0099AB19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = AQDKUEE5C2;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gt.GTClassDump;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B131C6202A63F3AD0099AB19 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = AQDKUEE5C2;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gt.GTClassDump;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B131C6112A63F3AD0099AB19 /* Build configuration list for PBXProject "GTClassDump" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B131C61C2A63F3AD0099AB19 /* Debug */,
+				B131C61D2A63F3AD0099AB19 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B131C61E2A63F3AD0099AB19 /* Build configuration list for PBXNativeTarget "GTClassDump" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B131C61F2A63F3AD0099AB19 /* Debug */,
+				B131C6202A63F3AD0099AB19 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B131C60E2A63F3AD0099AB19 /* Project object */;
+}
