@@ -9,7 +9,7 @@
 #import "GuanEncryptionManger.h"
 #import <GTClassDump/GTClassDump.h>
 #import "GuanRSAMgr.h"
-
+#import "GTUtilies.h"
 
 
 static const NSInteger kAugusButtonTagOffset = 10000;
@@ -22,7 +22,9 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 
 
 
-
++ (void)load {
+    NSLog(@"ViewController load name %@",NSStringFromClass([self class]));
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,9 +43,14 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 
 - (void)testGTClassDump {
     
-    GTClassModel *ortho = [GTClassModel modelWithClass:[GuanRSAMgr class]];
-    NSString *GuanRSAMgrHeader = [ortho linesWithComments:NO synthesizeStrip:YES];
-    NSLog(@"augus %@",GuanRSAMgrHeader);
+//    GTClassModel *ortho = [GTClassModel modelWithClass:[GuanRSAMgr class]];
+//    NSString *GuanRSAMgrHeader = [ortho linesWithComments:NO synthesizeStrip:YES];
+//    NSLog(@"augus %@",GuanRSAMgrHeader);
+//
+//    BOOL isWrite = [GTUtilies parseClassHeaderWithName:@"GuanRSAMgr" fileDataString:GuanRSAMgrHeader];
+//    NSLog(@"write %@",@(isWrite));
+    
+    [GTUtilies serviceHeaderName:@"GuanEncryptionManger"];
 }
 
 

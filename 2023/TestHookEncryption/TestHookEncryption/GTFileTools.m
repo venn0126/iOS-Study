@@ -103,7 +103,7 @@
 
 + (BOOL)gt_writeToFilePath:(NSString *)filePath contents:(NSData *)contents {
     
-    // 如果文件不存在直接创建
+    // 如果文件不存在新建
     if(![self gt_fileIsExist:filePath]) {
         // 创建失败返回NO
         if (![[NSFileManager defaultManager] createFileAtPath:filePath contents:nil attributes:nil]) {
@@ -111,6 +111,14 @@
         }
     }
     
+    // 文件存在且有数据则返回NO
+    NSData *fileData = [NSData dataWithContentsOfFile:filePath];
+    if(fileData.length >= contents.length) {
+        NSLog(@"当前头文件已存在");
+        return NO;
+    }
+    
+    // 文件存在写入数据
     if(contents.bytes > 0) {
         NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:filePath];
         [fileHandle seekToEndOfFile];

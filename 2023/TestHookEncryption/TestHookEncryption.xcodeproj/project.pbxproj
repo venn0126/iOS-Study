@@ -17,6 +17,8 @@
 		B131C6042A60E7B80099AB19 /* GuanEncryptionManger.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C6032A60E7B80099AB19 /* GuanEncryptionManger.m */; };
 		B131C6072A612FBC0099AB19 /* GuanRSAMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C6062A612FBC0099AB19 /* GuanRSAMgr.m */; };
 		B131C67D2A64022C0099AB19 /* GTClassDump.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B131C67C2A64022C0099AB19 /* GTClassDump.framework */; };
+		B16ABCAB2A64F8EC00A4EC12 /* GTUtilies.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ABCAA2A64F8EC00A4EC12 /* GTUtilies.m */; };
+		B16ABCAE2A6503E300A4EC12 /* GTFileTools.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ABCAD2A6503E300A4EC12 /* GTFileTools.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,10 @@
 		B131C6052A612FBC0099AB19 /* GuanRSAMgr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuanRSAMgr.h; sourceTree = "<group>"; };
 		B131C6062A612FBC0099AB19 /* GuanRSAMgr.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuanRSAMgr.m; sourceTree = "<group>"; };
 		B131C67C2A64022C0099AB19 /* GTClassDump.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GTClassDump.framework; sourceTree = "<group>"; };
+		B16ABCA92A64F8EC00A4EC12 /* GTUtilies.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTUtilies.h; sourceTree = "<group>"; };
+		B16ABCAA2A64F8EC00A4EC12 /* GTUtilies.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTUtilies.m; sourceTree = "<group>"; };
+		B16ABCAC2A6503E300A4EC12 /* GTFileTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTFileTools.h; sourceTree = "<group>"; };
+		B16ABCAD2A6503E300A4EC12 /* GTFileTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTFileTools.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +87,10 @@
 				B131C6032A60E7B80099AB19 /* GuanEncryptionManger.m */,
 				B131C6052A612FBC0099AB19 /* GuanRSAMgr.h */,
 				B131C6062A612FBC0099AB19 /* GuanRSAMgr.m */,
+				B16ABCAC2A6503E300A4EC12 /* GTFileTools.h */,
+				B16ABCAD2A6503E300A4EC12 /* GTFileTools.m */,
+				B16ABCA92A64F8EC00A4EC12 /* GTUtilies.h */,
+				B16ABCAA2A64F8EC00A4EC12 /* GTUtilies.m */,
 				B131C5F22A60E3380099AB19 /* Main.storyboard */,
 				B131C5F52A60E33A0099AB19 /* Assets.xcassets */,
 				B131C5F72A60E33A0099AB19 /* LaunchScreen.storyboard */,
@@ -164,7 +174,9 @@
 				B131C5EB2A60E3380099AB19 /* AppDelegate.m in Sources */,
 				B131C6042A60E7B80099AB19 /* GuanEncryptionManger.m in Sources */,
 				B131C5FC2A60E33A0099AB19 /* main.m in Sources */,
+				B16ABCAE2A6503E300A4EC12 /* GTFileTools.m in Sources */,
 				B131C6072A612FBC0099AB19 /* GuanRSAMgr.m in Sources */,
+				B16ABCAB2A64F8EC00A4EC12 /* GTUtilies.m in Sources */,
 				B131C5EE2A60E3380099AB19 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

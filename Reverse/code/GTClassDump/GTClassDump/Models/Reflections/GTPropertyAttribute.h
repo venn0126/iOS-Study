@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic, readonly) NSString *value;
 
 - (instancetype)initWithName:(NSString *)name value:(NSString *)value;
-+ (instancetype)attributeWithName:(NSString *)name value:(NSString *)value;
++ (instancetype)attributeWithName:(NSString *)name value:(nullable NSString *)value;
 
 @end
 

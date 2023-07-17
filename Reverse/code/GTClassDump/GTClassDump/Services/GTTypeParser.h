@@ -6,7 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GTParseType.h"
+#import <GTParseType.h>
 
 
 
@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param start A pointer to the start of an encoded value as returned by @c \@encode
 /// @param end A pointer to the first byte out-of-bounds from @c start
 /// @param error Set to @c YES if an error occurs during proccessing
-+ (GTParseType *)typeForEncodingStart:(const char *const)start end:(const char *const)end error:(inout BOOL *)error;
++ (GTParseType *)typeForEncodingStart:(const char *const)start end:(const char *const)end error:(nullable inout BOOL *)error;
 
 @end
 
