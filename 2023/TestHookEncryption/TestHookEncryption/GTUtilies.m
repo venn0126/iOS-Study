@@ -9,6 +9,7 @@
 #import "GTFileTools.h"
 #import <GTClassDump/GTClassDump.h>
 #import <objc/runtime.h>
+#import "NSBundle+GTInfo.h"
 
 #define kGuanHeaderFileDirectory @"/guan/Headers/"
 
@@ -22,13 +23,16 @@
 
 
 + (void)serviceHeaderName:(NSString *)name {
-    
+        
+    [self serviceHeaderName:name path:nil];
+}
+
++ (void)serviceHeaderName:(NSString *)name path:(NSString *)path {
     Class cls = objc_getClass([name UTF8String]);
     GTClassModel *ortho = [GTClassModel modelWithClass:cls];
     NSString *headerString = [ortho linesWithComments:NO synthesizeStrip:YES];
-    NSLog(@"augus %@",headerString);
-    
-    BOOL isWrite = [GTUtilies parseClassHeaderWithName:name fileDataString:headerString];
+//    NSLog(@"augus %@",headerString);
+    BOOL isWrite = [self parseClassHeaderWritePath:path withName:name fileDataString:headerString];
     NSLog(@"write %@",@(isWrite));
 }
 
@@ -64,6 +68,70 @@
 }
 
 
++ (void)downloadOwnClassHeaderType:(GTUtiliesClassType)type {
+    [self downloadOwnClassHeaderType:type toPath:nil];
+}
 
++ (void)downloadOwnClassHeaderType:(GTUtiliesClassType)type toPath:(NSString *)path {
+ 
+    NSArray *classArray = nil;
+    if(type == GTUtiliesClassTypeOwn) {
+        classArray = [NSBundle gt_bundleOwnClassString];
+    } else {
+        classArray = [NSBundle gt_bundleAllClassString];
+    }
+    
+    NSUInteger classCount = classArray.count;
+    if(classCount > 0) {
+        NSLog(@"Guan download header begin %ld",classCount);
+        dispatch_semaphore_t semaphore = dispatch_semaphore_create(1);
+        dispatch_apply(classCount, dispatch_get_global_queue(0, 0), ^(size_t iteration) {
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+            
+            // 开始写解析和写数据
+            [self serviceHeaderName:classArray[iteration] path:path];
+            
+            dispatch_semaphore_signal(semaphore);
+        });
+    }
+    NSLog(@"Guan download header end");
+
+}
+
+
++ (void)tweakDownloadOwnClassHeaderToPath:(nullable NSString *)path {
+    
+    // 过滤头文件
+    NSArray *array = [NSBundle gt_bundleAllClassString];
+    NSMutableArray *resultArray = [NSMutableArray array];
+    for (int i = 0; i < array.count; i++) {
+        NSString *clsName = array[i];
+        Class cls = NSClassFromString(clsName);
+        NSBundle *bundle = [NSBundle bundleForClass:cls];
+        if(bundle == [NSBundle mainBundle] && ![clsName containsString:@"NSXPC"] && ![clsName containsString:@"BSXPC"]) {
+            [resultArray addObject:clsName];
+        }
+    }
+    
+    // 下载
+    NSUInteger classCount = resultArray.count;
+    if(classCount > 0) {
+        NSLog(@"Guan tweak header begin %ld",classCount);
+        dispatch_semaphore_t semaphore = dispatch_semaphore_create(1);
+        dispatch_apply(classCount, dispatch_get_global_queue(0, 0), ^(size_t iteration) {
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+            
+            // 开始写解析和写数据
+            [self serviceHeaderName:resultArray[iteration] path:path];
+            
+            dispatch_semaphore_signal(semaphore);
+        });
+    }
+    NSLog(@"Guan tweak download header end");
+}
+
++ (void)tweakDownloadOwnClassHeader {
+    [self tweakDownloadOwnClassHeaderToPath:nil];
+}
 
 @end

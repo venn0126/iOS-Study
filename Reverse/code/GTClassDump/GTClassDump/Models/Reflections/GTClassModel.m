@@ -363,7 +363,9 @@
         return [model.type classReferences];
     }];
     
-    [build removeObject:self.name];
+    if([build containsObject:self.name]) {
+        [build removeObject:self.name];
+    }
     return build;
 }
 

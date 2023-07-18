@@ -19,6 +19,7 @@
 		B131C67D2A64022C0099AB19 /* GTClassDump.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B131C67C2A64022C0099AB19 /* GTClassDump.framework */; };
 		B16ABCAB2A64F8EC00A4EC12 /* GTUtilies.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ABCAA2A64F8EC00A4EC12 /* GTUtilies.m */; };
 		B16ABCAE2A6503E300A4EC12 /* GTFileTools.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ABCAD2A6503E300A4EC12 /* GTFileTools.m */; };
+		B16ABCB42A66250400A4EC12 /* NSBundle+GTInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ABCB32A66250400A4EC12 /* NSBundle+GTInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,8 @@
 		B16ABCAA2A64F8EC00A4EC12 /* GTUtilies.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTUtilies.m; sourceTree = "<group>"; };
 		B16ABCAC2A6503E300A4EC12 /* GTFileTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTFileTools.h; sourceTree = "<group>"; };
 		B16ABCAD2A6503E300A4EC12 /* GTFileTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTFileTools.m; sourceTree = "<group>"; };
+		B16ABCB22A66250400A4EC12 /* NSBundle+GTInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSBundle+GTInfo.h"; sourceTree = "<group>"; };
+		B16ABCB32A66250400A4EC12 /* NSBundle+GTInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+GTInfo.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +94,8 @@
 				B16ABCAD2A6503E300A4EC12 /* GTFileTools.m */,
 				B16ABCA92A64F8EC00A4EC12 /* GTUtilies.h */,
 				B16ABCAA2A64F8EC00A4EC12 /* GTUtilies.m */,
+				B16ABCB22A66250400A4EC12 /* NSBundle+GTInfo.h */,
+				B16ABCB32A66250400A4EC12 /* NSBundle+GTInfo.m */,
 				B131C5F22A60E3380099AB19 /* Main.storyboard */,
 				B131C5F52A60E33A0099AB19 /* Assets.xcassets */,
 				B131C5F72A60E33A0099AB19 /* LaunchScreen.storyboard */,
@@ -171,6 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B131C5F12A60E3380099AB19 /* ViewController.m in Sources */,
+				B16ABCB42A66250400A4EC12 /* NSBundle+GTInfo.m in Sources */,
 				B131C5EB2A60E3380099AB19 /* AppDelegate.m in Sources */,
 				B131C6042A60E7B80099AB19 /* GuanEncryptionManger.m in Sources */,
 				B131C5FC2A60E33A0099AB19 /* main.m in Sources */,

@@ -10,6 +10,9 @@
 #import <GTClassDump/GTClassDump.h>
 #import "GuanRSAMgr.h"
 #import "GTUtilies.h"
+#import "NSBundle+GTInfo.h"
+
+#define kTaoLiQuickSubmitOrderNofitication @"kTaoLiQuickSubmitOrderNofitication"
 
 
 static const NSInteger kAugusButtonTagOffset = 10000;
@@ -21,11 +24,6 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 @implementation ViewController
 
 
-
-+ (void)load {
-    NSLog(@"ViewController load name %@",NSStringFromClass([self class]));
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -35,9 +33,10 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     
     [self setupButtons];
     
-    
-    
 
+
+//    [GTUtilies tweakDownloadOwnClassHeader];
+    
 }
 
 
