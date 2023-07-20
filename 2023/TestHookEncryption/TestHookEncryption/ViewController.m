@@ -11,6 +11,7 @@
 #import "GuanRSAMgr.h"
 #import "GTUtilies.h"
 #import "NSBundle+GTInfo.h"
+#import "GTFileTools.h"
 
 #define kTaoLiQuickSubmitOrderNofitication @"kTaoLiQuickSubmitOrderNofitication"
 
@@ -36,7 +37,19 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 
 
 //    [GTUtilies tweakDownloadOwnClassHeader];
+
+//    [self testVideoToAudio];
+}
+
+
+- (void)testVideoToAudio {
     
+    NSString *videoPath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"mp4"];
+    NSString *audioPath = [[GTFileTools gt_DocumentPath] stringByAppendingPathComponent:@"test000.wav"];
+    NSLog(@"guan audio path %@",audioPath);
+    [GTUtilies convertVideoPath:videoPath toAudioPath:audioPath completion:^{
+        NSLog(@"convert end 333");
+    }];
 }
 
 

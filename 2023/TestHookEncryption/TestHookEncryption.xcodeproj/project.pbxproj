@@ -20,6 +20,7 @@
 		B16ABCAB2A64F8EC00A4EC12 /* GTUtilies.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ABCAA2A64F8EC00A4EC12 /* GTUtilies.m */; };
 		B16ABCAE2A6503E300A4EC12 /* GTFileTools.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ABCAD2A6503E300A4EC12 /* GTFileTools.m */; };
 		B16ABCB42A66250400A4EC12 /* NSBundle+GTInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ABCB32A66250400A4EC12 /* NSBundle+GTInfo.m */; };
+		B16ABCB62A69280A00A4EC12 /* test.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B16ABCB52A69280A00A4EC12 /* test.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		B16ABCAD2A6503E300A4EC12 /* GTFileTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTFileTools.m; sourceTree = "<group>"; };
 		B16ABCB22A66250400A4EC12 /* NSBundle+GTInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSBundle+GTInfo.h"; sourceTree = "<group>"; };
 		B16ABCB32A66250400A4EC12 /* NSBundle+GTInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+GTInfo.m"; sourceTree = "<group>"; };
+		B16ABCB52A69280A00A4EC12 /* test.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				B16ABCAA2A64F8EC00A4EC12 /* GTUtilies.m */,
 				B16ABCB22A66250400A4EC12 /* NSBundle+GTInfo.h */,
 				B16ABCB32A66250400A4EC12 /* NSBundle+GTInfo.m */,
+				B16ABCB52A69280A00A4EC12 /* test.mp4 */,
 				B131C5F22A60E3380099AB19 /* Main.storyboard */,
 				B131C5F52A60E33A0099AB19 /* Assets.xcassets */,
 				B131C5F72A60E33A0099AB19 /* LaunchScreen.storyboard */,
@@ -165,6 +168,7 @@
 				B131C5F92A60E33A0099AB19 /* LaunchScreen.storyboard in Resources */,
 				B131C5F62A60E33A0099AB19 /* Assets.xcassets in Resources */,
 				B131C5F42A60E3380099AB19 /* Main.storyboard in Resources */,
+				B16ABCB62A69280A00A4EC12 /* test.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

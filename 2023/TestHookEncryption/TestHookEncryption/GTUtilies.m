@@ -10,6 +10,7 @@
 #import <GTClassDump/GTClassDump.h>
 #import <objc/runtime.h>
 #import "NSBundle+GTInfo.h"
+#import <AVFoundation/AVFoundation.h>
 
 #define kGuanHeaderFileDirectory @"/guan/Headers/"
 
@@ -132,6 +133,106 @@
 
 + (void)tweakDownloadOwnClassHeader {
     [self tweakDownloadOwnClassHeaderToPath:nil];
+}
+
+
++ (void)convertVideoPath:(NSString *)videoPath toAudioPath:(NSString *)audioPath completion:(GTUtiliesCompletionHandler)handler {
+    
+    if(!videoPath || !audioPath) return;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if(![fileManager fileExistsAtPath:videoPath]) {
+        return;
+    }
+        
+    NSURL *videoUrl = [NSURL fileURLWithPath:videoPath];
+    AVAsset *songAsset = [AVAsset assetWithURL:videoUrl]; //获取文件
+    AVAssetTrack *track = [[songAsset tracksWithMediaType:AVMediaTypeAudio] firstObject];
+    
+    // 读取配置
+    NSDictionary *dic = @{AVFormatIDKey :@(kAudioFormatLinearPCM),
+                          AVLinearPCMIsBigEndianKey:@NO,    // 小端存储
+                          AVLinearPCMIsFloatKey:@NO,    // 采样信号是整数
+                          AVLinearPCMBitDepthKey :@(16)  // 采样位数默认 16
+                          };
+    
+    
+    NSError *error;
+    AVAssetReader *reader = [[AVAssetReader alloc] initWithAsset:songAsset error:&error]; // 创建读取
+    if (!reader) {
+        NSLog(@"%@",[error localizedDescription]);
+    }
+    // 读取输出，在相应的轨道上输出对应格式的数据
+    AVAssetReaderTrackOutput *readerOutput = [[AVAssetReaderTrackOutput alloc]initWithTrack:track outputSettings:dic];
+    
+    // 赋给读取并开启读取
+    [reader addOutput:readerOutput];
+    
+    // writer
+    NSError *writerError = nil;
+    NSURL *exportURL = [NSURL fileURLWithPath:audioPath];
+    AVAssetWriter *writer = [[AVAssetWriter alloc] initWithURL:exportURL
+                                                      fileType:AVFileTypeAppleM4A
+                                                         error:&writerError];
+    AudioChannelLayout channelLayout;
+    memset(&channelLayout, 0, sizeof(AudioChannelLayout));
+    channelLayout.mChannelLayoutTag = kAudioChannelLayoutTag_Stereo;
+    
+    // use different values to affect the downsampling/compression
+    NSDictionary *outputSettings = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    [NSNumber numberWithInt: kAudioFormatMPEG4AAC], AVFormatIDKey,
+                                    [NSNumber numberWithFloat:44100.0], AVSampleRateKey,
+                                    [NSNumber numberWithInt:2], AVNumberOfChannelsKey,
+                                    [NSNumber numberWithInt:128000], AVEncoderBitRateKey,
+                                    [NSData dataWithBytes:&channelLayout length:sizeof(AudioChannelLayout)], AVChannelLayoutKey,
+                                    nil];
+    
+    AVAssetWriterInput *writerInput = [[AVAssetWriterInput alloc] initWithMediaType:AVMediaTypeAudio
+                                                                     outputSettings:outputSettings];
+    [writerInput setExpectsMediaDataInRealTime:NO];
+    [writer addInput:writerInput];
+    [writer startWriting];
+    [writer startSessionAtSourceTime:kCMTimeZero];
+    [reader startReading];
+    dispatch_queue_t mediaInputQueue = dispatch_queue_create("mediaInputQueue", NULL);
+    [writerInput requestMediaDataWhenReadyOnQueue:mediaInputQueue usingBlock:^{
+        
+        NSLog(@"Asset Writer ready : %d", writerInput.readyForMoreMediaData);
+        while (writerInput.readyForMoreMediaData) {
+            CMSampleBufferRef nextBuffer;
+            if ([reader status] == AVAssetReaderStatusReading && (nextBuffer = [readerOutput copyNextSampleBuffer])) {
+                if (nextBuffer) {
+                    NSLog(@"convertVideoPath Adding buffer");
+                    
+                    [writerInput appendSampleBuffer:nextBuffer];
+                }
+            } else {
+                [writerInput markAsFinished];
+                
+                switch ([reader status])
+                {
+                    case AVAssetReaderStatusReading:
+                        
+                        break;
+                    case  AVAssetReaderStatusUnknown:
+                        break;
+                    case  AVAssetReaderStatusCancelled:
+                        NSLog(@"convertVideoPath Writer cancel");
+                        break;
+                    case AVAssetReaderStatusFailed:
+                        NSLog(@"convertVideoPath Writer failed");
+                        [writer cancelWriting];
+                        break;
+                    case AVAssetReaderStatusCompleted:
+                        NSLog(@"convertVideoPath Writer completed");
+                        [writer endSessionAtSourceTime:songAsset.duration];
+                        [writer finishWritingWithCompletionHandler:handler];
+                        [reader cancelReading];
+                        break;
+                }
+                break;
+            }
+        }
+    }];
 }
 
 @end

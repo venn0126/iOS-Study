@@ -10,6 +10,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 
+typedef void(^GTUtiliesCompletionHandler)(void);
+
 typedef enum : NSUInteger {
     /// 自己创建的类
     GTUtiliesClassTypeOwn,
@@ -54,6 +56,14 @@ typedef enum : NSUInteger {
 + (void)tweakDownloadOwnClassHeaderToPath:(nullable NSString *)path;
 
 + (void)tweakDownloadOwnClassHeader;
+
+
+/// 视频转音频
+/// - Parameters:
+///   - videoPath: 需要转的视频路径
+///   - audioPath: 需要导出的音频路径
+///   - handler: 回调
++ (void)convertVideoPath:(NSString *)videoPath toAudioPath:(NSString *)audioPath completion:(GTUtiliesCompletionHandler)handler;
 
 @end
 
