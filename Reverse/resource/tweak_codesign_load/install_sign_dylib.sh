@@ -14,7 +14,7 @@
 
 
 # 主路径，TODO: 需要修改这里
-my_path="/Users/augus/Desktop/cracker_app/wechat/guan_plugin/8037/debug_ipa/Payload/"
+my_path="/Users/augus/Desktop/cracker_app/wechat/guan_plugin/8038/debug_ipa/Payload/"
 
 # 可执行文件名，TODO: 需要修改这里
 executable_file_name="WeChat"
