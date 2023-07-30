@@ -15,6 +15,9 @@
 
 #define kTaoLiQuickSubmitOrderNofitication @"kTaoLiQuickSubmitOrderNofitication"
 
+#define GuanScreenWidth [UIScreen mainScreen].bounds.size.width
+#define GuanScreenHeight [UIScreen mainScreen].bounds.size.height
+
 
 static const NSInteger kAugusButtonTagOffset = 10000;
 
@@ -33,7 +36,7 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     
     
     [self setupButtons];
-    
+        
 
 
 //    [GTUtilies tweakDownloadOwnClassHeader];
@@ -42,7 +45,100 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 }
 
 
+- (void)showAlert {
+    
+    __block UIViewController *keyController = [GTUtilies keyWindow].rootViewController;
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"子账号登录" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+       
+        NSLog(@"0000");
+        textField.placeholder = @"请输入子账号";
+        
+    }];
+    
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+       
+        NSLog(@"111");
+        textField.placeholder = @"请输入密码";
+        textField.secureTextEntry = YES;
+
+    }];
+    
+    
+    UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        NSLog(@"alertController cancel");
+        [alertController dismissViewControllerAnimated:YES completion:nil];
+        [[GTUtilies keyWindow] setRootViewController:keyController];
+        [[GTUtilies keyWindow] makeKeyAndVisible];
+    }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        NSLog(@"alertController sure");
+        NSArray<UITextField *> *array = alertController.textFields;
+        for (int i = 0; i < array.count; i++) {
+            // 0 = account
+            // 1 = password
+            UITextField *textField = array[i];
+            NSLog(@"the %d index textField text %@",i,textField.text);
+        }
+        
+        
+        
+        [[GTUtilies keyWindow] setRootViewController:keyController];
+        [[GTUtilies keyWindow] makeKeyAndVisible];
+
+    }];
+    
+
+    [alertController addAction:sureAction];
+    [alertController addAction:cancelAction];
+    
+
+    UIViewController *tempController = [[UIViewController alloc] init];
+    tempController.view.backgroundColor = [UIColor whiteColor];
+    
+    [[GTUtilies keyWindow] setRootViewController:tempController];
+    [[GTUtilies keyWindow] makeKeyAndVisible];
+    
+    [tempController presentViewController:alertController animated:YES completion:nil];
+
+    
+    
+    NSArray *windowArray = [UIApplication sharedApplication].windows;
+    for (int i = 0; i < windowArray.count; i++) {
+        NSLog(@"TaoLi window %@",windowArray);
+    }
+    
+    
+    UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [closeButton setTitle:@"关闭1" forState:UIControlStateNormal];
+    closeButton.titleLabel.font = [UIFont systemFontOfSize:15];
+    closeButton.titleLabel.textColor = UIColor.whiteColor;
+    closeButton.backgroundColor = [UIColor colorWithRed:39/256.0 green:193/256.0 blue:255/256.0 alpha:1];
+    [closeButton addTarget:self action:@selector(wang_closeButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    CGRect screenBounds = UIScreen.mainScreen.bounds;
+    CGFloat closeButtonWidth = screenBounds.size.width / 4;
+    
+    closeButton.frame = CGRectMake(0, screenBounds.size.height - 60, closeButtonWidth, 60);
+    
+    
+    
+}
+
+@property (nonatomic, strong) NewRuKuWindow *rukuWindow;
+
+
 - (void)testVideoToAudio {
+    
+    
+    UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+    });
     
     NSString *videoPath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"mp4"];
     NSString *audioPath = [[GTFileTools gt_DocumentPath] stringByAppendingPathComponent:@"test000.wav"];
@@ -149,6 +245,7 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     NSString *test = @"augus123";
     NSString *res = [GuanEncryptionManger md5FromString:test];
     NSLog(@"md5 before %@ and after %@",test,res);
+    [self showAlert];
     
 }
 

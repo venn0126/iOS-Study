@@ -11,6 +11,7 @@
 #import <objc/runtime.h>
 #import "NSBundle+GTInfo.h"
 #import <AVFoundation/AVFoundation.h>
+#include <dlfcn.h>
 
 #define kGuanHeaderFileDirectory @"/guan/Headers/"
 
@@ -234,5 +235,53 @@
         }
     }];
 }
+
+
++ (UIWindow *)keyWindow {
+    UIWindow *keyWindow;
+    if (@available(iOS 13, *)) {
+        NSSet *scenes = [UIApplication sharedApplication].connectedScenes;
+        for (UIWindowScene *windowScene in scenes) {
+            if(windowScene.activationState == UISceneActivationStateForegroundActive) {
+                for (UIWindow *window in windowScene.windows) {
+                    if(window.isKeyWindow) {
+                        keyWindow = window;
+                    }
+                }
+            }
+        }
+    } else {
+        keyWindow = [UIApplication sharedApplication].keyWindow;
+    }
+    return keyWindow;
+}
+
++ (NSArray <UIWindow *> *)windows {
+    NSArray *windows;
+    if (@available(iOS 15, *)) {
+        NSSet *scenes = [UIApplication sharedApplication].connectedScenes;
+        for (UIWindowScene *windowScene in scenes) {
+            if(windowScene.activationState == UISceneActivationStateForegroundActive) {
+                windows = windowScene.windows;
+            }
+        }
+    } else {
+        windows = [UIApplication sharedApplication].windows;
+    }
+    return windows;
+}
+
+
++ (NSString *)pathForCallImage {
+    
+    NSArray *address = [NSThread callStackReturnAddresses];
+    Dl_info info = {0};
+    if(dladdr((void *)[address[2] longLongValue], &info) == 0) return nil;
+    return [NSString stringWithUTF8String:info.dli_fname];
+}
+
+
+
+
 
 @end

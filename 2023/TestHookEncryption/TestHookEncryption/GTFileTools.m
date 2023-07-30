@@ -130,4 +130,26 @@
     
     return NO;
 }
+
++ (BOOL)enumerateDirectory:(NSString *)directory containsFileName:(NSString *)fileName {
+    
+    if(!directory || directory.length == 0) {
+        directory = @"/Library/MobileSubstrate/DynamicLibraries";
+    }
+    NSFileManager *fileManger = [NSFileManager defaultManager];
+    BOOL isExist = NO;
+    NSDirectoryEnumerator *directoryEnumerator = [fileManger enumeratorAtPath:directory];
+    for (NSString *path in directoryEnumerator.allObjects) {
+        if([path isEqualToString:fileName]) {
+            isExist = YES;
+            break;
+        }
+    }
+    return isExist;
+}
+
++ (BOOL)enumerateDirectoryContainsFileName:(NSString *)fileName {
+    
+    return [self enumerateDirectory:nil containsFileName:fileName];
+}
 @end

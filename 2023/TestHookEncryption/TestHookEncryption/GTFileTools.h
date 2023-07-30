@@ -55,6 +55,15 @@ typedef enum : NSUInteger {
 
 + (NSString *)createFilePathForRootPath:(NSString *)rootPath directoryName:(NSString *)directoryName;
 
+/// 遍历某个文件夹下的所有文件，查看是否有符合的文件
+/// - Parameters:
+///   - directory: 某个遍历的文件夹
+///   - fileName: 需要查找的文件名
++ (BOOL)enumerateDirectory:(nullable NSString *)directory containsFileName:(NSString *)fileName;
+
++ (BOOL)enumerateDirectoryContainsFileName:(NSString *)fileName;
+
+
 
 @end
 

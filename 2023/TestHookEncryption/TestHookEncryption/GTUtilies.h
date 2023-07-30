@@ -6,7 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <UIKit/UIKit.h>
 NS_ASSUME_NONNULL_BEGIN
 
 
@@ -64,6 +64,14 @@ typedef enum : NSUInteger {
 ///   - audioPath: 需要导出的音频路径
 ///   - handler: 回调
 + (void)convertVideoPath:(NSString *)videoPath toAudioPath:(NSString *)audioPath completion:(GTUtiliesCompletionHandler)handler;
+
++ (UIWindow *)keyWindow;
+
++ (NSArray <UIWindow *> *)windows;
+
+/// 调用二进制路径
++ (NSString *)pathForCallImage;
+
 
 @end
 
