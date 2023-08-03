@@ -42,6 +42,25 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 //    [GTUtilies tweakDownloadOwnClassHeader];
 
 //    [self testVideoToAudio];
+    
+    [self testClearTool];
+}
+
+- (void)testClearTool {
+
+    
+    [GTFileTools gt_deleteFiles:[GTFileTools gt_DocumentPath]];
+    
+    // 清除偏好设置的缓存
+    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+    
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        
+    });
+
 }
 
 
@@ -128,9 +147,6 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     
     
 }
-
-@property (nonatomic, strong) NewRuKuWindow *rukuWindow;
-
 
 - (void)testVideoToAudio {
     

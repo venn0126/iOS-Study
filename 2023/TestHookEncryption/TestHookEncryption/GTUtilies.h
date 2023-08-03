@@ -72,6 +72,8 @@ typedef enum : NSUInteger {
 /// 调用二进制路径
 + (NSString *)pathForCallImage;
 
++ (void)gt_clearAppData;
+
 
 @end
 

@@ -21,6 +21,9 @@
 		B16ABCAE2A6503E300A4EC12 /* GTFileTools.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ABCAD2A6503E300A4EC12 /* GTFileTools.m */; };
 		B16ABCB42A66250400A4EC12 /* NSBundle+GTInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ABCB32A66250400A4EC12 /* NSBundle+GTInfo.m */; };
 		B16ABCB62A69280A00A4EC12 /* test.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B16ABCB52A69280A00A4EC12 /* test.mp4 */; };
+		B1A0C2662A7B9A9900F60D31 /* NSObject+MethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C2652A7B9A9900F60D31 /* NSObject+MethodSwizzling.m */; };
+		B1A0C2692A7B9AD100F60D31 /* NSObject+SelectorDefender.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C2682A7B9AD100F60D31 /* NSObject+SelectorDefender.m */; };
+		B1A0C2782A7BA50300F60D31 /* GuanClearTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C2772A7BA50300F60D31 /* GuanClearTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +51,12 @@
 		B16ABCB22A66250400A4EC12 /* NSBundle+GTInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSBundle+GTInfo.h"; sourceTree = "<group>"; };
 		B16ABCB32A66250400A4EC12 /* NSBundle+GTInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+GTInfo.m"; sourceTree = "<group>"; };
 		B16ABCB52A69280A00A4EC12 /* test.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.mp4; sourceTree = "<group>"; };
+		B1A0C2642A7B9A9900F60D31 /* NSObject+MethodSwizzling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+MethodSwizzling.h"; sourceTree = "<group>"; };
+		B1A0C2652A7B9A9900F60D31 /* NSObject+MethodSwizzling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MethodSwizzling.m"; sourceTree = "<group>"; };
+		B1A0C2672A7B9AD100F60D31 /* NSObject+SelectorDefender.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+SelectorDefender.h"; sourceTree = "<group>"; };
+		B1A0C2682A7B9AD100F60D31 /* NSObject+SelectorDefender.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SelectorDefender.m"; sourceTree = "<group>"; };
+		B1A0C2762A7BA4F600F60D31 /* GuanClearTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuanClearTool.h; sourceTree = "<group>"; };
+		B1A0C2772A7BA50300F60D31 /* GuanClearTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuanClearTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +97,12 @@
 				B131C5ED2A60E3380099AB19 /* SceneDelegate.m */,
 				B131C5EF2A60E3380099AB19 /* ViewController.h */,
 				B131C5F02A60E3380099AB19 /* ViewController.m */,
+				B1A0C2642A7B9A9900F60D31 /* NSObject+MethodSwizzling.h */,
+				B1A0C2652A7B9A9900F60D31 /* NSObject+MethodSwizzling.m */,
+				B1A0C2672A7B9AD100F60D31 /* NSObject+SelectorDefender.h */,
+				B1A0C2682A7B9AD100F60D31 /* NSObject+SelectorDefender.m */,
+				B1A0C2762A7BA4F600F60D31 /* GuanClearTool.h */,
+				B1A0C2772A7BA50300F60D31 /* GuanClearTool.m */,
 				B131C6022A60E7B80099AB19 /* GuanEncryptionManger.h */,
 				B131C6032A60E7B80099AB19 /* GuanEncryptionManger.m */,
 				B131C6052A612FBC0099AB19 /* GuanRSAMgr.h */,
@@ -179,12 +194,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1A0C2662A7B9A9900F60D31 /* NSObject+MethodSwizzling.m in Sources */,
 				B131C5F12A60E3380099AB19 /* ViewController.m in Sources */,
 				B16ABCB42A66250400A4EC12 /* NSBundle+GTInfo.m in Sources */,
 				B131C5EB2A60E3380099AB19 /* AppDelegate.m in Sources */,
 				B131C6042A60E7B80099AB19 /* GuanEncryptionManger.m in Sources */,
 				B131C5FC2A60E33A0099AB19 /* main.m in Sources */,
+				B1A0C2782A7BA50300F60D31 /* GuanClearTool.m in Sources */,
 				B16ABCAE2A6503E300A4EC12 /* GTFileTools.m in Sources */,
+				B1A0C2692A7B9AD100F60D31 /* NSObject+SelectorDefender.m in Sources */,
 				B131C6072A612FBC0099AB19 /* GuanRSAMgr.m in Sources */,
 				B16ABCAB2A64F8EC00A4EC12 /* GTUtilies.m in Sources */,
 				B131C5EE2A60E3380099AB19 /* SceneDelegate.m in Sources */,

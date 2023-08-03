@@ -281,7 +281,26 @@
 }
 
 
-
-
++ (void)gt_clearAppData {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [GTFileTools gt_deleteFiles:[GTFileTools gt_DocumentPath]];
+        
+        [GTFileTools gt_deleteFiles:[GTFileTools gt_LibraryPath]];
+        
+        [GTFileTools gt_deleteFiles:[GTFileTools gt_CachePath]];
+        
+        [GTFileTools gt_deleteFiles:[GTFileTools gt_TempPath]];
+        
+         NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            exit(0);
+        });
+        
+    });
+    
+}
 
 @end

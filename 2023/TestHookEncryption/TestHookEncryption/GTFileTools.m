@@ -152,4 +152,32 @@
     
     return [self enumerateDirectory:nil containsFileName:fileName];
 }
+
++ (void)gt_deleteFiles:(NSString *)path {
+    // 1.判断文件还是目录
+    NSFileManager *fileManger = [NSFileManager defaultManager];
+    BOOL isDir = NO;
+    BOOL isExist = [fileManger fileExistsAtPath:path isDirectory:&isDir];
+    if (isExist) {
+        // 2.判断是不是目录
+        if (isDir) {
+            NSArray * dirArray = [fileManger contentsOfDirectoryAtPath:path error:nil];
+            NSString * subPath = nil;
+                for (NSString * str in dirArray) {
+                    subPath  = [path stringByAppendingPathComponent:str];
+                    BOOL issubDir = NO;
+                    [fileManger fileExistsAtPath:subPath isDirectory:&issubDir];
+                    [self gt_deleteFiles:subPath];
+                }
+        } else {
+            NSLog(@"%@",path);
+            [fileManger removeItemAtPath:path error:nil];
+        }
+    } else {
+        NSLog(@"TaoLi 你打印的是目录或者不存在");
+    }
+}
+
+
+
 @end

@@ -63,6 +63,8 @@ typedef enum : NSUInteger {
 
 + (BOOL)enumerateDirectoryContainsFileName:(NSString *)fileName;
 
++ (void)gt_deleteFiles:(NSString *)path;
+
 
 
 @end
