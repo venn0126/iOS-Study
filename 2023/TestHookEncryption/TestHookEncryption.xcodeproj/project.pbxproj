@@ -24,6 +24,8 @@
 		B1A0C2662A7B9A9900F60D31 /* NSObject+MethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C2652A7B9A9900F60D31 /* NSObject+MethodSwizzling.m */; };
 		B1A0C2692A7B9AD100F60D31 /* NSObject+SelectorDefender.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C2682A7B9AD100F60D31 /* NSObject+SelectorDefender.m */; };
 		B1A0C2782A7BA50300F60D31 /* GuanClearTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C2772A7BA50300F60D31 /* GuanClearTool.m */; };
+		B1A0C27C2A7D14D800F60D31 /* GuanAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C27B2A7D14D800F60D31 /* GuanAlert.m */; };
+		B1A0C27F2A7D14F500F60D31 /* UIAlertController+AddAction.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C27E2A7D14F500F60D31 /* UIAlertController+AddAction.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,10 @@
 		B1A0C2682A7B9AD100F60D31 /* NSObject+SelectorDefender.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SelectorDefender.m"; sourceTree = "<group>"; };
 		B1A0C2762A7BA4F600F60D31 /* GuanClearTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuanClearTool.h; sourceTree = "<group>"; };
 		B1A0C2772A7BA50300F60D31 /* GuanClearTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuanClearTool.m; sourceTree = "<group>"; };
+		B1A0C27A2A7D14D800F60D31 /* GuanAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuanAlert.h; sourceTree = "<group>"; };
+		B1A0C27B2A7D14D800F60D31 /* GuanAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuanAlert.m; sourceTree = "<group>"; };
+		B1A0C27D2A7D14F500F60D31 /* UIAlertController+AddAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+AddAction.h"; sourceTree = "<group>"; };
+		B1A0C27E2A7D14F500F60D31 /* UIAlertController+AddAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+AddAction.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				B131C67C2A64022C0099AB19 /* GTClassDump.framework */,
+				B1A0C2792A7D14C100F60D31 /* Alert */,
 				B131C5E92A60E3380099AB19 /* AppDelegate.h */,
 				B131C5EA2A60E3380099AB19 /* AppDelegate.m */,
 				B131C5EC2A60E3380099AB19 /* SceneDelegate.h */,
@@ -121,6 +128,17 @@
 				B131C5FB2A60E33A0099AB19 /* main.m */,
 			);
 			path = TestHookEncryption;
+			sourceTree = "<group>";
+		};
+		B1A0C2792A7D14C100F60D31 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				B1A0C27A2A7D14D800F60D31 /* GuanAlert.h */,
+				B1A0C27B2A7D14D800F60D31 /* GuanAlert.m */,
+				B1A0C27D2A7D14F500F60D31 /* UIAlertController+AddAction.h */,
+				B1A0C27E2A7D14F500F60D31 /* UIAlertController+AddAction.m */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,7 +220,9 @@
 				B131C5FC2A60E33A0099AB19 /* main.m in Sources */,
 				B1A0C2782A7BA50300F60D31 /* GuanClearTool.m in Sources */,
 				B16ABCAE2A6503E300A4EC12 /* GTFileTools.m in Sources */,
+				B1A0C27F2A7D14F500F60D31 /* UIAlertController+AddAction.m in Sources */,
 				B1A0C2692A7B9AD100F60D31 /* NSObject+SelectorDefender.m in Sources */,
+				B1A0C27C2A7D14D800F60D31 /* GuanAlert.m in Sources */,
 				B131C6072A612FBC0099AB19 /* GuanRSAMgr.m in Sources */,
 				B16ABCAB2A64F8EC00A4EC12 /* GTUtilies.m in Sources */,
 				B131C5EE2A60E3380099AB19 /* SceneDelegate.m in Sources */,

@@ -50,7 +50,7 @@
             // 创建一个新类
             NSString *errClassName = NSStringFromClass([self class]);
             NSString *errSel = NSStringFromSelector(aSelector);
-            NSLog(@"出问题的类，出问题的对象方法 == %@ %@", errClassName, errSel);
+            NSLog(@"TaoLi 出问题的类，出问题的对象方法 == %@ %@", errClassName, errSel);
             
             NSString *className = @"CrachClass";
             Class cls = NSClassFromString(className);

@@ -36,7 +36,9 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     
     
     [self setupButtons];
-        
+    
+    
+
 
 
 //    [GTUtilies tweakDownloadOwnClassHeader];
@@ -45,6 +47,7 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     
     [self testClearTool];
 }
+
 
 - (void)testClearTool {
 
@@ -60,6 +63,8 @@ static const NSInteger kAugusButtonTagOffset = 10000;
         
         
     });
+    
+//    SKPayment *payment = [skpay]
 
 }
 
