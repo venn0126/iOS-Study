@@ -12,6 +12,7 @@
 #import "GTUtilies.h"
 #import "NSBundle+GTInfo.h"
 #import "GTFileTools.h"
+#import <StoreKit/StoreKit.h>
 
 #define kTaoLiQuickSubmitOrderNofitication @"kTaoLiQuickSubmitOrderNofitication"
 
@@ -22,6 +23,8 @@
 static const NSInteger kAugusButtonTagOffset = 10000;
 
 @interface ViewController ()
+
+@property (retain, nonatomic) SKPaymentTransaction *transaction;
 
 @end
 
@@ -37,15 +40,32 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     
     [self setupButtons];
     
-    
-
-
-
 //    [GTUtilies tweakDownloadOwnClassHeader];
 
 //    [self testVideoToAudio];
     
     [self testClearTool];
+}
+
+
+- (void)testIAP {
+    
+    /*
+    typedef NS_ENUM(NSInteger, SKPaymentTransactionState) {
+        SKPaymentTransactionStatePurchasing,    // Transaction is being added to the server queue.
+        SKPaymentTransactionStatePurchased,     // Transaction is in queue, user has been charged.  Client should complete the transaction.
+        SKPaymentTransactionStateFailed,        // Transaction was cancelled or failed before being added to the server queue.
+        SKPaymentTransactionStateRestored,      // Transaction was restored from user's purchase history.  Client should complete the transaction.
+        SKPaymentTransactionStateDeferred API_AVAILABLE(ios(8.0), macos(10.10), watchos(6.2)),   // The transaction is in the queue, but its final status is pending external action.
+    } API_AVAILABLE(ios(3.0), macos(10.7), watchos(6.2));
+     */
+
+    
+    if(_transaction.transactionState != SKPaymentTransactionStatePurchased) {
+        // 付款失败
+        return;
+    }
+    
 }
 
 
