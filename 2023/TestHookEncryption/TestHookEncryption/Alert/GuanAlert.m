@@ -48,6 +48,65 @@
      [[GuanAlert currentViewController] presentViewController:alertVC animated:YES completion: nil];
 }
 
+
++ (void)showAlertWithTitle:(NSString *)title
+                   message:(NSString *)message
+              confirmTitle:(NSString *)confirmTitle
+               cancelTitle:(NSString *)cancelTitle
+            preferredStyle:(UIAlertControllerStyle)preferredStyle
+             confirmHandle:(AlertConfirmHandle)confirmHandle
+              cancleHandle:(AlertCancelHandle)cancleHandle
+   isNeedOneInputTextField:(BOOL)isNeedOneInputTextField
+OneInputTextFieldPlaceHolder:(NSString *)OneInputTextFieldPlaceHolder
+    confirmTextFieldHandle:(AlertConfirmWithTextFieldHandle)confirmTextFieldHandle {
+    
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:title
+                                                                     message:message
+                                                              preferredStyle: preferredStyle];
+    
+    if (cancelTitle != nil) {
+        UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:cancelTitle
+                                                               style:UIAlertActionStyleCancel
+                                                             handler:^(UIAlertAction * _Nonnull action) {
+            if (cancleHandle) {
+                cancleHandle();
+            }
+        }];
+        [alertVC addAction:cancleAction];
+    }
+    
+
+    if (confirmTitle != nil) {
+        UIAlertAction *confirAction = [UIAlertAction actionWithTitle:confirmTitle
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * _Nonnull action) {
+            if(isNeedOneInputTextField) {
+                if(confirmTextFieldHandle) {
+                    NSArray<UITextField *> *array = alertVC.textFields;
+                    UITextField *firstTextField = array.firstObject;
+                    confirmTextFieldHandle(firstTextField.text);
+                } else {
+                    if (confirmHandle) {
+                        confirmHandle();
+                    }
+                }
+            }
+        }];
+        [alertVC addAction:confirAction];
+    }
+    
+    
+    if(isNeedOneInputTextField) {
+        [alertVC addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+            textField.placeholder = OneInputTextFieldPlaceHolder;
+        }];
+    }
+
+     [[GuanAlert currentViewController] presentViewController:alertVC animated:YES completion: nil];
+}
+
+
+
 + (void)showAlertWithTitle:(NSString *)title
                    message:(NSString *)message
               confirmTitle:(NSString *)confirmTitle
@@ -141,17 +200,53 @@
 
 // find currentViewController
 
-+ (UIViewController *)currentViewController {
-    UIWindow *window = [[UIApplication sharedApplication].delegate window];
-    UIViewController *presentedVC = [[window rootViewController] presentedViewController];
-    if (presentedVC) {
-        return presentedVC;
-        
++ (UIWindow *)keyWindow {
+    UIWindow *keyWindow;
+    if (@available(iOS 13, *)) {
+        NSSet *scenes = [UIApplication sharedApplication].connectedScenes;
+        for (UIWindowScene *windowScene in scenes) {
+            if(windowScene.activationState == UISceneActivationStateForegroundActive) {
+                for (UIWindow *window in windowScene.windows) {
+                    if(window.isKeyWindow) {
+                        keyWindow = window;
+                    }
+                }
+            }
+        }
     } else {
-        return window.rootViewController;
+        keyWindow = [UIApplication sharedApplication].keyWindow;
     }
+    return keyWindow;
 }
 
++ (UIViewController *)currentViewController
+{
+    UIViewController *resultVC;
+    resultVC = [self topViewController:[[self keyWindow] rootViewController]];
+    while (resultVC.presentedViewController)
+    {
+        resultVC = [self topViewController:resultVC.presentedViewController];
+    }
+    return resultVC;
+}
+
+
++ (UIViewController *)topViewController:(UIViewController *)vc
+{
+    if ([vc isKindOfClass:[UINavigationController class]])
+    {
+        return [self topViewController:[(UINavigationController *)vc topViewController]];
+    }
+    else if ([vc isKindOfClass:[UITabBarController class]])
+    {
+        return [self topViewController:[(UITabBarController *)vc selectedViewController]];
+    }
+    else
+    {
+        return vc;
+    }
+    return nil;
+}
 
 
 @end

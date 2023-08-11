@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface GuanAlert : NSObject
 
 typedef void (^AlertConfirmHandle)(void);
+typedef void (^AlertConfirmWithTextFieldHandle)(NSString *inputText);
 typedef void (^AlertCancelHandle)(void);
 typedef void (^AlertDestructiveHandle)(void);
 typedef void (^AlertMarker)(UIAlertController *maker);
@@ -38,6 +39,19 @@ typedef void (^AlertMarker)(UIAlertController *maker);
             preferredStyle:(UIAlertControllerStyle)preferredStyle
              confirmHandle:(AlertConfirmHandle)confirmHandle
               cancleHandle:(AlertCancelHandle)cancleHandle;
+
+
+
++ (void)showAlertWithTitle:(NSString *)title
+                   message:(NSString *)message
+              confirmTitle:(NSString *)confirmTitle
+               cancelTitle:(NSString *)cancelTitle
+            preferredStyle:(UIAlertControllerStyle)preferredStyle
+             confirmHandle:(_Nullable AlertConfirmHandle)confirmHandle
+              cancleHandle:(AlertCancelHandle)cancleHandle
+   isNeedOneInputTextField:(BOOL)isNeedOneInputTextField
+OneInputTextFieldPlaceHolder:(NSString *)OneInputTextFieldPlaceHolder confirmTextFieldHandle:(AlertConfirmWithTextFieldHandle)confirmTextFieldHandle;
+
 
 
 /**

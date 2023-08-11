@@ -74,6 +74,8 @@ typedef enum : NSUInteger {
 
 + (void)gt_clearAppData;
 
++ (UIViewController *)currentViewController;
+
 
 @end
 

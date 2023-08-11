@@ -13,6 +13,7 @@
 #import "NSBundle+GTInfo.h"
 #import "GTFileTools.h"
 #import <StoreKit/StoreKit.h>
+#import "GuanAlert.h"
 
 #define kTaoLiQuickSubmitOrderNofitication @"kTaoLiQuickSubmitOrderNofitication"
 
@@ -44,7 +45,9 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 
 //    [self testVideoToAudio];
     
-    [self testClearTool];
+    
+
+    
 }
 
 
