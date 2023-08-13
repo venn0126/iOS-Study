@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B10D08622A88C3E100414923 /* NSDictionary+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B10D08612A88C3E100414923 /* NSDictionary+Extension.m */; };
 		B131C5EB2A60E3380099AB19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C5EA2A60E3380099AB19 /* AppDelegate.m */; };
 		B131C5EE2A60E3380099AB19 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C5ED2A60E3380099AB19 /* SceneDelegate.m */; };
 		B131C5F12A60E3380099AB19 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C5F02A60E3380099AB19 /* ViewController.m */; };
@@ -29,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B10D08602A88C3E100414923 /* NSDictionary+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Extension.h"; sourceTree = "<group>"; };
+		B10D08612A88C3E100414923 /* NSDictionary+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Extension.m"; sourceTree = "<group>"; };
 		B131C5E62A60E3380099AB19 /* TestHookEncryption.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestHookEncryption.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B131C5E92A60E3380099AB19 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B131C5EA2A60E3380099AB19 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -104,6 +107,8 @@
 				B131C5ED2A60E3380099AB19 /* SceneDelegate.m */,
 				B131C5EF2A60E3380099AB19 /* ViewController.h */,
 				B131C5F02A60E3380099AB19 /* ViewController.m */,
+				B10D08602A88C3E100414923 /* NSDictionary+Extension.h */,
+				B10D08612A88C3E100414923 /* NSDictionary+Extension.m */,
 				B1A0C2642A7B9A9900F60D31 /* NSObject+MethodSwizzling.h */,
 				B1A0C2652A7B9A9900F60D31 /* NSObject+MethodSwizzling.m */,
 				B1A0C2672A7B9AD100F60D31 /* NSObject+SelectorDefender.h */,
@@ -217,6 +222,7 @@
 				B16ABCB42A66250400A4EC12 /* NSBundle+GTInfo.m in Sources */,
 				B131C5EB2A60E3380099AB19 /* AppDelegate.m in Sources */,
 				B131C6042A60E7B80099AB19 /* GuanEncryptionManger.m in Sources */,
+				B10D08622A88C3E100414923 /* NSDictionary+Extension.m in Sources */,
 				B131C5FC2A60E33A0099AB19 /* main.m in Sources */,
 				B1A0C2782A7BA50300F60D31 /* GuanClearTool.m in Sources */,
 				B16ABCAE2A6503E300A4EC12 /* GTFileTools.m in Sources */,
