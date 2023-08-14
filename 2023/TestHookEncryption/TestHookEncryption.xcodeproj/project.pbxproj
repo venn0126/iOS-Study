@@ -27,6 +27,7 @@
 		B1A0C2782A7BA50300F60D31 /* GuanClearTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C2772A7BA50300F60D31 /* GuanClearTool.m */; };
 		B1A0C27C2A7D14D800F60D31 /* GuanAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C27B2A7D14D800F60D31 /* GuanAlert.m */; };
 		B1A0C27F2A7D14F500F60D31 /* UIAlertController+AddAction.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C27E2A7D14F500F60D31 /* UIAlertController+AddAction.m */; };
+		B1D171782A8A1B46001A0300 /* JCCSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D171772A8A1B46001A0300 /* JCCSettingsController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,8 @@
 		B1A0C27B2A7D14D800F60D31 /* GuanAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuanAlert.m; sourceTree = "<group>"; };
 		B1A0C27D2A7D14F500F60D31 /* UIAlertController+AddAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+AddAction.h"; sourceTree = "<group>"; };
 		B1A0C27E2A7D14F500F60D31 /* UIAlertController+AddAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+AddAction.m"; sourceTree = "<group>"; };
+		B1D171762A8A1B46001A0300 /* JCCSettingsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCCSettingsController.h; sourceTree = "<group>"; };
+		B1D171772A8A1B46001A0300 /* JCCSettingsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCCSettingsController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +110,8 @@
 				B131C5ED2A60E3380099AB19 /* SceneDelegate.m */,
 				B131C5EF2A60E3380099AB19 /* ViewController.h */,
 				B131C5F02A60E3380099AB19 /* ViewController.m */,
+				B1D171762A8A1B46001A0300 /* JCCSettingsController.h */,
+				B1D171772A8A1B46001A0300 /* JCCSettingsController.m */,
 				B10D08602A88C3E100414923 /* NSDictionary+Extension.h */,
 				B10D08612A88C3E100414923 /* NSDictionary+Extension.m */,
 				B1A0C2642A7B9A9900F60D31 /* NSObject+MethodSwizzling.h */,
@@ -224,6 +229,7 @@
 				B131C6042A60E7B80099AB19 /* GuanEncryptionManger.m in Sources */,
 				B10D08622A88C3E100414923 /* NSDictionary+Extension.m in Sources */,
 				B131C5FC2A60E33A0099AB19 /* main.m in Sources */,
+				B1D171782A8A1B46001A0300 /* JCCSettingsController.m in Sources */,
 				B1A0C2782A7BA50300F60D31 /* GuanClearTool.m in Sources */,
 				B16ABCAE2A6503E300A4EC12 /* GTFileTools.m in Sources */,
 				B1A0C27F2A7D14F500F60D31 /* UIAlertController+AddAction.m in Sources */,

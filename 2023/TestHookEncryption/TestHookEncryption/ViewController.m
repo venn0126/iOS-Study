@@ -14,6 +14,7 @@
 #import "GTFileTools.h"
 #import <StoreKit/StoreKit.h>
 #import "GuanAlert.h"
+#import "JCCSettingsController.h"
 
 #define kTaoLiQuickSubmitOrderNofitication @"kTaoLiQuickSubmitOrderNofitication"
 
@@ -50,6 +51,13 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     
 }
 
+
+- (void)jumpJCCSetting {
+    
+    JCCSettingsController *settings = [[JCCSettingsController alloc] init];
+    settings.modalPresentationStyle = UIModalPresentationFullScreen;
+    [[GTUtilies currentViewController] presentViewController:settings animated:YES completion:nil];
+}
 
 - (void)testIAP {
     
@@ -248,6 +256,8 @@ static const NSInteger kAugusButtonTagOffset = 10000;
         case 10000:{
             NSLog(@"%@",sender.titleLabel.text);
             [self augusMD5];
+            
+            [self jumpJCCSetting];
             break;
         }
         case 10001:{
@@ -289,8 +299,6 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     NSString *test = @"augus123";
     NSString *res = [GuanEncryptionManger md5FromString:test];
     NSLog(@"md5 before %@ and after %@",test,res);
-    [self showAlert];
-    
 }
 
 - (void)augusAES {
