@@ -6,8 +6,13 @@
 //
 
 #import "JCCSettingsController.h"
+#import "GuanTableView.h"
 
 @interface JCCSettingsController ()
+
+
+@property (nonatomic, strong) GuanTableView *tableView;
+
 
 @end
 
@@ -20,7 +25,18 @@
     self.title = @"JCC聚的助手";
     self.view.backgroundColor = UIColor.greenColor;
     
+    [self.view addSubview:self.tableView];
     
+    
+}
+
+
+- (GuanTableView *)tableView {
+    if(!_tableView) {
+        CGFloat y = 64;
+        _tableView = [[GuanTableView alloc] initWithFrame:CGRectMake(0, y, self.view.frame.size.width, self.view.frame.size.height - y) style:UITableViewStyleGrouped];
+    }
+    return _tableView;
 }
 
 /*

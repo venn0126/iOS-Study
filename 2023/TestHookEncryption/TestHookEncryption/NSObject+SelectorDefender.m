@@ -16,9 +16,9 @@
     dispatch_once(&onceToken, ^{
  
         // 拦截 `-forwardingTargetForSelector:` 方法，替换自定义实现
-        [NSObject yscDefenderSwizzlingInstanceMethod:@selector(forwardingTargetForSelector:)
-                                          withMethod:@selector(ysc_forwardingTargetForSelector:)
-                                           withClass:[NSObject class]];
+//        [NSObject yscDefenderSwizzlingInstanceMethod:@selector(forwardingTargetForSelector:)
+//                                          withMethod:@selector(ysc_forwardingTargetForSelector:)
+//                                           withClass:[NSObject class]];
         
     });
 }

@@ -16,6 +16,7 @@
 #import "GuanAlert.h"
 #import "JCCSettingsController.h"
 
+
 #define kTaoLiQuickSubmitOrderNofitication @"kTaoLiQuickSubmitOrderNofitication"
 
 #define GuanScreenWidth [UIScreen mainScreen].bounds.size.width
