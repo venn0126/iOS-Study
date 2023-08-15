@@ -8,11 +8,18 @@
 #import <UIKit/UIKit.h>
 @class GuanSectionModel;
 
+
+typedef void(^GuanTableViewDataSourceBlock)(void);
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface GuanTableViewDataSource : NSObject <UITableViewDataSource>
 
-- (instancetype)initWithDataArray:(NSArray <GuanSectionModel *>*)dataArray;
+@property (nonatomic, strong) NSArray *dataArray;
+
+@property (nonatomic, copy) GuanTableViewDataSourceBlock reloadDataBlock;
+
+- (instancetype)initWithDataArray:(NSArray <GuanSectionModel *>* _Nullable)dataArray;
 
 @end
 

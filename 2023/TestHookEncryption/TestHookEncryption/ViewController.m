@@ -55,6 +55,15 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 
 - (void)jumpJCCSetting {
     
+    
+    void (^blockTest)(BOOL arg1, NSString *arg2) = ^(BOOL arg1, NSString *arg2) {
+        NSLog(@"TaoLi block Test");
+    };
+    
+    
+    
+    blockTest(NO, @"it is test arg2");
+    
     JCCSettingsController *settings = [[JCCSettingsController alloc] init];
     settings.modalPresentationStyle = UIModalPresentationFullScreen;
     [[GTUtilies currentViewController] presentViewController:settings animated:YES completion:nil];

@@ -9,9 +9,10 @@
 #import "GuanBaseModel.h"
 
 
+
 @interface GuanBaseTableCell ()
 
-@property (nonatomic, strong) UILabel *guanTitleLabel;
+
 
 
 @end
@@ -25,6 +26,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(!self) return nil;
     
+//    self.contentView.backgroundColor = [GuanUITool guan_red:229 green:229 blue:299];
     self.contentView.backgroundColor = UIColor.whiteColor;
     [self configureSubviews];
     
@@ -43,7 +45,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    self.guanTitleLabel.frame = CGRectMake(kGuanTitleLeftMargin, 0, self.frame.size.width * 0.5, self.frame.size.height);
+    self.guanTitleLabel.frame = CGRectMake(kGuanTitleLeftMargin, 0, self.frame.size.width - kGuanTitleLeftMargin, self.frame.size.height);
     
 }
 
@@ -62,7 +64,7 @@
 - (UILabel *)guanTitleLabel {
     if(!_guanTitleLabel) {
         _guanTitleLabel = [[UILabel alloc] init];
-        _guanTitleLabel.font = [UIFont systemFontOfSize:17.0];
+        _guanTitleLabel.font = [UIFont systemFontOfSize:GuanOneTitleFont];
         _guanTitleLabel.textColor = UIColor.blackColor;
         _guanTitleLabel.textAlignment = NSTextAlignmentLeft;
         

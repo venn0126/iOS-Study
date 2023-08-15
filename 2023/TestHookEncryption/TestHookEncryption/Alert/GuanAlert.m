@@ -60,9 +60,25 @@
 OneInputTextFieldPlaceHolder:(NSString *)OneInputTextFieldPlaceHolder
     confirmTextFieldHandle:(AlertConfirmWithTextFieldHandle)confirmTextFieldHandle {
     
+    [self showAlertWithTitle:title message:message confirmTitle:confirmTitle cancelTitle:cancelTitle preferredStyle:preferredStyle confirmHandle:confirmHandle cancleHandle:cancleHandle isNeedOneInputTextField:isNeedOneInputTextField textFieldPlaceHolder:OneInputTextFieldPlaceHolder textFieldKeyboardType:UIKeyboardTypeDefault confirmTextFieldHandle:confirmTextFieldHandle];
+}
+
+
++ (void)showAlertWithTitle:(NSString *)title
+                   message:(NSString *)message
+              confirmTitle:(NSString *)confirmTitle
+               cancelTitle:(NSString *)cancelTitle
+            preferredStyle:(UIAlertControllerStyle)preferredStyle
+             confirmHandle:(_Nullable AlertConfirmHandle)confirmHandle
+              cancleHandle:(AlertCancelHandle)cancleHandle
+   isNeedOneInputTextField:(BOOL)isNeedOneInputTextField
+      textFieldPlaceHolder:(NSString *)textFieldPlaceHolder
+     textFieldKeyboardType:(UIKeyboardType)keyboardType
+    confirmTextFieldHandle:(AlertConfirmWithTextFieldHandle)confirmTextFieldHandle {
+    
     UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:title
                                                                      message:message
-                                                              preferredStyle: preferredStyle];
+                                                              preferredStyle:preferredStyle];
     
     if (cancelTitle != nil) {
         UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:cancelTitle
@@ -98,11 +114,13 @@ OneInputTextFieldPlaceHolder:(NSString *)OneInputTextFieldPlaceHolder
     
     if(isNeedOneInputTextField) {
         [alertVC addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-            textField.placeholder = OneInputTextFieldPlaceHolder;
+            textField.placeholder = textFieldPlaceHolder;
+            textField.keyboardType = keyboardType;
         }];
     }
 
      [[GuanAlert currentViewController] presentViewController:alertVC animated:YES completion: nil];
+    
 }
 
 

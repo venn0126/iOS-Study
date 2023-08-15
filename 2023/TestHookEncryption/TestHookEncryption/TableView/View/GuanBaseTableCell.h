@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "GuanUITool.h"
 
 /// MARK: 全局变量
 ///
@@ -46,6 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GuanBaseTableCell : UITableViewCell
 
+@property (nonatomic, strong) UILabel *guanTitleLabel;
 
 /// 基础cell的某个区域的回调代理
 @property (nonatomic, weak) id<GuanBaseTableCellDelegate> delegate;

@@ -7,9 +7,10 @@
 
 #import "GuanTableViewDelegate.h"
 #import "GuanBaseModel.h"
+#import "GuanUITool.h"
 
 
-static const CGFloat kGuanTableCellRowHeight = 50.0;
+static const CGFloat kGuanTableCellRowHeight = 60.0;
 
 
 @interface GuanTableViewDelegate ()
@@ -38,18 +39,18 @@ static const CGFloat kGuanTableCellRowHeight = 50.0;
 }
 
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-
-    UILabel *myLabel = [[UILabel alloc] init];
-    myLabel.frame = CGRectMake(20, 8, 320, 20);
-    myLabel.font = [UIFont boldSystemFontOfSize:18];
-    myLabel.text = self.dataArray[section].guanSectionTitle ?: @"";
-
-    UIView *headerView = [[UIView alloc] init];
-    [headerView addSubview:myLabel];
-
-    return headerView;
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+//
+//    UILabel *myLabel = [[UILabel alloc] init];
+//    myLabel.frame = CGRectMake(20, 0, tableView.width, 48);
+//    myLabel.font = [UIFont boldSystemFontOfSize:28];
+//    myLabel.text = self.dataArray[section].guanSectionTitle ?: @"";
+//
+//    UIView *headerView = [[UIView alloc] init];
+//    [headerView addSubview:myLabel];
+//
+//    return headerView;
+//}
 
 
 @end

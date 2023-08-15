@@ -14,7 +14,7 @@
     self = [super initWithFrame:frame];
     if(!self) return nil;
     
-    self.onTintColor = UIColor.blueColor;
+    self.onTintColor = [UIColor colorWithRed:62/256.0 green:137/256.0 blue:250/256.0 alpha:1];
     return self;
 }
 

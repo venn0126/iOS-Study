@@ -9,6 +9,7 @@
 #import "GuanBaseModel.h"
 
 
+
 @interface GuanRightLabelTableCell ()
 
 @property (nonatomic, strong) UILabel *guanRightLabel;
@@ -22,10 +23,20 @@
 - (void)configureSubviews {
     [super configureSubviews];
     
+    self.guanTitleLabel.textColor = UIColor.lightGrayColor;
+    self.guanTitleLabel.font = [UIFont systemFontOfSize:GuanThreeTitleFont];
+    
     [self.contentView addSubview:self.guanRightLabel];
-    self.guanRightLabel.font = [UIFont systemFontOfSize:16];
     self.guanRightLabel.textColor = UIColor.lightGrayColor;
     
+}
+
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    self.guanTitleLabel.width = self.width * 0.5 - kGuanTitleLeftMargin;
+    self.guanRightLabel.frame = CGRectMake(self.width * 0.5, 0, self.width * 0.5 - kGuanTitleLeftMargin, self.height);
 }
 
 
@@ -51,10 +62,11 @@
 - (UILabel *)guanRightLabel {
     if(!_guanRightLabel) {
         _guanRightLabel = [[UILabel alloc] init];
-        _guanRightLabel.font = [UIFont systemFontOfSize:16.0];
+        _guanRightLabel.font = [UIFont systemFontOfSize:GuanThreeTitleFont];
         _guanRightLabel.textColor = UIColor.lightGrayColor;
-        _guanRightLabel.textAlignment = NSTextAlignmentCenter;
-    
+        _guanRightLabel.textAlignment = NSTextAlignmentRight;
+        // if set property userInteractionEnabled is yes, tap is no working
+        _guanRightLabel.userInteractionEnabled = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(guanRightLabelTapAction:)];
         [_guanRightLabel addGestureRecognizer:tap];
     }

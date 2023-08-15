@@ -7,6 +7,7 @@
 
 #import "JCCSettingsController.h"
 #import "GuanTableView.h"
+#import "GuanUITool.h"
 
 @interface JCCSettingsController ()
 
@@ -22,18 +23,55 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"JCC聚的助手";
-    self.view.backgroundColor = UIColor.greenColor;
+    self.title = @"超跑助手";
+    self.view.backgroundColor = UIColor.whiteColor;
     
+    // 添加导航栏
+    [self addNavgationBar];
     [self.view addSubview:self.tableView];
+}
+
+
+- (void)addNavgationBar {
+    // bottom view
+    UIView *navgationView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, [GuanUITool guan_navigationViewHeight])];
+    navgationView.backgroundColor = [GuanUITool guan_red:60 green:82 blue:113];
+    
+    UILabel *guanTitleLabel = [[UILabel alloc] init];
+    guanTitleLabel.text = @"超跑助手";
+    guanTitleLabel.textColor = UIColor.whiteColor;
+    guanTitleLabel.font = [UIFont boldSystemFontOfSize:20];
+    [guanTitleLabel sizeToFit];
+    guanTitleLabel.y = GuanStatusBarHeight();
+    guanTitleLabel.centerX = navgationView.centerX;
+    [navgationView addSubview:guanTitleLabel];
     
     
+    // 70 44
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backButton setTitle:@"返回" forState:UIControlStateNormal];
+    [backButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    backButton.titleLabel.font = [UIFont systemFontOfSize:18];
+    backButton.size = CGSizeMake(70, 44);
+    backButton.centerY = guanTitleLabel.centerY;
+    [backButton addTarget:self action:@selector(backButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [navgationView addSubview:backButton];
+    
+    [self.view addSubview:navgationView];
+    
+    
+}
+
+- (void)backButtonAction:(UIButton *)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
 - (GuanTableView *)tableView {
     if(!_tableView) {
-        CGFloat y = 64;
+        
+        CGFloat y = [GuanUITool guan_navigationViewHeight];
         _tableView = [[GuanTableView alloc] initWithFrame:CGRectMake(0, y, self.view.frame.size.width, self.view.frame.size.height - y) style:UITableViewStyleGrouped];
     }
     return _tableView;

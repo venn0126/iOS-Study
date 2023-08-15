@@ -53,6 +53,19 @@ typedef void (^AlertMarker)(UIAlertController *maker);
 OneInputTextFieldPlaceHolder:(NSString *)OneInputTextFieldPlaceHolder confirmTextFieldHandle:(AlertConfirmWithTextFieldHandle)confirmTextFieldHandle;
 
 
++ (void)showAlertWithTitle:(NSString *)title
+                   message:(NSString *)message
+              confirmTitle:(NSString *)confirmTitle
+               cancelTitle:(NSString *)cancelTitle
+            preferredStyle:(UIAlertControllerStyle)preferredStyle
+             confirmHandle:(_Nullable AlertConfirmHandle)confirmHandle
+              cancleHandle:(AlertCancelHandle)cancleHandle
+   isNeedOneInputTextField:(BOOL)isNeedOneInputTextField
+      textFieldPlaceHolder:(NSString *)textFieldPlaceHolder
+     textFieldKeyboardType:(UIKeyboardType)keyboardType
+    confirmTextFieldHandle:(AlertConfirmWithTextFieldHandle)confirmTextFieldHandle;
+
+
 
 /**
  Quick to show Alert from  three type of UIAlertActionStyle
