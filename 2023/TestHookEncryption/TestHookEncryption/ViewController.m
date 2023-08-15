@@ -47,9 +47,34 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 
 //    [self testVideoToAudio];
     
-    
+        
+}
 
+
+- (void)testGetSubString {
     
+    NSString *resultString = @"实时，距您1.1km，全程9.2km，从浙江省杭州市拱墅区环西新村12幢到上城区钱江新城浙商银行(杭州分行营业部);";
+    
+    // 截取字符串
+    NSArray *oneArray = [resultString componentsSeparatedByString:@"，"];
+    if(oneArray.count >= 2) {
+        NSLog(@"oneArray %@",oneArray);
+        NSString *orderType = oneArray.firstObject;
+        NSLog(@"order type %@",orderType);
+        
+        // 距您1.1km
+        NSString *distanceForMe = oneArray[1];
+        NSRange youRange = [distanceForMe rangeOfString:@"您"];
+        NSRange kRange = [distanceForMe rangeOfString:@"k"];
+        NSLog(@"krange %@",NSStringFromRange(kRange));
+        
+        NSRange resRange = NSMakeRange(youRange.location+1, kRange.location - youRange.location-1);
+        NSString *resStr = [distanceForMe substringWithRange:resRange];
+        float resNumber = [resStr floatValue];
+        NSLog(@"resStr %@ %f",resStr,resNumber);
+        
+    }
+
 }
 
 
@@ -267,7 +292,7 @@ static const NSInteger kAugusButtonTagOffset = 10000;
             NSLog(@"%@",sender.titleLabel.text);
             [self augusMD5];
             
-            [self jumpJCCSetting];
+//            [self jumpJCCSetting];
             break;
         }
         case 10001:{
