@@ -47,30 +47,59 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 
 //    [self testVideoToAudio];
     
+    [self testGetSubString];
         
 }
 
 
 - (void)testGetSubString {
     
-    NSString *resultString = @"实时，距您1.1km，全程9.2km，从浙江省杭州市拱墅区环西新村12幢到上城区钱江新城浙商银行(杭州分行营业部);";
+    // 实时，距您1.1km，全程9.2km，从浙江省杭州市拱墅区环西新村12幢到上城区钱江新城浙商银行(杭州分行营业部)
+    // 实时，红包20元，距您600m，全程4.7km，从浙江省科协大楼(西1门)到华门·自由21公寓A座;
+    //  预约: 全程1.9km，明天 07:30从南肖埠文景苑到杭州市红会医院;
+    //  预约: 全程800m，明天 07:30从南肖埠文景苑到杭州市红会医院;
+    // 预约: 红包20元，全程8.7km，明天 04:50从ME酒店(杭州西湖黄龙体育中心店)西北侧到莲花滩观鸟区;
+
+
+    NSString *resultString = @"预约: 全程800m，明天 07:30从南肖埠文景苑到杭州市红会医院;";
     
     // 截取字符串
     NSArray *oneArray = [resultString componentsSeparatedByString:@"，"];
     if(oneArray.count >= 2) {
         NSLog(@"oneArray %@",oneArray);
-        NSString *orderType = oneArray.firstObject;
-        NSLog(@"order type %@",orderType);
+        NSString *distanceForMe;
+        for (NSString *subStr in oneArray) {
+            if([subStr containsString:@"全程"]) {
+                distanceForMe = subStr;
+                break;
+            }
+        }
+                
+        NSRange youRange = [distanceForMe rangeOfString:@"程"];
+        NSString *lastUnit;
+        if([distanceForMe containsString:@"km"]) {
+            lastUnit = @"k";
+        } else if([distanceForMe containsString:@"m"]) {
+            lastUnit = @"m";
+        }
         
-        // 距您1.1km
-        NSString *distanceForMe = oneArray[1];
-        NSRange youRange = [distanceForMe rangeOfString:@"您"];
-        NSRange kRange = [distanceForMe rangeOfString:@"k"];
+        if(!lastUnit) {
+            return;
+        }
+        
+        NSRange kRange = [distanceForMe rangeOfString:lastUnit];
         NSLog(@"krange %@",NSStringFromRange(kRange));
         
         NSRange resRange = NSMakeRange(youRange.location+1, kRange.location - youRange.location-1);
+        if(resRange.length > distanceForMe.length) {
+            
+            return;
+        }
         NSString *resStr = [distanceForMe substringWithRange:resRange];
         float resNumber = [resStr floatValue];
+        if([lastUnit isEqualToString:@"m"]) {
+            resNumber = resNumber / 1000.0;
+        }
         NSLog(@"resStr %@ %f",resStr,resNumber);
         
     }
