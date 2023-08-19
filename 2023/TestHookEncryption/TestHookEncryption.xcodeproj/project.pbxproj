@@ -37,6 +37,7 @@
 		B1A0C2782A7BA50300F60D31 /* GuanClearTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C2772A7BA50300F60D31 /* GuanClearTool.m */; };
 		B1A0C27C2A7D14D800F60D31 /* GuanAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C27B2A7D14D800F60D31 /* GuanAlert.m */; };
 		B1A0C27F2A7D14F500F60D31 /* UIAlertController+AddAction.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C27E2A7D14F500F60D31 /* UIAlertController+AddAction.m */; };
+		B1C1CD5A2A90D2DB0007A5F1 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C1CD582A90D2DB0007A5F1 /* UIView+Toast.m */; };
 		B1D171782A8A1B46001A0300 /* JCCSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D171772A8A1B46001A0300 /* JCCSettingsController.m */; };
 		B1F27E1D2A8B153E00E7B415 /* GuanUITool.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F27E1C2A8B153E00E7B415 /* GuanUITool.m */; };
 		B1F27E202A8B1D8700E7B415 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F27E1F2A8B1D8700E7B415 /* UIView+Extension.m */; };
@@ -100,6 +101,8 @@
 		B1A0C27B2A7D14D800F60D31 /* GuanAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuanAlert.m; sourceTree = "<group>"; };
 		B1A0C27D2A7D14F500F60D31 /* UIAlertController+AddAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+AddAction.h"; sourceTree = "<group>"; };
 		B1A0C27E2A7D14F500F60D31 /* UIAlertController+AddAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+AddAction.m"; sourceTree = "<group>"; };
+		B1C1CD582A90D2DB0007A5F1 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
+		B1C1CD592A90D2DB0007A5F1 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
 		B1D171762A8A1B46001A0300 /* JCCSettingsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCCSettingsController.h; sourceTree = "<group>"; };
 		B1D171772A8A1B46001A0300 /* JCCSettingsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCCSettingsController.m; sourceTree = "<group>"; };
 		B1F27E1B2A8B153E00E7B415 /* GuanUITool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuanUITool.h; sourceTree = "<group>"; };
@@ -206,6 +209,7 @@
 				B131C67C2A64022C0099AB19 /* GTClassDump.framework */,
 				2780CB482A8A723D00C15C79 /* TableView */,
 				B1A0C2792A7D14C100F60D31 /* Alert */,
+				B1C1CD542A90D1E70007A5F1 /* Toast */,
 				B131C5E92A60E3380099AB19 /* AppDelegate.h */,
 				B131C5EA2A60E3380099AB19 /* AppDelegate.m */,
 				B131C5EC2A60E3380099AB19 /* SceneDelegate.h */,
@@ -251,6 +255,15 @@
 				B1A0C27E2A7D14F500F60D31 /* UIAlertController+AddAction.m */,
 			);
 			path = Alert;
+			sourceTree = "<group>";
+		};
+		B1C1CD542A90D1E70007A5F1 /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				B1C1CD592A90D2DB0007A5F1 /* UIView+Toast.h */,
+				B1C1CD582A90D2DB0007A5F1 /* UIView+Toast.m */,
+			);
+			path = Toast;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,6 +361,7 @@
 				B1A0C27F2A7D14F500F60D31 /* UIAlertController+AddAction.m in Sources */,
 				B1A0C2692A7B9AD100F60D31 /* NSObject+SelectorDefender.m in Sources */,
 				2780CB542A8A736E00C15C79 /* GuanTableView.m in Sources */,
+				B1C1CD5A2A90D2DB0007A5F1 /* UIView+Toast.m in Sources */,
 				B1A0C27C2A7D14D800F60D31 /* GuanAlert.m in Sources */,
 				B131C6072A612FBC0099AB19 /* GuanRSAMgr.m in Sources */,
 				B16ABCAB2A64F8EC00A4EC12 /* GTUtilies.m in Sources */,

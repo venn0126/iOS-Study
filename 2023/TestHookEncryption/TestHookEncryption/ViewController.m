@@ -15,6 +15,7 @@
 #import <StoreKit/StoreKit.h>
 #import "GuanAlert.h"
 #import "JCCSettingsController.h"
+#import "UIView+Toast.h"
 
 
 #define kTaoLiQuickSubmitOrderNofitication @"kTaoLiQuickSubmitOrderNofitication"
@@ -52,6 +53,16 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 }
 
 
+- (void)testToast {
+    
+    
+    NSString *toastStr = [NSString stringWithFormat:@"超跑助手[%@]",@" 实时，距您1.1km，全程9.2km，从浙江省杭州市拱墅区环西新村12幢到上城区钱江新城浙商银行(杭州分行营业部)"];
+    [self.view makeToast:toastStr
+                duration:2.0
+                position:CSToastPositionCenter];
+}
+
+
 - (void)testGetSubString {
     
     // 实时，距您1.1km，全程9.2km，从浙江省杭州市拱墅区环西新村12幢到上城区钱江新城浙商银行(杭州分行营业部)
@@ -59,23 +70,37 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     //  预约: 全程1.9km，明天 07:30从南肖埠文景苑到杭州市红会医院;
     //  预约: 全程800m，明天 07:30从南肖埠文景苑到杭州市红会医院;
     // 预约: 红包20元，全程8.7km，明天 04:50从ME酒店(杭州西湖黄龙体育中心店)西北侧到莲花滩观鸟区;
+    
+    // 上海 实时，距您2.8km，起点是OMEGA (上海和平饭店店);
 
 
-    NSString *resultString = @"预约: 全程800m，明天 07:30从南肖埠文景苑到杭州市红会医院;";
+    NSString *resultString = @"实时，红包20元，距您600m，全程4.7km，从浙江省科协大楼(西1门)到华门·自由21公寓A座;";
     
     // 截取字符串
     NSArray *oneArray = [resultString componentsSeparatedByString:@"，"];
     if(oneArray.count >= 2) {
         NSLog(@"oneArray %@",oneArray);
         NSString *distanceForMe;
+        NSString *keyWord;
+        if([resultString containsString:@"全程"]) {
+            keyWord = @"全程";
+        } else if([resultString containsString:@"距您"]) {
+            keyWord = @"距您";
+        }
+        
         for (NSString *subStr in oneArray) {
-            if([subStr containsString:@"全程"]) {
+            if([subStr containsString:keyWord]) {
                 distanceForMe = subStr;
                 break;
             }
         }
-                
-        NSRange youRange = [distanceForMe rangeOfString:@"程"];
+        
+        NSRange youRange;
+        if([keyWord isEqualToString:@"全程"]) {
+            youRange = [distanceForMe rangeOfString:@"程"];
+        } else {
+            youRange = [distanceForMe rangeOfString:@"您"];
+        }
         NSString *lastUnit;
         if([distanceForMe containsString:@"km"]) {
             lastUnit = @"k";
@@ -322,6 +347,7 @@ static const NSInteger kAugusButtonTagOffset = 10000;
             [self augusMD5];
             
 //            [self jumpJCCSetting];
+            [self testToast];
             break;
         }
         case 10001:{
