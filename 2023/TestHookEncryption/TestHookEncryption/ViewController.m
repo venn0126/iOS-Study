@@ -26,7 +26,7 @@
 
 static const NSInteger kAugusButtonTagOffset = 10000;
 
-@interface ViewController ()
+@interface ViewController ()<NSURLSessionDelegate>
 
 @property (retain, nonatomic) SKPaymentTransaction *transaction;
 
@@ -50,6 +50,250 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     
     [self testGetSubString];
         
+}
+
+
+- (void)testUseAuthCode {
+    /*
+     curl -X 'POST' \
+       'http://49.232.174.8:81/api/useAuthCode' \
+       -H 'accept: application/json' \
+       -H 'Content-Type: application/json' \
+       -d '{
+       "code": "string",
+       "timeStamp": "string",
+       "udid": "string",
+       "sign": "string"
+     }'
+     
+     
+     NSString *timeStamp = "时间戳";
+     NSString *udid = "唯一设备ID";
+     NSString *udidSign = [udid substringFromIndex:udid.length - 4];
+     NSString *signStr = [NSString stringWithFormat:@"%@%@%@", code, timeStamp, udidSign];
+     NSString *sign = [signStr md5];
+     
+     
+     服务器返回数据示例：
+     {
+       "code": 1/0, 0 成功
+       "msg": "",
+       "data": {
+         "key": 当前解密key
+         "content":  加密数据
+       }
+     }
+     */
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        NSMutableDictionary *dataDict = [NSMutableDictionary dictionary];
+        NSString *timestamp = [self currentTimestamp];
+        [dataDict setObject:timestamp forKey:@"timeStamp"];
+        
+        NSString *code = @"";
+        [dataDict setObject:code forKey:@"code"];
+        
+        
+        NSString *udid = [self udid];
+        if(udid.length > 0) {
+            [dataDict setObject:udid forKey:@"udid"];
+            
+        }
+        
+        if(udid.length > 4) {
+            NSString *udidSign = [udid substringFromIndex:udid.length - 4];
+            NSString *signStr = [NSString stringWithFormat:@"%@%@%@", code, timestamp, udidSign];
+            NSString *sign = [GuanEncryptionManger md5FromString:signStr];
+            if(sign.length > 0) {
+                [dataDict setObject:sign forKey:@"sign"];
+            }
+        }
+        
+        
+        // dict to data
+        NSError *error;
+        NSData *postData = [NSJSONSerialization dataWithJSONObject:dataDict options:0 error:&error];
+        
+        
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
+        NSURL *url = [NSURL URLWithString:@"http://49.232.174.8:81/api/useAuthCode"];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+                                                               cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                           timeoutInterval:60.0];
+        [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        
+        [request setHTTPMethod:@"POST"];
+        [request setHTTPBody:postData];
+        
+        NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            
+            
+            NSLog(@"TaoLi useAuthCode response %@", [NSThread currentThread]);
+
+            if (error) {
+                NSLog(@"TaoLi useAuthCode error %@", error);
+                return;
+            }
+            
+            NSError *resError;
+            NSDictionary *resDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&resError];
+            if (resError) {
+                NSLog(@"TaoLi useAuthCode JSONObjectWithData error %@", error);
+                return;
+            }
+            
+            
+            NSLog(@"TaoLi useAuthCode return success %@",resDic);
+            int code = [[resDic objectForKey:@"code"] intValue];
+            if(code == 0) {
+                NSLog(@"TaoLi auth success");
+                // 解密授权码
+            } else {
+                NSLog(@"TaoLi auth fail");
+                // 提示用户
+            }
+            
+            
+        }];
+        [postDataTask resume];
+        
+    });
+}
+
+
+/*
+ // NSString to ASCII
+ NSString *string = @"A";
+ int asciiCode = [string characterAtIndex:0]; // 65
+
+ // ASCII to NSString
+ int asciiCode = 65;
+ NSString *string = [NSString stringWithFormat:@"%c", asciiCode]; // A
+ */
+
+
+static int ascIIToNumber(NSString *ascII)
+{
+    return [ascII characterAtIndex:0];
+}
+
+static NSString *numberToASCII(int number)
+{
+    return [NSString stringWithFormat:@"%c", number];
+}
+
+
+static NSString * xxxxxxx(NSString *data, NSString *key)
+{
+    int len = 128;
+    
+    if (key == nil || key.length == 0) {
+        key = @"";
+    }
+    
+    if (data.length < 1) {
+        return @"";
+    }
+    
+    NSString *md5Key = [GuanEncryptionManger md5FromString:key];
+    NSString *keyA = [GuanEncryptionManger md5FromString: [md5Key substringToIndex:16]];
+    NSString *keyB = [GuanEncryptionManger md5FromString:[md5Key substringFromIndex:16]];
+    NSInteger startLen = data.length - 16;
+    NSString *data1 = [data substringFromIndex:startLen];
+    NSString *data2 = [data substringToIndex:startLen];
+    data = [NSString stringWithFormat:@"%@%@", data1, data2];
+    NSString *keyC = [data substringToIndex:4];
+    NSString *cryptkey = [NSString stringWithFormat:@"%@%@",keyA,[GuanEncryptionManger md5FromString:[NSString stringWithFormat:@"%@%@",keyA,keyC]]];
+    NSInteger cryptkeyLength = cryptkey.length;
+    NSString *newData;
+    NSString *preparStr = [data substringFromIndex:4];
+    if (preparStr.length % 4 != 0) {
+        NSInteger coverLength = 4 - preparStr.length % 4;
+            for (int i = 0; i < coverLength ; i ++) {
+                preparStr = [preparStr stringByAppendingString:@"="];
+            }
+    }
+    // TODO: string to base64
+//    newData = [preparStr base64Dencode];
+    // string to data
+    NSData *preparStrData = [[NSData alloc] initWithBase64EncodedString:preparStr options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    // data to base64 encode
+    newData = base64_encode_data(preparStrData);
+    
+    
+    NSString *result = @"";
+    NSMutableArray *box = [NSMutableArray array];
+    for (int i = 0; i < len; i++) {
+        [box addObject:@(i)];
+    }
+    
+    NSMutableArray *rndkArray = [NSMutableArray array];
+    for (int i = 0; i < len; i ++) {
+         unichar c =  [cryptkey characterAtIndex:i % cryptkeyLength];
+        [rndkArray addObject:@(ascIIToNumber([NSString stringWithFormat:@"%C",c]))];
+    }
+    int j1 = 0;
+    for (int i = 0; i < len; i ++) {
+        int boxNum = [box[i] intValue];
+        int rndkArrayNum = [rndkArray[i] intValue];
+        j1 = (j1 + boxNum +rndkArrayNum) % len;
+        [box exchangeObjectAtIndex:i withObjectAtIndex:j1];
+    }
+    
+    int a2 = 0;
+    int j2 = 0;
+    for (int i = 0; i < newData.length; i ++) {
+        a2 = (a2 +1) % len;
+        int boxNum = [box[a2] intValue];
+        j2 = (j2 + boxNum) % len;
+        [box exchangeObjectAtIndex:a2 withObjectAtIndex:j2];
+        unichar c =  [newData characterAtIndex:i];
+        int ASCIIC = ascIIToNumber([NSString stringWithFormat:@"%C",c]);
+        
+        int value = ([box[a2] intValue] + [box[j2] intValue]) % len;
+        int boxValue = [box[value] intValue];
+        
+        int newValue = ASCIIC ^ boxValue;
+        NSString *charStr = numberToASCII(newValue);
+        result = [NSString stringWithFormat:@"%@%@",result,charStr];
+    }
+    
+    if (result.length < 1) {
+        NSLog(@"result 为空");
+        return @"";
+    }
+    BOOL bool1 = [[result substringToIndex:10] isEqualToString:@"0000000000"];
+    BOOL bool2 = [[result substringToIndex:10] intValue] > [[GTUtilies currentTimestamp] intValue];
+    
+    NSString *string1 = [result substringWithRange:NSMakeRange(10, 16)];
+    NSString *md5Str = [GuanEncryptionManger md5FromString:[NSString stringWithFormat:@"%@%@",[result substringFromIndex:26],keyB]];
+    NSString *string2 = [md5Str substringToIndex:16];
+    BOOL bool3 = [string2 isEqualToString:string1];
+    if ((bool1 || bool2) && bool3) {
+        return [result substringFromIndex:26];
+    }else {
+        return @"";
+    }
+}
+
+
+
+- (NSString *)udid {
+    
+    CFUUIDRef udidRef = CFUUIDCreate(kCFAllocatorDefault);
+    NSString *tempUdid = (NSString *)CFBridgingRelease(CFUUIDCreateString (kCFAllocatorDefault,udidRef));
+    CFRelease(udidRef);
+    return tempUdid;
+}
+
+- (NSString *)currentTimestamp {
+    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0]; // 获取当前时间0秒后的时间
+    NSTimeInterval time = [date timeIntervalSince1970] * 1000;// *1000 是精确到毫秒(13位),不乘就是精确到秒(10位)
+    NSString *timeString = [NSString stringWithFormat:@"%.0f", time];
+    return timeString;
 }
 
 
@@ -355,7 +599,8 @@ static const NSInteger kAugusButtonTagOffset = 10000;
             [self augusMD5];
             
 //            [self jumpJCCSetting];
-            [self testToast];
+//            [self testToast];
+            [self testUseAuthCode];
             break;
         }
         case 10001:{

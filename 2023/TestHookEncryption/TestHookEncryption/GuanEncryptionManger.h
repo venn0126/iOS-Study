@@ -9,6 +9,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
+FOUNDATION_EXTERN NSString *base64_encode_data(NSData *data);
+FOUNDATION_EXTERN NSData *base64_decode(NSString *str);
+
 @interface GuanEncryptionManger : NSObject
 
 + (NSString *)md5FromData:(NSData *)data;
@@ -93,6 +97,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// HEX
 + (NSString *)toHex:(NSData *)nsdata;
 + (NSData *)fromHex:(NSString *)string;
+
+
+/// Base64 encode and decode NSString to NSString
+
 
 
 @end

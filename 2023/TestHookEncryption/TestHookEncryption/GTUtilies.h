@@ -76,6 +76,8 @@ typedef enum : NSUInteger {
 
 + (UIViewController *)currentViewController;
 
++ (NSString *)currentTimestamp;
+
 
 @end
 
