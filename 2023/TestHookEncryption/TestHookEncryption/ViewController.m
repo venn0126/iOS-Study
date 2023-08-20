@@ -53,6 +53,14 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 }
 
 
+- (double)guan_stayOneDecimal:(NSString *)decimalStr {
+    
+    double decimalTemp = [decimalStr doubleValue] / 1000.0;
+    NSString *lastDecimal = [NSString stringWithFormat:@"%.1f",decimalTemp];
+    return [lastDecimal doubleValue];
+}
+
+
 - (void)testToast {
     
     

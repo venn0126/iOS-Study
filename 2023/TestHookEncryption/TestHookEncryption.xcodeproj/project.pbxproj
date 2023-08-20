@@ -17,6 +17,7 @@
 		2780CB672A8A765600C15C79 /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2780CB622A8A765400C15C79 /* YYClassInfo.m */; };
 		2780CB682A8A765600C15C79 /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2780CB632A8A765400C15C79 /* NSObject+YYModel.m */; };
 		2780CB6B2A8A7F8D00C15C79 /* GuanSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2780CB6A2A8A7F8D00C15C79 /* GuanSwitch.m */; };
+		B10AA8002A91EF8300A2B653 /* GTEncryptString.m in Sources */ = {isa = PBXBuildFile; fileRef = B10AA7FF2A91EF8300A2B653 /* GTEncryptString.m */; };
 		B10D08622A88C3E100414923 /* NSDictionary+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B10D08612A88C3E100414923 /* NSDictionary+Extension.m */; };
 		B131C5EB2A60E3380099AB19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C5EA2A60E3380099AB19 /* AppDelegate.m */; };
 		B131C5EE2A60E3380099AB19 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C5ED2A60E3380099AB19 /* SceneDelegate.m */; };
@@ -65,6 +66,8 @@
 		2780CB662A8A765600C15C79 /* NSObject+YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYModel.h"; sourceTree = "<group>"; };
 		2780CB692A8A7F8D00C15C79 /* GuanSwitch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuanSwitch.h; sourceTree = "<group>"; };
 		2780CB6A2A8A7F8D00C15C79 /* GuanSwitch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuanSwitch.m; sourceTree = "<group>"; };
+		B10AA7FE2A91EF8300A2B653 /* GTEncryptString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTEncryptString.h; sourceTree = "<group>"; };
+		B10AA7FF2A91EF8300A2B653 /* GTEncryptString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTEncryptString.m; sourceTree = "<group>"; };
 		B10D08602A88C3E100414923 /* NSDictionary+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Extension.h"; sourceTree = "<group>"; };
 		B10D08612A88C3E100414923 /* NSDictionary+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Extension.m"; sourceTree = "<group>"; };
 		B131C5E62A60E3380099AB19 /* TestHookEncryption.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestHookEncryption.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -216,6 +219,8 @@
 				B131C5ED2A60E3380099AB19 /* SceneDelegate.m */,
 				B131C5EF2A60E3380099AB19 /* ViewController.h */,
 				B131C5F02A60E3380099AB19 /* ViewController.m */,
+				B10AA7FE2A91EF8300A2B653 /* GTEncryptString.h */,
+				B10AA7FF2A91EF8300A2B653 /* GTEncryptString.m */,
 				B1D171762A8A1B46001A0300 /* JCCSettingsController.h */,
 				B1D171772A8A1B46001A0300 /* JCCSettingsController.m */,
 				B10D08602A88C3E100414923 /* NSDictionary+Extension.h */,
@@ -354,6 +359,7 @@
 				2780CB6B2A8A7F8D00C15C79 /* GuanSwitch.m in Sources */,
 				2780CB4E2A8A72E400C15C79 /* GuanTableViewDelegate.m in Sources */,
 				2780CB572A8A73D000C15C79 /* GuanBaseTableCell.m in Sources */,
+				B10AA8002A91EF8300A2B653 /* GTEncryptString.m in Sources */,
 				B131C5FC2A60E33A0099AB19 /* main.m in Sources */,
 				B1D171782A8A1B46001A0300 /* JCCSettingsController.m in Sources */,
 				B1A0C2782A7BA50300F60D31 /* GuanClearTool.m in Sources */,
