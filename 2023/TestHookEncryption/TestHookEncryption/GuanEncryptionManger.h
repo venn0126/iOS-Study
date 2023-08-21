@@ -100,7 +100,9 @@ FOUNDATION_EXTERN NSData *base64_decode(NSString *str);
 
 
 /// Base64 encode and decode NSString to NSString
++ (NSData *)base64Encode:(NSString *)string;
 
++ (NSString *)base64Decode:(NSString *)string;
 
 
 @end

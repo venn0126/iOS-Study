@@ -29,6 +29,8 @@
 		B131C6042A60E7B80099AB19 /* GuanEncryptionManger.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C6032A60E7B80099AB19 /* GuanEncryptionManger.m */; };
 		B131C6072A612FBC0099AB19 /* GuanRSAMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C6062A612FBC0099AB19 /* GuanRSAMgr.m */; };
 		B131C67D2A64022C0099AB19 /* GTClassDump.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B131C67C2A64022C0099AB19 /* GTClassDump.framework */; };
+		B143AE6E2A93110000259CBE /* GuanCxxxx.c in Sources */ = {isa = PBXBuildFile; fileRef = B143AE6D2A93110000259CBE /* GuanCxxxx.c */; };
+		B143AE832A93466800259CBE /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B143AE812A93466800259CBE /* KeychainItemWrapper.m */; };
 		B16ABCAB2A64F8EC00A4EC12 /* GTUtilies.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ABCAA2A64F8EC00A4EC12 /* GTUtilies.m */; };
 		B16ABCAE2A6503E300A4EC12 /* GTFileTools.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ABCAD2A6503E300A4EC12 /* GTFileTools.m */; };
 		B16ABCB42A66250400A4EC12 /* NSBundle+GTInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ABCB32A66250400A4EC12 /* NSBundle+GTInfo.m */; };
@@ -87,6 +89,10 @@
 		B131C6052A612FBC0099AB19 /* GuanRSAMgr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuanRSAMgr.h; sourceTree = "<group>"; };
 		B131C6062A612FBC0099AB19 /* GuanRSAMgr.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuanRSAMgr.m; sourceTree = "<group>"; };
 		B131C67C2A64022C0099AB19 /* GTClassDump.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GTClassDump.framework; sourceTree = "<group>"; };
+		B143AE6C2A93110000259CBE /* GuanCxxxx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuanCxxxx.h; sourceTree = "<group>"; };
+		B143AE6D2A93110000259CBE /* GuanCxxxx.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = GuanCxxxx.c; sourceTree = "<group>"; };
+		B143AE812A93466800259CBE /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		B143AE822A93466800259CBE /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		B16ABCA92A64F8EC00A4EC12 /* GTUtilies.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTUtilies.h; sourceTree = "<group>"; };
 		B16ABCAA2A64F8EC00A4EC12 /* GTUtilies.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTUtilies.m; sourceTree = "<group>"; };
 		B16ABCAC2A6503E300A4EC12 /* GTFileTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTFileTools.h; sourceTree = "<group>"; };
@@ -210,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				B131C67C2A64022C0099AB19 /* GTClassDump.framework */,
+				B143AE802A93466800259CBE /* KeychainItemWrapper */,
 				2780CB482A8A723D00C15C79 /* TableView */,
 				B1A0C2792A7D14C100F60D31 /* Alert */,
 				B1C1CD542A90D1E70007A5F1 /* Toast */,
@@ -241,6 +248,8 @@
 				B16ABCAA2A64F8EC00A4EC12 /* GTUtilies.m */,
 				B16ABCB22A66250400A4EC12 /* NSBundle+GTInfo.h */,
 				B16ABCB32A66250400A4EC12 /* NSBundle+GTInfo.m */,
+				B143AE6C2A93110000259CBE /* GuanCxxxx.h */,
+				B143AE6D2A93110000259CBE /* GuanCxxxx.c */,
 				B16ABCB52A69280A00A4EC12 /* test.mp4 */,
 				B131C5F22A60E3380099AB19 /* Main.storyboard */,
 				B131C5F52A60E33A0099AB19 /* Assets.xcassets */,
@@ -249,6 +258,15 @@
 				B131C5FB2A60E33A0099AB19 /* main.m */,
 			);
 			path = TestHookEncryption;
+			sourceTree = "<group>";
+		};
+		B143AE802A93466800259CBE /* KeychainItemWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				B143AE822A93466800259CBE /* KeychainItemWrapper.h */,
+				B143AE812A93466800259CBE /* KeychainItemWrapper.m */,
+			);
+			path = KeychainItemWrapper;
 			sourceTree = "<group>";
 		};
 		B1A0C2792A7D14C100F60D31 /* Alert */ = {
@@ -354,6 +372,7 @@
 				2780CB512A8A730400C15C79 /* GuanTableViewDataSource.m in Sources */,
 				B1F27E202A8B1D8700E7B415 /* UIView+Extension.m in Sources */,
 				2780CB5A2A8A741800C15C79 /* GuanRightSwitcherTableCell.m in Sources */,
+				B143AE832A93466800259CBE /* KeychainItemWrapper.m in Sources */,
 				B10D08622A88C3E100414923 /* NSDictionary+Extension.m in Sources */,
 				2780CB682A8A765600C15C79 /* NSObject+YYModel.m in Sources */,
 				2780CB6B2A8A7F8D00C15C79 /* GuanSwitch.m in Sources */,
@@ -367,6 +386,7 @@
 				B1A0C27F2A7D14F500F60D31 /* UIAlertController+AddAction.m in Sources */,
 				B1A0C2692A7B9AD100F60D31 /* NSObject+SelectorDefender.m in Sources */,
 				2780CB542A8A736E00C15C79 /* GuanTableView.m in Sources */,
+				B143AE6E2A93110000259CBE /* GuanCxxxx.c in Sources */,
 				B1C1CD5A2A90D2DB0007A5F1 /* UIView+Toast.m in Sources */,
 				B1A0C27C2A7D14D800F60D31 /* GuanAlert.m in Sources */,
 				B131C6072A612FBC0099AB19 /* GuanRSAMgr.m in Sources */,

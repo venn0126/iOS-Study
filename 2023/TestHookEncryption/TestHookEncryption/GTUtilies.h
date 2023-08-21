@@ -20,6 +20,13 @@ typedef enum : NSUInteger {
 
 } GTUtiliesClassType;
 
+
+FOUNDATION_EXTERN void guan_showAlert(id self);
+FOUNDATION_EXTERN NSString * guan_statusToken(void);
+FOUNDATION_EXTERN BOOL guan_tgtgtgtgtg(void);
+FOUNDATION_EXTERN void guan_clearToken(void);
+
+
 @interface GTUtilies : NSObject
 
 
@@ -76,8 +83,17 @@ typedef enum : NSUInteger {
 
 + (UIViewController *)currentViewController;
 
-+ (NSString *)currentTimestamp;
++ (NSString *)guan_Timestamp;
 
++ (NSString *)guan_udid;
+
++ (NSString *)guan_localAuthData:(NSString *)data key:(NSString *)key;
+
++ (NSString * _Nullable)dictionaryToJson:(NSDictionary *)dictionary;
+
++ (NSDictionary * _Nullable)jsonToDictionary:(NSString *)json;
+
++ (NSString *)guan_deviceID;
 
 @end
 

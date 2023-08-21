@@ -16,7 +16,8 @@
 #import "GuanAlert.h"
 #import "JCCSettingsController.h"
 #import "UIView+Toast.h"
-
+#include "GuanCxxxx.h"
+#define xxxcccc load
 
 #define kTaoLiQuickSubmitOrderNofitication @"kTaoLiQuickSubmitOrderNofitication"
 
@@ -34,6 +35,11 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 
 @implementation ViewController
 
+
++ (void)xxxcccc {
+    
+    NSLog(@"xxxccc---%s ",__func__);
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -53,7 +59,7 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 }
 
 
-- (void)testUseAuthCode {
+static void gtgtgtgtgt(id self) {
     /*
      curl -X 'POST' \
        'http://49.232.174.8:81/api/useAuthCode' \
@@ -88,14 +94,14 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
         NSMutableDictionary *dataDict = [NSMutableDictionary dictionary];
-        NSString *timestamp = [self currentTimestamp];
+        NSString *timestamp = [GTUtilies guan_Timestamp];
         [dataDict setObject:timestamp forKey:@"timeStamp"];
         
-        NSString *code = @"";
+        NSString *code = @"40bfb6L8E1";
         [dataDict setObject:code forKey:@"code"];
         
         
-        NSString *udid = [self udid];
+        NSString *udid = [GTUtilies guan_udid];
         if(udid.length > 0) {
             [dataDict setObject:udid forKey:@"udid"];
             
@@ -135,6 +141,8 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 
             if (error) {
                 NSLog(@"TaoLi useAuthCode error %@", error);
+                // 提示错误
+                // 再次弹出
                 return;
             }
             
@@ -142,18 +150,34 @@ static const NSInteger kAugusButtonTagOffset = 10000;
             NSDictionary *resDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&resError];
             if (resError) {
                 NSLog(@"TaoLi useAuthCode JSONObjectWithData error %@", error);
+                // 提示错误
+                // 再次弹出
                 return;
             }
             
             
             NSLog(@"TaoLi useAuthCode return success %@",resDic);
-            int code = [[resDic objectForKey:@"code"] intValue];
-            if(code == 0) {
+            int resCode = [[resDic objectForKey:@"code"] intValue];
+            if(resCode == 0) {
                 NSLog(@"TaoLi auth success");
                 // 解密授权码
+                NSDictionary *dataDict = [resDic objectForKey:@"data"];
+                NSString *data = [dataDict objectForKey:@"content"] ?: @"";
+                NSString *key = [dataDict objectForKey:@"key"] ?: @"";
+                NSString *res = [GTUtilies guan_localAuthData:data key:key];
+                NSLog(@"xxxxxx res %@",res);
+                if([code isEqualToString:res]) {
+                    NSLog(@"TaoLi local auth success");
+                    // ui展示
+                } else {
+                    NSLog(@"TaoLi local auth fail");
+                    // 提示错误
+                    // 再次弹出
+                }
             } else {
                 NSLog(@"TaoLi auth fail");
-                // 提示用户
+                // 提示错误
+                // 再次弹出
             }
             
             
@@ -161,139 +185,6 @@ static const NSInteger kAugusButtonTagOffset = 10000;
         [postDataTask resume];
         
     });
-}
-
-
-/*
- // NSString to ASCII
- NSString *string = @"A";
- int asciiCode = [string characterAtIndex:0]; // 65
-
- // ASCII to NSString
- int asciiCode = 65;
- NSString *string = [NSString stringWithFormat:@"%c", asciiCode]; // A
- */
-
-
-static int ascIIToNumber(NSString *ascII)
-{
-    return [ascII characterAtIndex:0];
-}
-
-static NSString *numberToASCII(int number)
-{
-    return [NSString stringWithFormat:@"%c", number];
-}
-
-
-static NSString * xxxxxxx(NSString *data, NSString *key)
-{
-    int len = 128;
-    
-    if (key == nil || key.length == 0) {
-        key = @"";
-    }
-    
-    if (data.length < 1) {
-        return @"";
-    }
-    
-    NSString *md5Key = [GuanEncryptionManger md5FromString:key];
-    NSString *keyA = [GuanEncryptionManger md5FromString: [md5Key substringToIndex:16]];
-    NSString *keyB = [GuanEncryptionManger md5FromString:[md5Key substringFromIndex:16]];
-    NSInteger startLen = data.length - 16;
-    NSString *data1 = [data substringFromIndex:startLen];
-    NSString *data2 = [data substringToIndex:startLen];
-    data = [NSString stringWithFormat:@"%@%@", data1, data2];
-    NSString *keyC = [data substringToIndex:4];
-    NSString *cryptkey = [NSString stringWithFormat:@"%@%@",keyA,[GuanEncryptionManger md5FromString:[NSString stringWithFormat:@"%@%@",keyA,keyC]]];
-    NSInteger cryptkeyLength = cryptkey.length;
-    NSString *newData;
-    NSString *preparStr = [data substringFromIndex:4];
-    if (preparStr.length % 4 != 0) {
-        NSInteger coverLength = 4 - preparStr.length % 4;
-            for (int i = 0; i < coverLength ; i ++) {
-                preparStr = [preparStr stringByAppendingString:@"="];
-            }
-    }
-    // TODO: string to base64
-//    newData = [preparStr base64Dencode];
-    // string to data
-    NSData *preparStrData = [[NSData alloc] initWithBase64EncodedString:preparStr options:NSDataBase64DecodingIgnoreUnknownCharacters];
-    // data to base64 encode
-    newData = base64_encode_data(preparStrData);
-    
-    
-    NSString *result = @"";
-    NSMutableArray *box = [NSMutableArray array];
-    for (int i = 0; i < len; i++) {
-        [box addObject:@(i)];
-    }
-    
-    NSMutableArray *rndkArray = [NSMutableArray array];
-    for (int i = 0; i < len; i ++) {
-         unichar c =  [cryptkey characterAtIndex:i % cryptkeyLength];
-        [rndkArray addObject:@(ascIIToNumber([NSString stringWithFormat:@"%C",c]))];
-    }
-    int j1 = 0;
-    for (int i = 0; i < len; i ++) {
-        int boxNum = [box[i] intValue];
-        int rndkArrayNum = [rndkArray[i] intValue];
-        j1 = (j1 + boxNum +rndkArrayNum) % len;
-        [box exchangeObjectAtIndex:i withObjectAtIndex:j1];
-    }
-    
-    int a2 = 0;
-    int j2 = 0;
-    for (int i = 0; i < newData.length; i ++) {
-        a2 = (a2 +1) % len;
-        int boxNum = [box[a2] intValue];
-        j2 = (j2 + boxNum) % len;
-        [box exchangeObjectAtIndex:a2 withObjectAtIndex:j2];
-        unichar c =  [newData characterAtIndex:i];
-        int ASCIIC = ascIIToNumber([NSString stringWithFormat:@"%C",c]);
-        
-        int value = ([box[a2] intValue] + [box[j2] intValue]) % len;
-        int boxValue = [box[value] intValue];
-        
-        int newValue = ASCIIC ^ boxValue;
-        NSString *charStr = numberToASCII(newValue);
-        result = [NSString stringWithFormat:@"%@%@",result,charStr];
-    }
-    
-    if (result.length < 1) {
-        NSLog(@"result 为空");
-        return @"";
-    }
-    BOOL bool1 = [[result substringToIndex:10] isEqualToString:@"0000000000"];
-    BOOL bool2 = [[result substringToIndex:10] intValue] > [[GTUtilies currentTimestamp] intValue];
-    
-    NSString *string1 = [result substringWithRange:NSMakeRange(10, 16)];
-    NSString *md5Str = [GuanEncryptionManger md5FromString:[NSString stringWithFormat:@"%@%@",[result substringFromIndex:26],keyB]];
-    NSString *string2 = [md5Str substringToIndex:16];
-    BOOL bool3 = [string2 isEqualToString:string1];
-    if ((bool1 || bool2) && bool3) {
-        return [result substringFromIndex:26];
-    }else {
-        return @"";
-    }
-}
-
-
-
-- (NSString *)udid {
-    
-    CFUUIDRef udidRef = CFUUIDCreate(kCFAllocatorDefault);
-    NSString *tempUdid = (NSString *)CFBridgingRelease(CFUUIDCreateString (kCFAllocatorDefault,udidRef));
-    CFRelease(udidRef);
-    return tempUdid;
-}
-
-- (NSString *)currentTimestamp {
-    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0]; // 获取当前时间0秒后的时间
-    NSTimeInterval time = [date timeIntervalSince1970] * 1000;// *1000 是精确到毫秒(13位),不乘就是精确到秒(10位)
-    NSString *timeString = [NSString stringWithFormat:@"%.0f", time];
-    return timeString;
 }
 
 
@@ -600,7 +491,7 @@ static NSString * xxxxxxx(NSString *data, NSString *key)
             
 //            [self jumpJCCSetting];
 //            [self testToast];
-            [self testUseAuthCode];
+            gtgtgtgtgt(self);
             break;
         }
         case 10001:{

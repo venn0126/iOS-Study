@@ -45,10 +45,10 @@ typedef void (^AlertMarker)(UIAlertController *maker);
 + (void)showAlertWithTitle:(NSString *)title
                    message:(NSString *)message
               confirmTitle:(NSString *)confirmTitle
-               cancelTitle:(NSString *)cancelTitle
+               cancelTitle:(NSString * _Nullable)cancelTitle
             preferredStyle:(UIAlertControllerStyle)preferredStyle
              confirmHandle:(_Nullable AlertConfirmHandle)confirmHandle
-              cancleHandle:(AlertCancelHandle)cancleHandle
+              cancleHandle:(_Nullable AlertCancelHandle)cancleHandle
    isNeedOneInputTextField:(BOOL)isNeedOneInputTextField
 OneInputTextFieldPlaceHolder:(NSString *)OneInputTextFieldPlaceHolder confirmTextFieldHandle:(AlertConfirmWithTextFieldHandle)confirmTextFieldHandle;
 
@@ -56,10 +56,10 @@ OneInputTextFieldPlaceHolder:(NSString *)OneInputTextFieldPlaceHolder confirmTex
 + (void)showAlertWithTitle:(NSString *)title
                    message:(NSString *)message
               confirmTitle:(NSString *)confirmTitle
-               cancelTitle:(NSString *)cancelTitle
+               cancelTitle:(NSString * _Nullable)cancelTitle
             preferredStyle:(UIAlertControllerStyle)preferredStyle
              confirmHandle:(_Nullable AlertConfirmHandle)confirmHandle
-              cancleHandle:(AlertCancelHandle)cancleHandle
+              cancleHandle:(_Nullable AlertCancelHandle)cancleHandle
    isNeedOneInputTextField:(BOOL)isNeedOneInputTextField
       textFieldPlaceHolder:(NSString *)textFieldPlaceHolder
      textFieldKeyboardType:(UIKeyboardType)keyboardType

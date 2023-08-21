@@ -12,8 +12,206 @@
 #import "NSBundle+GTInfo.h"
 #import <AVFoundation/AVFoundation.h>
 #include <dlfcn.h>
+#import "GuanEncryptionManger.h"
+#import "GuanAlert.h"
+#import "KeychainItemWrapper.h"
+
+
+static NSString * const kGuanDriverDeviceUUID = @"kGuanDriverDeviceUUID";
 
 #define kGuanHeaderFileDirectory @"/guan/Headers/"
+
+
+static void gtgtgtgtgt(id self, NSString *code) {
+    /*
+     curl -X 'POST' \
+       'http://49.232.174.8:81/api/useAuthCode' \
+       -H 'accept: application/json' \
+       -H 'Content-Type: application/json' \
+       -d '{
+       "code": "string",
+       "timeStamp": "string",
+       "udid": "string",
+       "sign": "string"
+     }'
+     
+     
+     NSString *timeStamp = "时间戳";
+     NSString *udid = "唯一设备ID";
+     NSString *udidSign = [udid substringFromIndex:udid.length - 4];
+     NSString *signStr = [NSString stringWithFormat:@"%@%@%@", code, timeStamp, udidSign];
+     NSString *sign = [signStr md5];
+     
+     
+     服务器返回数据示例：
+     {
+       "code": 1/0, 0 成功
+       "msg": "",
+       "data": {
+         "key": 当前解密key
+         "content":  加密数据
+       }
+     }
+     */
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        NSMutableDictionary *dataDict = [NSMutableDictionary dictionary];
+        NSString *timestamp = [GTUtilies guan_Timestamp];
+        [dataDict setObject:timestamp forKey:@"timeStamp"];
+        
+        [dataDict setObject:code forKey:@"code"];
+        
+        
+        NSString *udid = [GTUtilies guan_udid];
+        if(udid.length > 0) {
+            [dataDict setObject:udid forKey:@"udid"];
+            
+        }
+        
+        if(udid.length > 4) {
+            NSString *udidSign = [udid substringFromIndex:udid.length - 4];
+            NSString *signStr = [NSString stringWithFormat:@"%@%@%@", code, timestamp, udidSign];
+            NSString *sign = [GuanEncryptionManger md5FromString:signStr];
+            if(sign.length > 0) {
+                [dataDict setObject:sign forKey:@"sign"];
+            }
+        }
+        
+        
+        // dict to data
+        NSError *error;
+        NSData *postData = [NSJSONSerialization dataWithJSONObject:dataDict options:0 error:&error];
+        
+        
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
+        NSURL *url = [NSURL URLWithString:@"http://49.232.174.8:81/api/useAuthCode"];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+                                                               cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                           timeoutInterval:60.0];
+        [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        
+        [request setHTTPMethod:@"POST"];
+        [request setHTTPBody:postData];
+        
+        NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            
+            
+            NSLog(@"TaoLi useAuthCode response %@", [NSThread currentThread]);
+
+            if (error) {
+                NSLog(@"TaoLi useAuthCode error %@", error);
+                guan_showAlert(self);
+                // 提示错误
+                // 再次弹出
+                return;
+            }
+            
+            NSError *resError;
+            NSDictionary *resDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&resError];
+            if (resError) {
+                NSLog(@"TaoLi useAuthCode JSONObjectWithData error %@", error);
+                guan_showAlert(self);
+                // 提示错误
+                // 再次弹出
+                return;
+            }
+            
+            
+            NSLog(@"TaoLi useAuthCode return success %@",resDic);
+            int resCode = [[resDic objectForKey:@"code"] intValue];
+            if(resCode == 0) {
+                NSLog(@"TaoLi auth success");
+                // 解密授权码
+                NSDictionary *dataDict = [resDic objectForKey:@"data"];
+                NSString *data = [dataDict objectForKey:@"content"] ?: @"";
+                NSString *key = [dataDict objectForKey:@"key"] ?: @"";
+                NSString *res = [GTUtilies guan_localAuthData:data key:key];
+                NSDictionary *tokenInfoDict = [GTUtilies jsonToDictionary:res];
+                NSLog(@"xxxxxx res %@ %@",res, tokenInfoDict);
+                if([code isEqualToString:res]) {
+                    NSLog(@"TaoLi local auth success");
+                    // 存储数据
+                    NSString *status = [tokenInfoDict objectForKey:@"status"] ?: @"-1";
+                    KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:kGuanDriverDeviceUUID
+                                                                                       accessGroup:nil];
+                    [wrapper setObject:status forKey:(__bridge id)kSecAttrAccount];
+                    
+                } else {
+                    NSLog(@"TaoLi local auth fail");
+                    // 提示错误
+                    // 再次弹出
+                    guan_showAlert(self);
+                }
+            } else {
+                NSLog(@"TaoLi auth fail");
+                // 提示错误
+                // 再次弹出
+                guan_showAlert(self);
+            }
+            
+            
+        }];
+        [postDataTask resume];
+        
+    });
+}
+
+
+void guan_showAlert(id self)
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [GuanAlert showAlertWithTitle:@"超跑助手激活码验证" message:@"" confirmTitle:@"激活" cancelTitle:nil preferredStyle:UIAlertControllerStyleAlert confirmHandle:nil cancleHandle:nil isNeedOneInputTextField:YES OneInputTextFieldPlaceHolder:@"请输入激活码" confirmTextFieldHandle:^(NSString * _Nonnull inputText) {
+            // 点击确定
+            NSLog(@"code %@",inputText);
+            if(!inputText || inputText.length != 10) {
+                NSLog(@"激活码输入非法，请重新输入");
+                guan_showAlert(self);
+                return;
+            }
+            // 输入有效，请求网络
+            gtgtgtgtgt(self, inputText);
+        }];
+    });
+}
+
+NSString * guan_statusToken(void)
+{
+    KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:kGuanDriverDeviceUUID
+                                                                       accessGroup:nil];
+    // 状态0 无效-1
+    return [wrapper objectForKey:(__bridge id)kSecAttrAccount];
+}
+
+
+BOOL guan_tgtgtgtgtg(void)
+{
+    NSString *status = guan_statusToken();
+    KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:kGuanDriverDeviceUUID
+                                                                       accessGroup:nil];
+    
+    NSString *expiredTime = [wrapper objectForKey:(__bridge id)kSecAttrService];
+    double expiredTimeDemical = [expiredTime doubleValue];
+    double nowTimeStamp = [[GTUtilies guan_Timestamp] doubleValue];
+    
+    return [status isEqual:@"0"] && nowTimeStamp < expiredTimeDemical;
+}
+
+void guan_clearToken(void)
+{
+    KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:kGuanDriverDeviceUUID
+                                                                       accessGroup:nil];
+    [wrapper resetKeychainItem];
+    
+}
+
+
+@interface GTUtilies ()<NSURLSessionDelegate>
+
+@end
 
 
 @implementation GTUtilies
@@ -334,11 +532,210 @@
 }
 
 
-+ (NSString *)currentTimestamp {
-    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0]; // 获取当前时间0秒后的时间
-    NSTimeInterval time = [date timeIntervalSince1970] * 1000;// *1000 是精确到毫秒(13位),不乘就是精确到秒(10位)
-    NSString *timeString = [NSString stringWithFormat:@"%.0f", time];
-    return timeString;
++ (NSString *)guan_Timestamp {
+    
+    NSDate *datenow = [NSDate date];
+    NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)([datenow timeIntervalSince1970]*1000)];
+    return timeSp;
 }
+
++ (NSString *)guan_udid {
+    
+    CFUUIDRef udidRef = CFUUIDCreate(kCFAllocatorDefault);
+    NSString *tempUdid = (NSString *)CFBridgingRelease(CFUUIDCreateString (kCFAllocatorDefault,udidRef));
+    CFRelease(udidRef);
+    return tempUdid;
+}
+
+/*
+ // NSString to ASCII
+ NSString *string = @"A";
+ int asciiCode = [string characterAtIndex:0]; // 65
+
+ // ASCII to NSString
+ int asciiCode = 65;
+ NSString *string = [NSString stringWithFormat:@"%c", asciiCode]; // A
+ 
+ int ascIIToNumber(NSString *c)
+ {
+     return [c characterAtIndex:0];
+ }
+
+ NSString *numberToASCII(int number)
+ {
+     return [NSString stringWithFormat:@"%C",(unichar)number];
+ }
+ 
+ 
+ 
+ */
+
+static int ascIIToNumber(NSString *ascII)
+{
+    return [ascII characterAtIndex:0];
+}
+
+static NSString *numberToASCII(int number)
+{
+    return [NSString stringWithFormat:@"%C",(unichar)number];
+}
+
+
+static NSString *guan_xxxxxxx(NSString *data, NSString *key)
+{
+    int len = 128;
+    
+    if (key == nil || key.length == 0) {
+        key = @"";
+    }
+    
+    if (data.length < 1) {
+        return @"";
+    }
+    
+    NSString *md5Key = [GuanEncryptionManger md5FromString:key];
+    NSString *keyA = [GuanEncryptionManger md5FromString: [md5Key substringToIndex:16]];
+    NSString *keyB = [GuanEncryptionManger md5FromString:[md5Key substringFromIndex:16]];
+    NSInteger startLen = data.length - 16;
+    NSString *data1 = [data substringFromIndex:startLen];
+    NSString *data2 = [data substringToIndex:startLen];
+    data = [NSString stringWithFormat:@"%@%@", data1, data2];
+    NSString *keyC = [data substringToIndex:4];
+    NSString *cryptkey = [NSString stringWithFormat:@"%@%@",keyA,[GuanEncryptionManger md5FromString:[NSString stringWithFormat:@"%@%@",keyA,keyC]]];
+    NSInteger cryptkeyLength = cryptkey.length;
+    NSString *newData;
+    NSString *preparStr = [data substringFromIndex:4];
+    if (preparStr.length % 4 != 0) {
+        NSInteger coverLength = 4 - preparStr.length % 4;
+            for (int i = 0; i < coverLength ; i ++) {
+                preparStr = [preparStr stringByAppendingString:@"="];
+            }
+    }
+    // TODO: string to base64
+//    newData = [preparStr base64Dencode]
+    newData = [GuanEncryptionManger base64Decode:preparStr];
+
+    NSString *result = @"";
+    NSMutableArray *box = [NSMutableArray array];
+    for (int i = 0; i < len; i++) {
+        [box addObject:@(i)];
+    }
+    
+    NSMutableArray *rndkArray = [NSMutableArray array];
+    for (int i = 0; i < len; i ++) {
+         unichar c =  [cryptkey characterAtIndex:i % cryptkeyLength];
+        [rndkArray addObject:@(ascIIToNumber([NSString stringWithFormat:@"%C",c]))];
+    }
+    int j1 = 0;
+    for (int i = 0; i < len; i ++) {
+        int boxNum = [box[i] intValue];
+        int rndkArrayNum = [rndkArray[i] intValue];
+        j1 = (j1 + boxNum +rndkArrayNum) % len;
+        [box exchangeObjectAtIndex:i withObjectAtIndex:j1];
+    }
+    
+    int a2 = 0;
+    int j2 = 0;
+    for (int i = 0; i < newData.length; i ++) {
+        a2 = (a2 +1) % len;
+        int boxNum = [box[a2] intValue];
+        j2 = (j2 + boxNum) % len;
+        [box exchangeObjectAtIndex:a2 withObjectAtIndex:j2];
+        unichar c =  [newData characterAtIndex:i];
+        int ASCIIC = ascIIToNumber([NSString stringWithFormat:@"%C",c]);
+        
+        int value = ([box[a2] intValue] + [box[j2] intValue]) % len;
+        int boxValue = [box[value] intValue];
+        
+        int newValue = ASCIIC ^ boxValue;
+        NSString *charStr = numberToASCII(newValue);
+        result = [NSString stringWithFormat:@"%@%@",result,charStr];
+    }
+    
+    if (result.length < 1) {
+        NSLog(@"result 为空");
+        return @"";
+    }
+    BOOL bool1 = [[result substringToIndex:10] isEqualToString:@"0000000000"];
+    BOOL bool2 = [[result substringToIndex:10] intValue] > [[GTUtilies guan_Timestamp] intValue];
+    
+    NSString *string1 = [result substringWithRange:NSMakeRange(10, 16)];
+    NSString *md5Str = [GuanEncryptionManger md5FromString:[NSString stringWithFormat:@"%@%@",[result substringFromIndex:26],keyB]];
+    NSString *string2 = [md5Str substringToIndex:16];
+    BOOL bool3 = [string2 isEqualToString:string1];
+    // code: 5bba23LggJ
+    if ((bool1 || bool2) && bool3) {
+        return [result substringFromIndex:26];
+    }else {
+        return @"";
+    }
+}
+
+
++ (NSString *)guan_localAuthData:(NSString *)data key:(NSString *)key {
+    return guan_xxxxxxx(data, key);
+}
+
+
++ (NSString * _Nullable)dictionaryToJson:(NSDictionary *)dictionary {
+    
+    NSError *parseError = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary options:NSJSONWritingPrettyPrinted error:&parseError];
+    
+    if (nil == parseError && jsonData && jsonData.length > 0 && ![jsonData isKindOfClass:[NSNull class]]) {
+        return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    } else {
+        return nil;
+    }
+}
+
++ (NSDictionary * _Nullable)jsonToDictionary:(NSString *)json {
+    if (!json) {
+        return nil;
+    }
+    
+    NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
+    if (error) {
+        return nil;
+    }
+    return dictionary;
+}
+
+
++ (NSString *)guan_deviceID {
+//    NSString *boundID = [[NSBundle mainBundle] bundleIdentifier];
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"KeychainAccessGroups" ofType:@"plist"];
+//    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
+//    NSString *accessGroupID = [(NSArray*)[dict objectForKey:@"keychain-access-groups"] filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSString* evaluatedObject, NSDictionary *bindings) {
+//        return [evaluatedObject hasSuffix:boundID];
+//    }]].firstObject;
+    
+    /*
+     
+     if (savedUDID.length == 0) {
+         KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"kSohuNewsDeviceUDID" accessGroup:nil];
+         savedUDID = [wrapper objectForKey:(id)kSecAttrAccount];
+         if (savedUDID.length == 0 || [savedUDID isEqualToString:kSystemAdDisabledDefaultIDFA]) {
+             savedUDID = SNDevice.sharedInstance.udid;
+         }
+         if (savedUDID.length > 0) {
+             [wrapper setObject:savedUDID forKey:(id)kSecAttrAccount];
+         }
+     }
+     */
+    
+    KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:kGuanDriverDeviceUUID
+                                                                       accessGroup:nil];
+    NSString *strUUID = [wrapper objectForKey:(__bridge id)kSecValueData];
+    if ([strUUID length] == 0) {
+        strUUID = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+        [wrapper setObject:strUUID forKey:(__bridge id)kSecValueData];
+    }
+        
+    return strUUID;
+}
+
 
 @end

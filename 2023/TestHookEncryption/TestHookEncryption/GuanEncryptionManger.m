@@ -795,4 +795,17 @@ NSData *base64_decode(NSString *str) {
     }
     return data;
 }
+
++ (NSData *)base64Encode:(NSString *)string {
+    NSData *stringData = [string dataUsingEncoding:NSUTF8StringEncoding];
+    return [stringData base64EncodedDataWithOptions:0];
+}
+
++ (NSString *)base64Decode:(NSString *)string {
+
+    NSData *decodeData = [[NSData alloc] initWithBase64EncodedString:string options:0];
+    NSString *decodeString = [[NSString alloc] initWithData:decodeData encoding:NSUTF8StringEncoding];
+    return decodeString;
+}
+
 @end
