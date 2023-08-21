@@ -136,11 +136,14 @@ static void gtgtgtgtgt(id self, NSString *code) {
                 if([code isEqualToString:[tokenInfoDict objectForKey:@"code"]]) {
                     NSLog(@"TaoLi local auth success");
                     // 存储数据
-                    NSString *status = [tokenInfoDict objectForKey:@"status"] ?: @"-1";
+                    NSNumber *status = [tokenInfoDict objectForKey:@"status"] ?: [NSNumber numberWithInt:@"-1"];
+                    NSString *endTime = [tokenInfoDict objectForKey:@"endTime"] ?: @"0";
+
                     KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:kGuanDriverDeviceUUID
                                                                                        accessGroup:nil];
                     [wrapper setObject:status forKey:(__bridge id)kSecAttrAccount];
-                    
+                    [wrapper setObject:endTime forKey:(__bridge id)kSecAttrService];
+
                 } else {
                     NSLog(@"TaoLi local auth fail");
                     // 提示错误
@@ -180,26 +183,27 @@ void guan_showAlert(id self)
     });
 }
 
-NSString * guan_statusToken(void)
+int guan_statusToken(void)
 {
     KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:kGuanDriverDeviceUUID
                                                                        accessGroup:nil];
     // 状态0 无效-1
-    return [wrapper objectForKey:(__bridge id)kSecAttrAccount];
+    NSNumber *status = [wrapper objectForKey:(__bridge id)kSecAttrAccount];
+    return [status intValue];
 }
 
 
 BOOL guan_tgtgtgtgtg(void)
 {
-    NSString *status = guan_statusToken();
+    int status = guan_statusToken();
     KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:kGuanDriverDeviceUUID
                                                                        accessGroup:nil];
     
     NSString *expiredTime = [wrapper objectForKey:(__bridge id)kSecAttrService];
     double expiredTimeDemical = [expiredTime doubleValue];
     double nowTimeStamp = [[GTUtilies guan_Timestamp] doubleValue];
-    
-    return [status isEqual:@"0"] && nowTimeStamp < expiredTimeDemical;
+        
+    return status == 0 && nowTimeStamp < expiredTimeDemical;
 }
 
 void guan_clearToken(void)

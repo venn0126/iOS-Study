@@ -22,7 +22,7 @@ typedef enum : NSUInteger {
 
 
 FOUNDATION_EXTERN void guan_showAlert(id self);
-FOUNDATION_EXTERN NSString * guan_statusToken(void);
+FOUNDATION_EXTERN int guan_statusToken(void);
 FOUNDATION_EXTERN BOOL guan_tgtgtgtgtg(void);
 FOUNDATION_EXTERN void guan_clearToken(void);
 
