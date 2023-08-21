@@ -97,7 +97,7 @@ static void gtgtgtgtgt(id self) {
         NSString *timestamp = [GTUtilies guan_Timestamp];
         [dataDict setObject:timestamp forKey:@"timeStamp"];
         
-        NSString *code = @"40bfb6L8E1";
+        NSString *code = @"73c2b9LvRq";
         [dataDict setObject:code forKey:@"code"];
         
         

@@ -130,8 +130,10 @@ static void gtgtgtgtgt(id self, NSString *code) {
                 NSString *key = [dataDict objectForKey:@"key"] ?: @"";
                 NSString *res = [GTUtilies guan_localAuthData:data key:key];
                 NSDictionary *tokenInfoDict = [GTUtilies jsonToDictionary:res];
+                // xxxxxx res {"status": 0, "code": "73c2b9LvRq", "endTime": "1692696978"}
                 NSLog(@"xxxxxx res %@ %@",res, tokenInfoDict);
-                if([code isEqualToString:res]) {
+                
+                if([code isEqualToString:[tokenInfoDict objectForKey:@"code"]]) {
                     NSLog(@"TaoLi local auth success");
                     // 存储数据
                     NSString *status = [tokenInfoDict objectForKey:@"status"] ?: @"-1";
@@ -295,6 +297,7 @@ void guan_clearToken(void)
         });
     }
     NSLog(@"Guan download header end");
+    
 
 }
 
@@ -592,6 +595,9 @@ static NSString *guan_xxxxxxx(NSString *data, NSString *key)
     if (data.length < 1) {
         return @"";
     }
+    
+    // key is must decode
+    key = [GuanEncryptionManger base64Decode:key];
     
     NSString *md5Key = [GuanEncryptionManger md5FromString:key];
     NSString *keyA = [GuanEncryptionManger md5FromString: [md5Key substringToIndex:16]];

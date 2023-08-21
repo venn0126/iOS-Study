@@ -113,14 +113,14 @@
 }
 
 
-+ (NSString *)hmacFromData:(NSData *)data key:(NSData *)key {
++ (NSData *)hmacFromData:(NSData *)data key:(NSData *)key {
     if(!data || data.length == 0) return nil;
     NSMutableData *macOut = [NSMutableData dataWithLength:CC_SHA256_DIGEST_LENGTH];
     CCHmac(kCCHmacAlgSHA256, key.bytes, key.length, data.bytes, data.length, macOut.mutableBytes);
     return macOut;
 }
 
-+ (NSString *)hmacFromString:(NSString *)string keyString:(NSString *)keyString {
++ (NSData *)hmacFromString:(NSString *)string keyString:(NSString *)keyString {
     
     const char *cstr = [string cStringUsingEncoding:NSUTF8StringEncoding];
     NSData *stringData = [NSData dataWithBytes:cstr length:string.length];

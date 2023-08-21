@@ -26,9 +26,9 @@ FOUNDATION_EXTERN NSData *base64_decode(NSString *str);
 + (NSString *)shaBase64:(NSString *)input type:(NSString *)type;;
 
 
-+ (NSString *)hmacFromData:(NSData *)data key:(NSData *)key;
++ (NSData *)hmacFromData:(NSData *)data key:(NSData *)key;
 
-+ (NSString *)hmacFromString:(NSString *)string keyString:(NSString *)keyString;
++ (NSData *)hmacFromString:(NSString *)string keyString:(NSString *)keyString;
 
 /**
  *  AES加密
