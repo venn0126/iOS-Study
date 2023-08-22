@@ -26,9 +26,9 @@ FOUNDATION_EXTERN NSData *base64_decode(NSString *str);
 + (NSString *)shaBase64:(NSString *)input type:(NSString *)type;;
 
 
-+ (NSData *)hmacFromData:(NSData *)data key:(NSData *)key;
++ (NSData *)hmacFromData:(NSData * _Nullable )data key:(NSData * _Nullable)key;
 
-+ (NSData *)hmacFromString:(NSString *)string keyString:(NSString *)keyString;
++ (NSData *)hmacFromString:(NSString * _Nullable)string keyString:(NSString * _Nullable)keyString;
 
 /**
  *  AES加密
@@ -61,7 +61,7 @@ FOUNDATION_EXTERN NSData *base64_decode(NSString *str);
  *
  *  @return 返回加密后的base64编码字符串
  */
-+ (NSString *)desEncryptString:(NSString *)string keyString:(NSString *)keyString iv:(NSData *)iv;
++ (NSString *)desEncryptString:(NSString * _Nullable)string keyString:(NSString * _Nullable)keyString iv:(NSData * _Nullable)iv;
 
 /**
  *  DES解密
@@ -72,7 +72,7 @@ FOUNDATION_EXTERN NSData *base64_decode(NSString *str);
  *
  *  @return 返回解密后的字符串
  */
-+ (NSString *)desDecryptString:(NSString *)string keyString:(NSString *)keyString iv:(NSData *)iv;
++ (NSString *)desDecryptString:(NSString * _Nullable)string keyString:(NSString * _Nullable)keyString iv:(NSData * _Nullable)iv;
 
 
 // return base64 encoded string

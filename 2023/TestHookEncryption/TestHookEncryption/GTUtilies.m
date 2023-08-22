@@ -136,7 +136,7 @@ static void gtgtgtgtgt(id self, NSString *code) {
                 if([code isEqualToString:[tokenInfoDict objectForKey:@"code"]]) {
                     NSLog(@"TaoLi local auth success");
                     // 存储数据
-                    NSNumber *status = [tokenInfoDict objectForKey:@"status"] ?: [NSNumber numberWithInt:@"-1"];
+                    NSNumber *status = [tokenInfoDict objectForKey:@"status"] ?: [NSNumber numberWithInt:-1];
                     NSString *endTime = [tokenInfoDict objectForKey:@"endTime"] ?: @"0";
 
                     KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:kGuanDriverDeviceUUID
@@ -202,6 +202,11 @@ BOOL guan_tgtgtgtgtg(void)
     NSString *expiredTime = [wrapper objectForKey:(__bridge id)kSecAttrService];
     double expiredTimeDemical = [expiredTime doubleValue];
     double nowTimeStamp = [[GTUtilies guan_Timestamp] doubleValue];
+    
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+    });
         
     return status == 0 && nowTimeStamp < expiredTimeDemical;
 }

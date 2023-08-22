@@ -416,13 +416,12 @@ static void gtgtgtgtgt(id self) {
     
 }
 
+- (void)wang_closeButtonAction {
+    
+}
+
 - (void)testVideoToAudio {
     
-    
-    UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-    });
     
     NSString *videoPath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"mp4"];
     NSString *audioPath = [[GTFileTools gt_DocumentPath] stringByAppendingPathComponent:@"test000.wav"];
@@ -594,7 +593,7 @@ static void gtgtgtgtgt(id self) {
 - (void)augusHmac {
     NSString *test = @"augus123";
     NSString *key = @"tian";
-    NSString *res = [GuanEncryptionManger hmacFromString:test keyString:key];
+    NSData *res = [GuanEncryptionManger hmacFromString:test keyString:key];
     NSLog(@"sha512 before %@ and after %@",test,res);
 }
 
