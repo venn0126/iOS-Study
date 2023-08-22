@@ -1,2 +1,2 @@
 #comment#
-extern const MJEncryptStringData * const #var#;
+extern const GTEncryptStringData * _Nullable const #var#;
