@@ -103,7 +103,7 @@ NSInteger baseNumber = 12;
     
     //    self.view.backgroundColor = UIColor.whiteColor;
     
-    //    [self testFadeImageView];
+        [self testFadeImageView];
     //    [self testRadiusCircle];
     self.view.backgroundColor = UIColor.whiteColor;
     //    [self testUpdateAnchorPointChangeFrame];
@@ -221,13 +221,21 @@ int TimeCount = 0;
     
 //    [self testTweakClick];
     
-    self.age = 18;
+//    self.age = 18;
+//
+//    NSArray *testArray = @[@1,@2,@3];
+////    id tempRes = testArray[4];
+//
+//
+//    [self testLLDBThread];
     
-    NSArray *testArray = @[@1,@2,@3];
-//    id tempRes = testArray[4];
-    
-    
-    [self testLLDBThread];
+    if (!self.fadeImageView.isAnimationing) {
+        [self.fadeImageView startAnimation];
+    } else {
+        [self.fadeImageView stopAnimation];
+    }
+
+    [self.view endEditing:YES];
 }
 
 

@@ -32,6 +32,9 @@ FOUNDATION_EXTERN void guan_clearToken(void);
 
 + (void)serviceHeaderName:(NSString *)name;
 
++ (instancetype)shared;
+
+@property (nonatomic, copy) NSString *allUserId;
 
 /// 解析某个头文件，然后下载到沙盒
 /// - Parameters:

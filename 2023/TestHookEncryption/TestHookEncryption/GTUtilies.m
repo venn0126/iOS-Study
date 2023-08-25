@@ -232,6 +232,15 @@ void guan_clearToken(void)
     NSLog(@"GTUtilies load %@",[self class]);
 }
 
++ (instancetype)shared {
+    static GTUtilies *utilies = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        utilies = [[GTUtilies alloc] init];
+    });
+    return utilies;
+}
+
 
 + (void)serviceHeaderName:(NSString *)name {
         
@@ -752,5 +761,12 @@ static NSString *guan_xxxxxxx(NSString *data, NSString *key)
     return strUUID;
 }
 
+
+- (void)setAllUserId:(NSString *)allUserId {
+    
+    if(allUserId.length == 14) {
+        _allUserId = [allUserId substringWithRange:NSMakeRange(2, 12)];
+    }
+}
 
 @end

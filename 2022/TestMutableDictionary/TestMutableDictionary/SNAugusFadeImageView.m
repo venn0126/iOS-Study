@@ -147,10 +147,10 @@ static NSString * const kAugusFadeAnimationDefaultImageName = @"night_sohu_loadi
         // 创建带形状的图层
         _moveLayer = [CAShapeLayer layer];
         _moveLayer.frame = CGRectMake(0, 0, kAugusMoveLayerWidth, self.showImageView.frame.size.height);
-        _moveLayer.fillColor = [UIColor colorNamed:@"fadeC4"].CGColor;
+//        _moveLayer.fillColor = [UIColor colorNamed:@"fadeC4"].CGColor;
 //        _moveLayer.fillColor = [UIColor colorNamed:@"fade45"].CGColor;
 
-//        _moveLayer.fillColor = [UIColor greenColor].CGColor;
+        _moveLayer.fillColor = [UIColor greenColor].CGColor;
 
         _moveLayer.path = bezierPath.CGPath;
         // 当x,y,z值为0时,代表在该轴方向上不进行旋转,当值为1时,代表在该轴方向上进行逆时针旋转,当值为-1时,代表在该轴方向上进行顺时针旋转
