@@ -13,6 +13,10 @@
 /// Get status bar's height.
 UIKIT_EXTERN CGFloat GuanStatusBarHeight(void);
 
+
+#define GuanScreenWidth [UIScreen mainScreen].bounds.size.width
+#define GuanScreenHeight [UIScreen mainScreen].bounds.size.height
+
 #define GuanOneTitleFont 22.0
 #define GuanTwoTitleFont 20.0
 #define GuanThreeTitleFont 18.0

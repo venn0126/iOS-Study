@@ -17,12 +17,14 @@
 #import "JCCSettingsController.h"
 #import "UIView+Toast.h"
 #include "GuanCxxxx.h"
+#import "GuanTestWebController.h"
+
+
+
 #define xxxcccc load
 
 #define kTaoLiQuickSubmitOrderNofitication @"kTaoLiQuickSubmitOrderNofitication"
 
-#define GuanScreenWidth [UIScreen mainScreen].bounds.size.width
-#define GuanScreenHeight [UIScreen mainScreen].bounds.size.height
 
 
 static const NSInteger kAugusButtonTagOffset = 10000;
@@ -30,6 +32,8 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 @interface ViewController ()<NSURLSessionDelegate>
 
 @property (retain, nonatomic) SKPaymentTransaction *transaction;
+
+
 
 @end
 
@@ -45,19 +49,27 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.title = @"我的";
     self.view.backgroundColor = UIColor.whiteColor;
     
     
     [self setupButtons];
     
-//    [GTUtilies tweakDownloadOwnClassHeader];
-
 //    [self testVideoToAudio];
     
-    [self testGetSubString];
-        
+//    [self testGetSubString];
+    
 }
 
+- (void)testWebLoadURL {
+    
+    GuanTestWebController *vc = [[GuanTestWebController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+
+
+#pragma mark - Others Test
 
 static void gtgtgtgtgt(id self) {
     /*
@@ -490,7 +502,8 @@ static void gtgtgtgtgt(id self) {
             
 //            [self jumpJCCSetting];
 //            [self testToast];
-            gtgtgtgtgt(self);
+//            gtgtgtgtgt(self);
+            [self testWebLoadURL];
             break;
         }
         case 10001:{

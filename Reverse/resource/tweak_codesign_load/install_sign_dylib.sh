@@ -12,15 +12,16 @@
 #CreateTime:2023-01-04 17:51:46
 ####################
 
+/Users/augus/Desktop/cracker_app/aweme/26.6.0/debug_ipa
 
 # 主路径，TODO: 需要修改这里
-my_path="/Users/augus/Desktop/cracker_app/huozhu/7511/debug_ipa/Payload/"
+my_path="/Users/augus/Desktop/cracker_app/aweme/26.6.0/debug_ipa/Payload/"
 
 # 可执行文件名，TODO: 需要修改这里
-executable_file_name="YMMConsignor"
+executable_file_name="Aweme"
 
 # tweak动态库 TODO: 需要修改这里
-tweak_dylib_name="ymmconsignor-tweak.dylib"
+tweak_dylib_name="aweme-tweak.dylib"
 
 # CydiaSubstrate动态库
 cydiaSubstrate_name="CydiaSubstrate"
@@ -52,7 +53,8 @@ plugIns_path="PlugIns"
 # china mobile = 8A05A842ABE95DDC231CDAB3497E0B56EA4A07C1
 # Yahia of Guan = 2704502B0CC13A8269A951CE3E43D4582011BE16
 # shao hua gou（Huomanman）：FAAC48B9B4BC8110F748F40C6363E734B53AE9F6
-sign_number="FAAC48B9B4BC8110F748F40C6363E734B53AE9F6"
+# sohu 7G76: B1B4B69A92436CDEF7788F024CC45129537347D5
+sign_number="B1B4B69A92436CDEF7788F024CC45129537347D5"
 
 
 

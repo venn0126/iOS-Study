@@ -7,6 +7,7 @@
 
 #import "AppDelegate.h"
 #import "GTUtilies.h"
+#import "ViewController.h"
 
 @interface AppDelegate ()<NSURLSessionDelegate>
 
@@ -22,6 +23,13 @@
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //        guan_showAlert(self);
 //    });
+    
+    
+//    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//    ViewController *vc = [[ViewController alloc] init];
+//    UINavigationController *na = [[UINavigationController alloc] initWithRootViewController:vc];
+//    self.window.rootViewController = na;
+//    [self.window makeKeyAndVisible];
     
     
     return YES;

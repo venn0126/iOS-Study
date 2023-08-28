@@ -29,6 +29,8 @@
 		B131C6042A60E7B80099AB19 /* GuanEncryptionManger.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C6032A60E7B80099AB19 /* GuanEncryptionManger.m */; };
 		B131C6072A612FBC0099AB19 /* GuanRSAMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C6062A612FBC0099AB19 /* GuanRSAMgr.m */; };
 		B131C67D2A64022C0099AB19 /* GTClassDump.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B131C67C2A64022C0099AB19 /* GTClassDump.framework */; };
+		B137ABC52A9C94BC005D7971 /* GuanWeakWebViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B137ABC42A9C94BC005D7971 /* GuanWeakWebViewDelegate.m */; };
+		B137ABC82A9C9B19005D7971 /* GuanTestWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = B137ABC72A9C9B19005D7971 /* GuanTestWebController.m */; };
 		B143AE6E2A93110000259CBE /* GuanCxxxx.c in Sources */ = {isa = PBXBuildFile; fileRef = B143AE6D2A93110000259CBE /* GuanCxxxx.c */; };
 		B143AE832A93466800259CBE /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B143AE812A93466800259CBE /* KeychainItemWrapper.m */; };
 		B16ABCAB2A64F8EC00A4EC12 /* GTUtilies.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ABCAA2A64F8EC00A4EC12 /* GTUtilies.m */; };
@@ -89,6 +91,10 @@
 		B131C6052A612FBC0099AB19 /* GuanRSAMgr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuanRSAMgr.h; sourceTree = "<group>"; };
 		B131C6062A612FBC0099AB19 /* GuanRSAMgr.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuanRSAMgr.m; sourceTree = "<group>"; };
 		B131C67C2A64022C0099AB19 /* GTClassDump.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GTClassDump.framework; sourceTree = "<group>"; };
+		B137ABC32A9C94BC005D7971 /* GuanWeakWebViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuanWeakWebViewDelegate.h; sourceTree = "<group>"; };
+		B137ABC42A9C94BC005D7971 /* GuanWeakWebViewDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuanWeakWebViewDelegate.m; sourceTree = "<group>"; };
+		B137ABC62A9C9B19005D7971 /* GuanTestWebController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuanTestWebController.h; sourceTree = "<group>"; };
+		B137ABC72A9C9B19005D7971 /* GuanTestWebController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuanTestWebController.m; sourceTree = "<group>"; };
 		B143AE6C2A93110000259CBE /* GuanCxxxx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuanCxxxx.h; sourceTree = "<group>"; };
 		B143AE6D2A93110000259CBE /* GuanCxxxx.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = GuanCxxxx.c; sourceTree = "<group>"; };
 		B143AE812A93466800259CBE /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
@@ -226,6 +232,10 @@
 				B131C5ED2A60E3380099AB19 /* SceneDelegate.m */,
 				B131C5EF2A60E3380099AB19 /* ViewController.h */,
 				B131C5F02A60E3380099AB19 /* ViewController.m */,
+				B137ABC62A9C9B19005D7971 /* GuanTestWebController.h */,
+				B137ABC72A9C9B19005D7971 /* GuanTestWebController.m */,
+				B137ABC32A9C94BC005D7971 /* GuanWeakWebViewDelegate.h */,
+				B137ABC42A9C94BC005D7971 /* GuanWeakWebViewDelegate.m */,
 				B10AA7FE2A91EF8300A2B653 /* GTEncryptString.h */,
 				B10AA7FF2A91EF8300A2B653 /* GTEncryptString.m */,
 				B1D171762A8A1B46001A0300 /* JCCSettingsController.h */,
@@ -366,6 +376,7 @@
 				2780CB5D2A8A742B00C15C79 /* GuanRightLabelTableCell.m in Sources */,
 				2780CB672A8A765600C15C79 /* YYClassInfo.m in Sources */,
 				B1F27E1D2A8B153E00E7B415 /* GuanUITool.m in Sources */,
+				B137ABC52A9C94BC005D7971 /* GuanWeakWebViewDelegate.m in Sources */,
 				B131C5EB2A60E3380099AB19 /* AppDelegate.m in Sources */,
 				B131C6042A60E7B80099AB19 /* GuanEncryptionManger.m in Sources */,
 				2780CB612A8A75C000C15C79 /* GuanBaseModel.m in Sources */,
@@ -382,6 +393,7 @@
 				B131C5FC2A60E33A0099AB19 /* main.m in Sources */,
 				B1D171782A8A1B46001A0300 /* JCCSettingsController.m in Sources */,
 				B1A0C2782A7BA50300F60D31 /* GuanClearTool.m in Sources */,
+				B137ABC82A9C9B19005D7971 /* GuanTestWebController.m in Sources */,
 				B16ABCAE2A6503E300A4EC12 /* GTFileTools.m in Sources */,
 				B1A0C27F2A7D14F500F60D31 /* UIAlertController+AddAction.m in Sources */,
 				B1A0C2692A7B9AD100F60D31 /* NSObject+SelectorDefender.m in Sources */,
