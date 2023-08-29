@@ -51,14 +51,35 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     
     self.title = @"我的";
     self.view.backgroundColor = UIColor.whiteColor;
-    
-    
     [self setupButtons];
     
 //    [self testVideoToAudio];
     
 //    [self testGetSubString];
+
     
+}
+
+
+- (void)testDriverCXUserId {
+    
+    
+    // 111112734815724@amap
+    // i] 000 driverId
+    // 1112734815724
+    // 1112734815724
+//    allUserId 111112734815724 15
+    
+    NSString *userId = @"111112734815724";
+    
+    // 1112734815724
+    
+    // 111273481572
+    // 11127348157
+    if(userId.length == 15) {
+        userId = [userId substringWithRange:NSMakeRange(2, 13)];
+    }
+    NSLog(@"userId %@ %ld",userId,userId.length);
 }
 
 - (void)testWebLoadURL {
@@ -136,7 +157,9 @@ static void gtgtgtgtgt(id self) {
         
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
-        NSURL *url = [NSURL URLWithString:@"http://49.232.174.8:81/api/useAuthCode"];
+//        NSURL *url = [NSURL URLWithString:@"http://49.232.174.8:81/api/useAuthCode"];
+
+        NSURL *url = [NSURL URLWithString:@"http://43.139.160.23:58/api/useAuthCode"];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                                                cachePolicy:NSURLRequestUseProtocolCachePolicy
                                                            timeoutInterval:60.0];
@@ -502,8 +525,8 @@ static void gtgtgtgtgt(id self) {
             
 //            [self jumpJCCSetting];
 //            [self testToast];
-//            gtgtgtgtgt(self);
-            [self testWebLoadURL];
+            gtgtgtgtgt(self);
+//            [self testWebLoadURL];
             break;
         }
         case 10001:{

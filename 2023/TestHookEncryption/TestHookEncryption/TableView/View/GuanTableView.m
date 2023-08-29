@@ -41,7 +41,7 @@
 
 - (void)initSettings {
     
-    self.backgroundColor = [GuanUITool guan_red:60 green:82 blue:113];
+    self.backgroundColor = [GuanUITool guan_red:37 green:185 blue:202];
     self.separatorStyle = UITableViewCellSeparatorStyleNone;
     
 }

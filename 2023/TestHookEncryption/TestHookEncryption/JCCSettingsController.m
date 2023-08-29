@@ -35,7 +35,7 @@
 - (void)addNavgationBar {
     // bottom view
     UIView *navgationView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, [GuanUITool guan_navigationViewHeight])];
-    navgationView.backgroundColor = [GuanUITool guan_red:60 green:82 blue:113];
+    navgationView.backgroundColor = [GuanUITool guan_red:37 green:185 blue:202];
     
     UILabel *guanTitleLabel = [[UILabel alloc] init];
     guanTitleLabel.text = @"超跑助手";
