@@ -15,13 +15,13 @@
 /Users/augus/Desktop/cracker_app/aweme/26.6.0/debug_ipa
 
 # 主路径，TODO: 需要修改这里
-my_path="/Users/augus/Desktop/cracker_app/aweme/26.6.0/debug_ipa/Payload/"
+my_path="/Users/augus/Desktop/cracker_app/tiktok/30.7.0/store/Payload/"
 
 # 可执行文件名，TODO: 需要修改这里
-executable_file_name="Aweme"
+executable_file_name="TikTok"
 
 # tweak动态库 TODO: 需要修改这里
-tweak_dylib_name="aweme-tweak.dylib"
+tweak_dylib_name="tiktok-tweak.dylib"
 
 # CydiaSubstrate动态库
 cydiaSubstrate_name="CydiaSubstrate"
