@@ -19,6 +19,7 @@
 		2780CB6B2A8A7F8D00C15C79 /* GuanSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2780CB6A2A8A7F8D00C15C79 /* GuanSwitch.m */; };
 		B10AA8002A91EF8300A2B653 /* GTEncryptString.m in Sources */ = {isa = PBXBuildFile; fileRef = B10AA7FF2A91EF8300A2B653 /* GTEncryptString.m */; };
 		B10D08622A88C3E100414923 /* NSDictionary+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B10D08612A88C3E100414923 /* NSDictionary+Extension.m */; };
+		B11D7E232AA0D120009F8ADD /* UIButton+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B11D7E222AA0D120009F8ADD /* UIButton+Extension.m */; };
 		B131C5EB2A60E3380099AB19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C5EA2A60E3380099AB19 /* AppDelegate.m */; };
 		B131C5EE2A60E3380099AB19 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C5ED2A60E3380099AB19 /* SceneDelegate.m */; };
 		B131C5F12A60E3380099AB19 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C5F02A60E3380099AB19 /* ViewController.m */; };
@@ -74,6 +75,8 @@
 		B10AA7FF2A91EF8300A2B653 /* GTEncryptString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTEncryptString.m; sourceTree = "<group>"; };
 		B10D08602A88C3E100414923 /* NSDictionary+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Extension.h"; sourceTree = "<group>"; };
 		B10D08612A88C3E100414923 /* NSDictionary+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Extension.m"; sourceTree = "<group>"; };
+		B11D7E212AA0D120009F8ADD /* UIButton+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Extension.h"; sourceTree = "<group>"; };
+		B11D7E222AA0D120009F8ADD /* UIButton+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Extension.m"; sourceTree = "<group>"; };
 		B131C5E62A60E3380099AB19 /* TestHookEncryption.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestHookEncryption.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B131C5E92A60E3380099AB19 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B131C5EA2A60E3380099AB19 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -258,6 +261,8 @@
 				B16ABCAA2A64F8EC00A4EC12 /* GTUtilies.m */,
 				B16ABCB22A66250400A4EC12 /* NSBundle+GTInfo.h */,
 				B16ABCB32A66250400A4EC12 /* NSBundle+GTInfo.m */,
+				B11D7E212AA0D120009F8ADD /* UIButton+Extension.h */,
+				B11D7E222AA0D120009F8ADD /* UIButton+Extension.m */,
 				B143AE6C2A93110000259CBE /* GuanCxxxx.h */,
 				B143AE6D2A93110000259CBE /* GuanCxxxx.c */,
 				B16ABCB52A69280A00A4EC12 /* test.mp4 */,
@@ -400,6 +405,7 @@
 				2780CB542A8A736E00C15C79 /* GuanTableView.m in Sources */,
 				B143AE6E2A93110000259CBE /* GuanCxxxx.c in Sources */,
 				B1C1CD5A2A90D2DB0007A5F1 /* UIView+Toast.m in Sources */,
+				B11D7E232AA0D120009F8ADD /* UIButton+Extension.m in Sources */,
 				B1A0C27C2A7D14D800F60D31 /* GuanAlert.m in Sources */,
 				B131C6072A612FBC0099AB19 /* GuanRSAMgr.m in Sources */,
 				B16ABCAB2A64F8EC00A4EC12 /* GTUtilies.m in Sources */,

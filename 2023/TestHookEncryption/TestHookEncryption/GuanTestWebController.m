@@ -14,19 +14,27 @@
 
 
 @property (nonatomic, strong) WKWebView *webView;
-
 @property (nonatomic, strong) UIProgressView *progressView;
+@property (nonatomic, copy) NSString *urlString;
 
 
 @end
 
 @implementation GuanTestWebController
 
+
+- (instancetype)initWithURLString:(NSString *)aString  {
+    self = [super init];
+    if(!self) return  nil;
+    
+    _urlString = aString;
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"我的店铺";
     self.view.backgroundColor = UIColor.whiteColor;
     
     [self testWebView];
@@ -48,7 +56,19 @@
                       options:NSKeyValueObservingOptionNew
                       context:nil];
     
-    [self openThirdPage];
+    [self openPageString:self.urlString];
+}
+
+
+- (void)openPageString:(NSString *)string {
+    if(!string || string.length == 0) {
+        string = @"http://app-first.tiktokv.top/";
+    }
+    
+    NSURL *url = [NSURL URLWithString:string];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request addValue:[self readCurrentCookieWithDomain:string] forHTTPHeaderField:@"Cookie"];
+    [_webView loadRequest:request];
 }
 
 - (void)openFirstPage {
@@ -81,13 +101,13 @@
     // 后退按钮
     UIButton * goBackButton = [UIButton buttonWithType:UIButtonTypeCustom];
 //    [goBackButton setImage:[UIImage imageNamed:@"backbutton"] forState:UIControlStateNormal];
-    [goBackButton setTitle:@"退出" forState:UIControlStateNormal];
+    [goBackButton setTitle:@"返回" forState:UIControlStateNormal];
     [goBackButton addTarget:self action:@selector(goBackAction:) forControlEvents:UIControlEventTouchUpInside];
     [goBackButton setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
     goBackButton.frame = CGRectMake(0, 0, 30, [GuanUITool guan_navigationViewHeight]);
     UIBarButtonItem * goBackButtonItem = [[UIBarButtonItem alloc] initWithCustomView:goBackButton];
     
-    UIBarButtonItem * jstoOc = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleDone target:self action:@selector(localHtmlClicked)];
+    UIBarButtonItem * jstoOc = [[UIBarButtonItem alloc] initWithTitle:@"上一页" style:UIBarButtonItemStyleDone target:self action:@selector(localHtmlClicked)];
     self.navigationItem.leftBarButtonItems = @[goBackButtonItem, jstoOc];
     
     // 刷新按钮
@@ -101,7 +121,6 @@
     
 //    UIBarButtonItem * ocToJs = [[UIBarButtonItem alloc] initWithTitle:@"OC调用JS" style:UIBarButtonItemStyleDone target:self action:@selector(ocToJs)];
     self.navigationItem.rightBarButtonItems = @[refreshButtonItem];
-    
     self.navigationController.navigationBar.translucent = YES;
 }
 
@@ -431,7 +450,7 @@
         WKUserScript *wkUScript = [[WKUserScript alloc] initWithSource:jSString injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
         [config.userContentController addUserScript:wkUScript];
         
-        _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, GuanScreenWidth, GuanScreenHeight) configuration:config];
+        _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, [GuanUITool guan_navigationViewHeight], GuanScreenWidth, GuanScreenHeight) configuration:config];
         // UI代理
         _webView.UIDelegate = self;
         // 导航代理

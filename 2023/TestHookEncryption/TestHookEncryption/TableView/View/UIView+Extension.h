@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) UIView *(^st_frame)(CGRect rect);
 
-#pragma mark 直接给控件frame赋值
+#pragma mark - 直接给控件frame赋值
 @property (nonatomic, assign) CGFloat x ;
 @property (nonatomic, assign) CGFloat y ;
 @property (nonatomic, assign) CGFloat width;
@@ -24,12 +24,17 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGPoint origin;
 @property (nonatomic, assign) CGFloat centerX;
 @property (nonatomic, assign) CGFloat centerY;
+@property (nonatomic, assign) CGFloat top;
+@property (nonatomic, assign) CGFloat bottom;
+@property (nonatomic, assign) CGFloat left;
+@property (nonatomic, assign) CGFloat right;
+
 
 
 @end
 
 @interface UIButton (UIButton___Extension)
-#pragma mark Nomal状态button下各属性
+#pragma mark - Nomal状态button下各属性
 //image
 @property (nonatomic, copy) UIButton *(^st_nomalImage)(NSString *nomalImageName);
 //title
@@ -39,7 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
 //backgroudImage
 @property (nonatomic, copy) UIButton *(^st_nomalBackgroundImage)(NSString *nomalBackgroundImageName);
 
-#pragma mark Highlighted状态button下各属性
+#pragma mark - Highlighted状态button下各属性
 //image
 @property (nonatomic, copy) UIButton *(^st_highlightedImage)(NSString *highlightedImageName);
 //title
@@ -49,7 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
 //backgroudImage
 @property (nonatomic, copy) UIButton *(^st_highlightedBackgroundImage)(NSString *highlightedBackgroundImageName);
 
-#pragma mark Selected状态button下各属性
+#pragma mark - Selected状态button下各属性
 
 //image
 @property (nonatomic, copy) UIButton *(^st_selectedImage)(NSString *selectedImageName);
@@ -60,7 +65,7 @@ NS_ASSUME_NONNULL_BEGIN
 //backgroudImage
 @property (nonatomic, copy) UIButton *(^st_selectedBackgroundImage)(NSString *selectedBackgroundImageName);
 
-#pragma mark Disabled状态button下各属性
+#pragma mark - Disabled状态button下各属性
 
 //image
 @property (nonatomic, copy) UIButton *(^st_disabledImage)(NSString *disabledImageName);
@@ -71,7 +76,7 @@ NS_ASSUME_NONNULL_BEGIN
 //backgroudImage
 @property (nonatomic, copy) UIButton *(^st_disabledBackgroundImage)(NSString *disabledBackgroundImageName);
 
-#pragma mark frame 及 textAlignment、font
+#pragma mark - frame 及 textAlignment、font
 //textAlignment
 @property (nonatomic, copy) UIButton *(^st_textAlignment)(NSTextAlignment textAlignment);
 //frame
