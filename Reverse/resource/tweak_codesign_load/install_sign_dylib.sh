@@ -12,16 +12,14 @@
 #CreateTime:2023-01-04 17:51:46
 ####################
 
-/Users/augus/Desktop/cracker_app/aweme/26.6.0/debug_ipa
-
 # 主路径，TODO: 需要修改这里
-my_path="/Users/augus/Desktop/cracker_app/tiktok/30.7.0/store/Payload/"
+my_path="/Users/augus/Desktop/cracker_app/kplus/5.17.5/resign_ipa/release/"
 
 # 可执行文件名，TODO: 需要修改这里
-executable_file_name="TikTok"
+executable_file_name="KPlus"
 
 # tweak动态库 TODO: 需要修改这里
-tweak_dylib_name="tiktok-tweak.dylib"
+tweak_dylib_name="kplus-tweak.dylib"
 
 # CydiaSubstrate动态库
 cydiaSubstrate_name="CydiaSubstrate"
