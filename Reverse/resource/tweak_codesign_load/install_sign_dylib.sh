@@ -13,13 +13,13 @@
 ####################
 
 # 主路径，TODO: 需要修改这里
-my_path="/Users/augus/Desktop/cracker_app/kplus/5.17.5/resign_ipa/release/"
+my_path="/Users/augus/Desktop/cracker_app/tiktok/30.7.0/store/Payload/"
 
 # 可执行文件名，TODO: 需要修改这里
-executable_file_name="KPlus"
+executable_file_name="TikTok"
 
 # tweak动态库 TODO: 需要修改这里
-tweak_dylib_name="kplus-tweak.dylib"
+tweak_dylib_name="tiktok-tweak.dylib"
 
 # CydiaSubstrate动态库
 cydiaSubstrate_name="CydiaSubstrate"
@@ -52,7 +52,9 @@ plugIns_path="PlugIns"
 # Yahia of Guan = 2704502B0CC13A8269A951CE3E43D4582011BE16
 # shao hua gou（Huomanman）：FAAC48B9B4BC8110F748F40C6363E734B53AE9F6
 # sohu 7G76: B1B4B69A92436CDEF7788F024CC45129537347D5
-sign_number="B1B4B69A92436CDEF7788F024CC45129537347D5"
+# jianhong Meng: DB65878AF8082BADCB24893531557A1EAB80FAA7
+# Mazhar Amin: 5DFB59834046ACB78DAB049E7D5D7509D32C839C
+sign_number="5DFB59834046ACB78DAB049E7D5D7509D32C839C"
 
 
 
