@@ -769,4 +769,25 @@ static NSString *guan_xxxxxxx(NSString *data, NSString *key)
     }
 }
 
+
++ (BOOL)guan_isZeroHour {
+    NSDate *nowDate = [NSDate date];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSUInteger unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:nowDate];
+    NSUInteger hour = [dateComponents hour];
+    NSUInteger mintue = [dateComponents minute];
+    return hour == 0 && mintue == 0;
+}
+
+
++ (BOOL)guan_isWholeHour {
+    NSDate *nowDate = [NSDate date];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSUInteger unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    NSDateComponents *dateComponents = [calendar components:unitFlags fromDate:nowDate];
+    NSUInteger mintue = [dateComponents minute];
+    return mintue == 0;
+}
+
 @end

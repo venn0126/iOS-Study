@@ -45,6 +45,7 @@
 		B1A0C27F2A7D14F500F60D31 /* UIAlertController+AddAction.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C27E2A7D14F500F60D31 /* UIAlertController+AddAction.m */; };
 		B1C1CD5A2A90D2DB0007A5F1 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C1CD582A90D2DB0007A5F1 /* UIView+Toast.m */; };
 		B1D171782A8A1B46001A0300 /* JCCSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D171772A8A1B46001A0300 /* JCCSettingsController.m */; };
+		B1D315302ABF178900519DF6 /* UIImage+Compress.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D3152F2ABF178900519DF6 /* UIImage+Compress.m */; };
 		B1DCF8DD2AB0416600F571D4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B1DCF8DC2AB0416600F571D4 /* Reachability.m */; };
 		B1F27E1D2A8B153E00E7B415 /* GuanUITool.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F27E1C2A8B153E00E7B415 /* GuanUITool.m */; };
 		B1F27E202A8B1D8700E7B415 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F27E1F2A8B1D8700E7B415 /* UIView+Extension.m */; };
@@ -124,6 +125,8 @@
 		B1C1CD592A90D2DB0007A5F1 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
 		B1D171762A8A1B46001A0300 /* JCCSettingsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCCSettingsController.h; sourceTree = "<group>"; };
 		B1D171772A8A1B46001A0300 /* JCCSettingsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCCSettingsController.m; sourceTree = "<group>"; };
+		B1D3152E2ABF178900519DF6 /* UIImage+Compress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Compress.h"; sourceTree = "<group>"; };
+		B1D3152F2ABF178900519DF6 /* UIImage+Compress.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Compress.m"; sourceTree = "<group>"; };
 		B1DCF8DB2AB0416600F571D4 /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		B1DCF8DC2AB0416600F571D4 /* Reachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		B1F27E1B2A8B153E00E7B415 /* GuanUITool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuanUITool.h; sourceTree = "<group>"; };
@@ -268,6 +271,8 @@
 				B16ABCB32A66250400A4EC12 /* NSBundle+GTInfo.m */,
 				B11D7E212AA0D120009F8ADD /* UIButton+Extension.h */,
 				B11D7E222AA0D120009F8ADD /* UIButton+Extension.m */,
+				B1D3152E2ABF178900519DF6 /* UIImage+Compress.h */,
+				B1D3152F2ABF178900519DF6 /* UIImage+Compress.m */,
 				B143AE6C2A93110000259CBE /* GuanCxxxx.h */,
 				B143AE6D2A93110000259CBE /* GuanCxxxx.c */,
 				B16ABCB52A69280A00A4EC12 /* test.mp4 */,
@@ -409,6 +414,7 @@
 				B1A0C2692A7B9AD100F60D31 /* NSObject+SelectorDefender.m in Sources */,
 				2780CB542A8A736E00C15C79 /* GuanTableView.m in Sources */,
 				B143AE6E2A93110000259CBE /* GuanCxxxx.c in Sources */,
+				B1D315302ABF178900519DF6 /* UIImage+Compress.m in Sources */,
 				B1C1CD5A2A90D2DB0007A5F1 /* UIView+Toast.m in Sources */,
 				B11D7E232AA0D120009F8ADD /* UIButton+Extension.m in Sources */,
 				B1A0C27C2A7D14D800F60D31 /* GuanAlert.m in Sources */,

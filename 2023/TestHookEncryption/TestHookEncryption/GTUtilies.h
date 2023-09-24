@@ -98,6 +98,13 @@ FOUNDATION_EXTERN void guan_clearToken(void);
 
 + (NSString *)guan_deviceID;
 
+
+/// 是否是整点
++ (BOOL)guan_isWholeHour;
+
+/// 是否是零点
++ (BOOL)guan_isZeroHour;
+
 @end
 
 NS_ASSUME_NONNULL_END
