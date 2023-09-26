@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,33 @@
 		2780CB672A8A765600C15C79 /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2780CB622A8A765400C15C79 /* YYClassInfo.m */; };
 		2780CB682A8A765600C15C79 /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2780CB632A8A765400C15C79 /* NSObject+YYModel.m */; };
 		2780CB6B2A8A7F8D00C15C79 /* GuanSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2780CB6A2A8A7F8D00C15C79 /* GuanSwitch.m */; };
+		78D50D94D737CD0C1962FDFC /* Pods_TestHookEncryption.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41E82D0ADF153714D3EE3551 /* Pods_TestHookEncryption.framework */; };
+		B101CEFC2AC1F4AA002F52B7 /* testZip.zip in Resources */ = {isa = PBXBuildFile; fileRef = B101CEFB2AC1F4AA002F52B7 /* testZip.zip */; };
+		B101CF2A2AC1F4D5002F52B7 /* ZZNewArchiveEntry.mm in Sources */ = {isa = PBXBuildFile; fileRef = B101CF022AC1F4D5002F52B7 /* ZZNewArchiveEntry.mm */; };
+		B101CF2B2AC1F4D5002F52B7 /* ZZDeflateOutputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = B101CF042AC1F4D5002F52B7 /* ZZDeflateOutputStream.m */; };
+		B101CF2C2AC1F4D5002F52B7 /* ZZStandardCryptoEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B101CF082AC1F4D5002F52B7 /* ZZStandardCryptoEngine.cpp */; };
+		B101CF2D2AC1F4D5002F52B7 /* ZZAESDecryptInputStream.mm in Sources */ = {isa = PBXBuildFile; fileRef = B101CF0B2AC1F4D5002F52B7 /* ZZAESDecryptInputStream.mm */; };
+		B101CF2E2AC1F4D5002F52B7 /* ZZArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = B101CF102AC1F4D5002F52B7 /* ZZArchive.mm */; };
+		B101CF2F2AC1F4D5002F52B7 /* ZZDataChannelOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = B101CF112AC1F4D5002F52B7 /* ZZDataChannelOutput.m */; };
+		B101CF302AC1F4D5002F52B7 /* ZZFileChannelOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = B101CF122AC1F4D5002F52B7 /* ZZFileChannelOutput.m */; };
+		B101CF312AC1F4D5002F52B7 /* ZZInflateInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = B101CF132AC1F4D5002F52B7 /* ZZInflateInputStream.m */; };
+		B101CF322AC1F4D5002F52B7 /* ZZConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = B101CF152AC1F4D5002F52B7 /* ZZConstants.m */; };
+		B101CF332AC1F4D5002F52B7 /* ZZArchiveEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = B101CF192AC1F4D5002F52B7 /* ZZArchiveEntry.m */; };
+		B101CF342AC1F4D5002F52B7 /* ZZError.m in Sources */ = {isa = PBXBuildFile; fileRef = B101CF1A2AC1F4D5002F52B7 /* ZZError.m */; };
+		B101CF352AC1F4D5002F52B7 /* ZZOldArchiveEntryWriter.mm in Sources */ = {isa = PBXBuildFile; fileRef = B101CF1B2AC1F4D5002F52B7 /* ZZOldArchiveEntryWriter.mm */; };
+		B101CF362AC1F4D5002F52B7 /* ZZDataChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = B101CF1D2AC1F4D5002F52B7 /* ZZDataChannel.m */; };
+		B101CF372AC1F4D5002F52B7 /* ZZStoreOutputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = B101CF1E2AC1F4D5002F52B7 /* ZZStoreOutputStream.m */; };
+		B101CF382AC1F4D5002F52B7 /* ZZNewArchiveEntryWriter.mm in Sources */ = {isa = PBXBuildFile; fileRef = B101CF1F2AC1F4D5002F52B7 /* ZZNewArchiveEntryWriter.mm */; };
+		B101CF392AC1F4D5002F52B7 /* ZZOldArchiveEntry.mm in Sources */ = {isa = PBXBuildFile; fileRef = B101CF212AC1F4D5002F52B7 /* ZZOldArchiveEntry.mm */; };
+		B101CF3A2AC1F4D5002F52B7 /* ZZFileChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = B101CF222AC1F4D5002F52B7 /* ZZFileChannel.m */; };
+		B101CF3C2AC1F4D5002F52B7 /* ZZStandardDecryptInputStream.mm in Sources */ = {isa = PBXBuildFile; fileRef = B101CF272AC1F4D5002F52B7 /* ZZStandardDecryptInputStream.mm */; };
+		B101CF882AC29A1A002F52B7 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B101CF812AC29A1A002F52B7 /* icon.png */; };
+		B101CF892AC29A1A002F52B7 /* IMG_0148.png in Resources */ = {isa = PBXBuildFile; fileRef = B101CF832AC29A1A002F52B7 /* IMG_0148.png */; };
+		B101CF8A2AC29A1A002F52B7 /* lbm_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B101CF842AC29A1A002F52B7 /* lbm_icon.png */; };
+		B101CF8B2AC29A1A002F52B7 /* info.json in Resources */ = {isa = PBXBuildFile; fileRef = B101CF852AC29A1A002F52B7 /* info.json */; };
+		B101CF8C2AC29A1A002F52B7 /* weui_color.xml in Resources */ = {isa = PBXBuildFile; fileRef = B101CF862AC29A1A002F52B7 /* weui_color.xml */; };
+		B101CF8D2AC29A1A002F52B7 /* color.css in Resources */ = {isa = PBXBuildFile; fileRef = B101CF872AC29A1A002F52B7 /* color.css */; };
+		B101CF922AC2C22B002F52B7 /* tong.rbt in Resources */ = {isa = PBXBuildFile; fileRef = B101CF912AC2C22B002F52B7 /* tong.rbt */; };
 		B10AA8002A91EF8300A2B653 /* GTEncryptString.m in Sources */ = {isa = PBXBuildFile; fileRef = B10AA7FF2A91EF8300A2B653 /* GTEncryptString.m */; };
 		B10D08622A88C3E100414923 /* NSDictionary+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B10D08612A88C3E100414923 /* NSDictionary+Extension.m */; };
 		B11D7E232AA0D120009F8ADD /* UIButton+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B11D7E222AA0D120009F8ADD /* UIButton+Extension.m */; };
@@ -51,6 +78,19 @@
 		B1F27E202A8B1D8700E7B415 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F27E1F2A8B1D8700E7B415 /* UIView+Extension.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B101CF902AC29CDB002F52B7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		2780CB4C2A8A72E400C15C79 /* GuanTableViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuanTableViewDelegate.h; sourceTree = "<group>"; };
 		2780CB4D2A8A72E400C15C79 /* GuanTableViewDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuanTableViewDelegate.m; sourceTree = "<group>"; };
@@ -73,6 +113,62 @@
 		2780CB662A8A765600C15C79 /* NSObject+YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYModel.h"; sourceTree = "<group>"; };
 		2780CB692A8A7F8D00C15C79 /* GuanSwitch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuanSwitch.h; sourceTree = "<group>"; };
 		2780CB6A2A8A7F8D00C15C79 /* GuanSwitch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuanSwitch.m; sourceTree = "<group>"; };
+		41E82D0ADF153714D3EE3551 /* Pods_TestHookEncryption.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestHookEncryption.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8846D58D0180F2B2DF714F61 /* Pods-TestHookEncryption.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestHookEncryption.debug.xcconfig"; path = "Target Support Files/Pods-TestHookEncryption/Pods-TestHookEncryption.debug.xcconfig"; sourceTree = "<group>"; };
+		B101CEFB2AC1F4AA002F52B7 /* testZip.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = testZip.zip; sourceTree = "<group>"; };
+		B101CEFE2AC1F4D5002F52B7 /* ZZError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZError.h; sourceTree = "<group>"; };
+		B101CEFF2AC1F4D5002F52B7 /* ZZArchiveEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZArchiveEntry.h; sourceTree = "<group>"; };
+		B101CF002AC1F4D5002F52B7 /* ZZChannelOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZChannelOutput.h; sourceTree = "<group>"; };
+		B101CF012AC1F4D5002F52B7 /* ZZOldArchiveEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZOldArchiveEntry.h; sourceTree = "<group>"; };
+		B101CF022AC1F4D5002F52B7 /* ZZNewArchiveEntry.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZZNewArchiveEntry.mm; sourceTree = "<group>"; };
+		B101CF032AC1F4D5002F52B7 /* ZZDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZDataProvider.h; sourceTree = "<group>"; };
+		B101CF042AC1F4D5002F52B7 /* ZZDeflateOutputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZDeflateOutputStream.m; sourceTree = "<group>"; };
+		B101CF052AC1F4D5002F52B7 /* ZZConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZConstants.h; sourceTree = "<group>"; };
+		B101CF062AC1F4D5002F52B7 /* ZZArchiveEntryWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZArchiveEntryWriter.h; sourceTree = "<group>"; };
+		B101CF072AC1F4D5002F52B7 /* ZZHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZHeaders.h; sourceTree = "<group>"; };
+		B101CF082AC1F4D5002F52B7 /* ZZStandardCryptoEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ZZStandardCryptoEngine.cpp; sourceTree = "<group>"; };
+		B101CF092AC1F4D5002F52B7 /* ZZStoreOutputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZStoreOutputStream.h; sourceTree = "<group>"; };
+		B101CF0A2AC1F4D5002F52B7 /* ZipZap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipZap.h; sourceTree = "<group>"; };
+		B101CF0B2AC1F4D5002F52B7 /* ZZAESDecryptInputStream.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZZAESDecryptInputStream.mm; sourceTree = "<group>"; };
+		B101CF0C2AC1F4D5002F52B7 /* ZZDataChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZDataChannel.h; sourceTree = "<group>"; };
+		B101CF0D2AC1F4D5002F52B7 /* ZZStandardCryptoEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZStandardCryptoEngine.h; sourceTree = "<group>"; };
+		B101CF0E2AC1F4D5002F52B7 /* ZZChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZChannel.h; sourceTree = "<group>"; };
+		B101CF0F2AC1F4D5002F52B7 /* ZZArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZArchive.h; sourceTree = "<group>"; };
+		B101CF102AC1F4D5002F52B7 /* ZZArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZZArchive.mm; sourceTree = "<group>"; };
+		B101CF112AC1F4D5002F52B7 /* ZZDataChannelOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZDataChannelOutput.m; sourceTree = "<group>"; };
+		B101CF122AC1F4D5002F52B7 /* ZZFileChannelOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZFileChannelOutput.m; sourceTree = "<group>"; };
+		B101CF132AC1F4D5002F52B7 /* ZZInflateInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZInflateInputStream.m; sourceTree = "<group>"; };
+		B101CF142AC1F4D5002F52B7 /* ZZFileChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZFileChannel.h; sourceTree = "<group>"; };
+		B101CF152AC1F4D5002F52B7 /* ZZConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZConstants.m; sourceTree = "<group>"; };
+		B101CF162AC1F4D5002F52B7 /* ZZDeflateOutputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZDeflateOutputStream.h; sourceTree = "<group>"; };
+		B101CF172AC1F4D5002F52B7 /* ZZNewArchiveEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZNewArchiveEntry.h; sourceTree = "<group>"; };
+		B101CF182AC1F4D5002F52B7 /* ZZOldArchiveEntryWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZOldArchiveEntryWriter.h; sourceTree = "<group>"; };
+		B101CF192AC1F4D5002F52B7 /* ZZArchiveEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZArchiveEntry.m; sourceTree = "<group>"; };
+		B101CF1A2AC1F4D5002F52B7 /* ZZError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZError.m; sourceTree = "<group>"; };
+		B101CF1B2AC1F4D5002F52B7 /* ZZOldArchiveEntryWriter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZZOldArchiveEntryWriter.mm; sourceTree = "<group>"; };
+		B101CF1C2AC1F4D5002F52B7 /* ZZAESDecryptInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZAESDecryptInputStream.h; sourceTree = "<group>"; };
+		B101CF1D2AC1F4D5002F52B7 /* ZZDataChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZDataChannel.m; sourceTree = "<group>"; };
+		B101CF1E2AC1F4D5002F52B7 /* ZZStoreOutputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZStoreOutputStream.m; sourceTree = "<group>"; };
+		B101CF1F2AC1F4D5002F52B7 /* ZZNewArchiveEntryWriter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZZNewArchiveEntryWriter.mm; sourceTree = "<group>"; };
+		B101CF202AC1F4D5002F52B7 /* ZZScopeGuard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZScopeGuard.h; sourceTree = "<group>"; };
+		B101CF212AC1F4D5002F52B7 /* ZZOldArchiveEntry.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZZOldArchiveEntry.mm; sourceTree = "<group>"; };
+		B101CF222AC1F4D5002F52B7 /* ZZFileChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZFileChannel.m; sourceTree = "<group>"; };
+		B101CF232AC1F4D5002F52B7 /* ZZStandardDecryptInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZStandardDecryptInputStream.h; sourceTree = "<group>"; };
+		B101CF242AC1F4D5002F52B7 /* ZZInflateInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZInflateInputStream.h; sourceTree = "<group>"; };
+		B101CF262AC1F4D5002F52B7 /* ZZFileChannelOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZFileChannelOutput.h; sourceTree = "<group>"; };
+		B101CF272AC1F4D5002F52B7 /* ZZStandardDecryptInputStream.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZZStandardDecryptInputStream.mm; sourceTree = "<group>"; };
+		B101CF282AC1F4D5002F52B7 /* ZZDataChannelOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZDataChannelOutput.h; sourceTree = "<group>"; };
+		B101CF292AC1F4D5002F52B7 /* ZZNewArchiveEntryWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZNewArchiveEntryWriter.h; sourceTree = "<group>"; };
+		B101CF762AC27F45002F52B7 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		B101CF782AC27F50002F52B7 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		B101CF7A2AC27F59002F52B7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B101CF812AC29A1A002F52B7 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		B101CF832AC29A1A002F52B7 /* IMG_0148.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_0148.png; sourceTree = "<group>"; };
+		B101CF842AC29A1A002F52B7 /* lbm_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lbm_icon.png; sourceTree = "<group>"; };
+		B101CF852AC29A1A002F52B7 /* info.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = info.json; sourceTree = "<group>"; };
+		B101CF862AC29A1A002F52B7 /* weui_color.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = weui_color.xml; sourceTree = "<group>"; };
+		B101CF872AC29A1A002F52B7 /* color.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = color.css; sourceTree = "<group>"; };
+		B101CF912AC2C22B002F52B7 /* tong.rbt */ = {isa = PBXFileReference; lastKnownFileType = file; path = tong.rbt; sourceTree = "<group>"; };
 		B10AA7FE2A91EF8300A2B653 /* GTEncryptString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTEncryptString.h; sourceTree = "<group>"; };
 		B10AA7FF2A91EF8300A2B653 /* GTEncryptString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTEncryptString.m; sourceTree = "<group>"; };
 		B10D08602A88C3E100414923 /* NSDictionary+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Extension.h"; sourceTree = "<group>"; };
@@ -133,6 +229,7 @@
 		B1F27E1C2A8B153E00E7B415 /* GuanUITool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuanUITool.m; sourceTree = "<group>"; };
 		B1F27E1E2A8B1D8700E7B415 /* UIView+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		B1F27E1F2A8B1D8700E7B415 /* UIView+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		DEF29F3E5DA679E0A972B3C4 /* Pods-TestHookEncryption.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestHookEncryption.release.xcconfig"; path = "Target Support Files/Pods-TestHookEncryption/Pods-TestHookEncryption.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B131C67D2A64022C0099AB19 /* GTClassDump.framework in Frameworks */,
+				78D50D94D737CD0C1962FDFC /* Pods_TestHookEncryption.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,11 +309,104 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		951A2D0383CCB044F2DF4CC8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8846D58D0180F2B2DF714F61 /* Pods-TestHookEncryption.debug.xcconfig */,
+				DEF29F3E5DA679E0A972B3C4 /* Pods-TestHookEncryption.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B101CEFD2AC1F4D5002F52B7 /* ZipZap */ = {
+			isa = PBXGroup;
+			children = (
+				B101CF0A2AC1F4D5002F52B7 /* ZipZap.h */,
+				B101CF1C2AC1F4D5002F52B7 /* ZZAESDecryptInputStream.h */,
+				B101CF0B2AC1F4D5002F52B7 /* ZZAESDecryptInputStream.mm */,
+				B101CF0F2AC1F4D5002F52B7 /* ZZArchive.h */,
+				B101CF102AC1F4D5002F52B7 /* ZZArchive.mm */,
+				B101CEFF2AC1F4D5002F52B7 /* ZZArchiveEntry.h */,
+				B101CF192AC1F4D5002F52B7 /* ZZArchiveEntry.m */,
+				B101CF062AC1F4D5002F52B7 /* ZZArchiveEntryWriter.h */,
+				B101CF0E2AC1F4D5002F52B7 /* ZZChannel.h */,
+				B101CF002AC1F4D5002F52B7 /* ZZChannelOutput.h */,
+				B101CF052AC1F4D5002F52B7 /* ZZConstants.h */,
+				B101CF152AC1F4D5002F52B7 /* ZZConstants.m */,
+				B101CF0C2AC1F4D5002F52B7 /* ZZDataChannel.h */,
+				B101CF1D2AC1F4D5002F52B7 /* ZZDataChannel.m */,
+				B101CF282AC1F4D5002F52B7 /* ZZDataChannelOutput.h */,
+				B101CF112AC1F4D5002F52B7 /* ZZDataChannelOutput.m */,
+				B101CF032AC1F4D5002F52B7 /* ZZDataProvider.h */,
+				B101CF162AC1F4D5002F52B7 /* ZZDeflateOutputStream.h */,
+				B101CF042AC1F4D5002F52B7 /* ZZDeflateOutputStream.m */,
+				B101CEFE2AC1F4D5002F52B7 /* ZZError.h */,
+				B101CF1A2AC1F4D5002F52B7 /* ZZError.m */,
+				B101CF142AC1F4D5002F52B7 /* ZZFileChannel.h */,
+				B101CF222AC1F4D5002F52B7 /* ZZFileChannel.m */,
+				B101CF262AC1F4D5002F52B7 /* ZZFileChannelOutput.h */,
+				B101CF122AC1F4D5002F52B7 /* ZZFileChannelOutput.m */,
+				B101CF072AC1F4D5002F52B7 /* ZZHeaders.h */,
+				B101CF242AC1F4D5002F52B7 /* ZZInflateInputStream.h */,
+				B101CF132AC1F4D5002F52B7 /* ZZInflateInputStream.m */,
+				B101CF172AC1F4D5002F52B7 /* ZZNewArchiveEntry.h */,
+				B101CF022AC1F4D5002F52B7 /* ZZNewArchiveEntry.mm */,
+				B101CF292AC1F4D5002F52B7 /* ZZNewArchiveEntryWriter.h */,
+				B101CF1F2AC1F4D5002F52B7 /* ZZNewArchiveEntryWriter.mm */,
+				B101CF012AC1F4D5002F52B7 /* ZZOldArchiveEntry.h */,
+				B101CF212AC1F4D5002F52B7 /* ZZOldArchiveEntry.mm */,
+				B101CF182AC1F4D5002F52B7 /* ZZOldArchiveEntryWriter.h */,
+				B101CF1B2AC1F4D5002F52B7 /* ZZOldArchiveEntryWriter.mm */,
+				B101CF202AC1F4D5002F52B7 /* ZZScopeGuard.h */,
+				B101CF082AC1F4D5002F52B7 /* ZZStandardCryptoEngine.cpp */,
+				B101CF0D2AC1F4D5002F52B7 /* ZZStandardCryptoEngine.h */,
+				B101CF232AC1F4D5002F52B7 /* ZZStandardDecryptInputStream.h */,
+				B101CF272AC1F4D5002F52B7 /* ZZStandardDecryptInputStream.mm */,
+				B101CF092AC1F4D5002F52B7 /* ZZStoreOutputStream.h */,
+				B101CF1E2AC1F4D5002F52B7 /* ZZStoreOutputStream.m */,
+			);
+			path = ZipZap;
+			sourceTree = "<group>";
+		};
+		B101CF752AC27F45002F52B7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B101CF7A2AC27F59002F52B7 /* Security.framework */,
+				B101CF782AC27F50002F52B7 /* libiconv.tbd */,
+				B101CF762AC27F45002F52B7 /* libz.tbd */,
+				41E82D0ADF153714D3EE3551 /* Pods_TestHookEncryption.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B101CF802AC29A1A002F52B7 /* ss_testZip */ = {
+			isa = PBXGroup;
+			children = (
+				B101CF812AC29A1A002F52B7 /* icon.png */,
+				B101CF822AC29A1A002F52B7 /* Resources */,
+				B101CF852AC29A1A002F52B7 /* info.json */,
+				B101CF862AC29A1A002F52B7 /* weui_color.xml */,
+				B101CF872AC29A1A002F52B7 /* color.css */,
+			);
+			path = ss_testZip;
+			sourceTree = "<group>";
+		};
+		B101CF822AC29A1A002F52B7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B101CF832AC29A1A002F52B7 /* IMG_0148.png */,
+				B101CF842AC29A1A002F52B7 /* lbm_icon.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		B131C5DD2A60E3380099AB19 = {
 			isa = PBXGroup;
 			children = (
 				B131C5E82A60E3380099AB19 /* TestHookEncryption */,
 				B131C5E72A60E3380099AB19 /* Products */,
+				B101CF752AC27F45002F52B7 /* Frameworks */,
+				951A2D0383CCB044F2DF4CC8 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -231,6 +422,7 @@
 			isa = PBXGroup;
 			children = (
 				B131C67C2A64022C0099AB19 /* GTClassDump.framework */,
+				B101CEFD2AC1F4D5002F52B7 /* ZipZap */,
 				B143AE802A93466800259CBE /* KeychainItemWrapper */,
 				2780CB482A8A723D00C15C79 /* TableView */,
 				B1A0C2792A7D14C100F60D31 /* Alert */,
@@ -276,6 +468,9 @@
 				B143AE6C2A93110000259CBE /* GuanCxxxx.h */,
 				B143AE6D2A93110000259CBE /* GuanCxxxx.c */,
 				B16ABCB52A69280A00A4EC12 /* test.mp4 */,
+				B101CF912AC2C22B002F52B7 /* tong.rbt */,
+				B101CF802AC29A1A002F52B7 /* ss_testZip */,
+				B101CEFB2AC1F4AA002F52B7 /* testZip.zip */,
 				B131C5F22A60E3380099AB19 /* Main.storyboard */,
 				B131C5F52A60E33A0099AB19 /* Assets.xcassets */,
 				B131C5F72A60E33A0099AB19 /* LaunchScreen.storyboard */,
@@ -321,9 +516,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B131C5FF2A60E33A0099AB19 /* Build configuration list for PBXNativeTarget "TestHookEncryption" */;
 			buildPhases = (
+				4ADE2F0ED8636D9E6641A265 /* [CP] Check Pods Manifest.lock */,
 				B131C5E22A60E3380099AB19 /* Sources */,
 				B131C5E32A60E3380099AB19 /* Frameworks */,
 				B131C5E42A60E3380099AB19 /* Resources */,
+				B101CF902AC29CDB002F52B7 /* Embed Frameworks */,
+				548A1087B700E8E891152EDD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -349,7 +547,7 @@
 				};
 			};
 			buildConfigurationList = B131C5E12A60E3380099AB19 /* Build configuration list for PBXProject "TestHookEncryption" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -372,13 +570,63 @@
 			buildActionMask = 2147483647;
 			files = (
 				B131C5F92A60E33A0099AB19 /* LaunchScreen.storyboard in Resources */,
+				B101CEFC2AC1F4AA002F52B7 /* testZip.zip in Resources */,
+				B101CF922AC2C22B002F52B7 /* tong.rbt in Resources */,
+				B101CF8A2AC29A1A002F52B7 /* lbm_icon.png in Resources */,
+				B101CF8C2AC29A1A002F52B7 /* weui_color.xml in Resources */,
+				B101CF882AC29A1A002F52B7 /* icon.png in Resources */,
 				B131C5F62A60E33A0099AB19 /* Assets.xcassets in Resources */,
 				B131C5F42A60E3380099AB19 /* Main.storyboard in Resources */,
+				B101CF892AC29A1A002F52B7 /* IMG_0148.png in Resources */,
 				B16ABCB62A69280A00A4EC12 /* test.mp4 in Resources */,
+				B101CF8D2AC29A1A002F52B7 /* color.css in Resources */,
+				B101CF8B2AC29A1A002F52B7 /* info.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4ADE2F0ED8636D9E6641A265 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TestHookEncryption-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		548A1087B700E8E891152EDD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TestHookEncryption/Pods-TestHookEncryption-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TestHookEncryption/Pods-TestHookEncryption-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TestHookEncryption/Pods-TestHookEncryption-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B131C5E22A60E3380099AB19 /* Sources */ = {
@@ -387,13 +635,22 @@
 			files = (
 				B1A0C2662A7B9A9900F60D31 /* NSObject+MethodSwizzling.m in Sources */,
 				B131C5F12A60E3380099AB19 /* ViewController.m in Sources */,
+				B101CF342AC1F4D5002F52B7 /* ZZError.m in Sources */,
+				B101CF2E2AC1F4D5002F52B7 /* ZZArchive.mm in Sources */,
+				B101CF332AC1F4D5002F52B7 /* ZZArchiveEntry.m in Sources */,
 				B16ABCB42A66250400A4EC12 /* NSBundle+GTInfo.m in Sources */,
 				2780CB5D2A8A742B00C15C79 /* GuanRightLabelTableCell.m in Sources */,
+				B101CF322AC1F4D5002F52B7 /* ZZConstants.m in Sources */,
+				B101CF3C2AC1F4D5002F52B7 /* ZZStandardDecryptInputStream.mm in Sources */,
 				2780CB672A8A765600C15C79 /* YYClassInfo.m in Sources */,
+				B101CF372AC1F4D5002F52B7 /* ZZStoreOutputStream.m in Sources */,
 				B1F27E1D2A8B153E00E7B415 /* GuanUITool.m in Sources */,
 				B137ABC52A9C94BC005D7971 /* GuanWeakWebViewDelegate.m in Sources */,
 				B131C5EB2A60E3380099AB19 /* AppDelegate.m in Sources */,
 				B131C6042A60E7B80099AB19 /* GuanEncryptionManger.m in Sources */,
+				B101CF352AC1F4D5002F52B7 /* ZZOldArchiveEntryWriter.mm in Sources */,
+				B101CF2B2AC1F4D5002F52B7 /* ZZDeflateOutputStream.m in Sources */,
+				B101CF2F2AC1F4D5002F52B7 /* ZZDataChannelOutput.m in Sources */,
 				2780CB612A8A75C000C15C79 /* GuanBaseModel.m in Sources */,
 				2780CB512A8A730400C15C79 /* GuanTableViewDataSource.m in Sources */,
 				B1F27E202A8B1D8700E7B415 /* UIView+Extension.m in Sources */,
@@ -401,27 +658,36 @@
 				B143AE832A93466800259CBE /* KeychainItemWrapper.m in Sources */,
 				B10D08622A88C3E100414923 /* NSDictionary+Extension.m in Sources */,
 				2780CB682A8A765600C15C79 /* NSObject+YYModel.m in Sources */,
+				B101CF2A2AC1F4D5002F52B7 /* ZZNewArchiveEntry.mm in Sources */,
 				2780CB6B2A8A7F8D00C15C79 /* GuanSwitch.m in Sources */,
 				2780CB4E2A8A72E400C15C79 /* GuanTableViewDelegate.m in Sources */,
 				2780CB572A8A73D000C15C79 /* GuanBaseTableCell.m in Sources */,
 				B10AA8002A91EF8300A2B653 /* GTEncryptString.m in Sources */,
 				B131C5FC2A60E33A0099AB19 /* main.m in Sources */,
 				B1D171782A8A1B46001A0300 /* JCCSettingsController.m in Sources */,
+				B101CF302AC1F4D5002F52B7 /* ZZFileChannelOutput.m in Sources */,
 				B1A0C2782A7BA50300F60D31 /* GuanClearTool.m in Sources */,
 				B137ABC82A9C9B19005D7971 /* GuanTestWebController.m in Sources */,
 				B16ABCAE2A6503E300A4EC12 /* GTFileTools.m in Sources */,
+				B101CF3A2AC1F4D5002F52B7 /* ZZFileChannel.m in Sources */,
 				B1A0C27F2A7D14F500F60D31 /* UIAlertController+AddAction.m in Sources */,
 				B1A0C2692A7B9AD100F60D31 /* NSObject+SelectorDefender.m in Sources */,
 				2780CB542A8A736E00C15C79 /* GuanTableView.m in Sources */,
 				B143AE6E2A93110000259CBE /* GuanCxxxx.c in Sources */,
+				B101CF2D2AC1F4D5002F52B7 /* ZZAESDecryptInputStream.mm in Sources */,
 				B1D315302ABF178900519DF6 /* UIImage+Compress.m in Sources */,
+				B101CF382AC1F4D5002F52B7 /* ZZNewArchiveEntryWriter.mm in Sources */,
+				B101CF312AC1F4D5002F52B7 /* ZZInflateInputStream.m in Sources */,
 				B1C1CD5A2A90D2DB0007A5F1 /* UIView+Toast.m in Sources */,
 				B11D7E232AA0D120009F8ADD /* UIButton+Extension.m in Sources */,
 				B1A0C27C2A7D14D800F60D31 /* GuanAlert.m in Sources */,
 				B131C6072A612FBC0099AB19 /* GuanRSAMgr.m in Sources */,
 				B16ABCAB2A64F8EC00A4EC12 /* GTUtilies.m in Sources */,
 				B1DCF8DD2AB0416600F571D4 /* Reachability.m in Sources */,
+				B101CF392AC1F4D5002F52B7 /* ZZOldArchiveEntry.mm in Sources */,
+				B101CF362AC1F4D5002F52B7 /* ZZDataChannel.m in Sources */,
 				B131C5EE2A60E3380099AB19 /* SceneDelegate.m in Sources */,
+				B101CF2C2AC1F4D5002F52B7 /* ZZStandardCryptoEngine.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,6 +825,7 @@
 		};
 		B131C6002A60E33A0099AB19 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8846D58D0180F2B2DF714F61 /* Pods-TestHookEncryption.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -594,6 +861,7 @@
 		};
 		B131C6012A60E33A0099AB19 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEF29F3E5DA679E0A972B3C4 /* Pods-TestHookEncryption.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

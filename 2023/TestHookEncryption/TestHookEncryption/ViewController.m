@@ -18,10 +18,10 @@
 #import "UIView+Toast.h"
 #include "GuanCxxxx.h"
 #import "GuanTestWebController.h"
+#import "ZipZap.h"
+//#import <ZipArchive/ZipArchive.h>
+#import <SSZipArchive/SSZipArchive.h>
 
-
-
-#define xxxcccc load
 
 #define kTaoLiQuickSubmitOrderNofitication @"kTaoLiQuickSubmitOrderNofitication"
 
@@ -33,17 +33,14 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 
 @property (retain, nonatomic) SKPaymentTransaction *transaction;
 
+@property (nonatomic, strong) UIImageView *testImageView;
+
 
 
 @end
 
 @implementation ViewController
 
-
-+ (void)xxxcccc {
-    
-    NSLog(@"xxxccc---%s ",__func__);
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -56,6 +53,117 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 //    [self testVideoToAudio];
     
 //    [self testGetSubString];
+
+    
+//    [self testZipZap];
+    
+    [self test_ssziparchive];
+}
+
+
+
+- (void)test_ssziparchive {
+    
+    
+    // 获取文件路径
+//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"文件名"ofType:@"文件类型"];
+    // 获取文件夹下的文件路径
+//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"文件名" ofType:@"文件类型" inDirectory:@"文件夹名"];
+
+    
+    
+    NSString *directoryName =[GTFileTools createFilePathForRootPath:[GTFileTools gt_DocumentPath] directoryName:@"zip"];
+    NSLog(@"directory name %@",directoryName);
+    
+    
+    // 压缩后的路径
+    NSString *afterZipPath = [directoryName stringByAppendingPathComponent:@"tong.rbt"];
+//    NSString *afterZipPath = @"/Users/augus/Desktop/testZip/tong.rbt";
+
+    // 压缩前的文件夹
+    // TODO: 只读/Library/Caches/
+    // TODO: 写入只能是沙盒
+    NSString *beforeDirectory = @"/Library/Caches/TestZip/Resources/";
+//        NSString *beforeDirectory = @"/Users/augus/Desktop/testZip/Resources/";
+
+    
+    NSArray *fileList = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:beforeDirectory error:nil];
+    NSLog(@"fileList count %ld %@",fileList.count, fileList);
+    if(fileList.count == 0) {
+        return;
+    }
+    
+//    BOOL isZip = [SSZipArchive createZipFileAtPath:afterZipPath withContentsOfDirectory:beforeDirectory];
+    
+    
+    
+//    BOOL isZip = [SSZipArchive createZipFileAtPath:afterZipPath withContentsOfDirectory:beforeDirectory keepParentDirectory:YES compressionLevel:8 password:nil AES:YES progressHandler:^(NSUInteger entryNumber, NSUInteger total) {
+//
+//    } keepSymlinks:YES];
+    
+    
+    BOOL isZip = [SSZipArchive createZipFileAtPath:afterZipPath withContentsOfDirectory:beforeDirectory keepParentDirectory:YES compressionLevel:8 password:nil AES:YES progressHandler:^(NSUInteger entryNumber, NSUInteger total) {
+
+        NSLog(@"is zip success%ld --- %ld",entryNumber, total);
+    }];
+    
+    NSLog(@"isZip result %@",@(isZip));
+    
+    
+    BOOL isUnZip = [SSZipArchive unzipFileAtPath:afterZipPath toDestination:directoryName];
+    NSLog(@"isUnZip result %@",@(isUnZip));
+
+}
+
+
+- (void)testZipZap {
+
+    
+    // unzip and read resource
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSString *path = [bundle pathForResource:@"tong" ofType:@"rbt"];
+    if(path && [path isKindOfClass:[NSString class]] && path.length > 0) {
+        NSError *error;
+        ZZArchive *archive = [ZZArchive archiveWithURL:[NSURL fileURLWithPath:path] error:&error];
+        if(error) {
+            NSLog(@"ZZArchive archiveWithURL error %@", error);
+            return;
+        }
+
+        for (ZZArchiveEntry *entry in archive.entries) {
+            /*
+             2023-09-26 01:08:19.236391+0800 TestHookEncryption[32677:6132879] entry testZip/
+             2023-09-26 01:08:19.236469+0800 TestHookEncryption[32677:6132879] entry __MACOSX/._testZip
+             2023-09-26 01:08:19.236492+0800 TestHookEncryption[32677:6132879] entry testZip/icon.png
+             2023-09-26 01:08:19.236511+0800 TestHookEncryption[32677:6132879] entry __MACOSX/testZip/._icon.png
+             2023-09-26 01:08:19.236532+0800 TestHookEncryption[32677:6132879] entry testZip/info.json
+             2023-09-26 01:08:19.236552+0800 TestHookEncryption[32677:6132879] entry __MACOSX/testZip/._info.json
+             2023-09-26 01:08:19.236574+0800 TestHookEncryption[32677:6132879] entry testZip/weui_color.xml
+             2023-09-26 01:08:19.236596+0800 TestHookEncryption[32677:6132879] entry __MACOSX/testZip/._weui_color.xml
+             2023-09-26 01:08:19.236801+0800 TestHookEncryption[32677:6132879] entry testZip/color.css
+             2023-09-26 01:08:19.236921+0800 TestHookEncryption[32677:6132879] entry __MACOSX/testZip/._color.css
+             2023-09-26 01:08:19.237030+0800 TestHookEncryption[32677:6132879] entry testZip/Assets.rbt
+             2023-09-26 01:08:19.237136+0800 TestHookEncryption[32677:6132879] entry __MACOSX/testZip/._Assets.rbt
+             */
+            NSLog(@"entry %@",entry.fileName);
+            NSError *dataError;
+            
+            NSData *data = [entry newDataWithError:&dataError];
+//            CGDataProviderRef dataProvider = [entry newDataProviderWithError:&dataError];
+//
+//            CFDataRef providerData = CGDataProviderCopyData(dataProvider);
+//
+//            if(providerData) {
+//                CFRelease(providerData);
+//                CGDataProviderRelease(dataProvider);
+//            }
+//
+
+            if([entry.fileName isEqualToString:@"Resources/lbm_icon.png"] && !dataError) {
+                self.testImageView.image = [UIImage imageWithData:data];
+            }
+        }
+    }
 
     
 }
@@ -641,6 +749,17 @@ static void gtgtgtgtgt(id self) {
                          green:(CGFloat)random() / (CGFloat)RAND_MAX
                           blue:(CGFloat)random() / (CGFloat)RAND_MAX
                          alpha:1.0f];
+}
+
+
+- (UIImageView *)testImageView {
+    if(!_testImageView) {
+        _testImageView = [[UIImageView alloc] init];
+        _testImageView.frame = CGRectMake(0, 0, 100, 100);
+        _testImageView.center = self.view.center;
+        [self.view addSubview:_testImageView];
+    }
+    return _testImageView;
 }
 
 
