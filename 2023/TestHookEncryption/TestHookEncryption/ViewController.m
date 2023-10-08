@@ -21,6 +21,9 @@
 #import "ZipZap.h"
 //#import <ZipArchive/ZipArchive.h>
 #import <SSZipArchive/SSZipArchive.h>
+#import "LEETheme.h"
+#import "ThemeConstant.h"
+#import "NSDictionary+Extension.h"
 
 
 #define kTaoLiQuickSubmitOrderNofitication @"kTaoLiQuickSubmitOrderNofitication"
@@ -57,7 +60,100 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     
 //    [self testZipZap];
     
-    [self test_ssziparchive];
+//    [self test_ssziparchive];
+    
+ 
+    [self testLeeTheme];
+    
+}
+
+
+- (void)testLeeTheme {
+    
+    
+    NSString *dayJsonPath = [[NSBundle mainBundle] pathForResource:@"tong_day" ofType:@"json"];
+    NSString *nightJsonPath = [[NSBundle mainBundle] pathForResource:@"tong_night" ofType:@"json"];
+    
+    NSString *dayJson = [NSString stringWithContentsOfFile:dayJsonPath encoding:NSUTF8StringEncoding error:nil];
+    NSString *nightJson = [NSString stringWithContentsOfFile:nightJsonPath encoding:NSUTF8StringEncoding error:nil];
+      
+    
+    [LEETheme addThemeConfigWithJson:dayJson Tag:@"tong_day" ResourcesPath:nil];
+    [LEETheme addThemeConfigWithJson:nightJson Tag:@"tong_night" ResourcesPath:nil];
+    
+    [LEETheme startTheme:@"tong_day"];
+    
+    [LEETheme removeThemeConfigWithTag:@"test0"];
+    [LEETheme removeThemeConfigWithTag:@"test1"];
+    
+    
+
+    
+    
+    NSArray *allTags = [LEETheme allThemeTag];
+    NSLog(@"all tags %@",allTags);
+
+
+    
+    id value = [LEETheme getValueWithTag:@"tong_day" Identifier:@"test_image"];
+    NSLog(@"getValueWithTag %@",value);
+
+    
+//    self.view.lee_theme
+//        .LeeAddBackgroundColor(THEME_DAY, UIColor.redColor)
+//        .LeeAddBackgroundColor(THEME_NIGHT, UIColor.greenColor);
+    
+    
+    self.testImageView.lee_theme.LeeConfigImage(@"test_image");
+    
+    // 自定义设置，如果有标识符对应的值则设置，否则不设置
+    self.testImageView.lee_theme.LeeCustomConfig(@"test_image", ^(id  _Nonnull item, id  _Nonnull value) {
+        NSLog(@"ssss %@ %@",item, value);
+        self.testImageView.image = value;
+
+    });
+       
+        
+    
+    
+}
+
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self changeTheme];
+}
+
+
+- (void)changeTheme{
+    
+    // 覆盖截图
+    
+    UIView *tempView = [[UIApplication sharedApplication].delegate.window snapshotViewAfterScreenUpdates:NO];
+
+    [[UIApplication sharedApplication].delegate.window addSubview:tempView];
+
+    // 切换主题
+
+    if ([[LEETheme currentThemeTag] isEqualToString:@"tong_day"]) {
+
+        [LEETheme startTheme:@"tong_night"];
+
+    } else {
+
+        [LEETheme startTheme:@"tong_day"];
+    }
+
+    // 增加动画 移除覆盖
+
+    [UIView animateWithDuration:1.0f animations:^{
+
+        tempView.alpha = 0.0f;
+
+    } completion:^(BOOL finished) {
+
+        [tempView removeFromSuperview];
+    }];
+    
 }
 
 
@@ -757,6 +853,7 @@ static void gtgtgtgtgt(id self) {
         _testImageView = [[UIImageView alloc] init];
         _testImageView.frame = CGRectMake(0, 0, 100, 100);
         _testImageView.center = self.view.center;
+        _testImageView.backgroundColor = UIColor.greenColor;
         [self.view addSubview:_testImageView];
     }
     return _testImageView;

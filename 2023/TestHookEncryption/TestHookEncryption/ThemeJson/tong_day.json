@@ -1,0 +1,29 @@
+{
+    "color": {
+        "app_theme_color" : "#2D65FE",
+        
+        "common_font_color_0" : "#2B2B2B",
+        "common_font_color_1" : "#B5B5B5",
+        "common_font_color_2" : "#",
+
+        "common_bg_color_1" : "#ffffff",
+        "common_bg_color_2" : "#F6F4F5",
+        "common_bg_color_3" : "#fefefe",
+        
+        "common_nav_font_color_1"   : "#2D65FE",
+        "common_separator_color_1"  : "#bbbbbb",
+        "common_tabar_line_color_1" : "#bbbbbb",
+        
+    },
+    
+    "image": {
+        
+        "dark_mode_btn_image" : "day",
+        "nav_btn_image" : "",
+        "test_image": "icon",
+    },
+    
+    "other": {
+        
+    }
+}

@@ -61,6 +61,10 @@
 		B137ABC82A9C9B19005D7971 /* GuanTestWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = B137ABC72A9C9B19005D7971 /* GuanTestWebController.m */; };
 		B143AE6E2A93110000259CBE /* GuanCxxxx.c in Sources */ = {isa = PBXBuildFile; fileRef = B143AE6D2A93110000259CBE /* GuanCxxxx.c */; };
 		B143AE832A93466800259CBE /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B143AE812A93466800259CBE /* KeychainItemWrapper.m */; };
+		B1676A902AD3075A0032F433 /* LEETheme.m in Sources */ = {isa = PBXBuildFile; fileRef = B1676A8F2AD3075A0032F433 /* LEETheme.m */; };
+		B1676A972AD315D60032F433 /* chat_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B1676A962AD315D60032F433 /* chat_bg.png */; };
+		B1676AA32AD319280032F433 /* tong_night.json in Resources */ = {isa = PBXBuildFile; fileRef = B1676AA12AD319270032F433 /* tong_night.json */; };
+		B1676AA42AD319280032F433 /* tong_day.json in Resources */ = {isa = PBXBuildFile; fileRef = B1676AA22AD319280032F433 /* tong_day.json */; };
 		B16ABCAB2A64F8EC00A4EC12 /* GTUtilies.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ABCAA2A64F8EC00A4EC12 /* GTUtilies.m */; };
 		B16ABCAE2A6503E300A4EC12 /* GTFileTools.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ABCAD2A6503E300A4EC12 /* GTFileTools.m */; };
 		B16ABCB42A66250400A4EC12 /* NSBundle+GTInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ABCB32A66250400A4EC12 /* NSBundle+GTInfo.m */; };
@@ -200,6 +204,13 @@
 		B143AE6D2A93110000259CBE /* GuanCxxxx.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = GuanCxxxx.c; sourceTree = "<group>"; };
 		B143AE812A93466800259CBE /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		B143AE822A93466800259CBE /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		B1676A8D2AD3075A0032F433 /* LEEThemeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEEThemeHelper.h; sourceTree = "<group>"; };
+		B1676A8E2AD3075A0032F433 /* LEETheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEETheme.h; sourceTree = "<group>"; };
+		B1676A8F2AD3075A0032F433 /* LEETheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEETheme.m; sourceTree = "<group>"; };
+		B1676A912AD307E20032F433 /* ThemeConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeConstant.h; sourceTree = "<group>"; };
+		B1676A962AD315D60032F433 /* chat_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_bg.png; sourceTree = "<group>"; };
+		B1676AA12AD319270032F433 /* tong_night.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tong_night.json; sourceTree = "<group>"; };
+		B1676AA22AD319280032F433 /* tong_day.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tong_day.json; sourceTree = "<group>"; };
 		B16ABCA92A64F8EC00A4EC12 /* GTUtilies.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTUtilies.h; sourceTree = "<group>"; };
 		B16ABCAA2A64F8EC00A4EC12 /* GTUtilies.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTUtilies.m; sourceTree = "<group>"; };
 		B16ABCAC2A6503E300A4EC12 /* GTFileTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTFileTools.h; sourceTree = "<group>"; };
@@ -422,6 +433,7 @@
 			isa = PBXGroup;
 			children = (
 				B131C67C2A64022C0099AB19 /* GTClassDump.framework */,
+				B1676A8C2AD3075A0032F433 /* LEETheme */,
 				B101CEFD2AC1F4D5002F52B7 /* ZipZap */,
 				B143AE802A93466800259CBE /* KeychainItemWrapper */,
 				2780CB482A8A723D00C15C79 /* TableView */,
@@ -467,6 +479,8 @@
 				B1D3152F2ABF178900519DF6 /* UIImage+Compress.m */,
 				B143AE6C2A93110000259CBE /* GuanCxxxx.h */,
 				B143AE6D2A93110000259CBE /* GuanCxxxx.c */,
+				B1676A982AD318330032F433 /* ThemeJson */,
+				B1676A962AD315D60032F433 /* chat_bg.png */,
 				B16ABCB52A69280A00A4EC12 /* test.mp4 */,
 				B101CF912AC2C22B002F52B7 /* tong.rbt */,
 				B101CF802AC29A1A002F52B7 /* ss_testZip */,
@@ -487,6 +501,26 @@
 				B143AE812A93466800259CBE /* KeychainItemWrapper.m */,
 			);
 			path = KeychainItemWrapper;
+			sourceTree = "<group>";
+		};
+		B1676A8C2AD3075A0032F433 /* LEETheme */ = {
+			isa = PBXGroup;
+			children = (
+				B1676A912AD307E20032F433 /* ThemeConstant.h */,
+				B1676A8D2AD3075A0032F433 /* LEEThemeHelper.h */,
+				B1676A8E2AD3075A0032F433 /* LEETheme.h */,
+				B1676A8F2AD3075A0032F433 /* LEETheme.m */,
+			);
+			path = LEETheme;
+			sourceTree = "<group>";
+		};
+		B1676A982AD318330032F433 /* ThemeJson */ = {
+			isa = PBXGroup;
+			children = (
+				B1676AA22AD319280032F433 /* tong_day.json */,
+				B1676AA12AD319270032F433 /* tong_night.json */,
+			);
+			path = ThemeJson;
 			sourceTree = "<group>";
 		};
 		B1A0C2792A7D14C100F60D31 /* Alert */ = {
@@ -577,9 +611,12 @@
 				B101CF882AC29A1A002F52B7 /* icon.png in Resources */,
 				B131C5F62A60E33A0099AB19 /* Assets.xcassets in Resources */,
 				B131C5F42A60E3380099AB19 /* Main.storyboard in Resources */,
+				B1676AA42AD319280032F433 /* tong_day.json in Resources */,
+				B1676AA32AD319280032F433 /* tong_night.json in Resources */,
 				B101CF892AC29A1A002F52B7 /* IMG_0148.png in Resources */,
 				B16ABCB62A69280A00A4EC12 /* test.mp4 in Resources */,
 				B101CF8D2AC29A1A002F52B7 /* color.css in Resources */,
+				B1676A972AD315D60032F433 /* chat_bg.png in Resources */,
 				B101CF8B2AC29A1A002F52B7 /* info.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -671,6 +708,7 @@
 				B16ABCAE2A6503E300A4EC12 /* GTFileTools.m in Sources */,
 				B101CF3A2AC1F4D5002F52B7 /* ZZFileChannel.m in Sources */,
 				B1A0C27F2A7D14F500F60D31 /* UIAlertController+AddAction.m in Sources */,
+				B1676A902AD3075A0032F433 /* LEETheme.m in Sources */,
 				B1A0C2692A7B9AD100F60D31 /* NSObject+SelectorDefender.m in Sources */,
 				2780CB542A8A736E00C15C79 /* GuanTableView.m in Sources */,
 				B143AE6E2A93110000259CBE /* GuanCxxxx.c in Sources */,

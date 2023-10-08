@@ -33,6 +33,17 @@
 }
 
 
+- (NSString *)dictionaryToJsonString {
+    NSError *parseError = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self options:NSJSONWritingPrettyPrinted error:&parseError];
+    
+    if (nil == parseError && jsonData && jsonData.length > 0 && ![jsonData isKindOfClass:[NSNull class]]) {
+        return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    } else {
+        return nil;
+    }
+}
+
 @end
 
 @implementation NSArray (Extension)
