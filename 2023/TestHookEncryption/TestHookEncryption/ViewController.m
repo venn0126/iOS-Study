@@ -24,6 +24,7 @@
 #import "TongTheme.h"
 #import "TongThemeConstant.h"
 #import "NSDictionary+Extension.h"
+#import "TongXMLReader.h"
 
 
 #define kTaoLiQuickSubmitOrderNofitication @"kTaoLiQuickSubmitOrderNofitication"
@@ -63,9 +64,40 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 //    [self test_ssziparchive];
     
  
-    [self testTongTheme];
+//    [self testTongTheme];
     
+//    [self testCSSParse];
+    
+    [self testXMLReader];
 }
+
+
+
+- (void)testCSSParse {
+
+}
+
+
+- (void)testXMLReader {
+
+    NSString *xmlPath = [[NSBundle mainBundle] pathForResource:@"weui_color" ofType:@"xml"];
+    NSError *error = nil;
+    NSString *xmlString = [NSString stringWithContentsOfFile:xmlPath encoding:NSUTF8StringEncoding error:&error];
+    if(!xmlString || error) {
+        NSLog(@"load xml error %@",xmlString);
+        return;
+    }
+    
+    NSDictionary *xmlDict = [TongXMLReader dictionaryForXMLString:xmlString error:error];
+    if(error) {
+        NSLog(@"xml dict error %@",error);
+        return;
+    }
+    
+    NSLog(@"xml dict error %@",xmlDict);
+
+}
+
 
 
 - (void)testTongTheme {

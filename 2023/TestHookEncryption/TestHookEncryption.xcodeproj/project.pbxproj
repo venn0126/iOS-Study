@@ -65,6 +65,7 @@
 		B1676AA32AD319280032F433 /* tong_night.json in Resources */ = {isa = PBXBuildFile; fileRef = B1676AA12AD319270032F433 /* tong_night.json */; };
 		B1676AA42AD319280032F433 /* tong_day.json in Resources */ = {isa = PBXBuildFile; fileRef = B1676AA22AD319280032F433 /* tong_day.json */; };
 		B1676AAA2AD38E550032F433 /* TongTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = B1676AA92AD38E550032F433 /* TongTheme.m */; };
+		B1676AC52AD3DE010032F433 /* TongXMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = B1676AC42AD3DE010032F433 /* TongXMLReader.m */; };
 		B16ABCAB2A64F8EC00A4EC12 /* GTUtilies.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ABCAA2A64F8EC00A4EC12 /* GTUtilies.m */; };
 		B16ABCAE2A6503E300A4EC12 /* GTFileTools.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ABCAD2A6503E300A4EC12 /* GTFileTools.m */; };
 		B16ABCB42A66250400A4EC12 /* NSBundle+GTInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ABCB32A66250400A4EC12 /* NSBundle+GTInfo.m */; };
@@ -211,6 +212,8 @@
 		B1676AA72AD38E550032F433 /* TongTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TongTheme.h; sourceTree = "<group>"; };
 		B1676AA82AD38E550032F433 /* TongThemeConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TongThemeConstant.h; sourceTree = "<group>"; };
 		B1676AA92AD38E550032F433 /* TongTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TongTheme.m; sourceTree = "<group>"; };
+		B1676AC32AD3DE010032F433 /* TongXMLReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TongXMLReader.h; sourceTree = "<group>"; };
+		B1676AC42AD3DE010032F433 /* TongXMLReader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TongXMLReader.m; sourceTree = "<group>"; };
 		B16ABCA92A64F8EC00A4EC12 /* GTUtilies.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTUtilies.h; sourceTree = "<group>"; };
 		B16ABCAA2A64F8EC00A4EC12 /* GTUtilies.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTUtilies.m; sourceTree = "<group>"; };
 		B16ABCAC2A6503E300A4EC12 /* GTFileTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTFileTools.h; sourceTree = "<group>"; };
@@ -433,6 +436,8 @@
 			isa = PBXGroup;
 			children = (
 				B131C67C2A64022C0099AB19 /* GTClassDump.framework */,
+				B1676AC22AD3DDF40032F433 /* XMLReader */,
+				B1676AB32AD3D8770032F433 /* CSSParse */,
 				B1676AA52AD38E550032F433 /* TongTheme */,
 				B101CEFD2AC1F4D5002F52B7 /* ZipZap */,
 				B143AE802A93466800259CBE /* KeychainItemWrapper */,
@@ -521,6 +526,22 @@
 				B1676AA62AD38E550032F433 /* TongThemeHelper.h */,
 			);
 			path = TongTheme;
+			sourceTree = "<group>";
+		};
+		B1676AB32AD3D8770032F433 /* CSSParse */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CSSParse;
+			sourceTree = "<group>";
+		};
+		B1676AC22AD3DDF40032F433 /* XMLReader */ = {
+			isa = PBXGroup;
+			children = (
+				B1676AC32AD3DE010032F433 /* TongXMLReader.h */,
+				B1676AC42AD3DE010032F433 /* TongXMLReader.m */,
+			);
+			path = XMLReader;
 			sourceTree = "<group>";
 		};
 		B1A0C2792A7D14C100F60D31 /* Alert */ = {
@@ -671,6 +692,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1A0C2662A7B9A9900F60D31 /* NSObject+MethodSwizzling.m in Sources */,
+				B1676AC52AD3DE010032F433 /* TongXMLReader.m in Sources */,
 				B131C5F12A60E3380099AB19 /* ViewController.m in Sources */,
 				B101CF342AC1F4D5002F52B7 /* ZZError.m in Sources */,
 				B101CF2E2AC1F4D5002F52B7 /* ZZArchive.mm in Sources */,
