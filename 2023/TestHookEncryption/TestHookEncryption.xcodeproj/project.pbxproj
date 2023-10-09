@@ -61,10 +61,10 @@
 		B137ABC82A9C9B19005D7971 /* GuanTestWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = B137ABC72A9C9B19005D7971 /* GuanTestWebController.m */; };
 		B143AE6E2A93110000259CBE /* GuanCxxxx.c in Sources */ = {isa = PBXBuildFile; fileRef = B143AE6D2A93110000259CBE /* GuanCxxxx.c */; };
 		B143AE832A93466800259CBE /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B143AE812A93466800259CBE /* KeychainItemWrapper.m */; };
-		B1676A902AD3075A0032F433 /* LEETheme.m in Sources */ = {isa = PBXBuildFile; fileRef = B1676A8F2AD3075A0032F433 /* LEETheme.m */; };
 		B1676A972AD315D60032F433 /* chat_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B1676A962AD315D60032F433 /* chat_bg.png */; };
 		B1676AA32AD319280032F433 /* tong_night.json in Resources */ = {isa = PBXBuildFile; fileRef = B1676AA12AD319270032F433 /* tong_night.json */; };
 		B1676AA42AD319280032F433 /* tong_day.json in Resources */ = {isa = PBXBuildFile; fileRef = B1676AA22AD319280032F433 /* tong_day.json */; };
+		B1676AAA2AD38E550032F433 /* TongTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = B1676AA92AD38E550032F433 /* TongTheme.m */; };
 		B16ABCAB2A64F8EC00A4EC12 /* GTUtilies.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ABCAA2A64F8EC00A4EC12 /* GTUtilies.m */; };
 		B16ABCAE2A6503E300A4EC12 /* GTFileTools.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ABCAD2A6503E300A4EC12 /* GTFileTools.m */; };
 		B16ABCB42A66250400A4EC12 /* NSBundle+GTInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ABCB32A66250400A4EC12 /* NSBundle+GTInfo.m */; };
@@ -204,13 +204,13 @@
 		B143AE6D2A93110000259CBE /* GuanCxxxx.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = GuanCxxxx.c; sourceTree = "<group>"; };
 		B143AE812A93466800259CBE /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		B143AE822A93466800259CBE /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
-		B1676A8D2AD3075A0032F433 /* LEEThemeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEEThemeHelper.h; sourceTree = "<group>"; };
-		B1676A8E2AD3075A0032F433 /* LEETheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEETheme.h; sourceTree = "<group>"; };
-		B1676A8F2AD3075A0032F433 /* LEETheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEETheme.m; sourceTree = "<group>"; };
-		B1676A912AD307E20032F433 /* ThemeConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeConstant.h; sourceTree = "<group>"; };
 		B1676A962AD315D60032F433 /* chat_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat_bg.png; sourceTree = "<group>"; };
 		B1676AA12AD319270032F433 /* tong_night.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tong_night.json; sourceTree = "<group>"; };
 		B1676AA22AD319280032F433 /* tong_day.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tong_day.json; sourceTree = "<group>"; };
+		B1676AA62AD38E550032F433 /* TongThemeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TongThemeHelper.h; sourceTree = "<group>"; };
+		B1676AA72AD38E550032F433 /* TongTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TongTheme.h; sourceTree = "<group>"; };
+		B1676AA82AD38E550032F433 /* TongThemeConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TongThemeConstant.h; sourceTree = "<group>"; };
+		B1676AA92AD38E550032F433 /* TongTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TongTheme.m; sourceTree = "<group>"; };
 		B16ABCA92A64F8EC00A4EC12 /* GTUtilies.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTUtilies.h; sourceTree = "<group>"; };
 		B16ABCAA2A64F8EC00A4EC12 /* GTUtilies.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTUtilies.m; sourceTree = "<group>"; };
 		B16ABCAC2A6503E300A4EC12 /* GTFileTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTFileTools.h; sourceTree = "<group>"; };
@@ -433,7 +433,7 @@
 			isa = PBXGroup;
 			children = (
 				B131C67C2A64022C0099AB19 /* GTClassDump.framework */,
-				B1676A8C2AD3075A0032F433 /* LEETheme */,
+				B1676AA52AD38E550032F433 /* TongTheme */,
 				B101CEFD2AC1F4D5002F52B7 /* ZipZap */,
 				B143AE802A93466800259CBE /* KeychainItemWrapper */,
 				2780CB482A8A723D00C15C79 /* TableView */,
@@ -503,17 +503,6 @@
 			path = KeychainItemWrapper;
 			sourceTree = "<group>";
 		};
-		B1676A8C2AD3075A0032F433 /* LEETheme */ = {
-			isa = PBXGroup;
-			children = (
-				B1676A912AD307E20032F433 /* ThemeConstant.h */,
-				B1676A8D2AD3075A0032F433 /* LEEThemeHelper.h */,
-				B1676A8E2AD3075A0032F433 /* LEETheme.h */,
-				B1676A8F2AD3075A0032F433 /* LEETheme.m */,
-			);
-			path = LEETheme;
-			sourceTree = "<group>";
-		};
 		B1676A982AD318330032F433 /* ThemeJson */ = {
 			isa = PBXGroup;
 			children = (
@@ -521,6 +510,17 @@
 				B1676AA12AD319270032F433 /* tong_night.json */,
 			);
 			path = ThemeJson;
+			sourceTree = "<group>";
+		};
+		B1676AA52AD38E550032F433 /* TongTheme */ = {
+			isa = PBXGroup;
+			children = (
+				B1676AA72AD38E550032F433 /* TongTheme.h */,
+				B1676AA92AD38E550032F433 /* TongTheme.m */,
+				B1676AA82AD38E550032F433 /* TongThemeConstant.h */,
+				B1676AA62AD38E550032F433 /* TongThemeHelper.h */,
+			);
+			path = TongTheme;
 			sourceTree = "<group>";
 		};
 		B1A0C2792A7D14C100F60D31 /* Alert */ = {
@@ -683,6 +683,7 @@
 				B101CF372AC1F4D5002F52B7 /* ZZStoreOutputStream.m in Sources */,
 				B1F27E1D2A8B153E00E7B415 /* GuanUITool.m in Sources */,
 				B137ABC52A9C94BC005D7971 /* GuanWeakWebViewDelegate.m in Sources */,
+				B1676AAA2AD38E550032F433 /* TongTheme.m in Sources */,
 				B131C5EB2A60E3380099AB19 /* AppDelegate.m in Sources */,
 				B131C6042A60E7B80099AB19 /* GuanEncryptionManger.m in Sources */,
 				B101CF352AC1F4D5002F52B7 /* ZZOldArchiveEntryWriter.mm in Sources */,
@@ -708,7 +709,6 @@
 				B16ABCAE2A6503E300A4EC12 /* GTFileTools.m in Sources */,
 				B101CF3A2AC1F4D5002F52B7 /* ZZFileChannel.m in Sources */,
 				B1A0C27F2A7D14F500F60D31 /* UIAlertController+AddAction.m in Sources */,
-				B1676A902AD3075A0032F433 /* LEETheme.m in Sources */,
 				B1A0C2692A7B9AD100F60D31 /* NSObject+SelectorDefender.m in Sources */,
 				2780CB542A8A736E00C15C79 /* GuanTableView.m in Sources */,
 				B143AE6E2A93110000259CBE /* GuanCxxxx.c in Sources */,

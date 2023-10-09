@@ -21,8 +21,8 @@
 #import "ZipZap.h"
 //#import <ZipArchive/ZipArchive.h>
 #import <SSZipArchive/SSZipArchive.h>
-#import "LEETheme.h"
-#import "ThemeConstant.h"
+#import "TongTheme.h"
+#import "TongThemeConstant.h"
 #import "NSDictionary+Extension.h"
 
 
@@ -63,12 +63,12 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 //    [self test_ssziparchive];
     
  
-    [self testLeeTheme];
+    [self testTongTheme];
     
 }
 
 
-- (void)testLeeTheme {
+- (void)testTongTheme {
     
     
     NSString *dayJsonPath = [[NSBundle mainBundle] pathForResource:@"tong_day" ofType:@"json"];
@@ -78,36 +78,36 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     NSString *nightJson = [NSString stringWithContentsOfFile:nightJsonPath encoding:NSUTF8StringEncoding error:nil];
       
     
-    [LEETheme addThemeConfigWithJson:dayJson Tag:@"tong_day" ResourcesPath:nil];
-    [LEETheme addThemeConfigWithJson:nightJson Tag:@"tong_night" ResourcesPath:nil];
+    [TongTheme addThemeConfigWithJson:dayJson Tag:@"tong_day" ResourcesPath:nil];
+    [TongTheme addThemeConfigWithJson:nightJson Tag:@"tong_night" ResourcesPath:nil];
     
-    [LEETheme startTheme:@"tong_day"];
+    [TongTheme startTheme:@"tong_day"];
     
-    [LEETheme removeThemeConfigWithTag:@"test0"];
-    [LEETheme removeThemeConfigWithTag:@"test1"];
+    [TongTheme removeThemeConfigWithTag:@"test0"];
+    [TongTheme removeThemeConfigWithTag:@"test1"];
     
     
 
     
     
-    NSArray *allTags = [LEETheme allThemeTag];
+    NSArray *allTags = [TongTheme allThemeTag];
     NSLog(@"all tags %@",allTags);
 
 
     
-    id value = [LEETheme getValueWithTag:@"tong_day" Identifier:@"test_image"];
+    id value = [TongTheme getValueWithTag:@"tong_day" Identifier:@"test_image"];
     NSLog(@"getValueWithTag %@",value);
 
     
-//    self.view.lee_theme
-//        .LeeAddBackgroundColor(THEME_DAY, UIColor.redColor)
-//        .LeeAddBackgroundColor(THEME_NIGHT, UIColor.greenColor);
+//    self.view.Tong_theme
+//        .TongAddBackgroundColor(THEME_DAY, UIColor.redColor)
+//        .TongAddBackgroundColor(THEME_NIGHT, UIColor.greenColor);
     
     
-    self.testImageView.lee_theme.LeeConfigImage(@"test_image");
+    self.testImageView.Tong_theme.TongConfigImage(@"test_image");
     
     // 自定义设置，如果有标识符对应的值则设置，否则不设置
-    self.testImageView.lee_theme.LeeCustomConfig(@"test_image", ^(id  _Nonnull item, id  _Nonnull value) {
+    self.testImageView.Tong_theme.TongCustomConfig(@"test_image", ^(id  _Nonnull item, id  _Nonnull value) {
         NSLog(@"ssss %@ %@",item, value);
         self.testImageView.image = value;
 
@@ -134,13 +134,13 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 
     // 切换主题
 
-    if ([[LEETheme currentThemeTag] isEqualToString:@"tong_day"]) {
+    if ([[TongTheme currentThemeTag] isEqualToString:@"tong_day"]) {
 
-        [LEETheme startTheme:@"tong_night"];
+        [TongTheme startTheme:@"tong_night"];
 
     } else {
 
-        [LEETheme startTheme:@"tong_day"];
+        [TongTheme startTheme:@"tong_day"];
     }
 
     // 增加动画 移除覆盖

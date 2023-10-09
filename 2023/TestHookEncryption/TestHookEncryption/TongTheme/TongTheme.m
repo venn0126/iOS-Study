@@ -1,33 +1,26 @@
 /*!
- *  @header LEETheme.m
+ *  @header TongTheme.m
  *
- *  ┌─┐      ┌───────┐ ┌───────┐ 帅™
- *  │ │      │ ┌─────┘ │ ┌─────┘
- *  │ │      │ └─────┐ │ └─────┐
- *  │ │      │ ┌─────┘ │ ┌─────┘
- *  │ └─────┐│ └─────┐ │ └─────┐
- *  └───────┘└───────┘ └───────┘
+ *  @brief  Tong主题管理
  *
- *  @brief  LEE主题管理
- *
- *  @author LEE
- *  @copyright    Copyright © 2016 - 2019年 lee. All rights reserved.
+ *  @author Tong
+ *  @copyright    Copyright © 2016 - 2019年 Tong. All rights reserved.
  *  @version    V1.1.8
  */
 
-#import "LEETheme.h"
+#import "TongTheme.h"
 
 #import <objc/runtime.h>
 #import <objc/message.h>
 
-static NSString * const LEEThemeChangingNotificaiton = @"LEEThemeChangingNotificaiton";
-static NSString * const LEEThemeAddTagNotificaiton = @"LEEThemeAddTagNotificaiton";
-static NSString * const LEEThemeRemoveTagNotificaiton = @"LEEThemeRemoveTagNotificaiton";
-static NSString * const LEEThemeAllTags = @"LEEThemeAllTags";
-static NSString * const LEEThemeCurrentTag = @"LEEThemeCurrentTag";
-static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
+static NSString * const TongThemeChangingNotificaiton = @"TongThemeChangingNotificaiton";
+static NSString * const TongThemeAddTagNotificaiton = @"TongThemeAddTagNotificaiton";
+static NSString * const TongThemeRemoveTagNotificaiton = @"TongThemeRemoveTagNotificaiton";
+static NSString * const TongThemeAllTags = @"TongThemeAllTags";
+static NSString * const TongThemeCurrentTag = @"TongThemeCurrentTag";
+static NSString * const TongThemeConfigInfo = @"TongThemeConfigInfo";
 
-@interface LEETheme ()
+@interface TongTheme ()
 
 @property (nonatomic , copy ) NSString *defaultTag;
 
@@ -39,19 +32,19 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
 
 @end
 
-@implementation LEETheme
+@implementation TongTheme
 
 #if !__has_feature(objc_arc)
 #error "ARC才可以  ( *・ω・)✄╰ひ╯ "
 #endif
 
-+ (LEETheme *)shareTheme{
++ (TongTheme *)shareTheme{
     
-    static LEETheme *themeManager = nil;
+    static TongTheme *themeManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
-        themeManager = [[LEETheme alloc]init];
+        themeManager = [[TongTheme alloc]init];
     });
     
     return themeManager;
@@ -61,32 +54,32 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
 
 + (void)startTheme:(NSString *)tag{
     
-    NSAssert([[LEETheme shareTheme].allTags containsObject:tag], @"所启用的主题不存在 - 请检查是否添加了该%@主题的设置" , tag);
+    NSAssert([[TongTheme shareTheme].allTags containsObject:tag], @"所启用的主题不存在 - 请检查是否添加了该%@主题的设置" , tag);
     
     if (!tag) return;
     
-    [LEETheme shareTheme].currentTag = tag;
+    [TongTheme shareTheme].currentTag = tag;
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:LEEThemeChangingNotificaiton object:nil userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:TongThemeChangingNotificaiton object:nil userInfo:nil];
 }
 
 + (void)defaultTheme:(NSString *)tag{
     
     if (!tag) return;
     
-    [LEETheme shareTheme].defaultTag = tag;
+    [TongTheme shareTheme].defaultTag = tag;
     
-    if (![LEETheme shareTheme].currentTag && ![[NSUserDefaults standardUserDefaults] objectForKey:LEEThemeCurrentTag]) [LEETheme shareTheme].currentTag = tag;
+    if (![TongTheme shareTheme].currentTag && ![[NSUserDefaults standardUserDefaults] objectForKey:TongThemeCurrentTag]) [TongTheme shareTheme].currentTag = tag;
 }
 
 + (NSString *)currentThemeTag{
     
-    return [LEETheme shareTheme].currentTag ? [LEETheme shareTheme].currentTag : [[NSUserDefaults standardUserDefaults] objectForKey:LEEThemeCurrentTag];
+    return [TongTheme shareTheme].currentTag ? [TongTheme shareTheme].currentTag : [[NSUserDefaults standardUserDefaults] objectForKey:TongThemeCurrentTag];
 }
 
 + (NSArray *)allThemeTag{
     
-    return [[LEETheme shareTheme].allTags copy];
+    return [[TongTheme shareTheme].allTags copy];
 }
 
 #pragma mark Private
@@ -95,25 +88,25 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
     
     _currentTag = currentTag;
     
-    [[NSUserDefaults standardUserDefaults] setObject:currentTag forKey:LEEThemeCurrentTag];
+    [[NSUserDefaults standardUserDefaults] setObject:currentTag forKey:TongThemeCurrentTag];
     
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)saveConfigInfo{
     
-    [[NSUserDefaults standardUserDefaults] setObject:self.configInfo forKey:LEEThemeConfigInfo];
+    [[NSUserDefaults standardUserDefaults] setObject:self.configInfo forKey:TongThemeConfigInfo];
     
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 + (void)addTagToAllTags:(NSString *)tag{
     
-    if (![[LEETheme shareTheme].allTags containsObject:tag]) {
+    if (![[TongTheme shareTheme].allTags containsObject:tag]) {
         
-        [[LEETheme shareTheme].allTags addObject:tag];
+        [[TongTheme shareTheme].allTags addObject:tag];
         
-        [[NSUserDefaults standardUserDefaults] setObject:[LEETheme shareTheme].allTags forKey:LEEThemeAllTags];
+        [[NSUserDefaults standardUserDefaults] setObject:[TongTheme shareTheme].allTags forKey:TongThemeAllTags];
         
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
@@ -122,11 +115,11 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
 
 + (void)removeTagToAllTags:(NSString *)tag{
     
-    if ([[LEETheme shareTheme].allTags containsObject:tag]) {
+    if ([[TongTheme shareTheme].allTags containsObject:tag]) {
         
-        [[LEETheme shareTheme].allTags removeObject:tag];
+        [[TongTheme shareTheme].allTags removeObject:tag];
         
-        [[NSUserDefaults standardUserDefaults] setObject:[LEETheme shareTheme].allTags forKey:LEEThemeAllTags];
+        [[NSUserDefaults standardUserDefaults] setObject:[TongTheme shareTheme].allTags forKey:TongThemeAllTags];
         
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
@@ -137,21 +130,21 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
 
 - (NSMutableArray *)allTags{
     
-    if (!_allTags) _allTags = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:LEEThemeAllTags]];
+    if (!_allTags) _allTags = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:TongThemeAllTags]];
 
     return _allTags;
 }
 
 - (NSMutableDictionary *)configInfo{
     
-    if (!_configInfo) _configInfo = [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:LEEThemeConfigInfo]];
+    if (!_configInfo) _configInfo = [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:TongThemeConfigInfo]];
     
     return _configInfo;
 }
 
 @end
 
-@implementation LEETheme (JsonModeExtend)
+@implementation TongTheme (JsonModeExtend)
 
 + (void)addThemeConfigWithJson:(NSString *)json Tag:(NSString *)tag ResourcesPath:(NSString *)path{
     
@@ -167,13 +160,13 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
         
         if (!jsonError && jsonConfigInfo) {
         
-            [[LEETheme shareTheme].configInfo setValue:[NSMutableDictionary dictionaryWithObjectsAndKeys:jsonConfigInfo , @"info", path , @"path" , nil] forKey:tag];
+            [[TongTheme shareTheme].configInfo setValue:[NSMutableDictionary dictionaryWithObjectsAndKeys:jsonConfigInfo , @"info", path , @"path" , nil] forKey:tag];
             
-            [[LEETheme shareTheme] saveConfigInfo];
+            [[TongTheme shareTheme] saveConfigInfo];
             
-            [LEETheme addTagToAllTags:tag];
+            [TongTheme addTagToAllTags:tag];
             
-            [[NSNotificationCenter defaultCenter] postNotificationName:LEEThemeAddTagNotificaiton object:nil userInfo:@{@"tag" : tag}];
+            [[NSNotificationCenter defaultCenter] postNotificationName:TongThemeAddTagNotificaiton object:nil userInfo:@{@"tag" : tag}];
         }
         
     }
@@ -182,24 +175,24 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
 
 + (void)removeThemeConfigWithTag:(NSString *)tag{
     
-    if ([[LEETheme shareTheme].allTags containsObject:tag] && ![[LEETheme shareTheme].defaultTag isEqualToString:tag]) {
+    if ([[TongTheme shareTheme].allTags containsObject:tag] && ![[TongTheme shareTheme].defaultTag isEqualToString:tag]) {
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:LEEThemeRemoveTagNotificaiton object:nil userInfo:@{@"tag" : tag}];
+        [[NSNotificationCenter defaultCenter] postNotificationName:TongThemeRemoveTagNotificaiton object:nil userInfo:@{@"tag" : tag}];
         
-        [LEETheme removeTagToAllTags:tag];
+        [TongTheme removeTagToAllTags:tag];
         
-        [[LEETheme shareTheme].configInfo removeObjectForKey:tag];
+        [[TongTheme shareTheme].configInfo removeObjectForKey:tag];
         
-        [[LEETheme shareTheme] saveConfigInfo];
+        [[TongTheme shareTheme] saveConfigInfo];
         
-        if ([[LEETheme currentThemeTag] isEqualToString:tag]) [LEETheme startTheme:[LEETheme shareTheme].defaultTag];
+        if ([[TongTheme currentThemeTag] isEqualToString:tag]) [TongTheme startTheme:[TongTheme shareTheme].defaultTag];
     }
     
 }
 
 + (NSString *)getResourcesPathWithTag:(NSString *)tag{
     
-    NSString *path = [LEETheme shareTheme].configInfo[tag][@"path"];
+    NSString *path = [TongTheme shareTheme].configInfo[tag][@"path"];
     
     return path ? path : [[NSBundle mainBundle] bundlePath];
 }
@@ -208,7 +201,7 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
     
     id value = nil;
     
-    NSDictionary *configInfo = [LEETheme shareTheme].configInfo[tag];
+    NSDictionary *configInfo = [TongTheme shareTheme].configInfo[tag];
     
     NSDictionary *info = configInfo[@"info"];
     
@@ -218,7 +211,7 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
     
     if (colorHexString) {
         
-        UIColor *color = [UIColor leeTheme_ColorWithHexString:colorHexString];
+        UIColor *color = [UIColor TongTheme_ColorWithHexString:colorHexString];
         
         if (color && !value) value = color;
     }
@@ -255,12 +248,12 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
 
 #pragma mark - ----------------主题设置模型----------------
 
-@interface LEEThemeConfigModel ()
+@interface TongThemeConfigModel ()
 
 @property (nonatomic , copy ) void(^modelUpdateCurrentThemeConfig)(void);
 @property (nonatomic , copy ) void(^modelConfigThemeChangingBlock)(void);
 
-@property (nonatomic , copy ) LEEThemeChangingBlock modelChangingBlock;
+@property (nonatomic , copy ) TongThemeChangingBlock modelChangingBlock;
 
 @property (nonatomic , copy ) NSString *modelCurrentThemeTag;
 
@@ -270,7 +263,7 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
 
 @end
 
-@implementation LEEThemeConfigModel
+@implementation TongThemeConfigModel
 
 - (void)dealloc{
     
@@ -289,21 +282,21 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
     self = [super init];
     if (self) {
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(leeTheme_RemoveThemeTagNotify:) name:LEEThemeRemoveTagNotificaiton object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(TongTheme_RemoveThemeTagNotify:) name:TongThemeRemoveTagNotificaiton object:nil];
     }
     return self;
 }
 
-- (void)leeTheme_RemoveThemeTagNotify:(NSNotification *)notify{
+- (void)TongTheme_RemoveThemeTagNotify:(NSNotification *)notify{
     
     NSString *tag = notify.userInfo[@"tag"];
     
-    self.LeeClearAllConfig_Tag(tag);
+    self.TongClearAllConfig_Tag(tag);
 }
 
 - (void)updateCurrentThemeConfigHandleWithTag:(NSString *)tag{
     
-    if ([[LEETheme currentThemeTag] isEqualToString:tag]) {
+    if ([[TongTheme currentThemeTag] isEqualToString:tag]) {
         
         if ([NSThread isMainThread]) {
             
@@ -321,11 +314,11 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
     
 }
 
-- (LEEConfigThemeToChangingBlock)LeeThemeChangingBlock{
+- (TongConfigThemeToChangingBlock)TongThemeChangingBlock{
     
     __weak typeof(self) weakSelf = self;
     
-    return ^(LEEThemeChangingBlock changingBlock){
+    return ^(TongThemeChangingBlock changingBlock){
         
         if (changingBlock) {
             
@@ -339,15 +332,15 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
     
 }
 
-- (LEEConfigThemeToT_Block)LeeAddCustomConfig{
+- (TongConfigThemeToT_Block)TongAddCustomConfig{
     
     __weak typeof(self) weakSelf = self;
     
-    return ^(NSString *tag , LEEThemeConfigBlock configBlock){
+    return ^(NSString *tag , TongThemeConfigBlock configBlock){
         
         if (configBlock) {
             
-            [LEETheme addTagToAllTags:tag];
+            [TongTheme addTagToAllTags:tag];
             
             NSMutableDictionary *info = weakSelf.modelThemeBlockConfigInfo[tag];
             
@@ -365,17 +358,17 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
     
 }
 
-- (LEEConfigThemeToTs_Block)LeeAddCustomConfigs{
+- (TongConfigThemeToTs_Block)TongAddCustomConfigs{
     
     __weak typeof(self) weakSelf = self;
     
-    return ^(NSArray *tags , LEEThemeConfigBlock configBlock){
+    return ^(NSArray *tags , TongThemeConfigBlock configBlock){
         
         if (configBlock) {
             
             [tags enumerateObjectsUsingBlock:^(NSString *tag, NSUInteger idx, BOOL * _Nonnull stop) {
                 
-                [LEETheme addTagToAllTags:tag];
+                [TongTheme addTagToAllTags:tag];
                 
                 NSMutableDictionary *info = weakSelf.modelThemeBlockConfigInfo[tag];
                 
@@ -395,348 +388,348 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
     
 }
 
-- (LEEConfigThemeToT_Color)LeeAddTintColor{
+- (TongConfigThemeToT_Color)TongAddTintColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , id color){
         
-        return weakSelf.LeeAddSelectorAndColor(tag , @selector(setTintColor:) , color);
+        return weakSelf.TongAddSelectorAndColor(tag , @selector(setTintColor:) , color);
     };
     
 }
 
-- (LEEConfigThemeToT_Color)LeeAddTextColor{
+- (TongConfigThemeToT_Color)TongAddTextColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , id color){
         
-        return weakSelf.LeeAddSelectorAndColor(tag , @selector(setTextColor:) , color);
+        return weakSelf.TongAddSelectorAndColor(tag , @selector(setTextColor:) , color);
     };
     
 }
 
-- (LEEConfigThemeToT_Color)LeeAddFillColor{
+- (TongConfigThemeToT_Color)TongAddFillColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , id color){
         
-        return weakSelf.LeeAddSelectorAndColor(tag , @selector(setFillColor:) , color);
+        return weakSelf.TongAddSelectorAndColor(tag , @selector(setFillColor:) , color);
     };
     
 }
 
-- (LEEConfigThemeToT_Color)LeeAddStrokeColor{
+- (TongConfigThemeToT_Color)TongAddStrokeColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , id color){
         
-        return weakSelf.LeeAddSelectorAndColor(tag , @selector(setStrokeColor:) , color);
+        return weakSelf.TongAddSelectorAndColor(tag , @selector(setStrokeColor:) , color);
     };
     
 }
 
-- (LEEConfigThemeToT_Color)LeeAddBorderColor{
+- (TongConfigThemeToT_Color)TongAddBorderColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , id color){
         
-        return weakSelf.LeeAddSelectorAndColor(tag , @selector(setBorderColor:) , color);
+        return weakSelf.TongAddSelectorAndColor(tag , @selector(setBorderColor:) , color);
     };
     
 }
 
-- (LEEConfigThemeToT_Color)LeeAddShadowColor{
+- (TongConfigThemeToT_Color)TongAddShadowColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , id color){
         
-        return weakSelf.LeeAddSelectorAndColor(tag , @selector(setShadowColor:) , color);
+        return weakSelf.TongAddSelectorAndColor(tag , @selector(setShadowColor:) , color);
     };
     
 }
 
-- (LEEConfigThemeToT_Color)LeeAddOnTintColor{
+- (TongConfigThemeToT_Color)TongAddOnTintColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , id color){
         
-        return weakSelf.LeeAddSelectorAndColor(tag , @selector(setOnTintColor:) , color);
+        return weakSelf.TongAddSelectorAndColor(tag , @selector(setOnTintColor:) , color);
     };
     
 }
 
-- (LEEConfigThemeToT_Color)LeeAddThumbTintColor{
+- (TongConfigThemeToT_Color)TongAddThumbTintColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , id color){
         
-        return weakSelf.LeeAddSelectorAndColor(tag , @selector(setThumbTintColor:) , color);
+        return weakSelf.TongAddSelectorAndColor(tag , @selector(setThumbTintColor:) , color);
     };
     
 }
 
-- (LEEConfigThemeToT_Color)LeeAddSeparatorColor{
+- (TongConfigThemeToT_Color)TongAddSeparatorColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , id color){
         
-        return weakSelf.LeeAddSelectorAndColor(tag , @selector(setSeparatorColor:) , color);
+        return weakSelf.TongAddSelectorAndColor(tag , @selector(setSeparatorColor:) , color);
     };
     
 }
 
-- (LEEConfigThemeToT_Color)LeeAddBarTintColor{
+- (TongConfigThemeToT_Color)TongAddBarTintColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , id color){
         
-        return weakSelf.LeeAddSelectorAndColor(tag , @selector(setBarTintColor:) , color);
+        return weakSelf.TongAddSelectorAndColor(tag , @selector(setBarTintColor:) , color);
     };
     
 }
 
-- (LEEConfigThemeToT_Color)LeeAddBackgroundColor{
+- (TongConfigThemeToT_Color)TongAddBackgroundColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , id color){
         
-        return weakSelf.LeeAddSelectorAndColor(tag , @selector(setBackgroundColor:) , color);
+        return weakSelf.TongAddSelectorAndColor(tag , @selector(setBackgroundColor:) , color);
     };
     
 }
 
-- (LEEConfigThemeToT_Color)LeeAddPlaceholderColor{
+- (TongConfigThemeToT_Color)TongAddPlaceholderColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , id color){
         
-        return weakSelf.LeeAddKeyPathAndValue(tag , @"_placeholderLabel.textColor" , color);
+        return weakSelf.TongAddKeyPathAndValue(tag , @"_placeholderLabel.textColor" , color);
     };
     
 }
 
-- (LEEConfigThemeToT_Color)LeeAddTrackTintColor{
+- (TongConfigThemeToT_Color)TongAddTrackTintColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , id color){
         
-        return weakSelf.LeeAddSelectorAndColor(tag , @selector(setTrackTintColor:) , color);
+        return weakSelf.TongAddSelectorAndColor(tag , @selector(setTrackTintColor:) , color);
     };
     
 }
 
-- (LEEConfigThemeToT_Color)LeeAddProgressTintColor{
+- (TongConfigThemeToT_Color)TongAddProgressTintColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , id color){
         
-        return weakSelf.LeeAddSelectorAndColor(tag , @selector(setProgressTintColor:) , color);
+        return weakSelf.TongAddSelectorAndColor(tag , @selector(setProgressTintColor:) , color);
     };
     
 }
 
-- (LEEConfigThemeToT_Color)LeeAddHighlightedTextColor{
+- (TongConfigThemeToT_Color)TongAddHighlightedTextColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , id color){
         
-        return weakSelf.LeeAddSelectorAndColor(tag , @selector(setHighlightedTextColor:) , color);
+        return weakSelf.TongAddSelectorAndColor(tag , @selector(setHighlightedTextColor:) , color);
     };
     
 }
 
-- (LEEConfigThemeToT_Color)LeeAddCurrentPageIndicatorTintColor{
+- (TongConfigThemeToT_Color)TongAddCurrentPageIndicatorTintColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , id color){
         
-        return weakSelf.LeeAddSelectorAndColor(tag , @selector(setCurrentPageIndicatorTintColor:) , color);
+        return weakSelf.TongAddSelectorAndColor(tag , @selector(setCurrentPageIndicatorTintColor:) , color);
     };
     
 }
 
-- (LEEConfigThemeToT_Color)LeeAddPageIndicatorTintColor{
+- (TongConfigThemeToT_Color)TongAddPageIndicatorTintColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , id color){
         
-        return weakSelf.LeeAddSelectorAndColor(tag , @selector(setPageIndicatorTintColor:) , color);
+        return weakSelf.TongAddSelectorAndColor(tag , @selector(setPageIndicatorTintColor:) , color);
     };
     
 }
 
-- (LEEConfigThemeToT_ColorAndState)LeeAddButtonTitleColor{
+- (TongConfigThemeToT_ColorAndState)TongAddButtonTitleColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , UIColor *color , UIControlState state){
         
-        return weakSelf.LeeAddSelectorAndValues(tag , @selector(setTitleColor:forState:) , color , @(state) , nil);
+        return weakSelf.TongAddSelectorAndValues(tag , @selector(setTitleColor:forState:) , color , @(state) , nil);
     };
     
 }
 
-- (LEEConfigThemeToT_ColorAndState)LeeAddButtonTitleShadowColor{
+- (TongConfigThemeToT_ColorAndState)TongAddButtonTitleShadowColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , UIColor *color , UIControlState state){
         
-        return weakSelf.LeeAddSelectorAndValues(tag , @selector(setTitleShadowColor:forState:) , color , @(state), nil);
+        return weakSelf.TongAddSelectorAndValues(tag , @selector(setTitleShadowColor:forState:) , color , @(state), nil);
     };
     
 }
 
-- (LEEConfigThemeToT_Image)LeeAddImage{
+- (TongConfigThemeToT_Image)TongAddImage{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , id image){
         
-        return weakSelf.LeeAddSelectorAndImage(tag , @selector(setImage:) , image);
+        return weakSelf.TongAddSelectorAndImage(tag , @selector(setImage:) , image);
     };
     
 }
 
-- (LEEConfigThemeToT_Image)LeeAddTrackImage{
+- (TongConfigThemeToT_Image)TongAddTrackImage{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , id image){
         
-        return weakSelf.LeeAddSelectorAndImage(tag , @selector(setTrackImage:) , image);
+        return weakSelf.TongAddSelectorAndImage(tag , @selector(setTrackImage:) , image);
     };
     
 }
 
-- (LEEConfigThemeToT_Image)LeeAddProgressImage{
+- (TongConfigThemeToT_Image)TongAddProgressImage{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , id image){
         
-        return weakSelf.LeeAddSelectorAndImage(tag , @selector(setProgressImage:) , image);
+        return weakSelf.TongAddSelectorAndImage(tag , @selector(setProgressImage:) , image);
     };
     
 }
 
-- (LEEConfigThemeToT_Image)LeeAddShadowImage{
+- (TongConfigThemeToT_Image)TongAddShadowImage{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , id image){
         
-        return weakSelf.LeeAddSelectorAndImage(tag , @selector(setShadowImage:) , image);
+        return weakSelf.TongAddSelectorAndImage(tag , @selector(setShadowImage:) , image);
     };
     
 }
 
-- (LEEConfigThemeToT_Image)LeeAddSelectedImage{
+- (TongConfigThemeToT_Image)TongAddSelectedImage{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , id image){
         
-        return weakSelf.LeeAddSelectorAndImage(tag , @selector(setSelectedImage:) , image);
+        return weakSelf.TongAddSelectorAndImage(tag , @selector(setSelectedImage:) , image);
     };
     
 }
 
-- (LEEConfigThemeToT_Image)LeeAddBackgroundImage{
+- (TongConfigThemeToT_Image)TongAddBackgroundImage{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , id image){
         
-        return weakSelf.LeeAddSelectorAndImage(tag , @selector(setBackgroundImage:) , image);
+        return weakSelf.TongAddSelectorAndImage(tag , @selector(setBackgroundImage:) , image);
     };
     
 }
 
-- (LEEConfigThemeToT_Image)LeeAddBackIndicatorImage{
+- (TongConfigThemeToT_Image)TongAddBackIndicatorImage{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , id image){
         
-        return weakSelf.LeeAddSelectorAndImage(tag , @selector(setBackIndicatorImage:) , image);
+        return weakSelf.TongAddSelectorAndImage(tag , @selector(setBackIndicatorImage:) , image);
     };
     
 }
 
-- (LEEConfigThemeToT_Image)LeeAddBackIndicatorTransitionMaskImage{
+- (TongConfigThemeToT_Image)TongAddBackIndicatorTransitionMaskImage{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , id image){
         
-        return weakSelf.LeeAddSelectorAndImage(tag , @selector(setBackIndicatorTransitionMaskImage:) , image);
+        return weakSelf.TongAddSelectorAndImage(tag , @selector(setBackIndicatorTransitionMaskImage:) , image);
     };
     
 }
 
-- (LEEConfigThemeToT_Image)LeeAddSelectionIndicatorImage{
+- (TongConfigThemeToT_Image)TongAddSelectionIndicatorImage{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , id image){
         
-        return weakSelf.LeeAddSelectorAndImage(tag , @selector(setSelectionIndicatorImage:) , image);
+        return weakSelf.TongAddSelectorAndImage(tag , @selector(setSelectionIndicatorImage:) , image);
     };
     
 }
 
-- (LEEConfigThemeToT_Image)LeeAddScopeBarBackgroundImage{
+- (TongConfigThemeToT_Image)TongAddScopeBarBackgroundImage{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , id image){
         
-        return weakSelf.LeeAddSelectorAndImage(tag , @selector(setScopeBarBackgroundImage:) , image);
+        return weakSelf.TongAddSelectorAndImage(tag , @selector(setScopeBarBackgroundImage:) , image);
     };
     
 }
 
-- (LEEConfigThemeToT_ImageAndState)LeeAddButtonImage{
+- (TongConfigThemeToT_ImageAndState)TongAddButtonImage{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , UIImage *image , UIControlState state){
         
-        return weakSelf.LeeAddSelectorAndValues(tag , @selector(setImage:forState:) , image , @(state), nil);
+        return weakSelf.TongAddSelectorAndValues(tag , @selector(setImage:forState:) , image , @(state), nil);
     };
     
 }
 
-- (LEEConfigThemeToT_ImageAndState)LeeAddButtonBackgroundImage{
+- (TongConfigThemeToT_ImageAndState)TongAddButtonBackgroundImage{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , UIImage *image , UIControlState state){
         
-        return weakSelf.LeeAddSelectorAndValues(tag , @selector(setBackgroundImage:forState:) , image , @(state), nil);
+        return weakSelf.TongAddSelectorAndValues(tag , @selector(setBackgroundImage:forState:) , image , @(state), nil);
     };
     
 }
 
-- (LEEConfigThemeToT_SelectorAndColor)LeeAddSelectorAndColor{
+- (TongConfigThemeToT_SelectorAndColor)TongAddSelectorAndColor{
     
     __weak typeof(self) weakSelf = self;
     
@@ -746,21 +739,21 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
         
         if ([color isKindOfClass:NSString.class]) {
             
-            value = [UIColor leeTheme_ColorWithHexString:color];
+            value = [UIColor TongTheme_ColorWithHexString:color];
             
         } else {
             
             value = color;
         }
         
-        if (value) weakSelf.LeeAddSelectorAndValueArray(tag , sel , @[value]);
+        if (value) weakSelf.TongAddSelectorAndValueArray(tag , sel , @[value]);
         
         return weakSelf;
     };
     
 }
 
-- (LEEConfigThemeToT_SelectorAndImage)LeeAddSelectorAndImage{
+- (TongConfigThemeToT_SelectorAndImage)TongAddSelectorAndImage{
     
     __weak typeof(self) weakSelf = self;
     
@@ -779,14 +772,14 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
             value = image;
         }
         
-        if (value) weakSelf.LeeAddSelectorAndValueArray(tag , sel , @[value]);
+        if (value) weakSelf.TongAddSelectorAndValueArray(tag , sel , @[value]);
         
         return weakSelf;
     };
     
 }
 
-- (LEEConfigThemeToT_KeyPathAndValue)LeeAddKeyPathAndValue{
+- (TongConfigThemeToT_KeyPathAndValue)TongAddKeyPathAndValue{
     
     __weak typeof(self) weakSelf = self;
     
@@ -794,7 +787,7 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
         
         if (!value) return weakSelf;
         
-        [LEETheme addTagToAllTags:tag];
+        [TongTheme addTagToAllTags:tag];
         
         NSMutableDictionary *info = weakSelf.modelThemeKeyPathConfigInfo[keyPath];
         
@@ -811,7 +804,7 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
     
 }
 
-- (LEEConfigThemeToT_SelectorAndValues)LeeAddSelectorAndValues{
+- (TongConfigThemeToT_SelectorAndValues)TongAddSelectorAndValues{
     
     __weak typeof(self) weakSelf = self;
     
@@ -834,12 +827,12 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
         
         va_end(argsList);
         
-        return weakSelf.LeeAddSelectorAndValueArray(tag, sel, array);
+        return weakSelf.TongAddSelectorAndValueArray(tag, sel, array);
     };
     
 }
 
-- (LEEConfigThemeToT_SelectorAndValueArray)LeeAddSelectorAndValueArray{
+- (TongConfigThemeToT_SelectorAndValueArray)TongAddSelectorAndValueArray{
     
     __weak typeof(self) weakSelf = self;
     
@@ -849,7 +842,7 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
         
         if (!sel) return weakSelf;
         
-        [LEETheme addTagToAllTags:tag];
+        [TongTheme addTagToAllTags:tag];
         
         NSString *key = NSStringFromSelector(sel);
         
@@ -881,7 +874,7 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
     
 }
 
-- (LEEConfigThemeToT_KeyPath)LeeRemoveKeyPath{
+- (TongConfigThemeToT_KeyPath)TongRemoveKeyPath{
     
     __weak typeof(self) weakSelf = self;
     
@@ -901,7 +894,7 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
     
 }
 
-- (LEEConfigThemeToT_Selector)LeeRemoveSelector{
+- (TongConfigThemeToT_Selector)TongRemoveSelector{
     
     __weak typeof(self) weakSelf = self;
     
@@ -921,7 +914,7 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
     
 }
 
-- (LEEConfigTheme)LeeClearAllConfig{
+- (TongConfigTheme)TongClearAllConfig{
     
     __weak typeof(self) weakSelf = self;
     
@@ -940,7 +933,7 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
     
 }
 
-- (LEEConfigThemeToTag)LeeClearAllConfig_Tag{
+- (TongConfigThemeToTag)TongClearAllConfig_Tag{
     
     __weak typeof(self) weakSelf = self;
     
@@ -950,12 +943,12 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
         
         for (id keyPath in [weakSelf.modelThemeKeyPathConfigInfo copy]) {
             
-            weakSelf.LeeRemoveKeyPath(tag, keyPath);
+            weakSelf.TongRemoveKeyPath(tag, keyPath);
         }
         
         for (id selector in [weakSelf.modelThemeSelectorConfigInfo copy]) {
             
-            weakSelf.LeeRemoveSelector(tag, NSSelectorFromString(selector));
+            weakSelf.TongRemoveSelector(tag, NSSelectorFromString(selector));
         }
         
         return weakSelf;
@@ -963,7 +956,7 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
     
 }
 
-- (LEEConfigThemeToKeyPath)LeeClearAllConfig_KeyPath{
+- (TongConfigThemeToKeyPath)TongClearAllConfig_KeyPath{
     
     __weak typeof(self) weakSelf = self;
     
@@ -976,7 +969,7 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
     
 }
 
-- (LEEConfigThemeToSelector)LeeClearAllConfig_Selector{
+- (TongConfigThemeToSelector)TongClearAllConfig_Selector{
     
     __weak typeof(self) weakSelf = self;
     
@@ -1014,31 +1007,31 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
 
 @end
 
-typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
+typedef NS_ENUM(NSInteger, TongThemeIdentifierConfigType) {
     
     /** 标识符设置类型 - Block */
     
-    LEEThemeIdentifierConfigTypeBlock,
+    TongThemeIdentifierConfigTypeBlock,
     
     /** 标识符设置类型 - 路径,方法 */
     
-    LEEThemeIdentifierConfigTypeKeyPath,
-    LEEThemeIdentifierConfigTypeSelector
+    TongThemeIdentifierConfigTypeKeyPath,
+    TongThemeIdentifierConfigTypeSelector
 };
 
-@implementation LEEThemeConfigModel (IdentifierModeExtend)
+@implementation TongThemeConfigModel (IdentifierModeExtend)
 
-- (LEEConfigThemeToIdentifierAndBlock)LeeCustomConfig{
+- (TongConfigThemeToIdentifierAndBlock)TongCustomConfig{
     
     __weak typeof(self) weakSelf = self;
     
-    return ^(NSString *identifier , LEEThemeConfigBlockToValue configBlock){
+    return ^(NSString *identifier , TongThemeConfigBlockToValue configBlock){
         
         if (configBlock) {
             
-            for (NSString *tag in [LEETheme shareTheme].allTags) {
+            for (NSString *tag in [TongTheme shareTheme].allTags) {
                 
-                id value = [LEETheme getValueWithTag:tag Identifier:identifier];
+                id value = [TongTheme getValueWithTag:tag Identifier:identifier];
                 
                 if (value) {
                     
@@ -1055,13 +1048,13 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
                 
             }
             
-            NSMutableDictionary *info = weakSelf.modelThemeIdentifierConfigInfo[@(LEEThemeIdentifierConfigTypeBlock)];
+            NSMutableDictionary *info = weakSelf.modelThemeIdentifierConfigInfo[@(TongThemeIdentifierConfigTypeBlock)];
             
             if (!info) info = [NSMutableDictionary dictionary];
             
             [info setObject:identifier forKey:configBlock];
             
-            [weakSelf.modelThemeIdentifierConfigInfo setObject:info forKey:@(LEEThemeIdentifierConfigTypeBlock)];
+            [weakSelf.modelThemeIdentifierConfigInfo setObject:info forKey:@(TongThemeIdentifierConfigTypeBlock)];
         }
         
         return weakSelf;
@@ -1069,393 +1062,393 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
 }
 
-- (LEEConfigThemeToIdentifier)LeeConfigTintColor{
+- (TongConfigThemeToIdentifier)TongConfigTintColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier){
         
-        return weakSelf.LeeConfigSelectorAndIdentifier(@selector(setTintColor:), identifier);
+        return weakSelf.TongConfigSelectorAndIdentifier(@selector(setTintColor:), identifier);
     };
     
 }
 
-- (LEEConfigThemeToIdentifier)LeeConfigTextColor{
+- (TongConfigThemeToIdentifier)TongConfigTextColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier){
         
-        return weakSelf.LeeConfigSelectorAndIdentifier(@selector(setTextColor:), identifier);
+        return weakSelf.TongConfigSelectorAndIdentifier(@selector(setTextColor:), identifier);
     };
     
 }
 
-- (LEEConfigThemeToIdentifier)LeeConfigFillColor{
+- (TongConfigThemeToIdentifier)TongConfigFillColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier){
         
-        return weakSelf.LeeConfigSelectorAndIdentifier(@selector(setFillColor:), identifier);
+        return weakSelf.TongConfigSelectorAndIdentifier(@selector(setFillColor:), identifier);
     };
     
 }
 
-- (LEEConfigThemeToIdentifier)LeeConfigStrokeColor{
+- (TongConfigThemeToIdentifier)TongConfigStrokeColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier){
         
-        return weakSelf.LeeConfigSelectorAndIdentifier(@selector(setStrokeColor:), identifier);
+        return weakSelf.TongConfigSelectorAndIdentifier(@selector(setStrokeColor:), identifier);
     };
     
 }
 
-- (LEEConfigThemeToIdentifier)LeeConfigBorderColor{
+- (TongConfigThemeToIdentifier)TongConfigBorderColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier){
         
-        return weakSelf.LeeConfigSelectorAndIdentifier(@selector(setBorderColor:), identifier);
+        return weakSelf.TongConfigSelectorAndIdentifier(@selector(setBorderColor:), identifier);
     };
     
 }
 
-- (LEEConfigThemeToIdentifier)LeeConfigShadowColor{
+- (TongConfigThemeToIdentifier)TongConfigShadowColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier){
         
-        return weakSelf.LeeConfigSelectorAndIdentifier(@selector(setShadowColor:), identifier);
+        return weakSelf.TongConfigSelectorAndIdentifier(@selector(setShadowColor:), identifier);
     };
     
 }
 
-- (LEEConfigThemeToIdentifier)LeeConfigOnTintColor{
+- (TongConfigThemeToIdentifier)TongConfigOnTintColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier){
         
-        return weakSelf.LeeConfigSelectorAndIdentifier(@selector(setOnTintColor:), identifier);
+        return weakSelf.TongConfigSelectorAndIdentifier(@selector(setOnTintColor:), identifier);
     };
     
 }
 
-- (LEEConfigThemeToIdentifier)LeeConfigThumbTintColor{
+- (TongConfigThemeToIdentifier)TongConfigThumbTintColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier){
         
-        return weakSelf.LeeConfigSelectorAndIdentifier(@selector(setThumbTintColor:), identifier);
+        return weakSelf.TongConfigSelectorAndIdentifier(@selector(setThumbTintColor:), identifier);
     };
     
 }
 
-- (LEEConfigThemeToIdentifier)LeeConfigSeparatorColor{
+- (TongConfigThemeToIdentifier)TongConfigSeparatorColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier){
         
-        return weakSelf.LeeConfigSelectorAndIdentifier(@selector(setSeparatorColor:), identifier);
+        return weakSelf.TongConfigSelectorAndIdentifier(@selector(setSeparatorColor:), identifier);
     };
     
 }
 
-- (LEEConfigThemeToIdentifier)LeeConfigBarTintColor{
+- (TongConfigThemeToIdentifier)TongConfigBarTintColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier){
         
-        return weakSelf.LeeConfigSelectorAndIdentifier(@selector(setBarTintColor:), identifier);
+        return weakSelf.TongConfigSelectorAndIdentifier(@selector(setBarTintColor:), identifier);
     };
     
 }
 
-- (LEEConfigThemeToIdentifier)LeeConfigBackgroundColor{
+- (TongConfigThemeToIdentifier)TongConfigBackgroundColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier){
         
-        return weakSelf.LeeConfigSelectorAndIdentifier(@selector(setBackgroundColor:), identifier);
+        return weakSelf.TongConfigSelectorAndIdentifier(@selector(setBackgroundColor:), identifier);
     };
     
 }
 
-- (LEEConfigThemeToIdentifier)LeeConfigPlaceholderColor{
+- (TongConfigThemeToIdentifier)TongConfigPlaceholderColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier){
         
-        return weakSelf.LeeConfigKeyPathAndIdentifier(@"_placeholderLabel.textColor" , identifier);
+        return weakSelf.TongConfigKeyPathAndIdentifier(@"_placeholderLabel.textColor" , identifier);
     };
     
 }
 
-- (LEEConfigThemeToIdentifier)LeeConfigTrackTintColor{
+- (TongConfigThemeToIdentifier)TongConfigTrackTintColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier){
         
-        return weakSelf.LeeConfigSelectorAndIdentifier(@selector(setTrackTintColor:), identifier);
+        return weakSelf.TongConfigSelectorAndIdentifier(@selector(setTrackTintColor:), identifier);
     };
     
 }
 
-- (LEEConfigThemeToIdentifier)LeeConfigProgressTintColor{
+- (TongConfigThemeToIdentifier)TongConfigProgressTintColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier){
         
-        return weakSelf.LeeConfigSelectorAndIdentifier(@selector(setProgressTintColor:), identifier);
+        return weakSelf.TongConfigSelectorAndIdentifier(@selector(setProgressTintColor:), identifier);
     };
     
 }
 
-- (LEEConfigThemeToIdentifier)LeeConfigHighlightedTextColor{
+- (TongConfigThemeToIdentifier)TongConfigHighlightedTextColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier){
         
-        return weakSelf.LeeConfigSelectorAndIdentifier(@selector(setHighlightedTextColor:), identifier);
+        return weakSelf.TongConfigSelectorAndIdentifier(@selector(setHighlightedTextColor:), identifier);
     };
     
 }
 
-- (LEEConfigThemeToIdentifier)LeeConfigPageIndicatorTintColor{
+- (TongConfigThemeToIdentifier)TongConfigPageIndicatorTintColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier){
         
-        return weakSelf.LeeConfigSelectorAndIdentifier(@selector(setPageIndicatorTintColor:), identifier);
+        return weakSelf.TongConfigSelectorAndIdentifier(@selector(setPageIndicatorTintColor:), identifier);
     };
     
 }
 
-- (LEEConfigThemeToIdentifier)LeeConfigCurrentPageIndicatorTintColor{
+- (TongConfigThemeToIdentifier)TongConfigCurrentPageIndicatorTintColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier){
         
-        return weakSelf.LeeConfigSelectorAndIdentifier(@selector(setCurrentPageIndicatorTintColor:), identifier);
+        return weakSelf.TongConfigSelectorAndIdentifier(@selector(setCurrentPageIndicatorTintColor:), identifier);
     };
     
 }
 
-- (LEEConfigThemeToIdentifierAndState)LeeConfigButtonTitleColor{
+- (TongConfigThemeToIdentifierAndState)TongConfigButtonTitleColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier , UIControlState state){
         
-        return weakSelf.LeeConfigSelectorAndValueArray(@selector(setTitleColor:forState:), @[[LEEThemeIdentifier ident:identifier], @(state)]);
+        return weakSelf.TongConfigSelectorAndValueArray(@selector(setTitleColor:forState:), @[[TongThemeIdentifier ident:identifier], @(state)]);
     };
     
 }
 
-- (LEEConfigThemeToIdentifierAndState)LeeConfigButtonTitleShadowColor{
+- (TongConfigThemeToIdentifierAndState)TongConfigButtonTitleShadowColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier , UIControlState state){
         
-        return weakSelf.LeeConfigSelectorAndValueArray(@selector(setTitleShadowColor:forState:), @[[LEEThemeIdentifier ident:identifier], @(state)]);
+        return weakSelf.TongConfigSelectorAndValueArray(@selector(setTitleShadowColor:forState:), @[[TongThemeIdentifier ident:identifier], @(state)]);
     };
     
 }
 
-- (LEEConfigThemeToIdentifier)LeeConfigImage{
+- (TongConfigThemeToIdentifier)TongConfigImage{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier){
         
-        return weakSelf.LeeConfigSelectorAndIdentifier(@selector(setImage:), identifier);
+        return weakSelf.TongConfigSelectorAndIdentifier(@selector(setImage:), identifier);
     };
     
 }
 
-- (LEEConfigThemeToIdentifier)LeeConfigTrackImage{
+- (TongConfigThemeToIdentifier)TongConfigTrackImage{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier){
         
-        return weakSelf.LeeConfigSelectorAndIdentifier(@selector(setTrackImage:), identifier);
+        return weakSelf.TongConfigSelectorAndIdentifier(@selector(setTrackImage:), identifier);
     };
     
 }
 
-- (LEEConfigThemeToIdentifier)LeeConfigProgressImage{
+- (TongConfigThemeToIdentifier)TongConfigProgressImage{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier){
         
-        return weakSelf.LeeConfigSelectorAndIdentifier(@selector(setProgressImage:), identifier);
+        return weakSelf.TongConfigSelectorAndIdentifier(@selector(setProgressImage:), identifier);
     };
     
 }
 
-- (LEEConfigThemeToIdentifier)LeeConfigShadowImage{
+- (TongConfigThemeToIdentifier)TongConfigShadowImage{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier){
         
-        return weakSelf.LeeConfigSelectorAndIdentifier(@selector(setShadowImage:), identifier);
+        return weakSelf.TongConfigSelectorAndIdentifier(@selector(setShadowImage:), identifier);
     };
     
 }
 
-- (LEEConfigThemeToIdentifier)LeeConfigSelectedImage{
+- (TongConfigThemeToIdentifier)TongConfigSelectedImage{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier){
         
-        return weakSelf.LeeConfigSelectorAndIdentifier(@selector(setSelectedImage:), identifier);
+        return weakSelf.TongConfigSelectorAndIdentifier(@selector(setSelectedImage:), identifier);
     };
     
 }
 
-- (LEEConfigThemeToIdentifier)LeeConfigBackgroundImage{
+- (TongConfigThemeToIdentifier)TongConfigBackgroundImage{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier){
         
-        return weakSelf.LeeConfigSelectorAndIdentifier(@selector(setBackgroundImage:), identifier);
+        return weakSelf.TongConfigSelectorAndIdentifier(@selector(setBackgroundImage:), identifier);
     };
     
 }
 
-- (LEEConfigThemeToIdentifier)LeeConfigBackIndicatorImage{
+- (TongConfigThemeToIdentifier)TongConfigBackIndicatorImage{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier){
         
-        return weakSelf.LeeConfigSelectorAndIdentifier(@selector(setBackIndicatorImage:), identifier);
+        return weakSelf.TongConfigSelectorAndIdentifier(@selector(setBackIndicatorImage:), identifier);
     };
     
 }
 
-- (LEEConfigThemeToIdentifier)LeeConfigBackIndicatorTransitionMaskImage{
+- (TongConfigThemeToIdentifier)TongConfigBackIndicatorTransitionMaskImage{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier){
         
-        return weakSelf.LeeConfigSelectorAndIdentifier(@selector(setBackIndicatorTransitionMaskImage:), identifier);
+        return weakSelf.TongConfigSelectorAndIdentifier(@selector(setBackIndicatorTransitionMaskImage:), identifier);
     };
     
 }
 
-- (LEEConfigThemeToIdentifier)LeeConfigSelectionIndicatorImage{
+- (TongConfigThemeToIdentifier)TongConfigSelectionIndicatorImage{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier){
         
-        return weakSelf.LeeConfigSelectorAndIdentifier(@selector(setSelectionIndicatorImage:), identifier);
+        return weakSelf.TongConfigSelectorAndIdentifier(@selector(setSelectionIndicatorImage:), identifier);
     };
     
 }
 
-- (LEEConfigThemeToIdentifier)LeeConfigScopeBarBackgroundImage{
+- (TongConfigThemeToIdentifier)TongConfigScopeBarBackgroundImage{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier){
         
-        return weakSelf.LeeConfigSelectorAndIdentifier(@selector(setScopeBarBackgroundImage:), identifier);
+        return weakSelf.TongConfigSelectorAndIdentifier(@selector(setScopeBarBackgroundImage:), identifier);
     };
     
 }
 
-- (LEEConfigThemeToIdentifierAndState)LeeConfigButtonImage{
+- (TongConfigThemeToIdentifierAndState)TongConfigButtonImage{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier , UIControlState state){
         
-        return weakSelf.LeeConfigSelectorAndValueArray(@selector(setImage:forState:), @[[LEEThemeIdentifier ident:identifier], @(state)]);
+        return weakSelf.TongConfigSelectorAndValueArray(@selector(setImage:forState:), @[[TongThemeIdentifier ident:identifier], @(state)]);
     };
     
 }
 
-- (LEEConfigThemeToIdentifierAndState)LeeConfigButtonBackgroundImage{
+- (TongConfigThemeToIdentifierAndState)TongConfigButtonBackgroundImage{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier , UIControlState state){
         
-        weakSelf.LeeConfigSelectorAndValueArray(@selector(setBackgroundImage:forState:), @[[LEEThemeIdentifier ident:identifier], @(state)]);
+        weakSelf.TongConfigSelectorAndValueArray(@selector(setBackgroundImage:forState:), @[[TongThemeIdentifier ident:identifier], @(state)]);
         
         return weakSelf;
     };
     
 }
 
-- (LEEConfigThemeToKeyPathAndIdentifier)LeeConfigKeyPathAndIdentifier{
+- (TongConfigThemeToKeyPathAndIdentifier)TongConfigKeyPathAndIdentifier{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *keyPath , NSString *identifier){
         
-        for (NSString *tag in [LEETheme shareTheme].allTags) {
+        for (NSString *tag in [TongTheme shareTheme].allTags) {
             
-            id value = [LEETheme getValueWithTag:tag Identifier:identifier];
+            id value = [TongTheme getValueWithTag:tag Identifier:identifier];
             
-            if (value) weakSelf.LeeAddKeyPathAndValue(tag, keyPath, value);
+            if (value) weakSelf.TongAddKeyPathAndValue(tag, keyPath, value);
         }
         
-        NSMutableDictionary *info = weakSelf.modelThemeIdentifierConfigInfo[@(LEEThemeIdentifierConfigTypeKeyPath)];
+        NSMutableDictionary *info = weakSelf.modelThemeIdentifierConfigInfo[@(TongThemeIdentifierConfigTypeKeyPath)];
         
         if (!info) info = [NSMutableDictionary dictionary];
         
         [info setObject:identifier forKey:keyPath];
         
-        [weakSelf.modelThemeIdentifierConfigInfo setObject:info forKey:@(LEEThemeIdentifierConfigTypeKeyPath)];
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:info forKey:@(TongThemeIdentifierConfigTypeKeyPath)];
         
         return weakSelf;
     };
     
 }
 
-- (LEEConfigThemeToSelectorAndIdentifier)LeeConfigSelectorAndIdentifier{
+- (TongConfigThemeToSelectorAndIdentifier)TongConfigSelectorAndIdentifier{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(SEL sel , NSString *identifier){
         
-        return weakSelf.LeeConfigSelectorAndValueArray(sel , @[[LEEThemeIdentifier ident:identifier]]);
+        return weakSelf.TongConfigSelectorAndValueArray(sel , @[[TongThemeIdentifier ident:identifier]]);
     };
     
 }
 
-- (LEEConfigThemeToSelectorAndValues)LeeConfigSelectorAndValueArray{
+- (TongConfigThemeToSelectorAndValues)TongConfigSelectorAndValueArray{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(SEL sel , NSArray *values){
         
-        for (NSString *tag in [LEETheme shareTheme].allTags) {
+        for (NSString *tag in [TongTheme shareTheme].allTags) {
             
             NSMutableArray *valueArray = [NSMutableArray array];
             
@@ -1463,37 +1456,37 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
 
                 id v = value;
                 
-                if ([value isKindOfClass:LEEThemeIdentifier.class]) {
+                if ([value isKindOfClass:TongThemeIdentifier.class]) {
                     
-                    v = [LEETheme getValueWithTag:tag Identifier:value];
+                    v = [TongTheme getValueWithTag:tag Identifier:value];
                 }
                 
                 if (v) [valueArray addObject:v];
             }
             
-            if (valueArray.count == values.count && valueArray.count) weakSelf.LeeAddSelectorAndValueArray(tag, sel, valueArray);
+            if (valueArray.count == values.count && valueArray.count) weakSelf.TongAddSelectorAndValueArray(tag, sel, valueArray);
         }
         
-        NSMutableDictionary *info = weakSelf.modelThemeIdentifierConfigInfo[@(LEEThemeIdentifierConfigTypeSelector)];
+        NSMutableDictionary *info = weakSelf.modelThemeIdentifierConfigInfo[@(TongThemeIdentifierConfigTypeSelector)];
         
         if (!info) info = [NSMutableDictionary dictionary];
         
         if (values) [info setObject:NSStringFromSelector(sel) forKey:values];
         
-        [weakSelf.modelThemeIdentifierConfigInfo setObject:info forKey:@(LEEThemeIdentifierConfigTypeSelector)];
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:info forKey:@(TongThemeIdentifierConfigTypeSelector)];
         
         return weakSelf;
     };
     
 }
 
-- (LEEConfigThemeToKeyPath)LeeRemoveKeyPathIdentifier{
+- (TongConfigThemeToKeyPath)TongRemoveKeyPathIdentifier{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *keyPath){
         
-        id type = @(LEEThemeIdentifierConfigTypeKeyPath);
+        id type = @(TongThemeIdentifierConfigTypeKeyPath);
         
         NSMutableDictionary *info = weakSelf.modelThemeIdentifierConfigInfo[type];
         
@@ -1501,9 +1494,9 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
             
             if ([key isEqualToString:keyPath]) {
                 
-                for (NSString *tag in [LEETheme shareTheme].allTags) {
+                for (NSString *tag in [TongTheme shareTheme].allTags) {
                     
-                    if ([LEETheme getValueWithTag:tag Identifier:info[key]]) weakSelf.LeeRemoveKeyPath(tag, keyPath);
+                    if ([TongTheme getValueWithTag:tag Identifier:info[key]]) weakSelf.TongRemoveKeyPath(tag, keyPath);
                 }
                 
                 [info removeObjectForKey:key];
@@ -1518,13 +1511,13 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
 }
 
-- (LEEConfigThemeToSelector)LeeRemoveSelectorIdentifier{
+- (TongConfigThemeToSelector)TongRemoveSelectorIdentifier{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(SEL sel){
         
-        id type = @(LEEThemeIdentifierConfigTypeSelector);
+        id type = @(TongThemeIdentifierConfigTypeSelector);
         
         NSMutableDictionary *info = weakSelf.modelThemeIdentifierConfigInfo[type];
         
@@ -1536,11 +1529,11 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
                 
                 for (id value in values) {
                     
-                    if ([value isKindOfClass:LEEThemeIdentifier.class]) {
+                    if ([value isKindOfClass:TongThemeIdentifier.class]) {
                         
-                        for (NSString *tag in [LEETheme shareTheme].allTags) {
+                        for (NSString *tag in [TongTheme shareTheme].allTags) {
                             
-                            if ([LEETheme getValueWithTag:tag Identifier:value]) weakSelf.LeeRemoveSelector(tag, NSSelectorFromString(info[key]));
+                            if ([TongTheme getValueWithTag:tag Identifier:value]) weakSelf.TongRemoveSelector(tag, NSSelectorFromString(info[key]));
                         }
 
                     }
@@ -1559,7 +1552,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
 }
 
-- (LEEConfigThemeToIdentifier)LeeRemoveIdentifier{
+- (TongConfigThemeToIdentifier)TongRemoveIdentifier{
     
     __weak typeof(self) weakSelf = self;
     
@@ -1573,13 +1566,13 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
                 
                 switch ([type integerValue]) {
                         
-                    case LEEThemeIdentifierConfigTypeBlock:
+                    case TongThemeIdentifierConfigTypeBlock:
                     {
                         if ([info[key] isEqualToString:identifier]) {
                         
-                            for (NSString *tag in [LEETheme shareTheme].allTags) {
+                            for (NSString *tag in [TongTheme shareTheme].allTags) {
                                 
-                                id value = [LEETheme getValueWithTag:tag Identifier:identifier];
+                                id value = [TongTheme getValueWithTag:tag Identifier:identifier];
                                 
                                 if (!value) continue;
                                 
@@ -1600,17 +1593,17 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
                     }
                         break;
                         
-                    case LEEThemeIdentifierConfigTypeKeyPath:
+                    case TongThemeIdentifierConfigTypeKeyPath:
                     {
                         if ([info[key] isEqualToString:identifier]) {
                             
-                            for (NSString *tag in [LEETheme shareTheme].allTags) {
+                            for (NSString *tag in [TongTheme shareTheme].allTags) {
                                 
-                                id value = [LEETheme getValueWithTag:tag Identifier:identifier];
+                                id value = [TongTheme getValueWithTag:tag Identifier:identifier];
                                 
                                 if (!value) continue;
                                 
-                                weakSelf.LeeRemoveKeyPath(tag, key);
+                                weakSelf.TongRemoveKeyPath(tag, key);
                             }
                             
                             [info removeObjectForKey:key];
@@ -1619,7 +1612,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
                     }
                         break;
                         
-                    case LEEThemeIdentifierConfigTypeSelector:
+                    case TongThemeIdentifierConfigTypeSelector:
                     {
                         BOOL remove = NO;
                         
@@ -1627,13 +1620,13 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
                         
                         for (id value in values) {
                             
-                            if ([value isKindOfClass:LEEThemeIdentifier.class]) {
+                            if ([value isKindOfClass:TongThemeIdentifier.class]) {
                                 
                                 if ([value isEqualToString:identifier]) {
                                     
-                                    for (NSString *tag in [LEETheme shareTheme].allTags) {
+                                    for (NSString *tag in [TongTheme shareTheme].allTags) {
                                         
-                                        if ([LEETheme getValueWithTag:tag Identifier:value]) weakSelf.LeeRemoveSelector(tag, NSSelectorFromString(info[key]));
+                                        if ([TongTheme getValueWithTag:tag Identifier:value]) weakSelf.TongRemoveSelector(tag, NSSelectorFromString(info[key]));
                                     }
                                     
                                     remove = YES;
@@ -1661,7 +1654,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
 }
 
-- (LEEConfigTheme)LeeClearAllConfigOnIdentifierMode{
+- (TongConfigTheme)TongClearAllConfigOnIdentifierMode{
     
     __weak typeof(self) weakSelf = self;
     
@@ -1675,9 +1668,9 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
                 
                 switch ([type integerValue]) {
                         
-                    case LEEThemeIdentifierConfigTypeBlock:
+                    case TongThemeIdentifierConfigTypeBlock:
                     {   
-                        for (NSString *tag in [LEETheme allThemeTag]) {
+                        for (NSString *tag in [TongTheme allThemeTag]) {
                             
                             NSMutableDictionary *blockInfo = weakSelf.modelThemeBlockConfigInfo[tag];
                             
@@ -1694,40 +1687,40 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
                     }
                         break;
                         
-                    case LEEThemeIdentifierConfigTypeKeyPath:
+                    case TongThemeIdentifierConfigTypeKeyPath:
                     {
                         NSString *identifier = info[key];
                         
-                        for (NSString *tag in [LEETheme allThemeTag]) {
+                        for (NSString *tag in [TongTheme allThemeTag]) {
                             
-                            id value = [LEETheme getValueWithTag:tag Identifier:identifier];
+                            id value = [TongTheme getValueWithTag:tag Identifier:identifier];
                             
                             if (!value) continue;
                             
-                            weakSelf.LeeRemoveKeyPath(tag, key);
+                            weakSelf.TongRemoveKeyPath(tag, key);
                         }
                         
                     }
                         break;
                         
-                    case LEEThemeIdentifierConfigTypeSelector:
+                    case TongThemeIdentifierConfigTypeSelector:
                     {
                         NSArray *values = key;
                         
-                        for (NSString *tag in [LEETheme shareTheme].allTags) {
+                        for (NSString *tag in [TongTheme shareTheme].allTags) {
                             
                             BOOL remove = NO;
                             
                             for (id value in values) {
                                 
-                                if ([value isKindOfClass:LEEThemeIdentifier.class]) {
+                                if ([value isKindOfClass:TongThemeIdentifier.class]) {
                                     
-                                    if ([LEETheme getValueWithTag:tag Identifier:value]) remove = YES;
+                                    if ([TongTheme getValueWithTag:tag Identifier:value]) remove = YES;
                                 }
                                 
                             }
                             
-                            if (remove) weakSelf.LeeRemoveSelector(tag, NSSelectorFromString(info[key]));
+                            if (remove) weakSelf.TongRemoveSelector(tag, NSSelectorFromString(info[key]));
                         }
                         
                     }
@@ -1748,7 +1741,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
 }
 
-- (void)leeTheme_AddThemeTagNotify:(NSNotification *)notify{
+- (void)TongTheme_AddThemeTagNotify:(NSNotification *)notify{
     
     NSString *tag = notify.userInfo[@"tag"];
     
@@ -1762,11 +1755,11 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
             
             switch ([type integerValue]) {
                     
-                case LEEThemeIdentifierConfigTypeBlock:
+                case TongThemeIdentifierConfigTypeBlock:
                 {
                     NSString *identifier = info[key];
                     
-                    id value = [LEETheme getValueWithTag:tag Identifier:identifier];
+                    id value = [TongTheme getValueWithTag:tag Identifier:identifier];
                     
                     if (value) {
                         
@@ -1781,17 +1774,17 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
                 }
                     break;
                     
-                case LEEThemeIdentifierConfigTypeKeyPath:
+                case TongThemeIdentifierConfigTypeKeyPath:
                 {
                     NSString *identifier = info[key];
                     
-                    id value = [LEETheme getValueWithTag:tag Identifier:identifier];
+                    id value = [TongTheme getValueWithTag:tag Identifier:identifier];
                     
-                    if (value) self.LeeAddKeyPathAndValue(tag, key, value);
+                    if (value) self.TongAddKeyPathAndValue(tag, key, value);
                 }
                     break;
                     
-                case LEEThemeIdentifierConfigTypeSelector:
+                case TongThemeIdentifierConfigTypeSelector:
                 {
                     NSArray *values = key;
                     
@@ -1801,15 +1794,15 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
                         
                         id v = value;
                         
-                        if ([value isKindOfClass:LEEThemeIdentifier.class]) {
+                        if ([value isKindOfClass:TongThemeIdentifier.class]) {
                             
-                            v = [LEETheme getValueWithTag:tag Identifier:value];
+                            v = [TongTheme getValueWithTag:tag Identifier:value];
                         }
                         
                         if (v) [valueArray addObject:v];
                     }
                     
-                    if (valueArray.count == values.count && valueArray.count) self.LeeAddSelectorAndValueArray(tag, NSSelectorFromString(info[key]), valueArray);
+                    if (valueArray.count == values.count && valueArray.count) self.TongAddSelectorAndValueArray(tag, NSSelectorFromString(info[key]), valueArray);
                 }
                     break;
                     
@@ -1838,7 +1831,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         
         objc_setAssociatedObject(self, _cmd, dic , OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(leeTheme_AddThemeTagNotify:) name:LEEThemeAddTagNotificaiton object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(TongTheme_AddThemeTagNotify:) name:TongThemeAddTagNotificaiton object:nil];
     }
     
     return dic;
@@ -1851,14 +1844,14 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
 
 @end
 
-@implementation LEEThemeIdentifier
+@implementation TongThemeIdentifier
 {
     NSString *_backingStore;
 }
 
-+ (LEEThemeIdentifier *)ident:(NSString *)ident{
++ (TongThemeIdentifier *)ident:(NSString *)ident{
     
-    return [[LEEThemeIdentifier alloc] initWithString:ident];
+    return [[TongThemeIdentifier alloc] initWithString:ident];
 }
 
 - (id)initWithString:(NSString *)aString
@@ -1884,7 +1877,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
 
 #pragma mark - ----------------主题设置----------------
 
-@implementation NSObject (LEEThemeConfigObject)
+@implementation NSObject (TongThemeConfigObject)
 
 + (void)load{
     
@@ -1895,21 +1888,21 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         
         [selStringsArray enumerateObjectsUsingBlock:^(NSString *selString, NSUInteger idx, BOOL *stop) {
             
-            NSString *leeSelString = [@"lee_theme_" stringByAppendingString:selString];
+            NSString *TongSelString = [@"Tong_theme_" stringByAppendingString:selString];
             
             Method originalMethod = class_getInstanceMethod(self, NSSelectorFromString(selString));
             
-            Method leeMethod = class_getInstanceMethod(self, NSSelectorFromString(leeSelString));
+            Method TongMethod = class_getInstanceMethod(self, NSSelectorFromString(TongSelString));
             
-            BOOL isAddedMethod = class_addMethod(self, NSSelectorFromString(selString), method_getImplementation(leeMethod), method_getTypeEncoding(leeMethod));
+            BOOL isAddedMethod = class_addMethod(self, NSSelectorFromString(selString), method_getImplementation(TongMethod), method_getTypeEncoding(TongMethod));
             
             if (isAddedMethod) {
                 
-                class_replaceMethod(self, NSSelectorFromString(leeSelString), method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
+                class_replaceMethod(self, NSSelectorFromString(TongSelString), method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
                 
             } else {
                 
-                method_exchangeImplementations(originalMethod, leeMethod);
+                method_exchangeImplementations(originalMethod, TongMethod);
             }
             
         }];
@@ -1918,30 +1911,30 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
 }
 
-- (void)lee_theme_dealloc{
+- (void)Tong_theme_dealloc{
     
-    if ([self isLeeTheme]) {
+    if ([self isTongTheme]) {
         
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:LEEThemeChangingNotificaiton object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:TongThemeChangingNotificaiton object:nil];
         
         objc_removeAssociatedObjects(self);
     }
 
-    [self lee_theme_dealloc];
+    [self Tong_theme_dealloc];
 }
 
 - (BOOL)isChangeTheme{
     
-    return (!self.lee_theme.modelCurrentThemeTag || ![self.lee_theme.modelCurrentThemeTag isEqualToString:[LEETheme currentThemeTag]]) ? YES : NO;
+    return (!self.Tong_theme.modelCurrentThemeTag || ![self.Tong_theme.modelCurrentThemeTag isEqualToString:[TongTheme currentThemeTag]]) ? YES : NO;
 }
 
-- (void)leeTheme_ChangeThemeConfigNotify:(NSNotification *)notify{
+- (void)TongTheme_ChangeThemeConfigNotify:(NSNotification *)notify{
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
         if ([self isChangeTheme]) {
             
-            if (self.lee_theme.modelChangingBlock) self.lee_theme.modelChangingBlock([LEETheme currentThemeTag] , self);
+            if (self.Tong_theme.modelChangingBlock) self.Tong_theme.modelChangingBlock([TongTheme currentThemeTag] , self);
             
             [CATransaction begin];
             
@@ -2080,25 +2073,25 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
 
 - (void)changeThemeConfig{
     
-    self.lee_theme.modelCurrentThemeTag = [LEETheme currentThemeTag];
+    self.Tong_theme.modelCurrentThemeTag = [TongTheme currentThemeTag];
     
-    NSString *tag = [LEETheme currentThemeTag];
+    NSString *tag = [TongTheme currentThemeTag];
     
     // Block
     
-    for (id blockKey in self.lee_theme.modelThemeBlockConfigInfo[tag]) {
+    for (id blockKey in self.Tong_theme.modelThemeBlockConfigInfo[tag]) {
         
-        id value = self.lee_theme.modelThemeBlockConfigInfo[tag][blockKey];
+        id value = self.Tong_theme.modelThemeBlockConfigInfo[tag][blockKey];
         
         if ([value isKindOfClass:NSNull.class]) {
             
-            LEEThemeConfigBlock block = (LEEThemeConfigBlock)blockKey;
+            TongThemeConfigBlock block = (TongThemeConfigBlock)blockKey;
             
             if (block) block(self);
             
         } else {
             
-            LEEThemeConfigBlockToValue block = (LEEThemeConfigBlockToValue)blockKey;
+            TongThemeConfigBlockToValue block = (TongThemeConfigBlockToValue)blockKey;
             
             if (block) block(self , value);
         }
@@ -2107,9 +2100,9 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     // KeyPath
     
-    for (id keyPath in self.lee_theme.modelThemeKeyPathConfigInfo) {
+    for (id keyPath in self.Tong_theme.modelThemeKeyPathConfigInfo) {
         
-        NSDictionary *info = self.lee_theme.modelThemeKeyPathConfigInfo[keyPath];
+        NSDictionary *info = self.Tong_theme.modelThemeKeyPathConfigInfo[keyPath];
         
         id value = info[tag];
         
@@ -2122,9 +2115,9 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     // Selector
     
-    for (NSString *selector in self.lee_theme.modelThemeSelectorConfigInfo) {
+    for (NSString *selector in self.Tong_theme.modelThemeSelectorConfigInfo) {
         
-        NSDictionary *info = self.lee_theme.modelThemeSelectorConfigInfo[selector];
+        NSDictionary *info = self.Tong_theme.modelThemeSelectorConfigInfo[selector];
         
         NSArray *valuesArray = info[tag];
         
@@ -2166,21 +2159,21 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
 }
 
-- (LEEThemeConfigModel *)lee_theme{
+- (TongThemeConfigModel *)Tong_theme{
     
-    LEEThemeConfigModel *model = objc_getAssociatedObject(self, _cmd);
+    TongThemeConfigModel *model = objc_getAssociatedObject(self, _cmd);
     
     if (!model) {
         
-        NSAssert(![self isKindOfClass:[LEEThemeConfigModel class]], @"是不是点多了? ( *・ω・)✄╰ひ╯ ");
+        NSAssert(![self isKindOfClass:[TongThemeConfigModel class]], @"是不是点多了? ( *・ω・)✄╰ひ╯ ");
         
-        model = [LEEThemeConfigModel new];
+        model = [TongThemeConfigModel new];
         
         objc_setAssociatedObject(self, _cmd, model , OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(leeTheme_ChangeThemeConfigNotify:) name:LEEThemeChangingNotificaiton object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(TongTheme_ChangeThemeConfigNotify:) name:TongThemeChangingNotificaiton object:nil];
         
-        [self setIsLeeTheme:YES];
+        [self setIsTongTheme:YES];
         
         __weak typeof(self) weakSelf = self;
         
@@ -2191,7 +2184,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         
         model.modelConfigThemeChangingBlock = ^{
             
-            if (weakSelf) weakSelf.lee_theme.modelChangingBlock([LEETheme currentThemeTag], weakSelf);
+            if (weakSelf) weakSelf.Tong_theme.modelChangingBlock([TongTheme currentThemeTag], weakSelf);
         };
         
     }
@@ -2199,28 +2192,28 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     return model;
 }
 
-- (void)setLee_theme:(LEEThemeConfigModel *)lee_theme{
+- (void)setTong_theme:(TongThemeConfigModel *)Tong_theme{
     
-    if(self) objc_setAssociatedObject(self, @selector(lee_theme), lee_theme , OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    if(self) objc_setAssociatedObject(self, @selector(Tong_theme), Tong_theme , OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (BOOL)isLeeTheme{
+- (BOOL)isTongTheme{
     
     return self ? [objc_getAssociatedObject(self, _cmd) boolValue] : NO;
 }
 
-- (void)setIsLeeTheme:(BOOL)isLeeTheme{
+- (void)setIsTongTheme:(BOOL)isTongTheme{
     
-    if (self) objc_setAssociatedObject(self, @selector(isLeeTheme), @(isLeeTheme) , OBJC_ASSOCIATION_ASSIGN);
+    if (self) objc_setAssociatedObject(self, @selector(isTongTheme), @(isTongTheme) , OBJC_ASSOCIATION_ASSIGN);
 }
 
 @end
 
 #pragma mark - ----------------工具扩展----------------
 
-@implementation UIColor (LEEThemeColor)
+@implementation UIColor (TongThemeColor)
 
-+ (UIColor *)leeTheme_ColorWithHexString:(NSString *)hexString{
++ (UIColor *)TongTheme_ColorWithHexString:(NSString *)hexString{
     
     if (!hexString) return nil;
     

@@ -1,13 +1,13 @@
 //
-//  ThemeConstant.h
-//  NewsDetailsDemo
+//  TongThemeConstant.h
+//  TongTheme
 //
-//  Created by 李响 on 2017/7/11.
-//  Copyright © 2017年 lee. All rights reserved.
+//  Created by Augus on 2023/10/09.
+//  Copyright © 2023年 lee. All rights reserved.
 //
 
-#ifndef ThemeConstant_h
-#define ThemeConstant_h
+#ifndef TongThemeConstant_h
+#define TongThemeConstant_h
 
 /** TAG */
 
@@ -54,4 +54,4 @@
 
 #define HEX_F8F8F8 @"F8F8F8"
 
-#endif /* ThemeConstant_h */
+#endif /* TongThemeConstant_h */
