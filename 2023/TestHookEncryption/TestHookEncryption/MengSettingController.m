@@ -1,34 +1,33 @@
 //
-//  JCCSettingsController.m
+//  MengSettingController.m
 //  TestHookEncryption
 //
-//  Created by Augus on 2023/8/14.
+//  Created by Augus on 2023/10/11.
 //
 
-#import "JCCSettingsController.h"
-#import "GuanTableView.h"
+#import "MengSettingController.h"
+#import "MengTableView.h"
 #import "GuanUITool.h"
 
-@interface JCCSettingsController ()
 
+@interface MengSettingController ()
 
-@property (nonatomic, strong) GuanTableView *tableView;
+@property (nonatomic, strong) MengTableView *tableView;
 
 
 @end
 
-@implementation JCCSettingsController
+@implementation MengSettingController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"超跑助手";
+    self.title = @"Meng全局配置";
     self.view.backgroundColor = UIColor.whiteColor;
-    
-    // 添加导航栏
     [self addNavgationBar];
     [self.view addSubview:self.tableView];
+
 }
 
 
@@ -38,7 +37,7 @@
     navgationView.backgroundColor = [GuanUITool guan_red:109 green:53 blue:186];
     
     UILabel *guanTitleLabel = [[UILabel alloc] init];
-    guanTitleLabel.text = @"超跑助手";
+    guanTitleLabel.text = @"配置列表";
     guanTitleLabel.textColor = UIColor.whiteColor;
     guanTitleLabel.font = [UIFont boldSystemFontOfSize:20];
     [guanTitleLabel sizeToFit];
@@ -64,15 +63,16 @@
 
 - (void)backButtonAction:(UIButton *)sender {
     
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
-- (GuanTableView *)tableView {
+- (MengTableView *)tableView {
     if(!_tableView) {
         
         CGFloat y = [GuanUITool guan_navigationViewHeight];
-        _tableView = [[GuanTableView alloc] initWithFrame:CGRectMake(0, y, self.view.frame.size.width, self.view.frame.size.height - y) style:UITableViewStyleGrouped];
+        _tableView = [[MengTableView alloc] initWithFrame:CGRectMake(0, y, self.view.frame.size.width, self.view.frame.size.height - y) style:UITableViewStyleGrouped];
     }
     return _tableView;
 }

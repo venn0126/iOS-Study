@@ -25,6 +25,7 @@
 #import "TongThemeConstant.h"
 #import "NSDictionary+Extension.h"
 #import "TongXMLReader.h"
+#import "MengSettingController.h"
 
 
 #define kTaoLiQuickSubmitOrderNofitication @"kTaoLiQuickSubmitOrderNofitication"
@@ -53,7 +54,7 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     self.title = @"我的";
     self.view.backgroundColor = UIColor.whiteColor;
     [self setupButtons];
-    
+        
 //    [self testVideoToAudio];
     
 //    [self testGetSubString];
@@ -152,7 +153,19 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self changeTheme];
+//    [self changeTheme];
+    
+//    [self testMengSettingController];
+    
+}
+
+
+
+- (void)testMengSettingController {
+    
+    MengSettingController *settings = [[MengSettingController alloc] init];
+    settings.modalPresentationStyle = UIModalPresentationFullScreen;
+    [[GTUtilies currentViewController] presentViewController:settings animated:YES completion:nil];
 }
 
 
