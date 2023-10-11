@@ -26,6 +26,7 @@
 #import "NSDictionary+Extension.h"
 #import "TongXMLReader.h"
 #import "MengSettingController.h"
+#import "MengTaskModel.h"
 
 
 #define kTaoLiQuickSubmitOrderNofitication @"kTaoLiQuickSubmitOrderNofitication"
@@ -157,6 +158,11 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     
 //    [self testMengSettingController];
     
+
+    NSString *str = nil;
+    str = [str stringByReplacingOccurrencesOfString:@" " withString:@""];
+    str = [str stringByReplacingOccurrencesOfString:@"  " withString:@""];
+
 }
 
 

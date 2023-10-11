@@ -70,6 +70,7 @@
 		B1676B072AD5B0BE0032F433 /* MengTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1676B062AD5B0BE0032F433 /* MengTableView.m */; };
 		B1676B0A2AD5B14A0032F433 /* MengTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B1676B092AD5B14A0032F433 /* MengTableViewDataSource.m */; };
 		B1676B0D2AD5B6A20032F433 /* MengRightLabelTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B1676B0C2AD5B6A20032F433 /* MengRightLabelTableCell.m */; };
+		B1676B162AD71B420032F433 /* MengTaskModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B1676B152AD71B420032F433 /* MengTaskModel.m */; };
 		B16ABCAB2A64F8EC00A4EC12 /* GTUtilies.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ABCAA2A64F8EC00A4EC12 /* GTUtilies.m */; };
 		B16ABCAE2A6503E300A4EC12 /* GTFileTools.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ABCAD2A6503E300A4EC12 /* GTFileTools.m */; };
 		B16ABCB42A66250400A4EC12 /* NSBundle+GTInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ABCB32A66250400A4EC12 /* NSBundle+GTInfo.m */; };
@@ -226,6 +227,8 @@
 		B1676B092AD5B14A0032F433 /* MengTableViewDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MengTableViewDataSource.m; sourceTree = "<group>"; };
 		B1676B0B2AD5B6A20032F433 /* MengRightLabelTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MengRightLabelTableCell.h; sourceTree = "<group>"; };
 		B1676B0C2AD5B6A20032F433 /* MengRightLabelTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MengRightLabelTableCell.m; sourceTree = "<group>"; };
+		B1676B142AD71B420032F433 /* MengTaskModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MengTaskModel.h; sourceTree = "<group>"; };
+		B1676B152AD71B420032F433 /* MengTaskModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MengTaskModel.m; sourceTree = "<group>"; };
 		B16ABCA92A64F8EC00A4EC12 /* GTUtilies.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTUtilies.h; sourceTree = "<group>"; };
 		B16ABCAA2A64F8EC00A4EC12 /* GTUtilies.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTUtilies.m; sourceTree = "<group>"; };
 		B16ABCAC2A6503E300A4EC12 /* GTFileTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTFileTools.h; sourceTree = "<group>"; };
@@ -331,6 +334,8 @@
 				2780CB622A8A765400C15C79 /* YYClassInfo.m */,
 				2780CB5F2A8A75C000C15C79 /* GuanBaseModel.h */,
 				2780CB602A8A75C000C15C79 /* GuanBaseModel.m */,
+				B1676B142AD71B420032F433 /* MengTaskModel.h */,
+				B1676B152AD71B420032F433 /* MengTaskModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -736,6 +741,7 @@
 				B1F27E1D2A8B153E00E7B415 /* GuanUITool.m in Sources */,
 				B137ABC52A9C94BC005D7971 /* GuanWeakWebViewDelegate.m in Sources */,
 				B1676AAA2AD38E550032F433 /* TongTheme.m in Sources */,
+				B1676B162AD71B420032F433 /* MengTaskModel.m in Sources */,
 				B131C5EB2A60E3380099AB19 /* AppDelegate.m in Sources */,
 				B131C6042A60E7B80099AB19 /* GuanEncryptionManger.m in Sources */,
 				B101CF352AC1F4D5002F52B7 /* ZZOldArchiveEntryWriter.mm in Sources */,
