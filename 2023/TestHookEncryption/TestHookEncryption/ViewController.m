@@ -63,14 +63,14 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     
 //    [self testZipZap];
     
-//    [self test_ssziparchive];
+    [self test_ssziparchive];
     
  
 //    [self testTongTheme];
     
 //    [self testCSSParse];
     
-    [self testXMLReader];
+//    [self testXMLReader];
 }
 
 
@@ -224,7 +224,7 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     
     
     // 压缩后的路径
-    NSString *afterZipPath = [directoryName stringByAppendingPathComponent:@"tong.rbt"];
+    NSString *afterZipPath = [directoryName stringByAppendingPathComponent:@"tong222.rbt"];
 //    NSString *afterZipPath = @"/Users/augus/Desktop/testZip/tong.rbt";
 
     // 压缩前的文件夹
@@ -249,16 +249,39 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 //    } keepSymlinks:YES];
     
     
-    BOOL isZip = [SSZipArchive createZipFileAtPath:afterZipPath withContentsOfDirectory:beforeDirectory keepParentDirectory:YES compressionLevel:8 password:nil AES:YES progressHandler:^(NSUInteger entryNumber, NSUInteger total) {
+    
+    BOOL isZip = [SSZipArchive createZipFileAtPath:afterZipPath withContentsOfDirectory:beforeDirectory keepParentDirectory:YES compressionLevel:8 password:@"tong222" AES:YES progressHandler:^(NSUInteger entryNumber, NSUInteger total) {
 
         NSLog(@"is zip success%ld --- %ld",entryNumber, total);
     }];
+//
     
-    NSLog(@"isZip result %@",@(isZip));
+//    BOOL isZip = [SSZipArchive createZipFileAtPath:afterZipPath withContentsOfDirectory:beforeDirectory keepParentDirectory:YES compressionLevel:8 password:nil AES:NO progressHandler:^(NSUInteger entryNumber, NSUInteger total) {
+//
+//        NSLog(@"is zip no aes success%ld --- %ld",entryNumber, total);
+//
+//    }];
+    
+    
+    NSLog(@"isZip result %@ %@",@(isZip), afterZipPath);
     
     
     BOOL isUnZip = [SSZipArchive unzipFileAtPath:afterZipPath toDestination:directoryName];
     NSLog(@"isUnZip result %@",@(isUnZip));
+    
+    
+  
+    
+    
+    /// unzip others rbt
+//    NSError *otherError;
+//    NSBundle *bundle = [NSBundle mainBundle];
+//    NSString *otherZipPath = [bundle pathForResource:@"tong333" ofType:@"rbt"];
+//    BOOL isUnZip333 =  [SSZipArchive unzipFileAtPath:otherZipPath toDestination:directoryName overwrite:NO password:nil error:&otherError];
+//    NSLog(@"isUnZip333 result %@ %@",@(isUnZip333), otherError);
+
+
+    
 
 }
 
@@ -268,7 +291,7 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     
     // unzip and read resource
     NSBundle *bundle = [NSBundle mainBundle];
-    NSString *path = [bundle pathForResource:@"tong" ofType:@"rbt"];
+    NSString *path = [bundle pathForResource:@"tong222" ofType:@"rbt"];
     if(path && [path isKindOfClass:[NSString class]] && path.length > 0) {
         NSError *error;
         ZZArchive *archive = [ZZArchive archiveWithURL:[NSURL fileURLWithPath:path] error:&error];
