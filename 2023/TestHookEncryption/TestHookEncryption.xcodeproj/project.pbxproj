@@ -77,6 +77,9 @@
 		B16ABCAE2A6503E300A4EC12 /* GTFileTools.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ABCAD2A6503E300A4EC12 /* GTFileTools.m */; };
 		B16ABCB42A66250400A4EC12 /* NSBundle+GTInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B16ABCB32A66250400A4EC12 /* NSBundle+GTInfo.m */; };
 		B16ABCB62A69280A00A4EC12 /* test.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B16ABCB52A69280A00A4EC12 /* test.mp4 */; };
+		B17035F72AD9214200430753 /* UIWindow+Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = B17035F62AD9214200430753 /* UIWindow+Screenshot.m */; };
+		B17035FD2AD925A800430753 /* NSData+ImageFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = B17035F92AD925A800430753 /* NSData+ImageFormat.m */; };
+		B17035FE2AD925A800430753 /* UIImage+LBMCompress.m in Sources */ = {isa = PBXBuildFile; fileRef = B17035FA2AD925A800430753 /* UIImage+LBMCompress.m */; };
 		B1A0C2662A7B9A9900F60D31 /* NSObject+MethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C2652A7B9A9900F60D31 /* NSObject+MethodSwizzling.m */; };
 		B1A0C2692A7B9AD100F60D31 /* NSObject+SelectorDefender.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C2682A7B9AD100F60D31 /* NSObject+SelectorDefender.m */; };
 		B1A0C2782A7BA50300F60D31 /* GuanClearTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C2772A7BA50300F60D31 /* GuanClearTool.m */; };
@@ -240,6 +243,12 @@
 		B16ABCB22A66250400A4EC12 /* NSBundle+GTInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSBundle+GTInfo.h"; sourceTree = "<group>"; };
 		B16ABCB32A66250400A4EC12 /* NSBundle+GTInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+GTInfo.m"; sourceTree = "<group>"; };
 		B16ABCB52A69280A00A4EC12 /* test.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.mp4; sourceTree = "<group>"; };
+		B17035F52AD9214200430753 /* UIWindow+Screenshot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIWindow+Screenshot.h"; sourceTree = "<group>"; };
+		B17035F62AD9214200430753 /* UIWindow+Screenshot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+Screenshot.m"; sourceTree = "<group>"; };
+		B17035F92AD925A800430753 /* NSData+ImageFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+ImageFormat.m"; sourceTree = "<group>"; };
+		B17035FA2AD925A800430753 /* UIImage+LBMCompress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+LBMCompress.m"; sourceTree = "<group>"; };
+		B17035FB2AD925A800430753 /* NSData+ImageFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageFormat.h"; sourceTree = "<group>"; };
+		B17035FC2AD925A800430753 /* UIImage+LBMCompress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+LBMCompress.h"; sourceTree = "<group>"; };
 		B1A0C2642A7B9A9900F60D31 /* NSObject+MethodSwizzling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+MethodSwizzling.h"; sourceTree = "<group>"; };
 		B1A0C2652A7B9A9900F60D31 /* NSObject+MethodSwizzling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MethodSwizzling.m"; sourceTree = "<group>"; };
 		B1A0C2672A7B9AD100F60D31 /* NSObject+SelectorDefender.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+SelectorDefender.h"; sourceTree = "<group>"; };
@@ -457,6 +466,7 @@
 			isa = PBXGroup;
 			children = (
 				B131C67C2A64022C0099AB19 /* GTClassDump.framework */,
+				B17035F82AD9258300430753 /* ImageCompress */,
 				B1676AC22AD3DDF40032F433 /* XMLReader */,
 				B1676AB32AD3D8770032F433 /* CSSParse */,
 				B1676AA52AD38E550032F433 /* TongTheme */,
@@ -506,6 +516,8 @@
 				B11D7E222AA0D120009F8ADD /* UIButton+Extension.m */,
 				B1D3152E2ABF178900519DF6 /* UIImage+Compress.h */,
 				B1D3152F2ABF178900519DF6 /* UIImage+Compress.m */,
+				B17035F52AD9214200430753 /* UIWindow+Screenshot.h */,
+				B17035F62AD9214200430753 /* UIWindow+Screenshot.m */,
 				B143AE6C2A93110000259CBE /* GuanCxxxx.h */,
 				B143AE6D2A93110000259CBE /* GuanCxxxx.c */,
 				B1676A982AD318330032F433 /* ThemeJson */,
@@ -581,6 +593,17 @@
 				B1676B0C2AD5B6A20032F433 /* MengRightLabelTableCell.m */,
 			);
 			path = MengTableView;
+			sourceTree = "<group>";
+		};
+		B17035F82AD9258300430753 /* ImageCompress */ = {
+			isa = PBXGroup;
+			children = (
+				B17035FB2AD925A800430753 /* NSData+ImageFormat.h */,
+				B17035F92AD925A800430753 /* NSData+ImageFormat.m */,
+				B17035FC2AD925A800430753 /* UIImage+LBMCompress.h */,
+				B17035FA2AD925A800430753 /* UIImage+LBMCompress.m */,
+			);
+			path = ImageCompress;
 			sourceTree = "<group>";
 		};
 		B1A0C2792A7D14C100F60D31 /* Alert */ = {
@@ -733,6 +756,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1A0C2662A7B9A9900F60D31 /* NSObject+MethodSwizzling.m in Sources */,
+				B17035FD2AD925A800430753 /* NSData+ImageFormat.m in Sources */,
 				B1676AC52AD3DE010032F433 /* TongXMLReader.m in Sources */,
 				B131C5F12A60E3380099AB19 /* ViewController.m in Sources */,
 				B1676B0D2AD5B6A20032F433 /* MengRightLabelTableCell.m in Sources */,
@@ -785,11 +809,13 @@
 				B101CF382AC1F4D5002F52B7 /* ZZNewArchiveEntryWriter.mm in Sources */,
 				B101CF312AC1F4D5002F52B7 /* ZZInflateInputStream.m in Sources */,
 				B1C1CD5A2A90D2DB0007A5F1 /* UIView+Toast.m in Sources */,
+				B17035FE2AD925A800430753 /* UIImage+LBMCompress.m in Sources */,
 				B11D7E232AA0D120009F8ADD /* UIButton+Extension.m in Sources */,
 				B1A0C27C2A7D14D800F60D31 /* GuanAlert.m in Sources */,
 				B131C6072A612FBC0099AB19 /* GuanRSAMgr.m in Sources */,
 				B16ABCAB2A64F8EC00A4EC12 /* GTUtilies.m in Sources */,
 				B1DCF8DD2AB0416600F571D4 /* Reachability.m in Sources */,
+				B17035F72AD9214200430753 /* UIWindow+Screenshot.m in Sources */,
 				B101CF392AC1F4D5002F52B7 /* ZZOldArchiveEntry.mm in Sources */,
 				B101CF362AC1F4D5002F52B7 /* ZZDataChannel.m in Sources */,
 				B131C5EE2A60E3380099AB19 /* SceneDelegate.m in Sources */,
@@ -944,6 +970,7 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TestHookEncryption/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "$(PRODUCT_NAME) want to access your photo library";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -980,6 +1007,7 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TestHookEncryption/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "$(PRODUCT_NAME) want to access your photo library";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

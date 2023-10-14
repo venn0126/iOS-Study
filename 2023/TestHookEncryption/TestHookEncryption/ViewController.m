@@ -27,6 +27,8 @@
 #import "TongXMLReader.h"
 #import "MengSettingController.h"
 #import "MengTaskModel.h"
+#import "UIWindow+Screenshot.h"
+#import "UIImage+LBMCompress.h"
 
 
 #define kTaoLiQuickSubmitOrderNofitication @"kTaoLiQuickSubmitOrderNofitication"
@@ -71,9 +73,38 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 //    [self testCSSParse];
     
 //    [self testXMLReader];
+    
+//    [self stringToArray];
+    
+    [self searchFunction];
 }
 
 
+- (void)searchFunction {
+    
+    NSArray *array = [[NSArray alloc]initWithObjects:@"OTHERS\nSCB",@"MHCB",@"UOB",@"OTHERS", nil];
+    NSString *string = @"scb";
+    // SCBT,OTHERS SCB
+    // 谓词搜索
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self contains [cd] %@",string];
+    NSArray *arrays =  [[NSArray alloc] initWithArray:[array filteredArrayUsingPredicate:predicate]];
+    NSLog(@"=-- %@",arrays);
+    
+    NSNumber *number;
+    [number integerValue];
+}
+
+- (void)stringToArray {
+    
+    NSString *inputString = @"168168";
+    NSMutableArray <NSString *> *characters = @[].mutableCopy;
+    [inputString enumerateSubstringsInRange:NSMakeRange(0, inputString.length)
+                                    options:NSStringEnumerationByComposedCharacterSequences
+                                 usingBlock:^(NSString * _Nullable substring, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
+                                             [characters addObject:substring];
+                                         }];
+    NSLog(@"%@", characters);
+}
 
 - (void)testCSSParse {
 
@@ -158,13 +189,17 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     
 //    [self testMengSettingController];
     
+    UIImage *testImage = [GTUtilies keyWindow].screenshot;
+    NSData *testData = UIImagePNGRepresentation(testImage);
+    NSLog(@"before data len %f KB",testData.length / 1024.0);
+//    UIImage *compressImage = [UIImage lbm_compressWithImage:testData specifySize:2.0];
+//    NSData *compressData = UIImagePNGRepresentation(compressImage);
+//    NSLog(@"after data size %ld mb",compressData.length);
 
-    NSString *str = nil;
-    str = [str stringByReplacingOccurrencesOfString:@" " withString:@""];
-    str = [str stringByReplacingOccurrencesOfString:@"  " withString:@""];
-
+    self.testImageView.image = testImage;
+    UIImageWriteToSavedPhotosAlbum(testImage, nil, NULL, NULL);
+    
 }
-
 
 
 - (void)testMengSettingController {
@@ -265,9 +300,9 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     
     NSLog(@"isZip result %@ %@",@(isZip), afterZipPath);
     
-    
-    BOOL isUnZip = [SSZipArchive unzipFileAtPath:afterZipPath toDestination:directoryName];
-    NSLog(@"isUnZip result %@",@(isUnZip));
+    NSError *unZipError = nil;
+    BOOL isUnZip = [SSZipArchive unzipFileAtPath:afterZipPath toDestination:directoryName overwrite:NO password:@"tong222" error:&unZipError];
+    NSLog(@"isUnZip result %@ %@",@(isUnZip), unZipError);
     
     
   
