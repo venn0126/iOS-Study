@@ -65,7 +65,7 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     
 //    [self testZipZap];
     
-    [self test_ssziparchive];
+//    [self test_ssziparchive];
     
  
 //    [self testTongTheme];
@@ -76,7 +76,86 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     
 //    [self stringToArray];
     
-    [self searchFunction];
+//    [self searchFunction];
+    
+    [self testAESEncryptionZipFile];
+}
+
+
+
+- (void)testAESEncryptionZipFile {
+    
+    // 获取zip file 数据
+    
+    // aes加密
+    
+    // 生成二进制文件
+    
+    
+    NSString *keyString = @"1234567891234567";
+    
+    // 字符串
+    //aes-cbc加密
+    NSString *aesEcbE = [GuanEncryptionManger aesEncryptString:@"hello world" keyString:keyString iv:nil];
+    NSLog(@"aes-ecb加密: %@", aesEcbE);
+    
+    //aes-cbc解密
+    NSString *aesEcbD = [GuanEncryptionManger aesDecryptString:aesEcbE keyString:keyString iv:nil];
+    NSLog(@"aes-ecb 解密: %@", aesEcbD);
+    
+
+    // 图片
+//    NSBundle *bundle = [NSBundle mainBundle];
+//    NSString *path = [bundle pathForResource:@"dt_test" ofType:@"png"];
+//    NSData *pngData = [NSData dataWithContentsOfFile:path];
+//    NSLog(@"encryptPngData未加密: %lu", pngData.length);
+//
+//
+//    NSData *encryptPngData = [GuanEncryptionManger aesDecryptData:pngData keyString:keyString iv:nil];
+//    NSLog(@"encryptPngData加密: %lu", encryptPngData.length);
+//
+//
+//    NSData *decryptPngData = [GuanEncryptionManger aesEncryptData:encryptPngData keyString:keyString iv:nil];
+//    NSLog(@"decryptPngData解密: %lu", decryptPngData.length);
+//
+//    self.testImageView.image = [UIImage imageWithData:decryptPngData];
+    
+    
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSString *path = [bundle pathForResource:@"new_encrypt" ofType:@"zip"];
+    NSData *pngData = [NSData dataWithContentsOfFile:path];
+    NSData *decryptPngData = [GuanEncryptionManger aesDecryptData:pngData keyString:keyString iv:nil];
+    NSLog(@"decryptPngData解密: %lu", decryptPngData.length);
+    
+    // 转存到另外路径下
+    NSString *directoryName =[GTFileTools createFilePathForRootPath:[GTFileTools gt_DocumentPath] directoryName:@"zip"];
+    NSLog(@"directory name %@",directoryName);
+    
+    
+    // 压缩后的路径
+    NSString *afterZipPath = [directoryName stringByAppendingPathComponent:@"tong666.rbt"];
+    // 写入文件
+    NSError *error = nil;
+    
+    BOOL isWrite = [decryptPngData writeToFile:afterZipPath options:NSDataWritingAtomic error:&error];
+    if(isWrite && !error) {
+        NSError *error;
+        ZZArchive *archive = [ZZArchive archiveWithURL:[NSURL fileURLWithPath:afterZipPath] error:&error];
+        if(error) {
+            NSLog(@"ZZArchive archiveWithURL error %@", error);
+            return;
+        }
+        
+        for (ZZArchiveEntry *entry in archive.entries) {
+            NSLog(@"entry %@",entry.fileName);
+            NSError *dataError;
+            
+            NSData *data = [entry newDataWithError:&dataError];
+            if([entry.fileName isEqualToString:@"new/Assets/xtopbar_bg@3x.png"] && !dataError) {
+                self.testImageView.image = [UIImage imageWithData:data];
+            }
+        }
+    }
 }
 
 

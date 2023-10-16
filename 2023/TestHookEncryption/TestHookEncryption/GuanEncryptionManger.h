@@ -31,7 +31,7 @@ FOUNDATION_EXTERN NSData *base64_decode(NSString *str);
 + (NSData *)hmacFromString:(NSString * _Nullable)string keyString:(NSString * _Nullable)keyString;
 
 /**
- *  AES加密
+ *  AES加密，传入iv是cbc，不传入ecb模式
  *
  *  @param string    要加密的字符串
  *  @param keyString 加密密钥
@@ -39,10 +39,10 @@ FOUNDATION_EXTERN NSData *base64_decode(NSString *str);
  *
  *  @return 返回加密后的base64编码字符串
  */
-+ (NSString *)aesEncryptString:(NSString *)string keyString:(NSString *)keyString iv:(NSData *)iv;
++ (NSString *)aesEncryptString:(NSString *)string keyString:(NSString *)keyString iv:(NSData * _Nullable)iv;
 
 /**
- *  AES解密
+ *  AES解密，传入iv是cbc，不传入ecb模式
  *
  *  @param string    加密并base64编码后的字符串
  *  @param keyString 解密密钥
@@ -50,7 +50,22 @@ FOUNDATION_EXTERN NSData *base64_decode(NSString *str);
  *
  *  @return 返回解密后的字符串
  */
-+ (NSString *)aesDecryptString:(NSString *)string keyString:(NSString *)keyString iv:(NSData *)iv;
++ (NSString *)aesDecryptString:(NSString *)string keyString:(NSString *)keyString iv:(NSData * _Nullable)iv;
+
+
+/// aes加密二进制数据，传入iv是cbc，不传入ecb模式
+/// @param data 要加密的二进制数据
+/// @param keyString 加密密钥
+/// @param iv 初始化向量
+
++ (NSData *)aesEncryptData:(NSData *)data keyString:(NSString *)keyString iv:(NSData * _Nullable)iv;
+
+/// aes解密二进制数据，传入iv是cbc，不传入ecb模式
+/// @param data 要解密的二进制数据
+/// @param keyString 解密密钥
+/// @param iv 初始化向量
++ (NSData *)aesDecryptData:(NSData *)data keyString:(NSString *)keyString iv:(NSData * _Nullable)iv;
+
 
 /**
  *  DES加密

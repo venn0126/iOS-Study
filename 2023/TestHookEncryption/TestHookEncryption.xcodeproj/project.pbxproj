@@ -91,6 +91,7 @@
 		B1DCF8DD2AB0416600F571D4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B1DCF8DC2AB0416600F571D4 /* Reachability.m */; };
 		B1F27E1D2A8B153E00E7B415 /* GuanUITool.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F27E1C2A8B153E00E7B415 /* GuanUITool.m */; };
 		B1F27E202A8B1D8700E7B415 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F27E1F2A8B1D8700E7B415 /* UIView+Extension.m */; };
+		B1FD2EB72ADD0D8700704CEB /* new_encrypt.zip in Resources */ = {isa = PBXBuildFile; fileRef = B1FD2EB62ADD0D8700704CEB /* new_encrypt.zip */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -271,6 +272,7 @@
 		B1F27E1C2A8B153E00E7B415 /* GuanUITool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuanUITool.m; sourceTree = "<group>"; };
 		B1F27E1E2A8B1D8700E7B415 /* UIView+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		B1F27E1F2A8B1D8700E7B415 /* UIView+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		B1FD2EB62ADD0D8700704CEB /* new_encrypt.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = new_encrypt.zip; sourceTree = "<group>"; };
 		DEF29F3E5DA679E0A972B3C4 /* Pods-TestHookEncryption.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestHookEncryption.release.xcconfig"; path = "Target Support Files/Pods-TestHookEncryption/Pods-TestHookEncryption.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -546,6 +548,7 @@
 		B1676A982AD318330032F433 /* ThemeJson */ = {
 			isa = PBXGroup;
 			children = (
+				B1FD2EB62ADD0D8700704CEB /* new_encrypt.zip */,
 				B1676B1F2AD85A3C0032F433 /* tong.rbt */,
 				B1676B202AD85A3D0032F433 /* tong222.rbt */,
 				B1676B232AD85CF50032F433 /* tong333.rbt */,
@@ -691,6 +694,7 @@
 				B101CEFC2AC1F4AA002F52B7 /* testZip.zip in Resources */,
 				B101CF8A2AC29A1A002F52B7 /* lbm_icon.png in Resources */,
 				B101CF8C2AC29A1A002F52B7 /* weui_color.xml in Resources */,
+				B1FD2EB72ADD0D8700704CEB /* new_encrypt.zip in Resources */,
 				B101CF882AC29A1A002F52B7 /* icon.png in Resources */,
 				B1676B212AD85A3D0032F433 /* tong.rbt in Resources */,
 				B131C5F62A60E33A0099AB19 /* Assets.xcassets in Resources */,
