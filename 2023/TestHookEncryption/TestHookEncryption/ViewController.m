@@ -44,7 +44,7 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 @property (nonatomic, strong) UIImageView *testImageView;
 
 
-
+@property (nonatomic, strong) UIAlertController *augusAlertController;
 @end
 
 @implementation ViewController
@@ -82,6 +82,36 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 }
 
 
+
+- (void)getAlertActionBlock {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"alert" message:@"this is a alert test" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"cancel test");
+    }];
+        
+    
+    UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"sure" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"sure test");
+    }];
+    [alertController addAction:cancelAction];
+    [alertController addAction:sureAction];
+    self.augusAlertController = alertController;
+    
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        
+        NSArray *actions = self.augusAlertController.actions;
+        UIAlertAction *cancelAction = actions.firstObject;
+        void(^handler)(id obj) = [cancelAction valueForKey:@"_handler"];
+        if(handler) handler(cancelAction);
+        [self.augusAlertController dismissViewControllerAnimated:YES completion:nil];
+        
+    });
+    
+}
 
 - (void)testAESEncryptionZipFile {
     
