@@ -32,8 +32,20 @@
 
 
 #define kTaoLiQuickSubmitOrderNofitication @"kTaoLiQuickSubmitOrderNofitication"
+/// 毫秒延迟
+#define MengMsDelay(ms, block) (dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(ms / 1000.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), block))
 
+/// 秒延迟
+#define MengsDelay(s, block) (dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(s * NSEC_PER_SEC)), dispatch_get_main_queue(), block))
 
+/// 主线程封装
+
+#define dispatch_main_async_safe(block)\
+    if (dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL) == dispatch_queue_get_label(dispatch_get_main_queue())) {\
+        block();\
+    } else {\
+        dispatch_async(dispatch_get_main_queue(), block);\
+    } \
 
 static const NSInteger kAugusButtonTagOffset = 10000;
 
@@ -78,10 +90,22 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     
 //    [self searchFunction];
     
-    [self testAESEncryptionZipFile];
+//    [self testAESEncryptionZipFile];
 }
 
 
+- (void)testDelayDefineAndMainThreadChecker {
+    dispatch_main_async_safe(^{
+        NSLog(@"这是%@线程",[NSThread currentThread]);
+        MengsDelay(5, ^{
+           
+            
+            NSLog(@"这是3s后的打印");
+        });
+        
+    });
+    
+}
 
 - (void)getAlertActionBlock {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"alert" message:@"this is a alert test" preferredStyle:UIAlertControllerStyleAlert];
