@@ -47,6 +47,9 @@
         dispatch_async(dispatch_get_main_queue(), block);\
     } \
 
+#define dispatch_global_async(block) dispatch_async(dispatch_get_global_queue(0, 0),block)
+    
+
 static const NSInteger kAugusButtonTagOffset = 10000;
 
 @interface ViewController ()<NSURLSessionDelegate>
@@ -568,6 +571,19 @@ static void gtgtgtgtgt(id self) {
          "content":  加密数据
        }
      }
+     
+     // 解绑以后，可以继续绑定
+     
+     // 绑定以后再次绑定的返回
+     msg = 授权码已被使用;
+     data = <null>;
+     code = 1
+     
+     // 操作停止以后，就是 
+     msg = 授权码已被使用过;
+     data = <null>;
+     code = 1
+     
      */
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -576,7 +592,7 @@ static void gtgtgtgtgt(id self) {
         NSString *timestamp = [GTUtilies guan_Timestamp];
         [dataDict setObject:timestamp forKey:@"timeStamp"];
         
-        NSString *code = @"73c2b9LvRq";
+        NSString *code = @"1b7714LmYv";
         [dataDict setObject:code forKey:@"code"];
         
         
@@ -656,6 +672,7 @@ static void gtgtgtgtgt(id self) {
                     // 再次弹出
                 }
             } else {
+                // resCode == 1 已经被使用
                 NSLog(@"TaoLi auth fail");
                 // 提示错误
                 // 再次弹出
