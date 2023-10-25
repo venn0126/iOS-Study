@@ -12,14 +12,18 @@
 #CreateTime:2023-01-04 17:51:46
 ####################
 
+
 # 主路径，TODO: 需要修改这里
-my_path="/Users/augus/Desktop/cracker_app/tiktok/30.7.0/store/Payload/"
+my_path="/Users/augus/Desktop/cracker_app/scbeasy/3.71/resign/Payload_Debug/"
 
 # 可执行文件名，TODO: 需要修改这里
-executable_file_name="TikTok"
+executable_file_name="SCB EASY"
+
+# 如果$executable_file_name包含空格，比如 `SCB EASY`读取值的时候需要处理
+# 读取的时候格式应该为>>> "$executable_file_name"
 
 # tweak动态库 TODO: 需要修改这里
-tweak_dylib_name="tiktok-tweak.dylib"
+tweak_dylib_name="scbeasy-tweak.dylib"
 
 # CydiaSubstrate动态库
 cydiaSubstrate_name="CydiaSubstrate"
@@ -48,22 +52,21 @@ plugIns_path="PlugIns"
 
 # 本机的证书ID，TODO: 需要修改这里
 # from `security find-identity -v -p codesigning`
-# china mobile = 8A05A842ABE95DDC231CDAB3497E0B56EA4A07C1
-# Yahia of Guan = 2704502B0CC13A8269A951CE3E43D4582011BE16
-# shao hua gou（Huomanman）：FAAC48B9B4BC8110F748F40C6363E734B53AE9F6
-# sohu 7G76: B1B4B69A92436CDEF7788F024CC45129537347D5
-# jianhong Meng: DB65878AF8082BADCB24893531557A1EAB80FAA7
-# Mazhar Amin: 5DFB59834046ACB78DAB049E7D5D7509D32C839C
-sign_number="5DFB59834046ACB78DAB049E7D5D7509D32C839C"
-
+# wei niu：E1BC0601C29BFF560E418E8A15436F9D43687E4B
+# jianhong Meng: 3B8E8D82E883CDB45A50871A9A2B46FFDD714C67
+sign_number="E1BC0601C29BFF560E418E8A15436F9D43687E4B"
 
 
 # 可执行文件路径
-executable_file_path=$my_path$executable_file_name".app/"
-if [ -z $executable_file_path ]; then
+executable_file_path=$my_path"$executable_file_name"".app/"
+if [ -z "$executable_file_path" ]; then
    echo "可执行文件路径非法！！！"
    exit
 fi
+
+#echo "this is $executable_file_path"
+
+
 
 # Frameworks路径
 frame_works_path=$executable_file_path"Frameworks/"
@@ -78,7 +81,7 @@ if [ ! -f "$embedded_file_path" ]; then
     exit
 fi
 
-cp $embedded_file_path $executable_file_path
+cp $embedded_file_path "$executable_file_path"
 
 
 # -d 参数判断$frame_works_path是否存在，不存在则创建
@@ -100,7 +103,7 @@ do
 	fi
 
 	# 不覆盖已经已经存在的同名文件
-	cp ${my_dylibs[i]} $frame_works_path
+	cp ${my_dylibs[i]} "$frame_works_path"
 	valid_dylib_count=`expr $valid_dylib_count + 1`
 
 done
@@ -112,12 +115,12 @@ fi
 
 
 # 移动到可执行文件路径下
-cd $executable_file_path
+cd "$executable_file_path"
 
 temp_log_name="temp.log"
 # tweak动态库被依赖的加载路径
 tweak_load_path=$executable_path"Frameworks/"
-otool -L $executable_file_name | grep $tweak_load_path$tweak_dylib_name > $temp_log_name
+otool -L "$executable_file_name" | grep $tweak_load_path$tweak_dylib_name > $temp_log_name
 
 # 读取本地文件的结果
 temp_file_read_result=`cat $temp_log_name`
@@ -126,19 +129,19 @@ echo "$temp_file_read_result"
 rm -rf $temp_log_name
 
 if [ -z "$temp_file_read_result" ]; then
-   	echo "二进制 $executable_file_name 文件不包含 $tweak_dylib_name"
+   	echo "二进制 "$executable_file_name" 文件不包含 $tweak_dylib_name"
 	if [ ! -f "$insert_dylib_path" ]; then
     	echo "$insert_dylib_path 不存在，请检查！！！"
     	exit
 	fi
 	# 插入操作
-	$insert_dylib_path $tweak_load_path$tweak_dylib_name $executable_file_name --all-yes --weak $executable_file_name
+	$insert_dylib_path $tweak_load_path$tweak_dylib_name "$executable_file_name" --all-yes --weak "$executable_file_name"
 fi
 # 打印加载链接
-otool -L $executable_file_name
+otool -L "$executable_file_name"
 
 # 对Frameworks进行操作
-cd $frame_works_path
+cd "$frame_works_path"
 
 # tweak xxx.dylib操作
 # 对依赖的CydiaSubstrate进行加载路径修改
@@ -191,7 +194,7 @@ if [ ! -d "$executable_file_path$plugIns_path" ]; then
 fi
 
 # 如果存在$plugIns_path
-cd $executable_file_path$plugIns_path
+cd "$executable_file_path$plugIns_path"
 # 遍历重签名
 for appex in `ls $1`
 do
