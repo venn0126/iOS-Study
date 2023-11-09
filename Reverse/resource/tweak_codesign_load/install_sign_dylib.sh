@@ -14,7 +14,7 @@
 
 
 # 主路径，TODO: 需要修改这里
-my_path="/Users/augus/Desktop/cracker_app/scbeasy/3.71/resign/Payload_Debug/"
+my_path="/Users/augus/Desktop/1_cracker_app/scbeasy/3.72/resign/"
 
 # 可执行文件名，TODO: 需要修改这里
 executable_file_name="SCB EASY"
