@@ -95,7 +95,18 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     
 //    [self testAESEncryptionZipFile];
 
+//    [self setupToastStyle];
+}
+
+
+- (void)setupToastStyle {
     
+    [CSToastManager setDefaultDuration:20.f];
+    [CSToastManager setDefaultPosition:CSToastPositionCenter];
+    [CSToastManager sharedStyle].backgroundColor = [UIColor redColor];
+    
+    
+    [self.view makeToast:@"野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置"];
 }
 
 
@@ -597,11 +608,21 @@ static void gtgtgtgtgt(id self) {
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
+        /*
+         
+         1. 嘀嗒 dida
+         2. 滴滴 didi
+         3. 聚的 jude
+         4. 全部 all
+
+         */
         NSMutableDictionary *dataDict = [NSMutableDictionary dictionary];
         NSString *timestamp = [GTUtilies guan_Timestamp];
         [dataDict setObject:timestamp forKey:@"timeStamp"];
+        [dataDict setObject:@"jude" forKey:@"appType"];
         
-        NSString *code = @"1b7714LmYv";
+        NSString *code = @"411217LnWJ";
+        
         [dataDict setObject:code forKey:@"code"];
         
         
@@ -619,6 +640,7 @@ static void gtgtgtgtgt(id self) {
                 [dataDict setObject:sign forKey:@"sign"];
             }
         }
+    
         
         
         // dict to data
