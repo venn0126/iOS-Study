@@ -7,6 +7,8 @@
 
 #import "GTFileTools.h"
 
+#define kLSMDataCachehDirectory @"/Library/Caches"
+
 @implementation GTFileTools
 
 
@@ -179,5 +181,56 @@
 }
 
 
++ (void)gt_saveLog:(NSString *)log {
 
+    // TLog(@"no need log");
+    // return;
+
+       // 先查看有无该路径
+    if(!log || ![log isKindOfClass:[NSString class]] || log.length == 0) {
+        NSLog(@"log is not string instance");
+        return;
+    }
+    
+    NSString *directoryPath = [self createFilePathForRootPath:kLSMDataCachehDirectory directoryName:@"SCB"];
+    NSString *filePathName = [directoryPath stringByAppendingPathComponent:@"log.txt"];
+    NSString *writeTime = [@"\n" stringByAppendingString:[@"=======================\n" stringByAppendingString:[[GTFileTools getCurrentTime] stringByAppendingString:@"\n"]]];
+    NSString *writeTotext = [@"\n" stringByAppendingString:@"======================="];
+    writeTime = [[writeTime stringByAppendingString:log]
+                 stringByAppendingString:writeTotext];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePathName]) {
+        NSLog(@"log is append");
+        NSFileHandle *fileHandle = [NSFileHandle fileHandleForUpdatingAtPath:filePathName];
+        [fileHandle seekToEndOfFile]; //将节点跳到文件的末尾
+        NSData *stringData = [writeTime dataUsingEncoding:NSUTF8StringEncoding];
+        [fileHandle writeData:stringData]; // 追加写入数据
+        [fileHandle closeFile];
+    } else {
+        NSError *error;
+        // BOOL isCreate =[[NSFileManager defaultManager] createFileAtPath:filePathName contents:nil attributes:nil];
+        // TLog(@"log txt create begin %@ %@",@(isCreate), filePathName);
+
+        BOOL res = [writeTime writeToFile:filePathName atomically:YES encoding:NSUTF8StringEncoding error:&error];
+        NSLog(@"log is begin %@ %@",@(res), error);
+    }
+}
+
+
++ (NSString *)getCurrentTime {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];//yyyy-MM-dd-hh-mm-ss
+    [formatter setDateFormat:@"yyyy:MM:dd hh:mm:ss"];
+    NSString *dateTime = [formatter stringFromDate:[NSDate date]];
+    return dateTime;
+}
+
+
++ (void)gt_clearLog {
+
+    NSString *directoryPath = [self createFilePathForRootPath:kLSMDataCachehDirectory directoryName:@"SCB"];
+    NSString *filePathName = [directoryPath stringByAppendingPathComponent:@"log.txt"];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePathName]) {
+        [[NSFileManager defaultManager] removeItemAtPath:filePathName error:nil];
+    }
+
+}
 @end

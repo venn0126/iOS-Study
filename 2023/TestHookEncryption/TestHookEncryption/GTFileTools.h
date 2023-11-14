@@ -65,7 +65,9 @@ typedef enum : NSUInteger {
 
 + (void)gt_deleteFiles:(NSString *)path;
 
++ (void)gt_saveLog:(NSString *)log;
 
++ (void)gt_clearLog;
 
 @end
 

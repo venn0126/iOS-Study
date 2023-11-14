@@ -94,10 +94,19 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 //    [self searchFunction];
     
 //    [self testAESEncryptionZipFile];
+
+    
 }
 
 
 - (void)testDelayDefineAndMainThreadChecker {
+    
+    
+    // [500,1000），包括500，不包括1000
+    // nt y = (arc4random() % 501) + 500;
+    NSInteger randomInterval = arc4random() % 501  + 500;
+    NSLog(@"random is %ld",randomInterval);
+    
     dispatch_main_async_safe(^{
         NSLog(@"这是%@线程",[NSThread currentThread]);
         MengsDelay(5, ^{
