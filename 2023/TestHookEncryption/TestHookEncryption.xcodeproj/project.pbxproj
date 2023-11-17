@@ -88,6 +88,7 @@
 		B1C1CD5A2A90D2DB0007A5F1 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C1CD582A90D2DB0007A5F1 /* UIView+Toast.m */; };
 		B1D171782A8A1B46001A0300 /* JCCSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D171772A8A1B46001A0300 /* JCCSettingsController.m */; };
 		B1D315302ABF178900519DF6 /* UIImage+Compress.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D3152F2ABF178900519DF6 /* UIImage+Compress.m */; };
+		B1D54A2B2B04B82C00EFFA42 /* XHTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D54A2A2B04B82C00EFFA42 /* XHTool.m */; };
 		B1DCF8DD2AB0416600F571D4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B1DCF8DC2AB0416600F571D4 /* Reachability.m */; };
 		B1F27E1D2A8B153E00E7B415 /* GuanUITool.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F27E1C2A8B153E00E7B415 /* GuanUITool.m */; };
 		B1F27E202A8B1D8700E7B415 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F27E1F2A8B1D8700E7B415 /* UIView+Extension.m */; };
@@ -266,6 +267,8 @@
 		B1D171772A8A1B46001A0300 /* JCCSettingsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCCSettingsController.m; sourceTree = "<group>"; };
 		B1D3152E2ABF178900519DF6 /* UIImage+Compress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Compress.h"; sourceTree = "<group>"; };
 		B1D3152F2ABF178900519DF6 /* UIImage+Compress.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Compress.m"; sourceTree = "<group>"; };
+		B1D54A292B04B82C00EFFA42 /* XHTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHTool.h; sourceTree = "<group>"; };
+		B1D54A2A2B04B82C00EFFA42 /* XHTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHTool.m; sourceTree = "<group>"; };
 		B1DCF8DB2AB0416600F571D4 /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		B1DCF8DC2AB0416600F571D4 /* Reachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		B1F27E1B2A8B153E00E7B415 /* GuanUITool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuanUITool.h; sourceTree = "<group>"; };
@@ -480,6 +483,8 @@
 				B1676B042AD5B0920032F433 /* MengTableView */,
 				B131C5E92A60E3380099AB19 /* AppDelegate.h */,
 				B131C5EA2A60E3380099AB19 /* AppDelegate.m */,
+				B1D54A292B04B82C00EFFA42 /* XHTool.h */,
+				B1D54A2A2B04B82C00EFFA42 /* XHTool.m */,
 				B131C5EC2A60E3380099AB19 /* SceneDelegate.h */,
 				B131C5ED2A60E3380099AB19 /* SceneDelegate.m */,
 				B131C5EF2A60E3380099AB19 /* ViewController.h */,
@@ -794,6 +799,7 @@
 				B101CF2A2AC1F4D5002F52B7 /* ZZNewArchiveEntry.mm in Sources */,
 				2780CB6B2A8A7F8D00C15C79 /* GuanSwitch.m in Sources */,
 				2780CB4E2A8A72E400C15C79 /* GuanTableViewDelegate.m in Sources */,
+				B1D54A2B2B04B82C00EFFA42 /* XHTool.m in Sources */,
 				2780CB572A8A73D000C15C79 /* GuanBaseTableCell.m in Sources */,
 				B1676B0A2AD5B14A0032F433 /* MengTableViewDataSource.m in Sources */,
 				B10AA8002A91EF8300A2B653 /* GTEncryptString.m in Sources */,
