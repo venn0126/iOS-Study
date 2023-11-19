@@ -621,8 +621,8 @@ static void gtgtgtgtgt(id self) {
         [dataDict setObject:timestamp forKey:@"timeStamp"];
         [dataDict setObject:@"jude" forKey:@"appType"];
         
-        NSString *code = @"411217LnWJ";
-        
+        NSString *code = @"2066f7LNeX";
+
         [dataDict setObject:code forKey:@"code"];
         
         
@@ -716,6 +716,89 @@ static void gtgtgtgtgt(id self) {
     });
 }
 
+
+
+- (void)queryCodeStatus {
+    
+        NSString *code = @"671e88LbOT";
+        NSString *urlString = @"http://43.139.160.23:58/api/query/authorization/unbindStatus";
+    // /api/query/authorization/status
+//     NSString *urlString = @"http://43.139.160.23:58/api/query/authorization/status";
+
+//        NSString *udid = [GTUtilies guan_udid];
+//        NSString *timestamp = [GTUtilies guan_Timestamp];
+//
+//        NSString *udidSign = [udid substringFromIndex:udid.length - 4];
+//        NSString *signStr = [NSString stringWithFormat:@"%@%@%@", code, timestamp, udidSign];
+//        NSString *token = [GuanEncryptionManger md5FromString:signStr];
+//        
+        
+        NSString *queryString = [NSString stringWithFormat:@"%@?code=%@",urlString, code];
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
+        
+        NSURL *url = [NSURL URLWithString:queryString];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+                                                               cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                           timeoutInterval:60.0];
+        [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        
+        [request setHTTPMethod:@"GET"];
+        
+        NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            
+            
+            NSLog(@"TaoLi useAuthCode response %@", [NSThread currentThread]);
+
+            if (error) {
+                NSLog(@"TaoLi authorization status %@", error);
+                // 提示错误
+                // 再次弹出
+                return;
+            }
+            
+            NSError *resError;
+            NSDictionary *resDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&resError];
+            if (resError) {
+                NSLog(@"TaoLi authorization JSONObjectWithData error %@", error);
+                // 提示错误
+                // 再次弹出
+                return;
+            }
+            
+            /*
+             
+            # un_use 未使用、using 使用中、expire 过期、remove 被标记为移除
+
+             {
+             //0
+                 authType = oneDay;
+                 startTime = <null>;
+                 appType = jude;
+                 endTime = <null>;
+                 createTime = 2023-11-19-20-13-13;
+                 status = un_use
+             
+             // 1
+             authType = oneDay;
+             startTime = 1700401650;
+             appType = jude;
+             endTime = 1700488050;
+             createTime = 2023-11-19-20-13-13;
+             status = using
+             
+             //
+             
+             }
+             */
+            NSLog(@"TaoLi authorization return success %@",resDic);
+
+            
+            
+        }];
+        [postDataTask resume];
+        
+}
 
 - (double)guan_stayOneDecimal:(NSString *)decimalStr {
     
@@ -1026,6 +1109,7 @@ static void gtgtgtgtgt(id self) {
         case 10001:{
             NSLog(@"%@",sender.titleLabel.text);
             [self augusAES];
+            [self queryCodeStatus];
             break;
         }
         case 10002:{
