@@ -23,7 +23,7 @@ executable_file_name="SCB EASY"
 # 读取的时候格式应该为>>> "$executable_file_name"
 
 # tweak动态库 TODO: 需要修改这里
-tweak_dylib_name="scbeasy-tweak.dylib"
+tweak_dylib_name="scbeasy_tweak.dylib"
 
 # CydiaSubstrate动态库
 cydiaSubstrate_name="CydiaSubstrate"
