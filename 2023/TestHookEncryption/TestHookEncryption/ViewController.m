@@ -561,6 +561,8 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 
 #pragma mark - Others Test
 
+static NSString *kTestAuthCode = @"7a4a2dLnmU";
+
 static void gtgtgtgtgt(id self) {
     /*
      curl -X 'POST' \
@@ -720,7 +722,7 @@ static void gtgtgtgtgt(id self) {
 
 - (void)queryCodeStatus {
     
-        NSString *code = @"671e88LbOT";
+        NSString *code = kTestAuthCode;
         NSString *urlString = @"http://43.139.160.23:58/api/query/authorization/unbindStatus";
     // /api/query/authorization/status
 //     NSString *urlString = @"http://43.139.160.23:58/api/query/authorization/status";
@@ -770,26 +772,17 @@ static void gtgtgtgtgt(id self) {
              
             # un_use 未使用、using 使用中、expire 过期、remove 被标记为移除
 
-             {
-             //0
-                 authType = oneDay;
-                 startTime = <null>;
-                 appType = jude;
-                 endTime = <null>;
-                 createTime = 2023-11-19-20-13-13;
-                 status = un_use
-             
-             // 1
-             authType = oneDay;
-             startTime = 1700401650;
-             appType = jude;
-             endTime = 1700488050;
-             createTime = 2023-11-19-20-13-13;
-             status = using
-             
-             //
-             
-             }
+             23-11-28 18:25:50.785370+0800 TestHookEncryption[44000:8083301] TaoLi authorization return success {
+                 msg = 查询成功;
+                 data = {
+                     authType = test;
+                     startTime = 1701166994;
+                     appType = jude;
+                     endTime = 1701170594;
+                     createTime = 2023-11-24-14-30-15;
+                     status = using
+                 };
+                 code = 0
              */
             NSLog(@"TaoLi authorization return success %@",resDic);
 
