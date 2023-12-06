@@ -29,6 +29,7 @@
 #import "MengTaskModel.h"
 #import "UIWindow+Screenshot.h"
 #import "UIImage+LBMCompress.h"
+#import <AppTrackingTransparency/ATTrackingManager.h>
 
 
 #define kTaoLiQuickSubmitOrderNofitication @"kTaoLiQuickSubmitOrderNofitication"
@@ -931,9 +932,20 @@ static void gtgtgtgtgt(id self) {
         
         
     });
-    
-//    SKPayment *payment = [skpay]
+        
 
+}
+
+
+- (void)testATTrackManager {
+    if (@available(iOS 14, *)) {
+        [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
+            
+            NSLog(@"requestTrackingAuthorizationWithCompletionHandler %lu",(unsigned long)status);
+        }];
+    } else {
+        // Fallback on earlier versions
+    }
 }
 
 
@@ -1108,6 +1120,7 @@ static void gtgtgtgtgt(id self) {
         case 10002:{
             NSLog(@"%@",sender.titleLabel.text);
             [self augusDES];
+            [self testATTrackManager];
             break;
         }
         case 10003:{
