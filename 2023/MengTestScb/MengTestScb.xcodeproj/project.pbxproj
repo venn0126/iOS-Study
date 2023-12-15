@@ -13,6 +13,7 @@
 		B1DCF95F2AB2B2CE00F571D4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1DCF95E2AB2B2CE00F571D4 /* Preview Assets.xcassets */; };
 		B1DCF9662AB2B8C100F571D4 /* MengStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DCF9652AB2B8C100F571D4 /* MengStrings.swift */; };
 		B1DCF9682AB2B90C00F571D4 /* MengMainPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DCF9672AB2B90C00F571D4 /* MengMainPageView.swift */; };
+		B1E984022B27F8F300D6267B /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E984012B27F8F300D6267B /* DefaultsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		B1DCF95E2AB2B2CE00F571D4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B1DCF9652AB2B8C100F571D4 /* MengStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MengStrings.swift; sourceTree = "<group>"; };
 		B1DCF9672AB2B90C00F571D4 /* MengMainPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MengMainPageView.swift; sourceTree = "<group>"; };
+		B1E984012B27F8F300D6267B /* DefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				B1DCF9572AB2B2CC00F571D4 /* MengTestScbApp.swift */,
 				B1DCF9592AB2B2CC00F571D4 /* ContentView.swift */,
 				B1DCF9652AB2B8C100F571D4 /* MengStrings.swift */,
+				B1E984012B27F8F300D6267B /* DefaultsManager.swift */,
 				B1DCF9672AB2B90C00F571D4 /* MengMainPageView.swift */,
 				B1DCF95B2AB2B2CE00F571D4 /* Assets.xcassets */,
 				B1DCF95D2AB2B2CE00F571D4 /* Preview Content */,
@@ -145,6 +148,7 @@
 			files = (
 				B1DCF9662AB2B8C100F571D4 /* MengStrings.swift in Sources */,
 				B1DCF9682AB2B90C00F571D4 /* MengMainPageView.swift in Sources */,
+				B1E984022B27F8F300D6267B /* DefaultsManager.swift in Sources */,
 				B1DCF95A2AB2B2CC00F571D4 /* ContentView.swift in Sources */,
 				B1DCF9582AB2B2CC00F571D4 /* MengTestScbApp.swift in Sources */,
 			);
@@ -275,7 +279,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MengTestScb/Preview Content\"";
-				DEVELOPMENT_TEAM = M693Y7TRTC;
+				DEVELOPMENT_TEAM = 5V5ADMGT2A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -305,7 +309,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MengTestScb/Preview Content\"";
-				DEVELOPMENT_TEAM = M693Y7TRTC;
+				DEVELOPMENT_TEAM = 5V5ADMGT2A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
