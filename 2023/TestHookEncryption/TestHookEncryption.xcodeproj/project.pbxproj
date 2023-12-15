@@ -90,6 +90,7 @@
 		B1D315302ABF178900519DF6 /* UIImage+Compress.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D3152F2ABF178900519DF6 /* UIImage+Compress.m */; };
 		B1D54A2B2B04B82C00EFFA42 /* XHTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D54A2A2B04B82C00EFFA42 /* XHTool.m */; };
 		B1DCF8DD2AB0416600F571D4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B1DCF8DC2AB0416600F571D4 /* Reachability.m */; };
+		B1E9840D2B2C28E800D6267B /* Preahvihear-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B1E9840C2B2C28E800D6267B /* Preahvihear-Regular.ttf */; };
 		B1F27E1D2A8B153E00E7B415 /* GuanUITool.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F27E1C2A8B153E00E7B415 /* GuanUITool.m */; };
 		B1F27E202A8B1D8700E7B415 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F27E1F2A8B1D8700E7B415 /* UIView+Extension.m */; };
 		B1FD2EB72ADD0D8700704CEB /* new_encrypt.zip in Resources */ = {isa = PBXBuildFile; fileRef = B1FD2EB62ADD0D8700704CEB /* new_encrypt.zip */; };
@@ -271,6 +272,7 @@
 		B1D54A2A2B04B82C00EFFA42 /* XHTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHTool.m; sourceTree = "<group>"; };
 		B1DCF8DB2AB0416600F571D4 /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		B1DCF8DC2AB0416600F571D4 /* Reachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		B1E9840C2B2C28E800D6267B /* Preahvihear-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Preahvihear-Regular.ttf"; sourceTree = "<group>"; };
 		B1F27E1B2A8B153E00E7B415 /* GuanUITool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuanUITool.h; sourceTree = "<group>"; };
 		B1F27E1C2A8B153E00E7B415 /* GuanUITool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuanUITool.m; sourceTree = "<group>"; };
 		B1F27E1E2A8B1D8700E7B415 /* UIView+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
@@ -527,6 +529,7 @@
 				B17035F62AD9214200430753 /* UIWindow+Screenshot.m */,
 				B143AE6C2A93110000259CBE /* GuanCxxxx.h */,
 				B143AE6D2A93110000259CBE /* GuanCxxxx.c */,
+				B1E9840B2B2C28D500D6267B /* Fonts */,
 				B1676A982AD318330032F433 /* ThemeJson */,
 				B1676A962AD315D60032F433 /* chat_bg.png */,
 				B16ABCB52A69280A00A4EC12 /* test.mp4 */,
@@ -634,6 +637,14 @@
 			path = Toast;
 			sourceTree = "<group>";
 		};
+		B1E9840B2B2C28D500D6267B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B1E9840C2B2C28E800D6267B /* Preahvihear-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -711,6 +722,7 @@
 				B101CF8D2AC29A1A002F52B7 /* color.css in Resources */,
 				B1676A972AD315D60032F433 /* chat_bg.png in Resources */,
 				B101CF8B2AC29A1A002F52B7 /* info.json in Resources */,
+				B1E9840D2B2C28E800D6267B /* Preahvihear-Regular.ttf in Resources */,
 				B1676B222AD85A3D0032F433 /* tong222.rbt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -980,7 +992,7 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TestHookEncryption/Info.plist;
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "$(PRODUCT_NAME) want to access your photo library";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "TestHookEncryption want to access your photo library";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1017,7 +1029,7 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TestHookEncryption/Info.plist;
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "$(PRODUCT_NAME) want to access your photo library";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "TestHookEncryption want to access your photo library";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

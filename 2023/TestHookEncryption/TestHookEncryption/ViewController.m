@@ -97,6 +97,18 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 //    [self testAESEncryptionZipFile];
 
 //    [self setupToastStyle];
+    
+//    [self testCustomFontStyle];
+}
+
+
+- (void)testCustomFontStyle {
+    UILabel *label = [[UILabel alloc] init];
+    label.text = @"this is Preahvihear-Regular Font style ";
+    label.font = [UIFont fontWithName:@"Preahvihear-Regular" size:20];
+    [label sizeToFit];
+    label.frame = CGRectMake(50, 400, 200, 30);
+    [self.view addSubview:label];
 }
 
 
@@ -346,15 +358,15 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     
 //    [self testMengSettingController];
     
-    UIImage *testImage = [GTUtilies keyWindow].screenshot;
-    NSData *testData = UIImagePNGRepresentation(testImage);
-    NSLog(@"before data len %f KB",testData.length / 1024.0);
+//    UIImage *testImage = [GTUtilies keyWindow].screenshot;
+//    NSData *testData = UIImagePNGRepresentation(testImage);
+//    NSLog(@"before data len %f KB",testData.length / 1024.0);
 //    UIImage *compressImage = [UIImage lbm_compressWithImage:testData specifySize:2.0];
 //    NSData *compressData = UIImagePNGRepresentation(compressImage);
 //    NSLog(@"after data size %ld mb",compressData.length);
 
-    self.testImageView.image = testImage;
-    UIImageWriteToSavedPhotosAlbum(testImage, nil, NULL, NULL);
+//    self.testImageView.image = testImage;
+//    UIImageWriteToSavedPhotosAlbum(testImage, nil, NULL, NULL);
     
 }
 
