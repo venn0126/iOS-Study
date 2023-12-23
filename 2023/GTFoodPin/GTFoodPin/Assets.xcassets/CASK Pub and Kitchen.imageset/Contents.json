@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "CASK Pub and Kitchen.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "CASK Pub and Kitchen@2x.jpg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "CASK Pub and Kitchen@3x.jpg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

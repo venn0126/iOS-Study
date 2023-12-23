@@ -7,16 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B1292E0D2B3748AA00D4B848 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1292E0C2B3748AA00D4B848 /* Restaurant.swift */; };
 		B15D24782B34105C0028939B /* GTFoodPinApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15D24772B34105C0028939B /* GTFoodPinApp.swift */; };
-		B15D247A2B34105C0028939B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15D24792B34105C0028939B /* ContentView.swift */; };
+		B15D247A2B34105C0028939B /* RestaurantListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15D24792B34105C0028939B /* RestaurantListView.swift */; };
 		B15D247C2B34105D0028939B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B15D247B2B34105D0028939B /* Assets.xcassets */; };
 		B15D247F2B34105D0028939B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B15D247E2B34105D0028939B /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B1292E0C2B3748AA00D4B848 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		B15D24742B34105C0028939B /* GTFoodPin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTFoodPin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B15D24772B34105C0028939B /* GTFoodPinApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTFoodPinApp.swift; sourceTree = "<group>"; };
-		B15D24792B34105C0028939B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B15D24792B34105C0028939B /* RestaurantListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListView.swift; sourceTree = "<group>"; };
 		B15D247B2B34105D0028939B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B15D247E2B34105D0028939B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -32,6 +34,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B1292E0A2B37489400D4B848 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B1292E0B2B37489400D4B848 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B1292E0C2B3748AA00D4B848 /* Restaurant.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		B15D246B2B34105C0028939B = {
 			isa = PBXGroup;
 			children = (
@@ -51,8 +68,10 @@
 		B15D24762B34105C0028939B /* GTFoodPin */ = {
 			isa = PBXGroup;
 			children = (
+				B1292E0B2B37489400D4B848 /* Model */,
+				B1292E0A2B37489400D4B848 /* View */,
 				B15D24772B34105C0028939B /* GTFoodPinApp.swift */,
-				B15D24792B34105C0028939B /* ContentView.swift */,
+				B15D24792B34105C0028939B /* RestaurantListView.swift */,
 				B15D247B2B34105D0028939B /* Assets.xcassets */,
 				B15D247D2B34105D0028939B /* Preview Content */,
 			);
@@ -137,8 +156,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B15D247A2B34105C0028939B /* ContentView.swift in Sources */,
+				B15D247A2B34105C0028939B /* RestaurantListView.swift in Sources */,
 				B15D24782B34105C0028939B /* GTFoodPinApp.swift in Sources */,
+				B1292E0D2B3748AA00D4B848 /* Restaurant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
