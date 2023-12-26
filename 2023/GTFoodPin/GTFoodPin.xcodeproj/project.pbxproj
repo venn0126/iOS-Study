@@ -14,6 +14,13 @@
 		B15D24782B34105C0028939B /* GTFoodPinApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15D24772B34105C0028939B /* GTFoodPinApp.swift */; };
 		B15D247C2B34105D0028939B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B15D247B2B34105D0028939B /* Assets.xcassets */; };
 		B15D247F2B34105D0028939B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B15D247E2B34105D0028939B /* Preview Assets.xcassets */; };
+		B15D24BA2B3AA58F0028939B /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B15D24B82B3AA58F0028939B /* Nunito-Bold.ttf */; };
+		B15D24BB2B3AA58F0028939B /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B15D24B92B3AA58F0028939B /* Nunito-Regular.ttf */; };
+		B15D24BE2B3AAD6D0028939B /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15D24BD2B3AAD6D0028939B /* UIColor+Ext.swift */; };
+		B15D24C02B3AB0500028939B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15D24BF2B3AB0500028939B /* MapView.swift */; };
+		B15D24C22B3ABA570028939B /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15D24C12B3ABA570028939B /* ReviewView.swift */; };
+		B15D24C42B3AC6E40028939B /* NewRestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15D24C32B3AC6E40028939B /* NewRestaurantView.swift */; };
+		B15D24C72B3ACE5E0028939B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15D24C62B3ACE5E0028939B /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +32,14 @@
 		B15D24772B34105C0028939B /* GTFoodPinApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTFoodPinApp.swift; sourceTree = "<group>"; };
 		B15D247B2B34105D0028939B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B15D247E2B34105D0028939B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B15D24B72B3AA5560028939B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B15D24B82B3AA58F0028939B /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
+		B15D24B92B3AA58F0028939B /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		B15D24BD2B3AAD6D0028939B /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		B15D24BF2B3AB0500028939B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		B15D24C12B3ABA570028939B /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
+		B15D24C32B3AC6E40028939B /* NewRestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRestaurantView.swift; sourceTree = "<group>"; };
+		B15D24C62B3ACE5E0028939B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +59,9 @@
 				B1292E102B37DB0000D4B848 /* RestaurantListView.swift */,
 				B1292E122B37DECA00D4B848 /* ActivityView.swift */,
 				B1292E142B389AC000D4B848 /* RestaurantDetailView.swift */,
+				B15D24BF2B3AB0500028939B /* MapView.swift */,
+				B15D24C12B3ABA570028939B /* ReviewView.swift */,
+				B15D24C32B3AC6E40028939B /* NewRestaurantView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -75,6 +93,10 @@
 		B15D24762B34105C0028939B /* GTFoodPin */ = {
 			isa = PBXGroup;
 			children = (
+				B15D24B72B3AA5560028939B /* Info.plist */,
+				B15D24C52B3ACE520028939B /* Util */,
+				B15D24BC2B3AAD5F0028939B /* Extensions */,
+				B15D24872B3AA4FB0028939B /* Resources */,
 				B1292E0B2B37489400D4B848 /* Model */,
 				B1292E0A2B37489400D4B848 /* View */,
 				B15D24772B34105C0028939B /* GTFoodPinApp.swift */,
@@ -90,6 +112,39 @@
 				B15D247E2B34105D0028939B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B15D24872B3AA4FB0028939B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B15D24882B3AA4FB0028939B /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B15D24882B3AA4FB0028939B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B15D24B82B3AA58F0028939B /* Nunito-Bold.ttf */,
+				B15D24B92B3AA58F0028939B /* Nunito-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		B15D24BC2B3AAD5F0028939B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B15D24BD2B3AAD6D0028939B /* UIColor+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B15D24C52B3ACE520028939B /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				B15D24C62B3ACE5E0028939B /* ImagePicker.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +206,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B15D247F2B34105D0028939B /* Preview Assets.xcassets in Resources */,
+				B15D24BA2B3AA58F0028939B /* Nunito-Bold.ttf in Resources */,
+				B15D24BB2B3AA58F0028939B /* Nunito-Regular.ttf in Resources */,
 				B15D247C2B34105D0028939B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,9 +219,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B15D24C22B3ABA570028939B /* ReviewView.swift in Sources */,
+				B15D24C02B3AB0500028939B /* MapView.swift in Sources */,
 				B1292E112B37DB0000D4B848 /* RestaurantListView.swift in Sources */,
 				B1292E152B389AC000D4B848 /* RestaurantDetailView.swift in Sources */,
 				B1292E132B37DECA00D4B848 /* ActivityView.swift in Sources */,
+				B15D24C42B3AC6E40028939B /* NewRestaurantView.swift in Sources */,
+				B15D24BE2B3AAD6D0028939B /* UIColor+Ext.swift in Sources */,
+				B15D24C72B3ACE5E0028939B /* ImagePicker.swift in Sources */,
 				B15D24782B34105C0028939B /* GTFoodPinApp.swift in Sources */,
 				B1292E0D2B3748AA00D4B848 /* Restaurant.swift in Sources */,
 			);
@@ -303,6 +365,9 @@
 				DEVELOPMENT_TEAM = 5V5ADMGT2A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GTFoodPin/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "You need to grant the app access to your camera in order to take photos.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "You need to grant the app access to your photo library so you can pick your favorite restaurant photo.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -333,6 +398,9 @@
 				DEVELOPMENT_TEAM = 5V5ADMGT2A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GTFoodPin/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "You need to grant the app access to your camera in order to take photos.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "You need to grant the app access to your photo library so you can pick your favorite restaurant photo.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

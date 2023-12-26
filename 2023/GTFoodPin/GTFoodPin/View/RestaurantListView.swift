@@ -22,13 +22,15 @@ struct RestaurantListView: View {
     
     var restaurantTypes = ["Coffee & Tea Shop", "Cafe", "Tea House", "Austrian/ Causual Drink", "French", "Bakery", "Bakery", "Chocolate", "Cafe", "American / Seafood", "American", "American", "Breakfast & Brunch", "Coffee &Tea", "Coffee & Tea", "Latin American", "Spanish", "Spanish", "Spanish", "British", "Thai"]
     
-    @State var restaurantIsFavorites = Array(repeating: false, count: 21)  
+    @State var restaurantIsFavorites = Array(repeating: false, count: 21)
+    
+    @State private var showNewResaurant = false
     
     
     @State var restaurants = [ 
         Restaurant(name: "Cafe Deadend", type: "Coffee & Tea Shop", location:
-                    "Hong Kong", phone: "348-233423", description: "Searching for great breakfast eateries and coffee? This place is for you. We open at 6:30 every morning, and close at9 PM. We offer espresso and espresso based drink, such as capuccino, cafe latte, piccolo and many more. Come over and enjoy a great meal.", image: "Cafe Deadend", isFavorite: false),
-        Restaurant(name: "Homei", type: "Cafe", location: "Hong Kong", phone: "348-233424", description: "Searching for great breakfast eateries and coffee? This place is for you. We open at 6:30 every morning, and close at9 PM. We offer espresso and espresso based drink, such as capuccino, cafe latte, piccolo and many more. Come over and enjoy a great meal.", image:"Homei", isFavorite: false),
+                    "G/F, 72 Po Hing Fong, Sheung Wan, Hong Kong", phone: "348-233423", description: "Searching for great breakfast eateries and coffee? This place is for you. We open at 6:30 every morning, and close at9 PM. We offer espresso and espresso based drink, such as capuccino, cafe latte, piccolo and many more. Come over and enjoy a great meal.", image: "Cafe Deadend", isFavorite: false),
+        Restaurant(name: "Homei", type: "Cafe", location: "Shop B, G/F, 22-24A Tai Ping San Street SOHO, Sheung Wan, Hong Kong", phone: "348-233424", description: "Searching for great breakfast eateries and coffee? This place is for you. We open at 6:30 every morning, and close at9 PM. We offer espresso and espresso based drink, such as capuccino, cafe latte, piccolo and many more. Come over and enjoy a great meal.", image:"Homei", isFavorite: false),
         Restaurant(name: "Teakha", type: "Tea House", location: "Hong Kong", phone: "348-233425", description: "Searching for great breakfast eateries and coffee? This place is for you. We open at 6:30 every morning, and close at9 PM. We offer espresso and espresso based drink, such as capuccino, cafe latte, piccolo and many more. Come over and enjoy a great meal.", image: "Teakha", isFavorite: false),
         Restaurant(name: "Cafe loisl", type: "Austrian / Causual Drink", location: "Hong Kong", phone: "348-233426", description: "Searching for great breakfast eateries and coffee? This place is for you. We open at 6:30 every morning, and close at9 PM. We offer espresso and espresso based drink, such as capuccino, cafe latte, piccolo and many more. Come over and enjoy a great meal.", image: "Cafe Loisl", isFavorite: false),
         
@@ -93,14 +95,24 @@ struct RestaurantListView: View {
                 
                 .listRowSeparator(.hidden)
 
-            }.listStyle(.plain)
-            
-                .navigationTitle("GTFoodPin")
-                .navigationBarTitleDisplayMode(.automatic)
+            }
+            // Navigation configure
+            .listStyle(.plain)
+            .navigationTitle("GTFoodPin")
+            .navigationBarTitleDisplayMode(.automatic)
+            .toolbar {
+                Button(action: {
+                    self.showNewResaurant = true
+                }, label: {
+                    Image(systemName: "plus")
+                })
+            }
         }
-        .accentColor(.white)
-
-
+        .accentColor(.primary)
+        .sheet(isPresented: $showNewResaurant) {
+            NewRestaurantView()
+        }
+       
     }
     
 }
@@ -150,17 +162,11 @@ struct FullImageRow: View {
         .onTapGesture {
             showOptions.toggle()
         }
-        .actionSheet(isPresented: $showOptions){
-            ActionSheet(title: Text("What do you want to do"), message: nil, buttons: [
-                .default(Text("Reserve a table")){
-                    self.showError.toggle()
-                },
-                .default(Text("Mark as favorite")){
-                    self.restaurant.isFavorite.toggle()
-                },
-                .cancel()
-            ])
-        }
+        .confirmationDialog("What do you want to do", isPresented: $showOptions, titleVisibility: .visible, actions: {
+            Button("Reserve a table") {self.showError.toggle()}
+            Button("Mark as favorite") {self.restaurant.isFavorite.toggle()}
+            Button("Cancel", role: .cancel) { }
+        })
         
         .alert(isPresented: $showError){
             Alert(title: Text("Not yet available"), message: Text("Sorry, this feature is not available yet. Please retry later."), primaryButton: .default(Text("OK")), secondaryButton: .cancel())
@@ -202,20 +208,6 @@ struct BasicTextImageRow: View {
                     .foregroundColor(.yellow)
             }
         }
-//        .onTapGesture {
-//            showOptions.toggle()
-//        }
-//        .actionSheet(isPresented: $showOptions){
-//            ActionSheet(title: Text("What do you want to do"), message: nil, buttons: [
-//                .default(Text("Reserve a table")){
-//                    self.showError.toggle()
-//                },
-//                .default(Text("Mark as favorite")){
-//                    self.restaurant.isFavorite.toggle()
-//                },
-//                .cancel()
-//            ])
-//        }
         
         // tap and hold
         .contextMenu {
@@ -270,5 +262,7 @@ struct BasicTextImageRow: View {
     
     RestaurantListView()
 //        .preferredColorScheme(.dark)
+    // test dynamic type
+//        .environment(\.dynamicTypeSize, .medium)
     
 }

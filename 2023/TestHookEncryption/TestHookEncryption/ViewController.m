@@ -99,6 +99,43 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 //    [self setupToastStyle];
     
 //    [self testCustomFontStyle];
+    
+    [self testH5ReturnStr];
+    
+}
+
+
+- (void)testH5ReturnStr {
+    
+    // 10 --- h5根据海报的宽度算出来的字数--- 海报宽度--- 屏幕宽度- 50 * 2 - 17 * 2
+    NSDictionary *indexDict = @{@"head" : @"10", @"tail" : @"10"};
+    // 10 = n * 字数
+    // 长按选中的文本是 她家出100万
+    // font 17
+    // 宽度是100
+    NSString *selectStr = @"考虑到目前国内经济形势";
+    NSString *result = @"男生自述 我现在自己住60平小房 家里还有拆迁房不过目前还没落实，和女友谈到结婚问题，女友要求买三室房，大概500万人民币，考虑到目前国内经济形势，我觉得没必要买那么大的，我把目前的房卖掉大概180万";
+    
+    // 先计算选中文本的坐标和位置
+    NSRange selectRange = [result rangeOfString:selectStr];
+    // 截取头以前文字
+    // 要做安全保护 location 和 length
+    NSString *headStr = [result substringWithRange:NSMakeRange(selectRange.location - 10, 10)];
+    // 要做安全保护 location 和 length
+    NSString *tailStr = [result substringWithRange:NSMakeRange(selectRange.location + selectRange.length, 10)];
+    // 组装
+    NSString *lastShowText = [NSString stringWithFormat:@"%@%@%@",headStr,selectStr,tailStr];
+    
+    UILabel *label = [[UILabel alloc] init];
+    label.frame = CGRectMake(100, 200, 100, 400);
+    label.numberOfLines = 0;
+    label.textAlignment = NSTextAlignmentLeft;
+    label.text = lastShowText;
+    label.font = [UIFont systemFontOfSize:17];
+    [self.view addSubview:label];
+    
+    
+    
 }
 
 
