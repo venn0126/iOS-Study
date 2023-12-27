@@ -55,12 +55,42 @@ struct ContentView: View {
 
 struct MengTestView: View {
     var body: some View {
-        if DefaultsManager.shared.mengRootFlag {
-            Text("it is rootFlag")
-                .font(.system(size: 30, weight: .medium))
-        } else {
-            Text("it not rootflag")
-                .font(.system(size: 20, weight: .bold))
+        
+        
+        VStack(spacing: 20) {
+            
+            if DefaultsManager.shared.mengRootFlag {
+                Text("it is rootFlag")
+                    .font(.system(size: 30, weight: .medium))
+            } else {
+                Text("it not rootflag")
+                    .font(.system(size: 20, weight: .bold))
+            }
+            
+            
+            if DefaultsManager.shared.isShowFavorite(a: 1, b: 2, c: 3, d: 4, e: 5, f: 6, g: 7, h: 8) {
+                Image(systemName: "heart")
+                    
+            } else {
+                Image(systemName: "heart.fill")
+            }
+            
+        }
+        .onAppear {
+            testData(urlStr: "www.baidu.com")
+        }
+        
+    }
+    
+    
+    func testData(urlStr: String) -> Void {
+        DefaultsManager.shared.get(urlString: urlStr) { result in
+            switch result {
+            case .success(let data):
+                let _ = UIImage(data: data)
+            case .failure(let error):
+                print("get url error \(error)")
+            }
         }
     }
 }

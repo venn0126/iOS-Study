@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import UIKit
+
 
 class DefaultsManager {
     
@@ -26,8 +28,33 @@ class DefaultsManager {
         }
     }
     
+    func isShowFavorite(a: Int, b: Int, c: Int, d: Int, e: Int, f: Int, g: Int, h: Int) -> Bool {
+        
+        let temp = a + b + c + d + e + f + g + h
+        if temp > 100 {
+            return true
+        } else {
+            return false
+        }
+    }
     
     
-    
+    public func get(urlString: String, completion: @escaping ((Result<Data, Error>) -> Void)) {
+        
+        if(urlString.isEmpty) {
+            completion(.failure(NSError(domain: "urlStringi is empty", code: -100001)))
+            return
+        }
+        
+        sleep(2)
+        
+        let img = UIImage(named: "activity_hot_icon_img")
+        if let img = img, let data = img.pngData() {
+            completion(.success(data))
+        } else {
+            completion(.failure(NSError(domain: "image is nil", code: -100002)))
+        }
+        
+    }
     
 }
