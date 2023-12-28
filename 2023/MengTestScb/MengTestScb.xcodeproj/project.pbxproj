@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B10045F62B3D286A000593BE /* GTDuck.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10045F52B3D286A000593BE /* GTDuck.swift */; };
 		B1DCF9582AB2B2CC00F571D4 /* MengTestScbApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DCF9572AB2B2CC00F571D4 /* MengTestScbApp.swift */; };
 		B1DCF95A2AB2B2CC00F571D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DCF9592AB2B2CC00F571D4 /* ContentView.swift */; };
 		B1DCF95C2AB2B2CE00F571D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1DCF95B2AB2B2CE00F571D4 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B10045F52B3D286A000593BE /* GTDuck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTDuck.swift; sourceTree = "<group>"; };
 		B1DCF9542AB2B2CC00F571D4 /* MengTestScb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MengTestScb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1DCF9572AB2B2CC00F571D4 /* MengTestScbApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MengTestScbApp.swift; sourceTree = "<group>"; };
 		B1DCF9592AB2B2CC00F571D4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 				B1DCF9592AB2B2CC00F571D4 /* ContentView.swift */,
 				B1DCF9652AB2B8C100F571D4 /* MengStrings.swift */,
 				B1E984012B27F8F300D6267B /* DefaultsManager.swift */,
+				B10045F52B3D286A000593BE /* GTDuck.swift */,
 				B1DCF9672AB2B90C00F571D4 /* MengMainPageView.swift */,
 				B1DCF95B2AB2B2CE00F571D4 /* Assets.xcassets */,
 				B1DCF95D2AB2B2CE00F571D4 /* Preview Content */,
@@ -149,6 +152,7 @@
 				B1DCF9662AB2B8C100F571D4 /* MengStrings.swift in Sources */,
 				B1DCF9682AB2B90C00F571D4 /* MengMainPageView.swift in Sources */,
 				B1E984022B27F8F300D6267B /* DefaultsManager.swift in Sources */,
+				B10045F62B3D286A000593BE /* GTDuck.swift in Sources */,
 				B1DCF95A2AB2B2CC00F571D4 /* ContentView.swift in Sources */,
 				B1DCF9582AB2B2CC00F571D4 /* MengTestScbApp.swift in Sources */,
 			);

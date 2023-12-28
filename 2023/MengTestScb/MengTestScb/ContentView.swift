@@ -75,6 +75,15 @@ struct MengTestView: View {
                 Image(systemName: "heart.fill")
             }
             
+            Text(DefaultsManager.isCallClsMethod(name: "Tian"))
+                .font(.system(.title))
+                .bold()
+            
+            let duck = GTDuck(duckType: "lightGray", name: "tian")
+            Text(duck.isDuckAtHitb(duckName: "augus") ? "augus" : "Augus")
+                .font(.system(.title2))
+                .foregroundColor(.red)
+            
         }
         .onAppear {
             testData(urlStr: "www.baidu.com")

@@ -19,6 +19,7 @@ class DefaultsManager {
         }
     }
     
+    // getter and setter
    var mengRootFlag: Bool {
         get {
             defaults.bool(forKey: "mengRootFlag")
@@ -28,6 +29,8 @@ class DefaultsManager {
         }
     }
     
+    
+    // test some params
     func isShowFavorite(a: Int, b: Int, c: Int, d: Int, e: Int, f: Int, g: Int, h: Int) -> Bool {
         
         let temp = a + b + c + d + e + f + g + h
@@ -38,7 +41,7 @@ class DefaultsManager {
         }
     }
     
-    
+    // instance method
     public func get(urlString: String, completion: @escaping ((Result<Data, Error>) -> Void)) {
         
         if(urlString.isEmpty) {
@@ -55,6 +58,13 @@ class DefaultsManager {
             completion(.failure(NSError(domain: "image is nil", code: -100002)))
         }
         
+    }
+    
+    
+    // class method
+    class func isCallClsMethod(name: String) -> String {
+        print("DefaultsManager isCallClsMethod")
+        return "Hello" + name
     }
     
 }
