@@ -23,7 +23,79 @@
 // dyld
 #include <mach-o/dyld.h>
 
+#import <objc/runtime.h>
+
+#import "fishhook.h"
+
+#import "PtraceHeader.h"
+
+#include <unistd.h>
+
+#include <sys/ioctl.h>
+
+#pragma mark - C Anti Debugger
+
+static __attribute__((always_inline)) void asm_exit(void) {
+#ifdef __arm64__
+    __asm__("mov X0, #0\n"
+            "mov w16, #1\n"
+            "svc #0x80\n"
+            "mov x1, #0\n"
+            "mov sp, x1\n"
+            "mov x29, x1\n"
+            "mov x30, x1\n"
+            "ret");
+#endif
+}
+
+static __attribute__((always_inline)) void AntiDebug_001(void) {
+#ifdef __arm64__
+    __asm__("mov X0, #31\n"
+            "mov X1, #0\n"
+            "mov X2, #0\n"
+            "mov X3, #0\n"
+            "mov w16, #26\n"
+            "svc #0x80"
+            );
+#endif
+}
+
+void AntiDebug_002(void) {
+    if (isatty(1)) {
+        asm_exit();
+    } else {
+    }
+}
+
+void AntiDebug_003(void) {
+    if (!ioctl(1, TIOCGWINSZ)) {
+        asm_exit();
+    } else {
+    }
+}
+
+static void sn_image_added(const struct mach_header *mh, intptr_t slide) {
+    Dl_info image_info;
+    int result = dladdr(mh, &image_info);
+    if(result == 0) {
+        return;
+    }
+    
+    const char *image_name = image_info.dli_fname;
+    if(strstr(image_name, "DynamicLibraries") || strstr(image_name, "CydiaSubstrate")) {
+        printf("第三方库注入!!! ---> %s\n", image_name);
+        exit(0);
+    }
+    
+}
+
 @implementation SNSecurityHelper
+
++ (void)load {
+    
+    NSLog(@"SNSecurityHelper load AntiDebug_007");
+    _dyld_register_func_for_add_image(&sn_image_added);
+}
 
 #pragma mark - Anti Debuger
 
@@ -329,6 +401,51 @@
 + (BOOL)isRunInEmulator {
     
     return [self checkRuntime] || [self checkCompile];
+}
+
+
+#pragma mark - Runtime Hook Checker
+
++ (BOOL)amIRuntimeHookWithDyldWhiteList:(NSArray<NSString *> *)dyldWhiteList
+                      detectionClass:(Class)detectionClass
+                            selector:(SEL)selector
+                       isClassMethod:(BOOL)isClassMethod {
+    Method method;
+    if (isClassMethod) {
+        method = class_getClassMethod(detectionClass, selector);
+    } else {
+        method = class_getInstanceMethod(detectionClass, selector);
+    }
+
+    if (!method) {
+        // method not found
+        return YES;
+    }
+
+    IMP imp = method_getImplementation(method);
+    Dl_info info;
+
+    // dladdr will look through vm range of allImages for vm range of an Image that contains pointer of method and return info of the Image
+    if (dladdr((const void *)imp, &info) != 1) {
+        return NO;
+    }
+
+    NSString *impDyldPath = [NSString stringWithUTF8String:info.dli_fname].lowercaseString;
+
+    // at system framework
+    if ([impDyldPath containsString:@"/System/Library".lowercaseString]) {
+        return NO;
+    }
+
+    // at binary of app
+    NSString *binaryPath = [NSString stringWithUTF8String:_dyld_get_image_name(0)].lowercaseString;
+    if ([impDyldPath containsString:binaryPath]) {
+        return NO;
+    }
+
+    // at whiteList
+    NSString *impFramework = [[impDyldPath componentsSeparatedByString:@"/"] lastObject];
+    return ![dyldWhiteList containsObject:impFramework.lowercaseString];
 }
 
 @end

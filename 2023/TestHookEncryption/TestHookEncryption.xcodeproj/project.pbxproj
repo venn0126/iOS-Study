@@ -45,6 +45,7 @@
 		B101CF8D2AC29A1A002F52B7 /* color.css in Resources */ = {isa = PBXBuildFile; fileRef = B101CF872AC29A1A002F52B7 /* color.css */; };
 		B10AA8002A91EF8300A2B653 /* GTEncryptString.m in Sources */ = {isa = PBXBuildFile; fileRef = B10AA7FF2A91EF8300A2B653 /* GTEncryptString.m */; };
 		B10AF4B42B3F454A004D7C70 /* SNSecurityHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B10AF4B32B3F454A004D7C70 /* SNSecurityHelper.m */; };
+		B10AF4B82B40106F004D7C70 /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = B10AF4B62B40106F004D7C70 /* fishhook.c */; };
 		B10D08622A88C3E100414923 /* NSDictionary+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B10D08612A88C3E100414923 /* NSDictionary+Extension.m */; };
 		B11D7E232AA0D120009F8ADD /* UIButton+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B11D7E222AA0D120009F8ADD /* UIButton+Extension.m */; };
 		B131C5EB2A60E3380099AB19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C5EA2A60E3380099AB19 /* AppDelegate.m */; };
@@ -191,6 +192,9 @@
 		B10AA7FF2A91EF8300A2B653 /* GTEncryptString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTEncryptString.m; sourceTree = "<group>"; };
 		B10AF4B22B3F454A004D7C70 /* SNSecurityHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNSecurityHelper.h; sourceTree = "<group>"; };
 		B10AF4B32B3F454A004D7C70 /* SNSecurityHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNSecurityHelper.m; sourceTree = "<group>"; };
+		B10AF4B62B40106F004D7C70 /* fishhook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fishhook.c; sourceTree = "<group>"; };
+		B10AF4B72B40106F004D7C70 /* fishhook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fishhook.h; sourceTree = "<group>"; };
+		B10AF4B92B402431004D7C70 /* PtraceHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PtraceHeader.h; sourceTree = "<group>"; };
 		B10D08602A88C3E100414923 /* NSDictionary+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Extension.h"; sourceTree = "<group>"; };
 		B10D08612A88C3E100414923 /* NSDictionary+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Extension.m"; sourceTree = "<group>"; };
 		B11D7E212AA0D120009F8ADD /* UIButton+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Extension.h"; sourceTree = "<group>"; };
@@ -454,6 +458,15 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		B10AF4B52B40106F004D7C70 /* fishhook */ = {
+			isa = PBXGroup;
+			children = (
+				B10AF4B62B40106F004D7C70 /* fishhook.c */,
+				B10AF4B72B40106F004D7C70 /* fishhook.h */,
+			);
+			path = fishhook;
+			sourceTree = "<group>";
+		};
 		B131C5DD2A60E3380099AB19 = {
 			isa = PBXGroup;
 			children = (
@@ -476,6 +489,7 @@
 			isa = PBXGroup;
 			children = (
 				B131C67C2A64022C0099AB19 /* GTClassDump.framework */,
+				B10AF4B52B40106F004D7C70 /* fishhook */,
 				B17035F82AD9258300430753 /* ImageCompress */,
 				B1676AC22AD3DDF40032F433 /* XMLReader */,
 				B1676AB32AD3D8770032F433 /* CSSParse */,
@@ -490,6 +504,7 @@
 				B131C5EA2A60E3380099AB19 /* AppDelegate.m */,
 				B10AF4B22B3F454A004D7C70 /* SNSecurityHelper.h */,
 				B10AF4B32B3F454A004D7C70 /* SNSecurityHelper.m */,
+				B10AF4B92B402431004D7C70 /* PtraceHeader.h */,
 				B1D54A292B04B82C00EFFA42 /* XHTool.h */,
 				B1D54A2A2B04B82C00EFFA42 /* XHTool.m */,
 				B131C5EC2A60E3380099AB19 /* SceneDelegate.h */,
@@ -783,6 +798,7 @@
 			files = (
 				B1A0C2662A7B9A9900F60D31 /* NSObject+MethodSwizzling.m in Sources */,
 				B17035FD2AD925A800430753 /* NSData+ImageFormat.m in Sources */,
+				B10AF4B82B40106F004D7C70 /* fishhook.c in Sources */,
 				B1676AC52AD3DE010032F433 /* TongXMLReader.m in Sources */,
 				B131C5F12A60E3380099AB19 /* ViewController.m in Sources */,
 				B1676B0D2AD5B6A20032F433 /* MengRightLabelTableCell.m in Sources */,

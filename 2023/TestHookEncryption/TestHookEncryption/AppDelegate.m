@@ -8,6 +8,7 @@
 #import "AppDelegate.h"
 #import "GTUtilies.h"
 #import "ViewController.h"
+#import "SNSecurityHelper.h"
 
 @interface AppDelegate ()<NSURLSessionDelegate>
 
