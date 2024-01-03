@@ -21,15 +21,29 @@ struct NewRestaurantView: View {
     }
     
     
+    init(){
+        let viewModel = RestaurantFormViewModel()
+        viewModel.image = UIImage(named: "newphoto")!
+        restaurantFormViewModel = viewModel
+    }
+    
+    
     @State var restaurantName = ""
     
-    @State private var resturantImage = UIImage(named: "newphoto")!
+//    @State private var resturantImage = UIImage(named: "newphoto")!
     
     @State private var showPhotoOptions = false
     
     @State private var photoSource: PhotoSource?
     
     @Environment(\.dismiss) var dismiss
+    
+    @Environment(\.managedObjectContext) var context
+    
+    /*
+     SwiftUI 为我们提供了 @ObservedObject 属性包装器，它可以订阅可观察对象，并在可观察对象发生变化时更新视图。通过使用 @ObservedObject 对 restaurantFormViewModel 进行包装，我们可以监控其值的变化。它与 @State 非常相似，但 @ObservedObject 是专为使用 ObservableObject 而设计的
+     */
+    @ObservedObject private var  restaurantFormViewModel: RestaurantFormViewModel
     
     var body: some View {
         
@@ -39,7 +53,7 @@ struct NewRestaurantView: View {
             
             ScrollView {
                 
-                Image(uiImage: resturantImage)
+                Image(uiImage: restaurantFormViewModel.image)
                     .resizable()
                     .scaledToFill()
                     .frame(minWidth: 0, maxWidth: .infinity)
@@ -52,11 +66,11 @@ struct NewRestaurantView: View {
                     }
                     
                 VStack {
-                    FormTextField(label: "Name", placeholder: "Fill in the restaurant name", value: .constant(""))
-                    FormTextField(label: "Type", placeholder: "Fill in the restaurant type", value: .constant(""))
-                    FormTextField(label: "ADDRESS", placeholder: "Fill in the restaurant address", value: .constant(""))
-                    FormTextField(label: "PHONE", placeholder: "Fill in the restaurant phone", value: .constant(""))
-                    FormTextView(label: "Description", value: .constant(""), height: 100)
+                    FormTextField(label: "Name", placeholder: "Fill in the restaurant name", value: $restaurantFormViewModel.name)
+                    FormTextField(label: "Type", placeholder: "Fill in the restaurant type", value: $restaurantFormViewModel.type)
+                    FormTextField(label: "ADDRESS", placeholder: "Fill in the restaurant address", value: $restaurantFormViewModel.location)
+                    FormTextField(label: "PHONE", placeholder: "Fill in the restaurant phone", value: $restaurantFormViewModel.phone)
+                    FormTextView(label: "Description", value: $restaurantFormViewModel.description, height: 100)
                 }
                 .padding()
             }
@@ -78,9 +92,14 @@ struct NewRestaurantView: View {
                 
                 ToolbarItem(placement: .topBarTrailing) {
                
-                    Text("Save")
-                        .font(.headline)
-                        .foregroundColor(Color.NavigationBarTitle)
+                    Button(action: {
+                        save()
+                        dismiss()
+                    }, label: {
+                        Text("Save")
+                            .font(.headline)
+                            .foregroundColor(Color.NavigationBarTitle)
+                    })
                 }
             }
         }
@@ -92,9 +111,28 @@ struct NewRestaurantView: View {
         })
         .fullScreenCover(item: $photoSource) { source in
             switch source {
-            case .photoLibrary: ImagePicker(sourceType: .photoLibrary, selectedImage: $resturantImage).ignoresSafeArea()
-            case .camera:ImagePicker(sourceType: .camera, selectedImage: $resturantImage).ignoresSafeArea()
+            case .photoLibrary: ImagePicker(sourceType: .photoLibrary, selectedImage: $restaurantFormViewModel.image).ignoresSafeArea()
+            case .camera:ImagePicker(sourceType: .camera, selectedImage: $restaurantFormViewModel.image).ignoresSafeArea()
             }
+        }
+    }
+    
+    
+    private func save() {
+        let restaurant = Restaurant(context: context)
+        restaurant.name = restaurantFormViewModel.name
+        restaurant.type = restaurantFormViewModel.type
+        restaurant.location = restaurantFormViewModel.location
+        restaurant.phone = restaurantFormViewModel.phone
+        restaurant.image = restaurantFormViewModel.image.pngData()!
+        restaurant.summary = restaurantFormViewModel.description
+        restaurant.isFavorite = false
+        
+        do {
+            try context.save()
+        } catch {
+            print("NewRestaurantView Failed to save the record error \(error.localizedDescription)")
+            
         }
     }
 }

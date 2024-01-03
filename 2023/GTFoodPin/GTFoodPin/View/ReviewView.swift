@@ -17,7 +17,7 @@ struct ReviewView: View {
     var body: some View {
         
         ZStack {
-            Image(restaurant.image)
+            Image(uiImage: UIImage(data: restaurant.image)!)
                 .resizable()
                 .scaledToFill()
                 .frame(minWidth: 0, maxWidth: .infinity)
@@ -76,6 +76,6 @@ struct ReviewView: View {
 
 #Preview {
     
-    ReviewView(restaurant: Restaurant(name: "Cafe Deadend", type: "Coffee & Tea Shop", location: "G/F, 72 Po Hing Fong, Sheung Wan, Hong Kong", phone: "232-923423", description: "Searching for great breakfast eateries and coffee? This place is for you. We open at 6:30 every morning, and close at 9 PM. We offer espresso and espresso based drink, such as capuccino, cafe lat te, piccolo and many more. Come over and enjoy a great meal.", image: "Cafe Deadend", isFavorite: true), isDisplayed: .constant(true))
+    ReviewView(restaurant: (PersistenceController.testData?.first)!, isDisplayed: .constant(true))
     
 }

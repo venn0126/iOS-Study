@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22222" systemVersion="23B2091" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Restaurant" representedClassName=".Restaurant" syncable="YES">
+        <attribute name="image" attributeType="Binary"/>
+        <attribute name="isFavorite" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="location" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="phone" attributeType="String"/>
+        <attribute name="ratingText" optional="YES" attributeType="String"/>
+        <attribute name="summary" attributeType="String"/>
+        <attribute name="type" attributeType="String"/>
+    </entity>
+</model>

@@ -13,21 +13,21 @@ import SwiftUI
 struct RestaurantListView: View {
     
       
-    var restaurantImages = ["Cafe Deadend", "Homei", "Teakha", "Cafe Loisl", "Petite Oyster", "For Kee Restaurant", "Po's Atelier", "Bourke Street Bakery", "Haigh's Chocolate", "Palomino Espresso", "Upstate", "Traif", "Graham Avenue Meats And Deli", "Waffle & Wolf", "Five Leaves", "Cafe Lore", "Confessional", "Barrafina", "Donostia", "Royal Oak", "CASK Pub and Kitchen"]
-    
-    var restaurantNames = ["Cafe Deadend", "Homei", "Teakha", "Cafe Loisl", "Petite Oyster", "For Kee Restaurant", "Po's Atelier", "Bourke Street Bakery", "Haigh's Chocolate", "Palomino Espresso", "Upstate", "Traif", "Graham Avenue Meats And Deli", "Waffle & Wolf", "Five Leaves", "Cafe Lore", "Confessional", "Barrafina", "Donostia", "Royal Oak", "CASK Pub and Kitchen"]
-    
-    var restaurantLocations = ["Hong Kong", "Hong Kong", "Hong Kong", "Hong Kong", "Hong Kong", "Hong Kong", "Hong Kong", "Sydney", "Sydney", "Sydney",
-    "New York", "New York", "New York", "New York", "New York", "New York", "New York", "London", "London", "London", "London"]
-    
-    var restaurantTypes = ["Coffee & Tea Shop", "Cafe", "Tea House", "Austrian/ Causual Drink", "French", "Bakery", "Bakery", "Chocolate", "Cafe", "American / Seafood", "American", "American", "Breakfast & Brunch", "Coffee &Tea", "Coffee & Tea", "Latin American", "Spanish", "Spanish", "Spanish", "British", "Thai"]
-    
-    @State var restaurantIsFavorites = Array(repeating: false, count: 21)
+//    var restaurantImages = ["Cafe Deadend", "Homei", "Teakha", "Cafe Loisl", "Petite Oyster", "For Kee Restaurant", "Po's Atelier", "Bourke Street Bakery", "Haigh's Chocolate", "Palomino Espresso", "Upstate", "Traif", "Graham Avenue Meats And Deli", "Waffle & Wolf", "Five Leaves", "Cafe Lore", "Confessional", "Barrafina", "Donostia", "Royal Oak", "CASK Pub and Kitchen"]
+//    
+//    var restaurantNames = ["Cafe Deadend", "Homei", "Teakha", "Cafe Loisl", "Petite Oyster", "For Kee Restaurant", "Po's Atelier", "Bourke Street Bakery", "Haigh's Chocolate", "Palomino Espresso", "Upstate", "Traif", "Graham Avenue Meats And Deli", "Waffle & Wolf", "Five Leaves", "Cafe Lore", "Confessional", "Barrafina", "Donostia", "Royal Oak", "CASK Pub and Kitchen"]
+//    
+//    var restaurantLocations = ["Hong Kong", "Hong Kong", "Hong Kong", "Hong Kong", "Hong Kong", "Hong Kong", "Hong Kong", "Sydney", "Sydney", "Sydney",
+//    "New York", "New York", "New York", "New York", "New York", "New York", "New York", "London", "London", "London", "London"]
+//    
+//    var restaurantTypes = ["Coffee & Tea Shop", "Cafe", "Tea House", "Austrian/ Causual Drink", "French", "Bakery", "Bakery", "Chocolate", "Cafe", "American / Seafood", "American", "American", "Breakfast & Brunch", "Coffee &Tea", "Coffee & Tea", "Latin American", "Spanish", "Spanish", "Spanish", "British", "Thai"]
+//    
+//    @State var restaurantIsFavorites = Array(repeating: false, count: 21)
     
     @State private var showNewResaurant = false
     
-    
-    @State var restaurants = [ 
+    /*
+    @State var restaurants = [
         Restaurant(name: "Cafe Deadend", type: "Coffee & Tea Shop", location:
                     "G/F, 72 Po Hing Fong, Sheung Wan, Hong Kong", phone: "348-233423", description: "Searching for great breakfast eateries and coffee? This place is for you. We open at 6:30 every morning, and close at9 PM. We offer espresso and espresso based drink, such as capuccino, cafe latte, piccolo and many more. Come over and enjoy a great meal.", image: "Cafe Deadend", isFavorite: false),
         Restaurant(name: "Homei", type: "Cafe", location: "Shop B, G/F, 22-24A Tai Ping San Street SOHO, Sheung Wan, Hong Kong", phone: "348-233424", description: "Searching for great breakfast eateries and coffee? This place is for you. We open at 6:30 every morning, and close at9 PM. We offer espresso and espresso based drink, such as capuccino, cafe latte, piccolo and many more. Come over and enjoy a great meal.", image:"Homei", isFavorite: false),
@@ -55,45 +55,54 @@ struct RestaurantListView: View {
         
         Restaurant(name: "CASK Pub and Kitchen", type: "Thai", location: "London", phone: "348-233025", description: "Searching for great breakfast eateries and coffee? This place is for you. We open at 6:30 every morning, and close at9 PM. We offer espresso and espresso based drink, such as capuccino, cafe latte, piccolo and many more. Come over and enjoy a great meal.", image: "CASK Pub and Kitchen", isFavorite: false)
     ]
+    */
     
+    @FetchRequest(entity: Restaurant.entity(), sortDescriptors: [])
+    var restaurants: FetchedResults<Restaurant>
+    
+    @Environment(\.managedObjectContext) var context
     
 
     var body: some View {
         
         NavigationView {
             List {
-                ForEach(restaurantNames.indices, id: \.self){ index in
-                    
-                    ZStack(alignment: .leading) {
-                        NavigationLink(destination: RestaurantDetailView(restaurant: restaurants[index])) {
-                            EmptyView()
-                        }.opacity(0)
+                if restaurants.count == 0 {
+                    Image("emptydata")
+                        .resizable()
+                        .scaledToFit()
+                } else {
+                    ForEach(restaurants.indices, id: \.self){ index in
                         
-                        BasicTextImageRow(restaurant: $restaurants[index])
+                        ZStack(alignment: .leading) {
+                            NavigationLink(destination: RestaurantDetailView(restaurant: restaurants[index])) {
+                                EmptyView()
+                            }.opacity(0)
+                            
+                            BasicTextImageRow(restaurant: restaurants[index])
 
+                        }
                     }
+                    .onDelete(perform: deleteRecord)
+
+                    .swipeActions(edge: .leading, allowsFullSwipe: false, content: {
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: "heart")
+                        }
+                        .tint(.green)
+                        
+                        Button {
+                            
+                        } label: {
+                            Image(systemName: "square.and.arrow.up")
+                        }
+                        .tint(.orange)
+                    })
+                    
+                    .listRowSeparator(.hidden)
                 }
-                .onDelete(perform: { indexSet in
-                    restaurants.remove(atOffsets: indexSet)
-                })
-
-                .swipeActions(edge: .leading, allowsFullSwipe: false, content: {
-                    Button {
-                        
-                    } label: {
-                        Image(systemName: "heart")
-                    }
-                    .tint(.green)
-                    
-                    Button {
-                        
-                    } label: {
-                        Image(systemName: "square.and.arrow.up")
-                    }
-                    .tint(.orange)
-                })
-                
-                .listRowSeparator(.hidden)
 
             }
             // Navigation configure
@@ -115,6 +124,22 @@ struct RestaurantListView: View {
        
     }
     
+    
+    private func deleteRecord(indexSet: IndexSet) {
+        for index in indexSet {
+            let itemToDelete = restaurants[index]
+            context.delete(itemToDelete)
+        }
+        
+        DispatchQueue.main.async {
+            do {
+                try context.save()
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
 }
 
 
@@ -128,12 +153,11 @@ struct FullImageRow: View {
     @State private var showError = false
     
     // MARK: - Binding
-    @Binding var restaurant: Restaurant
+    @ObservedObject var restaurant: Restaurant
         
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            
-            Image(restaurant.image)
+            Image(uiImage: UIImage(data: restaurant.image) ?? UIImage())
                 .resizable()
                 .scaledToFill()
                 .frame(height: 200)
@@ -179,17 +203,15 @@ struct BasicTextImageRow: View {
     @State private var showOptions = false
     @State private var showError = false
   
-    @Binding var restaurant: Restaurant
+    @ObservedObject var restaurant: Restaurant
 
 
     var body: some View {
         HStack(alignment: .top, spacing: 20) {
-            Image(restaurant.image)
+            Image(uiImage: UIImage(data: restaurant.image) ?? UIImage())
                 .resizable()
                 .frame(width: 120, height: 118)
                 .clipShape(RoundedRectangle(cornerRadius: 20.0))
-            
-            
             VStack(alignment: .leading) {
                 Text(restaurant.name)
                     .font(.system(.title2, design: .rounded))
@@ -246,7 +268,7 @@ struct BasicTextImageRow: View {
         
         .sheet(isPresented: $showOptions) {
             let defaultText = "Just checking in at \(restaurant.name)"
-            if let imageToShare = UIImage(named: restaurant.image) {
+            if let imageToShare = UIImage(data: restaurant.image) {
                 ActivityView(activityItems: [defaultText, imageToShare])
             } else {
                 ActivityView(activityItems: [defaultText])
@@ -261,8 +283,11 @@ struct BasicTextImageRow: View {
 #Preview {
     
     RestaurantListView()
+        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 //        .preferredColorScheme(.dark)
     // test dynamic type
 //        .environment(\.dynamicTypeSize, .medium)
+    
+//    BasicTextImageRow(restaurant: (PersistenceController.testData?.first)!)
     
 }
