@@ -11,7 +11,7 @@ import UIKit
 
 struct PersistenceController {
     
-    static let shared = PersistenceController()
+    static let shared = PersistenceController(inMemory: true)
     
     let container: NSPersistentContainer
     
@@ -21,10 +21,17 @@ struct PersistenceController {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
             container.loadPersistentStores { storeDescription, error in
                 if let error = error as NSError? {
-                    fatalError("Unresolved error \(error), \(error.userInfo)")
+                    print("Core data failed to load: \(error.localizedDescription)")
+                    return
                 }
             }
         }
+        
+        /*
+         mergeByPropertyObjectTrump : 一种按单个属性合并对象的持久存储版本与当前内存版本之间冲突的策略，内存中的更改优先于外部更改。
+         mergeByPropertyStoreTrump: 一种按单个属性合并对象的持久存储版本与当前内存版本之间冲突的策略，外部更改优先于内存更改。
+         */
+        self.container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
     }
     
     
