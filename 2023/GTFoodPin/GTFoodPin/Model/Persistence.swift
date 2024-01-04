@@ -11,9 +11,20 @@ import UIKit
 
 struct PersistenceController {
     
-    static let shared = PersistenceController(inMemory: true)
+    static let shared = PersistenceController()
     
     let container: NSPersistentContainer
+    
+    init() {
+        container = NSPersistentContainer(name: "GTFoodPin")
+        container.loadPersistentStores { description, error in
+            if let error = error {
+                print("Core Data failed to load: \(error.localizedDescription)")
+                return
+            }
+        }
+        self.container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+    }
     
     init(inMemory: Bool = false) {
         container = NSPersistentContainer(name: "GTFoodPin")

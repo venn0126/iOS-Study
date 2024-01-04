@@ -27,14 +27,12 @@ struct RestaurantDetailView: View {
                     .frame(height: 445)
                     .overlay {
                         VStack {
-                            Image(systemName:restaurant.isFavorite ? "heart.fill" : "heart")
-                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topTrailing)
-                                .padding()
-                                .font(.system(size: 30))
-                                .foregroundColor(restaurant.isFavorite ? .yellow : .white)
-                                .padding(.top, 40)
-                            
-                                
+//                            Image(systemName:restaurant.isFavorite ? "heart.fill" : "heart")
+//                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topTrailing)
+//                                .padding()
+//                                .font(.system(size: 30))
+//                                .foregroundColor(restaurant.isFavorite ? .yellow : .black)
+//                                .padding(.top, 40)
                             
                             HStack(alignment: .bottom) {
                                 VStack(alignment: .leading) {
@@ -119,8 +117,18 @@ struct RestaurantDetailView: View {
                 Button(action: {
                     dismiss()
                 }, label: {
-//                    Text("\(Image(systemName: "chevron.left")) \(restaurant.name)")
                     Text("\(Image(systemName: "chevron.left"))")
+                })
+            }
+            
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: {
+                    restaurant.isFavorite.toggle()
+                    try? self.context.save()
+                }, label: {
+                    Image(systemName:restaurant.isFavorite ? "heart.fill" : "heart")
+                        .font(.system(size: 20))
+                        .foregroundColor(restaurant.isFavorite ? .yellow : .black)
                 })
             }
         }

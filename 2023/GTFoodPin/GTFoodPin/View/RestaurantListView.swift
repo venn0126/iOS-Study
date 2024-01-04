@@ -131,7 +131,7 @@ struct RestaurantListView: View {
             context.delete(itemToDelete)
         }
         
-        DispatchQueue.main.async {
+        Task {
             do {
                 try context.save()
             } catch {
