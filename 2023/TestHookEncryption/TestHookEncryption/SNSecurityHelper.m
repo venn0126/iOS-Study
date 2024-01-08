@@ -94,7 +94,7 @@ static void sn_image_added(const struct mach_header *mh, intptr_t slide) {
 + (void)load {
     
     NSLog(@"SNSecurityHelper load AntiDebug_007");
-    _dyld_register_func_for_add_image(&sn_image_added);
+//    _dyld_register_func_for_add_image(&sn_image_added);
 }
 
 #pragma mark - Anti Debuger

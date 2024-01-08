@@ -53,7 +53,7 @@
 
 static const NSInteger kAugusButtonTagOffset = 10000;
 
-@interface ViewController ()<NSURLSessionDelegate>
+@interface ViewController ()<NSURLSessionDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (retain, nonatomic) SKPaymentTransaction *transaction;
 
@@ -61,6 +61,11 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 
 
 @property (nonatomic, strong) UIAlertController *augusAlertController;
+
+
+@property (nonatomic, copy) NSArray *pickerViewData;
+
+
 @end
 
 @implementation ViewController
@@ -100,8 +105,83 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     
 //    [self testCustomFontStyle];
     
-    [self testH5ReturnStr];
+//    [self testH5ReturnStr];
     
+    [self testPickerView];
+    
+}
+
+
+- (void)testPickerView {
+    
+    self.pickerViewData =  @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9"];
+    
+    UIPickerView *pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 300, self.view.frame.size.width, 300)];
+    pickerView.dataSource = self;
+    pickerView.delegate = self;
+    [self.view addSubview:pickerView];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [pickerView selectRow:0 inComponent:0 animated:YES];
+        [self pickerView:pickerView didSelectRow:0 inComponent:0];
+    });
+}
+
+
+#pragma mark - UIPickerDataSource
+
+- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component {
+    return 50.0;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return  self.pickerViewData.count;
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return self.pickerViewData[row];
+}
+
+
+#pragma mark - UIPickerDelegate
+
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    
+    NSLog(@"didSelectRow %ld",row);
+    NSArray *pickSubviews = pickerView.subviews;
+    UIView *oneView = pickSubviews.firstObject;
+    NSArray *oneSubviews = oneView.subviews;
+    // UIPickerColumnView
+    UIView *columnView = oneSubviews.firstObject;
+    NSArray *columnSubviews = columnView.subviews;
+    
+    UIView *secondView = columnSubviews[2];
+    NSArray *secondSubviews = secondView.subviews;
+    // UIPickerTableView
+    UIView *pickerTableView = secondSubviews.firstObject;
+    NSArray *pickerTableViewSubviews = pickerTableView.subviews;
+    // UIPickerTableViewTitledCell
+    UIView *firstPickerTableViewTitledCell = pickerTableViewSubviews.firstObject;
+    
+    for (id subview in pickerTableViewSubviews) {
+        NSLog(@"555--subview %@",subview);
+        UILabel *titleLabel = [subview valueForKey:@"_titleLabel"];
+        NSLog(@"titleLabel text %@",titleLabel.text);
+        if([titleLabel.text isEqual:@"1"]) {
+            if([subview respondsToSelector:@selector(_tapAction:)]) {
+                NSLog(@"subview responds 1");
+                [subview performSelector:@selector(_tapAction:) withObject:nil];
+                break;
+                
+            }
+        }
+    }
+
 }
 
 
