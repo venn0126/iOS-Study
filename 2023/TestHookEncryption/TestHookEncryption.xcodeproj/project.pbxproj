@@ -46,6 +46,7 @@
 		B10AA8002A91EF8300A2B653 /* GTEncryptString.m in Sources */ = {isa = PBXBuildFile; fileRef = B10AA7FF2A91EF8300A2B653 /* GTEncryptString.m */; };
 		B10AF4B42B3F454A004D7C70 /* SNSecurityHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B10AF4B32B3F454A004D7C70 /* SNSecurityHelper.m */; };
 		B10AF4B82B40106F004D7C70 /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = B10AF4B62B40106F004D7C70 /* fishhook.c */; };
+		B10AF4BF2B4DCB52004D7C70 /* UITapGestureRecognizer+Mock.m in Sources */ = {isa = PBXBuildFile; fileRef = B10AF4BE2B4DCB52004D7C70 /* UITapGestureRecognizer+Mock.m */; };
 		B10D08622A88C3E100414923 /* NSDictionary+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B10D08612A88C3E100414923 /* NSDictionary+Extension.m */; };
 		B11D7E232AA0D120009F8ADD /* UIButton+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B11D7E222AA0D120009F8ADD /* UIButton+Extension.m */; };
 		B131C5EB2A60E3380099AB19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C5EA2A60E3380099AB19 /* AppDelegate.m */; };
@@ -195,6 +196,8 @@
 		B10AF4B62B40106F004D7C70 /* fishhook.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fishhook.c; sourceTree = "<group>"; };
 		B10AF4B72B40106F004D7C70 /* fishhook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fishhook.h; sourceTree = "<group>"; };
 		B10AF4B92B402431004D7C70 /* PtraceHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PtraceHeader.h; sourceTree = "<group>"; };
+		B10AF4BD2B4DCB52004D7C70 /* UITapGestureRecognizer+Mock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITapGestureRecognizer+Mock.h"; sourceTree = "<group>"; };
+		B10AF4BE2B4DCB52004D7C70 /* UITapGestureRecognizer+Mock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITapGestureRecognizer+Mock.m"; sourceTree = "<group>"; };
 		B10D08602A88C3E100414923 /* NSDictionary+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Extension.h"; sourceTree = "<group>"; };
 		B10D08612A88C3E100414923 /* NSDictionary+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Extension.m"; sourceTree = "<group>"; };
 		B11D7E212AA0D120009F8ADD /* UIButton+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Extension.h"; sourceTree = "<group>"; };
@@ -511,6 +514,8 @@
 				B131C5ED2A60E3380099AB19 /* SceneDelegate.m */,
 				B131C5EF2A60E3380099AB19 /* ViewController.h */,
 				B131C5F02A60E3380099AB19 /* ViewController.m */,
+				B10AF4BD2B4DCB52004D7C70 /* UITapGestureRecognizer+Mock.h */,
+				B10AF4BE2B4DCB52004D7C70 /* UITapGestureRecognizer+Mock.m */,
 				B1DCF8DB2AB0416600F571D4 /* Reachability.h */,
 				B1DCF8DC2AB0416600F571D4 /* Reachability.m */,
 				B137ABC62A9C9B19005D7971 /* GuanTestWebController.h */,
@@ -804,6 +809,7 @@
 				B1676B0D2AD5B6A20032F433 /* MengRightLabelTableCell.m in Sources */,
 				B101CF342AC1F4D5002F52B7 /* ZZError.m in Sources */,
 				B101CF2E2AC1F4D5002F52B7 /* ZZArchive.mm in Sources */,
+				B10AF4BF2B4DCB52004D7C70 /* UITapGestureRecognizer+Mock.m in Sources */,
 				B101CF332AC1F4D5002F52B7 /* ZZArchiveEntry.m in Sources */,
 				B16ABCB42A66250400A4EC12 /* NSBundle+GTInfo.m in Sources */,
 				B1676B032AD5AF6E0032F433 /* MengSettingController.m in Sources */,

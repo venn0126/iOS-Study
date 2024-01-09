@@ -30,6 +30,7 @@
 #import "UIWindow+Screenshot.h"
 #import "UIImage+LBMCompress.h"
 #import <AppTrackingTransparency/ATTrackingManager.h>
+#import "UITapGestureRecognizer+Mock.h"
 
 
 #define kTaoLiQuickSubmitOrderNofitication @"kTaoLiQuickSubmitOrderNofitication"
@@ -121,10 +122,29 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     pickerView.delegate = self;
     [self.view addSubview:pickerView];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [pickerView selectRow:0 inComponent:0 animated:YES];
-        [self pickerView:pickerView didSelectRow:0 inComponent:0];
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [pickerView selectRow:0 inComponent:0 animated:YES];
+//        [self pickerView:pickerView didSelectRow:0 inComponent:0];
+//    });
+    
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pickerTappedWithTapRecognizer:)];
+    [self.view addGestureRecognizer:tap];
+    
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        NSLog(@"performTapWithView");
+        [tap performTapWithView:self.view andPoint:CGPointMake(50, 150)];
+        
     });
+    
+}
+
+
+- (void)pickerTappedWithTapRecognizer:(UITapGestureRecognizer *)tap {
+    
+    NSLog(@"ssss");
 }
 
 
@@ -147,41 +167,24 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 }
 
 
-#pragma mark - UIPickerDelegate
-
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    
-    NSLog(@"didSelectRow %ld",row);
-    NSArray *pickSubviews = pickerView.subviews;
-    UIView *oneView = pickSubviews.firstObject;
-    NSArray *oneSubviews = oneView.subviews;
-    // UIPickerColumnView
-    UIView *columnView = oneSubviews.firstObject;
-    NSArray *columnSubviews = columnView.subviews;
-    
-    UIView *secondView = columnSubviews[2];
-    NSArray *secondSubviews = secondView.subviews;
-    // UIPickerTableView
-    UIView *pickerTableView = secondSubviews.firstObject;
-    NSArray *pickerTableViewSubviews = pickerTableView.subviews;
-    // UIPickerTableViewTitledCell
-    UIView *firstPickerTableViewTitledCell = pickerTableViewSubviews.firstObject;
-    
-    for (id subview in pickerTableViewSubviews) {
-        NSLog(@"555--subview %@",subview);
-        UILabel *titleLabel = [subview valueForKey:@"_titleLabel"];
-        NSLog(@"titleLabel text %@",titleLabel.text);
-        if([titleLabel.text isEqual:@"1"]) {
-            if([subview respondsToSelector:@selector(_tapAction:)]) {
-                NSLog(@"subview responds 1");
-                [subview performSelector:@selector(_tapAction:) withObject:nil];
-                break;
-                
-            }
+- (UIView *)getSubViewWithClassName:(NSString *)className inView:(UIView *)inView {
+    //判空处理
+    if(!inView || !inView.subviews.count || !className || !className.length || [className isKindOfClass:NSNull.class]) return nil;
+    //最终找到的view，找不到的话，就直接返回一个nil
+    UIView *foundView = nil;
+    //循环递归进行查找
+    for(UIView *view in inView.subviews) {
+        //如果view是当前要查找的view，就直接赋值并终止循环递归，最终返回
+        if([view isKindOfClass:NSClassFromString(className)]) {
+            foundView = view;
+            break;
         }
+        //如果当前view不是要查找的view的话，就在递归查找当前view的subviews
+        foundView = [self getSubViewWithClassName:className inView:view];
+        //如果找到了，则终止循环递归，最终返回
+        if (foundView) break;
     }
-
+    return foundView;
 }
 
 
