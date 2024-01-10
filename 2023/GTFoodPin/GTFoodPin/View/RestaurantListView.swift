@@ -60,6 +60,9 @@ struct RestaurantListView: View {
     @FetchRequest(entity: Restaurant.entity(), sortDescriptors: [])
     var restaurants: FetchedResults<Restaurant>
     @State private var searchText = ""
+    @State private var showWalkthrough = false
+    // UserDefaults的封装
+    @AppStorage("hasViewdWalkthrough") var hasViewedWalkthrough: Bool = false
     
     @Environment(\.managedObjectContext) var context
     
@@ -121,6 +124,11 @@ struct RestaurantListView: View {
         .sheet(isPresented: $showNewResaurant) {
             NewRestaurantView()
         }
+        .sheet(isPresented: $showWalkthrough) {
+            GTTutorialView()
+            
+        }
+        
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search restaurants...") {
 //            Text("Thai").searchCompletion("thai")
 //            Text("Cafe").searchCompletion("cafe")
@@ -133,6 +141,9 @@ struct RestaurantListView: View {
             print("search on change")
             search()
             
+        }
+        .onAppear() {
+            showWalkthrough = hasViewedWalkthrough ? false : true
         }
         
     }
@@ -196,7 +207,7 @@ struct FullImageRow: View {
                     if restaurant.isFavorite {
                         Spacer()
                         Image(systemName: "heart.fill")
-                            .foregroundColor(.yellow)
+                            .foregroundStyle(.yellow)
                     }
                 }
              
@@ -204,7 +215,7 @@ struct FullImageRow: View {
                     .font(.system(.body, design: .rounded))
                 Text(restaurant.location)
                     .font(.system(.subheadline, design: .rounded))
-                    .foregroundColor(.gray)
+                    .foregroundStyle(.gray)
             }
             .padding(.horizontal)
             .padding(.bottom)
@@ -245,7 +256,7 @@ struct BasicTextImageRow: View {
                     .font(.system(.body, design: .rounded))
                 Text(restaurant.location)
                     .font(.system(.subheadline, design: .rounded))
-                    .foregroundColor(.gray)
+                    .foregroundStyle(.gray)
                 
             }
             
@@ -253,7 +264,7 @@ struct BasicTextImageRow: View {
             if restaurant.isFavorite {
                 Spacer()
                 Image(systemName: "heart.fill")
-                    .foregroundColor(.yellow)
+                    .foregroundStyle(.yellow)
             }
         }
         

@@ -24,6 +24,8 @@
 		B161B12A2B4501E300FB618B /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B161B1292B4501E300FB618B /* Persistence.swift */; };
 		B161B12D2B45354600FB618B /* GTFoodPin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B161B12B2B45354600FB618B /* GTFoodPin.xcdatamodeld */; };
 		B161B1302B45447200FB618B /* RestaurantFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B161B12F2B45447200FB618B /* RestaurantFormViewModel.swift */; };
+		B18809BA2B4E33C700DDDBC4 /* GTTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18809B92B4E33C700DDDBC4 /* GTTutorialView.swift */; };
+		B18809BC2B4E44E200DDDBC4 /* GTMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18809BB2B4E44E200DDDBC4 /* GTMainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		B161B1292B4501E300FB618B /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		B161B12C2B45354600FB618B /* GTFoodPin.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GTFoodPin.xcdatamodel; sourceTree = "<group>"; };
 		B161B12F2B45447200FB618B /* RestaurantFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantFormViewModel.swift; sourceTree = "<group>"; };
+		B18809B92B4E33C700DDDBC4 /* GTTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTTutorialView.swift; sourceTree = "<group>"; };
+		B18809BB2B4E44E200DDDBC4 /* GTMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTMainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,8 @@
 				B15D24BF2B3AB0500028939B /* MapView.swift */,
 				B15D24C12B3ABA570028939B /* ReviewView.swift */,
 				B15D24C32B3AC6E40028939B /* NewRestaurantView.swift */,
+				B18809B92B4E33C700DDDBC4 /* GTTutorialView.swift */,
+				B18809BB2B4E44E200DDDBC4 /* GTMainView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -245,6 +251,8 @@
 				B1292E152B389AC000D4B848 /* RestaurantDetailView.swift in Sources */,
 				B1292E132B37DECA00D4B848 /* ActivityView.swift in Sources */,
 				B15D24C42B3AC6E40028939B /* NewRestaurantView.swift in Sources */,
+				B18809BA2B4E33C700DDDBC4 /* GTTutorialView.swift in Sources */,
+				B18809BC2B4E44E200DDDBC4 /* GTMainView.swift in Sources */,
 				B15D24BE2B3AAD6D0028939B /* UIColor+Ext.swift in Sources */,
 				B15D24C72B3ACE5E0028939B /* ImagePicker.swift in Sources */,
 				B15D24782B34105C0028939B /* GTFoodPinApp.swift in Sources */,

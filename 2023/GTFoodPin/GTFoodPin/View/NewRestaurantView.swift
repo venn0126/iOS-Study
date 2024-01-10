@@ -98,7 +98,7 @@ struct NewRestaurantView: View {
                     }, label: {
                         Text("Save")
                             .font(.headline)
-                            .foregroundColor(Color.NavigationBarTitle)
+                            .foregroundStyle(Color.NavigationBarTitle)
                     })
                 }
             }
@@ -149,7 +149,7 @@ struct FormTextField: View {
         VStack(alignment: .leading) {
             Text(label.uppercased())
                 .font(.system(.headline, design: .rounded))
-                .foregroundColor(Color(.darkGray))
+                .foregroundStyle(Color(.darkGray))
             
             TextField(placeholder, text: $value)
                 .font(.system(size: 20, weight: .semibold, design: .rounded))
@@ -177,7 +177,7 @@ struct FormTextView: View {
         VStack(alignment: .leading) {
             Text(label.uppercased())
                 .font(.system(.headline, design: .rounded))
-                .foregroundColor(Color(.darkGray))
+                .foregroundStyle(Color(.darkGray))
             
             TextEditor(text: $value)
                 .frame(maxWidth: .infinity)

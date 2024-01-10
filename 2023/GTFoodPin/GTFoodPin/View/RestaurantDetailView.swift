@@ -31,7 +31,7 @@ struct RestaurantDetailView: View {
 //                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topTrailing)
 //                                .padding()
 //                                .font(.system(size: 30))
-//                                .foregroundColor(restaurant.isFavorite ? .yellow : .black)
+//                                .foregroundStyle(restaurant.isFavorite ? .yellow : .black)
 //                                .padding(.top, 40)
                             
                             HStack(alignment: .bottom) {
@@ -45,7 +45,7 @@ struct RestaurantDetailView: View {
                                         .background(Color.black)
                                 }
                                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .bottomLeading)
-                                .foregroundColor(.white)
+                                .foregroundStyle(.white)
                                 .padding()
                                 
                                 if let rating = restaurant.rating, !showReview {
@@ -128,7 +128,7 @@ struct RestaurantDetailView: View {
                 }, label: {
                     Image(systemName:restaurant.isFavorite ? "heart.fill" : "heart")
                         .font(.system(size: 20))
-                        .foregroundColor(restaurant.isFavorite ? .yellow : .black)
+                        .foregroundStyle(restaurant.isFavorite ? .yellow : .black)
                 })
             }
         }

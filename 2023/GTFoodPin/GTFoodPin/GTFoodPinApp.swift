@@ -29,7 +29,7 @@ struct GTFoodPinApp: App {
         
 
         WindowGroup {
-            RestaurantListView()
+            GTMainView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

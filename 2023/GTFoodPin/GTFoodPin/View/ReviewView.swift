@@ -40,7 +40,7 @@ struct ReviewView: View {
                     }) {
                         Image(systemName: "xmark")
                             .font(.system(size: 30.0))
-                            .foregroundColor(.white)
+                            .foregroundStyle(.white)
                             .padding()
                     }
                     Spacer()
@@ -54,7 +54,7 @@ struct ReviewView: View {
                         Text(rating.rawValue.capitalized)
                             .font(.system(.title, design: .rounded))
                             .fontWeight(.bold)
-                            .foregroundColor(.white)
+                            .foregroundStyle(.white)
                     }
                     .opacity(showRatings ? 1.0: 0)
                     .offset(x: showRatings ? 0 : 1000)
