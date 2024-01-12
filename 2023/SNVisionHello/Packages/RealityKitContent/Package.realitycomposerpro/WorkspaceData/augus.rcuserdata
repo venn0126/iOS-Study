@@ -1,0 +1,61 @@
+{
+  "advancedEditorSelectedIdentifier" : "ProjectBrowser",
+  "openSceneRelativePaths" : [
+    "Scene.usda",
+    "Materials\/GridMaterial.usda"
+  ],
+  "recentIdentifiers" : {
+
+  },
+  "sceneCameraHistory" : {
+    "26DBAE76-5DD8-47B6-A085-1B4ADA111097" : [
+      {
+        "date" : 726727374.844429,
+        "title" : "Untitled",
+        "transform" : [
+          1,
+          0,
+          -0,
+          0,
+          -0,
+          0.8744657,
+          -0.48508725,
+          0,
+          0,
+          0.48508725,
+          0.8744657,
+          0,
+          0,
+          5.689567,
+          9.85482,
+          1
+        ]
+      }
+    ],
+    "A0C1A61C-D18E-49FE-AEB4-D8DDABD6776A" : [
+      {
+        "date" : 726727374.842346,
+        "title" : "Untitled",
+        "transform" : [
+          1,
+          0,
+          -0,
+          0,
+          -0,
+          0.8660254,
+          -0.5,
+          0,
+          0,
+          0.5,
+          0.8660254,
+          0,
+          0,
+          0.18884952,
+          0.32709697,
+          1
+        ]
+      }
+    ]
+  },
+  "selectedSceneRelativePath" : "Materials\/GridMaterial.usda"
+}
