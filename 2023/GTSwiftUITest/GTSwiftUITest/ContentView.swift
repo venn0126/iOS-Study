@@ -11,15 +11,84 @@ struct ContentView: View {
     
     @State private var value = 0
     @State private var value1 = 0
+
+    
     
     var body: some View {
-        VStack {
-     
-            GTCounter(value: $value, value1: value1, setValue1: {value1 = $0})
-                .foregroundColor(.red)
-                .font(.system(size: 30))
+//        Greeting()
+        /*
+         
+         */
+        let _ = Self._printChanges()
+        
+        Text("swiftUI")
+            
+        
+    }
+}
+
+
+struct ViewTreeTest: View {
+    
+    @State private var showText = true
+    @State private var helloText: String? = "1"
+    @State private var highlighted = true
+    
+    var body: some View {
+        HStack {
+            Image(systemName: "heart")
+                .font(.title)
+                .background(Color.red)
+                .frame(width: 100)
+            
+            
+            Text(helloText ?? "sohu")
+                .font(.title2)
+                .id(helloText == nil)
+            //                    .applyIf(highlighted) { view in
+            //                        view.background(.yellow)
+            //                    }
+                .applyIf() {
+                    $0.background(.yellow)
+                }
+            
+            //            Spacer()
+            
         }
-        .padding()
+    }
+        //        .frame(maxWidth: .infinity, alignment: .leading)
+
+}
+
+struct Greeting: View {
+    
+    @ViewBuilder var heart: some View {
+        Image(systemName: "heart.fill")
+        Text("My heart will go on")
+    }
+    
+    @ViewBuilder var bye: some View {
+        Text("on go will heart My")
+        Image(systemName: "hand.wave")
+    }
+    
+    var body: some View {
+        
+        let _ = Self._printChanges()
+//        HStack {
+//            heart
+//                .border(.blue)
+//            Spacer()
+//            bye
+//        }
+        HStack {
+            Group {
+                Image(systemName: "heart.fill")
+                Text("My heart will go on")
+            }
+            .background(Color.red)
+//            .overlay(Color.red)
+        }
     }
 }
 

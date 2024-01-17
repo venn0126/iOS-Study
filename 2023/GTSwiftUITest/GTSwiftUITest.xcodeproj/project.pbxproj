@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B114D2442B57D47D00F93A9A /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B114D2432B57D47D00F93A9A /* ViewExtension.swift */; };
 		B161B1492B4D2A0E00FB618B /* GTSwiftUITestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B161B1482B4D2A0E00FB618B /* GTSwiftUITestApp.swift */; };
 		B161B14B2B4D2A0E00FB618B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B161B14A2B4D2A0E00FB618B /* ContentView.swift */; };
 		B161B14D2B4D2A0F00FB618B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B161B14C2B4D2A0F00FB618B /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B114D2432B57D47D00F93A9A /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		B161B1452B4D2A0E00FB618B /* GTSwiftUITest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTSwiftUITest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B161B1482B4D2A0E00FB618B /* GTSwiftUITestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTSwiftUITestApp.swift; sourceTree = "<group>"; };
 		B161B14A2B4D2A0E00FB618B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,6 +34,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B114D2422B57D47400F93A9A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B114D2432B57D47D00F93A9A /* ViewExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		B161B13C2B4D2A0E00FB618B = {
 			isa = PBXGroup;
 			children = (
@@ -51,6 +61,7 @@
 		B161B1472B4D2A0E00FB618B /* GTSwiftUITest */ = {
 			isa = PBXGroup;
 			children = (
+				B114D2422B57D47400F93A9A /* Extension */,
 				B161B1482B4D2A0E00FB618B /* GTSwiftUITestApp.swift */,
 				B161B14A2B4D2A0E00FB618B /* ContentView.swift */,
 				B161B14C2B4D2A0F00FB618B /* Assets.xcassets */,
@@ -137,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B114D2442B57D47D00F93A9A /* ViewExtension.swift in Sources */,
 				B161B14B2B4D2A0E00FB618B /* ContentView.swift in Sources */,
 				B161B1492B4D2A0E00FB618B /* GTSwiftUITestApp.swift in Sources */,
 			);
