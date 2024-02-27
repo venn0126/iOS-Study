@@ -113,6 +113,21 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 }
 
 
+- (void)getRequestAppleProduct:(NSString *)goodsID
+{
+//    self.goodsId = goodsID;//把前面传过来的商品id记录一下，下面要用
+    // 7.这里的com.czchat.CZChat01就对应着苹果后台的商品ID,他们是通过这个ID进行联系的。
+    NSArray *product = [[NSArray alloc] initWithObjects:goodsID,nil];
+    NSSet *nsset = [NSSet setWithArray:product];
+    
+    //SKProductsRequest参考链接：https://developer.apple.com/documentation/storekit/skproductsrequest
+    //SKProductsRequest 一个对象，可以从App Store检索有关指定产品列表的本地化信息。
+    SKProductsRequest *request = [[SKProductsRequest alloc] initWithProductIdentifiers:nsset];// 8.初始化请求
+//    request.delegate = self;
+    [request start];// 9.开始请求
+}
+
+
 - (void)testPickerView {
     
     self.pickerViewData =  @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9"];
