@@ -61,6 +61,7 @@
 		B131C67D2A64022C0099AB19 /* GTClassDump.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B131C67C2A64022C0099AB19 /* GTClassDump.framework */; };
 		B137ABC52A9C94BC005D7971 /* GuanWeakWebViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B137ABC42A9C94BC005D7971 /* GuanWeakWebViewDelegate.m */; };
 		B137ABC82A9C9B19005D7971 /* GuanTestWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = B137ABC72A9C9B19005D7971 /* GuanTestWebController.m */; };
+		B13C48EA2B901E0C006B2DAD /* SNAnimationCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = B13C48E92B901E0C006B2DAD /* SNAnimationCustom.m */; };
 		B143AE6E2A93110000259CBE /* GuanCxxxx.c in Sources */ = {isa = PBXBuildFile; fileRef = B143AE6D2A93110000259CBE /* GuanCxxxx.c */; };
 		B143AE832A93466800259CBE /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B143AE812A93466800259CBE /* KeychainItemWrapper.m */; };
 		B1676A972AD315D60032F433 /* chat_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B1676A962AD315D60032F433 /* chat_bg.png */; };
@@ -223,6 +224,8 @@
 		B137ABC42A9C94BC005D7971 /* GuanWeakWebViewDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuanWeakWebViewDelegate.m; sourceTree = "<group>"; };
 		B137ABC62A9C9B19005D7971 /* GuanTestWebController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuanTestWebController.h; sourceTree = "<group>"; };
 		B137ABC72A9C9B19005D7971 /* GuanTestWebController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuanTestWebController.m; sourceTree = "<group>"; };
+		B13C48E82B901E0C006B2DAD /* SNAnimationCustom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNAnimationCustom.h; sourceTree = "<group>"; };
+		B13C48E92B901E0C006B2DAD /* SNAnimationCustom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNAnimationCustom.m; sourceTree = "<group>"; };
 		B143AE6C2A93110000259CBE /* GuanCxxxx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuanCxxxx.h; sourceTree = "<group>"; };
 		B143AE6D2A93110000259CBE /* GuanCxxxx.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = GuanCxxxx.c; sourceTree = "<group>"; };
 		B143AE812A93466800259CBE /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
@@ -514,6 +517,8 @@
 				B131C5ED2A60E3380099AB19 /* SceneDelegate.m */,
 				B131C5EF2A60E3380099AB19 /* ViewController.h */,
 				B131C5F02A60E3380099AB19 /* ViewController.m */,
+				B13C48E82B901E0C006B2DAD /* SNAnimationCustom.h */,
+				B13C48E92B901E0C006B2DAD /* SNAnimationCustom.m */,
 				B10AF4BD2B4DCB52004D7C70 /* UITapGestureRecognizer+Mock.h */,
 				B10AF4BE2B4DCB52004D7C70 /* UITapGestureRecognizer+Mock.m */,
 				B1DCF8DB2AB0416600F571D4 /* Reachability.h */,
@@ -837,6 +842,7 @@
 				2780CB682A8A765600C15C79 /* NSObject+YYModel.m in Sources */,
 				B101CF2A2AC1F4D5002F52B7 /* ZZNewArchiveEntry.mm in Sources */,
 				2780CB6B2A8A7F8D00C15C79 /* GuanSwitch.m in Sources */,
+				B13C48EA2B901E0C006B2DAD /* SNAnimationCustom.m in Sources */,
 				B10AF4B42B3F454A004D7C70 /* SNSecurityHelper.m in Sources */,
 				2780CB4E2A8A72E400C15C79 /* GuanTableViewDelegate.m in Sources */,
 				B1D54A2B2B04B82C00EFFA42 /* XHTool.m in Sources */,

@@ -31,6 +31,13 @@
 #import "UIImage+LBMCompress.h"
 #import <AppTrackingTransparency/ATTrackingManager.h>
 #import "UITapGestureRecognizer+Mock.h"
+#import "SNAnimationCustom.h"
+#import "UIView+Extension.h"
+
+
+#define WW [[UIScreen mainScreen] bounds].size.width
+#define HH [[UIScreen mainScreen] bounds].size.height
+#define kViewPushAnimation 0.2
 
 
 #define kTaoLiQuickSubmitOrderNofitication @"kTaoLiQuickSubmitOrderNofitication"
@@ -65,6 +72,10 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 
 
 @property (nonatomic, copy) NSArray *pickerViewData;
+@property(nonatomic, strong) UIView *firstPushView;
+@property(nonatomic, strong) UIView *secondPushView;
+@property(nonatomic, strong) UIView *themeView;
+
 
 
 @end
@@ -110,8 +121,92 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     
     [self testPickerView];
     
+    [self setupViewPushUI];
+    
 }
 
+
+#pragma mark - View Push
+
+- (void)setupViewPushUI {
+    
+    _themeView = [[UIView alloc] init];
+    CGFloat themeViewX = 30;
+    CGFloat themeViewW = WW - themeViewX * 2;
+    CGFloat themeFirstHeigt = 200;
+    CGFloat viewY = 300;
+    
+    UIColor *themeColor = [UIColor greenColor];
+    
+    _themeView.frame = CGRectMake(themeViewX, viewY, themeViewW, 0);
+    _themeView.backgroundColor = themeColor;
+    [self.view addSubview:_themeView];
+    
+    CGFloat buttonX = 100;
+    _firstPushView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, themeViewW, themeFirstHeigt)];
+    _firstPushView.backgroundColor = themeColor;
+    _firstPushView.userInteractionEnabled = YES;
+    [_themeView addSubview:_firstPushView];
+    _themeView.height = _firstPushView.height;
+    
+    
+    UIButton *pushButton =[UIButton buttonWithType:UIButtonTypeCustom];
+    pushButton.frame = CGRectMake(buttonX, buttonX, 100, 50);
+    [pushButton addTarget:self action:@selector(pushAction) forControlEvents:UIControlEventTouchUpInside];
+    [pushButton setTitle:@"push" forState:UIControlStateNormal];
+    pushButton.backgroundColor = themeColor;
+    [pushButton setTitleColor: [UIColor blackColor]forState:UIControlStateNormal];
+    [_firstPushView addSubview:pushButton];
+    
+    _secondPushView = [[UIView alloc] initWithFrame:CGRectMake(themeViewW, 0, themeViewW, themeFirstHeigt * 0.5)];
+    _secondPushView.backgroundColor = themeColor;
+    _secondPushView.userInteractionEnabled = YES;
+    _secondPushView.hidden = YES;
+    [_themeView addSubview:_secondPushView];
+    
+    UIButton *popButton =[UIButton buttonWithType:UIButtonTypeCustom];
+    popButton.frame = CGRectMake(buttonX, 0, 100, 50);
+    [popButton addTarget:self action:@selector(popAction) forControlEvents:UIControlEventTouchUpInside];
+    [popButton setTitle:@"pop" forState:UIControlStateNormal];
+    popButton.backgroundColor = themeColor;
+    [popButton setTitleColor: [UIColor blackColor]forState:UIControlStateNormal];
+    [_secondPushView addSubview:popButton];
+    
+}
+
+
+- (void)pushAction {
+    
+    [UIView animateWithDuration:kViewPushAnimation animations:^{
+        self.firstPushView.alpha = 0.01;
+        self.firstPushView.x = self.firstPushView.x - self.firstPushView.width;
+//        self.secondPushView.hidden = NO;
+        self.secondPushView.alpha = 1.0;
+        self.secondPushView.x = self.secondPushView.x - self.secondPushView.width;
+        self.themeView.height = self.secondPushView.height;
+       
+    } completion:^(BOOL finished) {
+//        self.firstPushView.hidden = YES;
+        self.secondPushView.hidden = NO;
+      
+    }];
+
+}
+
+- (void)popAction {
+
+    
+    [UIView animateWithDuration:kViewPushAnimation animations:^{
+//        self.firstPushView.hidden = NO;
+        self.firstPushView.alpha = 1.0;
+        self.firstPushView.x = self.firstPushView.x + self.firstPushView.width;
+        self.secondPushView.x = self.secondPushView.x + self.secondPushView.width;
+        self.themeView.height = self.firstPushView.height;
+        self.secondPushView.alpha = 0.01;
+    } completion:^(BOOL finished) {
+//        self.secondPushView.hidden = YES;
+    }];
+}
 
 - (void)getRequestAppleProduct:(NSString *)goodsID
 {
