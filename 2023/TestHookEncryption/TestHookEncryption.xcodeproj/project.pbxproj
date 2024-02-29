@@ -62,6 +62,7 @@
 		B137ABC52A9C94BC005D7971 /* GuanWeakWebViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B137ABC42A9C94BC005D7971 /* GuanWeakWebViewDelegate.m */; };
 		B137ABC82A9C9B19005D7971 /* GuanTestWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = B137ABC72A9C9B19005D7971 /* GuanTestWebController.m */; };
 		B13C48EA2B901E0C006B2DAD /* SNAnimationCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = B13C48E92B901E0C006B2DAD /* SNAnimationCustom.m */; };
+		B13C48ED2B90837C006B2DAD /* GTAppStorePay.m in Sources */ = {isa = PBXBuildFile; fileRef = B13C48EC2B90837C006B2DAD /* GTAppStorePay.m */; };
 		B143AE6E2A93110000259CBE /* GuanCxxxx.c in Sources */ = {isa = PBXBuildFile; fileRef = B143AE6D2A93110000259CBE /* GuanCxxxx.c */; };
 		B143AE832A93466800259CBE /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B143AE812A93466800259CBE /* KeychainItemWrapper.m */; };
 		B1676A972AD315D60032F433 /* chat_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B1676A962AD315D60032F433 /* chat_bg.png */; };
@@ -226,6 +227,8 @@
 		B137ABC72A9C9B19005D7971 /* GuanTestWebController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuanTestWebController.m; sourceTree = "<group>"; };
 		B13C48E82B901E0C006B2DAD /* SNAnimationCustom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNAnimationCustom.h; sourceTree = "<group>"; };
 		B13C48E92B901E0C006B2DAD /* SNAnimationCustom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNAnimationCustom.m; sourceTree = "<group>"; };
+		B13C48EB2B90837C006B2DAD /* GTAppStorePay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTAppStorePay.h; sourceTree = "<group>"; };
+		B13C48EC2B90837C006B2DAD /* GTAppStorePay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTAppStorePay.m; sourceTree = "<group>"; };
 		B143AE6C2A93110000259CBE /* GuanCxxxx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuanCxxxx.h; sourceTree = "<group>"; };
 		B143AE6D2A93110000259CBE /* GuanCxxxx.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = GuanCxxxx.c; sourceTree = "<group>"; };
 		B143AE812A93466800259CBE /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
@@ -508,6 +511,8 @@
 				B1676B042AD5B0920032F433 /* MengTableView */,
 				B131C5E92A60E3380099AB19 /* AppDelegate.h */,
 				B131C5EA2A60E3380099AB19 /* AppDelegate.m */,
+				B13C48EB2B90837C006B2DAD /* GTAppStorePay.h */,
+				B13C48EC2B90837C006B2DAD /* GTAppStorePay.m */,
 				B10AF4B22B3F454A004D7C70 /* SNSecurityHelper.h */,
 				B10AF4B32B3F454A004D7C70 /* SNSecurityHelper.m */,
 				B10AF4B92B402431004D7C70 /* PtraceHeader.h */,
@@ -875,6 +880,7 @@
 				B101CF392AC1F4D5002F52B7 /* ZZOldArchiveEntry.mm in Sources */,
 				B101CF362AC1F4D5002F52B7 /* ZZDataChannel.m in Sources */,
 				B131C5EE2A60E3380099AB19 /* SceneDelegate.m in Sources */,
+				B13C48ED2B90837C006B2DAD /* GTAppStorePay.m in Sources */,
 				B101CF2C2AC1F4D5002F52B7 /* ZZStandardCryptoEngine.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
