@@ -13,20 +13,25 @@
 - (void)layoutButtonWithEdgeInsetsStyle:(GTButtonEdgeInsetsStyle)style
                         imageTitleSpace:(CGFloat)space
 {
+
+    // 设置填充模式
+    // self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+
     // 1. 得到imageView和titleLabel的宽、高
     double imageWith = self.imageView.image.size.width;
     double imageHeight = self.imageView.image.size.height;
-    
-    //  图片过大
-    if(imageWith > self.frame.size.width) {
-        // 进行等比例缩放
-        double smallWidth = 20;
-        double smallHeight = imageHeight * smallWidth / imageWith;
 
-        imageWith = smallWidth;
-        imageHeight = smallHeight;
-    }
-    
+
+    // 2. 图片过大
+//    if(imageWith > self.frame.size.width) {
+//        // 进行等比例缩放
+//        double smallWidth = self.frame.size.width * 0.5;
+//        double smallHeight = imageHeight * smallWidth / imageWith;
+//
+//        imageWith = smallWidth;
+//        imageHeight = smallHeight;
+//    }
+
     
     CGFloat labelWidth = 0.0;
     CGFloat labelHeight = 0.0;
