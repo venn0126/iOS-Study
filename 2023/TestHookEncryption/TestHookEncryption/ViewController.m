@@ -34,6 +34,8 @@
 #import "SNAnimationCustom.h"
 #import "UIView+Extension.h"
 #import "UIButton+Extension.h"
+#import "UIImage+Extension.h"
+#import "GTCustomButton.h"
 
 #define WW [[UIScreen mainScreen] bounds].size.width
 #define HH [[UIScreen mainScreen] bounds].size.height
@@ -123,19 +125,46 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 //    
 //    [self setupViewPushUI];
     
-    [self testCustomButtonLayoutAndShowBigImage];
+//    [self testCustomButtonLayoutAndShowBigImage];
     
+    [self testCustomShowBigImage];
+    
+}
+
+
+- (void)testCustomShowBigImage {
+    
+    UIImage *buttonImage = [UIImage imageNamed:@"gt_goods_list"];
+
+    CGFloat padding = 5.0;
+    CGFloat buttonWidth = (WW - 4 * padding) / 3.0;
+    CGFloat buttonHeight = 40.0;
+    GTCustomButton *button = [[GTCustomButton alloc] initWithTitle:@"就是爱你" image:buttonImage frame:CGRectZero];
+    button.frame = CGRectMake(100, 400, buttonWidth, buttonHeight);
+    [button addTarget:self action:@selector(gt_buttonAction:)];
+    [self.view addSubview:button];
+    
+}
+
+
+- (void)gt_buttonAction:(UITapGestureRecognizer *)tap {
+    NSLog(@"button action.... %ld",tap.view.tag);
+
 }
 
 
 - (void)testCustomButtonLayoutAndShowBigImage {
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setImage:[UIImage imageNamed:@"gt_goods_list"] forState:UIControlStateNormal];
-    [button setTitle:@"就是爱你" forState:UIControlStateNormal];
+    
+//    UIImage *buttonImage = [UIImage gt_imageWithImageSimple:[UIImage imageNamed:@"gt_goods_list"] scaledToWidth:35.0];
+    UIImage *buttonImage = [UIImage imageNamed:@"gt_goods_list"];
+    [button setImage:buttonImage forState:UIControlStateNormal];
+//    [button setTitle:@"就是爱你" forState:UIControlStateNormal];
     [button setTitleColor:UIColor.blackColor forState:UIControlStateNormal];
     button.backgroundColor = UIColor.greenColor;
     button.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
 //    button.contentMode = UIViewContentModeScaleAspectFit;
     CGFloat imageWidth = 30.0;
     CGFloat padding = 5.0;
@@ -145,19 +174,21 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     CGFloat HorizontalPadding = buttonWidth*0.35;
     // EdgeInsets 值为正时向内收缩,值为负,向外扩张
     //
-    CGFloat spacing = 2;
-    button.imageEdgeInsets = UIEdgeInsetsMake(padding, -30, padding, spacing/2);
-    button.titleEdgeInsets = UIEdgeInsetsMake(0, -100, 0, 0);
+//    CGFloat spacing = 2;
+//    button.imageEdgeInsets = UIEdgeInsetsMake(padding, -50, padding, spacing/2);
+//    button.titleEdgeInsets = UIEdgeInsetsMake(0, -150, 0, 0);
     
     // left 为0时,titleLabel的左侧不动; 正值,titlelabel的左侧向内收缩,表现出现就是右移;负值,titlelabel的左侧向外扩张,表现出来就是左移
     // right 为0时,titleLabel的右侧不动;正值,titleLabel的右侧向内收缩,左移;负值,titleLabel的左侧向外扩张,右移
     // top 为0时,titleLabel的上侧不动;正值,titleLabel的上侧向内收缩,下移;负值,titleLabel的上侧向外扩张,上移
     // bottom为0,titleLabel的下侧不动,正值,titleLabel的下侧向内收缩,上移;负值,titleLabel的下侧向外扩张,下移
 //    button.titleEdgeInsets = UIEdgeInsetsMake(0, -550, 0, 0);
-//    [button layoutButtonWithEdgeInsetsStyle:GTButtonEdgeInsetsStyleLeft imageTitleSpace:0.25];
+//    [button layoutButtonWithEdgeInsetsStyle:GTButtonEdgeInsetsStyleLeft imageTitleSpace:2];
 
     
-    button.frame = CGRectMake(100, 400, buttonWidth, buttonHeight);
+    button.frame = CGRectMake(100, 400, buttonHeight, buttonHeight);
+    
+    
     [self.view addSubview:button];
 
 

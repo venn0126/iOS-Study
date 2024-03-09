@@ -95,6 +95,8 @@
 		B1D171782A8A1B46001A0300 /* JCCSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D171772A8A1B46001A0300 /* JCCSettingsController.m */; };
 		B1D315302ABF178900519DF6 /* UIImage+Compress.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D3152F2ABF178900519DF6 /* UIImage+Compress.m */; };
 		B1D54A2B2B04B82C00EFFA42 /* XHTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D54A2A2B04B82C00EFFA42 /* XHTool.m */; };
+		B1D6E33F2B9C8F2F00EFC11B /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D6E33E2B9C8F2F00EFC11B /* UIImage+Extension.m */; };
+		B1D6E3422B9C9B7700EFC11B /* GTCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D6E3412B9C9B7700EFC11B /* GTCustomButton.m */; };
 		B1DCF8DD2AB0416600F571D4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B1DCF8DC2AB0416600F571D4 /* Reachability.m */; };
 		B1E9840D2B2C28E800D6267B /* Preahvihear-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B1E9840C2B2C28E800D6267B /* Preahvihear-Regular.ttf */; };
 		B1F27E1D2A8B153E00E7B415 /* GuanUITool.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F27E1C2A8B153E00E7B415 /* GuanUITool.m */; };
@@ -289,6 +291,10 @@
 		B1D3152F2ABF178900519DF6 /* UIImage+Compress.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Compress.m"; sourceTree = "<group>"; };
 		B1D54A292B04B82C00EFFA42 /* XHTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHTool.h; sourceTree = "<group>"; };
 		B1D54A2A2B04B82C00EFFA42 /* XHTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHTool.m; sourceTree = "<group>"; };
+		B1D6E33D2B9C8F2F00EFC11B /* UIImage+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
+		B1D6E33E2B9C8F2F00EFC11B /* UIImage+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
+		B1D6E3402B9C9B7700EFC11B /* GTCustomButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTCustomButton.h; sourceTree = "<group>"; };
+		B1D6E3412B9C9B7700EFC11B /* GTCustomButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTCustomButton.m; sourceTree = "<group>"; };
 		B1DCF8DB2AB0416600F571D4 /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		B1DCF8DC2AB0416600F571D4 /* Reachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		B1E9840C2B2C28E800D6267B /* Preahvihear-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Preahvihear-Regular.ttf"; sourceTree = "<group>"; };
@@ -527,6 +533,8 @@
 				B131C5ED2A60E3380099AB19 /* SceneDelegate.m */,
 				B131C5EF2A60E3380099AB19 /* ViewController.h */,
 				B131C5F02A60E3380099AB19 /* ViewController.m */,
+				B1D6E3402B9C9B7700EFC11B /* GTCustomButton.h */,
+				B1D6E3412B9C9B7700EFC11B /* GTCustomButton.m */,
 				B13C48E82B901E0C006B2DAD /* SNAnimationCustom.h */,
 				B13C48E92B901E0C006B2DAD /* SNAnimationCustom.m */,
 				B10AF4BD2B4DCB52004D7C70 /* UITapGestureRecognizer+Mock.h */,
@@ -565,6 +573,8 @@
 				B11D7E222AA0D120009F8ADD /* UIButton+Extension.m */,
 				B1D3152E2ABF178900519DF6 /* UIImage+Compress.h */,
 				B1D3152F2ABF178900519DF6 /* UIImage+Compress.m */,
+				B1D6E33D2B9C8F2F00EFC11B /* UIImage+Extension.h */,
+				B1D6E33E2B9C8F2F00EFC11B /* UIImage+Extension.m */,
 				B17035F52AD9214200430753 /* UIWindow+Screenshot.h */,
 				B17035F62AD9214200430753 /* UIWindow+Screenshot.m */,
 				B143AE6C2A93110000259CBE /* GuanCxxxx.h */,
@@ -829,6 +839,7 @@
 				B16ABCB42A66250400A4EC12 /* NSBundle+GTInfo.m in Sources */,
 				B1676B032AD5AF6E0032F433 /* MengSettingController.m in Sources */,
 				2780CB5D2A8A742B00C15C79 /* GuanRightLabelTableCell.m in Sources */,
+				B1D6E33F2B9C8F2F00EFC11B /* UIImage+Extension.m in Sources */,
 				B101CF322AC1F4D5002F52B7 /* ZZConstants.m in Sources */,
 				B101CF3C2AC1F4D5002F52B7 /* ZZStandardDecryptInputStream.mm in Sources */,
 				2780CB672A8A765600C15C79 /* YYClassInfo.m in Sources */,
@@ -868,6 +879,7 @@
 				B16ABCAE2A6503E300A4EC12 /* GTFileTools.m in Sources */,
 				B101CF3A2AC1F4D5002F52B7 /* ZZFileChannel.m in Sources */,
 				B1A0C27F2A7D14F500F60D31 /* UIAlertController+AddAction.m in Sources */,
+				B1D6E3422B9C9B7700EFC11B /* GTCustomButton.m in Sources */,
 				B1A0C2692A7B9AD100F60D31 /* NSObject+SelectorDefender.m in Sources */,
 				2780CB542A8A736E00C15C79 /* GuanTableView.m in Sources */,
 				B143AE6E2A93110000259CBE /* GuanCxxxx.c in Sources */,
