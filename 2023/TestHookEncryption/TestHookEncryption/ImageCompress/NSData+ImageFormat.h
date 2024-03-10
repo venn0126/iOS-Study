@@ -11,8 +11,8 @@
  图片类型
  */
 typedef NS_ENUM(NSUInteger, LBMImageFormat) {
-    LBMImageFormatUndefined = -1,
-    LBMImageFormatJPEG = 0,
+    LBMImageFormatUndefined = 0,
+    LBMImageFormatJPEG = 1,
     LBMImageFormatPNG,
     LBMImageFormatGIF,
     LBMImageFormatTIFF,

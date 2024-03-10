@@ -82,6 +82,12 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 
 @end
 
+
+struct GTPerson {
+    char name[50];
+    int age;
+};
+
 @implementation ViewController
 
 
@@ -129,6 +135,23 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     
     [self testCustomShowBigImage];
     
+//    [self addIdaOfStruct];
+    
+}
+
+
+- (void)addIdaOfStruct {
+
+    struct GTPerson person1;
+
+    strcpy(person1.name, "augus");
+    person1.age = 19;
+    
+    printf( "person1 name : %s\n", person1.name);
+    printf( "person1 age1 : %d\n", person1.age);
+
+    
+    
 }
 
 
@@ -139,7 +162,7 @@ static const NSInteger kAugusButtonTagOffset = 10000;
     CGFloat padding = 5.0;
     CGFloat buttonWidth = (WW - 4 * padding) / 3.0;
     CGFloat buttonHeight = 40.0;
-    GTCustomButton *button = [[GTCustomButton alloc] initWithTitle:@"就是爱你" image:buttonImage frame:CGRectZero];
+    GTCustomButton *button = [[GTCustomButton alloc] initWithTitle:@"就是爱你就是爱你就是爱你就是爱你就是爱你" image:buttonImage frame:CGRectZero];
     button.frame = CGRectMake(100, 400, buttonWidth, buttonHeight);
     [button addTarget:self action:@selector(gt_buttonAction:)];
     [self.view addSubview:button];

@@ -6,13 +6,19 @@
 //
 
 #import "GTCustomButton.h"
+#import "NSString+Extension.h"
+#import "UIView+Extension.h"
 
-@interface GTCustomButton ()
+
+static const CGFloat kImageViewLabelPadding = 5.0;
+
+@interface GTCustomButton ()<UIScrollViewDelegate>
 
 @property(nonatomic, copy) NSString *title;
 @property(nonatomic, strong) UIImage *image;
 
 @property(nonatomic, strong) UIImageView *buttonImageView;
+@property(nonatomic, strong) UIScrollView *containerView;
 
 @end
 
@@ -25,7 +31,7 @@
     _title = title;
     _image = image;
     
-    self.backgroundColor = UIColor.greenColor;
+    self.backgroundColor = UIColor.redColor;
     
     [self gt_setupUI];
         
@@ -37,17 +43,20 @@
 
 - (void)gt_setupUI {
     
+    [self addSubview:self.containerView];
     
     self.buttonImageView.image = _image;
-    [self addSubview:self.buttonImageView];
+    [self.containerView addSubview:self.buttonImageView];
     
     self.buttonLabel.text = _title;
-    [self addSubview:self.buttonLabel];
+    [self.containerView addSubview:self.buttonLabel];
     
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    
+    self.containerView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
     
     // 总的宽度是外部传入的宽度
     CGFloat padding = 5.0;
@@ -60,11 +69,22 @@
     
     // 计算label
     CGFloat labelX = imageViewX + imageViewW + padding;
-    CGFloat labelW = self.frame.size.width - padding - labelX;
-    self.buttonLabel.frame = CGRectMake(labelX, 0, labelW, self.frame.size.height);
+    // 计算文本的size
+    CGSize textSize = [_title gt_singleLineTextSizeForMaxWidth:MAXFLOAT font:_buttonLabel.font];
+    CGFloat labelW = textSize.width;
+    CGFloat actualWidth = labelX + labelW + padding;
+    if(actualWidth < self.frame.size.width) {
+        // 重新计算padding
+        padding = (self.frame.size.width - kImageViewLabelPadding - labelW - imageViewW) * 0.5;
+    }
     
-    int a =  floor(3.1);
+    self.buttonImageView.left = padding;
     
+    self.buttonLabel.frame = CGRectMake(self.buttonImageView.right + 5.0, 0, labelW, self.frame.size.height);
+    
+    self.containerView.contentSize = CGSizeMake(self.buttonLabel.right + padding, 0);
+
+        
 }
 
 #pragma mark - Public Methods
@@ -74,12 +94,32 @@
     [self addGestureRecognizer:tap];
 }
 
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    
+    NSLog(@"scroll shouldRecognizeSimultaneouslyWithGestureRecognizer");
+    
+    return YES;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    NSLog(@"scrollViewDidScroll %@",scrollView);
+}
+
+
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    UIView *view = [super hitTest:point withEvent:event];
+    
+    return view;
+}
+
+
 #pragma mark - Lazy Load
 
 - (UILabel *)buttonLabel {
     if(!_buttonLabel) {
         _buttonLabel = [[UILabel alloc] init];
-        _buttonLabel.font = [UIFont systemFontOfSize:16];
+        _buttonLabel.font = [UIFont boldSystemFontOfSize:15];
         _buttonLabel.textColor = UIColor.blackColor;
         _buttonLabel.textAlignment = NSTextAlignmentCenter;
         _buttonLabel.userInteractionEnabled = YES;
@@ -95,6 +135,20 @@
         _buttonImageView.userInteractionEnabled = YES;
     }
     return _buttonImageView;
+}
+
+- (UIScrollView *)containerView {
+    if(!_containerView) {
+        _containerView = [[UIScrollView alloc] initWithFrame:self.bounds];
+        // 仅设置水平方向滚动
+        _containerView.contentSize = CGSizeMake(self.frame.size.width, 0);
+        _containerView.showsHorizontalScrollIndicator = NO;
+        _containerView.backgroundColor = UIColor.greenColor;
+        _containerView.userInteractionEnabled = YES;
+        _containerView.delegate = self;
+//        _containerView.bounces = NO;
+    }
+    return _containerView;
 }
 
 
