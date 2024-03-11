@@ -10,6 +10,8 @@
 #import "GuanWeakWebViewDelegate.h"
 #import "GuanUITool.h"
 
+static const CGFloat kProgressViewHeight = 0.5;
+
 @interface GuanTestWebController ()<WKScriptMessageHandler, WKUIDelegate, WKNavigationDelegate>
 
 
@@ -62,7 +64,7 @@
 
 - (void)openPageString:(NSString *)string {
     if(!string || string.length == 0) {
-        string = @"http://app-first.tiktokv.top/";
+        string = @"https://www.sohu.com";
     }
     
     NSURL *url = [NSURL URLWithString:string];
@@ -410,9 +412,10 @@
 
 - (UIProgressView *)progressView {
     if (!_progressView){
-        _progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, [GuanUITool guan_navigationViewHeight] + 2, self.view.frame.size.width, 2)];
+        _progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, [GuanUITool guan_navigationViewHeight], self.view.frame.size.width, kProgressViewHeight)];
         _progressView.tintColor = [UIColor blueColor];
         _progressView.trackTintColor = [UIColor clearColor];
+        _progressView.transform =  CGAffineTransformMakeScale(1, kProgressViewHeight);
     }
     return _progressView;
 }

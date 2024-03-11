@@ -36,6 +36,8 @@
 #import "UIButton+Extension.h"
 #import "UIImage+Extension.h"
 #import "GTCustomButton.h"
+#import "GuanUITool.h"
+#import "GTTestCollectionCell.h"
 
 #define WW [[UIScreen mainScreen] bounds].size.width
 #define HH [[UIScreen mainScreen] bounds].size.height
@@ -63,7 +65,7 @@
 
 static const NSInteger kAugusButtonTagOffset = 10000;
 
-@interface ViewController ()<NSURLSessionDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
+@interface ViewController ()<NSURLSessionDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UICollectionViewDataSource>
 
 @property (retain, nonatomic) SKPaymentTransaction *transaction;
 
@@ -77,6 +79,8 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 @property(nonatomic, strong) UIView *firstPushView;
 @property(nonatomic, strong) UIView *secondPushView;
 @property(nonatomic, strong) UIView *themeView;
+@property(nonatomic, strong) UICollectionView *gtCollectionView;
+
 
 
 
@@ -133,9 +137,37 @@ struct GTPerson {
     
 //    [self testCustomButtonLayoutAndShowBigImage];
     
-    [self testCustomShowBigImage];
+//    [self testCustomShowBigImage];
     
 //    [self addIdaOfStruct];
+    
+//    [self testCollectionViewAddScrollView];
+    
+}
+
+
+- (void)testCollectionViewAddScrollView {
+    
+    [self.view addSubview:self.gtCollectionView];
+}
+
+
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return 1;
+}
+
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return  20;
+}
+
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    GTTestCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([GTTestCollectionCell class]) forIndexPath:indexPath];
+    [cell configureModel:[NSString stringWithFormat:@"哈哈哈哈哈%ld",indexPath.row]];
+    return cell;
     
 }
 
@@ -162,7 +194,7 @@ struct GTPerson {
     CGFloat padding = 5.0;
     CGFloat buttonWidth = (WW - 4 * padding) / 3.0;
     CGFloat buttonHeight = 40.0;
-    GTCustomButton *button = [[GTCustomButton alloc] initWithTitle:@"就是爱你就是爱你就是爱你就是爱你就是爱你" image:buttonImage frame:CGRectZero];
+    GTCustomButton *button = [[GTCustomButton alloc] initWithTitle:@"就是爱你爱着你爱着爱上撒但是所得税" image:buttonImage frame:CGRectZero];
     button.frame = CGRectMake(100, 400, buttonWidth, buttonHeight);
     [button addTarget:self action:@selector(gt_buttonAction:)];
     [self.view addSubview:button];
@@ -1442,7 +1474,7 @@ static void gtgtgtgtgt(id self) {
 //            [self jumpJCCSetting];
 //            [self testToast];
             gtgtgtgtgt(self);
-//            [self testWebLoadURL];
+            [self testWebLoadURL];
             break;
         }
         case 10001:{
@@ -1573,5 +1605,28 @@ static void gtgtgtgtgt(id self) {
     return _testImageView;
 }
 
+
+- (UICollectionView *)gtCollectionView {
+    if(!_gtCollectionView) {
+        
+        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+        layout.itemSize = CGSizeMake(WW, 200);
+        layout.minimumLineSpacing = 10;
+        layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        
+        _gtCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, [GuanUITool guan_navigationViewHeight], WW, 400) collectionViewLayout:layout];
+    
+        _gtCollectionView.backgroundColor = [UIColor clearColor];
+        _gtCollectionView.pagingEnabled = YES;
+        _gtCollectionView.showsHorizontalScrollIndicator = NO;
+        _gtCollectionView.showsVerticalScrollIndicator = NO;
+        
+        [_gtCollectionView registerClass:[GTTestCollectionCell class] forCellWithReuseIdentifier:NSStringFromClass([GTTestCollectionCell class])];
+
+        
+        _gtCollectionView.dataSource = self;
+    }
+    return _gtCollectionView;
+}
 
 @end

@@ -64,6 +64,7 @@
 		B13C48EA2B901E0C006B2DAD /* SNAnimationCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = B13C48E92B901E0C006B2DAD /* SNAnimationCustom.m */; };
 		B13C48ED2B90837C006B2DAD /* GTAppStorePay.m in Sources */ = {isa = PBXBuildFile; fileRef = B13C48EC2B90837C006B2DAD /* GTAppStorePay.m */; };
 		B13C49142B9AF754006B2DAD /* UIButton+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B13C49132B9AF754006B2DAD /* UIButton+Extension.m */; };
+		B13C49172B9EE54A006B2DAD /* GTTestCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B13C49162B9EE54A006B2DAD /* GTTestCollectionCell.m */; };
 		B143AE6E2A93110000259CBE /* GuanCxxxx.c in Sources */ = {isa = PBXBuildFile; fileRef = B143AE6D2A93110000259CBE /* GuanCxxxx.c */; };
 		B143AE832A93466800259CBE /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B143AE812A93466800259CBE /* KeychainItemWrapper.m */; };
 		B1676A972AD315D60032F433 /* chat_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B1676A962AD315D60032F433 /* chat_bg.png */; };
@@ -235,6 +236,8 @@
 		B13C48EC2B90837C006B2DAD /* GTAppStorePay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTAppStorePay.m; sourceTree = "<group>"; };
 		B13C49122B9AF754006B2DAD /* UIButton+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Extension.h"; sourceTree = "<group>"; };
 		B13C49132B9AF754006B2DAD /* UIButton+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Extension.m"; sourceTree = "<group>"; };
+		B13C49152B9EE54A006B2DAD /* GTTestCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTTestCollectionCell.h; sourceTree = "<group>"; };
+		B13C49162B9EE54A006B2DAD /* GTTestCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTTestCollectionCell.m; sourceTree = "<group>"; };
 		B143AE6C2A93110000259CBE /* GuanCxxxx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuanCxxxx.h; sourceTree = "<group>"; };
 		B143AE6D2A93110000259CBE /* GuanCxxxx.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = GuanCxxxx.c; sourceTree = "<group>"; };
 		B143AE812A93466800259CBE /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
@@ -536,6 +539,8 @@
 				B131C5ED2A60E3380099AB19 /* SceneDelegate.m */,
 				B131C5EF2A60E3380099AB19 /* ViewController.h */,
 				B131C5F02A60E3380099AB19 /* ViewController.mm */,
+				B13C49152B9EE54A006B2DAD /* GTTestCollectionCell.h */,
+				B13C49162B9EE54A006B2DAD /* GTTestCollectionCell.m */,
 				B1D6E3402B9C9B7700EFC11B /* GTCustomButton.h */,
 				B1D6E3412B9C9B7700EFC11B /* GTCustomButton.m */,
 				B1D6E3432B9DFD4100EFC11B /* NSString+Extension.h */,
@@ -891,6 +896,7 @@
 				B143AE6E2A93110000259CBE /* GuanCxxxx.c in Sources */,
 				B101CF2D2AC1F4D5002F52B7 /* ZZAESDecryptInputStream.mm in Sources */,
 				B1D315302ABF178900519DF6 /* UIImage+Compress.m in Sources */,
+				B13C49172B9EE54A006B2DAD /* GTTestCollectionCell.m in Sources */,
 				B101CF382AC1F4D5002F52B7 /* ZZNewArchiveEntryWriter.mm in Sources */,
 				B101CF312AC1F4D5002F52B7 /* ZZInflateInputStream.m in Sources */,
 				B1C1CD5A2A90D2DB0007A5F1 /* UIView+Toast.m in Sources */,
