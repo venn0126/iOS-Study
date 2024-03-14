@@ -96,6 +96,20 @@ static const CGFloat kProgressViewHeight = 0.5;
     [_webView loadRequest:request];
 }
 
+// 自定义UserAgent
+- (void)setupCustomUserAgent:(WKWebView *)webView
+{
+    [webView evaluateJavaScript:@"navigator.userAgent" completionHandler:^(NSString *aUserAgent, NSError *aError) {
+        
+        NSString *sCustomUserAgent = @"tiktok";
+        if (aUserAgent.length > 0 && aError == nil) {
+            sCustomUserAgent = [NSString stringWithFormat:@"%@ %@", aUserAgent, sCustomUserAgent];
+        }
+        
+        webView.customUserAgent = sCustomUserAgent;
+    }];
+}
+
 
 
 #pragma mark - UI
@@ -478,6 +492,8 @@ static const CGFloat kProgressViewHeight = 0.5;
 //        NSString *path = [[NSBundle mainBundle] pathForResource:@"JStoOC.html" ofType:nil];
 //        NSString *htmlString = [[NSString alloc]initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
 //        [_webView loadHTMLString:htmlString baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]];
+        
+        [self setupCustomUserAgent:_webView];
         
     }
     return _webView;
