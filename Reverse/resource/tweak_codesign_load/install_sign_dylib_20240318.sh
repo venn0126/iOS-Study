@@ -91,12 +91,10 @@ if [ ! -d "$frame_works_path" ]; then
 fi
 
 # 拷贝动态库到Frameworks
-#my_dylibs=($my_path$tweak_dylib_name $my_path$cydiaSubstrate_name $my_path$lib_substitute0_name)
-my_dylibs=($my_path$tweak_dylib_name $my_path$lib_substitute0_name)
-
+my_dylibs=($my_path$tweak_dylib_name $my_path$cydiaSubstrate_name $my_path$lib_substitute0_name)
 valid_dylib_count=0
-total_dylib_count=2
-for(( i=0;i<${#my_dylibs[@]};i++))
+total_dylib_count=3
+for(( i=0;i<${#my_dylibs[@]};i++)) 
 #${#array[@]}获取数组长度用于循环
 do
     echo ${my_dylibs[i]}
@@ -160,9 +158,7 @@ if [ -z "$temp_file_read_result_0" ]; then
    	echo "动态库 $cydiaSubstrate_name 文件不包含被 $tweak_dylib_name 加载路径，或已经修改完成"
    	otool -L $tweak_dylib_name
 else
-#	install_name_tool -change $old_cydia_substrate_path$cydiaSubstrate_name $loader_path$cydiaSubstrate_name $tweak_dylib_name
-    install_name_tool -change $old_cydia_substrate_path$cydiaSubstrate_name $loader_path$lib_substitute0_name $tweak_dylib_name
-
+	install_name_tool -change $old_cydia_substrate_path$cydiaSubstrate_name $loader_path$cydiaSubstrate_name $tweak_dylib_name
 fi
 
 
@@ -170,19 +166,19 @@ fi
 # CydiaSubstrate操作
 # 对依赖的libsubstitute.0.dylib进行加载路径修改
 # install_name_tool -change /usr/lib/libsubstitute.0.dylib @loader_path/libsubstitute.0.dylib CydiaSubstrate
-#temp_log_name_1="temp1.log"
-#otool -L $cydiaSubstrate_name | grep $old_libsubstitute_0_dylib_path$lib_substitute0_name > $temp_log_name_1
-#temp_file_read_result_1=`cat $temp_log_name_1`
-#echo "$temp_file_read_result_1"
-## 删除临时文件
-#rm -rf $temp_log_name_1
-#
-#if [ -z "$temp_file_read_result_1" ]; then
-#   	echo "动态库 $lib_substitute0_name 文件不包含被 $cydiaSubstrate_name 加载路径，或已经修改完成"
-#   	otool -L $cydiaSubstrate_name
-#else 
-#	install_name_tool -change $old_libsubstitute_0_dylib_path$lib_substitute0_name $loader_path$lib_substitute0_name $cydiaSubstrate_name
-#fi
+temp_log_name_1="temp1.log"
+otool -L $cydiaSubstrate_name | grep $old_libsubstitute_0_dylib_path$lib_substitute0_name > $temp_log_name_1
+temp_file_read_result_1=`cat $temp_log_name_1`
+echo "$temp_file_read_result_1"
+# 删除临时文件
+rm -rf $temp_log_name_1
+
+if [ -z "$temp_file_read_result_1" ]; then
+   	echo "动态库 $lib_substitute0_name 文件不包含被 $cydiaSubstrate_name 加载路径，或已经修改完成"
+   	otool -L $cydiaSubstrate_name
+else 
+	install_name_tool -change $old_libsubstitute_0_dylib_path$lib_substitute0_name $loader_path$lib_substitute0_name $cydiaSubstrate_name
+fi
 
 # 对frameworks进行整体重签名操作
 for dylib in `ls $1`
