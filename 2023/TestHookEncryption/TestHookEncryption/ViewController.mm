@@ -38,6 +38,7 @@
 #import "GTCustomButton.h"
 #import "GuanUITool.h"
 #import "GTTestCollectionCell.h"
+#import "UIView+VAP.h"
 
 #define WW [[UIScreen mainScreen] bounds].size.width
 #define HH [[UIScreen mainScreen] bounds].size.height
@@ -143,6 +144,19 @@ struct GTPerson {
     
 //    [self testCollectionViewAddScrollView];
     
+    [self testViewPlayMP4Video];
+}
+
+
+- (void)testViewPlayMP4Video {
+    
+    UIView *tempView = [[UIView alloc] initWithFrame:CGRectMake(0, 100, self.view.width, self.view.height * 0.5)];
+    tempView.backgroundColor = UIColor.whiteColor;
+    [self.view addSubview:tempView];
+    
+    
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"meng_earth_demo" ofType:@"mp4"];
+    [tempView playHWDMP4:filePath repeatCount:-1 delegate:nil];
 }
 
 

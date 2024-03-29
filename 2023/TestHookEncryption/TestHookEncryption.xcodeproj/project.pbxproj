@@ -101,6 +101,45 @@
 		B1D6E3452B9DFD4100EFC11B /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D6E3442B9DFD4100EFC11B /* NSString+Extension.m */; };
 		B1DCF8DD2AB0416600F571D4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B1DCF8DC2AB0416600F571D4 /* Reachability.m */; };
 		B1E9840D2B2C28E800D6267B /* Preahvihear-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B1E9840C2B2C28E800D6267B /* Preahvihear-Regular.ttf */; };
+		B1F006632BB6967B000A0088 /* NSArray+VAPUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F006142BB6967B000A0088 /* NSArray+VAPUtil.m */; };
+		B1F006642BB6967B000A0088 /* NSDictionary+VAPUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F006162BB6967B000A0088 /* NSDictionary+VAPUtil.m */; };
+		B1F006652BB6967B000A0088 /* NSNotificationCenter+VAPThreadSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F006182BB6967B000A0088 /* NSNotificationCenter+VAPThreadSafe.m */; };
+		B1F006662BB6967B000A0088 /* QGAnimatedImageBufferManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F0061A2BB6967B000A0088 /* QGAnimatedImageBufferManager.m */; };
+		B1F006672BB6967B000A0088 /* QGAnimatedImageDecodeConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F0061C2BB6967B000A0088 /* QGAnimatedImageDecodeConfig.m */; };
+		B1F006682BB6967B000A0088 /* QGAnimatedImageDecodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F0061E2BB6967B000A0088 /* QGAnimatedImageDecodeManager.m */; };
+		B1F006692BB6967B000A0088 /* QGAnimatedImageDecodeThread.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F006202BB6967B000A0088 /* QGAnimatedImageDecodeThread.m */; };
+		B1F0066A2BB6967B000A0088 /* QGAnimatedImageDecodeThreadPool.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F006222BB6967B000A0088 /* QGAnimatedImageDecodeThreadPool.m */; };
+		B1F0066B2BB6967B000A0088 /* QGBaseAnimatedImageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F006242BB6967B000A0088 /* QGBaseAnimatedImageFrame.m */; };
+		B1F0066C2BB6967B000A0088 /* QGBaseAnimatedImageFrame+Displaying.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F006262BB6967B000A0088 /* QGBaseAnimatedImageFrame+Displaying.m */; };
+		B1F0066D2BB6967B000A0088 /* QGBaseDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F006282BB6967B000A0088 /* QGBaseDecoder.m */; };
+		B1F0066E2BB6967B000A0088 /* QGBaseDFileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F0062A2BB6967B000A0088 /* QGBaseDFileInfo.m */; };
+		B1F0066F2BB6967B000A0088 /* QGHWDMetalRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F0062C2BB6967B000A0088 /* QGHWDMetalRenderer.m */; };
+		B1F006702BB6967B000A0088 /* QGHWDMetalView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F0062F2BB6967B000A0088 /* QGHWDMetalView.m */; };
+		B1F006712BB6967B000A0088 /* QGHWDMP4OpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F006312BB6967B000A0088 /* QGHWDMP4OpenGLView.m */; };
+		B1F006722BB6967B000A0088 /* QGHWDShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = B1F006322BB6967B000A0088 /* QGHWDShaders.metal */; };
+		B1F006732BB6967B000A0088 /* QGMP4AnimatedImageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F006352BB6967B000A0088 /* QGMP4AnimatedImageFrame.m */; };
+		B1F006742BB6967B000A0088 /* QGMP4Box.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F006372BB6967B000A0088 /* QGMP4Box.m */; };
+		B1F006752BB6967B000A0088 /* QGMP4FrameHWDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F006392BB6967B000A0088 /* QGMP4FrameHWDecoder.m */; };
+		B1F006762BB6967B000A0088 /* QGMP4HWDFileInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F0063B2BB6967B000A0088 /* QGMP4HWDFileInfo.m */; };
+		B1F006772BB6967B000A0088 /* QGMP4Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F0063D2BB6967B000A0088 /* QGMP4Parser.m */; };
+		B1F006782BB6967B000A0088 /* QGVAPConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F0063F2BB6967B000A0088 /* QGVAPConfigManager.m */; };
+		B1F006792BB6967B000A0088 /* QGVAPConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F006412BB6967B000A0088 /* QGVAPConfigModel.m */; };
+		B1F0067A2BB6967B000A0088 /* QGVAPLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F006442BB6967B000A0088 /* QGVAPLogger.m */; };
+		B1F0067B2BB6967B000A0088 /* QGVAPMaskInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F006462BB6967B000A0088 /* QGVAPMaskInfo.m */; };
+		B1F0067C2BB6967B000A0088 /* QGVAPMetalRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F006482BB6967B000A0088 /* QGVAPMetalRenderer.m */; };
+		B1F0067D2BB6967B000A0088 /* QGVAPMetalShaderFunctionLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F0064A2BB6967B000A0088 /* QGVAPMetalShaderFunctionLoader.m */; };
+		B1F0067E2BB6967B000A0088 /* QGVAPMetalUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F0064C2BB6967B000A0088 /* QGVAPMetalUtil.m */; };
+		B1F0067F2BB6967B000A0088 /* QGVAPMetalView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F0064E2BB6967B000A0088 /* QGVAPMetalView.m */; };
+		B1F006802BB6967B000A0088 /* QGVAPSafeMutableArray.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F006502BB6967B000A0088 /* QGVAPSafeMutableArray.m */; };
+		B1F006812BB6967B000A0088 /* QGVAPSafeMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F006522BB6967B000A0088 /* QGVAPSafeMutableDictionary.m */; };
+		B1F006822BB6967B000A0088 /* QGVAPTextureLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F006542BB6967B000A0088 /* QGVAPTextureLoader.m */; };
+		B1F006832BB6967B000A0088 /* QGVAPWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F006562BB6967B000A0088 /* QGVAPWeakProxy.m */; };
+		B1F006842BB6967B000A0088 /* UIColor+VAPUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F006582BB6967B000A0088 /* UIColor+VAPUtil.m */; };
+		B1F006852BB6967B000A0088 /* UIDevice+VAPUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F0065A2BB6967B000A0088 /* UIDevice+VAPUtil.m */; };
+		B1F006862BB6967B000A0088 /* UIGestureRecognizer+VAPUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F0065C2BB6967B000A0088 /* UIGestureRecognizer+VAPUtil.m */; };
+		B1F006872BB6967B000A0088 /* UIView+MP4HWDecode.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F0065E2BB6967B000A0088 /* UIView+MP4HWDecode.m */; };
+		B1F006882BB6967B000A0088 /* UIView+VAP.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F006602BB6967B000A0088 /* UIView+VAP.m */; };
+		B1F0068A2BB69810000A0088 /* meng_earth_demo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B1F006892BB69810000A0088 /* meng_earth_demo.mp4 */; };
 		B1F27E1D2A8B153E00E7B415 /* GuanUITool.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F27E1C2A8B153E00E7B415 /* GuanUITool.m */; };
 		B1F27E202A8B1D8700E7B415 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B1F27E1F2A8B1D8700E7B415 /* UIView+Extension.m */; };
 		B1FD2EB72ADD0D8700704CEB /* new_encrypt.zip in Resources */ = {isa = PBXBuildFile; fileRef = B1FD2EB62ADD0D8700704CEB /* new_encrypt.zip */; };
@@ -304,6 +343,86 @@
 		B1DCF8DB2AB0416600F571D4 /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		B1DCF8DC2AB0416600F571D4 /* Reachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		B1E9840C2B2C28E800D6267B /* Preahvihear-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Preahvihear-Regular.ttf"; sourceTree = "<group>"; };
+		B1F006132BB6967B000A0088 /* NSArray+VAPUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+VAPUtil.h"; sourceTree = "<group>"; };
+		B1F006142BB6967B000A0088 /* NSArray+VAPUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+VAPUtil.m"; sourceTree = "<group>"; };
+		B1F006152BB6967B000A0088 /* NSDictionary+VAPUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+VAPUtil.h"; sourceTree = "<group>"; };
+		B1F006162BB6967B000A0088 /* NSDictionary+VAPUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+VAPUtil.m"; sourceTree = "<group>"; };
+		B1F006172BB6967B000A0088 /* NSNotificationCenter+VAPThreadSafe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+VAPThreadSafe.h"; sourceTree = "<group>"; };
+		B1F006182BB6967B000A0088 /* NSNotificationCenter+VAPThreadSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+VAPThreadSafe.m"; sourceTree = "<group>"; };
+		B1F006192BB6967B000A0088 /* QGAnimatedImageBufferManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGAnimatedImageBufferManager.h; sourceTree = "<group>"; };
+		B1F0061A2BB6967B000A0088 /* QGAnimatedImageBufferManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGAnimatedImageBufferManager.m; sourceTree = "<group>"; };
+		B1F0061B2BB6967B000A0088 /* QGAnimatedImageDecodeConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGAnimatedImageDecodeConfig.h; sourceTree = "<group>"; };
+		B1F0061C2BB6967B000A0088 /* QGAnimatedImageDecodeConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGAnimatedImageDecodeConfig.m; sourceTree = "<group>"; };
+		B1F0061D2BB6967B000A0088 /* QGAnimatedImageDecodeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGAnimatedImageDecodeManager.h; sourceTree = "<group>"; };
+		B1F0061E2BB6967B000A0088 /* QGAnimatedImageDecodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGAnimatedImageDecodeManager.m; sourceTree = "<group>"; };
+		B1F0061F2BB6967B000A0088 /* QGAnimatedImageDecodeThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGAnimatedImageDecodeThread.h; sourceTree = "<group>"; };
+		B1F006202BB6967B000A0088 /* QGAnimatedImageDecodeThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGAnimatedImageDecodeThread.m; sourceTree = "<group>"; };
+		B1F006212BB6967B000A0088 /* QGAnimatedImageDecodeThreadPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGAnimatedImageDecodeThreadPool.h; sourceTree = "<group>"; };
+		B1F006222BB6967B000A0088 /* QGAnimatedImageDecodeThreadPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGAnimatedImageDecodeThreadPool.m; sourceTree = "<group>"; };
+		B1F006232BB6967B000A0088 /* QGBaseAnimatedImageFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGBaseAnimatedImageFrame.h; sourceTree = "<group>"; };
+		B1F006242BB6967B000A0088 /* QGBaseAnimatedImageFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGBaseAnimatedImageFrame.m; sourceTree = "<group>"; };
+		B1F006252BB6967B000A0088 /* QGBaseAnimatedImageFrame+Displaying.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QGBaseAnimatedImageFrame+Displaying.h"; sourceTree = "<group>"; };
+		B1F006262BB6967B000A0088 /* QGBaseAnimatedImageFrame+Displaying.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "QGBaseAnimatedImageFrame+Displaying.m"; sourceTree = "<group>"; };
+		B1F006272BB6967B000A0088 /* QGBaseDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGBaseDecoder.h; sourceTree = "<group>"; };
+		B1F006282BB6967B000A0088 /* QGBaseDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGBaseDecoder.m; sourceTree = "<group>"; };
+		B1F006292BB6967B000A0088 /* QGBaseDFileInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGBaseDFileInfo.h; sourceTree = "<group>"; };
+		B1F0062A2BB6967B000A0088 /* QGBaseDFileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGBaseDFileInfo.m; sourceTree = "<group>"; };
+		B1F0062B2BB6967B000A0088 /* QGHWDMetalRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGHWDMetalRenderer.h; sourceTree = "<group>"; };
+		B1F0062C2BB6967B000A0088 /* QGHWDMetalRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGHWDMetalRenderer.m; sourceTree = "<group>"; };
+		B1F0062D2BB6967B000A0088 /* QGHWDMetalShaderSourceDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGHWDMetalShaderSourceDefine.h; sourceTree = "<group>"; };
+		B1F0062E2BB6967B000A0088 /* QGHWDMetalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGHWDMetalView.h; sourceTree = "<group>"; };
+		B1F0062F2BB6967B000A0088 /* QGHWDMetalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGHWDMetalView.m; sourceTree = "<group>"; };
+		B1F006302BB6967B000A0088 /* QGHWDMP4OpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGHWDMP4OpenGLView.h; sourceTree = "<group>"; };
+		B1F006312BB6967B000A0088 /* QGHWDMP4OpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGHWDMP4OpenGLView.m; sourceTree = "<group>"; };
+		B1F006322BB6967B000A0088 /* QGHWDShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = QGHWDShaders.metal; sourceTree = "<group>"; };
+		B1F006332BB6967B000A0088 /* QGHWDShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGHWDShaderTypes.h; sourceTree = "<group>"; };
+		B1F006342BB6967B000A0088 /* QGMP4AnimatedImageFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGMP4AnimatedImageFrame.h; sourceTree = "<group>"; };
+		B1F006352BB6967B000A0088 /* QGMP4AnimatedImageFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGMP4AnimatedImageFrame.m; sourceTree = "<group>"; };
+		B1F006362BB6967B000A0088 /* QGMP4Box.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGMP4Box.h; sourceTree = "<group>"; };
+		B1F006372BB6967B000A0088 /* QGMP4Box.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGMP4Box.m; sourceTree = "<group>"; };
+		B1F006382BB6967B000A0088 /* QGMP4FrameHWDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGMP4FrameHWDecoder.h; sourceTree = "<group>"; };
+		B1F006392BB6967B000A0088 /* QGMP4FrameHWDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGMP4FrameHWDecoder.m; sourceTree = "<group>"; };
+		B1F0063A2BB6967B000A0088 /* QGMP4HWDFileInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGMP4HWDFileInfo.h; sourceTree = "<group>"; };
+		B1F0063B2BB6967B000A0088 /* QGMP4HWDFileInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGMP4HWDFileInfo.m; sourceTree = "<group>"; };
+		B1F0063C2BB6967B000A0088 /* QGMP4Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGMP4Parser.h; sourceTree = "<group>"; };
+		B1F0063D2BB6967B000A0088 /* QGMP4Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGMP4Parser.m; sourceTree = "<group>"; };
+		B1F0063E2BB6967B000A0088 /* QGVAPConfigManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGVAPConfigManager.h; sourceTree = "<group>"; };
+		B1F0063F2BB6967B000A0088 /* QGVAPConfigManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGVAPConfigManager.m; sourceTree = "<group>"; };
+		B1F006402BB6967B000A0088 /* QGVAPConfigModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGVAPConfigModel.h; sourceTree = "<group>"; };
+		B1F006412BB6967B000A0088 /* QGVAPConfigModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGVAPConfigModel.m; sourceTree = "<group>"; };
+		B1F006422BB6967B000A0088 /* QGVAPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGVAPlayer.h; sourceTree = "<group>"; };
+		B1F006432BB6967B000A0088 /* QGVAPLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGVAPLogger.h; sourceTree = "<group>"; };
+		B1F006442BB6967B000A0088 /* QGVAPLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGVAPLogger.m; sourceTree = "<group>"; };
+		B1F006452BB6967B000A0088 /* QGVAPMaskInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGVAPMaskInfo.h; sourceTree = "<group>"; };
+		B1F006462BB6967B000A0088 /* QGVAPMaskInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGVAPMaskInfo.m; sourceTree = "<group>"; };
+		B1F006472BB6967B000A0088 /* QGVAPMetalRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGVAPMetalRenderer.h; sourceTree = "<group>"; };
+		B1F006482BB6967B000A0088 /* QGVAPMetalRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGVAPMetalRenderer.m; sourceTree = "<group>"; };
+		B1F006492BB6967B000A0088 /* QGVAPMetalShaderFunctionLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGVAPMetalShaderFunctionLoader.h; sourceTree = "<group>"; };
+		B1F0064A2BB6967B000A0088 /* QGVAPMetalShaderFunctionLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGVAPMetalShaderFunctionLoader.m; sourceTree = "<group>"; };
+		B1F0064B2BB6967B000A0088 /* QGVAPMetalUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGVAPMetalUtil.h; sourceTree = "<group>"; };
+		B1F0064C2BB6967B000A0088 /* QGVAPMetalUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGVAPMetalUtil.m; sourceTree = "<group>"; };
+		B1F0064D2BB6967B000A0088 /* QGVAPMetalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGVAPMetalView.h; sourceTree = "<group>"; };
+		B1F0064E2BB6967B000A0088 /* QGVAPMetalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGVAPMetalView.m; sourceTree = "<group>"; };
+		B1F0064F2BB6967B000A0088 /* QGVAPSafeMutableArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGVAPSafeMutableArray.h; sourceTree = "<group>"; };
+		B1F006502BB6967B000A0088 /* QGVAPSafeMutableArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGVAPSafeMutableArray.m; sourceTree = "<group>"; };
+		B1F006512BB6967B000A0088 /* QGVAPSafeMutableDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGVAPSafeMutableDictionary.h; sourceTree = "<group>"; };
+		B1F006522BB6967B000A0088 /* QGVAPSafeMutableDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGVAPSafeMutableDictionary.m; sourceTree = "<group>"; };
+		B1F006532BB6967B000A0088 /* QGVAPTextureLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGVAPTextureLoader.h; sourceTree = "<group>"; };
+		B1F006542BB6967B000A0088 /* QGVAPTextureLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGVAPTextureLoader.m; sourceTree = "<group>"; };
+		B1F006552BB6967B000A0088 /* QGVAPWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGVAPWeakProxy.h; sourceTree = "<group>"; };
+		B1F006562BB6967B000A0088 /* QGVAPWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGVAPWeakProxy.m; sourceTree = "<group>"; };
+		B1F006572BB6967B000A0088 /* UIColor+VAPUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+VAPUtil.h"; sourceTree = "<group>"; };
+		B1F006582BB6967B000A0088 /* UIColor+VAPUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+VAPUtil.m"; sourceTree = "<group>"; };
+		B1F006592BB6967B000A0088 /* UIDevice+VAPUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+VAPUtil.h"; sourceTree = "<group>"; };
+		B1F0065A2BB6967B000A0088 /* UIDevice+VAPUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+VAPUtil.m"; sourceTree = "<group>"; };
+		B1F0065B2BB6967B000A0088 /* UIGestureRecognizer+VAPUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+VAPUtil.h"; sourceTree = "<group>"; };
+		B1F0065C2BB6967B000A0088 /* UIGestureRecognizer+VAPUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+VAPUtil.m"; sourceTree = "<group>"; };
+		B1F0065D2BB6967B000A0088 /* UIView+MP4HWDecode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MP4HWDecode.h"; sourceTree = "<group>"; };
+		B1F0065E2BB6967B000A0088 /* UIView+MP4HWDecode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MP4HWDecode.m"; sourceTree = "<group>"; };
+		B1F0065F2BB6967B000A0088 /* UIView+VAP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+VAP.h"; sourceTree = "<group>"; };
+		B1F006602BB6967B000A0088 /* UIView+VAP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+VAP.m"; sourceTree = "<group>"; };
+		B1F006612BB6967B000A0088 /* VAPMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAPMacros.h; sourceTree = "<group>"; };
+		B1F006892BB69810000A0088 /* meng_earth_demo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = meng_earth_demo.mp4; sourceTree = "<group>"; };
 		B1F27E1B2A8B153E00E7B415 /* GuanUITool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuanUITool.h; sourceTree = "<group>"; };
 		B1F27E1C2A8B153E00E7B415 /* GuanUITool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuanUITool.m; sourceTree = "<group>"; };
 		B1F27E1E2A8B1D8700E7B415 /* UIView+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
@@ -526,6 +645,7 @@
 				B1A0C2792A7D14C100F60D31 /* Alert */,
 				B1C1CD542A90D1E70007A5F1 /* Toast */,
 				B1676B042AD5B0920032F433 /* MengTableView */,
+				B1F006622BB6967B000A0088 /* Video */,
 				B131C5E92A60E3380099AB19 /* AppDelegate.h */,
 				B131C5EA2A60E3380099AB19 /* AppDelegate.m */,
 				B13C48EB2B90837C006B2DAD /* GTAppStorePay.h */,
@@ -593,6 +713,7 @@
 				B1676A982AD318330032F433 /* ThemeJson */,
 				B1676A962AD315D60032F433 /* chat_bg.png */,
 				B16ABCB52A69280A00A4EC12 /* test.mp4 */,
+				B1F006892BB69810000A0088 /* meng_earth_demo.mp4 */,
 				B101CF802AC29A1A002F52B7 /* ss_testZip */,
 				B101CEFB2AC1F4AA002F52B7 /* testZip.zip */,
 				B131C5F22A60E3380099AB19 /* Main.storyboard */,
@@ -705,6 +826,92 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		B1F006622BB6967B000A0088 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				B1F006132BB6967B000A0088 /* NSArray+VAPUtil.h */,
+				B1F006142BB6967B000A0088 /* NSArray+VAPUtil.m */,
+				B1F006152BB6967B000A0088 /* NSDictionary+VAPUtil.h */,
+				B1F006162BB6967B000A0088 /* NSDictionary+VAPUtil.m */,
+				B1F006172BB6967B000A0088 /* NSNotificationCenter+VAPThreadSafe.h */,
+				B1F006182BB6967B000A0088 /* NSNotificationCenter+VAPThreadSafe.m */,
+				B1F006192BB6967B000A0088 /* QGAnimatedImageBufferManager.h */,
+				B1F0061A2BB6967B000A0088 /* QGAnimatedImageBufferManager.m */,
+				B1F0061B2BB6967B000A0088 /* QGAnimatedImageDecodeConfig.h */,
+				B1F0061C2BB6967B000A0088 /* QGAnimatedImageDecodeConfig.m */,
+				B1F0061D2BB6967B000A0088 /* QGAnimatedImageDecodeManager.h */,
+				B1F0061E2BB6967B000A0088 /* QGAnimatedImageDecodeManager.m */,
+				B1F0061F2BB6967B000A0088 /* QGAnimatedImageDecodeThread.h */,
+				B1F006202BB6967B000A0088 /* QGAnimatedImageDecodeThread.m */,
+				B1F006212BB6967B000A0088 /* QGAnimatedImageDecodeThreadPool.h */,
+				B1F006222BB6967B000A0088 /* QGAnimatedImageDecodeThreadPool.m */,
+				B1F006232BB6967B000A0088 /* QGBaseAnimatedImageFrame.h */,
+				B1F006242BB6967B000A0088 /* QGBaseAnimatedImageFrame.m */,
+				B1F006252BB6967B000A0088 /* QGBaseAnimatedImageFrame+Displaying.h */,
+				B1F006262BB6967B000A0088 /* QGBaseAnimatedImageFrame+Displaying.m */,
+				B1F006272BB6967B000A0088 /* QGBaseDecoder.h */,
+				B1F006282BB6967B000A0088 /* QGBaseDecoder.m */,
+				B1F006292BB6967B000A0088 /* QGBaseDFileInfo.h */,
+				B1F0062A2BB6967B000A0088 /* QGBaseDFileInfo.m */,
+				B1F0062B2BB6967B000A0088 /* QGHWDMetalRenderer.h */,
+				B1F0062C2BB6967B000A0088 /* QGHWDMetalRenderer.m */,
+				B1F0062D2BB6967B000A0088 /* QGHWDMetalShaderSourceDefine.h */,
+				B1F0062E2BB6967B000A0088 /* QGHWDMetalView.h */,
+				B1F0062F2BB6967B000A0088 /* QGHWDMetalView.m */,
+				B1F006302BB6967B000A0088 /* QGHWDMP4OpenGLView.h */,
+				B1F006312BB6967B000A0088 /* QGHWDMP4OpenGLView.m */,
+				B1F006322BB6967B000A0088 /* QGHWDShaders.metal */,
+				B1F006332BB6967B000A0088 /* QGHWDShaderTypes.h */,
+				B1F006342BB6967B000A0088 /* QGMP4AnimatedImageFrame.h */,
+				B1F006352BB6967B000A0088 /* QGMP4AnimatedImageFrame.m */,
+				B1F006362BB6967B000A0088 /* QGMP4Box.h */,
+				B1F006372BB6967B000A0088 /* QGMP4Box.m */,
+				B1F006382BB6967B000A0088 /* QGMP4FrameHWDecoder.h */,
+				B1F006392BB6967B000A0088 /* QGMP4FrameHWDecoder.m */,
+				B1F0063A2BB6967B000A0088 /* QGMP4HWDFileInfo.h */,
+				B1F0063B2BB6967B000A0088 /* QGMP4HWDFileInfo.m */,
+				B1F0063C2BB6967B000A0088 /* QGMP4Parser.h */,
+				B1F0063D2BB6967B000A0088 /* QGMP4Parser.m */,
+				B1F0063E2BB6967B000A0088 /* QGVAPConfigManager.h */,
+				B1F0063F2BB6967B000A0088 /* QGVAPConfigManager.m */,
+				B1F006402BB6967B000A0088 /* QGVAPConfigModel.h */,
+				B1F006412BB6967B000A0088 /* QGVAPConfigModel.m */,
+				B1F006422BB6967B000A0088 /* QGVAPlayer.h */,
+				B1F006432BB6967B000A0088 /* QGVAPLogger.h */,
+				B1F006442BB6967B000A0088 /* QGVAPLogger.m */,
+				B1F006452BB6967B000A0088 /* QGVAPMaskInfo.h */,
+				B1F006462BB6967B000A0088 /* QGVAPMaskInfo.m */,
+				B1F006472BB6967B000A0088 /* QGVAPMetalRenderer.h */,
+				B1F006482BB6967B000A0088 /* QGVAPMetalRenderer.m */,
+				B1F006492BB6967B000A0088 /* QGVAPMetalShaderFunctionLoader.h */,
+				B1F0064A2BB6967B000A0088 /* QGVAPMetalShaderFunctionLoader.m */,
+				B1F0064B2BB6967B000A0088 /* QGVAPMetalUtil.h */,
+				B1F0064C2BB6967B000A0088 /* QGVAPMetalUtil.m */,
+				B1F0064D2BB6967B000A0088 /* QGVAPMetalView.h */,
+				B1F0064E2BB6967B000A0088 /* QGVAPMetalView.m */,
+				B1F0064F2BB6967B000A0088 /* QGVAPSafeMutableArray.h */,
+				B1F006502BB6967B000A0088 /* QGVAPSafeMutableArray.m */,
+				B1F006512BB6967B000A0088 /* QGVAPSafeMutableDictionary.h */,
+				B1F006522BB6967B000A0088 /* QGVAPSafeMutableDictionary.m */,
+				B1F006532BB6967B000A0088 /* QGVAPTextureLoader.h */,
+				B1F006542BB6967B000A0088 /* QGVAPTextureLoader.m */,
+				B1F006552BB6967B000A0088 /* QGVAPWeakProxy.h */,
+				B1F006562BB6967B000A0088 /* QGVAPWeakProxy.m */,
+				B1F006572BB6967B000A0088 /* UIColor+VAPUtil.h */,
+				B1F006582BB6967B000A0088 /* UIColor+VAPUtil.m */,
+				B1F006592BB6967B000A0088 /* UIDevice+VAPUtil.h */,
+				B1F0065A2BB6967B000A0088 /* UIDevice+VAPUtil.m */,
+				B1F0065B2BB6967B000A0088 /* UIGestureRecognizer+VAPUtil.h */,
+				B1F0065C2BB6967B000A0088 /* UIGestureRecognizer+VAPUtil.m */,
+				B1F0065D2BB6967B000A0088 /* UIView+MP4HWDecode.h */,
+				B1F0065E2BB6967B000A0088 /* UIView+MP4HWDecode.m */,
+				B1F0065F2BB6967B000A0088 /* UIView+VAP.h */,
+				B1F006602BB6967B000A0088 /* UIView+VAP.m */,
+				B1F006612BB6967B000A0088 /* VAPMacros.h */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -769,6 +976,7 @@
 				B131C5F92A60E33A0099AB19 /* LaunchScreen.storyboard in Resources */,
 				B101CEFC2AC1F4AA002F52B7 /* testZip.zip in Resources */,
 				B101CF8A2AC29A1A002F52B7 /* lbm_icon.png in Resources */,
+				B1F0068A2BB69810000A0088 /* meng_earth_demo.mp4 in Resources */,
 				B101CF8C2AC29A1A002F52B7 /* weui_color.xml in Resources */,
 				B1FD2EB72ADD0D8700704CEB /* new_encrypt.zip in Resources */,
 				B101CF882AC29A1A002F52B7 /* icon.png in Resources */,
@@ -837,23 +1045,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1A0C2662A7B9A9900F60D31 /* NSObject+MethodSwizzling.m in Sources */,
+				B1F006712BB6967B000A0088 /* QGHWDMP4OpenGLView.m in Sources */,
 				B17035FD2AD925A800430753 /* NSData+ImageFormat.m in Sources */,
 				B10AF4B82B40106F004D7C70 /* fishhook.c in Sources */,
 				B1676AC52AD3DE010032F433 /* TongXMLReader.m in Sources */,
+				B1F006682BB6967B000A0088 /* QGAnimatedImageDecodeManager.m in Sources */,
 				B131C5F12A60E3380099AB19 /* ViewController.mm in Sources */,
 				B1676B0D2AD5B6A20032F433 /* MengRightLabelTableCell.m in Sources */,
+				B1F006832BB6967B000A0088 /* QGVAPWeakProxy.m in Sources */,
 				B101CF342AC1F4D5002F52B7 /* ZZError.m in Sources */,
 				B101CF2E2AC1F4D5002F52B7 /* ZZArchive.mm in Sources */,
 				B10AF4BF2B4DCB52004D7C70 /* UITapGestureRecognizer+Mock.m in Sources */,
 				B101CF332AC1F4D5002F52B7 /* ZZArchiveEntry.m in Sources */,
+				B1F006862BB6967B000A0088 /* UIGestureRecognizer+VAPUtil.m in Sources */,
 				B1D6E3452B9DFD4100EFC11B /* NSString+Extension.m in Sources */,
 				B16ABCB42A66250400A4EC12 /* NSBundle+GTInfo.m in Sources */,
 				B1676B032AD5AF6E0032F433 /* MengSettingController.m in Sources */,
 				2780CB5D2A8A742B00C15C79 /* GuanRightLabelTableCell.m in Sources */,
+				B1F006812BB6967B000A0088 /* QGVAPSafeMutableDictionary.m in Sources */,
+				B1F006722BB6967B000A0088 /* QGHWDShaders.metal in Sources */,
+				B1F0066F2BB6967B000A0088 /* QGHWDMetalRenderer.m in Sources */,
+				B1F0066E2BB6967B000A0088 /* QGBaseDFileInfo.m in Sources */,
 				B1D6E33F2B9C8F2F00EFC11B /* UIImage+Extension.m in Sources */,
 				B101CF322AC1F4D5002F52B7 /* ZZConstants.m in Sources */,
 				B101CF3C2AC1F4D5002F52B7 /* ZZStandardDecryptInputStream.mm in Sources */,
 				2780CB672A8A765600C15C79 /* YYClassInfo.m in Sources */,
+				B1F006772BB6967B000A0088 /* QGMP4Parser.m in Sources */,
 				B101CF372AC1F4D5002F52B7 /* ZZStoreOutputStream.m in Sources */,
 				B1F27E1D2A8B153E00E7B415 /* GuanUITool.m in Sources */,
 				B137ABC52A9C94BC005D7971 /* GuanWeakWebViewDelegate.m in Sources */,
@@ -865,6 +1082,7 @@
 				B101CF2B2AC1F4D5002F52B7 /* ZZDeflateOutputStream.m in Sources */,
 				B13C49142B9AF754006B2DAD /* UIButton+Extension.m in Sources */,
 				B101CF2F2AC1F4D5002F52B7 /* ZZDataChannelOutput.m in Sources */,
+				B1F006672BB6967B000A0088 /* QGAnimatedImageDecodeConfig.m in Sources */,
 				B1676B072AD5B0BE0032F433 /* MengTableView.m in Sources */,
 				2780CB612A8A75C000C15C79 /* GuanBaseModel.m in Sources */,
 				2780CB512A8A730400C15C79 /* GuanTableViewDataSource.m in Sources */,
@@ -872,46 +1090,74 @@
 				2780CB5A2A8A741800C15C79 /* GuanRightSwitcherTableCell.m in Sources */,
 				B143AE832A93466800259CBE /* KeychainItemWrapper.m in Sources */,
 				B10D08622A88C3E100414923 /* NSDictionary+Extension.m in Sources */,
+				B1F0067A2BB6967B000A0088 /* QGVAPLogger.m in Sources */,
+				B1F0067B2BB6967B000A0088 /* QGVAPMaskInfo.m in Sources */,
 				2780CB682A8A765600C15C79 /* NSObject+YYModel.m in Sources */,
 				B101CF2A2AC1F4D5002F52B7 /* ZZNewArchiveEntry.mm in Sources */,
+				B1F006852BB6967B000A0088 /* UIDevice+VAPUtil.m in Sources */,
 				2780CB6B2A8A7F8D00C15C79 /* GuanSwitch.m in Sources */,
 				B13C48EA2B901E0C006B2DAD /* SNAnimationCustom.m in Sources */,
+				B1F006842BB6967B000A0088 /* UIColor+VAPUtil.m in Sources */,
 				B10AF4B42B3F454A004D7C70 /* SNSecurityHelper.m in Sources */,
+				B1F006732BB6967B000A0088 /* QGMP4AnimatedImageFrame.m in Sources */,
 				2780CB4E2A8A72E400C15C79 /* GuanTableViewDelegate.m in Sources */,
+				B1F0066A2BB6967B000A0088 /* QGAnimatedImageDecodeThreadPool.m in Sources */,
 				B1D54A2B2B04B82C00EFFA42 /* XHTool.m in Sources */,
 				2780CB572A8A73D000C15C79 /* GuanBaseTableCell.m in Sources */,
+				B1F006692BB6967B000A0088 /* QGAnimatedImageDecodeThread.m in Sources */,
+				B1F0066D2BB6967B000A0088 /* QGBaseDecoder.m in Sources */,
+				B1F006662BB6967B000A0088 /* QGAnimatedImageBufferManager.m in Sources */,
 				B1676B0A2AD5B14A0032F433 /* MengTableViewDataSource.m in Sources */,
+				B1F006882BB6967B000A0088 /* UIView+VAP.m in Sources */,
 				B10AA8002A91EF8300A2B653 /* GTEncryptString.m in Sources */,
+				B1F006742BB6967B000A0088 /* QGMP4Box.m in Sources */,
 				B131C5FC2A60E33A0099AB19 /* main.m in Sources */,
+				B1F006792BB6967B000A0088 /* QGVAPConfigModel.m in Sources */,
+				B1F006802BB6967B000A0088 /* QGVAPSafeMutableArray.m in Sources */,
 				B1D171782A8A1B46001A0300 /* JCCSettingsController.m in Sources */,
 				B101CF302AC1F4D5002F52B7 /* ZZFileChannelOutput.m in Sources */,
 				B1A0C2782A7BA50300F60D31 /* GuanClearTool.m in Sources */,
+				B1F006652BB6967B000A0088 /* NSNotificationCenter+VAPThreadSafe.m in Sources */,
 				B137ABC82A9C9B19005D7971 /* GuanTestWebController.m in Sources */,
+				B1F0067C2BB6967B000A0088 /* QGVAPMetalRenderer.m in Sources */,
 				B16ABCAE2A6503E300A4EC12 /* GTFileTools.m in Sources */,
+				B1F006642BB6967B000A0088 /* NSDictionary+VAPUtil.m in Sources */,
 				B101CF3A2AC1F4D5002F52B7 /* ZZFileChannel.m in Sources */,
 				B1A0C27F2A7D14F500F60D31 /* UIAlertController+AddAction.m in Sources */,
+				B1F006872BB6967B000A0088 /* UIView+MP4HWDecode.m in Sources */,
 				B1D6E3422B9C9B7700EFC11B /* GTCustomButton.m in Sources */,
+				B1F006762BB6967B000A0088 /* QGMP4HWDFileInfo.m in Sources */,
 				B1A0C2692A7B9AD100F60D31 /* NSObject+SelectorDefender.m in Sources */,
+				B1F0066C2BB6967B000A0088 /* QGBaseAnimatedImageFrame+Displaying.m in Sources */,
 				2780CB542A8A736E00C15C79 /* GuanTableView.m in Sources */,
 				B143AE6E2A93110000259CBE /* GuanCxxxx.c in Sources */,
 				B101CF2D2AC1F4D5002F52B7 /* ZZAESDecryptInputStream.mm in Sources */,
 				B1D315302ABF178900519DF6 /* UIImage+Compress.m in Sources */,
 				B13C49172B9EE54A006B2DAD /* GTTestCollectionCell.m in Sources */,
 				B101CF382AC1F4D5002F52B7 /* ZZNewArchiveEntryWriter.mm in Sources */,
+				B1F0067E2BB6967B000A0088 /* QGVAPMetalUtil.m in Sources */,
+				B1F0066B2BB6967B000A0088 /* QGBaseAnimatedImageFrame.m in Sources */,
+				B1F006752BB6967B000A0088 /* QGMP4FrameHWDecoder.m in Sources */,
 				B101CF312AC1F4D5002F52B7 /* ZZInflateInputStream.m in Sources */,
 				B1C1CD5A2A90D2DB0007A5F1 /* UIView+Toast.m in Sources */,
 				B17035FE2AD925A800430753 /* UIImage+LBMCompress.m in Sources */,
 				B11D7E232AA0D120009F8ADD /* UIButton+Extension.m in Sources */,
+				B1F0067D2BB6967B000A0088 /* QGVAPMetalShaderFunctionLoader.m in Sources */,
 				B1A0C27C2A7D14D800F60D31 /* GuanAlert.m in Sources */,
+				B1F006822BB6967B000A0088 /* QGVAPTextureLoader.m in Sources */,
+				B1F006632BB6967B000A0088 /* NSArray+VAPUtil.m in Sources */,
+				B1F006702BB6967B000A0088 /* QGHWDMetalView.m in Sources */,
 				B131C6072A612FBC0099AB19 /* GuanRSAMgr.m in Sources */,
 				B16ABCAB2A64F8EC00A4EC12 /* GTUtilies.m in Sources */,
 				B1DCF8DD2AB0416600F571D4 /* Reachability.m in Sources */,
 				B17035F72AD9214200430753 /* UIWindow+Screenshot.m in Sources */,
 				B101CF392AC1F4D5002F52B7 /* ZZOldArchiveEntry.mm in Sources */,
+				B1F0067F2BB6967B000A0088 /* QGVAPMetalView.m in Sources */,
 				B101CF362AC1F4D5002F52B7 /* ZZDataChannel.m in Sources */,
 				B131C5EE2A60E3380099AB19 /* SceneDelegate.m in Sources */,
 				B13C48ED2B90837C006B2DAD /* GTAppStorePay.m in Sources */,
 				B101CF2C2AC1F4D5002F52B7 /* ZZStandardCryptoEngine.cpp in Sources */,
+				B1F006782BB6967B000A0088 /* QGVAPConfigManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
