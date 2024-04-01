@@ -144,15 +144,25 @@ struct GTPerson {
     
 //    [self testCollectionViewAddScrollView];
     
-    [self testViewPlayMP4Video];
+//    [self testViewPlayMP4Video];
 }
 
 
 - (void)testViewPlayMP4Video {
     
-    UIView *tempView = [[UIView alloc] initWithFrame:CGRectMake(0, 100, self.view.width, self.view.height * 0.5)];
-    tempView.backgroundColor = UIColor.whiteColor;
+    CGFloat defaultWidth = 300;
+    CGFloat defaultHeight = 300;
+    
+    UIView *tempView = [[UIView alloc] initWithFrame:CGRectMake(0, 100, defaultWidth, defaultHeight)];
+    tempView.backgroundColor = UIColor.blackColor;
+    tempView.center = self.view.center;
     [self.view addSubview:tempView];
+    
+    
+    NSURL *url = nil;
+    if([url absoluteString]) {
+        
+    }
     
     
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"meng_earth_demo" ofType:@"mp4"];
