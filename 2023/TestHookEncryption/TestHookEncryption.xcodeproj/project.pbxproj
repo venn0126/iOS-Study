@@ -95,6 +95,7 @@
 		B1C1CD5A2A90D2DB0007A5F1 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C1CD582A90D2DB0007A5F1 /* UIView+Toast.m */; };
 		B1D171782A8A1B46001A0300 /* JCCSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D171772A8A1B46001A0300 /* JCCSettingsController.m */; };
 		B1D315302ABF178900519DF6 /* UIImage+Compress.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D3152F2ABF178900519DF6 /* UIImage+Compress.m */; };
+		B1D438982BC7EA7000F30417 /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D438972BC7EA7000F30417 /* UICKeyChainStore.m */; };
 		B1D54A2B2B04B82C00EFFA42 /* XHTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D54A2A2B04B82C00EFFA42 /* XHTool.m */; };
 		B1D6E33F2B9C8F2F00EFC11B /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D6E33E2B9C8F2F00EFC11B /* UIImage+Extension.m */; };
 		B1D6E3422B9C9B7700EFC11B /* GTCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D6E3412B9C9B7700EFC11B /* GTCustomButton.m */; };
@@ -332,6 +333,8 @@
 		B1D171772A8A1B46001A0300 /* JCCSettingsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCCSettingsController.m; sourceTree = "<group>"; };
 		B1D3152E2ABF178900519DF6 /* UIImage+Compress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Compress.h"; sourceTree = "<group>"; };
 		B1D3152F2ABF178900519DF6 /* UIImage+Compress.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Compress.m"; sourceTree = "<group>"; };
+		B1D438962BC7EA7000F30417 /* UICKeyChainStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICKeyChainStore.h; sourceTree = "<group>"; };
+		B1D438972BC7EA7000F30417 /* UICKeyChainStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICKeyChainStore.m; sourceTree = "<group>"; };
 		B1D54A292B04B82C00EFFA42 /* XHTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHTool.h; sourceTree = "<group>"; };
 		B1D54A2A2B04B82C00EFFA42 /* XHTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHTool.m; sourceTree = "<group>"; };
 		B1D6E33D2B9C8F2F00EFC11B /* UIImage+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
@@ -659,6 +662,8 @@
 				B131C5ED2A60E3380099AB19 /* SceneDelegate.m */,
 				B131C5EF2A60E3380099AB19 /* ViewController.h */,
 				B131C5F02A60E3380099AB19 /* ViewController.mm */,
+				B1D438962BC7EA7000F30417 /* UICKeyChainStore.h */,
+				B1D438972BC7EA7000F30417 /* UICKeyChainStore.m */,
 				B13C49152B9EE54A006B2DAD /* GTTestCollectionCell.h */,
 				B13C49162B9EE54A006B2DAD /* GTTestCollectionCell.m */,
 				B1D6E3402B9C9B7700EFC11B /* GTCustomButton.h */,
@@ -1072,6 +1077,7 @@
 				2780CB672A8A765600C15C79 /* YYClassInfo.m in Sources */,
 				B1F006772BB6967B000A0088 /* QGMP4Parser.m in Sources */,
 				B101CF372AC1F4D5002F52B7 /* ZZStoreOutputStream.m in Sources */,
+				B1D438982BC7EA7000F30417 /* UICKeyChainStore.m in Sources */,
 				B1F27E1D2A8B153E00E7B415 /* GuanUITool.m in Sources */,
 				B137ABC52A9C94BC005D7971 /* GuanWeakWebViewDelegate.m in Sources */,
 				B1676AAA2AD38E550032F433 /* TongTheme.m in Sources */,
