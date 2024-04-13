@@ -40,6 +40,7 @@
 #import "GTTestCollectionCell.h"
 #import "UIView+VAP.h"
 #import "UICKeyChainStore.h"
+#import <CoreLocation/CoreLocation.h>
 
 
 static NSString * const kBBBSTokenHelpWordsKey = @"kBBBSTokenHelpWordsKey";
@@ -151,9 +152,156 @@ struct GTPerson {
     
 //    [self testViewPlayMP4Video];
     
-    [self testTokenPostServer];
+//    [self testTokenPostServer];
+    
+//    [self guan_caluateDistanceFromLon:0 lat:0];
+    
+    //
+    
+
+    
+
     
     
+    
+}
+
+
+- (NSDictionary *)guan_tapDict {
+    
+    /*
+     
+     有问题的预约抢单
+     [TaoLi] DSHTTPRequestOperationManager https://api.udache.com/gulfstream/api/v1/driver/dStriveOrder {
+         deviceid = f38660cc5fbeb2c621b964f433c960d02e6e86c6;
+         biz_type = 2;
+         location_country = ;
+         is_yuying_driver = 1;
+         platform_type = 1;
+         lang = zh-CN;
+         datatype = 102;
+         carpool_price_key = ;
+         wsgsig = dd04-V25JIhmPw5azYW4AGNxNtBk8IyIDC1pKcaMOYU51kMh3CJ7pHzcAGHH0WaMWa5L+hDv4FU5IrpW28S9gMkGh0128riC15VU/7aGeZg/6krBu8P4+a9tCYXS7rNB06YzMd9XFZUH5joBzfW3p;
+         tap_tool_type = 0;
+         tap_point_y = 0;
+         is_assign_order = 0;
+         key = STG_SENDINFO_578712645496161167_3574926150622_1;
+         tap_point_value = {"tap_point_x":0,"tap_tool_type":0,"tap_majorRadiusTolerance":0,"tap_point_y":0,"tap_majorRadius":0};
+         location_cityid = ;
+         pushToken = 147795D955D8AF39EF1875EAA36B294;
+         ddfp = f38660cc5fbeb2c621b964f433c960d02e6e86c6;
+         tap_point_x = 0;
+         channel = 3010000001;
+         ticket = fEjbMbc-_QC2RMviuuqazCftvyjdu6YjS1S21pQDt6kkzb2OAjEMReF3ObU1sp14snG7_b7DAsNPEyQQ1Yh3RxH1vfrOzlCSsuiiCMNIE4aTrqoqjEJai-51tRK9WRdGJecUJL9_CP8kCAeyRKvdVwtd3YUT-dNM2Mid5_31OG6kvoXzVK2oqc_KhcSih5lprRXh-iVv8_4JAAD__w==;
+         access_key_id = 15;
+         origin_id = 1;
+         maptype = soso;
+         oid = TlRjNE56RXlOalExTkRrMk1UWXhNVFkz;
+         model = iPhone;
+         terminal_id = 1;
+         lng = 121.4766395399306;
+         is_auto_strive = 0;
+         product_id = ;
+         os = 14.7.1;
+         lat = 31.23233615451389;
+         a3 = 9s1g9pJUd4XEQNooANgAmQFh0pkIa+y7GnrTIe/etM9zp9JYTStZ2JSx9wtdETLW1bXjoqzlC8oYdbieS3cGWx9WCFa5jNy9o2JRdt3CGtnKX3dNl8MrwchKT+oQTjt0tgY+rMyJ+WQ5wihWHLqeYA==;
+         appversion = 8.3.14;
+         utc_offset = 480;
+         carpool_price = 0
+     } (null)
+
+
+     没问题的预约抢单
+
+
+     没问题的实时抢单
+
+
+     
+     
+     
+     */
+    NSMutableDictionary *tempDict = [NSMutableDictionary dictionary];
+    [tempDict setValue:@0 forKey:@"tap_tool_type"];
+    
+    uint32_t tap_point_x = 50 +  (arc4random() % 81);
+    [tempDict setValue:@(tap_point_x) forKey:@"tap_point_x"];
+    
+    // tap_majorRadiusTolerance
+    CGFloat tap_majorRadiusTolerance = [self guan_randomSmallNumber:5.0 largeNumber:9.0];
+    [tempDict setValue:@(tap_majorRadiusTolerance) forKey:@"tap_majorRadiusTolerance"];
+    
+    CGFloat tap_point_y = [self guan_randomSmallNumber:20.0 largeNumber:60.0];
+    [tempDict setValue:@(tap_point_y) forKey:@"tap_point_y"];
+    
+    CGFloat tap_majorRadius = [self guan_randomSmallNumber:20.0 largeNumber:28.0];
+    [tempDict setValue:@(tap_majorRadius) forKey:@"tap_majorRadius"];
+    NSString *temp;
+    [temp integerValue];
+    
+
+
+    return [tempDict copy];
+}
+
+- (CGFloat)guan_randomSmallNumber:(CGFloat)smallerNumber largeNumber:(CGFloat)largerNumber
+{
+    //设置精确的位数
+    NSUInteger precision = 100000000000000;
+    //先取得他们之间的差值
+    CGFloat subtraction = largerNumber - smallerNumber;
+    //取绝对值 ABS整数绝对值
+    subtraction = ABS(subtraction);
+    //乘以精度的位数
+    subtraction *= precision;
+    //在差值间随机
+    CGFloat randomNumber = arc4random() % ((NSUInteger)subtraction + 1);
+    //随机的结果除以精度的位数
+    randomNumber /= precision;
+    //将随机的值加到较小的值上
+//    CGFloat result = MIN(smallerNumber, largerNumber) + randomNumber;
+    // 整数的随机
+    uint32_t tempSubtraction = (uint32_t)largerNumber - (uint32_t)smallerNumber;
+    uint32_t integerRandom =  (uint32_t)smallerNumber +  (arc4random() % (tempSubtraction + 1));
+    CGFloat result = integerRandom + randomNumber;
+    //返回结果
+    return result;
+}
+
+
+- (void)guan_caluateDiDiDistanceFromText {
+    NSString *playText = @"出租车预约单服务费1.2元乘客明天05:10用车全程-1米从中山北路1760弄小区-西北门出发";
+    NSRange firstRange = [playText rangeOfString:@"全程"];
+    NSRange secondRange = [playText rangeOfString:@"公里"];
+    NSRange thirdRange = [playText rangeOfString:@"米"];
+    
+    NSString *distance = nil;
+    CGFloat unitNumber = 1.0;
+    if(secondRange.length != 0) {
+        distance = distance = [playText substringWithRange:NSMakeRange(firstRange.location + firstRange.length, secondRange.location - firstRange.location - firstRange.length)];
+    }
+    if(thirdRange.length != 0) {
+        distance = distance = [playText substringWithRange:NSMakeRange(firstRange.location + firstRange.length, thirdRange.location - firstRange.location - firstRange.length)];
+        unitNumber = 1000.0;
+    }
+
+    
+    CGFloat result = [distance doubleValue] / unitNumber;
+    NSLog(@"reverse distance %f",result);
+}
+
+
+- (void)guan_caluateDistanceFromLon:(double)lon lat:(double)lat {
+    
+    CLLocationCoordinate2D corrd;
+    // 当前坐标
+     CLLocation *current=[[CLLocation alloc] initWithLatitude:32.178722 longitude:119.508619];
+    
+    // 目的坐标
+     CLLocation *before=[[CLLocation alloc] initWithLatitude:32.206340 longitude:119.425600];
+    // 计算距离
+    double meters=[current distanceFromLocation:before];
+    NSLog(@"before distance %f",meters);
 }
 
 
@@ -837,6 +985,10 @@ struct GTPerson {
 
 //    self.testImageView.image = testImage;
 //    UIImageWriteToSavedPhotosAlbum(testImage, nil, NULL, NULL);
+    
+    
+    NSDictionary *tapDict = [self guan_tapDict];
+    NSLog(@"tap Dict %@",tapDict);
     
 }
 

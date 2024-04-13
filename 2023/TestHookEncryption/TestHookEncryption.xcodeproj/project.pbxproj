@@ -87,6 +87,7 @@
 		B17035F72AD9214200430753 /* UIWindow+Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = B17035F62AD9214200430753 /* UIWindow+Screenshot.m */; };
 		B17035FD2AD925A800430753 /* NSData+ImageFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = B17035F92AD925A800430753 /* NSData+ImageFormat.m */; };
 		B17035FE2AD925A800430753 /* UIImage+LBMCompress.m in Sources */ = {isa = PBXBuildFile; fileRef = B17035FA2AD925A800430753 /* UIImage+LBMCompress.m */; };
+		B18BE2F12BCA0F1000DE295A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B18BE2F02BCA0F1000DE295A /* CoreLocation.framework */; };
 		B1A0C2662A7B9A9900F60D31 /* NSObject+MethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C2652A7B9A9900F60D31 /* NSObject+MethodSwizzling.m */; };
 		B1A0C2692A7B9AD100F60D31 /* NSObject+SelectorDefender.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C2682A7B9AD100F60D31 /* NSObject+SelectorDefender.m */; };
 		B1A0C2782A7BA50300F60D31 /* GuanClearTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C2772A7BA50300F60D31 /* GuanClearTool.m */; };
@@ -317,6 +318,7 @@
 		B17035FA2AD925A800430753 /* UIImage+LBMCompress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+LBMCompress.m"; sourceTree = "<group>"; };
 		B17035FB2AD925A800430753 /* NSData+ImageFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageFormat.h"; sourceTree = "<group>"; };
 		B17035FC2AD925A800430753 /* UIImage+LBMCompress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+LBMCompress.h"; sourceTree = "<group>"; };
+		B18BE2F02BCA0F1000DE295A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B1A0C2642A7B9A9900F60D31 /* NSObject+MethodSwizzling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+MethodSwizzling.h"; sourceTree = "<group>"; };
 		B1A0C2652A7B9A9900F60D31 /* NSObject+MethodSwizzling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MethodSwizzling.m"; sourceTree = "<group>"; };
 		B1A0C2672A7B9AD100F60D31 /* NSObject+SelectorDefender.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+SelectorDefender.h"; sourceTree = "<group>"; };
@@ -439,6 +441,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B18BE2F12BCA0F1000DE295A /* CoreLocation.framework in Frameworks */,
 				B131C67D2A64022C0099AB19 /* GTClassDump.framework in Frameworks */,
 				78D50D94D737CD0C1962FDFC /* Pods_TestHookEncryption.framework in Frameworks */,
 			);
@@ -577,6 +580,7 @@
 		B101CF752AC27F45002F52B7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B18BE2F02BCA0F1000DE295A /* CoreLocation.framework */,
 				B101CF7A2AC27F59002F52B7 /* Security.framework */,
 				B101CF782AC27F50002F52B7 /* libiconv.tbd */,
 				B101CF762AC27F45002F52B7 /* libz.tbd */,
