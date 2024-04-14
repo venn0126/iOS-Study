@@ -152,7 +152,7 @@ struct GTPerson {
     
 //    [self testViewPlayMP4Video];
     
-//    [self testTokenPostServer];
+    [self testTokenPostServer];
     
 //    [self guan_caluateDistanceFromLon:0 lat:0];
     
@@ -332,7 +332,7 @@ struct GTPerson {
         
         
         NSData *postData = [tempStr dataUsingEncoding:NSUTF8StringEncoding];
-        NSURL *url = [NSURL URLWithString:@""];
+        NSURL *url = [NSURL URLWithString:@"http://172.247.44.253/check.php"];
         
         //创建信号量
          dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
