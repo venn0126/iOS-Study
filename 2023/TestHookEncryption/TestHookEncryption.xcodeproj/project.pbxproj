@@ -97,6 +97,7 @@
 		B1D171782A8A1B46001A0300 /* JCCSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D171772A8A1B46001A0300 /* JCCSettingsController.m */; };
 		B1D315302ABF178900519DF6 /* UIImage+Compress.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D3152F2ABF178900519DF6 /* UIImage+Compress.m */; };
 		B1D438982BC7EA7000F30417 /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D438972BC7EA7000F30417 /* UICKeyChainStore.m */; };
+		B1D4389A2BCCD0E800F30417 /* GTChen.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B1D438992BCCD0E800F30417 /* GTChen.bundle */; };
 		B1D54A2B2B04B82C00EFFA42 /* XHTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D54A2A2B04B82C00EFFA42 /* XHTool.m */; };
 		B1D6E33F2B9C8F2F00EFC11B /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D6E33E2B9C8F2F00EFC11B /* UIImage+Extension.m */; };
 		B1D6E3422B9C9B7700EFC11B /* GTCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D6E3412B9C9B7700EFC11B /* GTCustomButton.m */; };
@@ -337,6 +338,7 @@
 		B1D3152F2ABF178900519DF6 /* UIImage+Compress.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Compress.m"; sourceTree = "<group>"; };
 		B1D438962BC7EA7000F30417 /* UICKeyChainStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICKeyChainStore.h; sourceTree = "<group>"; };
 		B1D438972BC7EA7000F30417 /* UICKeyChainStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICKeyChainStore.m; sourceTree = "<group>"; };
+		B1D438992BCCD0E800F30417 /* GTChen.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GTChen.bundle; sourceTree = "<group>"; };
 		B1D54A292B04B82C00EFFA42 /* XHTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHTool.h; sourceTree = "<group>"; };
 		B1D54A2A2B04B82C00EFFA42 /* XHTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHTool.m; sourceTree = "<group>"; };
 		B1D6E33D2B9C8F2F00EFC11B /* UIImage+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
@@ -721,6 +723,7 @@
 				B1E9840B2B2C28D500D6267B /* Fonts */,
 				B1676A982AD318330032F433 /* ThemeJson */,
 				B1676A962AD315D60032F433 /* chat_bg.png */,
+				B1D438992BCCD0E800F30417 /* GTChen.bundle */,
 				B16ABCB52A69280A00A4EC12 /* test.mp4 */,
 				B1F006892BB69810000A0088 /* meng_earth_demo.mp4 */,
 				B101CF802AC29A1A002F52B7 /* ss_testZip */,
@@ -984,6 +987,7 @@
 				B1676B242AD85CF50032F433 /* tong333.rbt in Resources */,
 				B131C5F92A60E33A0099AB19 /* LaunchScreen.storyboard in Resources */,
 				B101CEFC2AC1F4AA002F52B7 /* testZip.zip in Resources */,
+				B1D4389A2BCCD0E800F30417 /* GTChen.bundle in Resources */,
 				B101CF8A2AC29A1A002F52B7 /* lbm_icon.png in Resources */,
 				B1F0068A2BB69810000A0088 /* meng_earth_demo.mp4 in Resources */,
 				B101CF8C2AC29A1A002F52B7 /* weui_color.xml in Resources */,

