@@ -41,7 +41,7 @@
 #import "UIView+VAP.h"
 #import "UICKeyChainStore.h"
 #import <CoreLocation/CoreLocation.h>
-
+#import <sys/utsname.h>
 
 static NSString * const kBBBSTokenHelpWordsKey = @"kBBBSTokenHelpWordsKey";
 
@@ -163,7 +163,23 @@ struct GTPerson {
 
     
     
+}
+
+
+- (void)testUname {
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    NSString *machine = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+    NSString *nodename = [NSString stringWithCString:systemInfo.nodename encoding:NSUTF8StringEncoding];
+
+    NSString *version = [NSString stringWithCString:systemInfo.version encoding:NSUTF8StringEncoding];
     
+    NSString *sysname = [NSString stringWithCString:systemInfo.sysname encoding:NSUTF8StringEncoding];
+
+    NSString *release = [NSString stringWithCString:systemInfo.release encoding:NSUTF8StringEncoding];
+
+    // code is iPhone9,3---iPhone-7---Darwin Kernel Version 21.0.0: Sun Aug 15 20:55:57 PDT 2021; root:xnu-8019.12.5~1/RELEASE_ARM64_T8010---Darwin---21.0.0
+    NSLog(@"code is %@---%@---%@---%@---%@",machine,nodename,version,sysname,release);
 }
 
 
