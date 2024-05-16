@@ -152,13 +152,18 @@ struct GTPerson {
     
 //    [self testViewPlayMP4Video];
     
-    [self testTokenPostServer];
+//    [self testTokenPostServer];
     
 //    [self guan_caluateDistanceFromLon:0 lat:0];
     
-    //
+    /*
+     tap_point_value = {"tap_point_x":180.66665649414062,"tap_tool_type":0,"tap_majorRadiusTolerance":6.05877685546875,"tap_point_y":58.333328247070312,"tap_majorRadius":24.235107421875};
+     */
     
-
+    
+    NSDictionary *tapDict = [self guan_tapDict];
+    NSString *tapDictStr = [tapDict dictionaryToJsonString];
+    NSLog(@"tapDict Str %@",tapDictStr);
     
 
     
@@ -254,10 +259,39 @@ struct GTPerson {
     [tempDict setValue:@(tap_majorRadius) forKey:@"tap_majorRadius"];
     NSString *temp;
     [temp integerValue];
+    /*
+     tap_point_value = {"tap_point_x":180.66665649414062,"tap_tool_type":0,"tap_majorRadiusTolerance":6.05877685546875,"tap_point_y":58.333328247070312,"tap_majorRadius":24.235107421875};
+     
+     {"tap_point_x":86,"tap_tool_type":0,"tap_majorRadiusTolerance":5.0000018912799700,"tap_point_y":46.000013805125910,"tap_majorRadius":22.000028520104131}     // // 创建格式字符串
+     NSString *formatString = [NSString stringWithFormat:@"%%.%df", decimalPlaces];
+
+     // 格式化浮点数
+     NSString *formattedNumber = [NSString stringWithFormat:formatString, number];
+     */
     
-
-
+    NSString *formatJson = [NSString stringWithFormat:@"{\"tap_point_x\":%u,\"tap_tool_type\":0,\"tap_majorRadiusTolerance\":%.16f,\"tap_point_y\":%.15f,\"tap_majorRadius\":%.15f}",tap_point_x,tap_majorRadiusTolerance,tap_point_y,tap_majorRadius];
+    NSLog(@"format json %@",formatJson);
+    UIButton *tempButton;
     return [tempDict copy];
+}
+
+
+- (NSInteger)getDecimalPlaces:(CGFloat)decimal {
+    NSInteger decimalPlaces = 0;
+    NSInteger maxDecimalPlaces = 20; // 假定一个最大的小数位数
+    // 将浮点数的小数部分提取出来
+    CGFloat temp = decimal;
+    while (decimalPlaces < maxDecimalPlaces) {
+        temp *= 10;
+        double intPart;
+        double fracPart = modf(temp, &intPart);
+        if (fracPart == 0.0) {
+            break;
+        }
+        decimalPlaces++;
+    }
+    
+    return decimalPlaces;
 }
 
 - (CGFloat)guan_randomSmallNumber:(CGFloat)smallerNumber largeNumber:(CGFloat)largerNumber
