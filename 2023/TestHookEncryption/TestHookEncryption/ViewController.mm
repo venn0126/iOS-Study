@@ -160,14 +160,20 @@ struct GTPerson {
      tap_point_value = {"tap_point_x":180.66665649414062,"tap_tool_type":0,"tap_majorRadiusTolerance":6.05877685546875,"tap_point_y":58.333328247070312,"tap_majorRadius":24.235107421875};
      */
     
-    
-    NSDictionary *tapDict = [self guan_tapDict];
-    NSString *tapDictStr = [tapDict dictionaryToJsonString];
-    NSLog(@"tapDict Str %@",tapDictStr);
+
     
 
     
     
+}
+
+
+- (void)testNonMutableDictCrash {
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc]init];
+    [dictionary setObject:@"aaa" forKey:@"name"];
+    NSMutableDictionary *copyDict = [dictionary copy];
+    NSLog(@"tempDict %@ %@",copyDict, [copyDict class], [copyDict superclass]);
+    [copyDict setObject:@"123" forKey:@"name"];
 }
 
 

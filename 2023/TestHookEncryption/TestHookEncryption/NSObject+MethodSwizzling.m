@@ -30,6 +30,35 @@
                                            withMethod:@selector(sn_alertControllerWithTitle:message:preferredStyle:)
                                            withClass: [UIAlertController class]];
             
+            
+            /*
+             // 类继承关系
+             // __NSDictionaryI              继承于 NSDictionary
+             // __NSSingleEntryDictionaryI   继承于 NSDictionary
+             // __NSDictionary0              继承于 NSDictionary
+             // __NSFrozenDictionaryM        继承于 NSDictionary
+             // __NSDictionaryM              继承于 NSMutableDictionary
+             // __NSCFDictionary             继承于 NSMutableDictionary
+             // NSMutableDictionary          继承于 NSDictionary
+             // NSDictionary                 继承于 NSObject
+
+             */
+            
+            
+            // 对NSMutableDict做拷贝，拷贝之后字典添加元素会crash.   //待定
+               Class frozenDictClass = objc_getClass("__NSFrozenDictionaryM");
+//               [self miSwizzleInstanceMethod:frozenDictClass
+//                                    swizzSel:@selector(setObject:forKey:)
+//                               toSwizzledSel:@selector(miFrozenDictSetObject:forKey:)];
+//               [self miSwizzleInstanceMethod:frozenDictClass
+//                                    swizzSel:@selector(setObject:forKeyedSubscript:)
+//                               toSwizzledSel:@selector(miSetFrozenDictSetObject:forKeyedSubscript:)];
+            
+            
+            [NSObject yscDefenderSwizzlingInstanceMethod:@selector(setObject:forKey:) withMethod:@selector(zhu_setObject:forKey:) withClass:frozenDictClass];
+            [NSObject yscDefenderSwizzlingInstanceMethod:@selector(setObject:forKeyedSubscript:) withMethod:@selector(zhu_setObject:forKeyedSubscript:) withClass:frozenDictClass];
+
+            
         } else {
             // Fallback on earlier versions
         }
@@ -105,5 +134,17 @@ void swizzlingInstanceMethod(Class class, SEL originalSelector, SEL swizzledSele
     id r = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:style];
     NSLog(@"sn_alertControllerWithTitle %@ %@ %ld",title, message,style);
     return r;
+}
+
+
+- (void)zhu_setObject:(id)anObject forKey:(id <NSCopying>)aKey {
+    
+    NSLog(@"zhu_setObject %@ %@",anObject, aKey);
+}
+
+- (void)zhu_setObject:(id)anObject forKeyedSubscript:(id <NSCopying>)aKey {
+    
+    NSLog(@"zhu_setObject:forKeyedSubscript %@ %@",anObject, aKey);
+
 }
 @end
