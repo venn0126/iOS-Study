@@ -162,9 +162,48 @@ struct GTPerson {
     
 
     
+//    callMethodByName(@"application:didFinishLaunchingWithOptions:");
+    
+    
+}
 
-    
-    
+
+
+
+/// 根据方法名逆向查找对应的对象或类
+/// - Parameter methodName: 需要查找的方法名
+void callMethodByName(NSString *methodName) {
+    // 获取所有已注册的类数量
+    int numClasses = objc_getClassList(NULL, 0);
+    if (numClasses > 0) {
+        // 为所有类分配内存
+        Class *classes = (__unsafe_unretained Class *)malloc(sizeof(Class) * numClasses);
+        numClasses = objc_getClassList(classes, numClasses);
+
+        // 遍历所有类
+        for (int i = 0; i < numClasses; i++) {
+            Class cls = classes[i];
+
+            // 获取实例方法的实现
+            SEL selector = NSSelectorFromString(methodName);
+            Method method = class_getInstanceMethod(cls, selector);
+
+            if (method) {
+                // 找到实现了该方法的类
+                NSLog(@"Found method '%@' in class '%s'", methodName, class_getName(cls));
+
+                // 创建类实例并调用方法
+//                id instance = [[cls alloc] init];
+//                if (instance) {
+//                    IMP imp = method_getImplementation(method);
+//                    ((void (*)(id, SEL))imp)(instance, selector);
+//                }
+//                break; // 假设只需要找到一个类并调用方法，找到后退出循环
+            }
+        }
+        // 释放分配的内存
+        free(classes);
+    }
 }
 
 
