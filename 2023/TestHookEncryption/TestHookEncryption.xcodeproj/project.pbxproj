@@ -87,6 +87,7 @@
 		B17035F72AD9214200430753 /* UIWindow+Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = B17035F62AD9214200430753 /* UIWindow+Screenshot.m */; };
 		B17035FD2AD925A800430753 /* NSData+ImageFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = B17035F92AD925A800430753 /* NSData+ImageFormat.m */; };
 		B17035FE2AD925A800430753 /* UIImage+LBMCompress.m in Sources */ = {isa = PBXBuildFile; fileRef = B17035FA2AD925A800430753 /* UIImage+LBMCompress.m */; };
+		B17D7CBA2C11C1FD00C5C379 /* DiamondView.m in Sources */ = {isa = PBXBuildFile; fileRef = B17D7CB92C11C1FD00C5C379 /* DiamondView.m */; };
 		B18BE2F12BCA0F1000DE295A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B18BE2F02BCA0F1000DE295A /* CoreLocation.framework */; };
 		B1A0C2662A7B9A9900F60D31 /* NSObject+MethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C2652A7B9A9900F60D31 /* NSObject+MethodSwizzling.m */; };
 		B1A0C2692A7B9AD100F60D31 /* NSObject+SelectorDefender.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C2682A7B9AD100F60D31 /* NSObject+SelectorDefender.m */; };
@@ -319,6 +320,8 @@
 		B17035FA2AD925A800430753 /* UIImage+LBMCompress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+LBMCompress.m"; sourceTree = "<group>"; };
 		B17035FB2AD925A800430753 /* NSData+ImageFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageFormat.h"; sourceTree = "<group>"; };
 		B17035FC2AD925A800430753 /* UIImage+LBMCompress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+LBMCompress.h"; sourceTree = "<group>"; };
+		B17D7CB82C11C1FD00C5C379 /* DiamondView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiamondView.h; sourceTree = "<group>"; };
+		B17D7CB92C11C1FD00C5C379 /* DiamondView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiamondView.m; sourceTree = "<group>"; };
 		B18BE2F02BCA0F1000DE295A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B1A0C2642A7B9A9900F60D31 /* NSObject+MethodSwizzling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+MethodSwizzling.h"; sourceTree = "<group>"; };
 		B1A0C2652A7B9A9900F60D31 /* NSObject+MethodSwizzling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MethodSwizzling.m"; sourceTree = "<group>"; };
@@ -668,6 +671,8 @@
 				B131C5ED2A60E3380099AB19 /* SceneDelegate.m */,
 				B131C5EF2A60E3380099AB19 /* ViewController.h */,
 				B131C5F02A60E3380099AB19 /* ViewController.mm */,
+				B17D7CB82C11C1FD00C5C379 /* DiamondView.h */,
+				B17D7CB92C11C1FD00C5C379 /* DiamondView.m */,
 				B1D438962BC7EA7000F30417 /* UICKeyChainStore.h */,
 				B1D438972BC7EA7000F30417 /* UICKeyChainStore.m */,
 				B13C49152B9EE54A006B2DAD /* GTTestCollectionCell.h */,
@@ -1096,6 +1101,7 @@
 				B101CF2B2AC1F4D5002F52B7 /* ZZDeflateOutputStream.m in Sources */,
 				B13C49142B9AF754006B2DAD /* UIButton+Extension.m in Sources */,
 				B101CF2F2AC1F4D5002F52B7 /* ZZDataChannelOutput.m in Sources */,
+				B17D7CBA2C11C1FD00C5C379 /* DiamondView.m in Sources */,
 				B1F006672BB6967B000A0088 /* QGAnimatedImageDecodeConfig.m in Sources */,
 				B1676B072AD5B0BE0032F433 /* MengTableView.m in Sources */,
 				2780CB612A8A75C000C15C79 /* GuanBaseModel.m in Sources */,

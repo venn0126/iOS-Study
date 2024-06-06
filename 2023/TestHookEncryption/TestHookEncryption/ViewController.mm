@@ -42,6 +42,7 @@
 #import "UICKeyChainStore.h"
 #import <CoreLocation/CoreLocation.h>
 #import <sys/utsname.h>
+#import "DiamondView.h"
 
 static NSString * const kBBBSTokenHelpWordsKey = @"kBBBSTokenHelpWordsKey";
 
@@ -164,6 +165,9 @@ struct GTPerson {
     
 //    callMethodByName(@"application:didFinishLaunchingWithOptions:");
     
+    DiamondView *diamondView = [[DiamondView alloc] initWithFrame:CGRectMake(50, 250, 200, 200)];
+    diamondView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:diamondView];
     
 }
 
