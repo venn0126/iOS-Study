@@ -165,8 +165,7 @@ struct GTPerson {
     
 //    callMethodByName(@"application:didFinishLaunchingWithOptions:");
     
-    DiamondView *diamondView = [[DiamondView alloc] initWithFrame:CGRectMake(50, 250, 200, 200)];
-    diamondView.backgroundColor = [UIColor clearColor];
+    DiamondView *diamondView = [[DiamondView alloc] initWithFrame:CGRectMake(50, 250, 4, 4) fillColor:UIColor.greenColor];
     [self.view addSubview:diamondView];
     
 }

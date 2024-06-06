@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DiamondView : UIView
 
+- (instancetype)initWithFrame:(CGRect)frame fillColor:(UIColor *)fillColor;
+
 @end
 
 NS_ASSUME_NONNULL_END
