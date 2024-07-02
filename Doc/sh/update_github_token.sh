@@ -1,7 +1,9 @@
 #!/bin/bash
 # 使用方法：
 # * 首先输入更新后的token：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
-# * 然后输入需要更新的.git/config的绝对地址：/Users/augus/Documents/Sohu-Doc/.git/config
+# * 然后输入需要更新的.git/config的绝对地址：
+# /Users/augus/Documents/Sohu-Doc/.git/config
+# /Users/augus/Documents/iOS-Study/.git/config
 # * 完成🎉
 read -p '请输入更新后的token: ' input_token
 echo $input_token
