@@ -165,12 +165,32 @@ struct GTPerson {
     
 //    callMethodByName(@"application:didFinishLaunchingWithOptions:");
     
-    DiamondView *diamondView = [[DiamondView alloc] initWithFrame:CGRectMake(50, 250, 4, 4) fillColor:UIColor.greenColor];
-    [self.view addSubview:diamondView];
-    
 }
 
 
+- (void)checkAlertController {
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        
+        [GuanAlert showAlertWithTitle:@"野马设置激活码验证" message:@"" confirmTitle:@"激活" cancelTitle:nil preferredStyle:UIAlertControllerStyleAlert confirmHandle:nil cancleHandle:nil isNeedOneInputTextField:YES OneInputTextFieldPlaceHolder:@"请输入激活码" confirmTextFieldHandle:^(NSString * _Nonnull inputText) {
+                    // 点击确定
+            
+        }];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            // check cuurent alert <UIAlertController: 0x107809400>
+            NSLog(@"check cuurent alert %@",[GTUtilies currentViewController]);
+        });
+        
+    });
+}
+
+
+- (void)testDiamondView {
+    DiamondView *diamondView = [[DiamondView alloc] initWithFrame:CGRectMake(50, 250, 4, 4) fillColor:UIColor.greenColor];
+    [self.view addSubview:diamondView];
+}
 
 
 /// 根据方法名逆向查找对应的对象或类
