@@ -12,6 +12,7 @@ import SwiftUI
 struct DummyControlBundle: WidgetBundle {
     var body: some Widget {
         DummyControl()
-        DummyControlControl()
+        DummyControlToggleDemo()
+        DummyControlButtonDemo()
     }
 }
