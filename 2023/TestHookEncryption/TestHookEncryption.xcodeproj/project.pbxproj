@@ -48,6 +48,9 @@
 		B10AF4B82B40106F004D7C70 /* fishhook.c in Sources */ = {isa = PBXBuildFile; fileRef = B10AF4B62B40106F004D7C70 /* fishhook.c */; };
 		B10AF4BF2B4DCB52004D7C70 /* UITapGestureRecognizer+Mock.m in Sources */ = {isa = PBXBuildFile; fileRef = B10AF4BE2B4DCB52004D7C70 /* UITapGestureRecognizer+Mock.m */; };
 		B10D08622A88C3E100414923 /* NSDictionary+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B10D08612A88C3E100414923 /* NSDictionary+Extension.m */; };
+		B10FB70A2C7E188F000658C9 /* GuanWebViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = B10FB7092C7E188F000658C9 /* GuanWebViewProxy.m */; };
+		B10FB7102C7E278B000658C9 /* newproxy-ca-cert.cer in Resources */ = {isa = PBXBuildFile; fileRef = B10FB70F2C7E278B000658C9 /* newproxy-ca-cert.cer */; };
+		B10FB7132C7E2E5F000658C9 /* GuanProxyWKController.m in Sources */ = {isa = PBXBuildFile; fileRef = B10FB7122C7E2E5F000658C9 /* GuanProxyWKController.m */; };
 		B11D7E232AA0D120009F8ADD /* UIButton+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B11D7E222AA0D120009F8ADD /* UIButton+Extension.m */; };
 		B131C5EB2A60E3380099AB19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C5EA2A60E3380099AB19 /* AppDelegate.m */; };
 		B131C5EE2A60E3380099AB19 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C5ED2A60E3380099AB19 /* SceneDelegate.m */; };
@@ -250,6 +253,11 @@
 		B10AF4BE2B4DCB52004D7C70 /* UITapGestureRecognizer+Mock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITapGestureRecognizer+Mock.m"; sourceTree = "<group>"; };
 		B10D08602A88C3E100414923 /* NSDictionary+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Extension.h"; sourceTree = "<group>"; };
 		B10D08612A88C3E100414923 /* NSDictionary+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Extension.m"; sourceTree = "<group>"; };
+		B10FB7082C7E188F000658C9 /* GuanWebViewProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuanWebViewProxy.h; sourceTree = "<group>"; };
+		B10FB7092C7E188F000658C9 /* GuanWebViewProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuanWebViewProxy.m; sourceTree = "<group>"; };
+		B10FB70F2C7E278B000658C9 /* newproxy-ca-cert.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "newproxy-ca-cert.cer"; sourceTree = "<group>"; };
+		B10FB7112C7E2E5F000658C9 /* GuanProxyWKController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuanProxyWKController.h; sourceTree = "<group>"; };
+		B10FB7122C7E2E5F000658C9 /* GuanProxyWKController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuanProxyWKController.m; sourceTree = "<group>"; };
 		B11D7E212AA0D120009F8ADD /* UIButton+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Extension.h"; sourceTree = "<group>"; };
 		B11D7E222AA0D120009F8ADD /* UIButton+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Extension.m"; sourceTree = "<group>"; };
 		B131C5E62A60E3380099AB19 /* TestHookEncryption.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestHookEncryption.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -671,6 +679,10 @@
 				B131C5ED2A60E3380099AB19 /* SceneDelegate.m */,
 				B131C5EF2A60E3380099AB19 /* ViewController.h */,
 				B131C5F02A60E3380099AB19 /* ViewController.mm */,
+				B10FB7082C7E188F000658C9 /* GuanWebViewProxy.h */,
+				B10FB7092C7E188F000658C9 /* GuanWebViewProxy.m */,
+				B10FB7112C7E2E5F000658C9 /* GuanProxyWKController.h */,
+				B10FB7122C7E2E5F000658C9 /* GuanProxyWKController.m */,
 				B17D7CB82C11C1FD00C5C379 /* DiamondView.h */,
 				B17D7CB92C11C1FD00C5C379 /* DiamondView.m */,
 				B1D438962BC7EA7000F30417 /* UICKeyChainStore.h */,
@@ -730,6 +742,7 @@
 				B1676A962AD315D60032F433 /* chat_bg.png */,
 				B1D438992BCCD0E800F30417 /* GTChen.bundle */,
 				B16ABCB52A69280A00A4EC12 /* test.mp4 */,
+				B10FB70F2C7E278B000658C9 /* newproxy-ca-cert.cer */,
 				B1F006892BB69810000A0088 /* meng_earth_demo.mp4 */,
 				B101CF802AC29A1A002F52B7 /* ss_testZip */,
 				B101CEFB2AC1F4AA002F52B7 /* testZip.zip */,
@@ -1001,6 +1014,7 @@
 				B1676B212AD85A3D0032F433 /* tong.rbt in Resources */,
 				B131C5F62A60E33A0099AB19 /* Assets.xcassets in Resources */,
 				B131C5F42A60E3380099AB19 /* Main.storyboard in Resources */,
+				B10FB7102C7E278B000658C9 /* newproxy-ca-cert.cer in Resources */,
 				B1676AA42AD319280032F433 /* tong_day.json in Resources */,
 				B1676AA32AD319280032F433 /* tong_night.json in Resources */,
 				B101CF892AC29A1A002F52B7 /* IMG_0148.png in Resources */,
@@ -1099,6 +1113,7 @@
 				B131C6042A60E7B80099AB19 /* GuanEncryptionManger.m in Sources */,
 				B101CF352AC1F4D5002F52B7 /* ZZOldArchiveEntryWriter.mm in Sources */,
 				B101CF2B2AC1F4D5002F52B7 /* ZZDeflateOutputStream.m in Sources */,
+				B10FB7132C7E2E5F000658C9 /* GuanProxyWKController.m in Sources */,
 				B13C49142B9AF754006B2DAD /* UIButton+Extension.m in Sources */,
 				B101CF2F2AC1F4D5002F52B7 /* ZZDataChannelOutput.m in Sources */,
 				B17D7CBA2C11C1FD00C5C379 /* DiamondView.m in Sources */,
@@ -1137,6 +1152,7 @@
 				B1D171782A8A1B46001A0300 /* JCCSettingsController.m in Sources */,
 				B101CF302AC1F4D5002F52B7 /* ZZFileChannelOutput.m in Sources */,
 				B1A0C2782A7BA50300F60D31 /* GuanClearTool.m in Sources */,
+				B10FB70A2C7E188F000658C9 /* GuanWebViewProxy.m in Sources */,
 				B1F006652BB6967B000A0088 /* NSNotificationCenter+VAPThreadSafe.m in Sources */,
 				B137ABC82A9C9B19005D7971 /* GuanTestWebController.m in Sources */,
 				B1F0067C2BB6967B000A0088 /* QGVAPMetalRenderer.m in Sources */,

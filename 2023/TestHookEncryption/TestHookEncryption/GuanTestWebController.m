@@ -64,7 +64,7 @@ static const CGFloat kProgressViewHeight = 0.5;
 
 - (void)openPageString:(NSString *)string {
     if(!string || string.length == 0) {
-        string = @"https://www.sohu.com";
+        string = @"https://store.steampowered.com/";
     }
     
     NSURL *url = [NSURL URLWithString:string];

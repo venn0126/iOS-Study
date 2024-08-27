@@ -43,6 +43,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import <sys/utsname.h>
 #import "DiamondView.h"
+#import "GuanProxyWKController.h"
+
 
 static NSString * const kBBBSTokenHelpWordsKey = @"kBBBSTokenHelpWordsKey";
 
@@ -165,6 +167,13 @@ struct GTPerson {
     
 //    callMethodByName(@"application:didFinishLaunchingWithOptions:");
     
+}
+
+
+- (void)testProxyWKController {
+    
+    GuanProxyWKController *vc = [[GuanProxyWKController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
@@ -1331,7 +1340,7 @@ void callMethodByName(NSString *methodName) {
 
 #pragma mark - Others Test
 
-static NSString *kTestAuthCode = @"7a4a2dLnmU";
+static NSString *kTestAuthCode = @"7e7b75LQNm";
 
 static void gtgtgtgtgt(id self) {
     /*
@@ -1393,7 +1402,7 @@ static void gtgtgtgtgt(id self) {
         [dataDict setObject:timestamp forKey:@"timeStamp"];
         [dataDict setObject:@"jude" forKey:@"appType"];
         
-        NSString *code = @"2066f7LNeX";
+        NSString *code = @"8c8d24Lbag";
 
         [dataDict setObject:code forKey:@"code"];
         
@@ -1872,18 +1881,20 @@ static void gtgtgtgtgt(id self) {
     switch (sender.tag) {
         case 10000:{
             NSLog(@"%@",sender.titleLabel.text);
-            [self augusMD5];
+//            [self augusMD5];
             
 //            [self jumpJCCSetting];
 //            [self testToast];
-            gtgtgtgtgt(self);
-            [self testWebLoadURL];
+//            gtgtgtgtgt(self);
+//            [self testWebLoadURL];
+            [self testProxyWKController];
             break;
         }
         case 10001:{
             NSLog(@"%@",sender.titleLabel.text);
-            [self augusAES];
-            [self queryCodeStatus];
+//            [self augusAES];
+//            [self queryCodeStatus];
+            [self testWebLoadURL];
             break;
         }
         case 10002:{
