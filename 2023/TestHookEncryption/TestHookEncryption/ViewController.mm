@@ -44,6 +44,7 @@
 #import <sys/utsname.h>
 #import "DiamondView.h"
 #import "GuanProxyWKController.h"
+#import "ChengReserverMgr.h"
 
 
 static NSString * const kBBBSTokenHelpWordsKey = @"kBBBSTokenHelpWordsKey";
@@ -167,6 +168,49 @@ struct GTPerson {
     
 //    callMethodByName(@"application:didFinishLaunchingWithOptions:");
     
+    
+    [self testRevserTickets];
+}
+
+
+- (void)testRevserTickets {
+    
+    UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [closeButton setTitle:@"Start" forState:UIControlStateNormal];
+    closeButton.titleLabel.font = [UIFont systemFontOfSize:15];
+    closeButton.titleLabel.textColor = UIColor.whiteColor;
+    closeButton.backgroundColor = [UIColor colorWithRed:39/256.0 green:193/256.0 blue:255/256.0 alpha:1];
+    [closeButton addTarget:self action:@selector(cheng_start) forControlEvents:UIControlEventTouchUpInside];
+    CGRect screenBounds = UIScreen.mainScreen.bounds;
+    CGFloat closeButtonWidth = screenBounds.size.width / 4;
+    
+    closeButton.frame = CGRectMake(0, screenBounds.size.height - 100, closeButtonWidth, 60);
+    [self.view addSubview:closeButton];
+    
+    
+    UIButton *stopButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [stopButton setTitle:@"Stop" forState:UIControlStateNormal];
+    stopButton.titleLabel.font = [UIFont systemFontOfSize:15];
+    stopButton.titleLabel.textColor = UIColor.whiteColor;
+    stopButton.backgroundColor = [UIColor colorWithRed:39/256.0 green:193/256.0 blue:255/256.0 alpha:1];
+    [stopButton addTarget:self action:@selector(cheng_stop) forControlEvents:UIControlEventTouchUpInside];
+
+    
+    stopButton.frame = CGRectMake(200, screenBounds.size.height - 100, closeButtonWidth, 60);
+    [self.view addSubview:stopButton];
+}
+
+
+- (void)cheng_start {
+    
+    ChengReserverMgr *mgr = [ChengReserverMgr shared];
+    [mgr startReservingTickets];
+}
+
+- (void)cheng_stop {
+    
+    ChengReserverMgr *mgr = [ChengReserverMgr shared];
+    [mgr stopReservingTickets];
 }
 
 
@@ -1881,7 +1925,7 @@ static void gtgtgtgtgt(id self) {
     switch (sender.tag) {
         case 10000:{
             NSLog(@"%@",sender.titleLabel.text);
-//            [self augusMD5];
+            [self augusMD5];
             
 //            [self jumpJCCSetting];
 //            [self testToast];
