@@ -16,9 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) BOOL stopRequested;
 
-- (void)startReservingTickets;
+- (void)guan_startReservingTickets;
 
-- (void)stopReservingTickets;
+- (void)guan_stopReservingTickets;
 
 
 

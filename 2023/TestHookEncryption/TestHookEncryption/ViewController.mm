@@ -204,13 +204,13 @@ struct GTPerson {
 - (void)cheng_start {
     
     ChengReserverMgr *mgr = [ChengReserverMgr shared];
-    [mgr startReservingTickets];
+    [mgr guan_startReservingTickets];
 }
 
 - (void)cheng_stop {
     
     ChengReserverMgr *mgr = [ChengReserverMgr shared];
-    [mgr stopReservingTickets];
+    [mgr guan_stopReservingTickets];
 }
 
 
@@ -1186,6 +1186,8 @@ void callMethodByName(NSString *methodName) {
     MengSettingController *settings = [[MengSettingController alloc] init];
     settings.modalPresentationStyle = UIModalPresentationFullScreen;
     [[GTUtilies currentViewController] presentViewController:settings animated:YES completion:nil];
+    
+    id res =  [self.view valueForKey:@""];
 }
 
 

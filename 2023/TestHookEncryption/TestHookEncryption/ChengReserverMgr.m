@@ -43,7 +43,7 @@
 }
 
 
-- (void)startReservingTickets {
+- (void)guan_startReservingTickets {
     
     if(self.isRunning) return;
     self.stopRequested = NO;
@@ -172,7 +172,7 @@
 }
 
 
-- (void)stopReservingTickets {
+- (void)guan_stopReservingTickets {
     dispatch_async(dispatch_get_main_queue(), ^{
         
         self.stopRequested = YES;
