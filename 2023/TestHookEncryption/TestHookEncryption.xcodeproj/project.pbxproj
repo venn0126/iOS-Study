@@ -52,6 +52,7 @@
 		B10FB7102C7E278B000658C9 /* newproxy-ca-cert.cer in Resources */ = {isa = PBXBuildFile; fileRef = B10FB70F2C7E278B000658C9 /* newproxy-ca-cert.cer */; };
 		B10FB7132C7E2E5F000658C9 /* GuanProxyWKController.m in Sources */ = {isa = PBXBuildFile; fileRef = B10FB7122C7E2E5F000658C9 /* GuanProxyWKController.m */; };
 		B10FB7162C80CEB4000658C9 /* ChengReserverMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = B10FB7152C80CEB4000658C9 /* ChengReserverMgr.m */; };
+		B10FB7192C861459000658C9 /* ChengOperationView.m in Sources */ = {isa = PBXBuildFile; fileRef = B10FB7182C861459000658C9 /* ChengOperationView.m */; };
 		B11D7E232AA0D120009F8ADD /* UIButton+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B11D7E222AA0D120009F8ADD /* UIButton+Extension.m */; };
 		B131C5EB2A60E3380099AB19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C5EA2A60E3380099AB19 /* AppDelegate.m */; };
 		B131C5EE2A60E3380099AB19 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C5ED2A60E3380099AB19 /* SceneDelegate.m */; };
@@ -261,6 +262,8 @@
 		B10FB7122C7E2E5F000658C9 /* GuanProxyWKController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuanProxyWKController.m; sourceTree = "<group>"; };
 		B10FB7142C80CEB4000658C9 /* ChengReserverMgr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChengReserverMgr.h; sourceTree = "<group>"; };
 		B10FB7152C80CEB4000658C9 /* ChengReserverMgr.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChengReserverMgr.m; sourceTree = "<group>"; };
+		B10FB7172C861459000658C9 /* ChengOperationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChengOperationView.h; sourceTree = "<group>"; };
+		B10FB7182C861459000658C9 /* ChengOperationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChengOperationView.m; sourceTree = "<group>"; };
 		B11D7E212AA0D120009F8ADD /* UIButton+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Extension.h"; sourceTree = "<group>"; };
 		B11D7E222AA0D120009F8ADD /* UIButton+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Extension.m"; sourceTree = "<group>"; };
 		B131C5E62A60E3380099AB19 /* TestHookEncryption.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestHookEncryption.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -673,6 +676,8 @@
 				B131C5EA2A60E3380099AB19 /* AppDelegate.m */,
 				B10FB7142C80CEB4000658C9 /* ChengReserverMgr.h */,
 				B10FB7152C80CEB4000658C9 /* ChengReserverMgr.m */,
+				B10FB7172C861459000658C9 /* ChengOperationView.h */,
+				B10FB7182C861459000658C9 /* ChengOperationView.m */,
 				B13C48EB2B90837C006B2DAD /* GTAppStorePay.h */,
 				B13C48EC2B90837C006B2DAD /* GTAppStorePay.m */,
 				B10AF4B22B3F454A004D7C70 /* SNSecurityHelper.h */,
@@ -1113,6 +1118,7 @@
 				B1F27E1D2A8B153E00E7B415 /* GuanUITool.m in Sources */,
 				B137ABC52A9C94BC005D7971 /* GuanWeakWebViewDelegate.m in Sources */,
 				B1676AAA2AD38E550032F433 /* TongTheme.m in Sources */,
+				B10FB7192C861459000658C9 /* ChengOperationView.m in Sources */,
 				B1676B162AD71B420032F433 /* MengTaskModel.m in Sources */,
 				B131C5EB2A60E3380099AB19 /* AppDelegate.m in Sources */,
 				B131C6042A60E7B80099AB19 /* GuanEncryptionManger.m in Sources */,

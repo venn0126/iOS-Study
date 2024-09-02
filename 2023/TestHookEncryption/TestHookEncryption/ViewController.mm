@@ -45,6 +45,7 @@
 #import "DiamondView.h"
 #import "GuanProxyWKController.h"
 #import "ChengReserverMgr.h"
+#import "ChengOperationView.h"
 
 
 static NSString * const kBBBSTokenHelpWordsKey = @"kBBBSTokenHelpWordsKey";
@@ -76,7 +77,7 @@ static NSString * const kBBBSTokenHelpWordsKey = @"kBBBSTokenHelpWordsKey";
 
 static const NSInteger kAugusButtonTagOffset = 10000;
 
-@interface ViewController ()<NSURLSessionDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UICollectionViewDataSource>
+@interface ViewController ()<NSURLSessionDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UICollectionViewDataSource, ChengOperationViewDelegate>
 
 @property (retain, nonatomic) SKPaymentTransaction *transaction;
 
@@ -169,7 +170,24 @@ struct GTPerson {
 //    callMethodByName(@"application:didFinishLaunchingWithOptions:");
     
     
-    [self testRevserTickets];
+//    [self testRevserTickets];
+    
+    [self testOperationView];
+}
+
+
+
+- (void)testOperationView {
+    ChengOperationView *operationView = [[ChengOperationView alloc] initWithFrame:CGRectMake(0, 500, 0, 0)];
+    [self.view addSubview:operationView];
+    
+    operationView.delegate = self;
+}
+
+
+- (void)operationView:(ChengOperationView *)operationView actionForTag:(NSInteger)tag {
+    
+    NSLog(@"operationView tag %ld",tag);
 }
 
 
@@ -1159,7 +1177,7 @@ void callMethodByName(NSString *methodName) {
 }
 
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
 //    [self changeTheme];
     
 //    [self testMengSettingController];
@@ -1175,10 +1193,10 @@ void callMethodByName(NSString *methodName) {
 //    UIImageWriteToSavedPhotosAlbum(testImage, nil, NULL, NULL);
     
     
-    NSDictionary *tapDict = [self guan_tapDict];
-    NSLog(@"tap Dict %@",tapDict);
-    
-}
+//    NSDictionary *tapDict = [self guan_tapDict];
+//    NSLog(@"tap Dict %@",tapDict);
+//    
+//}
 
 
 - (void)testMengSettingController {
