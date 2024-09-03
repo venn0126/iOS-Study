@@ -7,6 +7,17 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^ChengTimerBlock)(NSTimer * _Nullable timer);
+
+typedef enum : NSUInteger {
+    /// 未开始
+    ChengOperationViewTaskStatusReady,
+    /// 运行中
+    ChengOperationViewTaskStatusRunning,
+    /// 已停止
+    ChengOperationViewTaskStatusStopped,
+} ChengOperationViewTaskStatus;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @class ChengOperationView;

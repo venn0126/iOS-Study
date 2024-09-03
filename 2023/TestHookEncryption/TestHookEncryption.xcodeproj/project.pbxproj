@@ -54,6 +54,7 @@
 		B10FB7162C80CEB4000658C9 /* ChengReserverMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = B10FB7152C80CEB4000658C9 /* ChengReserverMgr.m */; };
 		B10FB7192C861459000658C9 /* ChengOperationView.m in Sources */ = {isa = PBXBuildFile; fileRef = B10FB7182C861459000658C9 /* ChengOperationView.m */; };
 		B11D7E232AA0D120009F8ADD /* UIButton+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B11D7E222AA0D120009F8ADD /* UIButton+Extension.m */; };
+		B129892C2C86F6C700CE74F1 /* GTControllableCThread.m in Sources */ = {isa = PBXBuildFile; fileRef = B129892B2C86F6C700CE74F1 /* GTControllableCThread.m */; };
 		B131C5EB2A60E3380099AB19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C5EA2A60E3380099AB19 /* AppDelegate.m */; };
 		B131C5EE2A60E3380099AB19 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C5ED2A60E3380099AB19 /* SceneDelegate.m */; };
 		B131C5F12A60E3380099AB19 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B131C5F02A60E3380099AB19 /* ViewController.mm */; };
@@ -266,6 +267,8 @@
 		B10FB7182C861459000658C9 /* ChengOperationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChengOperationView.m; sourceTree = "<group>"; };
 		B11D7E212AA0D120009F8ADD /* UIButton+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Extension.h"; sourceTree = "<group>"; };
 		B11D7E222AA0D120009F8ADD /* UIButton+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Extension.m"; sourceTree = "<group>"; };
+		B129892A2C86F6C700CE74F1 /* GTControllableCThread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTControllableCThread.h; sourceTree = "<group>"; };
+		B129892B2C86F6C700CE74F1 /* GTControllableCThread.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTControllableCThread.m; sourceTree = "<group>"; };
 		B131C5E62A60E3380099AB19 /* TestHookEncryption.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestHookEncryption.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B131C5E92A60E3380099AB19 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B131C5EA2A60E3380099AB19 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -678,6 +681,8 @@
 				B10FB7152C80CEB4000658C9 /* ChengReserverMgr.m */,
 				B10FB7172C861459000658C9 /* ChengOperationView.h */,
 				B10FB7182C861459000658C9 /* ChengOperationView.m */,
+				B129892A2C86F6C700CE74F1 /* GTControllableCThread.h */,
+				B129892B2C86F6C700CE74F1 /* GTControllableCThread.m */,
 				B13C48EB2B90837C006B2DAD /* GTAppStorePay.h */,
 				B13C48EC2B90837C006B2DAD /* GTAppStorePay.m */,
 				B10AF4B22B3F454A004D7C70 /* SNSecurityHelper.h */,
@@ -1151,6 +1156,7 @@
 				B1D54A2B2B04B82C00EFFA42 /* XHTool.m in Sources */,
 				2780CB572A8A73D000C15C79 /* GuanBaseTableCell.m in Sources */,
 				B1F006692BB6967B000A0088 /* QGAnimatedImageDecodeThread.m in Sources */,
+				B129892C2C86F6C700CE74F1 /* GTControllableCThread.m in Sources */,
 				B1F0066D2BB6967B000A0088 /* QGBaseDecoder.m in Sources */,
 				B1F006662BB6967B000A0088 /* QGAnimatedImageBufferManager.m in Sources */,
 				B1676B0A2AD5B14A0032F433 /* MengTableViewDataSource.m in Sources */,
