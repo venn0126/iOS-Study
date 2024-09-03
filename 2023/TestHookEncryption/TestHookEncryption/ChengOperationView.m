@@ -96,7 +96,7 @@ static CGFloat const kChengOperationViewButtonX = 10.0;
     
     [self addSubview:self.resultTimingLabel];
     [self addSubview:self.guanTimingPicker];
-    NSString *timeStr = [GuanUserDefaults objectForKey:kChengOperationViewTimingStringKey] ?: nil;
+    NSString *timeStr = [GuanUserDefaults objectForKey:kChengOperationViewTimingStringKey] ?: @"14:59:55";
     [self updateResultTimingLabel:timeStr];
     
     [self addSubview:self.guanTimingSwitch];
@@ -159,7 +159,7 @@ static CGFloat const kChengOperationViewButtonX = 10.0;
     [GuanUserDefaults setBool:sender.on forKey:kChengOperationViewTimingOnKey];
     self.guanTimingPicker.userInteractionEnabled = !sender.on;
     if(sender.on) {
-        [self guan_startTimerInterval:1 block:^(NSTimer * _Nullable timer) {
+        [self guan_startTimerInterval:0.5 block:^(NSTimer * _Nullable timer) {
             // 实时检测是否到了时间点
             [self checkIfTimeReached];
         }];
@@ -315,6 +315,7 @@ static CGFloat const kChengOperationViewButtonX = 10.0;
             [self.delegate operationView:self actionForTag:kChengOperationViewTagOffset + 1];
             [self guan_setTaskStatusLabelText:ChengOperationViewTaskStatusRunning];
         }
+        [self guan_stopTimer];
     } else {
         NSLog(@"时间还没到");
     }
@@ -364,11 +365,10 @@ static CGFloat const kChengOperationViewButtonX = 10.0;
 
     [_guanTimer invalidate];
     _guanTimer = nil;
-    if(self.delegate && [self.delegate respondsToSelector:@selector(operationView:actionForTag:)]) {
-        [self.delegate operationView:self actionForTag:kChengOperationViewTagOffset + 2];
-        [self guan_setTaskStatusLabelText:ChengOperationViewTaskStatusStopped];
-    }
-    
+    [GuanUserDefaults setBool:NO forKey:kChengOperationViewTimingOnKey];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.guanTimingSwitch.on = NO;
+    });
 }
 
 - (UIImage *)imageWithColor:(UIColor *)color {
