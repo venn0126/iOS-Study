@@ -13,7 +13,7 @@
 static NSInteger const kChengOperationViewTagOffset = 2500;
 static CGFloat const kChengOperationViewHeight = 130.0;
 static CGFloat const kChengOperationViewButtonHeight = 40.0;
-static CGFloat const kChengOperationViewButtonWidth = 50.0;
+static CGFloat const kChengOperationViewButtonWidth = 150.0;
 static CGFloat const kChengOperationViewButtonX = 10.0;
 
 #define kChengOperationViewRandomIntervalType @"kChengOperationViewRandomIntervalType"
@@ -28,9 +28,9 @@ static CGFloat const kChengOperationViewButtonX = 10.0;
 @property(nonatomic, strong) UIButton *guanStartButton;
 @property(nonatomic, strong) UIButton *guanStopButton;
 
-@property(nonatomic, strong) UISegmentedControl *randomSegment;
-@property (nonatomic, strong) UILabel *randomLabel;
-@property (nonatomic, strong) NSArray *numbersArray;
+//@property(nonatomic, strong) UISegmentedControl *randomSegment;
+//@property (nonatomic, strong) UILabel *randomLabel;
+//@property (nonatomic, strong) NSArray *numbersArray;
 
 
 @property(nonatomic, strong) UIPickerView *guanTimingPicker;
@@ -62,7 +62,7 @@ static CGFloat const kChengOperationViewButtonX = 10.0;
     self.height = kChengOperationViewHeight;
     self.width = [UIScreen mainScreen].bounds.size.width;
     self.backgroundColor = UIColor.lightGrayColor;
-    self.numbersArray = @[@"0", @"1", @"2", @"3", @"4"];
+//    self.numbersArray = @[@"0", @"1", @"2", @"3", @"4"];
     
     self.hoursArray = [self createArrayWithRange:24];   // 0-23小时
     self.minutesArray = [self createArrayWithRange:60]; // 0-59分钟
@@ -87,12 +87,12 @@ static CGFloat const kChengOperationViewButtonX = 10.0;
 
 - (void)guan_setupSubview {
     
-    [self addSubview:self.guanStartButton];
-    [self addSubview:self.guanStopButton];
-
-    [self addSubview:self.randomLabel];
-    [self addSubview:self.randomSegment];
-    self.randomSegment.selectedSegmentIndex = [GuanUserDefaults integerForKey:kChengOperationViewRandomIntervalType] ?: 0;
+//    [self addSubview:self.randomLabel];
+//    [self addSubview:self.randomSegment];
+//    self.randomSegment.selectedSegmentIndex = [GuanUserDefaults integerForKey:kChengOperationViewRandomIntervalType] ?: 0;
+    
+    [self addSubview:self.taskStatusLabel];
+    [self guan_setTaskStatusLabelText:ChengOperationViewTaskStatusReady];
     
     [self addSubview:self.resultTimingLabel];
     [self addSubview:self.guanTimingPicker];
@@ -103,8 +103,9 @@ static CGFloat const kChengOperationViewButtonX = 10.0;
     self.guanTimingSwitch.on = NO;
     self.guanTimingPicker.userInteractionEnabled = !self.guanTimingSwitch.on;
     
-    [self addSubview:self.taskStatusLabel];
-    [self guan_setTaskStatusLabelText:ChengOperationViewTaskStatusReady];
+
+    [self addSubview:self.guanStartButton];
+    [self addSubview:self.guanStopButton];
     
 
 }
@@ -113,19 +114,20 @@ static CGFloat const kChengOperationViewButtonX = 10.0;
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    self.guanStartButton.frame = CGRectMake(kChengOperationViewButtonX, 0, kChengOperationViewButtonWidth, kChengOperationViewButtonHeight);
-    self.guanStopButton.frame = CGRectMake(self.guanStartButton.right + kChengOperationViewButtonX, self.guanStartButton.top, kChengOperationViewButtonWidth, kChengOperationViewButtonHeight);
+    self.taskStatusLabel.frame = CGRectMake(kChengOperationViewButtonX, 5, 300, 16);
     
-    self.randomLabel.frame = CGRectMake(self.guanStopButton.right + kChengOperationViewButtonX, 0, 80, kChengOperationViewButtonHeight);
-    self.randomSegment.frame = CGRectMake(self.randomLabel.right, 0, 150, kChengOperationViewButtonHeight);
+//    self.randomLabel.frame = CGRectMake(self.guanStopButton.right + kChengOperationViewButtonX, 0, 80, kChengOperationViewButtonHeight);
+//    self.randomSegment.frame = CGRectMake(self.randomLabel.right, 0, 150, kChengOperationViewButtonHeight);
     
-    self.resultTimingLabel.frame = CGRectMake(self.guanStartButton.left, kChengOperationViewHeight-60, 110, 60);
+    self.resultTimingLabel.frame = CGRectMake(self.taskStatusLabel.left, self.taskStatusLabel.bottom, 110, 60);
     self.guanTimingPicker.frame = CGRectMake(self.resultTimingLabel.right, self.resultTimingLabel.top, 180, 60);
     
     self.guanTimingSwitch.frame = CGRectMake(self.guanTimingPicker.right + kChengOperationViewButtonX, 0, 0, 0);
     self.guanTimingSwitch.centerY = self.guanTimingPicker.centerY;
 
-    self.taskStatusLabel.frame = CGRectMake(self.guanStartButton.left, self.guanStartButton.bottom + 5, 200, kChengOperationViewButtonHeight);
+
+    self.guanStartButton.frame = CGRectMake(kChengOperationViewButtonX, self.guanTimingPicker.bottom, kChengOperationViewButtonWidth, kChengOperationViewButtonHeight);
+    self.guanStopButton.frame = CGRectMake(self.guanStartButton.right + 30, self.guanStartButton.top, kChengOperationViewButtonWidth, kChengOperationViewButtonHeight);
 }
 
 
@@ -448,23 +450,23 @@ static CGFloat const kChengOperationViewButtonX = 10.0;
 }
 
 
-- (UISegmentedControl *)randomSegment {
-    if(!_randomSegment) {
-        _randomSegment = [[UISegmentedControl alloc] initWithItems:self.numbersArray];
-        [_randomSegment addTarget:self action:@selector(guan_randomSegmentAction:) forControlEvents:UIControlEventValueChanged];
-    }
-    return _randomSegment;
-}
-
-- (UILabel *)randomLabel {
-    if(!_randomLabel) {
-        _randomLabel = [[UILabel alloc] init];
-        _randomLabel.textColor = UIColor.blackColor;
-        _randomLabel.font = [UIFont systemFontOfSize:14];
-        _randomLabel.text = @"延迟档位";
-    }
-    return _randomLabel;
-}
+//- (UISegmentedControl *)randomSegment {
+//    if(!_randomSegment) {
+//        _randomSegment = [[UISegmentedControl alloc] initWithItems:self.numbersArray];
+//        [_randomSegment addTarget:self action:@selector(guan_randomSegmentAction:) forControlEvents:UIControlEventValueChanged];
+//    }
+//    return _randomSegment;
+//}
+//
+//- (UILabel *)randomLabel {
+//    if(!_randomLabel) {
+//        _randomLabel = [[UILabel alloc] init];
+//        _randomLabel.textColor = UIColor.blackColor;
+//        _randomLabel.font = [UIFont systemFontOfSize:14];
+//        _randomLabel.text = @"延迟档位";
+//    }
+//    return _randomLabel;
+//}
 
 - (UILabel *)taskStatusLabel {
     if(!_taskStatusLabel) {
