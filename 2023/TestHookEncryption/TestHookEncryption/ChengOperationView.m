@@ -280,37 +280,29 @@ static CGFloat const kChengOperationViewButtonX = 10.0;
 }
 
 #pragma mark - 比较时间
-
-
 - (NSDateFormatter *)getDateFormatter {
-    static NSDateFormatter *dateFormater = nil;
-    if (!dateFormater) {
-        dateFormater = [[NSDateFormatter alloc] init];
-        dateFormater.locale = [NSLocale systemLocale];
-        dateFormater.calendar = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierISO8601];
+    static NSDateFormatter *dateFormatter = nil;
+    if (!dateFormatter) {
+        dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = @"HH:mm:ss"; // 对应的时间格式
+        dateFormatter.timeZone = [NSTimeZone timeZoneWithName:@"Asia/Shanghai"]; // 设置时区为中国时区
+        dateFormatter.locale = [NSLocale currentLocale]; // 使用
     }
-    return dateFormater;
+    return dateFormatter;
 }
 
 - (void)checkIfTimeReached {
     // 获取当前系统时间格式
-    BOOL is24HourFormat = ![self isUsing12HourFormat];
-    // 获取当前时间
     NSDate *currentDate = [NSDate date];
-    NSDateFormatter *dateFormatter = [self getDateFormatter];
-    // 设置当前系统的时间格式
-    NSString *currentHourFormat = is24HourFormat ? @"HH:mm:ss" : @"hh:mm:ss a";
-    dateFormatter.dateFormat = currentHourFormat;
-    NSString *currentTimeString = [dateFormatter stringFromDate:currentDate];
-
-    // 获取选中的时间
-    NSString *selectedTime = [GuanUserDefaults objectForKey:kChengOperationViewTimingStringKey] ?: @"00:00:00"; // 例如 "倒计时:14:30:45"
-    // 将时间字符串转为NSDate对象,根据不同的时间格式
-    NSDate *selectedDate = [self dateFromString:selectedTime withFormat:@"HH:mm:ss"];
-    NSDate *currentTime = [self dateFromString:currentTimeString withFormat:currentHourFormat];
-
-    // 比较时间
-    NSComparisonResult result = [currentTime compare:selectedDate];
+    NSDate *currentSystemDate = [self changeNowDateToSysytemDate:currentDate];
+    // 假设选中的时间是
+    NSString *selectedTime = [GuanUserDefaults objectForKey:kChengOperationViewTimingStringKey] ?: @"14:59:58";
+    // 将选定的时间字符串转换为 `NSDate`
+    NSDate *selectedDate = [self dateFromTimeString:selectedTime];
+    NSDate *selectedSystemDate = [self changeNowDateToSysytemDate:selectedDate];
+    // 比较两个日期
+    NSComparisonResult result = [currentSystemDate compare:selectedSystemDate];
+    
     if (result == NSOrderedSame || result == NSOrderedDescending) {
         NSLog(@"时间到了或者超过了设定的时间");
         if(self.delegate && [self.delegate respondsToSelector:@selector(operationView:actionForTag:)]) {
@@ -324,17 +316,40 @@ static CGFloat const kChengOperationViewButtonX = 10.0;
 }
 
 
-- (NSDate *)dateFromString:(NSString *)string withFormat:(NSString *)format {
-    NSDateFormatter *formatter = [self getDateFormatter];
-    [formatter setDateFormat:format];
-    NSDate *date = [formatter dateFromString:string];
+- (NSDate *)dateFromTimeString:(NSString *)timeString {
+    // 创建并配置NSDateFormatter
+    NSDateFormatter *dateFormatter = [self getDateFormatter];
+    
+    // 获取当前日期
+    NSDate *currentDate = [NSDate date];
+    
+    // 获取当前日期的日、月、年信息
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay)
+                                               fromDate:currentDate];
+
+    // 组合日期和时间字符串
+    NSString *dateString = [NSString stringWithFormat:@"%04ld-%02ld-%02ld %@",
+                            (long)components.year,
+                            (long)components.month,
+                            (long)components.day,
+                            timeString];
+    
+    // 设置组合后的完整日期时间格式
+    dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    
+    // 将组合后的字符串转换为NSDate
+    NSDate *date = [dateFormatter dateFromString:dateString];
+    
     return date;
 }
 
-// 判断是否使用12小时制
-- (BOOL)isUsing12HourFormat {
-    NSString *formatStringForHours = [NSDateFormatter dateFormatFromTemplate:@"j" options:0 locale:[NSLocale currentLocale]];
-    return [formatStringForHours containsString:@"a"];
+
+- (NSDate *)changeNowDateToSysytemDate:(NSDate *)nowDate {
+    //转化为系统的时间
+    NSTimeZone *zone = [NSTimeZone systemTimeZone];
+    NSTimeInterval timeInterval = [zone secondsFromGMTForDate:nowDate];
+    return [nowDate dateByAddingTimeInterval:timeInterval];
 }
 
 #pragma mark - Timer
