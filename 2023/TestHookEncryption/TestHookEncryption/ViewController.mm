@@ -93,7 +93,8 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 @property(nonatomic, strong) UIView *themeView;
 @property(nonatomic, strong) UICollectionView *gtCollectionView;
 
-
+@property (nonatomic, assign) BOOL stopRequested;
+@property (nonatomic, assign) BOOL isRunning;
 
 
 @end
@@ -175,6 +176,85 @@ struct GTPerson {
     [self testOperationView];
 }
 
+
+- (void)startSimulatedClicking {
+    if(self.isRunning) return;
+    self.stopRequested = NO;
+    // 创建一个调度组，用于管理任务
+    dispatch_group_t group = dispatch_group_create();
+
+    // 创建一个并发队列
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+
+    // 设置最大并发任务数量
+    NSInteger maxConcurrentTasks = 10;
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(maxConcurrentTasks);
+
+    dispatch_async(queue, ^{
+        while (!self.stopRequested) {
+            @autoreleasepool {
+                // 使用信号量控制并发任务数量
+                dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+                
+                // 进入调度组
+                dispatch_group_enter(group);
+                
+                dispatch_async(queue, ^{
+                    // 模拟点击操作
+                    [self guan_simulateClickTableView];
+                    
+                    // 退出调度组并释放信号量
+                    dispatch_group_leave(group);
+                    dispatch_semaphore_signal(semaphore);
+                });
+
+                // 添加随机延时，防止过度负载
+                [NSThread sleepForTimeInterval:[self guan_randomInterval]];
+            }
+        }
+
+        // 等待所有任务完成
+        dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+        
+        // 标记为不再运行
+        self.isRunning = NO;
+    });
+}
+
+- (void)stopSimulatedClicking {
+    self.stopRequested = YES;
+}
+
+
+- (void)guan_simulateClickTableView {
+    NSLog(@"[TaoLi] guan_simulateClickTableView---");
+}
+
+- (NSTimeInterval)guan_randomInterval {
+    // 初始化时间间隔的最小值和步长（以ms为单位）
+      // 初始化时间间隔的最小值和步长（以ms为单位）
+    NSInteger minInterval = 400; // 默认0.4秒起步
+    NSInteger range = 100; // 默认范围为100ms，即0.1秒
+    NSInteger type = arc4random_uniform(2);
+    NSLog(@"guan_randomInterval type %ld",type);
+     switch (type) {
+        case 0: // 第一档位 (0.6 - 0.7秒)
+            minInterval = 60;
+            range = 10; // 范围设为100ms，结果为0.4 - 0.5秒
+            break;
+        case 1: // 第二档位 (0.7 - 0.8秒)
+            minInterval = 70;
+            range = 10;
+            break;
+        default: // 默认最大档位 (0.8 - 0.9秒)
+            minInterval = 800;
+            range = 100;
+            break;
+    }
+
+    // 生成随机时间间隔并返回
+    return (arc4random_uniform((uint32_t)range) + minInterval) / 1000.0;
+}
 
 
 - (void)testOperationView {
@@ -1951,14 +2031,16 @@ static void gtgtgtgtgt(id self) {
 //            [self testToast];
 //            gtgtgtgtgt(self);
 //            [self testWebLoadURL];
-            [self testProxyWKController];
+//            [self testProxyWKController];
+            [self startSimulatedClicking];
             break;
         }
         case 10001:{
             NSLog(@"%@",sender.titleLabel.text);
 //            [self augusAES];
 //            [self queryCodeStatus];
-            [self testWebLoadURL];
+//            [self testWebLoadURL];
+            [self stopSimulatedClicking];
             break;
         }
         case 10002:{
