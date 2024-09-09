@@ -47,6 +47,11 @@
 #import "ChengReserverMgr.h"
 #import "ChengOperationView.h"
 
+#include <sys/types.h>
+#include <sys/sysctl.h>
+#import <IOKit/IOKitLib.h>
+
+
 
 static NSString * const kBBBSTokenHelpWordsKey = @"kBBBSTokenHelpWordsKey";
 
@@ -173,7 +178,94 @@ struct GTPerson {
     
 //    [self testRevserTickets];
     
-    [self testOperationView];
+//    [self testOperationView];
+}
+
+
+
+#import <Foundation/Foundation.h>
+
+- (NSString *)deviceIdentifier {
+
+    /*
+     model : d53pap 设备标识符 硬件相关
+     
+     ADD_DEVICE("M68AP",  "iPhone",                     "iphoneos", "armv7"),
+     ADD_DEVICE("N82AP",  "iPhone 3G",                  "iphoneos", "armv7"),
+     ADD_DEVICE("N88AP",  "iPhone 3GS",                 "iphoneos", "armv7"),
+     ADD_DEVICE("N90AP",  "iPhone 4 (GSM)",             "iphoneos", "armv7"),
+     ADD_DEVICE("N92AP",  "iPhone 4 (CDMA)",            "iphoneos", "armv7"),
+     ADD_DEVICE("N90BAP", "iPhone 4 (GSM, revision A)", "iphoneos", "armv7"),
+     ADD_DEVICE("N94AP",  "iPhone 4S",                  "iphoneos", "armv7"),
+     ADD_DEVICE("N41AP",  "iPhone 5 (GSM)",             "iphoneos", "armv7s"),
+     ADD_DEVICE("N42AP",  "iPhone 5 (Global/CDMA)",     "iphoneos", "armv7s"),
+     ADD_DEVICE("N48AP",  "iPhone 5c (GSM)",            "iphoneos", "armv7s"),
+     ADD_DEVICE("N49AP",  "iPhone 5c (Global/CDMA)",    "iphoneos", "armv7s"),
+     ADD_DEVICE("N51AP",  "iPhone 5s (GSM)",            "iphoneos", "arm64"),
+     ADD_DEVICE("N53AP",  "iPhone 5s (Global/CDMA)",    "iphoneos", "arm64"),
+     ADD_DEVICE("N61AP",  "iPhone 6 (GSM)",             "iphoneos", "arm64"),
+     ADD_DEVICE("N56AP",  "iPhone 6 Plus",              "iphoneos", "arm64"),
+     ADD_DEVICE("N71mAP", "iPhone 6s",                  "iphoneos", "arm64"),
+     ADD_DEVICE("N71AP",  "iPhone 6s",                  "iphoneos", "arm64"),
+     ADD_DEVICE("N66AP",  "iPhone 6s Plus",             "iphoneos", "arm64"),
+     ADD_DEVICE("N66mAP", "iPhone 6s Plus",             "iphoneos", "arm64"),
+     ADD_DEVICE("N69AP",  "iPhone SE",                  "iphoneos", "arm64"),
+     ADD_DEVICE("N69uAP", "iPhone SE",                  "iphoneos", "arm64"),
+     ADD_DEVICE("D10AP",  "iPhone 7",                   "iphoneos", "arm64"),
+     ADD_DEVICE("D101AP", "iPhone 7",                   "iphoneos", "arm64"),
+     ADD_DEVICE("D11AP",  "iPhone 7 Plus",              "iphoneos", "arm64"),
+     ADD_DEVICE("D111AP", "iPhone 7 Plus",              "iphoneos", "arm64"),
+     ADD_DEVICE("D20AP",  "iPhone 8",                   "iphoneos", "arm64"),
+     ADD_DEVICE("D20AAP", "iPhone 8",                   "iphoneos", "arm64"),
+     ADD_DEVICE("D201AP", "iPhone 8",                   "iphoneos", "arm64"),
+     ADD_DEVICE("D201AAP","iPhone 8",                   "iphoneos", "arm64"),
+     ADD_DEVICE("D21AP",  "iPhone 8 Plus",              "iphoneos", "arm64"),
+     ADD_DEVICE("D21AAP", "iPhone 8 Plus",              "iphoneos", "arm64"),
+     ADD_DEVICE("D211AP", "iPhone 8 Plus",              "iphoneos", "arm64"),
+     ADD_DEVICE("D211AAP","iPhone 8 Plus",              "iphoneos", "arm64"),
+     ADD_DEVICE("D22AP",  "iPhone X",                   "iphoneos", "arm64"),
+     ADD_DEVICE("D221AP", "iPhone X",                   "iphoneos", "arm64"),
+     ADD_DEVICE("N841AP", "iPhone XR",                  "iphoneos", "arm64e"),
+     ADD_DEVICE("D321AP", "iPhone XS",                  "iphoneos", "arm64e"),
+     ADD_DEVICE("D331pAP","iPhone XS Max",              "iphoneos", "arm64e"),
+     ADD_DEVICE("N104AP", "iPhone 11",                  "iphoneos", "arm64e"),
+     ADD_DEVICE("D421AP", "iPhone 11 Pro",              "iphoneos", "arm64e"),
+     ADD_DEVICE("D431AP", "iPhone 11 Pro Max",          "iphoneos", "arm64e"),
+     ADD_DEVICE("D79AP",  "iPhone SE 2G",               "iphoneos", "arm64e"),
+     ADD_DEVICE("D52gAP", "iPhone 12 Mini",             "iphoneos", "arm64e"),
+     ADD_DEVICE("D53gAP", "iPhone 12",                  "iphoneos", "arm64e"),
+     ADD_DEVICE("D53pAP", "iPhone 12 Pro",              "iphoneos", "arm64e"),
+     ADD_DEVICE("D54pAP", "iPhone 12 Pro Max",          "iphoneos", "arm64e"),
+     ADD_DEVICE("D16AP",  "iPhone 13 Mini",             "iphoneos", "arm64e"),
+     ADD_DEVICE("D17AP",  "iPhone 13",                  "iphoneos", "arm64e"),
+     ADD_DEVICE("D63AP",  "iPhone 13 Pro",              "iphoneos", "arm64e"),
+     ADD_DEVICE("D64AP",  "iPhone 13 Pro Max",          "iphoneos", "arm64e"),
+     ADD_DEVICE("D49AP",  "iPhone SE 3G",               "iphoneos", "arm64e"),
+     ADD_DEVICE("D27AP",  "iPhone 14",                  "iphoneos", "arm64e"),
+     ADD_DEVICE("D28AP",  "iPhone 14 Plus",             "iphoneos", "arm64e"),
+     ADD_DEVICE("D73AP",  "iPhone 14 Pro",              "iphoneos", "arm64e"),
+     ADD_DEVICE("D74AP",  "iPhone 14 Pro Max",          "iphoneos", "arm64e"),
+     ADD_DEVICE("D37AP",  "iPhone 15",                  "iphoneos", "arm64e"),
+     ADD_DEVICE("D38AP",  "iPhone 15 Plus",             "iphoneos", "arm64e"),
+     ADD_DEVICE("D83AP",  "iPhone 15 Pro",              "iphoneos", "arm64e"),
+     ADD_DEVICE("D84AP",  "iPhone 15 Pro Max",          "iphoneos", "arm64e"),
+     
+     
+     A13 Bionic 芯片的代号是 t8030。
+     A14 Bionic 芯片的代号是 t8101。
+     A15 Bionic 芯片的代号是 t6000。
+     
+     
+     18B92 是 iPhone 的内部型号代号，与特定的 iOS 版本有关。在苹果的内部版本号系统中，这些代号通常用于标识不同的 iOS 发布版本。
+     具体来说，18B92 对应的是 iOS 14.6 的一个构建版本。苹果通常使用这种格式来标识每个 iOS 构建版本，其中：
+     18 表示主要版本号（iOS 14.x 系列的版本）。
+     B 是版本分支标识符。
+     92 是构建号。
+     
+     
+     */
+    
+    return @"";
 }
 
 
