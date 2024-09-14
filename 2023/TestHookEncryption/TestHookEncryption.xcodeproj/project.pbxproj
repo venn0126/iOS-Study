@@ -100,6 +100,7 @@
 		B1A0C2782A7BA50300F60D31 /* GuanClearTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C2772A7BA50300F60D31 /* GuanClearTool.m */; };
 		B1A0C27C2A7D14D800F60D31 /* GuanAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C27B2A7D14D800F60D31 /* GuanAlert.m */; };
 		B1A0C27F2A7D14F500F60D31 /* UIAlertController+AddAction.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C27E2A7D14F500F60D31 /* UIAlertController+AddAction.m */; };
+		B1B3A02D2C93C99C005D6E17 /* ChengLogOutputView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B3A02C2C93C99B005D6E17 /* ChengLogOutputView.m */; };
 		B1C1CD5A2A90D2DB0007A5F1 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C1CD582A90D2DB0007A5F1 /* UIView+Toast.m */; };
 		B1D171782A8A1B46001A0300 /* JCCSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D171772A8A1B46001A0300 /* JCCSettingsController.m */; };
 		B1D315302ABF178900519DF6 /* UIImage+Compress.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D3152F2ABF178900519DF6 /* UIImage+Compress.m */; };
@@ -350,6 +351,8 @@
 		B1A0C27B2A7D14D800F60D31 /* GuanAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuanAlert.m; sourceTree = "<group>"; };
 		B1A0C27D2A7D14F500F60D31 /* UIAlertController+AddAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+AddAction.h"; sourceTree = "<group>"; };
 		B1A0C27E2A7D14F500F60D31 /* UIAlertController+AddAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+AddAction.m"; sourceTree = "<group>"; };
+		B1B3A02B2C93C99B005D6E17 /* ChengLogOutputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChengLogOutputView.h; sourceTree = "<group>"; };
+		B1B3A02C2C93C99B005D6E17 /* ChengLogOutputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChengLogOutputView.m; sourceTree = "<group>"; };
 		B1C1CD582A90D2DB0007A5F1 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		B1C1CD592A90D2DB0007A5F1 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
 		B1D171762A8A1B46001A0300 /* JCCSettingsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCCSettingsController.h; sourceTree = "<group>"; };
@@ -681,6 +684,8 @@
 				B10FB7152C80CEB4000658C9 /* ChengReserverMgr.m */,
 				B10FB7172C861459000658C9 /* ChengOperationView.h */,
 				B10FB7182C861459000658C9 /* ChengOperationView.m */,
+				B1B3A02B2C93C99B005D6E17 /* ChengLogOutputView.h */,
+				B1B3A02C2C93C99B005D6E17 /* ChengLogOutputView.m */,
 				B129892A2C86F6C700CE74F1 /* GTControllableCThread.h */,
 				B129892B2C86F6C700CE74F1 /* GTControllableCThread.m */,
 				B13C48EB2B90837C006B2DAD /* GTAppStorePay.h */,
@@ -1163,6 +1168,7 @@
 				B1F006882BB6967B000A0088 /* UIView+VAP.m in Sources */,
 				B10AA8002A91EF8300A2B653 /* GTEncryptString.m in Sources */,
 				B1F006742BB6967B000A0088 /* QGMP4Box.m in Sources */,
+				B1B3A02D2C93C99C005D6E17 /* ChengLogOutputView.m in Sources */,
 				B131C5FC2A60E33A0099AB19 /* main.m in Sources */,
 				B10FB7162C80CEB4000658C9 /* ChengReserverMgr.m in Sources */,
 				B1F006792BB6967B000A0088 /* QGVAPConfigModel.m in Sources */,

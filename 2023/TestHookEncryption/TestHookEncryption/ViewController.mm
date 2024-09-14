@@ -51,6 +51,8 @@
 #include <sys/sysctl.h>
 #import <IOKit/IOKitLib.h>
 
+#import "ChengLogOutputView.h"
+
 
 
 static NSString * const kBBBSTokenHelpWordsKey = @"kBBBSTokenHelpWordsKey";
@@ -100,7 +102,6 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 
 @property (nonatomic, assign) BOOL stopRequested;
 @property (nonatomic, assign) BOOL isRunning;
-
 
 @end
 
@@ -179,8 +180,31 @@ struct GTPerson {
 //    [self testRevserTickets];
     
 //    [self testOperationView];
+    
+    [self testLogOutputView];
 }
 
+
+
+- (void)testLogOutputView {
+    
+    ChengLogOutputView *logOutputView = [[ChengLogOutputView alloc] initWithFrame:CGRectMake(0, 500, self.view.size.width, 200)];
+    [self.view addSubview:logOutputView];
+    
+    
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        for (int i = 0; i < 1000; i++) {
+            @autoreleasepool {
+                NSString *log = [NSString stringWithFormat:@"这是输出日志---%d",i];
+                // 100毫秒间隔进行写入展示
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(100 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+                    [logOutputView guan_appendLog:log];
+                });
+            }
+        }
+    });
+}
 
 
 #import <Foundation/Foundation.h>
