@@ -181,9 +181,18 @@ struct GTPerson {
     
 //    [self testOperationView];
     
-    [self testLogOutputView];
+//    [self testLogOutputView];
+    
+//    [self testOpenAppstoreReviewPage];
 }
 
+
+- (void)testOpenAppstoreReviewPage {
+    NSString *appID = @"436957087";
+    NSDictionary *parasm = [NSDictionary dictionary];
+    NSString *str = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@?action=write-review", appID];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str] options:parasm completionHandler:nil];
+}
 
 
 - (void)testLogOutputView {
