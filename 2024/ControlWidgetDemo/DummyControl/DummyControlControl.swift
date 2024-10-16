@@ -34,7 +34,7 @@ struct DummyControlButtonDemo: ControlWidget {
     var body: some ControlWidgetConfiguration {
         StaticControlConfiguration(kind: Self.kind) {
             ControlWidgetButton(action: CaffineUpdateIntent(amount: 10.0)) {
-                Image("controlcenter_search")
+                Image("sohu.news")
                 Text("Control Button Test 123 AugusControl Button Test 123 Augus")
                 let amount = ShareManager.shared.caffineInTake
                 Text("\(String(format: "%1.fControl Button Test 123 AugusControl Button Test 123 Augus",amount)) mgs")
