@@ -80,6 +80,29 @@ static NSString * const kBBBSTokenHelpWordsKey = @"kBBBSTokenHelpWordsKey";
     } \
 
 #define dispatch_global_async(block) dispatch_async(dispatch_get_global_queue(0, 0),block)
+
+
+static inline bool isDiff(const char *func, SEL _cmd)
+{
+    char buff[256] = {'\0'};
+    if(strlen(func) > 2) {
+        const char *s = strstr(func, " ");
+        if (s != NULL) {
+            s = s + 1; // 移动到空格后面一个字符
+            const char *e = strstr(func, "]");
+            if (e != NULL && e > s) {
+                memcpy(buff, s, sizeof(char) * (e - s));
+                const char *realname = sel_getName(_cmd);
+                return (strcmp(buff, realname) != 0);
+            }
+        }
+    }
+    return false;
+}
+
+#define ALERT_IF_METHOD_REPLACED {if (isDiff(__PRETTY_FUNCTION__, _cmd)) {\
+printf("method hooked \n");\
+}}
     
 
 static const NSInteger kAugusButtonTagOffset = 10000;
@@ -184,6 +207,27 @@ struct GTPerson {
 //    [self testLogOutputView];
     
 //    [self testOpenAppstoreReviewPage];
+    
+    
+
+}
+
+
+- (void)testObjcReplaceMethod {
+    Method ori_method = class_getInstanceMethod([ViewController class], @selector(dosth));
+    Method replace_method = class_getInstanceMethod([ViewController class], @selector(dosth2));
+    method_exchangeImplementations(ori_method, replace_method);
+    NSLog(@"----%s",__PRETTY_FUNCTION__);
+    [self dosth];
+}
+
+- (void)dosth {
+    NSLog(@"do sth");
+}
+
+- (void)dosth2 {
+    ALERT_IF_METHOD_REPLACED
+    NSLog(@"do sth2 %s--%@",__PRETTY_FUNCTION__, NSStringFromSelector(_cmd));
 }
 
 
@@ -2152,12 +2196,12 @@ static void gtgtgtgtgt(id self) {
             NSLog(@"%@",sender.titleLabel.text);
             [self augusMD5];
             
-//            [self jumpJCCSetting];
+            [self jumpJCCSetting];
 //            [self testToast];
 //            gtgtgtgtgt(self);
 //            [self testWebLoadURL];
 //            [self testProxyWKController];
-            [self startSimulatedClicking];
+//            [self startSimulatedClicking];
             break;
         }
         case 10001:{
