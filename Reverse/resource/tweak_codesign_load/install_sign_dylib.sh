@@ -14,16 +14,16 @@
 
 
 # 主路径，TODO: 需要修改这里
-my_path="/Users/augus/Documents/crackApp/tiktok/dick/resign/"
+my_path="/Users/augus/Documents/crackApp/jiTaxi/jude/resign/"
 
 # 可执行文件名，TODO: 需要修改这里
-executable_file_name="TikTok"
+executable_file_name="YYCXDriver"
 
 # 如果$executable_file_name包含空格，比如 `SCB EASY`读取值的时候需要处理
 # 读取的时候格式应该为>>> "$executable_file_name"
 
 # tweak动态库 TODO: 需要修改这里
-tweak_dylib_name="tiktok-dick.dylib"
+tweak_dylib_name="yycxdriver-tweak.dylib"
 
 # CydiaSubstrate动态库
 cydiaSubstrate_name="CydiaSubstrate"
@@ -53,9 +53,7 @@ plugIns_path="PlugIns"
 # 本机的证书ID，TODO: 需要修改这里
 # from `security find-identity -v -p codesigning`
 # wei niu：E1BC0601C29BFF560E418E8A15436F9D43687E4B
-# jianhong Meng: 3B8E8D82E883CDB45A50871A9A2B46FFDD714C67
-# dick: 70D5FA8354BE3B55C3251EA8E3363740B3964E2F
-sign_number="70D5FA8354BE3B55C3251EA8E3363740B3964E2F"
+sign_number="85F70BB02125D0A0DEF8A34C9AC02D57C8326600"
 
 
 # 可执行文件路径
