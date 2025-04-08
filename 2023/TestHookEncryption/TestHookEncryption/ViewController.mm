@@ -6,6 +6,7 @@
 //
 
 #import "ViewController.h"
+#import <zlib.h>
 #import "GuanEncryptionManger.h"
 #import <GTClassDump/GTClassDump.h>
 #import "GuanRSAMgr.h"
@@ -208,9 +209,205 @@ struct GTPerson {
     
 //    [self testOpenAppstoreReviewPage];
     
-    
+//    [self sendRequest:nil];
 
+//    [self testBase64Str];
 }
+
+
+- (void)sendRequest:(id)sender
+{
+    /* Configure session, choose between:
+       * defaultSessionConfiguration
+       * ephemeralSessionConfiguration
+       * backgroundSessionConfigurationWithIdentifier:
+     And set session-wide properties, such as: HTTPAdditionalHeaders,
+     HTTPCookieAcceptPolicy, requestCachePolicy or timeoutIntervalForRequest.
+     */
+    NSURLSessionConfiguration* sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
+ 
+    /* Create session, and optionally set a NSURLSessionDelegate. */
+    NSURLSession* session = [NSURLSession sessionWithConfiguration:sessionConfig delegate:nil delegateQueue:nil];
+
+    /* Create the Request:
+       账户简介 (POST https://i.instagram.com/graphql_www)
+     */
+
+    NSURL* URL = [NSURL URLWithString:@"https://i.instagram.com/graphql_www"];
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
+    request.HTTPMethod = @"POST";
+
+    // Headers
+
+  
+    [request addValue:@"6974674847" forHTTPHeaderField:@"IG-INTENDED-USER-ID"];
+    [request addValue:@"IGBloksAppRootQuery-com.bloks.www.ig.about_this_account" forHTTPHeaderField:@"X-FB-Friendly-Name"];
+    [request addValue:@"44666754-5A94-4AEF-AE31-F73D24D7FE88" forHTTPHeaderField:@"X-IG-Device-ID"];
+    [request addValue:@"UFS-47290414-C522-4022-93F9-13D20000D90B-1" forHTTPHeaderField:@"X-Pigeon-Session-Id"];
+    [request addValue:@"HIL,6974674847,1775623703:01f7873897a031e47218ea7e537a2aaf56111a6a738d9b6a3263fe183f0b5426eeb567d8" forHTTPHeaderField:@"IG-U-IG-Direct-Region-Hint"];
+    [request addValue:@"253360298310718582719188438574" forHTTPHeaderField:@"X-Client-Doc-Id"];
+    [request addValue:@"28800" forHTTPHeaderField:@"X-IG-Timezone-Offset"];
+    [request addValue:@"6918cfa27d8e17f9dab253242c5309ef90d2275afc1ec4d4cedcc6fd553faa09" forHTTPHeaderField:@"X-Bloks-Version-Id"];
+    [request addValue:@"1744103747.926605" forHTTPHeaderField:@"X-Pigeon-Rawclienttime"];
+    [request addValue:@"CCO,6974674847,1775639740:01f775db669787c54314a8504e0f51471ca8071cdf3f98423ddc446e14f96bb0cc8e173a" forHTTPHeaderField:@"IG-U-Rur"];
+    [request addValue:@"pando" forHTTPHeaderField:@"x-graphql-client-library"];
+    [request addValue:@"44666754-5A94-4AEF-AE31-F73D24D7FE88" forHTTPHeaderField:@"X-IG-Family-Device-ID"];
+    [request addValue:@"6974674847" forHTTPHeaderField:@"IG-U-Ds-User-ID"];
+    [request addValue:@"IGProfileUserGridFeedViewController:profile" forHTTPHeaderField:@"X-IG-CLIENT-ENDPOINT"];
+    [request addValue:@"zh-CN;q=1.0" forHTTPHeaderField:@"Accept-Language"];
+    [request addValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"fetch" forHTTPHeaderField:@"x-graphql-request-purpose"];
+    [request addValue:@"{\"system_languages\":\"zh-Hans-CN\",\"keyboard_language\":\"zh-Hans\"}" forHTTPHeaderField:@"X-IG-Device-Languages"];
+    [request addValue:@"gzip" forHTTPHeaderField:@"Content-Encoding"];
+    [request addValue:@"cco" forHTTPHeaderField:@"x-ig-graphql-region-hint"];
+    [request addValue:@"34406401" forHTTPHeaderField:@"X-IG-SALT-LOGGER-IDS"];
+    [request addValue:@"Instagram 375.0.0.28.77 (iPhone14,2; iOS 15_1; zh_CN; zh-Hans; scale=3.00; 1170x2532; 717824009) AppleWebKit/420+" forHTTPHeaderField:@"User-Agent"];
+    [request addValue:@"4731.107302142959" forHTTPHeaderField:@"X-IG-Bandwidth-Speed-KBPS"];
+    [request addValue:@"true" forHTTPHeaderField:@"X-IG-Bloks-Serialize-Payload"];
+    [request addValue:@"Bearer IGT:2:eyJkc191c2VyX2lkIjoiNjk3NDY3NDg0NyIsInNlc3Npb25pZCI6IjY5NzQ2NzQ4NDclM0E2a0ZzNnRkcUJyaTNIVSUzQTI3JTNBQVljR0JwemhvM1Q3WVIwUU92aDVTeXJwMVpmeGhyOVVKVUFNWUhhNGtRIn0=" forHTTPHeaderField:@"Authorization"];
+    [request addValue:@"Z_SqgwAAAAEM2KQcuvLo7rw4sXIc" forHTTPHeaderField:@"X-MID"];
+    [request addValue:@"IGProfileViewController:self_profile:2:main_profile:1744103733.762644:::1744103733.762644,IGProfileUserGridFeedViewController:self_profile:3::1744103733.763194:::1744103733.763194,IGFollowListTabPageViewController:do_not_pass_through_pipeline_social_context:4::1744103736.567159:::1744103736.567159,IGFollowListViewController:self_followers:5::1744103736.568623:::1744103736.568623,IGFollowListViewController:self_following:6::1744103738.007359:::1744103738.007359,IGProfileViewController:profile:7::1744103740.144686:::1744103740.144686,IGProfileUserGridFeedViewController:profile:8::1744103740.146352:::1744103740.146352" forHTTPHeaderField:@"X-IG-Nav-Chain"];
+    [request addValue:@"bloks_app" forHTTPHeaderField:@"X-Root-Field-Name"];
+    [request addValue:@"SKIP" forHTTPHeaderField:@"X-IG-WWW-Claim"];
+    [request addValue:@"124024574287414" forHTTPHeaderField:@"X-IG-App-ID"];
+    [request addValue:@"WiFi" forHTTPHeaderField:@"X-IG-Connection-Type"];
+
+    // Form URL-Encoded Body
+
+//    NSDictionary* bodyParameters = @{
+//        @"method": @"post",
+//        @"pretty": @"false",
+//        @"format": @"json",
+//        @"server_timestamps": @"true",
+//        @"locale": @"zh_CN",
+//        @"purpose": @"fetch",
+//        @"fb_api_req_friendly_name": @"IGBloksAppRootQuery-com.bloks.www.ig.about_this_account",
+//        @"client_doc_id": @"253360298310718582719188438574",
+//        @"enable_canonical_naming": @"true",
+//        @"enable_canonical_variable_overrides": @"true",
+//        @"enable_canonical_naming_ambiguous_type_prefixing": @"true",
+//        @"variables": @"{\"bk_context\":{\"pixel_ratio\":3,\"styles_id\":\"instagram\"},\"params\":{\"bloks_versioning_id\":\"6918cfa27d8e17f9dab253242c5309ef90d2275afc1ec4d4cedcc6fd553faa09\",\"app_id\":\"com.bloks.www.ig.about_this_account\",\"params\":\"{\\\"bk_client_context\\\":\\\"{\\\\\\\"styles_id\\\\\\\":\\\\\\\"instagram\\\\\\\",\\\\\\\"pixel_ratio\\\\\\\":3}\\\",\\\"referer_type\\\":\\\"ProfileMore\\\",\\\"target_user_id\\\":\\\"3499783561\\\"}\"}}",
+//    };
+    
+    /*
+     method=post&pretty=false&format=json&server_timestamps=true&locale=zh_CN&purpose=fetch&fb_api_req_friendly_name=IGBloksAppRootQuery-com.bloks.www.ig.about_this_account&client_doc_id=253360298310718582719188438574&enable_canonical_naming=true&enable_canonical_variable_overrides=true&enable_canonical_naming_ambiguous_type_prefixing=true&variables={"bk_context":{"pixel_ratio":3,"styles_id":"instagram"},"params":{"bloks_versioning_id":"6918cfa27d8e17f9dab253242c5309ef90d2275afc1ec4d4cedcc6fd553faa09","app_id":"com.bloks.www.ig.about_this_account","params":"{\"bk_client_context\":\"{\\\"styles_id\\\":\\\"instagram\\\",\\\"pixel_ratio\\\":3}\",\"referer_type\":\"ProfileMore\",\"target_user_id\":\"1423268029\"}"}}
+     */
+    
+    NSString *requestBodyString = @"method=post&pretty=false&format=json&server_timestamps=true&locale=zh_CN&purpose=fetch&fb_api_req_friendly_name=IGBloksAppRootQuery-com.bloks.www.ig.about_this_account&client_doc_id=253360298310718582719188438574&enable_canonical_naming=true&enable_canonical_variable_overrides=true&enable_canonical_naming_ambiguous_type_prefixing=true&variables={\"bk_context\":{\"pixel_ratio\":3,\"styles_id\":\"instagram\"},\"params\":{\"bloks_versioning_id\":\"6918cfa27d8e17f9dab253242c5309ef90d2275afc1ec4d4cedcc6fd553faa09\",\"app_id\":\"com.bloks.www.ig.about_this_account\",\"params\":\"{\\\"bk_client_context\\\":\\\"{\\\\\\\"styles_id\\\\\\\":\\\\\\\"instagram\\\\\\\",\\\\\\\"pixel_ratio\\\\\\\":3}\\\",\\\"referer_type\\\":\\\"ProfileMore\\\",\\\"target_user_id\\\":\\\"1423268029\\\"}\"}}";
+
+    
+    // 获取原始数据
+    NSData *originalData = [requestBodyString dataUsingEncoding:NSUTF8StringEncoding];
+    NSUInteger originalSize = originalData.length;
+    NSLog(@"压缩前数据大小: %lu 字节", (unsigned long)originalSize);
+    
+    // 使用 gzip 压缩数据
+    NSData *compressedData = [self gzipCompress:originalData];
+    NSUInteger compressedSize = compressedData.length;
+    NSLog(@"压缩后数据大小: %lu 字节", (unsigned long)compressedSize);
+    NSLog(@"压缩率: %.2f%%", (1.0 - (float)compressedSize / originalSize) * 100);
+    
+    NSString *contentLen = [NSString stringWithFormat:@"%lu",(unsigned long)compressedSize];
+    [request addValue:contentLen forHTTPHeaderField:@"Content-Length"];
+
+    // 设置压缩后的数据为请求体
+    request.HTTPBody = compressedData;
+    
+    // 添加 Content-Encoding 头，表明内容已经过 gzip 压缩
+    [request addValue:@"gzip" forHTTPHeaderField:@"Content-Encoding"];
+
+    /* Start a new Task */
+    NSURLSessionDataTask* task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error == nil) {
+            // Success
+            NSLog(@"URL Session Task Succeeded: HTTP %ld", ((NSHTTPURLResponse*)response).statusCode);
+            // 打印接收到的数据长度
+                       NSLog(@"接收到的数据大小: %lu 字节", (unsigned long)data.length);
+                       
+                       // 尝试解析为 JSON
+                       NSError *jsonError = nil;
+                       id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+                       
+                       if (jsonError) {
+                           NSLog(@"JSON 解析失败: %@", jsonError.localizedDescription);
+                           // 打印原始数据的前 100 个字符（如果有）
+                           NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                           if (dataString) {
+                               NSString *previewString = dataString.length > 100 ?
+                                   [dataString substringToIndex:100] : dataString;
+                               NSLog(@"原始数据预览: %@...", previewString);
+                           } else {
+                               NSLog(@"无法将数据转换为字符串，可能是二进制数据");
+                           }
+                       } else {
+                           // JSON 解析成功
+                           if ([jsonObject isKindOfClass:[NSDictionary class]]) {
+                               NSDictionary *jsonDict = (NSDictionary *)jsonObject;
+                               NSLog(@"JSON 解析成功: %@", jsonDict);
+                               
+                               // 如果需要，可以在这里添加更详细的 JSON 解析逻辑
+                               // 例如：提取特定的字段值
+                               // id someValue = jsonDict[@"someKey"];
+                               // NSLog(@"someKey: %@", someValue);
+                           } else if ([jsonObject isKindOfClass:[NSArray class]]) {
+                               NSArray *jsonArray = (NSArray *)jsonObject;
+                               NSLog(@"JSON 解析成功，数组元素数量: %lu", (unsigned long)jsonArray.count);
+                               
+                               // 如果需要，可以在这里添加数组处理逻辑
+                           } else {
+                               NSLog(@"JSON 解析成功，但结果既不是字典也不是数组");
+                           }
+                       }
+                   
+        }
+        else {
+            // Failure
+            NSLog(@"URL Session Task Failed: %@", [error localizedDescription]);
+        }
+    }];
+    [task resume];
+    [session finishTasksAndInvalidate];
+}
+
+/*
+ * Utils: Add this section before your class implementation
+ */
+
+/**
+ This creates a new query parameters string from the given NSDictionary. For
+ example, if the input is @{@"day":@"Tuesday", @"month":@"January"}, the output
+ string will be @"day=Tuesday&month=January".
+ @param queryParameters The input dictionary.
+ @return The created parameters string.
+*/
+static NSString* NSStringFromQueryParameters(NSDictionary* queryParameters)
+{
+    NSMutableArray* parts = [NSMutableArray array];
+    [queryParameters enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop) {
+        NSString *part = [NSString stringWithFormat: @"%@=%@",
+            [key stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding],
+            [value stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]
+        ];
+        [parts addObject:part];
+    }];
+    return [parts componentsJoinedByString: @"&"];
+}
+
+/**
+ Creates a new URL by adding the given query parameters.
+ @param URL The input URL.
+ @param queryParameters The query parameter dictionary to add.
+ @return A new NSURL.
+*/
+static NSURL* NSURLByAppendingQueryParameters(NSURL* URL, NSDictionary* queryParameters)
+{
+    NSString* URLString = [NSString stringWithFormat:@"%@?%@",
+        [URL absoluteString],
+        NSStringFromQueryParameters(queryParameters)
+    ];
+    return [NSURL URLWithString:URLString];
+}
+
 
 
 - (void)testObjcReplaceMethod {
@@ -1192,7 +1389,7 @@ void callMethodByName(NSString *methodName) {
     [CSToastManager sharedStyle].backgroundColor = [UIColor redColor];
     
     
-    [self.view makeToast:@"野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置"];
+    [self.view makeToast:@"野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置野马设置"];
 }
 
 
@@ -1492,407 +1689,6 @@ void callMethodByName(NSString *methodName) {
 
 
 
-- (void)test_ssziparchive {
-    
-    
-    // 获取文件路径
-//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"文件名"ofType:@"文件类型"];
-    // 获取文件夹下的文件路径
-//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"文件名" ofType:@"文件类型" inDirectory:@"文件夹名"];
-
-    
-    
-    NSString *directoryName =[GTFileTools createFilePathForRootPath:[GTFileTools gt_DocumentPath] directoryName:@"zip"];
-    NSLog(@"directory name %@",directoryName);
-    
-    
-    // 压缩后的路径
-    NSString *afterZipPath = [directoryName stringByAppendingPathComponent:@"tong222.rbt"];
-//    NSString *afterZipPath = @"/Users/augus/Desktop/testZip/tong.rbt";
-
-    // 压缩前的文件夹
-    // TODO: 只读/Library/Caches/
-    // TODO: 写入只能是沙盒
-    NSString *beforeDirectory = @"/Library/Caches/TestZip/Resources/";
-//        NSString *beforeDirectory = @"/Users/augus/Desktop/testZip/Resources/";
-
-    
-    NSArray *fileList = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:beforeDirectory error:nil];
-    NSLog(@"fileList count %ld %@",fileList.count, fileList);
-    if(fileList.count == 0) {
-        return;
-    }
-    
-//    BOOL isZip = [SSZipArchive createZipFileAtPath:afterZipPath withContentsOfDirectory:beforeDirectory];
-    
-    
-    
-//    BOOL isZip = [SSZipArchive createZipFileAtPath:afterZipPath withContentsOfDirectory:beforeDirectory keepParentDirectory:YES compressionLevel:8 password:nil AES:YES progressHandler:^(NSUInteger entryNumber, NSUInteger total) {
-//
-//    } keepSymlinks:YES];
-    
-    
-    
-    BOOL isZip = [SSZipArchive createZipFileAtPath:afterZipPath withContentsOfDirectory:beforeDirectory keepParentDirectory:YES compressionLevel:8 password:@"tong222" AES:YES progressHandler:^(NSUInteger entryNumber, NSUInteger total) {
-
-        NSLog(@"is zip success%ld --- %ld",entryNumber, total);
-    }];
-//
-    
-//    BOOL isZip = [SSZipArchive createZipFileAtPath:afterZipPath withContentsOfDirectory:beforeDirectory keepParentDirectory:YES compressionLevel:8 password:nil AES:NO progressHandler:^(NSUInteger entryNumber, NSUInteger total) {
-//
-//        NSLog(@"is zip no aes success%ld --- %ld",entryNumber, total);
-//
-//    }];
-    
-    
-    NSLog(@"isZip result %@ %@",@(isZip), afterZipPath);
-    
-    NSError *unZipError = nil;
-    BOOL isUnZip = [SSZipArchive unzipFileAtPath:afterZipPath toDestination:directoryName overwrite:NO password:@"tong222" error:&unZipError];
-    NSLog(@"isUnZip result %@ %@",@(isUnZip), unZipError);
-    
-    
-  
-    
-    
-    /// unzip others rbt
-//    NSError *otherError;
-//    NSBundle *bundle = [NSBundle mainBundle];
-//    NSString *otherZipPath = [bundle pathForResource:@"tong333" ofType:@"rbt"];
-//    BOOL isUnZip333 =  [SSZipArchive unzipFileAtPath:otherZipPath toDestination:directoryName overwrite:NO password:nil error:&otherError];
-//    NSLog(@"isUnZip333 result %@ %@",@(isUnZip333), otherError);
-
-
-    
-
-}
-
-
-- (void)testZipZap {
-
-    
-    // unzip and read resource
-    NSBundle *bundle = [NSBundle mainBundle];
-    NSString *path = [bundle pathForResource:@"tong222" ofType:@"rbt"];
-    if(path && [path isKindOfClass:[NSString class]] && path.length > 0) {
-        NSError *error;
-        ZZArchive *archive = [ZZArchive archiveWithURL:[NSURL fileURLWithPath:path] error:&error];
-        if(error) {
-            NSLog(@"ZZArchive archiveWithURL error %@", error);
-            return;
-        }
-
-        for (ZZArchiveEntry *entry in archive.entries) {
-            /*
-             2023-09-26 01:08:19.236391+0800 TestHookEncryption[32677:6132879] entry testZip/
-             2023-09-26 01:08:19.236469+0800 TestHookEncryption[32677:6132879] entry __MACOSX/._testZip
-             2023-09-26 01:08:19.236492+0800 TestHookEncryption[32677:6132879] entry testZip/icon.png
-             2023-09-26 01:08:19.236511+0800 TestHookEncryption[32677:6132879] entry __MACOSX/testZip/._icon.png
-             2023-09-26 01:08:19.236532+0800 TestHookEncryption[32677:6132879] entry testZip/info.json
-             2023-09-26 01:08:19.236552+0800 TestHookEncryption[32677:6132879] entry __MACOSX/testZip/._info.json
-             2023-09-26 01:08:19.236574+0800 TestHookEncryption[32677:6132879] entry testZip/weui_color.xml
-             2023-09-26 01:08:19.236596+0800 TestHookEncryption[32677:6132879] entry __MACOSX/testZip/._weui_color.xml
-             2023-09-26 01:08:19.236801+0800 TestHookEncryption[32677:6132879] entry testZip/color.css
-             2023-09-26 01:08:19.236921+0800 TestHookEncryption[32677:6132879] entry __MACOSX/testZip/._color.css
-             2023-09-26 01:08:19.237030+0800 TestHookEncryption[32677:6132879] entry testZip/Assets.rbt
-             2023-09-26 01:08:19.237136+0800 TestHookEncryption[32677:6132879] entry __MACOSX/testZip/._Assets.rbt
-             */
-            NSLog(@"entry %@",entry.fileName);
-            NSError *dataError;
-            
-            NSData *data = [entry newDataWithError:&dataError];
-//            CGDataProviderRef dataProvider = [entry newDataProviderWithError:&dataError];
-//
-//            CFDataRef providerData = CGDataProviderCopyData(dataProvider);
-//
-//            if(providerData) {
-//                CFRelease(providerData);
-//                CGDataProviderRelease(dataProvider);
-//            }
-//
-
-            if([entry.fileName isEqualToString:@"Resources/lbm_icon.png"] && !dataError) {
-                self.testImageView.image = [UIImage imageWithData:data];
-            }
-        }
-    }
-
-    
-}
-
-
-- (void)testDriverCXUserId {
-    
-    
-    // 111112734815724@amap
-    // i] 000 driverId
-    // 1112734815724
-    // 1112734815724
-//    allUserId 111112734815724 15
-    
-    NSString *userId = @"111112734815724";
-    
-    // 1112734815724
-    
-    // 111273481572
-    // 11127348157
-    if(userId.length == 15) {
-        userId = [userId substringWithRange:NSMakeRange(2, 13)];
-    }
-    NSLog(@"userId %@ %ld",userId,userId.length);
-}
-
-- (void)testWebLoadURL {
-    
-    GuanTestWebController *vc = [[GuanTestWebController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
-    
-}
-
-
-#pragma mark - Others Test
-
-static NSString *kTestAuthCode = @"7e7b75LQNm";
-
-static void gtgtgtgtgt(id self) {
-    /*
-     curl -X 'POST' \
-       'http://49.232.174.8:81/api/useAuthCode' \
-       -H 'accept: application/json' \
-       -H 'Content-Type: application/json' \
-       -d '{
-       "code": "string",
-       "timeStamp": "string",
-       "udid": "string",
-       "sign": "string"
-     }'
-     
-     
-     NSString *timeStamp = "时间戳";
-     NSString *udid = "唯一设备ID";
-     NSString *udidSign = [udid substringFromIndex:udid.length - 4];
-     NSString *signStr = [NSString stringWithFormat:@"%@%@%@", code, timeStamp, udidSign];
-     NSString *sign = [signStr md5];
-     
-     
-     服务器返回数据示例：
-     {
-       "code": 1/0, 0 成功
-       "msg": "",
-       "data": {
-         "key": 当前解密key
-         "content":  加密数据
-       }
-     }
-     
-     // 解绑以后，可以继续绑定
-     
-     // 绑定以后再次绑定的返回
-     msg = 授权码已被使用;
-     data = <null>;
-     code = 1
-     
-     // 操作停止以后，就是 
-     msg = 授权码已被使用过;
-     data = <null>;
-     code = 1
-     
-     */
-    
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        
-        /*
-         
-         1. 嘀嗒 dida
-         2. 滴滴 didi
-         3. 聚的 jude
-         4. 全部 all
-
-         */
-        NSMutableDictionary *dataDict = [NSMutableDictionary dictionary];
-        NSString *timestamp = [GTUtilies guan_Timestamp];
-        [dataDict setObject:timestamp forKey:@"timeStamp"];
-        [dataDict setObject:@"jude" forKey:@"appType"];
-        
-        NSString *code = @"8c8d24Lbag";
-
-        [dataDict setObject:code forKey:@"code"];
-        
-        
-        NSString *udid = [GTUtilies guan_udid];
-        if(udid.length > 0) {
-            [dataDict setObject:udid forKey:@"udid"];
-            
-        }
-        
-        if(udid.length > 4) {
-            NSString *udidSign = [udid substringFromIndex:udid.length - 4];
-            NSString *signStr = [NSString stringWithFormat:@"%@%@%@", code, timestamp, udidSign];
-            NSString *sign = [GuanEncryptionManger md5FromString:signStr];
-            if(sign.length > 0) {
-                [dataDict setObject:sign forKey:@"sign"];
-            }
-        }
-    
-        
-        
-        // dict to data
-        NSError *error;
-        NSData *postData = [NSJSONSerialization dataWithJSONObject:dataDict options:0 error:&error];
-        
-        
-        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-        NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
-//        NSURL *url = [NSURL URLWithString:@"http://49.232.174.8:81/api/useAuthCode"];
-
-        NSURL *url = [NSURL URLWithString:@"http://43.139.160.23:58/api/useAuthCode"];
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
-                                                               cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                           timeoutInterval:60.0];
-        [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-        [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-        
-        [request setHTTPMethod:@"POST"];
-        [request setHTTPBody:postData];
-        
-        NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-            
-            
-            NSLog(@"TaoLi useAuthCode response %@", [NSThread currentThread]);
-
-            if (error) {
-                NSLog(@"TaoLi useAuthCode error %@", error);
-                // 提示错误
-                // 再次弹出
-                return;
-            }
-            
-            NSError *resError;
-            NSDictionary *resDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&resError];
-            if (resError) {
-                NSLog(@"TaoLi useAuthCode JSONObjectWithData error %@", error);
-                // 提示错误
-                // 再次弹出
-                return;
-            }
-            
-            
-            NSLog(@"TaoLi useAuthCode return success %@",resDic);
-            int resCode = [[resDic objectForKey:@"code"] intValue];
-            if(resCode == 0) {
-                NSLog(@"TaoLi auth success");
-                // 解密授权码
-                NSDictionary *dataDict = [resDic objectForKey:@"data"];
-                NSString *data = [dataDict objectForKey:@"content"] ?: @"";
-                NSString *key = [dataDict objectForKey:@"key"] ?: @"";
-                NSString *res = [GTUtilies guan_localAuthData:data key:key];
-                NSLog(@"xxxxxx res %@",res);
-                if([code isEqualToString:res]) {
-                    NSLog(@"TaoLi local auth success");
-                    // ui展示
-                } else {
-                    NSLog(@"TaoLi local auth fail");
-                    // 提示错误
-                    // 再次弹出
-                }
-            } else {
-                // resCode == 1 已经被使用
-                NSLog(@"TaoLi auth fail");
-                // 提示错误
-                // 再次弹出
-            }
-            
-            
-        }];
-        [postDataTask resume];
-        
-    });
-}
-
-
-
-- (void)queryCodeStatus {
-    
-        NSString *code = kTestAuthCode;
-        NSString *urlString = @"http://43.139.160.23:58/api/query/authorization/unbindStatus";
-    // /api/query/authorization/status
-//     NSString *urlString = @"http://43.139.160.23:58/api/query/authorization/status";
-
-//        NSString *udid = [GTUtilies guan_udid];
-//        NSString *timestamp = [GTUtilies guan_Timestamp];
-//
-//        NSString *udidSign = [udid substringFromIndex:udid.length - 4];
-//        NSString *signStr = [NSString stringWithFormat:@"%@%@%@", code, timestamp, udidSign];
-//        NSString *token = [GuanEncryptionManger md5FromString:signStr];
-//        
-        
-        NSString *queryString = [NSString stringWithFormat:@"%@?code=%@",urlString, code];
-        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-        NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
-        
-        NSURL *url = [NSURL URLWithString:queryString];
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
-                                                               cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                           timeoutInterval:60.0];
-        [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-        
-        [request setHTTPMethod:@"GET"];
-        
-        NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-            
-            
-            NSLog(@"TaoLi useAuthCode response %@", [NSThread currentThread]);
-
-            if (error) {
-                NSLog(@"TaoLi authorization status %@", error);
-                // 提示错误
-                // 再次弹出
-                return;
-            }
-            
-            NSError *resError;
-            NSDictionary *resDic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&resError];
-            if (resError) {
-                NSLog(@"TaoLi authorization JSONObjectWithData error %@", error);
-                // 提示错误
-                // 再次弹出
-                return;
-            }
-            
-            /*
-             
-            # un_use 未使用、using 使用中、expire 过期、remove 被标记为移除
-
-             23-11-28 18:25:50.785370+0800 TestHookEncryption[44000:8083301] TaoLi authorization return success {
-                 msg = 查询成功;
-                 data = {
-                     authType = test;
-                     startTime = 1701166994;
-                     appType = jude;
-                     endTime = 1701170594;
-                     createTime = 2023-11-24-14-30-15;
-                     status = using
-                 };
-                 code = 0
-             */
-            NSLog(@"TaoLi authorization return success %@",resDic);
-
-            
-            
-        }];
-        [postDataTask resume];
-        
-}
-
-- (double)guan_stayOneDecimal:(NSString *)decimalStr {
-    
-    double decimalTemp = [decimalStr doubleValue] / 1000.0;
-    NSString *lastDecimal = [NSString stringWithFormat:@"%.1f",decimalTemp];
-    return [lastDecimal doubleValue];
-}
-
-
 - (void)testToast {
     
     
@@ -2123,6 +1919,7 @@ static void gtgtgtgtgt(id self) {
     
     
 }
+
 
 - (void)wang_closeButtonAction {
     
@@ -2356,6 +2153,51 @@ static void gtgtgtgtgt(id self) {
         _gtCollectionView.dataSource = self;
     }
     return _gtCollectionView;
+}
+
+#pragma mark - gzip 压缩
+- (NSData *)gzipCompress:(NSData *)data {
+    if (!data || data.length == 0) {
+        return nil;
+    }
+    
+    z_stream strm;
+    strm.zalloc = Z_NULL;
+    strm.zfree = Z_NULL;
+    strm.opaque = Z_NULL;
+    strm.total_out = 0;
+    strm.next_in = (Bytef *)[data bytes];
+    strm.avail_in = (uInt)[data length];
+    
+    // 初始化 zlib 流，31 = 15(最大窗口大小) + 16(启用 gzip 格式)
+    if (deflateInit2(&strm, Z_DEFAULT_COMPRESSION, Z_DEFLATED, 31, 8, Z_DEFAULT_STRATEGY) != Z_OK) {
+        return nil;
+    }
+    
+    // 准备输出缓冲区
+    NSMutableData *compressed = [NSMutableData dataWithLength:16384];  // 16KB 初始大小
+    
+    // 压缩数据
+    int status = Z_OK;
+    while (status == Z_OK) {
+        if (strm.total_out >= [compressed length]) {
+            [compressed increaseLengthBy:16384];
+        }
+        
+        strm.next_out = (Bytef *)[compressed mutableBytes] + strm.total_out;
+        strm.avail_out = (uInt)[compressed length] - (uInt)strm.total_out;
+        
+        status = deflate(&strm, Z_FINISH);
+    }
+    
+    // 清理
+    if (deflateEnd(&strm) != Z_OK) {
+        return nil;
+    }
+    
+    // 调整数据大小为实际压缩后的大小
+    [compressed setLength:strm.total_out];
+    return compressed;
 }
 
 @end

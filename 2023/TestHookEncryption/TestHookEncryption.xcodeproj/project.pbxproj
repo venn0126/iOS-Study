@@ -55,6 +55,7 @@
 		B10FB7192C861459000658C9 /* ChengOperationView.m in Sources */ = {isa = PBXBuildFile; fileRef = B10FB7182C861459000658C9 /* ChengOperationView.m */; };
 		B11D7E232AA0D120009F8ADD /* UIButton+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B11D7E222AA0D120009F8ADD /* UIButton+Extension.m */; };
 		B129892C2C86F6C700CE74F1 /* GTControllableCThread.m in Sources */ = {isa = PBXBuildFile; fileRef = B129892B2C86F6C700CE74F1 /* GTControllableCThread.m */; };
+		B13121F52DA5066F001AF33A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B101CF762AC27F45002F52B7 /* libz.tbd */; };
 		B131C5EB2A60E3380099AB19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C5EA2A60E3380099AB19 /* AppDelegate.m */; };
 		B131C5EE2A60E3380099AB19 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B131C5ED2A60E3380099AB19 /* SceneDelegate.m */; };
 		B131C5F12A60E3380099AB19 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = B131C5F02A60E3380099AB19 /* ViewController.mm */; };
@@ -466,6 +467,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B13121F52DA5066F001AF33A /* libz.tbd in Frameworks */,
 				B18BE2F12BCA0F1000DE295A /* CoreLocation.framework in Frameworks */,
 				B131C67D2A64022C0099AB19 /* GTClassDump.framework in Frameworks */,
 				78D50D94D737CD0C1962FDFC /* Pods_TestHookEncryption.framework in Frameworks */,
