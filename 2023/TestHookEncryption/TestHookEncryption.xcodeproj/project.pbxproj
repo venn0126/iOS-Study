@@ -102,6 +102,7 @@
 		B1A0C27C2A7D14D800F60D31 /* GuanAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C27B2A7D14D800F60D31 /* GuanAlert.m */; };
 		B1A0C27F2A7D14F500F60D31 /* UIAlertController+AddAction.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C27E2A7D14F500F60D31 /* UIAlertController+AddAction.m */; };
 		B1B3A02D2C93C99C005D6E17 /* ChengLogOutputView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B3A02C2C93C99B005D6E17 /* ChengLogOutputView.m */; };
+		B1B72B0E2DBB2F3E00AD8B6E /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B72B0D2DBB2F3E00AD8B6E /* UIView+Layout.m */; };
 		B1C1CD5A2A90D2DB0007A5F1 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C1CD582A90D2DB0007A5F1 /* UIView+Toast.m */; };
 		B1D171782A8A1B46001A0300 /* JCCSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D171772A8A1B46001A0300 /* JCCSettingsController.m */; };
 		B1D315302ABF178900519DF6 /* UIImage+Compress.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D3152F2ABF178900519DF6 /* UIImage+Compress.m */; };
@@ -354,6 +355,8 @@
 		B1A0C27E2A7D14F500F60D31 /* UIAlertController+AddAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+AddAction.m"; sourceTree = "<group>"; };
 		B1B3A02B2C93C99B005D6E17 /* ChengLogOutputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChengLogOutputView.h; sourceTree = "<group>"; };
 		B1B3A02C2C93C99B005D6E17 /* ChengLogOutputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChengLogOutputView.m; sourceTree = "<group>"; };
+		B1B72B0C2DBB2F3E00AD8B6E /* UIView+Layout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
+		B1B72B0D2DBB2F3E00AD8B6E /* UIView+Layout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
 		B1C1CD582A90D2DB0007A5F1 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		B1C1CD592A90D2DB0007A5F1 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
 		B1D171762A8A1B46001A0300 /* JCCSettingsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCCSettingsController.h; sourceTree = "<group>"; };
@@ -682,6 +685,8 @@
 				B1F006622BB6967B000A0088 /* Video */,
 				B131C5E92A60E3380099AB19 /* AppDelegate.h */,
 				B131C5EA2A60E3380099AB19 /* AppDelegate.m */,
+				B1B72B0C2DBB2F3E00AD8B6E /* UIView+Layout.h */,
+				B1B72B0D2DBB2F3E00AD8B6E /* UIView+Layout.m */,
 				B10FB7142C80CEB4000658C9 /* ChengReserverMgr.h */,
 				B10FB7152C80CEB4000658C9 /* ChengReserverMgr.m */,
 				B10FB7172C861459000658C9 /* ChengOperationView.h */,
@@ -1214,6 +1219,7 @@
 				B1DCF8DD2AB0416600F571D4 /* Reachability.m in Sources */,
 				B17035F72AD9214200430753 /* UIWindow+Screenshot.m in Sources */,
 				B101CF392AC1F4D5002F52B7 /* ZZOldArchiveEntry.mm in Sources */,
+				B1B72B0E2DBB2F3E00AD8B6E /* UIView+Layout.m in Sources */,
 				B1F0067F2BB6967B000A0088 /* QGVAPMetalView.m in Sources */,
 				B101CF362AC1F4D5002F52B7 /* ZZDataChannel.m in Sources */,
 				B131C5EE2A60E3380099AB19 /* SceneDelegate.m in Sources */,
