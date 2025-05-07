@@ -101,6 +101,17 @@
 		B1A0C2782A7BA50300F60D31 /* GuanClearTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C2772A7BA50300F60D31 /* GuanClearTool.m */; };
 		B1A0C27C2A7D14D800F60D31 /* GuanAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C27B2A7D14D800F60D31 /* GuanAlert.m */; };
 		B1A0C27F2A7D14F500F60D31 /* UIAlertController+AddAction.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A0C27E2A7D14F500F60D31 /* UIAlertController+AddAction.m */; };
+		B1AD7E742DCB9609007670EC /* TNPersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AD7E732DCB9609007670EC /* TNPersonModel.m */; };
+		B1AD7E852DCBA62B007670EC /* TNCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AD7E842DCBA62B007670EC /* TNCellModel.m */; };
+		B1AD7E882DCBA659007670EC /* TNLRUCache.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AD7E872DCBA659007670EC /* TNLRUCache.m */; };
+		B1AD7E8B2DCBA6A8007670EC /* TNTextCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AD7E8A2DCBA6A8007670EC /* TNTextCalculator.m */; };
+		B1AD7E8E2DCBA70A007670EC /* TNHeightManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AD7E8D2DCBA70A007670EC /* TNHeightManager.m */; };
+		B1AD7E912DCBA7E6007670EC /* UITableView+TNManualLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AD7E902DCBA7E6007670EC /* UITableView+TNManualLayout.m */; };
+		B1AD7E942DCBA94C007670EC /* TNTextCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AD7E932DCBA94C007670EC /* TNTextCellModel.m */; };
+		B1AD7E972DCBAAAB007670EC /* TNTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AD7E962DCBAAAB007670EC /* TNTextCell.m */; };
+		B1AD7E9A2DCBAB31007670EC /* TNImageTextCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AD7E992DCBAB31007670EC /* TNImageTextCellModel.m */; };
+		B1AD7E9D2DCBAB86007670EC /* TNImageTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AD7E9C2DCBAB86007670EC /* TNImageTextCell.m */; };
+		B1AD7EA02DCBAFA8007670EC /* TNRefreshTableViewMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AD7E9F2DCBAFA8007670EC /* TNRefreshTableViewMgr.m */; };
 		B1B3A02D2C93C99C005D6E17 /* ChengLogOutputView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B3A02C2C93C99B005D6E17 /* ChengLogOutputView.m */; };
 		B1B72B0E2DBB2F3E00AD8B6E /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B72B0D2DBB2F3E00AD8B6E /* UIView+Layout.m */; };
 		B1C1CD5A2A90D2DB0007A5F1 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C1CD582A90D2DB0007A5F1 /* UIView+Toast.m */; };
@@ -353,6 +364,28 @@
 		B1A0C27B2A7D14D800F60D31 /* GuanAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuanAlert.m; sourceTree = "<group>"; };
 		B1A0C27D2A7D14F500F60D31 /* UIAlertController+AddAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+AddAction.h"; sourceTree = "<group>"; };
 		B1A0C27E2A7D14F500F60D31 /* UIAlertController+AddAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+AddAction.m"; sourceTree = "<group>"; };
+		B1AD7E722DCB9609007670EC /* TNPersonModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNPersonModel.h; sourceTree = "<group>"; };
+		B1AD7E732DCB9609007670EC /* TNPersonModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNPersonModel.m; sourceTree = "<group>"; };
+		B1AD7E832DCBA62B007670EC /* TNCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNCellModel.h; sourceTree = "<group>"; };
+		B1AD7E842DCBA62B007670EC /* TNCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNCellModel.m; sourceTree = "<group>"; };
+		B1AD7E862DCBA659007670EC /* TNLRUCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNLRUCache.h; sourceTree = "<group>"; };
+		B1AD7E872DCBA659007670EC /* TNLRUCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNLRUCache.m; sourceTree = "<group>"; };
+		B1AD7E892DCBA6A8007670EC /* TNTextCalculator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNTextCalculator.h; sourceTree = "<group>"; };
+		B1AD7E8A2DCBA6A8007670EC /* TNTextCalculator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNTextCalculator.m; sourceTree = "<group>"; };
+		B1AD7E8C2DCBA70A007670EC /* TNHeightManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNHeightManager.h; sourceTree = "<group>"; };
+		B1AD7E8D2DCBA70A007670EC /* TNHeightManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNHeightManager.m; sourceTree = "<group>"; };
+		B1AD7E8F2DCBA7E6007670EC /* UITableView+TNManualLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+TNManualLayout.h"; sourceTree = "<group>"; };
+		B1AD7E902DCBA7E6007670EC /* UITableView+TNManualLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+TNManualLayout.m"; sourceTree = "<group>"; };
+		B1AD7E922DCBA94C007670EC /* TNTextCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNTextCellModel.h; sourceTree = "<group>"; };
+		B1AD7E932DCBA94C007670EC /* TNTextCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNTextCellModel.m; sourceTree = "<group>"; };
+		B1AD7E952DCBAAAB007670EC /* TNTextCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNTextCell.h; sourceTree = "<group>"; };
+		B1AD7E962DCBAAAB007670EC /* TNTextCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNTextCell.m; sourceTree = "<group>"; };
+		B1AD7E982DCBAB31007670EC /* TNImageTextCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNImageTextCellModel.h; sourceTree = "<group>"; };
+		B1AD7E992DCBAB31007670EC /* TNImageTextCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNImageTextCellModel.m; sourceTree = "<group>"; };
+		B1AD7E9B2DCBAB86007670EC /* TNImageTextCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNImageTextCell.h; sourceTree = "<group>"; };
+		B1AD7E9C2DCBAB86007670EC /* TNImageTextCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNImageTextCell.m; sourceTree = "<group>"; };
+		B1AD7E9E2DCBAFA8007670EC /* TNRefreshTableViewMgr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNRefreshTableViewMgr.h; sourceTree = "<group>"; };
+		B1AD7E9F2DCBAFA8007670EC /* TNRefreshTableViewMgr.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNRefreshTableViewMgr.m; sourceTree = "<group>"; };
 		B1B3A02B2C93C99B005D6E17 /* ChengLogOutputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChengLogOutputView.h; sourceTree = "<group>"; };
 		B1B3A02C2C93C99B005D6E17 /* ChengLogOutputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChengLogOutputView.m; sourceTree = "<group>"; };
 		B1B72B0C2DBB2F3E00AD8B6E /* UIView+Layout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
@@ -683,6 +716,8 @@
 				B1C1CD542A90D1E70007A5F1 /* Toast */,
 				B1676B042AD5B0920032F433 /* MengTableView */,
 				B1F006622BB6967B000A0088 /* Video */,
+				B1AD7E712DCB95FC007670EC /* TestYYModel */,
+				B1AD7E822DCBA61A007670EC /* TNTableView */,
 				B131C5E92A60E3380099AB19 /* AppDelegate.h */,
 				B131C5EA2A60E3380099AB19 /* AppDelegate.m */,
 				B1B72B0C2DBB2F3E00AD8B6E /* UIView+Layout.h */,
@@ -864,6 +899,42 @@
 				B1A0C27E2A7D14F500F60D31 /* UIAlertController+AddAction.m */,
 			);
 			path = Alert;
+			sourceTree = "<group>";
+		};
+		B1AD7E712DCB95FC007670EC /* TestYYModel */ = {
+			isa = PBXGroup;
+			children = (
+				B1AD7E722DCB9609007670EC /* TNPersonModel.h */,
+				B1AD7E732DCB9609007670EC /* TNPersonModel.m */,
+			);
+			path = TestYYModel;
+			sourceTree = "<group>";
+		};
+		B1AD7E822DCBA61A007670EC /* TNTableView */ = {
+			isa = PBXGroup;
+			children = (
+				B1AD7E832DCBA62B007670EC /* TNCellModel.h */,
+				B1AD7E842DCBA62B007670EC /* TNCellModel.m */,
+				B1AD7E862DCBA659007670EC /* TNLRUCache.h */,
+				B1AD7E872DCBA659007670EC /* TNLRUCache.m */,
+				B1AD7E892DCBA6A8007670EC /* TNTextCalculator.h */,
+				B1AD7E8A2DCBA6A8007670EC /* TNTextCalculator.m */,
+				B1AD7E8C2DCBA70A007670EC /* TNHeightManager.h */,
+				B1AD7E8D2DCBA70A007670EC /* TNHeightManager.m */,
+				B1AD7E8F2DCBA7E6007670EC /* UITableView+TNManualLayout.h */,
+				B1AD7E902DCBA7E6007670EC /* UITableView+TNManualLayout.m */,
+				B1AD7E922DCBA94C007670EC /* TNTextCellModel.h */,
+				B1AD7E932DCBA94C007670EC /* TNTextCellModel.m */,
+				B1AD7E952DCBAAAB007670EC /* TNTextCell.h */,
+				B1AD7E962DCBAAAB007670EC /* TNTextCell.m */,
+				B1AD7E982DCBAB31007670EC /* TNImageTextCellModel.h */,
+				B1AD7E992DCBAB31007670EC /* TNImageTextCellModel.m */,
+				B1AD7E9B2DCBAB86007670EC /* TNImageTextCell.h */,
+				B1AD7E9C2DCBAB86007670EC /* TNImageTextCell.m */,
+				B1AD7E9E2DCBAFA8007670EC /* TNRefreshTableViewMgr.h */,
+				B1AD7E9F2DCBAFA8007670EC /* TNRefreshTableViewMgr.m */,
+			);
+			path = TNTableView;
 			sourceTree = "<group>";
 		};
 		B1C1CD542A90D1E70007A5F1 /* Toast */ = {
@@ -1104,12 +1175,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1A0C2662A7B9A9900F60D31 /* NSObject+MethodSwizzling.m in Sources */,
+				B1AD7EA02DCBAFA8007670EC /* TNRefreshTableViewMgr.m in Sources */,
 				B1F006712BB6967B000A0088 /* QGHWDMP4OpenGLView.m in Sources */,
 				B17035FD2AD925A800430753 /* NSData+ImageFormat.m in Sources */,
 				B10AF4B82B40106F004D7C70 /* fishhook.c in Sources */,
+				B1AD7E9A2DCBAB31007670EC /* TNImageTextCellModel.m in Sources */,
 				B1676AC52AD3DE010032F433 /* TongXMLReader.m in Sources */,
 				B1F006682BB6967B000A0088 /* QGAnimatedImageDecodeManager.m in Sources */,
+				B1AD7E8E2DCBA70A007670EC /* TNHeightManager.m in Sources */,
 				B131C5F12A60E3380099AB19 /* ViewController.mm in Sources */,
+				B1AD7E9D2DCBAB86007670EC /* TNImageTextCell.m in Sources */,
 				B1676B0D2AD5B6A20032F433 /* MengRightLabelTableCell.m in Sources */,
 				B1F006832BB6967B000A0088 /* QGVAPWeakProxy.m in Sources */,
 				B101CF342AC1F4D5002F52B7 /* ZZError.m in Sources */,
@@ -1121,6 +1196,7 @@
 				B16ABCB42A66250400A4EC12 /* NSBundle+GTInfo.m in Sources */,
 				B1676B032AD5AF6E0032F433 /* MengSettingController.m in Sources */,
 				2780CB5D2A8A742B00C15C79 /* GuanRightLabelTableCell.m in Sources */,
+				B1AD7E852DCBA62B007670EC /* TNCellModel.m in Sources */,
 				B1F006812BB6967B000A0088 /* QGVAPSafeMutableDictionary.m in Sources */,
 				B1F006722BB6967B000A0088 /* QGHWDShaders.metal in Sources */,
 				B1F0066F2BB6967B000A0088 /* QGHWDMetalRenderer.m in Sources */,
@@ -1143,10 +1219,12 @@
 				B101CF2B2AC1F4D5002F52B7 /* ZZDeflateOutputStream.m in Sources */,
 				B10FB7132C7E2E5F000658C9 /* GuanProxyWKController.m in Sources */,
 				B13C49142B9AF754006B2DAD /* UIButton+Extension.m in Sources */,
+				B1AD7E742DCB9609007670EC /* TNPersonModel.m in Sources */,
 				B101CF2F2AC1F4D5002F52B7 /* ZZDataChannelOutput.m in Sources */,
 				B17D7CBA2C11C1FD00C5C379 /* DiamondView.m in Sources */,
 				B1F006672BB6967B000A0088 /* QGAnimatedImageDecodeConfig.m in Sources */,
 				B1676B072AD5B0BE0032F433 /* MengTableView.m in Sources */,
+				B1AD7E882DCBA659007670EC /* TNLRUCache.m in Sources */,
 				2780CB612A8A75C000C15C79 /* GuanBaseModel.m in Sources */,
 				2780CB512A8A730400C15C79 /* GuanTableViewDataSource.m in Sources */,
 				B1F27E202A8B1D8700E7B415 /* UIView+Extension.m in Sources */,
@@ -1185,6 +1263,7 @@
 				B1A0C2782A7BA50300F60D31 /* GuanClearTool.m in Sources */,
 				B10FB70A2C7E188F000658C9 /* GuanWebViewProxy.m in Sources */,
 				B1F006652BB6967B000A0088 /* NSNotificationCenter+VAPThreadSafe.m in Sources */,
+				B1AD7E8B2DCBA6A8007670EC /* TNTextCalculator.m in Sources */,
 				B137ABC82A9C9B19005D7971 /* GuanTestWebController.m in Sources */,
 				B1F0067C2BB6967B000A0088 /* QGVAPMetalRenderer.m in Sources */,
 				B16ABCAE2A6503E300A4EC12 /* GTFileTools.m in Sources */,
@@ -1192,6 +1271,7 @@
 				B101CF3A2AC1F4D5002F52B7 /* ZZFileChannel.m in Sources */,
 				B1A0C27F2A7D14F500F60D31 /* UIAlertController+AddAction.m in Sources */,
 				B1F006872BB6967B000A0088 /* UIView+MP4HWDecode.m in Sources */,
+				B1AD7E942DCBA94C007670EC /* TNTextCellModel.m in Sources */,
 				B1D6E3422B9C9B7700EFC11B /* GTCustomButton.m in Sources */,
 				B1F006762BB6967B000A0088 /* QGMP4HWDFileInfo.m in Sources */,
 				B1A0C2692A7B9AD100F60D31 /* NSObject+SelectorDefender.m in Sources */,
@@ -1223,6 +1303,8 @@
 				B1F0067F2BB6967B000A0088 /* QGVAPMetalView.m in Sources */,
 				B101CF362AC1F4D5002F52B7 /* ZZDataChannel.m in Sources */,
 				B131C5EE2A60E3380099AB19 /* SceneDelegate.m in Sources */,
+				B1AD7E972DCBAAAB007670EC /* TNTextCell.m in Sources */,
+				B1AD7E912DCBA7E6007670EC /* UITableView+TNManualLayout.m in Sources */,
 				B13C48ED2B90837C006B2DAD /* GTAppStorePay.m in Sources */,
 				B101CF2C2AC1F4D5002F52B7 /* ZZStandardCryptoEngine.cpp in Sources */,
 				B1F006782BB6967B000A0088 /* QGVAPConfigManager.m in Sources */,

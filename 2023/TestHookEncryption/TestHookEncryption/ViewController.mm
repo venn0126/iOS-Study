@@ -53,6 +53,13 @@
 #import <IOKit/IOKitLib.h>
 
 #import "ChengLogOutputView.h"
+#import "TNPersonModel.h"
+
+
+#import "UITableView+TNManualLayout.h"
+#import "TNTextCell.h"
+#import "TNImageTextCell.h"
+
 
 
 
@@ -108,7 +115,7 @@ printf("method hooked \n");\
 
 static const NSInteger kAugusButtonTagOffset = 10000;
 
-@interface ViewController ()<NSURLSessionDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UICollectionViewDataSource, ChengOperationViewDelegate>
+@interface ViewController ()<NSURLSessionDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UICollectionViewDataSource, ChengOperationViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (retain, nonatomic) SKPaymentTransaction *transaction;
 
@@ -126,6 +133,8 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 
 @property (nonatomic, assign) BOOL stopRequested;
 @property (nonatomic, assign) BOOL isRunning;
+@property (nonatomic, strong) UITableView *tableView;
+
 
 @end
 
@@ -144,7 +153,7 @@ struct GTPerson {
     
     self.title = @"我的";
     self.view.backgroundColor = UIColor.whiteColor;
-    [self setupButtons];
+//    [self setupButtons];
         
 //    [self testVideoToAudio];
     
@@ -212,6 +221,316 @@ struct GTPerson {
 //    [self sendRequest:nil];
 
 //    [self testBase64Str];
+    
+//    [self testYYModelCase];
+    
+    [self testTNTableView];
+}
+
+
+- (void)testTNTableView {
+    
+    
+    // 设置表格视图
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.tableView.estimatedRowHeight = 100; // 设置预估高度提高性能
+    [self.view addSubview:self.tableView];
+    
+    // 注册cell
+    [self.tableView tn_registerClass:[TNTextCell class] forCellWithIdentifier:@"TNTextCell"];
+    [self.tableView tn_registerClass:[TNImageTextCell class] forCellWithIdentifier:@"TNImageTextCell"];
+    
+//    // 添加下拉刷新
+//    __weak typeof(self) weakSelf = self;
+//    [self.tableView tn_addPullToRefreshWithBlock:^{
+//        // 模拟网络请求延迟
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            // 刷新数据
+//            [weakSelf loadNewData];
+//        });
+//    }];
+//    
+//    // 添加上拉加载更多
+//    [self.tableView tn_addInfiniteScrollingWithBlock:^{
+//        // 模拟网络请求延迟
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            // 加载更多数据
+//            [weakSelf loadMoreData];
+//        });
+//    }];
+    
+    // 准备数据
+    [self prepareData];
+}
+
+- (void)prepareData {
+    // 初始数据
+    NSMutableArray *models = [NSMutableArray array];
+    
+    // 添加文本cell
+    for (int i = 0; i < 100; i++) {
+        TNTextCellModel *model = [[TNTextCellModel alloc] init];
+        [model setTitle:[NSString stringWithFormat:@"标题 %d", i]];
+        [model setContent:[NSString stringWithFormat:@"这是内容 %d，可能包含很多行文字。这是一个使用手动布局和高度缓存的高效UITableView方案示例。", i]];
+        [models addObject:model];
+    }
+    
+    for (int i = 0; i < 100; i++) {
+        TNImageTextCellModel *imageModel = [[TNImageTextCellModel alloc] init];
+        [imageModel setTitle:@"新图文内容"];
+        [imageModel setContent:@"这是的图文混排内容。这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容"];
+        [imageModel setImageUrl:@"https://example.com/image.jpg"];
+        [imageModel setImageSize:CGSizeMake(80, 80)];
+        [models addObject:imageModel];
+    }
+    
+    // 预计算高度并刷新表格
+    [self.tableView tn_reloadDataWithModels:models preCalculateHeight:YES];
+    
+    // 自动触发一次下拉刷新
+    [self.tableView tn_beginRefreshing];
+}
+
+- (void)loadNewData {
+    // 防止重复加载
+    static BOOL isLoading = NO;
+    
+    if (isLoading) return;
+    isLoading = YES;
+    
+    // 模拟获取新数据
+    NSMutableArray *newModels = [NSMutableArray array];
+    
+    // 添加新的文本cell
+    for (int i = 0; i < 5; i++) {
+        TNTextCellModel *model = [[TNTextCellModel alloc] init];
+        [model setTitle:[NSString stringWithFormat:@"新标题 %d", i]];
+        [model setContent:[NSString stringWithFormat:@"这是新加载的内容 %d，通过下拉刷新获取。", i]];
+        [newModels addObject:model];
+    }
+    
+    // 添加新的图文cell
+    TNImageTextCellModel *imageModel = [[TNImageTextCellModel alloc] init];
+    [imageModel setTitle:@"新图文内容"];
+    [imageModel setContent:@"这是下拉刷新加载的图文混排内容。"];
+    [imageModel setImageUrl:@"https://example.com/image.jpg"];
+    [imageModel setImageSize:CGSizeMake(80, 80)];
+    [newModels addObject:imageModel];
+    
+    // 添加到表格顶部
+     [self.tableView tn_prependModels:newModels];
+     
+     // 延迟重置加载标记
+     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+         isLoading = NO;
+     });
+}
+
+- (void)loadMoreData {
+    // 模拟获取更多数据
+    static int loadMoreCount = 0;
+    loadMoreCount++;
+    
+    // 模拟加载3次后没有更多数据
+    if (loadMoreCount >= 3) {
+        [self.tableView tn_setNoMoreData];
+        [self.tableView tn_endLoadingMore];
+        return;
+    }
+    
+    NSMutableArray *moreModels = [NSMutableArray array];
+    
+    // 添加更多的cell
+    int startIndex = (int)self.tableView.tn_models.count;
+    for (int i = 0; i < 5; i++) {
+        if (i % 2 == 0) {
+            TNTextCellModel *model = [[TNTextCellModel alloc] init];
+            [model setTitle:[NSString stringWithFormat:@"加载更多 %d", startIndex + i]];
+            [model setContent:[NSString stringWithFormat:@"这是上拉加载的更多内容 %d。", startIndex + i]];
+            [moreModels addObject:model];
+        } else {
+            TNImageTextCellModel *model = [[TNImageTextCellModel alloc] init];
+            [model setTitle:[NSString stringWithFormat:@"加载更多图文 %d", startIndex + i]];
+            [model setContent:[NSString stringWithFormat:@"这是上拉加载的更多图文内容 %d。", startIndex + i]];
+            [model setImageUrl:@"https://example.com/image.jpg"];
+            [model setImageOnLeft:(i % 4 == 1)]; // 交替图片位置
+            [moreModels addObject:model];
+        }
+    }
+    
+    // 添加到表格底部
+    [self.tableView tn_appendModels:moreModels];
+    
+    // 结束加载更多
+    [self.tableView tn_endLoadingMore];
+}
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.tableView.tn_models.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    TNCellModel *model = self.tableView.tn_models[indexPath.row];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:model.identifier];
+    
+    if ([cell isKindOfClass:[TNTextCell class]] && [model isKindOfClass:[TNTextCellModel class]]) {
+        [(TNTextCell *)cell configureWithModel:(TNTextCellModel *)model];
+    } else if ([cell isKindOfClass:[TNImageTextCell class]] && [model isKindOfClass:[TNImageTextCellModel class]]) {
+        [(TNImageTextCell *)cell configureWithModel:(TNImageTextCellModel *)model];
+    }
+    
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    TNCellModel *model = self.tableView.tn_models[indexPath.row];
+    return model.cellHeight > 0 ? model.cellHeight : UITableViewAutomaticDimension;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    // 示例：更新选中的cell
+    TNCellModel *model = self.tableView.tn_models[indexPath.row];
+    
+    if ([model isKindOfClass:[TNTextCellModel class]]) {
+        TNTextCellModel *textModel = (TNTextCellModel *)model;
+        [textModel setContent:[NSString stringWithFormat:@"内容已更新: %@", [NSDate date]]];
+        [tableView tn_updateModel:textModel atIndexPath:indexPath animated:YES];
+    }
+}
+
+
+- (void)testYYModelCase {
+    
+    /*
+    NSDictionary *dic = @{
+                      @"id":@"123",
+                      @"name":@"张三",
+                      @"age":@(12),
+                      @"sexDic":@{@"sex":@"man"},
+                      @"languages":@[
+                              @"汉语",@"英语",@"法语"
+                              ],
+                      @"job":@{
+                              @"work":@"iOS开发",
+                              @"eveDay":@"10小时",
+                              @"site":@"软件园"
+                              }
+     */
+    
+    
+    /*
+    NSDictionary *dic = @{
+                      @"id":@"123",
+                      @"name":@"张三",
+                      @"age":@(12),
+                      @"sexDic":@{@"sex":@"男"},
+                      @"languages":@[
+                              @"汉语",@"英语",@"法语"
+                              ],
+                      @"job":@{
+                              @"work":@"iOS开发",
+                              @"eveDay":@"10小时",
+                              @"site":@"软件园"
+                              },
+                      @"eats":@[
+                              @{@"food":@"西瓜",@"date":@"8点"},
+                              @{@"food":@"烤鸭",@"date":@"14点"},
+                              @{@"food":@"西餐",@"date":@"20点"}
+                              ]
+                      };
+     */
+    
+    NSDictionary *dic = @{
+        @"birthPlace":@"宁夏固原市彭阳县草庙乡",
+        @"education":@"博士",
+        @"id":@"115",
+        
+        //字典
+        @"personalMessage":@{
+            @"marryAge":@"30",
+            @"marryStatus":@"1",
+            @"paddress":@"宁夏固原市",
+            @"phone":@"158*****289",
+            @"pname":@"sxk",
+        },
+        @"babyFatherInfo" : @{
+            @"bFatherAge" : @"38",
+            @"bFatherUnit" : @"19957253180",
+            @"bFatherPhone" : @"2222222",
+            @"husbFamHistory" : @"3333333",
+            @"bFatherPcId" : @"228384848484944",
+            @"isHusbFamHistory" : @"1",
+            @"bFatherJob" : @"01",
+            @"bFatherHealth" : @"1",
+            @"bFatherName" : @"sxk"
+        },
+        
+        @"pregnancyHistorys" : @{
+            @"pregnancyHistory" : @[
+                @{
+                    @"zycqk" : @"01",
+                    @"historyId" : @"210585",
+                    @"birthTime" : @"2019-04",
+                    @"bearType" : @"01",
+                    @"chhfqk" : @"01",
+                    @"babyInfos" : @{
+                        @"babyInfo" : @[
+                            @{
+                                @"babysex" : @"01",
+                                @"babyWeight" : @"3000",
+                                @"babyStatus" : @"01",
+                                @"ycrdn" : @"210585"
+                            },
+                            @{
+                                @"babysex" : @"03",
+                                @"babyWeight" : @"3003",
+                                @"babyStatus" : @"03",
+                                @"ycrdn" : @"210588"
+                            }
+                        ]
+                    }
+                },
+                @{
+                    @"zycqk" : @"02",
+                    @"historyId" : @"210587",
+                    @"birthTime" : @"2019-05",
+                    @"bearType" : @"02",
+                    @"chhfqk" : @"02",
+                    @"babyInfos" : @{
+                        @"babyInfo" : @[
+                            @ {
+                                @"babysex" : @"02",
+                                @"babyWeight" : @"3001",
+                                @"babyStatus" : @"02",
+                                @"ycrdn" : @"210587"
+                            }
+                        ]
+                    }
+                },
+            ]
+        },
+    };
+    
+    
+    
+    TNPersonModel *model = [TNPersonModel yy_modelWithDictionary:dic];
+    NSLog(@"model.pregnancyHistorys.pregnancyHistory.firstObject %@",model.pregnancyHistorys.pregnancyHistory.firstObject);
+    TNPregnancyHistoryItemModel *pregnancyHistoryItemModel = model.pregnancyHistorys.pregnancyHistory.firstObject;
+    NSLog(@"model.pregnancyHistorys.pregnancyHistory.firstObject %@",pregnancyHistoryItemModel.babyInfos.babyInfo.firstObject);
+    TNPregnancyHistoryItemBabyInfoModel *pregnancyHistoryItemBabyInfoModel = pregnancyHistoryItemModel.babyInfos.babyInfo.firstObject;
+    NSLog(@"pregnancyHistoryItemModel.babyInfos.babyInfo.firstObject %@-%@",pregnancyHistoryItemBabyInfoModel,pregnancyHistoryItemBabyInfoModel.ycrdn);
+    
+
+
+    
+    
 }
 
 
