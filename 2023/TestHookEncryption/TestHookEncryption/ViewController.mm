@@ -59,6 +59,7 @@
 #import "UITableView+TNManualLayout.h"
 #import "TNTextCell.h"
 #import "TNImageTextCell.h"
+#import "TNHomeListViewModel.h"
 
 
 
@@ -134,7 +135,7 @@ static const NSInteger kAugusButtonTagOffset = 10000;
 @property (nonatomic, assign) BOOL stopRequested;
 @property (nonatomic, assign) BOOL isRunning;
 @property (nonatomic, strong) UITableView *tableView;
-
+@property(nonatomic, strong) TNHomeListViewModel *viewModel;
 
 @end
 
@@ -230,6 +231,12 @@ struct GTPerson {
 
 - (void)testTNTableView {
     
+    self.viewModel = [[TNHomeListViewModel alloc] init];
+    __weak typeof(self) weakSelf = self;
+    self.viewModel.onDataChanged = ^{
+        [weakSelf.tableView tn_reloadDataWithModels:weakSelf.viewModel.models preCalculateHeight:YES];
+    };
+    
     
     // 设置表格视图
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
@@ -243,129 +250,18 @@ struct GTPerson {
     [self.tableView tn_registerClass:[TNTextCell class] forCellWithIdentifier:@"TNTextCell"];
     [self.tableView tn_registerClass:[TNImageTextCell class] forCellWithIdentifier:@"TNImageTextCell"];
     
-//    // 添加下拉刷新
-//    __weak typeof(self) weakSelf = self;
-//    [self.tableView tn_addPullToRefreshWithBlock:^{
-//        // 模拟网络请求延迟
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            // 刷新数据
-//            [weakSelf loadNewData];
-//        });
-//    }];
-//    
-//    // 添加上拉加载更多
-//    [self.tableView tn_addInfiniteScrollingWithBlock:^{
-//        // 模拟网络请求延迟
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            // 加载更多数据
-//            [weakSelf loadMoreData];
-//        });
-//    }];
+    [self.viewModel loadInitialData];
     
-    // 准备数据
-    [self prepareData];
 }
 
-- (void)prepareData {
-    // 初始数据
-    NSMutableArray *models = [NSMutableArray array];
-    
-    // 添加文本cell
-    for (int i = 0; i < 100; i++) {
-        TNTextCellModel *model = [[TNTextCellModel alloc] init];
-        [model setTitle:[NSString stringWithFormat:@"标题 %d", i]];
-        [model setContent:[NSString stringWithFormat:@"这是内容 %d，可能包含很多行文字。这是一个使用手动布局和高度缓存的高效UITableView方案示例。", i]];
-        [models addObject:model];
-    }
-    
-    for (int i = 0; i < 100; i++) {
-        TNImageTextCellModel *imageModel = [[TNImageTextCellModel alloc] init];
-        [imageModel setTitle:@"新图文内容"];
-        [imageModel setContent:@"这是的图文混排内容。这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容这是的图文混排内容"];
-        [imageModel setImageUrl:@"https://example.com/image.jpg"];
-        [imageModel setImageSize:CGSizeMake(80, 80)];
-        [models addObject:imageModel];
-    }
-    
-    // 预计算高度并刷新表格
-    [self.tableView tn_reloadDataWithModels:models preCalculateHeight:YES];
-    
-    // 自动触发一次下拉刷新
-    [self.tableView tn_beginRefreshing];
+// 下拉刷新
+- (void)pullToRefresh {
+    [self.viewModel prependNewData];
 }
 
-- (void)loadNewData {
-    // 防止重复加载
-    static BOOL isLoading = NO;
-    
-    if (isLoading) return;
-    isLoading = YES;
-    
-    // 模拟获取新数据
-    NSMutableArray *newModels = [NSMutableArray array];
-    
-    // 添加新的文本cell
-    for (int i = 0; i < 5; i++) {
-        TNTextCellModel *model = [[TNTextCellModel alloc] init];
-        [model setTitle:[NSString stringWithFormat:@"新标题 %d", i]];
-        [model setContent:[NSString stringWithFormat:@"这是新加载的内容 %d，通过下拉刷新获取。", i]];
-        [newModels addObject:model];
-    }
-    
-    // 添加新的图文cell
-    TNImageTextCellModel *imageModel = [[TNImageTextCellModel alloc] init];
-    [imageModel setTitle:@"新图文内容"];
-    [imageModel setContent:@"这是下拉刷新加载的图文混排内容。"];
-    [imageModel setImageUrl:@"https://example.com/image.jpg"];
-    [imageModel setImageSize:CGSizeMake(80, 80)];
-    [newModels addObject:imageModel];
-    
-    // 添加到表格顶部
-     [self.tableView tn_prependModels:newModels];
-     
-     // 延迟重置加载标记
-     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-         isLoading = NO;
-     });
-}
-
-- (void)loadMoreData {
-    // 模拟获取更多数据
-    static int loadMoreCount = 0;
-    loadMoreCount++;
-    
-    // 模拟加载3次后没有更多数据
-    if (loadMoreCount >= 3) {
-        [self.tableView tn_setNoMoreData];
-        [self.tableView tn_endLoadingMore];
-        return;
-    }
-    
-    NSMutableArray *moreModels = [NSMutableArray array];
-    
-    // 添加更多的cell
-    int startIndex = (int)self.tableView.tn_models.count;
-    for (int i = 0; i < 5; i++) {
-        if (i % 2 == 0) {
-            TNTextCellModel *model = [[TNTextCellModel alloc] init];
-            [model setTitle:[NSString stringWithFormat:@"加载更多 %d", startIndex + i]];
-            [model setContent:[NSString stringWithFormat:@"这是上拉加载的更多内容 %d。", startIndex + i]];
-            [moreModels addObject:model];
-        } else {
-            TNImageTextCellModel *model = [[TNImageTextCellModel alloc] init];
-            [model setTitle:[NSString stringWithFormat:@"加载更多图文 %d", startIndex + i]];
-            [model setContent:[NSString stringWithFormat:@"这是上拉加载的更多图文内容 %d。", startIndex + i]];
-            [model setImageUrl:@"https://example.com/image.jpg"];
-            [model setImageOnLeft:(i % 4 == 1)]; // 交替图片位置
-            [moreModels addObject:model];
-        }
-    }
-    
-    // 添加到表格底部
-    [self.tableView tn_appendModels:moreModels];
-    
-    // 结束加载更多
-    [self.tableView tn_endLoadingMore];
+// 上拉加载更多
+- (void)loadMore {
+    [self.viewModel appendMoreData];
 }
 
 #pragma mark - UITableViewDataSource

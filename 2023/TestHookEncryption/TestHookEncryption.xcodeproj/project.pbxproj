@@ -112,6 +112,8 @@
 		B1AD7E9A2DCBAB31007670EC /* TNImageTextCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AD7E992DCBAB31007670EC /* TNImageTextCellModel.m */; };
 		B1AD7E9D2DCBAB86007670EC /* TNImageTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AD7E9C2DCBAB86007670EC /* TNImageTextCell.m */; };
 		B1AD7EA02DCBAFA8007670EC /* TNRefreshTableViewMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AD7E9F2DCBAFA8007670EC /* TNRefreshTableViewMgr.m */; };
+		B1AD7EA92DCBC6CA007670EC /* TNBaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AD7EA82DCBC6CA007670EC /* TNBaseViewModel.m */; };
+		B1AD7EAC2DCBC714007670EC /* TNHomeListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B1AD7EAB2DCBC714007670EC /* TNHomeListViewModel.m */; };
 		B1B3A02D2C93C99C005D6E17 /* ChengLogOutputView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B3A02C2C93C99B005D6E17 /* ChengLogOutputView.m */; };
 		B1B72B0E2DBB2F3E00AD8B6E /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B72B0D2DBB2F3E00AD8B6E /* UIView+Layout.m */; };
 		B1C1CD5A2A90D2DB0007A5F1 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C1CD582A90D2DB0007A5F1 /* UIView+Toast.m */; };
@@ -386,6 +388,10 @@
 		B1AD7E9C2DCBAB86007670EC /* TNImageTextCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNImageTextCell.m; sourceTree = "<group>"; };
 		B1AD7E9E2DCBAFA8007670EC /* TNRefreshTableViewMgr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNRefreshTableViewMgr.h; sourceTree = "<group>"; };
 		B1AD7E9F2DCBAFA8007670EC /* TNRefreshTableViewMgr.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNRefreshTableViewMgr.m; sourceTree = "<group>"; };
+		B1AD7EA72DCBC6CA007670EC /* TNBaseViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNBaseViewModel.h; sourceTree = "<group>"; };
+		B1AD7EA82DCBC6CA007670EC /* TNBaseViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNBaseViewModel.m; sourceTree = "<group>"; };
+		B1AD7EAA2DCBC714007670EC /* TNHomeListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNHomeListViewModel.h; sourceTree = "<group>"; };
+		B1AD7EAB2DCBC714007670EC /* TNHomeListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNHomeListViewModel.m; sourceTree = "<group>"; };
 		B1B3A02B2C93C99B005D6E17 /* ChengLogOutputView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChengLogOutputView.h; sourceTree = "<group>"; };
 		B1B3A02C2C93C99B005D6E17 /* ChengLogOutputView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChengLogOutputView.m; sourceTree = "<group>"; };
 		B1B72B0C2DBB2F3E00AD8B6E /* UIView+Layout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
@@ -933,6 +939,10 @@
 				B1AD7E9C2DCBAB86007670EC /* TNImageTextCell.m */,
 				B1AD7E9E2DCBAFA8007670EC /* TNRefreshTableViewMgr.h */,
 				B1AD7E9F2DCBAFA8007670EC /* TNRefreshTableViewMgr.m */,
+				B1AD7EA72DCBC6CA007670EC /* TNBaseViewModel.h */,
+				B1AD7EA82DCBC6CA007670EC /* TNBaseViewModel.m */,
+				B1AD7EAA2DCBC714007670EC /* TNHomeListViewModel.h */,
+				B1AD7EAB2DCBC714007670EC /* TNHomeListViewModel.m */,
 			);
 			path = TNTableView;
 			sourceTree = "<group>";
@@ -1221,6 +1231,7 @@
 				B13C49142B9AF754006B2DAD /* UIButton+Extension.m in Sources */,
 				B1AD7E742DCB9609007670EC /* TNPersonModel.m in Sources */,
 				B101CF2F2AC1F4D5002F52B7 /* ZZDataChannelOutput.m in Sources */,
+				B1AD7EA92DCBC6CA007670EC /* TNBaseViewModel.m in Sources */,
 				B17D7CBA2C11C1FD00C5C379 /* DiamondView.m in Sources */,
 				B1F006672BB6967B000A0088 /* QGAnimatedImageDecodeConfig.m in Sources */,
 				B1676B072AD5B0BE0032F433 /* MengTableView.m in Sources */,
@@ -1240,6 +1251,7 @@
 				B13C48EA2B901E0C006B2DAD /* SNAnimationCustom.m in Sources */,
 				B1F006842BB6967B000A0088 /* UIColor+VAPUtil.m in Sources */,
 				B10AF4B42B3F454A004D7C70 /* SNSecurityHelper.m in Sources */,
+				B1AD7EAC2DCBC714007670EC /* TNHomeListViewModel.m in Sources */,
 				B1F006732BB6967B000A0088 /* QGMP4AnimatedImageFrame.m in Sources */,
 				2780CB4E2A8A72E400C15C79 /* GuanTableViewDelegate.m in Sources */,
 				B1F0066A2BB6967B000A0088 /* QGAnimatedImageDecodeThreadPool.m in Sources */,
