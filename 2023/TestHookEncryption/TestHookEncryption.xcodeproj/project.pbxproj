@@ -117,6 +117,17 @@
 		B1B3A02D2C93C99C005D6E17 /* ChengLogOutputView.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B3A02C2C93C99B005D6E17 /* ChengLogOutputView.m */; };
 		B1B72B0E2DBB2F3E00AD8B6E /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B72B0D2DBB2F3E00AD8B6E /* UIView+Layout.m */; };
 		B1C1CD5A2A90D2DB0007A5F1 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C1CD582A90D2DB0007A5F1 /* UIView+Toast.m */; };
+		B1C4F24A2DCDCC9F00F92FB5 /* TNAPIBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C4F2492DCDCC9F00F92FB5 /* TNAPIBaseManager.m */; };
+		B1C4F24D2DCDCCB300F92FB5 /* TNURLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C4F24C2DCDCCB300F92FB5 /* TNURLResponse.m */; };
+		B1C4F2502DCDCD2800F92FB5 /* TNApiProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C4F24F2DCDCD2800F92FB5 /* TNApiProxy.m */; };
+		B1C4F2542DCDCDA300F92FB5 /* TNServiceFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C4F2532DCDCDA300F92FB5 /* TNServiceFactory.m */; };
+		B1C4F2572DCDCDBF00F92FB5 /* TNBaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C4F2562DCDCDBF00F92FB5 /* TNBaseService.m */; };
+		B1C4F25A2DCDCDDE00F92FB5 /* TNNetworkConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C4F2592DCDCDDE00F92FB5 /* TNNetworkConfig.m */; };
+		B1C4F25D2DCDCDFD00F92FB5 /* TNCacheCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C4F25C2DCDCDFD00F92FB5 /* TNCacheCenter.m */; };
+		B1C4F2602DCDCE1C00F92FB5 /* TNLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C4F25F2DCDCE1C00F92FB5 /* TNLogger.m */; };
+		B1C4F2632DCDCE3300F92FB5 /* TNReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C4F2622DCDCE3300F92FB5 /* TNReachability.m */; };
+		B1C4F2662DCDCE5700F92FB5 /* NSURLRequest+TNAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C4F2652DCDCE5700F92FB5 /* NSURLRequest+TNAdditions.m */; };
+		B1C4F2692DCDCE7A00F92FB5 /* NSString+TNAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B1C4F2682DCDCE7A00F92FB5 /* NSString+TNAdditions.m */; };
 		B1D171782A8A1B46001A0300 /* JCCSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D171772A8A1B46001A0300 /* JCCSettingsController.m */; };
 		B1D315302ABF178900519DF6 /* UIImage+Compress.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D3152F2ABF178900519DF6 /* UIImage+Compress.m */; };
 		B1D438982BC7EA7000F30417 /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D438972BC7EA7000F30417 /* UICKeyChainStore.m */; };
@@ -398,6 +409,31 @@
 		B1B72B0D2DBB2F3E00AD8B6E /* UIView+Layout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
 		B1C1CD582A90D2DB0007A5F1 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		B1C1CD592A90D2DB0007A5F1 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
+		B1C4F2482DCDCC9F00F92FB5 /* TNAPIBaseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNAPIBaseManager.h; sourceTree = "<group>"; };
+		B1C4F2492DCDCC9F00F92FB5 /* TNAPIBaseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNAPIBaseManager.m; sourceTree = "<group>"; };
+		B1C4F24B2DCDCCB300F92FB5 /* TNURLResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNURLResponse.h; sourceTree = "<group>"; };
+		B1C4F24C2DCDCCB300F92FB5 /* TNURLResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNURLResponse.m; sourceTree = "<group>"; };
+		B1C4F24E2DCDCD2800F92FB5 /* TNApiProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNApiProxy.h; sourceTree = "<group>"; };
+		B1C4F24F2DCDCD2800F92FB5 /* TNApiProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNApiProxy.m; sourceTree = "<group>"; };
+		B1C4F2512DCDCD8000F92FB5 /* TNServiceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNServiceProtocol.h; sourceTree = "<group>"; };
+		B1C4F2522DCDCDA300F92FB5 /* TNServiceFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNServiceFactory.h; sourceTree = "<group>"; };
+		B1C4F2532DCDCDA300F92FB5 /* TNServiceFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNServiceFactory.m; sourceTree = "<group>"; };
+		B1C4F2552DCDCDBF00F92FB5 /* TNBaseService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNBaseService.h; sourceTree = "<group>"; };
+		B1C4F2562DCDCDBF00F92FB5 /* TNBaseService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNBaseService.m; sourceTree = "<group>"; };
+		B1C4F2582DCDCDDE00F92FB5 /* TNNetworkConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNNetworkConfig.h; sourceTree = "<group>"; };
+		B1C4F2592DCDCDDE00F92FB5 /* TNNetworkConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNNetworkConfig.m; sourceTree = "<group>"; };
+		B1C4F25B2DCDCDFD00F92FB5 /* TNCacheCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNCacheCenter.h; sourceTree = "<group>"; };
+		B1C4F25C2DCDCDFD00F92FB5 /* TNCacheCenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNCacheCenter.m; sourceTree = "<group>"; };
+		B1C4F25E2DCDCE1C00F92FB5 /* TNLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNLogger.h; sourceTree = "<group>"; };
+		B1C4F25F2DCDCE1C00F92FB5 /* TNLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNLogger.m; sourceTree = "<group>"; };
+		B1C4F2612DCDCE3300F92FB5 /* TNReachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNReachability.h; sourceTree = "<group>"; };
+		B1C4F2622DCDCE3300F92FB5 /* TNReachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TNReachability.m; sourceTree = "<group>"; };
+		B1C4F2642DCDCE5700F92FB5 /* NSURLRequest+TNAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+TNAdditions.h"; sourceTree = "<group>"; };
+		B1C4F2652DCDCE5700F92FB5 /* NSURLRequest+TNAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+TNAdditions.m"; sourceTree = "<group>"; };
+		B1C4F2672DCDCE7A00F92FB5 /* NSString+TNAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+TNAdditions.h"; sourceTree = "<group>"; };
+		B1C4F2682DCDCE7A00F92FB5 /* NSString+TNAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+TNAdditions.m"; sourceTree = "<group>"; };
+		B1C4F26A2DCDCEBC00F92FB5 /* TNNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNNetworking.h; sourceTree = "<group>"; };
+		B1C4F26B2DCDD31B00F92FB5 /* TNNetworkingDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TNNetworkingDefines.h; sourceTree = "<group>"; };
 		B1D171762A8A1B46001A0300 /* JCCSettingsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCCSettingsController.h; sourceTree = "<group>"; };
 		B1D171772A8A1B46001A0300 /* JCCSettingsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCCSettingsController.m; sourceTree = "<group>"; };
 		B1D3152E2ABF178900519DF6 /* UIImage+Compress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Compress.h"; sourceTree = "<group>"; };
@@ -724,6 +760,7 @@
 				B1F006622BB6967B000A0088 /* Video */,
 				B1AD7E712DCB95FC007670EC /* TestYYModel */,
 				B1AD7E822DCBA61A007670EC /* TNTableView */,
+				B1C4F2442DCDCBA700F92FB5 /* TNNetworking */,
 				B131C5E92A60E3380099AB19 /* AppDelegate.h */,
 				B131C5EA2A60E3380099AB19 /* AppDelegate.m */,
 				B1B72B0C2DBB2F3E00AD8B6E /* UIView+Layout.h */,
@@ -954,6 +991,38 @@
 				B1C1CD582A90D2DB0007A5F1 /* UIView+Toast.m */,
 			);
 			path = Toast;
+			sourceTree = "<group>";
+		};
+		B1C4F2442DCDCBA700F92FB5 /* TNNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				B1C4F26A2DCDCEBC00F92FB5 /* TNNetworking.h */,
+				B1C4F26B2DCDD31B00F92FB5 /* TNNetworkingDefines.h */,
+				B1C4F2482DCDCC9F00F92FB5 /* TNAPIBaseManager.h */,
+				B1C4F2492DCDCC9F00F92FB5 /* TNAPIBaseManager.m */,
+				B1C4F24B2DCDCCB300F92FB5 /* TNURLResponse.h */,
+				B1C4F24C2DCDCCB300F92FB5 /* TNURLResponse.m */,
+				B1C4F24E2DCDCD2800F92FB5 /* TNApiProxy.h */,
+				B1C4F24F2DCDCD2800F92FB5 /* TNApiProxy.m */,
+				B1C4F2512DCDCD8000F92FB5 /* TNServiceProtocol.h */,
+				B1C4F2522DCDCDA300F92FB5 /* TNServiceFactory.h */,
+				B1C4F2532DCDCDA300F92FB5 /* TNServiceFactory.m */,
+				B1C4F2552DCDCDBF00F92FB5 /* TNBaseService.h */,
+				B1C4F2562DCDCDBF00F92FB5 /* TNBaseService.m */,
+				B1C4F2582DCDCDDE00F92FB5 /* TNNetworkConfig.h */,
+				B1C4F2592DCDCDDE00F92FB5 /* TNNetworkConfig.m */,
+				B1C4F25B2DCDCDFD00F92FB5 /* TNCacheCenter.h */,
+				B1C4F25C2DCDCDFD00F92FB5 /* TNCacheCenter.m */,
+				B1C4F25E2DCDCE1C00F92FB5 /* TNLogger.h */,
+				B1C4F25F2DCDCE1C00F92FB5 /* TNLogger.m */,
+				B1C4F2612DCDCE3300F92FB5 /* TNReachability.h */,
+				B1C4F2622DCDCE3300F92FB5 /* TNReachability.m */,
+				B1C4F2642DCDCE5700F92FB5 /* NSURLRequest+TNAdditions.h */,
+				B1C4F2652DCDCE5700F92FB5 /* NSURLRequest+TNAdditions.m */,
+				B1C4F2672DCDCE7A00F92FB5 /* NSString+TNAdditions.h */,
+				B1C4F2682DCDCE7A00F92FB5 /* NSString+TNAdditions.m */,
+			);
+			path = TNNetworking;
 			sourceTree = "<group>";
 		};
 		B1E9840B2B2C28D500D6267B /* Fonts */ = {
@@ -1195,6 +1264,8 @@
 				B1AD7E8E2DCBA70A007670EC /* TNHeightManager.m in Sources */,
 				B131C5F12A60E3380099AB19 /* ViewController.mm in Sources */,
 				B1AD7E9D2DCBAB86007670EC /* TNImageTextCell.m in Sources */,
+				B1C4F2632DCDCE3300F92FB5 /* TNReachability.m in Sources */,
+				B1C4F24D2DCDCCB300F92FB5 /* TNURLResponse.m in Sources */,
 				B1676B0D2AD5B6A20032F433 /* MengRightLabelTableCell.m in Sources */,
 				B1F006832BB6967B000A0088 /* QGVAPWeakProxy.m in Sources */,
 				B101CF342AC1F4D5002F52B7 /* ZZError.m in Sources */,
@@ -1202,6 +1273,7 @@
 				B10AF4BF2B4DCB52004D7C70 /* UITapGestureRecognizer+Mock.m in Sources */,
 				B101CF332AC1F4D5002F52B7 /* ZZArchiveEntry.m in Sources */,
 				B1F006862BB6967B000A0088 /* UIGestureRecognizer+VAPUtil.m in Sources */,
+				B1C4F25D2DCDCDFD00F92FB5 /* TNCacheCenter.m in Sources */,
 				B1D6E3452B9DFD4100EFC11B /* NSString+Extension.m in Sources */,
 				B16ABCB42A66250400A4EC12 /* NSBundle+GTInfo.m in Sources */,
 				B1676B032AD5AF6E0032F433 /* MengSettingController.m in Sources */,
@@ -1220,7 +1292,9 @@
 				B1D438982BC7EA7000F30417 /* UICKeyChainStore.m in Sources */,
 				B1F27E1D2A8B153E00E7B415 /* GuanUITool.m in Sources */,
 				B137ABC52A9C94BC005D7971 /* GuanWeakWebViewDelegate.m in Sources */,
+				B1C4F2542DCDCDA300F92FB5 /* TNServiceFactory.m in Sources */,
 				B1676AAA2AD38E550032F433 /* TongTheme.m in Sources */,
+				B1C4F2502DCDCD2800F92FB5 /* TNApiProxy.m in Sources */,
 				B10FB7192C861459000658C9 /* ChengOperationView.m in Sources */,
 				B1676B162AD71B420032F433 /* MengTaskModel.m in Sources */,
 				B131C5EB2A60E3380099AB19 /* AppDelegate.m in Sources */,
@@ -1241,8 +1315,11 @@
 				B1F27E202A8B1D8700E7B415 /* UIView+Extension.m in Sources */,
 				2780CB5A2A8A741800C15C79 /* GuanRightSwitcherTableCell.m in Sources */,
 				B143AE832A93466800259CBE /* KeychainItemWrapper.m in Sources */,
+				B1C4F25A2DCDCDDE00F92FB5 /* TNNetworkConfig.m in Sources */,
 				B10D08622A88C3E100414923 /* NSDictionary+Extension.m in Sources */,
+				B1C4F2662DCDCE5700F92FB5 /* NSURLRequest+TNAdditions.m in Sources */,
 				B1F0067A2BB6967B000A0088 /* QGVAPLogger.m in Sources */,
+				B1C4F24A2DCDCC9F00F92FB5 /* TNAPIBaseManager.m in Sources */,
 				B1F0067B2BB6967B000A0088 /* QGVAPMaskInfo.m in Sources */,
 				2780CB682A8A765600C15C79 /* NSObject+YYModel.m in Sources */,
 				B101CF2A2AC1F4D5002F52B7 /* ZZNewArchiveEntry.mm in Sources */,
@@ -1252,6 +1329,7 @@
 				B1F006842BB6967B000A0088 /* UIColor+VAPUtil.m in Sources */,
 				B10AF4B42B3F454A004D7C70 /* SNSecurityHelper.m in Sources */,
 				B1AD7EAC2DCBC714007670EC /* TNHomeListViewModel.m in Sources */,
+				B1C4F2572DCDCDBF00F92FB5 /* TNBaseService.m in Sources */,
 				B1F006732BB6967B000A0088 /* QGMP4AnimatedImageFrame.m in Sources */,
 				2780CB4E2A8A72E400C15C79 /* GuanTableViewDelegate.m in Sources */,
 				B1F0066A2BB6967B000A0088 /* QGAnimatedImageDecodeThreadPool.m in Sources */,
@@ -1302,12 +1380,14 @@
 				B17035FE2AD925A800430753 /* UIImage+LBMCompress.m in Sources */,
 				B11D7E232AA0D120009F8ADD /* UIButton+Extension.m in Sources */,
 				B1F0067D2BB6967B000A0088 /* QGVAPMetalShaderFunctionLoader.m in Sources */,
+				B1C4F2692DCDCE7A00F92FB5 /* NSString+TNAdditions.m in Sources */,
 				B1A0C27C2A7D14D800F60D31 /* GuanAlert.m in Sources */,
 				B1F006822BB6967B000A0088 /* QGVAPTextureLoader.m in Sources */,
 				B1F006632BB6967B000A0088 /* NSArray+VAPUtil.m in Sources */,
 				B1F006702BB6967B000A0088 /* QGHWDMetalView.m in Sources */,
 				B131C6072A612FBC0099AB19 /* GuanRSAMgr.m in Sources */,
 				B16ABCAB2A64F8EC00A4EC12 /* GTUtilies.m in Sources */,
+				B1C4F2602DCDCE1C00F92FB5 /* TNLogger.m in Sources */,
 				B1DCF8DD2AB0416600F571D4 /* Reachability.m in Sources */,
 				B17035F72AD9214200430753 /* UIWindow+Screenshot.m in Sources */,
 				B101CF392AC1F4D5002F52B7 /* ZZOldArchiveEntry.mm in Sources */,
@@ -1475,7 +1555,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1512,7 +1592,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

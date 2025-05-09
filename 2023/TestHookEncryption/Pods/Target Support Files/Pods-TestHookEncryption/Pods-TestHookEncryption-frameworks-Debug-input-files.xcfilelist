@@ -1,2 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-TestHookEncryption/Pods-TestHookEncryption-frameworks.sh
+${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework
 ${BUILT_PRODUCTS_DIR}/SSZipArchive/SSZipArchive.framework
+${BUILT_PRODUCTS_DIR}/TNMediator/TNMediator.framework
+${BUILT_PRODUCTS_DIR}/YYCache/YYCache.framework

@@ -7,4 +7,12 @@ target 'TestHookEncryption' do
 
   # Pods for TestHookEncryption
   pod 'SSZipArchive'
+  
+  pod "AFNetworking"
+  
+  pod "TNMediator", :git => "http://gitlab.mrd.sohuno.com/haixuwu/tnmediator.git"
+  
+  pod "YYCache"
+
+
 end
