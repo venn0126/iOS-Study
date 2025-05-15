@@ -1,0 +1,24 @@
+{
+  "name": "TNMediator",
+  "version": "1",
+  "summary": "TNMediator.",
+  "description": "this is TNMediator",
+  "homepage": "http://gitlab.mrd.sohuno.com/haixuwu/tnmediator",
+  "license": {
+    "type": "MIT",
+    "file": "FILE_LICENSE"
+  },
+  "authors": {
+    "Augus": "venn221@gmail.com"
+  },
+  "platforms": {
+    "ios": "13.0"
+  },
+  "source": {
+    "git": "http://gitlab.mrd.sohuno.com/haixuwu/tnmediator.git",
+    "tag": "1"
+  },
+  "source_files": "TNMediator/TNMediator/**/*.{h,m,swift}",
+  "public_header_files": "TNMediator/**/*.h",
+  "requires_arc": true
+}

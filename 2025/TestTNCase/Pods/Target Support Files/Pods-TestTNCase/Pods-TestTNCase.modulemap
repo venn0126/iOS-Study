@@ -1,0 +1,6 @@
+framework module Pods_TestTNCase {
+  umbrella header "Pods-TestTNCase-umbrella.h"
+
+  export *
+  module * { export * }
+}

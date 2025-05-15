@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/Pods-TestTNCase/Pods-TestTNCase-frameworks.sh
+${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework
+${BUILT_PRODUCTS_DIR}/TNMediator/TNMediator.framework
+${BUILT_PRODUCTS_DIR}/YYCache/YYCache.framework
+${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework

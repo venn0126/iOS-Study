@@ -1,0 +1,59 @@
+//
+//  TestTNCase.pch
+//  TestTNCase
+//
+//  Created by Augus Venn on 2025/5/15.
+//
+
+#ifndef TestTNCase_pch
+#define TestTNCase_pch
+#import <syslog.h>
+#import <UIKit/UIKit.h>
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+#import "TNNetworking.h"
+#import "TNHomeAPIMgr.h"
+#import "Target_TNHomeService.h"
+
+
+#import "TNHomeListViewModel.h"
+#import "UITableView+TNManualLayout.h"
+#import "TNTextCell.h"
+#import "TNImageTextCell.h"
+
+#import "NSDictionary+Extension.h"
+#import <YYModel/YYModel.h>
+#import <TNMediator/TNMediator.h>
+
+
+
+/// 日志打印
+#ifdef DEBUG
+    #define TLog(FORMAT, ...) syslog(LOG_ERR, "[Tang] %s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+    #define HLog(bytes, length) \
+        NSMutableString *LogString_##string = [NSMutableString string]; \
+        for (int i = 0; i < length; i++) [LogString_##string appendFormat:@"%02hhX", bytes[i]]; \
+        syslog(LOG_ERR, "+[Tang] %s", LogString_##string.UTF8String)
+    #define MengLog(log) [GTFileTools gt_saveLog:log]
+#else
+    #define TLog(...) (void)0
+    #define HLog(...) (void)0
+    #define MengLog(log) [GTFileTools gt_saveLog:@""]
+
+#endif
+
+/// 秒延迟
+#define MengsDelay(s, block) (dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(s * NSEC_PER_SEC)), dispatch_get_main_queue(), block))
+
+/// 主线程封装
+#define dispatch_main_async_safe(block)\
+    if (dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL) == dispatch_queue_get_label(dispatch_get_main_queue())) {\
+        block();\
+    } else {\
+        dispatch_async(dispatch_get_main_queue(), block);\
+    } \
+
+
+#endif /* TestTNCase_pch */
