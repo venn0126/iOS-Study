@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TNHomeAPIMgr : TNAPIBaseManager<TNAPIManager,TNAPIManagerParamSource, TNAPIManagerDataReformer, TNAPIManagerCallBackDelegate>
+@interface TNHomeAPIMgr : TNAPIBaseManager<TNAPIManager,TNAPIManagerParamSource, TNAPIManagerDataReformer, TNAPIManagerCallBackDelegate, TNAPIManagerValidator>
 
 
 

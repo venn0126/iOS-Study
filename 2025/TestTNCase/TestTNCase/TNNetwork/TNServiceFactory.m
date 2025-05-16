@@ -51,6 +51,8 @@
                                                                        action:identifier
                                                                        params:nil
                                                             shouldCacheTarget:NO];
+    
+    NSAssert(service, @"这里的业务的service是使用TNMediator来访问,所以创建service需要同时创建xxxServer和Taregt_xxxService两个类");
     return service;
 }
 

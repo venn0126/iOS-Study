@@ -18,6 +18,7 @@
     if(!self) return nil;
     self.paramSource = self;
     self.delegate = self;
+    self.validator = self;
     
     // 配置网络环境
     [TNNetworkConfig sharedConfig].defaultEnvironment = TNServiceAPIEnvironmentDevelop;
@@ -73,5 +74,17 @@
     NSString *errorMessage = manager.errorMessage ?: @"未知错误";
     TLog(@"homeAPIMgr managerCallAPIDidFailed-%@",errorMessage);
 }
+
+#pragma mark - TNAPIManagerValidator
+- (TNAPIManagerErrorType)manager:(TNAPIBaseManager *)manager isCorrectWithCallBackData:(NSDictionary *_Nullable)data {
+    TLog(@"TNAPIManagerValidator isCorrectWithCallBackData--%@",data);
+    return TNAPIManagerErrorTypeNoError;
+}
+- (TNAPIManagerErrorType)manager:(TNAPIBaseManager *)manager isCorrectWithParamsData:(NSDictionary *_Nullable)data {
+    
+    TLog(@"TNAPIManagerValidator isCorrectWithCallBackData--%@",data);
+    return TNAPIManagerErrorTypeNoError;
+}
+
 
 @end

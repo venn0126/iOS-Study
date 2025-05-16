@@ -126,7 +126,9 @@ extern NSString *  const kTNApiProxyValidateResultKeyResponseString;
 @property (nonatomic, assign, readonly) BOOL isLastPage;
 @property (nonatomic, assign, readonly) NSUInteger totalCount;
 
+/// 加载下一页数据
 - (void)loadNextPage;
+/// 重置到首页的数据
 - (void)resetToFirstPage;
 
 @end
@@ -135,6 +137,11 @@ extern NSString *  const kTNApiProxyValidateResultKeyResponseString;
 @protocol TNAPIManagerDataReformer <NSObject>
 
 @required
+
+/// 对请求响应数据进行自定义转换
+/// - Parameters:
+///   - manager: 请求的管理者
+///   - data: 响应的数据
 - (id _Nullable)manager:(TNAPIBaseManager * )manager reformData:(NSDictionary * _Nullable)data;
 
 @end
@@ -143,7 +150,17 @@ extern NSString *  const kTNApiProxyValidateResultKeyResponseString;
 @protocol TNAPIManagerValidator <NSObject>
 
 @required
+/// 校验响应后的数据是否合法
+/// - Parameters:
+///   - manager: 当前请求的管理者
+///   - data: 响应的数据
 - (TNAPIManagerErrorType)manager:(TNAPIBaseManager *)manager isCorrectWithCallBackData:(NSDictionary *_Nullable)data;
+
+
+/// 校验请求之前的参数是否合法
+/// - Parameters:
+///   - manager: 当前请求的管理者
+///   - data: 请求的参数
 - (TNAPIManagerErrorType)manager:(TNAPIBaseManager *)manager isCorrectWithParamsData:(NSDictionary *_Nullable)data;
 
 @end
@@ -152,6 +169,9 @@ extern NSString *  const kTNApiProxyValidateResultKeyResponseString;
 @protocol TNAPIManagerParamSource <NSObject>
 
 @required
+
+/// api请求的参数
+/// - Parameter manager: 请求管理者
 - (NSDictionary *_Nullable)paramsForApi:(TNAPIBaseManager *)manager;
 
 @end

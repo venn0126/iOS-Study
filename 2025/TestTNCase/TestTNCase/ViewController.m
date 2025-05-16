@@ -46,9 +46,11 @@
     self.homeAPIMgr = [[TNHomeAPIMgr alloc] init];
     
     // 配置缓存策略
-    self.homeAPIMgr.cachePolicy = TNAPIManagerCachePolicyMemory | TNAPIManagerCachePolicyDisk;
-    self.homeAPIMgr.memoryCacheSecond = 60; // 1分钟内存缓存
-    self.homeAPIMgr.diskCacheSecond = 300;  // 5分钟磁盘缓存
+    self.homeAPIMgr.cachePolicy = TNAPIManagerCachePolicyNoCache;
+    // 1分钟内存缓存
+//    self.homeAPIMgr.memoryCacheSecond = 60;
+    // 5分钟磁盘缓存
+//    self.homeAPIMgr.diskCacheSecond = 300;
     
     // 配置重试策略
     self.homeAPIMgr.retryPolicy = TNAPIManagerRetryPolicyOnNetworkError | TNAPIManagerRetryPolicyOnTimeout;
