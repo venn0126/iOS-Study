@@ -18,12 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 // 获取服务
 - (nullable id<TNServiceProtocol>)serviceWithIdentifier:(NSString *)identifier;
 
-// 注册服务
-- (void)registerService:(id<TNServiceProtocol>)service withIdentifier:(NSString *)identifier;
-
-// 移除服务
-- (void)removeServiceWithIdentifier:(NSString *)identifier;
-
 
 @end
 

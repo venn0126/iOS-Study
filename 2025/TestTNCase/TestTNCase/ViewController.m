@@ -37,17 +37,9 @@
 #pragma mark - TestHomeAPI
 - (void)testHomeAPI {
     
-    [self registerServices];
     [self setupAPIManager];
     
 }
-
-- (void)registerServices {
-    // 创建并注册用户服务
-    TNHomeService *homeService = [[TNHomeService alloc] init];
-    [[TNServiceFactory sharedInstance] registerService:homeService withIdentifier:@"TNHomeService"];
-}
-
 
 - (void)setupAPIManager {
     // 创建API管理器

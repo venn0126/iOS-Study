@@ -43,34 +43,14 @@
     return self.serviceStorage[identifier];
 }
 
-- (void)registerService:(id<TNServiceProtocol>)service withIdentifier:(NSString *)identifier {
-    if (service && identifier) {
-        self.serviceStorage[identifier] = service;
-    }
-}
-
-- (void)removeServiceWithIdentifier:(NSString *)identifier {
-    if (identifier) {
-        [self.serviceStorage removeObjectForKey:identifier];
-    }
-}
 
 #pragma mark - 私有方法
 - (id<TNServiceProtocol>)newServiceWithIdentifier:(NSString *)identifier {
     // 尝试通过CTMediator创建服务
-    id<TNServiceProtocol> service = [[TNMediator sharedInstance] performTarget:identifier
+    id<TNServiceProtocol> service = [TNMS() performTarget:identifier
                                                                        action:identifier
                                                                        params:nil
                                                             shouldCacheTarget:NO];
-    
-    // 如果没有找到服务，尝试创建默认服务
-    if (!service) {
-        Class serviceClass = NSClassFromString([NSString stringWithFormat:@"%@Service", identifier]);
-        if (serviceClass && [serviceClass conformsToProtocol:@protocol(TNServiceProtocol)]) {
-            service = [[serviceClass alloc] init];
-        }
-    }
-    
     return service;
 }
 

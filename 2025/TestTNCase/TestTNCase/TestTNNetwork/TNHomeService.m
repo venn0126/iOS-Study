@@ -24,15 +24,20 @@
                         requestType:(TNAPIManagerRequestType)requestType {
     if (requestType == TNAPIManagerRequestTypeGet) {
         NSString *urlString = [NSString stringWithFormat:@"%@/%@", [self baseURLString], methodName];
-        NSString *tsString = [NSUUID UUID].UUIDString;
-        NSString *md5Hash = [[NSString stringWithFormat:@"%@%@%@", tsString, self.privateKey, self.publicKey] tn_md5];
+        // TODO: 重写一个请求的逻辑 比如签名等
+//        NSString *tsString = [NSUUID UUID].UUIDString;
+//        NSString *md5Hash = [[NSString stringWithFormat:@"%@%@%@", tsString, self.privateKey, self.publicKey] tn_md5];
+//        NSMutableURLRequest *request = [self.httpRequestSerializer requestWithMethod:@"GET"
+//                                                                           URLString:urlString
+//                                                                          parameters:@{
+//                                                                                       @"apikey":self.publicKey,
+//                                                                                       @"ts":tsString,
+//                                                                                       @"hash":md5Hash
+//                                                                                       }
+//                                                                               error:nil];
         NSMutableURLRequest *request = [self.httpRequestSerializer requestWithMethod:@"GET"
                                                                            URLString:urlString
-                                                                          parameters:@{
-                                                                                       @"apikey":self.publicKey,
-                                                                                       @"ts":tsString,
-                                                                                       @"hash":md5Hash
-                                                                                       }
+                                                                          parameters:params
                                                                                error:nil];
         return request;
     }
