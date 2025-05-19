@@ -19,8 +19,6 @@
     
     // 初始化全局网络配置
     [TNNetworkConfig sharedConfig].defaultTimeoutInterval = 8.0;
-    [TNNetworkConfig sharedConfig].enableNetworkActivityIndicator = YES;
-    
     
     return YES;
 }
