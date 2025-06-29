@@ -21,8 +21,9 @@ struct ContentView: View {
          */
         let _ = Self._printChanges()
         
-        Text("swiftUI")
-            
+        Text("* This is **bold** text, this is *italic* text, and this is ***bold, italic*** text.[click here](https://apple.com) ~~A strikethrough example~~`Monospaced works too`Visit Apple: [click here](https://apple.com)")
+
+            .padding()
         
     }
 }
