@@ -12,6 +12,7 @@
 		B161B14B2B4D2A0E00FB618B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B161B14A2B4D2A0E00FB618B /* ContentView.swift */; };
 		B161B14D2B4D2A0F00FB618B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B161B14C2B4D2A0F00FB618B /* Assets.xcassets */; };
 		B161B1502B4D2A0F00FB618B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B161B14F2B4D2A0F00FB618B /* Preview Assets.xcassets */; };
+		B16430992E16EED90006DDB3 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16430982E16EED90006DDB3 /* LocalNotificationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		B161B14A2B4D2A0E00FB618B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B161B14C2B4D2A0F00FB618B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B161B14F2B4D2A0F00FB618B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B16430982E16EED90006DDB3 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 			children = (
 				B114D2422B57D47400F93A9A /* Extension */,
 				B161B1482B4D2A0E00FB618B /* GTSwiftUITestApp.swift */,
+				B16430982E16EED90006DDB3 /* LocalNotificationManager.swift */,
 				B161B14A2B4D2A0E00FB618B /* ContentView.swift */,
 				B161B14C2B4D2A0F00FB618B /* Assets.xcassets */,
 				B161B14E2B4D2A0F00FB618B /* Preview Content */,
@@ -150,6 +153,7 @@
 			files = (
 				B114D2442B57D47D00F93A9A /* ViewExtension.swift in Sources */,
 				B161B14B2B4D2A0E00FB618B /* ContentView.swift in Sources */,
+				B16430992E16EED90006DDB3 /* LocalNotificationManager.swift in Sources */,
 				B161B1492B4D2A0E00FB618B /* GTSwiftUITestApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,7 +296,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -326,7 +330,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
