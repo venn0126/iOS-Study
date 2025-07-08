@@ -13,6 +13,7 @@
 		B161B14D2B4D2A0F00FB618B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B161B14C2B4D2A0F00FB618B /* Assets.xcassets */; };
 		B161B1502B4D2A0F00FB618B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B161B14F2B4D2A0F00FB618B /* Preview Assets.xcassets */; };
 		B16430992E16EED90006DDB3 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16430982E16EED90006DDB3 /* LocalNotificationManager.swift */; };
+		B1A1BB642E1BD1820026AB15 /* WidgetCommunicationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A1BB632E1BD1820026AB15 /* WidgetCommunicationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		B161B14C2B4D2A0F00FB618B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B161B14F2B4D2A0F00FB618B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B16430982E16EED90006DDB3 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
+		B1A1BB632E1BD1820026AB15 /* WidgetCommunicationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetCommunicationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 		B161B1472B4D2A0E00FB618B /* GTSwiftUITest */ = {
 			isa = PBXGroup;
 			children = (
+				B1A1BB622E1BD1710026AB15 /* Broadcast */,
 				B114D2422B57D47400F93A9A /* Extension */,
 				B161B1482B4D2A0E00FB618B /* GTSwiftUITestApp.swift */,
 				B16430982E16EED90006DDB3 /* LocalNotificationManager.swift */,
@@ -79,6 +82,14 @@
 				B161B14F2B4D2A0F00FB618B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B1A1BB622E1BD1710026AB15 /* Broadcast */ = {
+			isa = PBXGroup;
+			children = (
+				B1A1BB632E1BD1820026AB15 /* WidgetCommunicationService.swift */,
+			);
+			path = Broadcast;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1A1BB642E1BD1820026AB15 /* WidgetCommunicationService.swift in Sources */,
 				B114D2442B57D47D00F93A9A /* ViewExtension.swift in Sources */,
 				B161B14B2B4D2A0E00FB618B /* ContentView.swift in Sources */,
 				B16430992E16EED90006DDB3 /* LocalNotificationManager.swift in Sources */,
