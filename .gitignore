@@ -77,3 +77,4 @@ DerivedData
 Pods
 !Podfile
 !Podfile.lock
+.DS_Store
