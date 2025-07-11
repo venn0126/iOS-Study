@@ -22,34 +22,77 @@ struct ContentView: View {
          
          */
 //        let _ = Self._printChanges()
-        
-        VStack(spacing: 16) {
-            Text("* This is **bold** text, this is *italic* text, and this is ***bold, italic*** text.[click here](https://apple.com) ~~A strikethrough example~~`Monospaced works too`Visit Apple: [click here](https://apple.com)")
-                .padding()
-            
-            Button("跳转到 Safari") {
-                /// 跳转外部 app 前设置标志位
-                isJumpingToOtherApp = true
-                if let url = URL(string: "https://apple.com") {
-                    UIApplication.shared.open(url)
-                }
-            }
-        }
-        /// 监听 app 生命周期变化
-        .onChange(of: scenePhase) { newPhase in
-            if newPhase == .active {
-                if isJumpingToOtherApp {
-                    /// 从外部 app 返回
-                    print("检测到从外部 app 返回")
-                    /// 这里可以执行你需要的逻辑
-                    isJumpingToOtherApp = false
-                } else {
-                    /// 其他情况回到前台
-                    print("普通回到前台")
-                }
-            }
-        }
+        TestPersimmonTextField()
+
     }
+}
+
+
+//struct TestMarkDown: View {
+//    var body: some View {
+//        VStack(spacing: 16) {
+//            Text("* This is **bold** text, this is *italic* text, and this is ***bold, italic*** text.[click here](https://apple.com) ~~A strikethrough example~~`Monospaced works too`Visit Apple: [click here](https://apple.com)")
+//                .padding()
+//            
+//            Button("跳转到 Safari") {
+//                /// 跳转外部 app 前设置标志位
+//                isJumpingToOtherApp = true
+//                if let url = URL(string: "https://apple.com") {
+//                    UIApplication.shared.open(url)
+//                }
+//            }
+//        }
+//        /// 监听 app 生命周期变化
+//        .onChange(of: scenePhase) { newPhase in
+//            if newPhase == .active {
+//                if isJumpingToOtherApp {
+//                    /// 从外部 app 返回
+//                    print("检测到从外部 app 返回")
+//                    /// 这里可以执行你需要的逻辑
+//                    isJumpingToOtherApp = false
+//                } else {
+//                    /// 其他情况回到前台
+//                    print("普通回到前台")
+//                }
+//            }
+//        }
+//    }
+//}
+
+struct TestPersimmonTextField: View {
+    enum FieldKind {
+        case username, password
+    }
+    
+    @State var focusedField: FieldKind?
+    @State var username = ""
+    @State var password = ""
+    
+    var body: some View {
+        ZStack {
+            Image(systemName: "circle")
+            Text("4565")
+            Spacer()
+            VStack {
+                Text("123")
+                Image(systemName: "circle")
+                
+                PersimmonTextField(
+                    "Password",
+                    text: $password,
+                    focusedField: $focusedField,
+                    equals: .password
+                )
+//                .inputAccessoryView(DoneButton(action: {
+//                    print("donebutton...")
+//                }))
+                Spacer()
+            }
+            .padding()
+        }
+        
+        }
+    
 }
 
 

@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B10B3FAA2E1FB08600B7A8C5 /* PersimmonTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10B3FA32E1FB08600B7A8C5 /* PersimmonTextField.swift */; };
+		B10B3FAB2E1FB08600B7A8C5 /* ValidatorProtocol+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10B3FA72E1FB08600B7A8C5 /* ValidatorProtocol+Array.swift */; };
+		B10B3FAC2E1FB08600B7A8C5 /* PersimmonTextField+ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10B3F9E2E1FB08600B7A8C5 /* PersimmonTextField+ViewModifiers.swift */; };
+		B10B3FAD2E1FB08600B7A8C5 /* ValidatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10B3FA62E1FB08600B7A8C5 /* ValidatorProtocol.swift */; };
+		B10B3FAE2E1FB08600B7A8C5 /* InputAccessoryViewFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10B3FA12E1FB08600B7A8C5 /* InputAccessoryViewFactoryProtocol.swift */; };
+		B10B3FAF2E1FB08600B7A8C5 /* ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10B3FA52E1FB08600B7A8C5 /* ValidationResult.swift */; };
+		B10B3FB02E1FB08600B7A8C5 /* DoneInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10B3FA02E1FB08600B7A8C5 /* DoneInputAccessoryView.swift */; };
+		B10B3FB32E1FB19800B7A8C5 /* InputMask in Frameworks */ = {isa = PBXBuildFile; productRef = B10B3FB22E1FB19800B7A8C5 /* InputMask */; };
 		B114D2442B57D47D00F93A9A /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B114D2432B57D47D00F93A9A /* ViewExtension.swift */; };
 		B161B1492B4D2A0E00FB618B /* GTSwiftUITestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B161B1482B4D2A0E00FB618B /* GTSwiftUITestApp.swift */; };
 		B161B14B2B4D2A0E00FB618B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B161B14A2B4D2A0E00FB618B /* ContentView.swift */; };
@@ -17,6 +25,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B10B3F9E2E1FB08600B7A8C5 /* PersimmonTextField+ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersimmonTextField+ViewModifiers.swift"; sourceTree = "<group>"; };
+		B10B3FA02E1FB08600B7A8C5 /* DoneInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneInputAccessoryView.swift; sourceTree = "<group>"; };
+		B10B3FA12E1FB08600B7A8C5 /* InputAccessoryViewFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAccessoryViewFactoryProtocol.swift; sourceTree = "<group>"; };
+		B10B3FA32E1FB08600B7A8C5 /* PersimmonTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersimmonTextField.swift; sourceTree = "<group>"; };
+		B10B3FA52E1FB08600B7A8C5 /* ValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationResult.swift; sourceTree = "<group>"; };
+		B10B3FA62E1FB08600B7A8C5 /* ValidatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorProtocol.swift; sourceTree = "<group>"; };
+		B10B3FA72E1FB08600B7A8C5 /* ValidatorProtocol+Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ValidatorProtocol+Array.swift"; sourceTree = "<group>"; };
 		B114D2432B57D47D00F93A9A /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		B161B1452B4D2A0E00FB618B /* GTSwiftUITest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTSwiftUITest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B161B1482B4D2A0E00FB618B /* GTSwiftUITestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTSwiftUITestApp.swift; sourceTree = "<group>"; };
@@ -32,12 +47,59 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B10B3FB32E1FB19800B7A8C5 /* InputMask in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B10B3F9F2E1FB08600B7A8C5 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B10B3F9E2E1FB08600B7A8C5 /* PersimmonTextField+ViewModifiers.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		B10B3FA22E1FB08600B7A8C5 /* InputAccessoryView */ = {
+			isa = PBXGroup;
+			children = (
+				B10B3FA02E1FB08600B7A8C5 /* DoneInputAccessoryView.swift */,
+				B10B3FA12E1FB08600B7A8C5 /* InputAccessoryViewFactoryProtocol.swift */,
+			);
+			path = InputAccessoryView;
+			sourceTree = "<group>";
+		};
+		B10B3FA42E1FB08600B7A8C5 /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				B10B3FA32E1FB08600B7A8C5 /* PersimmonTextField.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
+		B10B3FA82E1FB08600B7A8C5 /* Validator */ = {
+			isa = PBXGroup;
+			children = (
+				B10B3FA52E1FB08600B7A8C5 /* ValidationResult.swift */,
+				B10B3FA62E1FB08600B7A8C5 /* ValidatorProtocol.swift */,
+				B10B3FA72E1FB08600B7A8C5 /* ValidatorProtocol+Array.swift */,
+			);
+			path = Validator;
+			sourceTree = "<group>";
+		};
+		B10B3FA92E1FB08600B7A8C5 /* PersimmonTextField */ = {
+			isa = PBXGroup;
+			children = (
+				B10B3F9F2E1FB08600B7A8C5 /* Extension */,
+				B10B3FA22E1FB08600B7A8C5 /* InputAccessoryView */,
+				B10B3FA42E1FB08600B7A8C5 /* TextField */,
+				B10B3FA82E1FB08600B7A8C5 /* Validator */,
+			);
+			path = PersimmonTextField;
+			sourceTree = "<group>";
+		};
 		B114D2422B57D47400F93A9A /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -65,6 +127,7 @@
 		B161B1472B4D2A0E00FB618B /* GTSwiftUITest */ = {
 			isa = PBXGroup;
 			children = (
+				B10B3FA92E1FB08600B7A8C5 /* PersimmonTextField */,
 				B1A1BB622E1BD1710026AB15 /* Broadcast */,
 				B114D2422B57D47400F93A9A /* Extension */,
 				B161B1482B4D2A0E00FB618B /* GTSwiftUITestApp.swift */,
@@ -120,7 +183,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					B161B1442B4D2A0E00FB618B = {
 						CreatedOnToolsVersion = 15.0;
@@ -136,6 +199,9 @@
 				Base,
 			);
 			mainGroup = B161B13C2B4D2A0E00FB618B;
+			packageReferences = (
+				B10B3FB12E1FB19800B7A8C5 /* XCRemoteSwiftPackageReference "input-mask-ios" */,
+			);
 			productRefGroup = B161B1462B4D2A0E00FB618B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -166,6 +232,13 @@
 				B114D2442B57D47D00F93A9A /* ViewExtension.swift in Sources */,
 				B161B14B2B4D2A0E00FB618B /* ContentView.swift in Sources */,
 				B16430992E16EED90006DDB3 /* LocalNotificationManager.swift in Sources */,
+				B10B3FAA2E1FB08600B7A8C5 /* PersimmonTextField.swift in Sources */,
+				B10B3FAB2E1FB08600B7A8C5 /* ValidatorProtocol+Array.swift in Sources */,
+				B10B3FAC2E1FB08600B7A8C5 /* PersimmonTextField+ViewModifiers.swift in Sources */,
+				B10B3FAD2E1FB08600B7A8C5 /* ValidatorProtocol.swift in Sources */,
+				B10B3FAE2E1FB08600B7A8C5 /* InputAccessoryViewFactoryProtocol.swift in Sources */,
+				B10B3FAF2E1FB08600B7A8C5 /* ValidationResult.swift in Sources */,
+				B10B3FB02E1FB08600B7A8C5 /* DoneInputAccessoryView.swift in Sources */,
 				B161B1492B4D2A0E00FB618B /* GTSwiftUITestApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -208,6 +281,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 5V5ADMGT2A;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -231,6 +305,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -271,6 +346,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 5V5ADMGT2A;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -287,6 +363,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -300,7 +377,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GTSwiftUITest/Preview Content\"";
-				DEVELOPMENT_TEAM = 5V5ADMGT2A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -334,7 +410,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GTSwiftUITest/Preview Content\"";
-				DEVELOPMENT_TEAM = 5V5ADMGT2A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -382,6 +457,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B10B3FB12E1FB19800B7A8C5 /* XCRemoteSwiftPackageReference "input-mask-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RedMadRobot/input-mask-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.3.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B10B3FB22E1FB19800B7A8C5 /* InputMask */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B10B3FB12E1FB19800B7A8C5 /* XCRemoteSwiftPackageReference "input-mask-ios" */;
+			productName = InputMask;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B161B13D2B4D2A0E00FB618B /* Project object */;
 }
