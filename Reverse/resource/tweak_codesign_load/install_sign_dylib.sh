@@ -53,7 +53,7 @@ plugIns_path="PlugIns"
 # 本机的证书ID，TODO: 需要修改这里
 # from `security find-identity -v -p codesigning`
 # wei niu：E1BC0601C29BFF560E418E8A15436F9D43687E4B
-sign_number="D83E95C0F41CF8A7CB78CABECE6E2DF967FCBB5B"
+sign_number="20C5B6B1C35556CB66043E09BE4FB3229B82A2C8"
 
 
 # 可执行文件路径
